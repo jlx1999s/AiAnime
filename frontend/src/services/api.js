@@ -91,5 +91,77 @@ export const ApiService = {
             body: JSON.stringify({ shot_id: shotId, type })
         });
         return res.json();
+    },
+
+    uploadFile: async (file) => {
+        if (USE_MOCK) return "https://placehold.co/200";
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await fetch(`${API_BASE_URL}/upload`, {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+        return data.url;
+    },
+
+    createCharacter: async (projectId, charData) => {
+        if (USE_MOCK) return charData;
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/characters`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(charData)
+        });
+        return res.json();
+    },
+
+    updateCharacter: async (projectId, charId, updates) => {
+        if (USE_MOCK) return updates;
+        const res = await fetch(`${API_BASE_URL}/characters/${projectId}/${charId}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(updates)
+        });
+        return res.json();
+    },
+
+    createScene: async (projectId, sceneData) => {
+        if (USE_MOCK) return sceneData;
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/scenes`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(sceneData)
+        });
+        return res.json();
+    },
+
+    updateScene: async (projectId, sceneId, updates) => {
+        if (USE_MOCK) return updates;
+        const res = await fetch(`${API_BASE_URL}/scenes/${projectId}/${sceneId}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(updates)
+        });
+        return res.json();
+    },
+
+    parseScript: async (content) => {
+        if (USE_MOCK) {
+            return new Promise(resolve => setTimeout(() => {
+                const lines = content.split('\n').filter(l => l.trim());
+                resolve(lines.map(l => ({
+                    prompt: l,
+                    dialogue: "",
+                    characters: [],
+                    scene: null
+                })));
+            }, 1000));
+        }
+        const res = await fetch(`${API_BASE_URL}/api/parse-script`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ content })
+        });
+        return res.json();
     }
 };

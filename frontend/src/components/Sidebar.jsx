@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Film, Trash2, Search, User, Plus } from 'lucide-react';
 
-const Sidebar = ({ characters }) => {
+const Sidebar = ({ characters, scenes, onSceneClick }) => {
     const [activeTab, setActiveTab] = useState('chars');
 
     return (
@@ -37,7 +37,7 @@ const Sidebar = ({ characters }) => {
                                 {characters?.map(char => (
                                     <div key={char.id} className="flex flex-col items-center gap-1 group cursor-pointer">
                                         <div className="w-16 h-16 rounded overflow-hidden bg-dark-600 border border-transparent group-hover:border-accent relative">
-                                            <img src={char.avatar} alt={char.name} className="w-full h-full object-cover"/>
+                                            <img src={char.avatar_url || char.avatar} alt={char.name} className="w-full h-full object-cover"/>
                                             <div className="absolute top-0 right-0 p-0.5 bg-black/50 rounded-bl hidden group-hover:block">
                                                 <Trash2 size={10} className="text-red-400"/>
                                             </div>
@@ -77,8 +77,30 @@ const Sidebar = ({ characters }) => {
                     </div>
                 )}
                 {activeTab === 'scenes' && (
-                     <div className="text-center py-10 text-gray-500 text-xs">
-                        暂无场景资产，请先上传或生成
+                     <div className="space-y-6">
+                        <div>
+                            <h3 className="text-xs font-bold text-gray-500 mb-3 uppercase flex items-center justify-between">
+                                作品中场景 ({scenes?.length || 0})
+                            </h3>
+                            <div className="grid grid-cols-2 gap-2">
+                                {scenes?.map(scene => (
+                                    <div 
+                                        key={scene.id} 
+                                        className="flex flex-col gap-1 group cursor-pointer"
+                                        onClick={() => onSceneClick && onSceneClick(scene.id)}
+                                    >
+                                        <div className="aspect-video rounded overflow-hidden bg-dark-600 border border-transparent group-hover:border-accent relative">
+                                            {scene.image_url ? (
+                                                <img src={scene.image_url} alt={scene.name} className="w-full h-full object-cover"/>
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center text-dark-500 text-xs">暂无图片</div>
+                                            )}
+                                        </div>
+                                        <span className="text-[10px] text-gray-400 truncate w-full">{scene.name}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                      </div>
                 )}
             </div>
