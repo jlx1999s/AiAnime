@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MochiAni - AI 漫剧制作</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Icons (Lucide Vanilla) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#1a1b1e',
+                            800: '#25262b',
+                            700: '#2c2e33',
+                            600: '#373a40',
+                        },
+                        accent: '#228be6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a1b1e;
+            color: #c1c2c5;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1b1e; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #373a40; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5c5f66; 
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // --- Icon Helper ---
+        // Create a React component that renders Lucide icons from the global object
+        const Icon = ({ name, size = 24, className = "", ...props }) => {
+            // lucide.icons is available from the script tag
+            const iconName = name; 
+            const iconData = window.lucide && window.lucide.icons ? window.lucide.icons[iconName] : null;
+
+            if (!iconData) {
+                console.warn(`Icon ${name} not found`);
+                return null;
+            }
+
+            // lucide icon structure in vanilla js library (latest) is often just the definition
+            // We need to construct the SVG. 
+            // The structure is usually: [tag, attrs, children] or similar.
+            // Actually, `lucide.icons` values in recent versions are arrays of children or objects.
+            // Let's rely on `lucide.createElement` logic but in React.
+            // Wait, simply put: `lucide.icons[name]` gives us the abstract tree.
+            
+            // To be safer and simpler, let's just use the feather-icons approach or similar if lucide is too complex to parse manually without their tools.
+            // BUT, let's try to map the data.
+            // Standard lucide icon definition: ["svg", { ...attrs }, [ ...children ]]
+            
+            // To avoid complexity, I will create a few specific icon components using standard SVG strings if needed, 
+            // OR I will trust that `lucide.icons` provides the path data.
+            
+            // ALTERNATIVE: Use a simple mapping for the icons I need.
+            
+            return (
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width={size} 
+                    height={size} 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    className={className}
+                    {...props}
+                    dangerouslySetInnerHTML={{ __html: iconData.map(child => {
+                        const [tag, attrs] = child;
+                        // Simple attributes to string
+                        const attrStr = Object.entries(attrs).map(([k, v]) => `${k}="${v}"`).join(' ');
+                        return `<${tag} ${attrStr} />`;
+                    }).join('') }}
+                />
+            );
+        };
+
+        // Icon Shortcuts
+        const Icons = {
+            Plus: (props) => <Icon name="Plus" {...props} />,
+            Trash2: (props) => <Icon name="Trash2" {...props} />,
+            MoveUp: (props) => <Icon name="MoveUp" {...props} />,
+            MoveDown: (props) => <Icon name="MoveDown" {...props} />,
+            Play: (props) => <Icon name="Play" {...props} />,
+            Image: (props) => <Icon name="Image" {...props} />,
+            Video: (props) => <Icon name="Video" {...props} />,
+            Settings: (props) => <Icon name="Settings" {...props} />,
+            User: (props) => <Icon name="User" {...props} />,
+            History: (props) => <Icon name="History" {...props} />,
+            ChevronDown: (props) => <Icon name="ChevronDown" {...props} />,
+            Search: (props) => <Icon name="Search" {...props} />,
+            Film: (props) => <Icon name="Film" {...props} />,
+            Mic: (props) => <Icon name="Mic" {...props} />,
+            UserPlus: (props) => <Icon name="UserPlus" {...props} />,
+            RefreshCw: (props) => <Icon name="RefreshCw" {...props} />,
+        };
+
+        // --- Service Layer (Backend Integration) ---
+        
+        const API_BASE_URL = "http://localhost:8001";
+        const USE_MOCK = false; // Set to false to use real backend
+
+        const MockData = {
+            characters: [
+                { id: 'c1', name: '陈远 (外门弟子)', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Chen' },
+                { id: 'c2', name: '神秘师兄', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Brother' },
+                { id: 'c3', name: '陈远 (剑主)', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ChenMaster' },
+            ],
+            shots: [
+                {
+                    id: 1,
+                    prompt: "0.1-3秒: 低角度，快速推拉镜头。陆远受到重力冲击向后滑行，身体在铺满碎石的练武场上划出一道尘土飞扬的轨迹。",
+                    dialogue: "陆远：滚去黑暗剑冢里自生自灭吧！",
+                    characters: ['c1'],
+                    scene: null,
+                    image_url: "https://placehold.co/300x169/25262b/FFF?text=Shot+1",
+                },
+                {
+                    id: 2,
+                    prompt: "镜头仰拍刻家入口，巨石上“刻家”二字布满剑痕，散发着森森寒气。",
+                    dialogue: "(深吸一口气)",
+                    characters: ['c1'],
+                    scene: null,
+                    image_url: "https://placehold.co/300x169/25262b/FFF?text=Shot+2",
+                },
+                 {
+                    id: 3,
+                    prompt: "陆远(外门弟子)目光一凝，手中铁剑发出嗡鸣。(动作虔诚而专注)，眼神中光影飞速流转，代表时间流逝。",
+                    dialogue: "“这就是...剑意？”",
+                    characters: ['c1', 'c2'],
+                    scene: null,
+                    image_url: "https://placehold.co/300x169/25262b/FFF?text=Shot+3",
+                }
+            ]
+        };
+
+        const ApiService = {
+            getProject: async (id) => {
+                if (USE_MOCK) {
+                    return new Promise(resolve => setTimeout(() => resolve({
+                        id, 
+                        name: "守墓五年", 
+                        shots: MockData.shots, 
+                        characters: MockData.characters
+                    }), 500));
+                }
+                const res = await fetch(`${API_BASE_URL}/projects/${id}`);
+                return res.json();
+            },
+
+            createShot: async (projectId, shotData) => {
+                if (USE_MOCK) {
+                    return {
+                        id: Date.now(),
+                        ...shotData,
+                        preview: "https://placehold.co/300x169/25262b/FFF?text=New+Shot"
+                    };
+                }
+                const res = await fetch(`${API_BASE_URL}/projects/${projectId}/shots`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(shotData)
+                });
+                return res.json();
+            },
+
+            updateShot: async (projectId, shotId, updates) => {
+                if (USE_MOCK) return updates; // In mock we just return what we sent
+                const res = await fetch(`${API_BASE_URL}/shots/${projectId}/${shotId}`, {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(updates)
+                });
+                return res.json();
+            },
+
+            deleteShot: async (projectId, shotId) => {
+                if (USE_MOCK) return true;
+                await fetch(`${API_BASE_URL}/shots/${projectId}/${shotId}`, { method: 'DELETE' });
+                return true;
+            },
+
+            generate: async (shotId, type) => {
+                if (USE_MOCK) {
+                    return new Promise(resolve => setTimeout(() => resolve({ status: 'queued' }), 1000));
+                }
+                const res = await fetch(`${API_BASE_URL}/generate`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ shot_id: shotId, type })
+                });
+                return res.json();
+            },
+
+            parseScript: async (content) => {
+                if (USE_MOCK) {
+                    return new Promise(resolve => setTimeout(() => {
+                        const lines = content.split('\n').filter(l => l.trim());
+                        resolve(lines.map(l => ({
+                            prompt: l,
+                            dialogue: "",
+                            characters: [],
+                            scene: null
+                        })));
+                    }, 1000));
+                }
+                const res = await fetch(`${API_BASE_URL}/api/parse-script`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ content })
+                });
+                return res.json();
+            }
+        };
+
+        // --- Components ---
+
+        const AddScriptModal = ({ isOpen, onClose, onSubmit }) => {
+            const [content, setContent] = React.useState("");
+            const [isParsing, setIsParsing] = React.useState(false);
+
+            if (!isOpen) return null;
+
+            const handleSubmit = async () => {
+                if (!content.trim()) return;
+                setIsParsing(true);
+                await onSubmit(content);
+                setIsParsing(false);
+                setContent("");
+                onClose();
+            };
+
+            return (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+                    <div className="bg-dark-800 w-[600px] rounded-lg border border-dark-700 shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+                        <div className="p-4 border-b border-dark-700 flex justify-between items-center bg-dark-900">
+                            <h3 className="font-bold text-gray-200 flex items-center gap-2">
+                                <Icons.Film size={18} className="text-accent"/> 
+                                添加剧本 (AI 自动解析)
+                            </h3>
+                            <button onClick={onClose} className="text-gray-500 hover:text-white"><Icons.Plus size={20} className="rotate-45"/></button>
+                        </div>
+                        <div className="p-4 flex-1 flex flex-col gap-4">
+                            <div className="bg-blue-500/10 border border-blue-500/20 rounded p-3 text-xs text-blue-200">
+                                💡 粘贴小说、剧本片段，AI 将自动拆分为分镜镜头。建议包含场景描述、动作和台词。
+                            </div>
+                            <textarea 
+                                className="flex-1 w-full bg-dark-900 border border-dark-700 rounded p-3 text-sm text-gray-300 focus:border-accent focus:outline-none resize-none min-h-[300px]"
+                                placeholder="例如：
+场景：幽暗的森林
+1. 陆远气喘吁吁地奔跑，回头张望。（特写）
+2. 前方出现一道悬崖。（远景）
+..."
+                                value={content}
+                                onChange={e => setContent(e.target.value)}
+                            />
+                        </div>
+                        <div className="p-4 border-t border-dark-700 bg-dark-900 flex justify-end gap-3">
+                            <button onClick={onClose} className="px-4 py-2 rounded text-sm text-gray-400 hover:text-white hover:bg-dark-700">取消</button>
+                            <button 
+                                onClick={handleSubmit} 
+                                disabled={isParsing || !content.trim()}
+                                className="px-6 py-2 rounded text-sm bg-accent text-white font-medium hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                            >
+                                {isParsing ? '正在解析...' : '开始智能拆解'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // 1. Header
+        const Header = () => (
+            <header className="h-14 border-b border-dark-700 flex items-center justify-between px-4 bg-dark-800 flex-shrink-0">
+                <div className="flex items-center gap-4">
+                    <h1 className="text-lg font-bold text-white flex items-center gap-2">
+                        <span className="text-accent">MochiAni</span>
+                        <span className="text-sm font-normal text-gray-400">| 守墓五年，我携万剑归...</span>
+                    </h1>
+                    <div className="flex gap-2">
+                        <button className="px-3 py-1 text-xs bg-dark-700 text-gray-300 rounded hover:bg-dark-600 flex items-center gap-1">
+                            风格: 日漫 <Icons.ChevronDown size={12}/>
+                        </button>
+                        <button className="px-3 py-1 text-xs bg-dark-700 text-gray-300 rounded hover:bg-dark-600 flex items-center gap-1">
+                            时代: 未设置 <Icons.ChevronDown size={12}/>
+                        </button>
+                         <button className="px-3 py-1 text-xs bg-dark-700 text-gray-300 rounded hover:bg-dark-600 flex items-center gap-1">
+                            模型配置 <Icons.ChevronDown size={12}/>
+                        </button>
+                    </div>
+                </div>
+                <div className="flex items-center gap-3 text-gray-400">
+                    <button className="hover:text-white flex items-center gap-1 text-sm"><Icons.History size={16}/> 生成记录</button>
+                    <button className="hover:text-white"><Icons.Settings size={18}/></button>
+                    <button className="hover:text-white"><Icons.User size={18}/></button>
+                </div>
+            </header>
+        );
+
+        // 2. Sidebar (Asset Manager)
+        const Sidebar = ({ characters }) => {
+            const [activeTab, setActiveTab] = React.useState('chars');
+
+            return (
+                <aside className="w-80 border-l border-dark-700 bg-dark-800 flex flex-col flex-shrink-0">
+                    <div className="flex border-b border-dark-700">
+                        <button 
+                            className={`flex-1 py-3 text-sm font-medium ${activeTab === 'chars' ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}
+                            onClick={() => setActiveTab('chars')}
+                        >角色</button>
+                        <button 
+                            className={`flex-1 py-3 text-sm font-medium ${activeTab === 'scenes' ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}
+                            onClick={() => setActiveTab('scenes')}
+                        >场景</button>
+                        <button 
+                            className={`flex-1 py-3 text-sm font-medium ${activeTab === 'props' ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}
+                            onClick={() => setActiveTab('props')}
+                        >道具</button>
+                    </div>
+                    
+                    <div className="p-4 flex-1 overflow-y-auto custom-scrollbar">
+                        <button className="w-full bg-accent hover:bg-blue-600 text-white py-2 rounded mb-4 text-sm font-medium flex items-center justify-center gap-2">
+                            <Icons.Film size={16}/> 批量生成
+                        </button>
+
+                        {activeTab === 'chars' && (
+                            <div className="space-y-6">
+                                <div>
+                                    <h3 className="text-xs font-bold text-gray-500 mb-3 uppercase flex items-center justify-between">
+                                        作品中角色 (3)
+                                        <span className="text-[10px] bg-dark-700 px-1 rounded">Active</span>
+                                    </h3>
+                                    <div className="grid grid-cols-3 gap-2">
+                                        {characters.map(char => (
+                                            <div key={char.id} className="flex flex-col items-center gap-1 group cursor-pointer">
+                                                <div className="w-16 h-16 rounded overflow-hidden bg-dark-600 border border-transparent group-hover:border-accent relative">
+                                                    <img src={char.avatar} alt={char.name} className="w-full h-full object-cover"/>
+                                                    <div className="absolute top-0 right-0 p-0.5 bg-black/50 rounded-bl hidden group-hover:block">
+                                                        <Icons.Trash2 size={10} className="text-red-400"/>
+                                                    </div>
+                                                </div>
+                                                <span className="text-[10px] text-gray-400 truncate w-full text-center">{char.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div className="flex justify-between items-center mb-3">
+                                        <h3 className="text-xs font-bold text-gray-500 uppercase">全部可选角色</h3>
+                                        <div className="relative">
+                                            <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>
+                                            <Icons.Search size={10} className="absolute left-1.5 top-1.5 text-gray-500"/>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-2">
+                                        {/* Mock Library */}
+                                        {[1,2,3,4,5,6].map(i => (
+                                             <div key={i} className="flex flex-col items-center gap-1 group cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
+                                                <div className="w-16 h-16 rounded bg-dark-700 flex items-center justify-center border border-transparent group-hover:border-gray-500">
+                                                    <Icons.User size={24} className="text-dark-500"/>
+                                                </div>
+                                                <span className="text-[10px] text-gray-400">角色 {i}</span>
+                                            </div>
+                                        ))}
+                                        <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-accent group">
+                                            <div className="w-16 h-16 rounded border border-dashed border-dark-600 flex items-center justify-center group-hover:border-accent group-hover:bg-dark-700">
+                                                <Icons.Plus size={24}/>
+                                            </div>
+                                            <span className="text-[10px] text-gray-400 group-hover:text-accent">新建</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        {activeTab === 'scenes' && (
+                             <div className="text-center py-10 text-gray-500 text-xs">
+                                暂无场景资产，请先上传或生成
+                             </div>
+                        )}
+                    </div>
+                </aside>
+            );
+        };
+
+        // 2.5 Shot List Header
+        const ShotListHeader = () => (
+            <div className="grid grid-cols-[40px_minmax(300px,2fr)_1fr_1fr_1.5fr_40px] gap-4 px-4 py-2 bg-dark-800 border-b border-dark-700 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 z-10 shadow-sm">
+                <div className="text-center">序号</div>
+                <div>剧本</div>
+                <div>出场人物</div>
+                <div>画面</div>
+                <div>视频</div>
+                <div className="text-center">操作</div>
+            </div>
+        );
+
+        // 3. Shot List Item
+        const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate }) => {
+            return (
+                <div className="grid grid-cols-[40px_minmax(300px,2fr)_1fr_1fr_1.5fr_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
+                    {/* Column 1: Index */}
+                    <div className="flex flex-col items-center gap-2 pt-1">
+                        <span className="text-xs font-mono text-gray-500 bg-dark-900 px-1.5 py-0.5 rounded-full min-w-[24px] text-center">{index + 1}</span>
+                        <input type="checkbox" className="rounded bg-dark-700 border-dark-600 w-4 h-4 cursor-pointer accent-accent"/>
+                    </div>
+
+                    {/* Column 2: Script */}
+                    <div className="space-y-3">
+                         <div className="relative">
+                             <div className="flex justify-between items-center mb-1">
+                                <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视觉描述 (Prompt)</label>
+                                <span className="text-[10px] text-dark-600 cursor-pointer hover:text-accent">AI 优化</span>
+                             </div>
+                            <textarea 
+                                className="w-full bg-dark-900/50 border border-dark-700 rounded p-2 text-sm text-gray-300 focus:border-accent focus:outline-none resize-none h-20 placeholder-gray-700 transition-colors"
+                                value={shot.prompt}
+                                placeholder="描述画面内容、镜头角度、光影..."
+                                onChange={(e) => onUpdate(shot.id, { ...shot, prompt: e.target.value })}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Column 3: Characters */}
+                    <div className="space-y-2">
+                         <div className="flex justify-between items-center">
+                            <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">出场人物</label>
+                            <Icons.Plus size={12} className="cursor-pointer hover:text-white text-gray-500"/>
+                         </div>
+                         <div className="grid grid-cols-3 gap-2">
+                            {shot.characters.map((charId, i) => (
+                                <div key={i} className="aspect-square rounded bg-dark-700 border border-dark-600 overflow-hidden relative group/char">
+                                    <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${charId}`} className="w-full h-full object-cover"/>
+                                    <div className="absolute inset-0 bg-black/60 hidden group-hover/char:flex items-center justify-center cursor-pointer">
+                                        <Icons.Trash2 size={10} className="text-red-400"/>
+                                    </div>
+                                </div>
+                            ))}
+                            <button className="aspect-square rounded border border-dashed border-dark-600 flex items-center justify-center hover:bg-dark-700 text-dark-500 hover:text-accent hover:border-accent transition-colors">
+                                <Icons.Plus size={14}/>
+                            </button>
+                         </div>
+                    </div>
+
+                    {/* Column 4: Image/Scene */}
+                    <div className="space-y-2">
+                         <div className="flex justify-between items-center">
+                            <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">画面</label>
+                         </div>
+                         <div className="aspect-video w-full rounded border border-dark-700 overflow-hidden bg-dark-900/30 relative group/image">
+                            {shot.image_url ? (
+                                <>
+                                    <img src={shot.image_url} className="w-full h-full object-cover" />
+                                    <div className="absolute inset-0 bg-black/50 hidden group-hover/image:flex items-center justify-center gap-2">
+                                         <button onClick={() => onGenerate(shot.id, 'image')} className="text-xs bg-accent px-2 py-1 rounded text-white flex items-center gap-1">
+                                            <Icons.RefreshCw size={12}/> 重绘
+                                         </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <button 
+                                    onClick={() => onGenerate(shot.id, 'image')}
+                                    className="w-full h-full flex flex-col items-center justify-center gap-1 text-dark-500 hover:text-accent hover:bg-dark-800 transition-colors"
+                                >
+                                    <Icons.Image size={20}/>
+                                    <span className="text-[10px]">生成图片</span>
+                                </button>
+                            )}
+                         </div>
+                    </div>
+
+                    {/* Column 5: Video */}
+                    <div className="space-y-2">
+                         <div className="flex justify-between items-center">
+                            <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视频</label>
+                         </div>
+                         <div className="aspect-video w-full rounded border border-dark-700 overflow-hidden bg-dark-900/30 relative group/video">
+                            {shot.video_url ? (
+                                <>
+                                    <video src={shot.video_url} className="w-full h-full object-cover" controls />
+                                     <div className="absolute inset-0 bg-black/50 hidden group-hover/video:flex items-center justify-center gap-2 pointer-events-none">
+                                         <button onClick={() => onGenerate(shot.id, 'video')} className="text-xs bg-accent px-2 py-1 rounded text-white flex items-center gap-1 pointer-events-auto">
+                                            <Icons.RefreshCw size={12}/> 重绘
+                                         </button>
+                                    </div>
+                                </>
+                            ) : (
+                                 <button 
+                                    onClick={() => onGenerate(shot.id, 'video')}
+                                    className="w-full h-full flex flex-col items-center justify-center gap-1 text-dark-500 hover:text-accent hover:bg-dark-800 transition-colors"
+                                    title={!shot.image_url ? "请先生成图片" : ""}
+                                >
+                                    <Icons.Video size={20}/>
+                                    <span className="text-[10px]">生成视频</span>
+                                </button>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Column 6: Actions */}
+                    <div className="flex flex-col gap-2 pt-1 items-center">
+                        <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="上移"><Icons.MoveUp size={14}/></button>
+                        <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="下移"><Icons.MoveDown size={14}/></button>
+                        <button className="hover:text-red-400 hover:bg-dark-700 p-1 rounded mt-2 text-gray-500" onClick={() => onDelete(shot.id)} title="删除"><Icons.Trash2 size={14}/></button>
+                    </div>
+                </div>
+            );
+        };
+
+        // 4. Main App
+        const App = () => {
+            const [shots, setShots] = React.useState([]);
+            const [characters, setCharacters] = React.useState([]);
+            const [loading, setLoading] = React.useState(true);
+            const [showScriptModal, setShowScriptModal] = React.useState(false);
+            const projectId = "default_project";
+
+            // Load initial data
+            React.useEffect(() => {
+                const loadData = async () => {
+                    setLoading(true);
+                    try {
+                        const project = await ApiService.getProject(projectId);
+                        setShots(project.shots);
+                        setCharacters(project.characters);
+                    } catch (error) {
+                        console.error("Failed to load project", error);
+                    }
+                    setLoading(false);
+                };
+                loadData();
+            }, []);
+
+            const handleDelete = async (id) => {
+                if(confirm('确定要删除这个镜头吗？')) {
+                    // Optimistic update
+                    const originalShots = [...shots];
+                    setShots(shots.filter(s => s.id !== id));
+                    try {
+                        await ApiService.deleteShot(projectId, id);
+                    } catch (e) {
+                        alert('删除失败');
+                        setShots(originalShots);
+                    }
+                }
+            };
+
+            const handleUpdate = async (id, newShot) => {
+                // Optimistic update
+                setShots(shots.map(s => s.id === id ? newShot : s));
+                // Debounce could be added here
+                await ApiService.updateShot(projectId, id, newShot);
+            };
+
+            const handleAddShot = async () => {
+                const tempId = Date.now();
+                const newShotData = {
+                    prompt: "",
+                    dialogue: "",
+                    characters: [],
+                    scene: null,
+                };
+                
+                // Optimistic UI
+                const optimisitcShot = {
+                     id: tempId, 
+                     ...newShotData, 
+                     image_url: "https://placehold.co/300x169/25262b/FFF?text=Loading..." 
+                };
+                setShots([...shots, optimisitcShot]);
+
+                try {
+                    const createdShot = await ApiService.createShot(projectId, newShotData);
+                    // Replace temp ID with real one
+                    setShots(prev => prev.map(s => s.id === tempId ? createdShot : s));
+                } catch (e) {
+                    console.error("Create failed", e);
+                }
+            };
+
+            const handleGenerate = async (shotId, type) => {
+                 // Trigger generation
+                 alert(`正在请求后端生成 ${type}... (Mock Mode)`);
+                 await ApiService.generate(shotId, type);
+            };
+
+            const handleParseScript = async (content) => {
+                try {
+                    const parsedShots = await ApiService.parseScript(content);
+                    // Create shots sequentially
+                    const newShots = [];
+                    for (const shotData of parsedShots) {
+                         const createdShot = await ApiService.createShot(projectId, shotData);
+                         newShots.push(createdShot);
+                    }
+                    setShots(prev => [...prev, ...newShots]);
+                } catch (e) {
+                    console.error("Parse failed", e);
+                    alert("解析失败，请检查后端服务");
+                }
+            };
+
+            if (loading) {
+                return <div className="h-screen flex items-center justify-center bg-dark-900 text-gray-500">加载项目中...</div>;
+            }
+
+            return (
+                <div className="flex flex-col h-screen overflow-hidden font-sans">
+                    <Header />
+                    <div className="flex flex-1 overflow-hidden">
+                        <main className="flex-1 flex flex-col min-w-0 bg-dark-900">
+                            {/* Toolbar */}
+                            <div className="h-10 border-b border-dark-700 flex items-center px-4 gap-4 bg-dark-800 text-xs text-gray-400 flex-shrink-0">
+                                <span className="font-medium text-gray-300">共 {shots.length} 个镜头</span>
+                                <div className="h-4 w-px bg-dark-600"></div>
+                                <button onClick={handleAddShot} className="hover:text-white flex items-center gap-1 transition-colors">
+                                    <Icons.Plus size={12}/> 添加空白镜头
+                                </button>
+                                <button onClick={() => setShowScriptModal(true)} className="hover:text-white flex items-center gap-1 transition-colors text-accent">
+                                    <Icons.Film size={12}/> 添加剧本
+                                </button>
+                                <div className="h-4 w-px bg-dark-600"></div>
+                                <button className="hover:text-white flex items-center gap-1 transition-colors ml-auto text-accent">
+                                    <Icons.Film size={12}/> 导出视频
+                                </button>
+                            </div>
+
+                            {/* Shot List Header & Content */}
+                            <div className="flex-1 flex flex-col overflow-hidden">
+                                <ShotListHeader />
+                                <div className="flex-1 overflow-y-auto pb-20 custom-scrollbar">
+                                    {shots.map((shot, index) => (
+                                        <ShotItem 
+                                            key={shot.id} 
+                                            shot={shot} 
+                                            index={index}
+                                            onDelete={handleDelete}
+                                            onUpdate={handleUpdate}
+                                            onGenerate={handleGenerate}
+                                        />
+                                    ))}
+                                    <div className="p-4">
+                                        <button 
+                                            onClick={handleAddShot}
+                                            className="w-full py-4 border-2 border-dashed border-dark-700 rounded-lg text-gray-500 hover:border-accent hover:text-accent flex items-center justify-center gap-2 transition-all hover:bg-dark-800"
+                                        >
+                                            <Icons.Plus size={20}/> 添加新镜头
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                        <Sidebar characters={characters}/>
+                    </div>
+                    <AddScriptModal 
+                        isOpen={showScriptModal} 
+                        onClose={() => setShowScriptModal(false)} 
+                        onSubmit={handleParseScript}
+                    />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
