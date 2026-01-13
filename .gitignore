@@ -38,3 +38,5 @@ venv/
 backend/database.db
 backend/static/
 backend/uploads/
+backend/.env
+backend/.env.*
