@@ -3,7 +3,7 @@ import { Plus, Trash2, Image, Play, Video, MoveUp, MoveDown } from 'lucide-react
 
 const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick }) => {
     return (
-        <div className="grid grid-cols-[40px_minmax(300px,2fr)_1fr_1fr_1.5fr_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
+        <div className="grid grid-cols-[40px_minmax(200px,1.5fr)_1fr_1fr_1.5fr_1.5fr_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
             {/* Column 1: Index */}
             <div className="flex flex-col items-center gap-2 pt-1">
                 <span className="text-xs font-mono text-gray-500 bg-dark-900 px-1.5 py-0.5 rounded-full min-w-[24px] text-center">{index + 1}</span>
@@ -30,7 +30,6 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, 
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">出场人物</label>
-                    <Plus size={12} className="cursor-pointer hover:text-white text-gray-500"/>
                  </div>
                  <div className="grid grid-cols-3 gap-2">
                     {shot.characters.map((charId, i) => {
@@ -48,51 +47,126 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, 
                                 <div className="absolute inset-0 bg-black/60 hidden group-hover/char:flex items-center justify-center">
                                     <span className="text-[8px] text-white">换图</span>
                                 </div>
+                                <button
+                                    className="absolute top-0 right-0 p-0.5 bg-black/50 rounded-bl hidden group-hover/char:block"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (confirm(`确定移除 ${char?.name || '该角色'} 出场吗？`)) {
+                                            const newCharacters = (shot.characters || []).filter(id => id !== charId);
+                                            onUpdate && onUpdate(shot.id, { ...shot, characters: newCharacters });
+                                        }
+                                    }}
+                                    title="移除角色"
+                                >
+                                    <Trash2 size={10} className="text-red-400"/>
+                                </button>
                             </div>
                         );
                     })}
-                    <button className="aspect-square rounded border border-dashed border-dark-600 flex items-center justify-center hover:bg-dark-700 text-dark-500 hover:text-accent hover:border-accent transition-colors">
-                        <Plus size={14}/>
-                    </button>
+                    <div className="aspect-square rounded border border-dashed border-dark-600 flex items-center justify-center hover:bg-dark-700 text-dark-500 hover:text-accent hover:border-accent transition-colors relative">
+                        <Plus size={14} className="pointer-events-none"/>
+                        <select
+                            className="opacity-0 absolute inset-0 w-full h-full cursor-pointer appearance-none"
+                            onChange={(e) => {
+                                if (e.target.value) {
+                                    const newCharId = e.target.value;
+                                    if (!shot.characters.includes(newCharId)) {
+                                        onUpdate(shot.id, { ...shot, characters: [...shot.characters, newCharId] });
+                                    }
+                                    e.target.value = "";
+                                }
+                            }}
+                            value=""
+                            title="添加角色"
+                        >
+                            <option value="" disabled>添加角色...</option>
+                            {allCharacters?.filter(c => !shot.characters.includes(c.id)).map(c => (
+                                <option key={c.id} value={c.id}>{c.name}</option>
+                            ))}
+                        </select>
+                    </div>
                  </div>
             </div>
 
-            {/* Column 4: Scene (Image Generation) */}
+            {/* Column 4: Scene (Reference) */}
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">场景 (图片)</label>
-                    {shot.image_url && <span className="text-[10px] text-dark-500 cursor-pointer hover:text-accent" onClick={() => onGenerate(shot.id, 'image')}>重绘</span>}
+                    <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">场景</label>
+                    {shot.scene_id && allScenes && (
+                        <select
+                            className="bg-dark-900 border border-dark-700 rounded text-[10px] text-gray-400 px-1 py-0.5 outline-none focus:border-accent appearance-none truncate"
+                            onChange={(e) => {
+                                if (e.target.value) {
+                                    const nextId = e.target.value;
+                                    if (nextId !== shot.scene_id) {
+                                        onUpdate(shot.id, { ...shot, scene_id: nextId });
+                                    }
+                                    e.target.value = "";
+                                }
+                            }}
+                            value=""
+                            title="切换场景"
+                        >
+                            <option value="" disabled>切换场景...</option>
+                            {allScenes.filter(s => s.id !== shot.scene_id).map(s => (
+                                <option key={s.id} value={s.id}>{s.name}</option>
+                            ))}
+                        </select>
+                    )}
                  </div>
                  
                  {/* Scene Asset Info */}
-                 {shot.scene_id && allScenes && (
+                 {shot.scene_id && allScenes ? (
                      <div 
-                        className="flex items-center gap-2 p-1 bg-dark-900 rounded border border-dark-700 cursor-pointer hover:border-accent group/scene"
+                        className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/scene cursor-pointer"
                         onClick={() => onSceneClick && onSceneClick(shot.scene_id)}
-                        title="点击上传/更换场景参考图"
+                        title="点击更换场景图片"
                      >
-                         <div className="w-8 h-8 rounded bg-dark-800 flex-shrink-0 overflow-hidden border border-dark-600">
-                             {(() => {
-                                 const scene = allScenes.find(s => s.id === shot.scene_id);
-                                 return scene?.image_url ? (
-                                     <img src={scene.image_url} className="w-full h-full object-cover" alt="scene ref" />
-                                 ) : (
-                                     <div className="w-full h-full flex items-center justify-center text-dark-500">
-                                         <Image size={12}/>
-                                     </div>
-                                 );
-                             })()}
-                         </div>
-                         <div className="flex-1 min-w-0">
-                             <div className="text-[10px] text-gray-300 truncate font-medium">
-                                 {allScenes.find(s => s.id === shot.scene_id)?.name || "未知场景"}
-                             </div>
-                             <div className="text-[8px] text-gray-500 truncate group-hover/scene:text-accent">
-                                 点击上传参考图
-                             </div>
-                         </div>
+                        {(() => {
+                            const scene = allScenes.find(s => s.id === shot.scene_id);
+                            return scene?.image_url ? (
+                                <img src={scene.image_url} className="w-full h-full object-cover" alt="scene ref" />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-dark-800 text-dark-500">
+                                    <Image size={20}/>
+                                </div>
+                            );
+                        })()}
+                        
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-black/50 hidden group-hover/scene:flex items-center justify-center">
+                            <span className="text-xs text-white">更换图片</span>
+                        </div>
+
+                        {/* Scene Name Badge */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-1">
+                            <div className="text-[10px] text-gray-200 truncate text-center">
+                                {allScenes.find(s => s.id === shot.scene_id)?.name || "未知场景"}
+                            </div>
+                        </div>
                      </div>
+                 ) : (
+                    <div className="flex gap-1">
+                        <select 
+                            className="flex-1 bg-dark-900 border border-dark-700 rounded text-xs text-gray-400 p-1 outline-none focus:border-accent appearance-none truncate"
+                            onChange={(e) => onUpdate(shot.id, { ...shot, scene_id: e.target.value })}
+                            value=""
+                        >
+                            <option value="" disabled>选择场景...</option>
+                            {allScenes?.map(s => (
+                                <option key={s.id} value={s.id}>{s.name}</option>
+                            ))}
+                        </select>
+                    </div>
                  )}
+            </div>
+
+            {/* Column 5: Storyboard (Generated Image) */}
+            <div className="space-y-2">
+                 <div className="flex justify-between items-center">
+                    <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">分镜</label>
+                    {shot.image_url && <span className="text-[10px] text-dark-500 cursor-pointer hover:text-accent" onClick={() => onGenerate(shot.id, 'image')}>重绘</span>}
+                 </div>
 
                  {shot.image_url ? (
                     <div 

@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import ShotListHeader from './components/ShotListHeader';
 import ShotItem from './components/ShotItem';
 import AddScriptModal from './components/AddScriptModal';
+import GenerateAssetModal from './components/GenerateAssetModal';
 import { ApiService } from './services/api';
 
 const App = () => {
@@ -13,12 +14,16 @@ const App = () => {
     const [scenes, setScenes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isScriptModalOpen, setIsScriptModalOpen] = useState(false);
+    const [isGenerateModalOpen, setIsGenerateModalOpen] = useState(false);
+    const [generateType, setGenerateType] = useState('character'); // 'character' or 'scene'
     const [selectedCharId, setSelectedCharId] = useState(null);
     const [selectedSceneId, setSelectedSceneId] = useState(null);
     const [selectedShotId, setSelectedShotId] = useState(null);
     const fileInputRef = React.useRef(null);
     const sceneFileInputRef = React.useRef(null);
     const shotFileInputRef = React.useRef(null);
+    const newCharFileInputRef = React.useRef(null);
+    const newSceneFileInputRef = React.useRef(null);
     const projectId = "default_project";
 
     // Load initial data
@@ -86,9 +91,28 @@ const App = () => {
     };
 
     const handleGenerate = async (shotId, type) => {
-         // Trigger generation
          alert(`正在请求后端生成 ${type}...`);
+         setShots(prev => prev.map(s => s.id === shotId ? { ...s, status: 'generating' } : s));
          await ApiService.generate(shotId, type);
+
+         const startedAt = Date.now();
+         const timeoutMs = type === 'video' ? 5 * 60 * 1000 : 2 * 60 * 1000;
+
+         while (Date.now() - startedAt < timeoutMs) {
+             try {
+                 const project = await ApiService.getProject(projectId);
+                 const nextShot = (project.shots || []).find(s => s.id === shotId);
+                 if (nextShot) {
+                     setShots(prev => prev.map(s => s.id === shotId ? nextShot : s));
+                     if (nextShot.status === 'completed' || nextShot.status === 'failed') {
+                         return;
+                     }
+                 }
+             } catch (e) {
+                 console.error('Polling generation status failed', e);
+             }
+             await new Promise(r => setTimeout(r, 1500));
+         }
     };
 
     const handleParseScript = async (content) => {
@@ -104,24 +128,41 @@ const App = () => {
             });
 
             // 2. Process characters
-            const charMap = {}; // Name -> ID
+            const charMap = {}; // Normalized Name -> ID
             const currentChars = [...characters];
             
             // Map existing characters first
-            currentChars.forEach(c => charMap[c.name] = c.id);
+            currentChars.forEach(c => {
+                if (c.name) charMap[c.name.trim().toLowerCase()] = c.id;
+            });
 
             // Create new characters for unknown names
             const newCharsToCreate = [];
             for (const name of allNames) {
-                if (!charMap[name]) {
+                const normalizedName = name.trim().toLowerCase();
+                
+                // Fuzzy match for characters
+                if (!charMap[normalizedName]) {
+                    const candidates = currentChars.filter(c => {
+                        const cName = c.name.trim().toLowerCase();
+                        // Script: "Chen Yuan (Disciple)" -> Asset: "Chen Yuan"
+                        return cName && normalizedName.includes(cName);
+                    });
+                    if (candidates.length > 0) {
+                        candidates.sort((a, b) => b.name.length - a.name.length);
+                        charMap[normalizedName] = candidates[0].id;
+                    }
+                }
+
+                if (!charMap[normalizedName]) {
                     const newChar = {
                         id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-                        name: name,
+                        name: name.trim(),
                         avatar_url: `https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`,
                         tags: []
                     };
                     newCharsToCreate.push(newChar);
-                    charMap[name] = newChar.id; // Assign temp ID
+                    charMap[normalizedName] = newChar.id; // Assign temp ID
                 }
             }
 
@@ -138,21 +179,41 @@ const App = () => {
                 if (s.scene) allScenes.add(s.scene);
             });
 
-            const sceneMap = {}; // Name -> ID
+            const sceneMap = {}; // Normalized Name -> ID
             const currentScenes = [...scenes];
-            currentScenes.forEach(s => sceneMap[s.name] = s.id);
+            currentScenes.forEach(s => {
+                if (s.name) sceneMap[s.name.trim().toLowerCase()] = s.id;
+            });
 
             const newScenesToCreate = [];
             for (const name of allScenes) {
-                if (!sceneMap[name]) {
+                const normalizedName = name.trim().toLowerCase();
+                
+                // Fuzzy match: Check if any existing scene name is part of the script scene name
+                // e.g. Script: "Dark Forest Entrance" -> Matches Asset: "Forest"
+                if (!sceneMap[normalizedName]) {
+                    const candidates = currentScenes.filter(s => {
+                        const sName = s.name.trim().toLowerCase();
+                        // Try both directions for robustness
+                        return sName && (normalizedName.includes(sName) || sName.includes(normalizedName));
+                    });
+                    
+                    if (candidates.length > 0) {
+                        // Pick the longest match (most specific)
+                        candidates.sort((a, b) => b.name.length - a.name.length);
+                        sceneMap[normalizedName] = candidates[0].id;
+                    }
+                }
+
+                if (!sceneMap[normalizedName]) {
                     const newScene = {
                         id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-                        name: name,
+                        name: name.trim(),
                         image_url: "", // Placeholder
                         tags: []
                     };
                     newScenesToCreate.push(newScene);
-                    sceneMap[name] = newScene.id;
+                    sceneMap[normalizedName] = newScene.id;
                 }
             }
             
@@ -166,8 +227,10 @@ const App = () => {
             const createdShots = [];
             for (const shotData of newShots) {
                 // Replace names with IDs
-                const charIds = (shotData.characters || []).map(name => charMap[name]).filter(Boolean);
-                const sceneId = shotData.scene ? sceneMap[shotData.scene] : null;
+                const charIds = (shotData.characters || [])
+                    .map(name => charMap[name.trim().toLowerCase()])
+                    .filter(Boolean);
+                const sceneId = shotData.scene ? sceneMap[shotData.scene.trim().toLowerCase()] : null;
 
                 const shotToCreate = { 
                     ...shotData, 
@@ -176,6 +239,14 @@ const App = () => {
                 };
                 
                 const created = await ApiService.createShot(projectId, shotToCreate);
+                
+                // Double check: If scene_id was provided but not saved (e.g. backend model mismatch), 
+                // explicitly update it.
+                if (sceneId && !created.scene_id) {
+                    await ApiService.updateShot(projectId, created.id, { scene_id: sceneId });
+                    created.scene_id = sceneId;
+                }
+                
                 createdShots.push(created);
             }
             
@@ -258,6 +329,99 @@ const App = () => {
         e.target.value = null;
     };
 
+    const handleAddCharacterClick = () => {
+        newCharFileInputRef.current?.click();
+    };
+
+    const handleAddSceneClick = () => {
+        newSceneFileInputRef.current?.click();
+    };
+
+    const handleNewCharacterFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const name = window.prompt("请输入角色名称", "新角色");
+        if (!name) return;
+
+        try {
+            const url = await ApiService.uploadFile(file);
+            const newChar = {
+                id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                name: name,
+                avatar_url: url,
+                tags: []
+            };
+            await ApiService.createCharacter(projectId, newChar);
+            setCharacters(prev => [...prev, newChar]);
+        } catch (e) {
+            console.error("Create character failed", e);
+            alert("创建角色失败");
+        }
+        e.target.value = null;
+    };
+
+    const handleNewSceneFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const name = window.prompt("请输入场景名称", "新场景");
+        if (!name) return;
+
+        try {
+            const url = await ApiService.uploadFile(file);
+            const newScene = {
+                id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                name: name,
+                image_url: url,
+                tags: []
+            };
+            await ApiService.createScene(projectId, newScene);
+            setScenes(prev => [...prev, newScene]);
+        } catch (e) {
+            console.error("Create scene failed", e);
+            alert("创建场景失败");
+        }
+        e.target.value = null;
+    };
+
+    const handleOpenGenerateModal = (type) => {
+        setGenerateType(type);
+        setIsGenerateModalOpen(true);
+    };
+
+    const handleGenerateAsset = async (name, prompt, type) => {
+        try {
+            // 1. Call Generation API
+            const result = await ApiService.generateAsset(prompt, type);
+            const url = result.url;
+            
+            // 2. Create Asset
+            if (type === 'character') {
+                const newChar = {
+                    id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                    name: name,
+                    avatar_url: url,
+                    tags: []
+                };
+                await ApiService.createCharacter(projectId, newChar);
+                setCharacters(prev => [...prev, newChar]);
+            } else if (type === 'scene') {
+                const newScene = {
+                    id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                    name: name,
+                    image_url: url,
+                    tags: []
+                };
+                await ApiService.createScene(projectId, newScene);
+                setScenes(prev => [...prev, newScene]);
+            }
+        } catch (e) {
+            console.error("Generate asset failed", e);
+            throw e; // Re-throw to be handled by modal
+        }
+    };
+
     if (loading) {
         return <div className="h-screen flex items-center justify-center bg-dark-900 text-gray-500">加载项目中...</div>;
     }
@@ -313,7 +477,29 @@ const App = () => {
                         </div>
                     </div>
                 </main>
-                <Sidebar characters={characters} scenes={scenes} onSceneClick={onSceneClick}/>
+                <Sidebar 
+                    characters={characters} 
+                    scenes={scenes} 
+                    onSceneClick={onSceneClick}
+                    onAddCharacter={handleAddCharacterClick}
+                    onAddScene={handleAddSceneClick}
+                    onGenerateCharacter={() => handleOpenGenerateModal('character')}
+                    onGenerateScene={() => handleOpenGenerateModal('scene')}
+                    onDeleteCharacter={async (charId) => {
+                        if (!confirm('确定删除该角色？')) return;
+                        const prevChars = [...characters];
+                        const prevShots = [...shots];
+                        setCharacters(prev => prev.filter(c => c.id !== charId));
+                        setShots(prev => prev.map(s => ({ ...s, characters: (s.characters || []).filter(id => id !== charId) })));
+                        try {
+                            await ApiService.deleteCharacter(projectId, charId);
+                        } catch (e) {
+                            alert('删除角色失败');
+                            setCharacters(prevChars);
+                            setShots(prevShots);
+                        }
+                    }}
+                />
             </div>
             <input 
                 type="file" 
@@ -336,10 +522,30 @@ const App = () => {
                 accept="image/*" 
                 onChange={handleShotFileChange}
             />
+            <input 
+                type="file" 
+                ref={newCharFileInputRef} 
+                className="hidden" 
+                accept="image/*" 
+                onChange={handleNewCharacterFileChange}
+            />
+            <input 
+                type="file" 
+                ref={newSceneFileInputRef} 
+                className="hidden" 
+                accept="image/*" 
+                onChange={handleNewSceneFileChange}
+            />
             <AddScriptModal 
                 isOpen={isScriptModalOpen} 
                 onClose={() => setIsScriptModalOpen(false)} 
                 onSubmit={handleParseScript}
+            />
+            <GenerateAssetModal 
+                isOpen={isGenerateModalOpen} 
+                onClose={() => setIsGenerateModalOpen(false)} 
+                onSubmit={handleGenerateAsset}
+                type={generateType}
             />
         </div>
     );

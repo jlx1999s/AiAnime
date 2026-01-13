@@ -14,13 +14,21 @@ class Character(BaseModel):
     avatar_url: str
     tags: List[str] = []
 
+class Scene(BaseModel):
+    id: str
+    name: str
+    image_url: str
+    tags: List[str] = []
+
 class ShotBase(BaseModel):
     prompt: str = ""
     dialogue: str = ""
     audio_prompt: Optional[str] = None
 
 class ShotCreate(ShotBase):
-    pass
+    characters: List[str] = []
+    scene: Optional[str] = None # Scene name from parsing
+    scene_id: Optional[str] = None
 
 class ShotUpdate(ShotBase):
     characters: Optional[List[str]] = None
@@ -43,8 +51,13 @@ class Project(BaseModel):
     style: str = "anime"
     shots: List[Shot] = []
     characters: List[Character] = []
+    scenes: List[Scene] = []
 
 # API Request/Response Models
 class GenerateRequest(BaseModel):
     shot_id: str
     type: str = "image" # image or video
+
+class AssetGenerateRequest(BaseModel):
+    prompt: str
+    type: str = "character" # character or scene

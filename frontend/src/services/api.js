@@ -93,6 +93,18 @@ export const ApiService = {
         return res.json();
     },
 
+    generateAsset: async (prompt, type) => {
+        if (USE_MOCK) {
+            return new Promise(resolve => setTimeout(() => resolve({ url: "https://placehold.co/200" }), 1000));
+        }
+        const res = await fetch(`${API_BASE_URL}/api/generate-asset`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ prompt, type })
+        });
+        return res.json();
+    },
+
     uploadFile: async (file) => {
         if (USE_MOCK) return "https://placehold.co/200";
         const formData = new FormData();
@@ -121,6 +133,14 @@ export const ApiService = {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(updates)
+        });
+        return res.json();
+    },
+    
+    deleteCharacter: async (projectId, charId) => {
+        if (USE_MOCK) return true;
+        const res = await fetch(`${API_BASE_URL}/characters/${projectId}/${charId}`, {
+            method: 'DELETE'
         });
         return res.json();
     },
