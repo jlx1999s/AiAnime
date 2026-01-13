@@ -19,21 +19,52 @@ const App = () => {
     const [selectedCharId, setSelectedCharId] = useState(null);
     const [selectedSceneId, setSelectedSceneId] = useState(null);
     const [selectedShotId, setSelectedShotId] = useState(null);
+    const [projects, setProjects] = useState([]);
+    const [projectId, setProjectId] = useState(null);
     const fileInputRef = React.useRef(null);
     const sceneFileInputRef = React.useRef(null);
     const shotFileInputRef = React.useRef(null);
     const newCharFileInputRef = React.useRef(null);
     const newSceneFileInputRef = React.useRef(null);
-    const projectId = "default_project";
+    const importFileInputRef = React.useRef(null);
+    const loadProjects = async () => {
+        try {
+            setLoading(true);
+            const list = await ApiService.getProjects();
+            setProjects(list);
+            const initialId = list[0]?.id;
+            if (initialId) {
+                setProjectId(initialId);
+            } else {
+                try {
+                    const created = await ApiService.createProject('新项目');
+                    setProjects([created]);
+                    setProjectId(created.id);
+                } catch (err) {
+                    console.error("Failed to create default project", err);
+                }
+            }
+        } catch (e) {
+            console.error("Failed to load projects", e);
+        } finally {
+            // 防止因未选中项目而一直停留在加载态
+            setLoading(false);
+        }
+    };
 
     // Load initial data
     useEffect(() => {
+        loadProjects();
+    }, []);
+
+    useEffect(() => {
         const loadData = async () => {
+            if (!projectId) return;
             setLoading(true);
             try {
                 const project = await ApiService.getProject(projectId);
-                setShots(project.shots);
-                setCharacters(project.characters);
+                setShots(project.shots || []);
+                setCharacters(project.characters || []);
                 setScenes(project.scenes || []);
             } catch (error) {
                 console.error("Failed to load project", error);
@@ -41,7 +72,7 @@ const App = () => {
             setLoading(false);
         };
         loadData();
-    }, []);
+    }, [projectId]);
 
     const handleDelete = async (id) => {
         if(confirm('确定要删除这个镜头吗？')) {
@@ -90,10 +121,10 @@ const App = () => {
         }
     };
 
-    const handleGenerate = async (shotId, type) => {
+    const handleGenerate = async (shotId, type, count) => {
          alert(`正在请求后端生成 ${type}...`);
          setShots(prev => prev.map(s => s.id === shotId ? { ...s, status: 'generating' } : s));
-         await ApiService.generate(shotId, type);
+         await ApiService.generate(projectId, shotId, type, count);
 
          const startedAt = Date.now();
          const timeoutMs = type === 'video' ? 5 * 60 * 1000 : 2 * 60 * 1000;
@@ -329,6 +360,18 @@ const App = () => {
         e.target.value = null;
     };
 
+    const handleSelectShotCandidate = async (shotId, imageUrl) => {
+        const previousShots = shots;
+        setShots(prev => prev.map(s => s.id === shotId ? { ...s, image_url: imageUrl } : s));
+        try {
+            const updated = await ApiService.selectShotImage(projectId, shotId, imageUrl);
+            setShots(prev => prev.map(s => s.id === shotId ? updated : s));
+        } catch (e) {
+            console.error("Select candidate failed", e);
+            setShots(previousShots);
+        }
+    };
+
     const handleAddCharacterClick = () => {
         newCharFileInputRef.current?.click();
     };
@@ -428,7 +471,98 @@ const App = () => {
 
     return (
         <div className="flex flex-col h-screen overflow-hidden font-sans">
-            <Header />
+            <Header 
+                projects={projects} 
+                currentProjectId={projectId} 
+                onChangeProject={(id) => setProjectId(id)}
+                onCreateProject={async () => {
+                    const name = prompt("请输入新项目名称");
+                    if (!name) return;
+                    const created = await ApiService.createProject(name);
+                    setProjects(prev => [created, ...prev]);
+                    setProjectId(created.id);
+                }}
+                onRenameProject={async () => {
+                    if (!projectId) return;
+                    const name = prompt("请输入新的项目名称");
+                    if (!name) return;
+                    const updated = await ApiService.updateProject(projectId, { name });
+                    setProjects(prev => prev.map(p => p.id === projectId ? { ...p, name: updated.name || name } : p));
+                }}
+                onDeleteProject={async () => {
+                    if (!projectId) return;
+                    if (!confirm("确定删除当前项目？该操作不可恢复")) return;
+                    await ApiService.deleteProject(projectId);
+                    setProjects(prev => prev.filter(p => p.id !== projectId));
+                    const next = projects.find(p => p.id !== projectId);
+                    if (next) {
+                        setProjectId(next.id);
+                    } else {
+                        const created = await ApiService.createProject('新项目');
+                        setProjects([created]);
+                        setProjectId(created.id);
+                    }
+                }}
+                onChangeStyle={async (style) => {
+                    if (!projectId) return;
+                    const updated = await ApiService.updateProject(projectId, { style });
+                    setProjects(prev => prev.map(p => p.id === projectId ? { ...p, style: updated.style || style } : p));
+                }}
+                onDuplicateProject={async () => {
+                    if (!projectId) return;
+                    const source = await ApiService.getProject(projectId);
+                    const copyName = `${source.name} - 副本`;
+                    const created = await ApiService.createProject(copyName, source.style || 'anime');
+                    setProjects(prev => [created, ...prev]);
+                    setProjectId(created.id);
+                    const idMap = { chars: {}, scenes: {} };
+                    for (const c of source.characters || []) {
+                        const newChar = { ...c, id: `char_${Date.now()}_${Math.random().toString(36).slice(2, 9)}` };
+                        await ApiService.createCharacter(created.id, newChar);
+                        idMap.chars[c.id] = newChar.id;
+                    }
+                    for (const s of source.scenes || []) {
+                        const newScene = { ...s, id: `scene_${Date.now()}_${Math.random().toString(36).slice(2, 9)}` };
+                        await ApiService.createScene(created.id, newScene);
+                        idMap.scenes[s.id] = newScene.id;
+                    }
+                    for (const shot of source.shots || []) {
+                        const newShot = {
+                            prompt: shot.prompt || "",
+                            dialogue: shot.dialogue || "",
+                            characters: (shot.characters || []).map(cid => idMap.chars[cid]).filter(Boolean),
+                            scene_id: shot.scene_id ? idMap.scenes[shot.scene_id] : null,
+                            image_url: shot.image_url || "",
+                            video_url: shot.video_url || ""
+                        };
+                        await ApiService.createShot(created.id, newShot);
+                    }
+                    const refreshed = await ApiService.getProject(created.id);
+                    setShots(refreshed.shots || []);
+                    setCharacters(refreshed.characters || []);
+                    setScenes(refreshed.scenes || []);
+                }}
+                onExportProject={() => {
+                    if (!projectId) return;
+                    const data = {
+                        id: projectId,
+                        shots,
+                        characters,
+                        scenes,
+                        meta: projects.find(p => p.id === projectId) || {}
+                    };
+                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${data.meta.name || 'project'}.json`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                }}
+                onImportProject={() => {
+                    importFileInputRef.current?.click();
+                }}
+            />
             <div className="flex flex-1 overflow-hidden">
                 <main className="flex-1 flex flex-col min-w-0 bg-dark-900">
                     {/* Toolbar */}
@@ -464,6 +598,7 @@ const App = () => {
                                     allScenes={scenes}
                                     onSceneClick={onSceneClick}
                                     onShotImageClick={onShotImageClick}
+                                    onSelectCandidate={handleSelectShotCandidate}
                                 />
                             ))}
                             <div className="p-4">
@@ -521,6 +656,55 @@ const App = () => {
                 className="hidden" 
                 accept="image/*" 
                 onChange={handleShotFileChange}
+            />
+            <input
+                type="file"
+                ref={importFileInputRef}
+                className="hidden"
+                accept="application/json"
+                onChange={async (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    try {
+                        const text = await file.text();
+                        const data = JSON.parse(text);
+                        const name = prompt("导入为新项目的名称", data?.meta?.name || "导入项目");
+                        if (!name) return;
+                        const created = await ApiService.createProject(name, (data?.meta?.style || 'anime'));
+                        setProjects(prev => [created, ...prev]);
+                        setProjectId(created.id);
+                        const charIdMap = {};
+                        for (const c of data.characters || []) {
+                            const newChar = { ...c, id: `char_${Date.now()}_${Math.random().toString(36).slice(2, 9)}` };
+                            await ApiService.createCharacter(created.id, newChar);
+                            charIdMap[c.id] = newChar.id;
+                        }
+                        const sceneIdMap = {};
+                        for (const s of data.scenes || []) {
+                            const newScene = { ...s, id: `scene_${Date.now()}_${Math.random().toString(36).slice(2, 9)}` };
+                            await ApiService.createScene(created.id, newScene);
+                            sceneIdMap[s.id] = newScene.id;
+                        }
+                        for (const shot of data.shots || []) {
+                            const newShot = {
+                                prompt: shot.prompt || "",
+                                dialogue: shot.dialogue || "",
+                                characters: (shot.characters || []).map(cid => charIdMap[cid]).filter(Boolean),
+                                scene_id: shot.scene_id ? sceneIdMap[shot.scene_id] : null,
+                                image_url: shot.image_url || "",
+                                video_url: shot.video_url || ""
+                            };
+                            await ApiService.createShot(created.id, newShot);
+                        }
+                        const refreshed = await ApiService.getProject(created.id);
+                        setShots(refreshed.shots || []);
+                        setCharacters(refreshed.characters || []);
+                        setScenes(refreshed.scenes || []);
+                    } catch (err) {
+                        alert("导入失败");
+                    }
+                    e.target.value = null;
+                }}
             />
             <input 
                 type="file" 

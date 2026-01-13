@@ -17,6 +17,12 @@ from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from volcengine.visual.VisualService import VisualService
 from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest
+class ProjectCreate(BaseModel):
+    name: str
+    style: str = "anime"
+class ProjectUpdate(BaseModel):
+    name: str | None = None
+    style: str | None = None
 
 load_dotenv()
 
@@ -108,6 +114,30 @@ async def list_projects():
 @app.get("/projects/{project_id}", response_model=Project)
 async def get_project(project_id: str):
     return get_project_or_404(project_id)
+
+@app.post("/projects", response_model=Project)
+async def create_project(data: ProjectCreate):
+    project_id = str(uuid.uuid4())
+    if project_id in DB:
+        raise HTTPException(status_code=400, detail="Project ID conflict")
+    DB[project_id] = Project(id=project_id, name=data.name, style=data.style, shots=[], characters=[], scenes=[])
+    return DB[project_id]
+
+@app.put("/projects/{project_id}", response_model=Project)
+async def update_project(project_id: str, data: ProjectUpdate):
+    project = get_project_or_404(project_id)
+    if data.name is not None:
+        project.name = data.name
+    if data.style is not None:
+        project.style = data.style
+    return project
+
+@app.delete("/projects/{project_id}")
+async def delete_project(project_id: str):
+    if project_id not in DB:
+        raise HTTPException(status_code=404, detail="Project not found")
+    del DB[project_id]
+    return {"ok": True}
 
 @app.post("/projects/{project_id}/shots", response_model=Shot)
 async def create_shot(project_id: str, shot_data: ShotCreate):
@@ -306,6 +336,8 @@ async def parse_script(request: ScriptRequest):
     return shots
 
 # --- AI Services ---
+
+CANDIDATE_IMAGE_COUNT = 3
 
 def _volcengine_extract_url_or_base64(response: dict) -> tuple[str | None, str | None]:
     current = response
@@ -523,7 +555,7 @@ def volcengine_generate_video(prompt: str, image_path: str = None) -> str:
         print("Falling back to mock video due to error.")
         return "https://www.w3schools.com/html/mov_bbb.mp4"
 
-async def ai_generation_task(project_id: str, shot_id: str, type: str):
+async def ai_generation_task(project_id: str, shot_id: str, type: str, count: int | None = None):
     project = DB.get(project_id)
     if not project: return
 
@@ -548,11 +580,26 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str):
                         if b64:
                             reference_images_b64.append(b64)
 
-                image_url = await asyncio.to_thread(volcengine_generate_image, prompt, reference_images_b64)
-                target_shot.image_url = image_url
+                images = []
+                candidate_count = count or CANDIDATE_IMAGE_COUNT
+                candidate_count = max(1, min(8, candidate_count))
+                for _ in range(candidate_count):
+                    image_url = await asyncio.to_thread(volcengine_generate_image, prompt, reference_images_b64)
+                    if image_url:
+                        images.append(image_url)
+
+                if images:
+                    target_shot.image_candidates = images
+                    target_shot.image_url = images[0]
             else:
-                await asyncio.sleep(2)
-                target_shot.image_url = f"https://picsum.photos/seed/{uuid.uuid4()}/600/338"
+                images = []
+                candidate_count = count or CANDIDATE_IMAGE_COUNT
+                candidate_count = max(1, min(8, candidate_count))
+                for _ in range(candidate_count):
+                    images.append(f"https://picsum.photos/seed/{uuid.uuid4()}/600/338")
+                target_shot.image_candidates = images
+                if images:
+                    target_shot.image_url = images[0]
                 
         elif type == "video":
             if visual_service:
@@ -575,7 +622,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str):
 
 @app.post("/generate")
 async def generate_asset(request: GenerateRequest, background_tasks: BackgroundTasks):
-    project_id = "default_project" 
+    project_id = request.project_id or "default_project"
     project = get_project_or_404(project_id)
     
     target_shot = next((s for s in project.shots if s.id == request.shot_id), None)
@@ -584,10 +631,21 @@ async def generate_asset(request: GenerateRequest, background_tasks: BackgroundT
         
     target_shot.status = GenerationStatus.GENERATING
     
-    # Run in background
-    background_tasks.add_task(ai_generation_task, project_id, request.shot_id, request.type)
+    background_tasks.add_task(ai_generation_task, project_id, request.shot_id, request.type, request.count)
     
     return {"status": "queued", "message": f"{request.type} generation started"}
+
+class ShotImageSelectRequest(BaseModel):
+    image_url: str
+
+@app.post("/shots/{project_id}/{shot_id}/select-image", response_model=Shot)
+async def select_shot_image(project_id: str, shot_id: str, data: ShotImageSelectRequest):
+    project = get_project_or_404(project_id)
+    target_shot = next((s for s in project.shots if s.id == shot_id), None)
+    if not target_shot:
+        raise HTTPException(status_code=404, detail="Shot not found")
+    target_shot.image_url = data.image_url
+    return target_shot
 
 @app.post("/api/generate-asset")
 async def generate_asset_raw(request: AssetGenerateRequest):

@@ -36,6 +36,55 @@ const MockData = {
 };
 
 export const ApiService = {
+    getProjects: async () => {
+        if (USE_MOCK) {
+            return [{
+                id: "default_project",
+                name: "守墓五年",
+                style: "anime",
+                shots: MockData.shots,
+                characters: MockData.characters,
+                scenes: []
+            }];
+        }
+        const res = await fetch(`${API_BASE_URL}/projects`);
+        return res.json();
+    },
+
+    createProject: async (name, style = "anime") => {
+        if (USE_MOCK) {
+            return {
+                id: `proj_${Date.now()}`,
+                name,
+                style,
+                shots: [],
+                characters: [],
+                scenes: []
+            };
+        }
+        const res = await fetch(`${API_BASE_URL}/projects`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ name, style })
+        });
+        return res.json();
+    },
+
+    updateProject: async (projectId, updates) => {
+        if (USE_MOCK) return { id: projectId, ...updates };
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(updates)
+        });
+        return res.json();
+    },
+
+    deleteProject: async (projectId) => {
+        if (USE_MOCK) return true;
+        await fetch(`${API_BASE_URL}/projects/${projectId}`, { method: 'DELETE' });
+        return true;
+    },
     getProject: async (id) => {
         if (USE_MOCK) {
             return new Promise(resolve => setTimeout(() => resolve({
@@ -81,14 +130,26 @@ export const ApiService = {
         return true;
     },
 
-    generate: async (shotId, type) => {
+    generate: async (projectId, shotId, type, count) => {
         if (USE_MOCK) {
             return new Promise(resolve => setTimeout(() => resolve({ status: 'queued' }), 1000));
         }
         const res = await fetch(`${API_BASE_URL}/generate`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ shot_id: shotId, type })
+            body: JSON.stringify({ project_id: projectId, shot_id: shotId, type, count })
+        });
+        return res.json();
+    },
+
+    selectShotImage: async (projectId, shotId, imageUrl) => {
+        if (USE_MOCK) {
+            return { id: shotId, image_url: imageUrl };
+        }
+        const res = await fetch(`${API_BASE_URL}/shots/${projectId}/${shotId}/select-image`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ image_url: imageUrl })
         });
         return res.json();
     },

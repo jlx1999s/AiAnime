@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Plus, Trash2, Image, Play, Video, MoveUp, MoveDown } from 'lucide-react';
 
-const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick }) => {
+const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate }) => {
+    const [candidateCount, setCandidateCount] = useState(3);
+
     return (
         <div className="grid grid-cols-[40px_minmax(200px,1.5fr)_1fr_1fr_1.5fr_1.5fr_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
             {/* Column 1: Index */}
@@ -161,11 +163,34 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, 
                  )}
             </div>
 
-            {/* Column 5: Storyboard (Generated Image) */}
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">分镜</label>
-                    {shot.image_url && <span className="text-[10px] text-dark-500 cursor-pointer hover:text-accent" onClick={() => onGenerate(shot.id, 'image')}>重绘</span>}
+                    <div className="flex items-center gap-1 text-[10px] text-dark-500">
+                        <input
+                            type="number"
+                            min="1"
+                            max="8"
+                            value={candidateCount}
+                            onChange={(e) => {
+                                const v = parseInt(e.target.value || '0', 10);
+                                if (!isNaN(v)) {
+                                    setCandidateCount(Math.max(1, Math.min(8, v)));
+                                } else {
+                                    setCandidateCount(1);
+                                }
+                            }}
+                            className="w-10 bg-dark-900 border border-dark-700 rounded px-1 py-0.5 text-[10px] text-gray-400 outline-none focus:border-accent"
+                        />
+                        <span>张</span>
+                        <button
+                            type="button"
+                            className="cursor-pointer hover:text-accent"
+                            onClick={() => onGenerate && onGenerate(shot.id, 'image', candidateCount)}
+                        >
+                            生成
+                        </button>
+                    </div>
                  </div>
 
                  {shot.image_url ? (
@@ -181,21 +206,41 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, 
                         </div>
                     </div>
                 ) : (
-                    <button 
-                        onClick={() => onGenerate(shot.id, 'image')}
-                        className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 hover:bg-dark-700 text-dark-500 hover:text-accent hover:border-accent transition-colors bg-dark-900/30"
-                    >
+                    <div className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 text-dark-500 bg-dark-900/30">
                         <Image size={20}/>
-                        <span className="text-xs">生成图片</span>
-                    </button>
+                        <span className="text-xs">暂无分镜，右侧输入数量后点击“生成”</span>
+                    </div>
+                 )}
+                 {Array.isArray(shot.image_candidates) && shot.image_candidates.length > 1 && (
+                    <div className="flex gap-2 overflow-x-auto pt-1">
+                        {shot.image_candidates.map((url, idx) => {
+                            const isActive = url === shot.image_url;
+                            return (
+                                <button
+                                    key={idx}
+                                    type="button"
+                                    className={`relative w-16 h-10 rounded border ${isActive ? 'border-accent' : 'border-dark-700'} overflow-hidden flex-shrink-0`}
+                                    onClick={() => onSelectCandidate && onSelectCandidate(shot.id, url)}
+                                >
+                                    <img src={url} alt="candidate" className="w-full h-full object-cover" />
+                                </button>
+                            );
+                        })}
+                    </div>
                  )}
             </div>
 
-            {/* Column 5: Video (Video Generation) */}
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视频</label>
-                    {shot.video_url && <span className="text-[10px] text-dark-500 cursor-pointer hover:text-accent" onClick={() => onGenerate(shot.id, 'video')}>重生成</span>}
+                    {shot.video_url && (
+                        <span
+                            className="text-[10px] text-dark-500 cursor-pointer hover:text-accent"
+                            onClick={() => onGenerate && onGenerate(shot.id, 'video')}
+                        >
+                            重生成
+                        </span>
+                    )}
                  </div>
 
                  {shot.video_url ? (

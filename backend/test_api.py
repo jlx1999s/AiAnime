@@ -81,11 +81,12 @@ def test_api():
     except Exception as e:
         print_fail(f"Update Shot Error: {e}")
 
-    # 5. Test POST /generate (Mock AI Generation)
     try:
         payload = {
+            "project_id": PROJECT_ID,
             "shot_id": new_shot_id,
-            "type": "image"
+            "type": "image",
+            "count": 4
         }
         response = requests.post(f"{BASE_URL}/generate", json=payload)
         if response.status_code == 200:

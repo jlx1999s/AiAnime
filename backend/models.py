@@ -42,6 +42,7 @@ class Shot(ShotBase):
     
     # Generation Results
     image_url: Optional[str] = None
+    image_candidates: List[str] = []
     video_url: Optional[str] = None
     status: GenerationStatus = GenerationStatus.IDLE
 
@@ -55,8 +56,10 @@ class Project(BaseModel):
 
 # API Request/Response Models
 class GenerateRequest(BaseModel):
+    project_id: Optional[str] = None
     shot_id: str
     type: str = "image" # image or video
+    count: Optional[int] = None
 
 class AssetGenerateRequest(BaseModel):
     prompt: str
