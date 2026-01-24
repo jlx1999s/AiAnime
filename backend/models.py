@@ -20,6 +20,16 @@ class Scene(BaseModel):
     image_url: str
     tags: List[str] = []
 
+class CharacterUpdate(BaseModel):
+    name: Optional[str] = None
+    avatar_url: Optional[str] = None
+    tags: Optional[List[str]] = None
+
+class SceneUpdate(BaseModel):
+    name: Optional[str] = None
+    image_url: Optional[str] = None
+    tags: Optional[List[str]] = None
+
 class ShotBase(BaseModel):
     prompt: str = ""
     dialogue: str = ""

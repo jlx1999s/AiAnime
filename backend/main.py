@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from volcengine.visual.VisualService import VisualService
-from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest
+from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest, CharacterUpdate, SceneUpdate
 class ProjectCreate(BaseModel):
     name: str
     style: str = "anime"
@@ -64,11 +64,67 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- In-Memory Database ---
+# --- In-Memory Database with Persistence ---
 DB: Dict[str, Project] = {}
+DATA_DIR = "data"
+DATA_FILE = os.path.join(DATA_DIR, "projects.json")
+
+def save_db():
+    try:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        # Convert Project objects to dicts
+        data = {pid: project.dict() for pid, project in DB.items()}
+        
+        # Atomic write: write to temp file then rename
+        temp_file = f"{DATA_FILE}.tmp"
+        with open(temp_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        
+        # Replace original file atomically (or near-atomically on Windows)
+        if os.path.exists(DATA_FILE):
+            os.replace(temp_file, DATA_FILE)
+        else:
+            os.rename(temp_file, DATA_FILE)
+            
+    except Exception as e:
+        print(f"Error saving DB: {e}")
+
+def load_db():
+    global DB
+    if not os.path.exists(DATA_FILE):
+        return
+    try:
+        with open(DATA_FILE, "r", encoding="utf-8") as f:
+            content = f.read()
+            if not content:
+                print("Warning: DB file is empty")
+                return
+            try:
+                data = json.loads(content)
+            except json.JSONDecodeError:
+                print("Warning: DB file contains invalid JSON")
+                return
+                
+            DB.clear()
+            for pid, project_data in data.items():
+                DB[pid] = Project(**project_data)
+        print(f"Loaded {len(DB)} projects from {DATA_FILE}")
+    except Exception as e:
+        print(f"Failed to load DB: {e}")
 
 # Seed Data
 def seed_data():
+    # Only seed if DB is empty AND file doesn't exist (to avoid overwriting corrupted file)
+    if DB: 
+        return
+    
+    if os.path.exists(DATA_FILE) and os.path.getsize(DATA_FILE) > 0:
+         # File exists and is not empty, but DB is empty. 
+         # This implies load failed or file is invalid JSON.
+         # Do NOT overwrite to prevent data loss.
+         print("DB is empty but data file exists. Skipping seed to preserve data.")
+         return
+
     project_id = "default_project"
     chars = [
         Character(id="c1", name="陈远 (外门弟子)", avatar_url="https://api.dicebear.com/7.x/avataaars/svg?seed=Chen"),
@@ -92,7 +148,9 @@ def seed_data():
         )
     ]
     DB[project_id] = Project(id=project_id, name="守墓五年", shots=shots, characters=chars)
+    save_db()
 
+load_db()
 seed_data()
 
 # --- Helpers ---
@@ -121,6 +179,7 @@ async def create_project(data: ProjectCreate):
     if project_id in DB:
         raise HTTPException(status_code=400, detail="Project ID conflict")
     DB[project_id] = Project(id=project_id, name=data.name, style=data.style, shots=[], characters=[], scenes=[])
+    save_db()
     return DB[project_id]
 
 @app.put("/projects/{project_id}", response_model=Project)
@@ -130,6 +189,7 @@ async def update_project(project_id: str, data: ProjectUpdate):
         project.name = data.name
     if data.style is not None:
         project.style = data.style
+    save_db()
     return project
 
 @app.delete("/projects/{project_id}")
@@ -137,6 +197,7 @@ async def delete_project(project_id: str):
     if project_id not in DB:
         raise HTTPException(status_code=404, detail="Project not found")
     del DB[project_id]
+    save_db()
     return {"ok": True}
 
 @app.post("/projects/{project_id}/shots", response_model=Shot)
@@ -156,7 +217,31 @@ async def create_shot(project_id: str, shot_data: ShotCreate):
     if not new_shot.image_url:
         new_shot.image_url = f"https://placehold.co/300x169/25262b/FFF?text=New+Shot"
     project.shots.append(new_shot)
+    save_db()
     return new_shot
+
+class ReorderShotsRequest(BaseModel):
+    shot_ids: List[str]
+
+@app.put("/projects/{project_id}/shots/reorder", response_model=List[Shot])
+async def reorder_shots(project_id: str, request: ReorderShotsRequest):
+    project = get_project_or_404(project_id)
+    
+    # Validate all shot IDs exist
+    current_ids = {s.id for s in project.shots}
+    if len(request.shot_ids) != len(current_ids) or set(request.shot_ids) != current_ids:
+        raise HTTPException(status_code=400, detail="Shot IDs mismatch or incomplete")
+    
+    # Reorder
+    shot_map = {s.id: s for s in project.shots}
+    project.shots = [shot_map[sid] for sid in request.shot_ids]
+    
+    # Update order field
+    for i, shot in enumerate(project.shots):
+        shot.order = i
+        
+    save_db()
+    return project.shots
 
 @app.put("/shots/{project_id}/{shot_id}", response_model=Shot)
 async def update_shot(project_id: str, shot_id: str, update_data: ShotUpdate):
@@ -167,6 +252,7 @@ async def update_shot(project_id: str, shot_id: str, update_data: ShotUpdate):
             updated_data = update_data.dict(exclude_unset=True)
             for k, v in updated_data.items():
                 setattr(shot, k, v)
+            save_db()
             return shot
     raise HTTPException(status_code=404, detail="Shot not found")
 
@@ -174,6 +260,7 @@ async def update_shot(project_id: str, shot_id: str, update_data: ShotUpdate):
 async def delete_shot(project_id: str, shot_id: str):
     project = get_project_or_404(project_id)
     project.shots = [s for s in project.shots if s.id != shot_id]
+    save_db()
     return {"status": "success"}
 
 @app.post("/upload")
@@ -192,6 +279,7 @@ async def create_character(project_id: str, character: Character):
     if any(c.id == character.id for c in project.characters):
         raise HTTPException(status_code=400, detail="Character ID already exists")
     project.characters.append(character)
+    save_db()
     return character
 
 @app.post("/projects/{project_id}/scenes", response_model=Scene)
@@ -201,6 +289,7 @@ async def create_scene(project_id: str, scene: Scene):
     if any(s.id == scene.id for s in project.scenes):
         raise HTTPException(status_code=400, detail="Scene ID already exists")
     project.scenes.append(scene)
+    save_db()
     return scene
 
 @app.put("/characters/{project_id}/{char_id}", response_model=Character)
@@ -211,6 +300,7 @@ async def update_character(project_id: str, char_id: str, updates: Character):
             char.name = updates.name
             char.avatar_url = updates.avatar_url
             char.tags = updates.tags
+            save_db()
             return char
     raise HTTPException(status_code=404, detail="Character not found")
 
@@ -224,16 +314,18 @@ async def delete_character(project_id: str, char_id: str):
             shot.characters = [cid for cid in shot.characters if cid != char_id]
     if len(project.characters) == before_len:
         raise HTTPException(status_code=404, detail="Character not found")
+    save_db()
     return {"ok": True}
 
 @app.put("/scenes/{project_id}/{scene_id}", response_model=Scene)
-async def update_scene(project_id: str, scene_id: str, updates: Scene):
+async def update_scene(project_id: str, scene_id: str, updates: SceneUpdate):
     project = get_project_or_404(project_id)
     for scene in project.scenes:
         if scene.id == scene_id:
-            scene.name = updates.name
-            scene.image_url = updates.image_url
-            scene.tags = updates.tags
+            updated_data = updates.dict(exclude_unset=True)
+            for k, v in updated_data.items():
+                setattr(scene, k, v)
+            save_db()
             return scene
     raise HTTPException(status_code=404, detail="Scene not found")
 
@@ -615,10 +707,12 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 target_shot.video_url = "https://www.w3schools.com/html/mov_bbb.mp4"
 
         target_shot.status = GenerationStatus.COMPLETED
+        save_db()
         
     except Exception as e:
         print(f"Generation Task Failed: {e}")
         target_shot.status = GenerationStatus.FAILED
+        save_db()
 
 @app.post("/generate")
 async def generate_asset(request: GenerateRequest, background_tasks: BackgroundTasks):
@@ -630,6 +724,7 @@ async def generate_asset(request: GenerateRequest, background_tasks: BackgroundT
         raise HTTPException(status_code=404, detail="Shot not found")
         
     target_shot.status = GenerationStatus.GENERATING
+    save_db()
     
     background_tasks.add_task(ai_generation_task, project_id, request.shot_id, request.type, request.count)
     
@@ -645,6 +740,7 @@ async def select_shot_image(project_id: str, shot_id: str, data: ShotImageSelect
     if not target_shot:
         raise HTTPException(status_code=404, detail="Shot not found")
     target_shot.image_url = data.image_url
+    save_db()
     return target_shot
 
 @app.post("/api/generate-asset")

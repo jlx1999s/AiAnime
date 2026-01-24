@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Loader2 } from 'lucide-react';
 
-const GenerateAssetModal = ({ isOpen, onClose, onSubmit, type }) => {
+const GenerateAssetModal = ({ isOpen, onClose, onSubmit, type, initialName = "" }) => {
     const [prompt, setPrompt] = useState('');
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            setName(initialName);
+            setPrompt('');
+        }
+    }, [isOpen, initialName]);
 
     if (!isOpen) return null;
 
@@ -29,7 +36,7 @@ const GenerateAssetModal = ({ isOpen, onClose, onSubmit, type }) => {
             <div className="bg-dark-800 border border-dark-700 rounded-lg w-[500px] flex flex-col shadow-2xl">
                 <div className="flex justify-between items-center p-4 border-b border-dark-700">
                     <h2 className="text-gray-200 font-medium">
-                        {type === 'character' ? '生成角色' : '生成场景'}
+                        {initialName ? `重新生成${type === 'character' ? '角色' : '场景'}` : (type === 'character' ? '生成角色' : '生成场景')}
                     </h2>
                     <button onClick={onClose} className="text-gray-500 hover:text-white">
                         <X size={18} />
@@ -43,7 +50,8 @@ const GenerateAssetModal = ({ isOpen, onClose, onSubmit, type }) => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder={type === 'character' ? "角色名称 (如: 陈远)" : "场景名称 (如: 外门练武场)"}
-                            className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
+                            className={`w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent ${initialName ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            disabled={!!initialName}
                         />
                     </div>
                     <div>

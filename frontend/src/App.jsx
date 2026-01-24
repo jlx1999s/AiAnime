@@ -16,6 +16,7 @@ const App = () => {
     const [isScriptModalOpen, setIsScriptModalOpen] = useState(false);
     const [isGenerateModalOpen, setIsGenerateModalOpen] = useState(false);
     const [generateType, setGenerateType] = useState('character'); // 'character' or 'scene'
+    const [regenerateAssetData, setRegenerateAssetData] = useState(null);
     const [selectedCharId, setSelectedCharId] = useState(null);
     const [selectedSceneId, setSelectedSceneId] = useState(null);
     const [selectedShotId, setSelectedShotId] = useState(null);
@@ -73,6 +74,30 @@ const App = () => {
         };
         loadData();
     }, [projectId]);
+
+    const handleMoveUp = async (index) => {
+        if (index <= 0) return;
+        const newShots = [...shots];
+        [newShots[index - 1], newShots[index]] = [newShots[index], newShots[index - 1]];
+        setShots(newShots);
+        try {
+            await ApiService.reorderShots(projectId, newShots.map(s => s.id));
+        } catch (e) {
+            console.error("Reorder failed", e);
+        }
+    };
+
+    const handleMoveDown = async (index) => {
+        if (index >= shots.length - 1) return;
+        const newShots = [...shots];
+        [newShots[index], newShots[index + 1]] = [newShots[index + 1], newShots[index]];
+        setShots(newShots);
+        try {
+            await ApiService.reorderShots(projectId, newShots.map(s => s.id));
+        } catch (e) {
+            console.error("Reorder failed", e);
+        }
+    };
 
     const handleDelete = async (id) => {
         if(confirm('确定要删除这个镜头吗？')) {
@@ -428,8 +453,9 @@ const App = () => {
         e.target.value = null;
     };
 
-    const handleOpenGenerateModal = (type) => {
+    const handleOpenGenerateModal = (type, existingData = null) => {
         setGenerateType(type);
+        setRegenerateAssetData(existingData);
         setIsGenerateModalOpen(true);
     };
 
@@ -439,25 +465,38 @@ const App = () => {
             const result = await ApiService.generateAsset(prompt, type);
             const url = result.url;
             
-            // 2. Create Asset
-            if (type === 'character') {
-                const newChar = {
-                    id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-                    name: name,
-                    avatar_url: url,
-                    tags: []
-                };
-                await ApiService.createCharacter(projectId, newChar);
-                setCharacters(prev => [...prev, newChar]);
-            } else if (type === 'scene') {
-                const newScene = {
-                    id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-                    name: name,
-                    image_url: url,
-                    tags: []
-                };
-                await ApiService.createScene(projectId, newScene);
-                setScenes(prev => [...prev, newScene]);
+            if (regenerateAssetData) {
+                // Update existing asset
+                if (type === 'character') {
+                     const updated = { avatar_url: url };
+                     await ApiService.updateCharacter(projectId, regenerateAssetData.id, updated);
+                     setCharacters(prev => prev.map(c => c.id === regenerateAssetData.id ? { ...c, ...updated } : c));
+                } else if (type === 'scene') {
+                     const updated = { image_url: url };
+                     await ApiService.updateScene(projectId, regenerateAssetData.id, updated);
+                     setScenes(prev => prev.map(s => s.id === regenerateAssetData.id ? { ...s, ...updated } : s));
+                }
+            } else {
+                // 2. Create Asset
+                if (type === 'character') {
+                    const newChar = {
+                        id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                        name: name,
+                        avatar_url: url,
+                        tags: []
+                    };
+                    await ApiService.createCharacter(projectId, newChar);
+                    setCharacters(prev => [...prev, newChar]);
+                } else if (type === 'scene') {
+                    const newScene = {
+                        id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                        name: name,
+                        image_url: url,
+                        tags: []
+                    };
+                    await ApiService.createScene(projectId, newScene);
+                    setScenes(prev => [...prev, newScene]);
+                }
             }
         } catch (e) {
             console.error("Generate asset failed", e);
@@ -593,6 +632,8 @@ const App = () => {
                                     onDelete={handleDelete}
                                     onUpdate={handleUpdate}
                                     onGenerate={handleGenerate}
+                                    onMoveUp={() => handleMoveUp(index)}
+                                    onMoveDown={() => handleMoveDown(index)}
                                     allCharacters={characters}
                                     onCharacterClick={onCharacterClick}
                                     allScenes={scenes}
@@ -615,11 +656,14 @@ const App = () => {
                 <Sidebar 
                     characters={characters} 
                     scenes={scenes} 
+                    onCharacterClick={onCharacterClick}
                     onSceneClick={onSceneClick}
                     onAddCharacter={handleAddCharacterClick}
                     onAddScene={handleAddSceneClick}
                     onGenerateCharacter={() => handleOpenGenerateModal('character')}
                     onGenerateScene={() => handleOpenGenerateModal('scene')}
+                    onRegenerateCharacter={(char) => handleOpenGenerateModal('character', char)}
+                    onRegenerateScene={(scene) => handleOpenGenerateModal('scene', scene)}
                     onDeleteCharacter={async (charId) => {
                         if (!confirm('确定删除该角色？')) return;
                         const prevChars = [...characters];
@@ -730,6 +774,7 @@ const App = () => {
                 onClose={() => setIsGenerateModalOpen(false)} 
                 onSubmit={handleGenerateAsset}
                 type={generateType}
+                initialName={regenerateAssetData?.name || ''}
             />
         </div>
     );

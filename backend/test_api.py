@@ -95,7 +95,7 @@ def test_api():
             # Wait for async task
             print("   Waiting 4 seconds for generation...")
             time.sleep(4)
-            
+                
             # Verify result
             response = requests.get(f"{BASE_URL}/projects/{PROJECT_ID}")
             project = response.json()

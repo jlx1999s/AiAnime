@@ -1,0 +1,75 @@
+{
+  "default_project": {
+    "id": "default_project",
+    "name": "守墓五年",
+    "style": "anime",
+    "shots": [
+      {
+        "prompt": "0.1-3秒: 低角度，快速推拉镜头。陆远受到重力冲击向后滑行...",
+        "dialogue": "陆远：滚去黑暗剑冢里自生自灭吧！",
+        "audio_prompt": null,
+        "id": "cb3296bd-3a70-401a-9d35-dab0cb8d0bc2",
+        "order": 0,
+        "characters": [
+          "c1"
+        ],
+        "scene_id": null,
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=Shot+1",
+        "image_candidates": [],
+        "video_url": null,
+        "status": "idle"
+      },
+      {
+        "prompt": "镜头仰拍刻家入口，巨石上“刻家”二字布满剑痕...",
+        "dialogue": "(深吸一口气)",
+        "audio_prompt": null,
+        "id": "3147dfa5-a3d5-4f2f-beaa-f65cabf43778",
+        "order": 1,
+        "characters": [
+          "c1"
+        ],
+        "scene_id": null,
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=Shot+2",
+        "image_candidates": [],
+        "video_url": null,
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "c1",
+        "name": "陈远 (外门弟子)",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Chen",
+        "tags": []
+      },
+      {
+        "id": "c2",
+        "name": "神秘师兄",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Brother",
+        "tags": []
+      },
+      {
+        "id": "c3",
+        "name": "陈远 (剑主)",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=ChenMaster",
+        "tags": []
+      }
+    ],
+    "scenes": []
+  },
+  "debug_proj": {
+    "id": "debug_proj",
+    "name": "Debug Project",
+    "style": "anime",
+    "shots": [],
+    "characters": [],
+    "scenes": [
+      {
+        "id": "debug_scene",
+        "name": "Original Scene",
+        "image_url": "http://updated.com",
+        "tags": []
+      }
+    ]
+  }
+}

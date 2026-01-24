@@ -124,6 +124,16 @@ export const ApiService = {
         return res.json();
     },
 
+    reorderShots: async (projectId, shotIds) => {
+        if (USE_MOCK) return shotIds;
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/shots/reorder`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ shot_ids: shotIds })
+        });
+        return res.json();
+    },
+
     deleteShot: async (projectId, shotId) => {
         if (USE_MOCK) return true;
         await fetch(`${API_BASE_URL}/shots/${projectId}/${shotId}`, { method: 'DELETE' });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Film, Trash2, Search, User, Plus, Wand2 } from 'lucide-react';
+import { Film, Trash2, Search, User, Plus, Wand2, RefreshCw } from 'lucide-react';
 
-const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter }) => {
+const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene }) => {
     const [activeTab, setActiveTab] = useState('chars');
 
     return (
@@ -32,16 +32,29 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                             </div>
                             <div className="grid grid-cols-3 gap-2">
                                 {characters?.map(char => (
-                                    <div key={char.id} className="flex flex-col items-center gap-1 group cursor-pointer">
+                                    <div 
+                                        key={char.id} 
+                                        className="flex flex-col items-center gap-1 group cursor-pointer"
+                                        onClick={() => onCharacterClick && onCharacterClick(char.id)}
+                                    >
                                         <div className="w-16 h-16 rounded overflow-hidden bg-dark-600 border border-transparent group-hover:border-accent relative">
                                             <img src={char.avatar_url || char.avatar} alt={char.name} className="w-full h-full object-cover"/>
-                                            <button 
-                                                className="absolute top-0 right-0 p-0.5 bg-black/50 rounded-bl hidden group-hover:block"
-                                                onClick={(e) => { e.stopPropagation(); onDeleteCharacter && onDeleteCharacter(char.id); }}
-                                                title="删除角色"
-                                            >
-                                                <Trash2 size={10} className="text-red-400"/>
-                                            </button>
+                                            <div className="absolute top-0 right-0 hidden group-hover:flex">
+                                                <button 
+                                                    className="p-0.5 bg-black/50 hover:bg-black/70 text-white"
+                                                    onClick={(e) => { e.stopPropagation(); onRegenerateCharacter && onRegenerateCharacter(char); }}
+                                                    title="重新生成图片"
+                                                >
+                                                    <RefreshCw size={10} />
+                                                </button>
+                                                <button 
+                                                    className="p-0.5 bg-black/50 hover:bg-black/70 text-red-400 rounded-bl"
+                                                    onClick={(e) => { e.stopPropagation(); onDeleteCharacter && onDeleteCharacter(char.id); }}
+                                                    title="删除角色"
+                                                >
+                                                    <Trash2 size={10}/>
+                                                </button>
+                                            </div>
                                         </div>
                                         <span className="text-[10px] text-gray-400 truncate w-full text-center">{char.name}</span>
                                     </div>
@@ -95,6 +108,15 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center text-dark-500 text-xs">暂无图片</div>
                                             )}
+                                            <div className="absolute top-1 right-1 hidden group-hover:flex gap-1">
+                                                <button 
+                                                    className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
+                                                    onClick={(e) => { e.stopPropagation(); onRegenerateScene && onRegenerateScene(scene); }}
+                                                    title="重新生成图片"
+                                                >
+                                                    <RefreshCw size={12} />
+                                                </button>
+                                            </div>
                                         </div>
                                         <span className="text-[10px] text-gray-400 truncate w-full">{scene.name}</span>
                                     </div>

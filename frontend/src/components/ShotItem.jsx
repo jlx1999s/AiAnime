@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Trash2, Image, Play, Video, MoveUp, MoveDown } from 'lucide-react';
 
-const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate }) => {
+const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMoveDown, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate }) => {
     const [candidateCount, setCandidateCount] = useState(3);
 
     return (
@@ -269,8 +269,8 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, allCharacters, 
 
             {/* Column 6: Actions */}
             <div className="flex flex-col gap-2 pt-1 items-center">
-                <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="上移"><MoveUp size={14}/></button>
-                <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="下移"><MoveDown size={14}/></button>
+                <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="上移" onClick={onMoveUp}><MoveUp size={14}/></button>
+                <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="下移" onClick={onMoveDown}><MoveDown size={14}/></button>
                 <button className="hover:text-red-400 hover:bg-dark-700 p-1 rounded mt-2 text-gray-500" onClick={() => onDelete(shot.id)} title="删除"><Trash2 size={14}/></button>
             </div>
         </div>
