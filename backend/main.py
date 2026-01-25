@@ -7,6 +7,7 @@ import base64
 import imghdr
 import io
 import urllib.request
+import re
 from urllib.parse import urlparse
 from typing import List, Dict
 from pydantic import BaseModel
@@ -293,13 +294,13 @@ async def create_scene(project_id: str, scene: Scene):
     return scene
 
 @app.put("/characters/{project_id}/{char_id}", response_model=Character)
-async def update_character(project_id: str, char_id: str, updates: Character):
+async def update_character(project_id: str, char_id: str, updates: CharacterUpdate):
     project = get_project_or_404(project_id)
     for char in project.characters:
         if char.id == char_id:
-            char.name = updates.name
-            char.avatar_url = updates.avatar_url
-            char.tags = updates.tags
+            updated_data = updates.dict(exclude_unset=True)
+            for k, v in updated_data.items():
+                setattr(char, k, v)
             save_db()
             return char
     raise HTTPException(status_code=404, detail="Character not found")
@@ -332,7 +333,20 @@ async def update_scene(project_id: str, scene_id: str, updates: SceneUpdate):
 class ScriptRequest(BaseModel):
     content: str
 
-@app.post("/api/parse-script", response_model=List[ShotCreate])
+class ParsedCharacter(BaseModel):
+    name: str
+    prompt: str
+
+class ParsedScene(BaseModel):
+    name: str
+    prompt: str
+
+class ScriptParseResponse(BaseModel):
+    shots: List[ShotCreate]
+    characters: List[ParsedCharacter] = []
+    scenes: List[ParsedScene] = []
+
+@app.post("/api/parse-script", response_model=ScriptParseResponse)
 async def parse_script(request: ScriptRequest):
     """
     Parse script using Aliyun Bailian (Qwen) if API key is present.
@@ -341,17 +355,24 @@ async def parse_script(request: ScriptRequest):
     if client:
         try:
             system_prompt = """
-            你是一位专业的动画分镜导演。请将用户提供的剧本解析为一系列分镜镜头。
-            每个镜头包含：
-            - prompt: 详细的画面描述，包含镜头角度、光影、人物动作、场景细节。适合用于AI生图。
-            - dialogue: 该镜头的台词（如果有）。
-            - characters: 该镜头中出现的角色名字列表（例如：["陈远", "神秘师兄"]）。如果无角色则为空列表。
-            - scene: 该镜头发生的场景名称（例如："外门练武场", "刻家入口"）。
+            你是一位专业的动画分镜导演。请将用户提供的剧本解析为一系列分镜镜头，并提取出所有出现的角色和场景及其详细视觉描述。
             
-            请直接返回一个JSON数组，格式如下，不要包含任何Markdown格式或额外文字：
-            [
-                {"prompt": "...", "dialogue": "...", "characters": ["Name1", "Name2"], "scene": "SceneName"}
-            ]
+            输出必须是一个JSON对象，包含三个字段：
+            1. "shots": 镜头列表，每个镜头包含：
+               - prompt: 详细的画面描述，包含镜头角度、光影、人物动作、场景细节。适合用于AI生图。
+               - dialogue: 该镜头的台词（如果有）。
+               - characters: 该镜头中出现的角色名字列表（例如：["陈远", "神秘师兄"]）。如果无角色则为空列表。
+               - scene: 该镜头发生的场景名称（例如："外门练武场", "刻家入口"）。
+            
+            2. "characters": 角色列表，包含剧本中出现的所有角色。每个角色包含：
+               - name: 角色名字。
+               - prompt: 角色的详细外貌描述（发型、发色、眼睛、衣着、配饰、气质等），用于AI生图。
+            
+            3. "scenes": 场景列表，包含剧本中出现的所有场景。每个场景包含：
+               - name: 场景名字。
+               - prompt: 场景的详细环境描述（建筑风格、天气、光照、氛围、关键物体等），用于AI生图。
+            
+            请直接返回JSON对象，不要包含任何Markdown格式或额外文字。
             """
             
             response = await client.chat.completions.create(
@@ -375,14 +396,33 @@ async def parse_script(request: ScriptRequest):
             data = json.loads(content)
             
             shots = []
-            for item in data:
+            for item in data.get("shots", []):
                 shots.append(ShotCreate(
                     prompt=item.get("prompt", ""),
                     dialogue=item.get("dialogue", ""),
                     characters=item.get("characters", []),
                     scene=item.get("scene", None)
                 ))
-            return shots
+            
+            parsed_chars = []
+            for item in data.get("characters", []):
+                parsed_chars.append(ParsedCharacter(
+                    name=item.get("name", ""),
+                    prompt=item.get("prompt", "")
+                ))
+                
+            parsed_scenes = []
+            for item in data.get("scenes", []):
+                parsed_scenes.append(ParsedScene(
+                    name=item.get("name", ""),
+                    prompt=item.get("prompt", "")
+                ))
+                
+            return ScriptParseResponse(
+                shots=shots,
+                characters=parsed_chars,
+                scenes=parsed_scenes
+            )
             
         except Exception as e:
             print(f"AI Parse Error: {e}")
@@ -394,6 +434,10 @@ async def parse_script(request: ScriptRequest):
     shots = []
     current_scene = None
     
+    # Simple extraction sets
+    found_chars = set()
+    found_scenes = set()
+    
     for line in lines:
         # Simple Scene Detection
         if line.startswith("场景：") or line.startswith("Scene:") or line.startswith("场景:"):
@@ -401,6 +445,7 @@ async def parse_script(request: ScriptRequest):
             parts = line.split(":", 1)
             if len(parts) > 1:
                 current_scene = parts[1].strip()
+                found_scenes.add(current_scene)
             continue
             
         # Simple Character Detection (very basic, looks for Name: Dialogue)
@@ -414,10 +459,8 @@ async def parse_script(request: ScriptRequest):
             # If name is short, assume it's a character
             if len(potential_name) < 10 and " " not in potential_name:
                 characters.append(potential_name)
+                found_chars.add(potential_name)
                 dialogue = parts[1].strip()
-                # If dialogue is present, maybe prompt is just the action? 
-                # For fallback, let's keep prompt as full line or just action if possible.
-                # But simple is better: Prompt = full line
         
         shots.append(ShotCreate(
             prompt=prompt,
@@ -425,7 +468,13 @@ async def parse_script(request: ScriptRequest):
             characters=characters,
             scene=current_scene
         ))
-    return shots
+    
+    # Mock profiles for fallback
+    return ScriptParseResponse(
+        shots=shots,
+        characters=[ParsedCharacter(name=c, prompt=f"{c}, anime style character, detailed") for c in found_chars],
+        scenes=[ParsedScene(name=s, prompt=f"{s}, anime style background, detailed") for s in found_scenes]
+    )
 
 # --- AI Services ---
 
@@ -556,33 +605,52 @@ def _volcengine_sync2async_generate(req_key: str, submit_form: dict, req_json: d
 
     raise Exception(last_resp or "Volcengine task timeout")
 
-def volcengine_generate_image(prompt: str, reference_images_b64: list[str] | None = None) -> str:
+def volcengine_generate_image(prompt: str, reference_images: list[dict] | None = None) -> str:
     if not visual_service:
         raise Exception("Volcengine service not initialized")
     
     print(f"Generating image for prompt: {prompt[:50]}...")
     
     try:
-        reference_images_b64 = [b for b in (reference_images_b64 or []) if isinstance(b, str) and b]
+        # reference_images expects list of {"name": str, "b64": str}
+        valid_refs = [r for r in (reference_images or []) if isinstance(r, dict) and r.get("b64")]
         
-        if reference_images_b64:
+        if valid_refs:
             try:
+                # Mark characters in prompt
+                ref_desc = []
+                b64_list = []
+                for i, ref in enumerate(valid_refs):
+                    name = ref.get("name", f"Character_{i+1}")
+                    ref_desc.append(f"Reference Image {i+1} is {name}")
+                    b64_list.append(ref["b64"])
+                
+                marked_prompt = f"{prompt}. Character References: {', '.join(ref_desc)}."
+                print(f"Using Multi-Reference Generation with {len(valid_refs)} images.")
+                print(f"Augmented Prompt: {marked_prompt}")
+
                 body = {
-                    "prompt": prompt,
-                    "binary_data_base64": [reference_images_b64[0]],
+                    "prompt": marked_prompt,
+                    "binary_data_base64": b64_list,
                     "seed": -1,
                     "scale": 0.5
                 }
-                print("Attempting I2I (jimeng_i2i_v30)...")
-                url, image_data_b64 = _volcengine_sync2async_generate("jimeng_i2i_v30", body, req_json={"return_url": True}, timeout_s=120.0, poll_s=1.0)
+                
+                # Use jimeng_t2i_v40 for multi-image support if possible, or fallback/use standard logic
+                # Assuming jimeng_t2i_v40 supports binary_data_base64 like others
+                model_version = "jimeng_t2i_v40" 
+                print(f"Attempting Generation with {model_version}...")
+                
+                url, image_data_b64 = _volcengine_sync2async_generate(model_version, body, req_json={"return_url": True}, timeout_s=180.0, poll_s=2.0)
                 if url:
                     return url
                 if image_data_b64:
                     return _save_base64_image(image_data_b64)
             except Exception as e:
-                print(f"I2I Generation Failed (Fallback to T2I): {e}")
+                print(f"Multi-Reference Generation Failed: {e}")
+                # Fallback logic could go here if needed, but for now we let it fail or try simple T2I
 
-        print("Using T2I (jimeng_t2i_v30)...")
+        print("Using Standard T2I (jimeng_t2i_v30)...")
         body = {
             "prompt": prompt,
             "seed": -1
@@ -655,33 +723,83 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
     if not target_shot: return
 
     try:
-        prompt = target_shot.prompt
+        prompt = target_shot.prompt or ""
+        
+        # Clean existing layout keywords to avoid conflicts with selected panel_layout
+        remove_patterns = [
+            r"3-panel storyboard", r"3-panel", r"3 panel", r"triptych", r"three frames", r"three panel",
+            r"comic panel layout", r"clean gutters", r"no text", r"no watermark",
+            r"1-panel", r"single panel", r"1 panel", r"full shot", r"one frame",
+            r"2-panel", r"diptych", r"2 panel", r"two frames", r"two panel",
+            r"4-panel", r"2x2 grid", r"4 panel", r"four frames", r"four panel", r"yonkoma style",
+            r"vertical split", r"horizontal split"
+        ]
+        for pattern in remove_patterns:
+            prompt = re.sub(pattern, "", prompt, flags=re.IGNORECASE)
+            
+        # Clean up punctuation
+        prompt = re.sub(r",\s*,", ",", prompt)
+        prompt = re.sub(r"\s+", " ", prompt).strip().strip(",")
+        
         prompt = f"{prompt}, {project.style} style, high quality, detailed"
         
         if type == "image":
             if visual_service:
-                prompt = f"{prompt}, 3-panel storyboard, triptych, three frames, comic panel layout, clean gutters, no text, no watermark"
-                reference_images_b64 = []
+                # Dynamic panel layout prompts
+                layout_prompts = {
+                    "1-panel": "single panel, full shot, one frame, cinematic composition, detailed background, no split screen",
+                    "2-panel": "2-panel storyboard, diptych, two frames, comic panel layout, vertical split or horizontal split, clean gutters",
+                    "3-panel": "3-panel storyboard, triptych, three frames, comic panel layout, clean gutters",
+                    "4-panel": "4-panel storyboard, 2x2 grid, four frames, comic panel layout, yonkoma style, clean gutters"
+                }
+                layout_prompt = layout_prompts.get(target_shot.panel_layout, layout_prompts["3-panel"])
+                
+                prompt = f"{prompt}, {layout_prompt}, no text, no watermark"
+                reference_images = []
                 if isinstance(target_shot.characters, list) and target_shot.characters:
                     char_by_id = {c.id: c for c in (project.characters or []) if getattr(c, "id", None)}
-                    for cid in target_shot.characters[:3]:
+                    # Use ALL characters, not just top 3
+                    for cid in target_shot.characters:
                         c = char_by_id.get(cid)
                         if not c:
                             continue
                         b64 = _image_url_to_base64(getattr(c, "avatar_url", "") or "")
                         if b64:
-                            reference_images_b64.append(b64)
+                            reference_images.append({"name": c.name, "b64": b64})
+
+                if target_shot.use_scene_ref and target_shot.scene_id:
+                    scene_by_id = {s.id: s for s in (project.scenes or [])}
+                    scene = scene_by_id.get(target_shot.scene_id)
+                    print(f"[DEBUG] Checking Scene Ref: id={target_shot.scene_id}, found={scene is not None}, url={scene.image_url if scene else 'N/A'}")
+                    if scene and scene.image_url:
+                        b64 = _image_url_to_base64(scene.image_url)
+                        if b64:
+                            print(f"[DEBUG] Added scene reference: {scene.name}")
+                            reference_images.append({"name": scene.name, "b64": b64})
+                        else:
+                            print(f"[DEBUG] Failed to convert scene image to base64: {scene.image_url}")
+
+                print(f"[DEBUG] Final Reference Images: {[r.get('name') for r in reference_images]}")
+
+                if not reference_images:
+                    # If no reference images, fallback to simple T2I without reference_images parameter
+                    # This prevents valid_refs empty check failure if we were relying on it implicitly somewhere else,
+                    # though volcengine_generate_image handles empty list gracefully now.
+                    # But to be safe and clear:
+                    print("[DEBUG] No reference images found (characters or scene). Using text-only generation.")
 
                 images = []
                 candidate_count = count or CANDIDATE_IMAGE_COUNT
                 candidate_count = max(1, min(8, candidate_count))
                 for _ in range(candidate_count):
-                    image_url = await asyncio.to_thread(volcengine_generate_image, prompt, reference_images_b64)
+                    image_url = await asyncio.to_thread(volcengine_generate_image, prompt, reference_images)
                     if image_url:
                         images.append(image_url)
 
                 if images:
-                    target_shot.image_candidates = images
+                    if target_shot.image_candidates is None:
+                        target_shot.image_candidates = []
+                    target_shot.image_candidates.extend(images)
                     target_shot.image_url = images[0]
             else:
                 images = []
@@ -689,7 +807,11 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 candidate_count = max(1, min(8, candidate_count))
                 for _ in range(candidate_count):
                     images.append(f"https://picsum.photos/seed/{uuid.uuid4()}/600/338")
-                target_shot.image_candidates = images
+                
+                if target_shot.image_candidates is None:
+                    target_shot.image_candidates = []
+                target_shot.image_candidates.extend(images)
+                
                 if images:
                     target_shot.image_url = images[0]
                 

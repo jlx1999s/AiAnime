@@ -173,10 +173,24 @@ const App = () => {
 
     const handleParseScript = async (content) => {
         try {
-            const newShots = await ApiService.parseScript(content);
+            const response = await ApiService.parseScript(content);
             
-            // 1. Extract unique character names
+            // Handle both new object format and old array format (fallback)
+            let newShots = [];
+            let parsedCharacters = [];
+            let parsedScenes = [];
+
+            if (Array.isArray(response)) {
+                newShots = response;
+            } else {
+                newShots = response.shots || [];
+                parsedCharacters = response.characters || [];
+                parsedScenes = response.scenes || [];
+            }
+            
+            // 1. Extract unique character names (from parsed characters and shots)
             const allNames = new Set();
+            parsedCharacters.forEach(c => allNames.add(c.name));
             newShots.forEach(s => {
                 if (s.characters) {
                     s.characters.forEach(name => allNames.add(name));
@@ -211,11 +225,15 @@ const App = () => {
                 }
 
                 if (!charMap[normalizedName]) {
+                    // Find parsed details for this character to get the prompt
+                    const parsedChar = parsedCharacters.find(c => c.name === name);
+
                     const newChar = {
                         id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                         name: name.trim(),
                         avatar_url: `https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`,
-                        tags: []
+                        tags: [],
+                        prompt: parsedChar ? parsedChar.prompt : "" // Use parsed prompt
                     };
                     newCharsToCreate.push(newChar);
                     charMap[normalizedName] = newChar.id; // Assign temp ID
@@ -231,6 +249,7 @@ const App = () => {
 
             // 2.5 Process Scenes
             const allScenes = new Set();
+            parsedScenes.forEach(s => allScenes.add(s.name));
             newShots.forEach(s => {
                 if (s.scene) allScenes.add(s.scene);
             });
@@ -262,11 +281,15 @@ const App = () => {
                 }
 
                 if (!sceneMap[normalizedName]) {
+                    // Find parsed details for this scene to get the prompt
+                    const parsedScene = parsedScenes.find(s => s.name === name);
+
                     const newScene = {
                         id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                         name: name.trim(),
                         image_url: "", // Placeholder
-                        tags: []
+                        tags: [],
+                        prompt: parsedScene ? parsedScene.prompt : "" // Use parsed prompt
                     };
                     newScenesToCreate.push(newScene);
                     sceneMap[normalizedName] = newScene.id;
@@ -288,8 +311,20 @@ const App = () => {
                     .filter(Boolean);
                 const sceneId = shotData.scene ? sceneMap[shotData.scene.trim().toLowerCase()] : null;
 
+                // Append asset prompts to shot prompt
+                let assetPrompts = "";
+                const relevantChars = currentChars.filter(c => charIds.includes(c.id));
+                relevantChars.forEach(c => {
+                    if (c.prompt) assetPrompts += ` [${c.name}: ${c.prompt}]`;
+                });
+                if (sceneId) {
+                    const s = currentScenes.find(sc => sc.id === sceneId);
+                    if (s && s.prompt) assetPrompts += ` [${s.name}: ${s.prompt}]`;
+                }
+
                 const shotToCreate = { 
                     ...shotData, 
+                    prompt: shotData.prompt + assetPrompts,
                     characters: charIds,
                     scene_id: sceneId 
                 };
@@ -468,11 +503,11 @@ const App = () => {
             if (regenerateAssetData) {
                 // Update existing asset
                 if (type === 'character') {
-                     const updated = { avatar_url: url };
-                     await ApiService.updateCharacter(projectId, regenerateAssetData.id, updated);
+                     const updated = { avatar_url: url, prompt: prompt };
+                     await ApiService.updateCharacter(projectId, regenerateAssetData.id, { ...regenerateAssetData, ...updated });
                      setCharacters(prev => prev.map(c => c.id === regenerateAssetData.id ? { ...c, ...updated } : c));
                 } else if (type === 'scene') {
-                     const updated = { image_url: url };
+                     const updated = { image_url: url, prompt: prompt };
                      await ApiService.updateScene(projectId, regenerateAssetData.id, updated);
                      setScenes(prev => prev.map(s => s.id === regenerateAssetData.id ? { ...s, ...updated } : s));
                 }
@@ -483,7 +518,8 @@ const App = () => {
                         id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                         name: name,
                         avatar_url: url,
-                        tags: []
+                        tags: [],
+                        prompt: prompt
                     };
                     await ApiService.createCharacter(projectId, newChar);
                     setCharacters(prev => [...prev, newChar]);
@@ -492,7 +528,8 @@ const App = () => {
                         id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                         name: name,
                         image_url: url,
-                        tags: []
+                        tags: [],
+                        prompt: prompt
                     };
                     await ApiService.createScene(projectId, newScene);
                     setScenes(prev => [...prev, newScene]);
@@ -775,6 +812,7 @@ const App = () => {
                 onSubmit={handleGenerateAsset}
                 type={generateType}
                 initialName={regenerateAssetData?.name || ''}
+                initialPrompt={regenerateAssetData?.prompt || ''}
             />
         </div>
     );

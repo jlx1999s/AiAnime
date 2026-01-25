@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Loader2 } from 'lucide-react';
 
-const GenerateAssetModal = ({ isOpen, onClose, onSubmit, type, initialName = "" }) => {
+const GenerateAssetModal = ({ isOpen, onClose, onSubmit, type, initialName = "", initialPrompt = "" }) => {
     const [prompt, setPrompt] = useState('');
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
@@ -9,9 +9,9 @@ const GenerateAssetModal = ({ isOpen, onClose, onSubmit, type, initialName = "" 
     useEffect(() => {
         if (isOpen) {
             setName(initialName);
-            setPrompt('');
+            setPrompt(initialPrompt || '');
         }
-    }, [isOpen, initialName]);
+    }, [isOpen, initialName, initialPrompt]);
 
     if (!isOpen) return null;
 

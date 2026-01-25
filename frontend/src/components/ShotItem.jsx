@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { Plus, Trash2, Image, Play, Video, MoveUp, MoveDown } from 'lucide-react';
+import { Plus, Trash2, Image, Play, Video, MoveUp, MoveDown, Maximize } from 'lucide-react';
+import ImagePreviewModal from './ImagePreviewModal';
 
 const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMoveDown, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate }) => {
     const [candidateCount, setCandidateCount] = useState(3);
+    const [previewUrl, setPreviewUrl] = useState(null);
 
     return (
         <div className="grid grid-cols-[40px_minmax(200px,1.5fr)_1fr_1fr_1.5fr_1.5fr_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
+            <ImagePreviewModal 
+                isOpen={!!previewUrl} 
+                imageUrl={previewUrl} 
+                onClose={() => setPreviewUrl(null)} 
+            />
             {/* Column 1: Index */}
             <div className="flex flex-col items-center gap-2 pt-1">
                 <span className="text-xs font-mono text-gray-500 bg-dark-900 px-1.5 py-0.5 rounded-full min-w-[24px] text-center">{index + 1}</span>
@@ -16,9 +23,9 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
             <div className="space-y-3">
                  <div className="relative">
                      <div className="flex justify-between items-center mb-1">
-                        <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视觉描述 (Prompt)</label>
-                        <span className="text-[10px] text-dark-600 cursor-pointer hover:text-accent">AI 优化</span>
-                     </div>
+                       <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视觉描述 (Prompt)</label>
+                       <span className="text-[10px] text-dark-600 cursor-pointer hover:text-accent">AI 优化</span>
+                    </div>
                     <textarea 
                         className="w-full bg-dark-900/50 border border-dark-700 rounded p-2 text-sm text-gray-300 focus:border-accent focus:outline-none resize-none h-20 placeholder-gray-700 transition-colors"
                         value={shot.prompt}
@@ -161,12 +168,40 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                         </select>
                     </div>
                  )}
+                 
+                 {/* Scene Reference Toggle */}
+                 {shot.scene_id && (
+                     <div className="flex items-center gap-2 mt-1 px-1">
+                        <input 
+                            type="checkbox" 
+                            id={`use-scene-ref-${shot.id}`}
+                            checked={shot.use_scene_ref || false}
+                            onChange={(e) => onUpdate(shot.id, { ...shot, use_scene_ref: e.target.checked })}
+                            className="rounded bg-dark-700 border-dark-600 w-3 h-3 cursor-pointer accent-accent"
+                        />
+                        <label htmlFor={`use-scene-ref-${shot.id}`} className="text-[10px] text-gray-400 cursor-pointer select-none hover:text-gray-300">
+                            作为参考图
+                        </label>
+                     </div>
+                 )}
             </div>
 
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">分镜</label>
                     <div className="flex items-center gap-1 text-[10px] text-dark-500">
+                        {/* Panel Layout Selector */}
+                        <select
+                            value={shot.panel_layout || "3-panel"}
+                            onChange={(e) => onUpdate(shot.id, { ...shot, panel_layout: e.target.value })}
+                            className="bg-dark-900 border border-dark-700 rounded px-1 py-0.5 text-[10px] text-gray-400 outline-none focus:border-accent mr-1"
+                        >
+                            <option value="1-panel">单图</option>
+                            <option value="2-panel">二宫格</option>
+                            <option value="3-panel">三宫格</option>
+                            <option value="4-panel">四宫格</option>
+                        </select>
+
                         <input
                             type="number"
                             min="1"
@@ -200,10 +235,20 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                     >
                         <img src={shot.image_url} className="w-full h-full object-cover" alt="scene"/>
                         <div 
-                            className="absolute inset-0 bg-black/50 hidden group-hover/image:flex items-center justify-center" 
+                            className="absolute inset-0 bg-black/50 hidden group-hover/image:flex items-center justify-center pointer-events-none" 
                         >
                             <span className="text-xs text-white">点击更换图片</span>
                         </div>
+                        <button
+                            className="absolute top-2 right-2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded hidden group-hover/image:block z-10"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setPreviewUrl(shot.image_url);
+                            }}
+                            title="放大查看"
+                        >
+                            <Maximize size={16} />
+                        </button>
                     </div>
                 ) : (
                     <div className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 text-dark-500 bg-dark-900/30">

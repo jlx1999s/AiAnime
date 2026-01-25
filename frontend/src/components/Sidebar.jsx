@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { Film, Trash2, Search, User, Plus, Wand2, RefreshCw } from 'lucide-react';
+import { Film, Trash2, Search, User, Plus, Wand2, RefreshCw, Maximize } from 'lucide-react';
+import ImagePreviewModal from './ImagePreviewModal';
 
 const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene }) => {
     const [activeTab, setActiveTab] = useState('chars');
+    const [previewUrl, setPreviewUrl] = useState(null);
 
     return (
         <aside className="w-80 border-l border-dark-700 bg-dark-800 flex flex-col flex-shrink-0">
+            <ImagePreviewModal 
+                isOpen={!!previewUrl} 
+                imageUrl={previewUrl} 
+                onClose={() => setPreviewUrl(null)} 
+            />
             <div className="flex border-b border-dark-700">
                 <button 
                     className={`flex-1 py-3 text-sm font-medium ${activeTab === 'chars' ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}
@@ -40,6 +47,13 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                                         <div className="w-16 h-16 rounded overflow-hidden bg-dark-600 border border-transparent group-hover:border-accent relative">
                                             <img src={char.avatar_url || char.avatar} alt={char.name} className="w-full h-full object-cover"/>
                                             <div className="absolute top-0 right-0 hidden group-hover:flex">
+                                                <button 
+                                                    className="p-0.5 bg-black/50 hover:bg-black/70 text-white"
+                                                    onClick={(e) => { e.stopPropagation(); setPreviewUrl(char.avatar_url || char.avatar); }}
+                                                    title="放大查看"
+                                                >
+                                                    <Maximize size={10} />
+                                                </button>
                                                 <button 
                                                     className="p-0.5 bg-black/50 hover:bg-black/70 text-white"
                                                     onClick={(e) => { e.stopPropagation(); onRegenerateCharacter && onRegenerateCharacter(char); }}
@@ -109,6 +123,13 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                                                 <div className="w-full h-full flex items-center justify-center text-dark-500 text-xs">暂无图片</div>
                                             )}
                                             <div className="absolute top-1 right-1 hidden group-hover:flex gap-1">
+                                                <button 
+                                                    className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
+                                                    onClick={(e) => { e.stopPropagation(); setPreviewUrl(scene.image_url); }}
+                                                    title="放大查看"
+                                                >
+                                                    <Maximize size={12} />
+                                                </button>
                                                 <button 
                                                     className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
                                                     onClick={(e) => { e.stopPropagation(); onRegenerateScene && onRegenerateScene(scene); }}
