@@ -2,7 +2,7 @@ import React from 'react';
 import { Wand2, RefreshCw } from 'lucide-react';
 
 const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDefaultPanelLayout, defaultImageCount, onSetDefaultImageCount, onGenerateAllStoryboards, isGeneratingStoryboards, onGenerateAllCharacters, isGeneratingCharacters, onGenerateAllScenes, isGeneratingScenes }) => (
-    <div className="grid grid-cols-[40px_minmax(200px,1.5fr)_1fr_1fr_1.5fr_1.5fr_40px] gap-4 px-4 py-2 bg-dark-800 border-b border-dark-700 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 z-10 shadow-sm">
+    <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 px-4 py-2 bg-dark-800 border-b border-dark-700 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 z-10 shadow-sm">
         <div className="flex items-center justify-center">
             <input 
                 type="checkbox" 
@@ -12,7 +12,7 @@ const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDef
                 title="全选/取消全选"
             />
         </div>
-        <div>剧本</div>
+        <div>调整剧本</div>
         <div className="flex items-center justify-between">
             <span>出场人物</span>
             <button
@@ -37,13 +37,14 @@ const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDef
                 {isGeneratingScenes ? '生成中...' : '一键生成'}
             </button>
         </div>
+        <div>自定义参考图</div>
         <div className="flex items-center gap-2">
             <span>分镜</span>
             <div className="flex items-center gap-1 ml-auto">
                 <button
                     onClick={onGenerateAllStoryboards}
                     disabled={isGeneratingStoryboards}
-                    className={`text-[10px] px-2 py-0.5 rounded transition-colors flex items-center gap-1 mr-2 ${isGeneratingStoryboards ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-dark-700 hover:bg-accent text-gray-300 hover:text-white'}`}
+                    className={`text-[10px] px-2 py-0.5 rounded transition-colors flex items-center gap-1 ${isGeneratingStoryboards ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-dark-700 hover:bg-accent text-gray-300 hover:text-white'}`}
                     title="为所有分镜生成图片（仅未生成的）"
                 >
                     {isGeneratingStoryboards ? <RefreshCw size={10} className="animate-spin"/> : <Wand2 size={10} />} 

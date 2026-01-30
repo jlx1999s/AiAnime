@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Plus, Trash2, Image, Video, MoveUp, MoveDown, Maximize, Upload } from 'lucide-react';
+import { Plus, Trash2, Image, Video, MoveUp, MoveDown, Maximize, Upload, ChevronLeft, ChevronRight } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
 import { ApiService } from '../services/api';
 
@@ -70,6 +70,10 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
         }
     }, [defaultImageCount]);
     const [previewUrl, setPreviewUrl] = useState(null);
+    const [imgStart, setImgStart] = useState(0);
+    const [vidStart, setVidStart] = useState(0);
+    const visibleImgCount = 6;
+    const visibleVidCount = 4;
     const videoItems = Array.isArray(shot.video_items) && shot.video_items.length
         ? shot.video_items
         : (shot.video_url ? [{ id: 'legacy', url: shot.video_url, progress: shot.video_progress, status: shot.status }] : []);
@@ -87,8 +91,23 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
         }
     }, [videoItems, activeVideoId]);
 
+    useEffect(() => {
+        if (!Array.isArray(shot.image_candidates)) return;
+        const maxStart = Math.max(0, shot.image_candidates.length - visibleImgCount);
+        if (imgStart > maxStart) {
+            setImgStart(maxStart);
+        }
+    }, [shot.image_candidates, imgStart, visibleImgCount]);
+
+    useEffect(() => {
+        const maxStart = Math.max(0, videoItems.length - visibleVidCount);
+        if (vidStart > maxStart) {
+            setVidStart(maxStart);
+        }
+    }, [videoItems, vidStart, visibleVidCount]);
+
     return (
-        <div className="grid grid-cols-[40px_minmax(200px,1.5fr)_1fr_1fr_1.5fr_1.5fr_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
+        <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
             <ImagePreviewModal 
                 isOpen={!!previewUrl} 
                 imageUrl={previewUrl} 
@@ -186,7 +205,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                  </div>
             </div>
 
-            {/* Column 4: Scene (Reference) */}
+            {/* Column 4: Scene */}
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">场景</label>
@@ -216,7 +235,6 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                     )}
                  </div>
                  
-                 {/* Scene Asset Info */}
                  {shot.scene_id && allScenes ? (
                      <div 
                         className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/scene cursor-pointer"
@@ -234,12 +252,10 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                             );
                         })()}
                         
-                        {/* Hover Overlay */}
                         <div className="absolute inset-0 bg-black/50 hidden group-hover/scene:flex items-center justify-center">
                             <span className="text-xs text-white">更换图片</span>
                         </div>
-
-                        {/* Scene Name Badge */}
+                        
                         <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-1">
                             <div className="text-[10px] text-gray-200 truncate text-center">
                                 {allScenes.find(s => s.id === shot.scene_id)?.name || "未知场景"}
@@ -267,7 +283,6 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                     </div>
                  )}
                  
-                 {/* Scene Reference Toggle */}
                  {shot.scene_id && (
                      <div className="flex items-center gap-2 mt-1 px-1">
                         <input 
@@ -282,54 +297,53 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                         </label>
                      </div>
                  )}
+            </div>
 
-                 {/* Custom Reference Image */}
-                 <div className="pt-2 border-t border-dark-700 mt-2">
-                    <div className="flex justify-between items-center mb-1">
-                        <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">自定义参考图</label>
-                    </div>
-                    
-                    <input 
-                        type="file" 
-                        ref={customImageInputRef} 
-                        className="hidden" 
-                        accept="image/*"
-                        onChange={handleCustomImageUpload}
-                    />
-
-                    {shot.custom_image_url ? (
-                        <div 
-                           className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/custom cursor-pointer"
-                           onClick={() => customImageInputRef.current?.click()}
-                           title="点击更换自定义参考图"
-                        >
-                           <img src={shot.custom_image_url} className="w-full h-full object-cover" alt="custom ref" />
-                           <div className="absolute inset-0 bg-black/50 hidden group-hover/custom:flex items-center justify-center">
-                               <span className="text-xs text-white">更换图片</span>
-                           </div>
-                           <button
-                               className="absolute top-0 right-0 p-1 bg-black/50 rounded-bl hidden group-hover/custom:block"
-                               onClick={(e) => {
-                                   e.stopPropagation();
-                                   if (confirm('确定移除自定义参考图吗？')) {
-                                       onUpdate(shot.id, { ...shot, custom_image_url: null });
-                                   }
-                               }}
-                               title="移除参考图"
-                           >
-                               <Trash2 size={10} className="text-red-400"/>
-                           </button>
-                        </div>
-                    ) : (
-                        <div 
-                            className="aspect-video w-full rounded border border-dashed border-dark-600 flex items-center justify-center gap-1 cursor-pointer hover:bg-dark-800 text-dark-500 hover:text-gray-400 transition-colors"
-                            onClick={() => customImageInputRef.current?.click()}
-                        >
-                            <Upload size={14}/>
-                            <span className="text-[10px]">上传参考图</span>
-                        </div>
-                    )}
+            <div className="space-y-2">
+                 <div className="flex justify-between items-center">
+                    <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">自定义参考图</label>
                  </div>
+                 
+                 <input 
+                     type="file" 
+                     ref={customImageInputRef} 
+                     className="hidden" 
+                     accept="image/*"
+                     onChange={handleCustomImageUpload}
+                 />
+
+                 {shot.custom_image_url ? (
+                     <div 
+                        className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/custom cursor-pointer"
+                        onClick={() => customImageInputRef.current?.click()}
+                        title="点击更换自定义参考图"
+                     >
+                        <img src={shot.custom_image_url} className="w-full h-full object-cover" alt="custom ref" />
+                        <div className="absolute inset-0 bg-black/50 hidden group-hover/custom:flex items-center justify-center">
+                            <span className="text-xs text-white">更换图片</span>
+                        </div>
+                        <button
+                            className="absolute top-0 right-0 p-1 bg-black/50 rounded-bl hidden group-hover/custom:block"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (confirm('确定移除自定义参考图吗？')) {
+                                    onUpdate(shot.id, { ...shot, custom_image_url: null });
+                                }
+                            }}
+                            title="移除参考图"
+                        >
+                            <Trash2 size={10} className="text-red-400"/>
+                        </button>
+                     </div>
+                 ) : (
+                     <div 
+                         className="aspect-video w-full rounded border border-dashed border-dark-600 flex items-center justify-center gap-1 cursor-pointer hover:bg-dark-800 text-dark-500 hover:text-gray-400 transition-colors"
+                         onClick={() => customImageInputRef.current?.click()}
+                     >
+                         <Upload size={14}/>
+                         <span className="text-[10px]">上传参考图</span>
+                     </div>
+                 )}
             </div>
 
             <div className="space-y-2">
@@ -414,38 +428,58 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                         <span className="text-xs">暂无分镜，右侧输入数量后点击“生成”</span>
                     </div>
                  )}
-                 {Array.isArray(shot.image_candidates) && shot.image_candidates.length > 1 && (
-                    <div className="flex gap-2 overflow-x-auto pt-1">
-                        {shot.image_candidates.map((url, idx) => {
-                            const isActive = url === shot.image_url;
-                            return (
-                                <button
-                                    key={idx}
-                                    type="button"
-                                    className={`relative w-16 h-10 rounded border ${isActive ? 'border-accent' : 'border-dark-700'} overflow-hidden flex-shrink-0`}
-                                    onClick={() => onSelectCandidate && onSelectCandidate(shot.id, url)}
-                                >
-                                    <img src={url} alt="candidate" className="w-full h-full object-cover" />
-                                    <div className="absolute top-0 right-0 p-0.5 bg-black/60 text-white rounded-bl">
-                                        <button
-                                            type="button"
-                                            className="block"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                if (confirm('确定删除这张分镜图吗？')) {
-                                                    onDeleteShotImage && onDeleteShotImage(shot.id, url);
-                                                }
-                                            }}
-                                            title="删除分镜"
-                                        >
-                                            <Trash2 size={10} />
-                                        </button>
-                                    </div>
-                                </button>
-                            );
-                        })}
+                {Array.isArray(shot.image_candidates) && shot.image_candidates.length > 1 && (
+                    <div className="flex items-center gap-2 pt-1">
+                        <button
+                            type="button"
+                            className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
+                            onClick={() => setImgStart(Math.max(0, imgStart - 1))}
+                            disabled={imgStart <= 0}
+                            title="向左"
+                        >
+                            <ChevronLeft size={14} />
+                        </button>
+                        <div className="flex gap-2 overflow-hidden">
+                            {shot.image_candidates.slice(imgStart, imgStart + visibleImgCount).map((url, idx) => {
+                                const isActive = url === shot.image_url;
+                                return (
+                                    <button
+                                        key={`${imgStart}-${idx}`}
+                                        type="button"
+                                        className={`relative w-16 h-10 rounded border ${isActive ? 'border-accent' : 'border-dark-700'} overflow-hidden flex-shrink-0`}
+                                        onClick={() => onSelectCandidate && onSelectCandidate(shot.id, url)}
+                                    >
+                                        <img src={url} alt="candidate" className="w-full h-full object-cover" />
+                                        <div className="absolute top-0 right-0 p-0.5 bg-black/60 text-white rounded-bl">
+                                            <button
+                                                type="button"
+                                                className="block"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    if (confirm('确定删除这张分镜图吗？')) {
+                                                        onDeleteShotImage && onDeleteShotImage(shot.id, url);
+                                                    }
+                                                }}
+                                                title="删除分镜"
+                                            >
+                                                <Trash2 size={10} />
+                                            </button>
+                                        </div>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                        <button
+                            type="button"
+                            className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
+                            onClick={() => setImgStart(Math.min((shot.image_candidates.length - visibleImgCount), imgStart + 1))}
+                            disabled={imgStart >= Math.max(0, shot.image_candidates.length - visibleImgCount)}
+                            title="向右"
+                        >
+                            <ChevronRight size={14} />
+                        </button>
                     </div>
-                 )}
+                )}
             </div>
 
             <div className="space-y-2">
@@ -492,28 +526,48 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                 </div>
                             );
                         })()}
-                        <div className="flex gap-2 overflow-x-auto pt-1">
-                            {videoItems.map((item) => {
-                                const isActive = item.id === activeVideoId || (!activeVideoId && videoItems[0]?.id === item.id);
-                                return (
-                                <div 
-                                    key={item.id} 
-                                    className={`aspect-video w-28 rounded overflow-hidden border bg-black relative transition-all group/video flex-shrink-0 cursor-pointer ${isActive ? 'border-accent scale-100 opacity-100' : 'border-dark-700 scale-[0.94] opacity-70'}`}
-                                    onClick={() => setActiveVideoId(item.id)}
-                                >
-                                    {item.url ? (
-                                        <video src={item.url} className="w-full h-full object-cover" />
-                                    ) : (
-                                        <div className="w-full h-full flex flex-col items-center justify-center gap-1 bg-dark-900/30 text-dark-500">
-                                            <Video size={14}/>
-                                            <span className="text-[10px]">
-                                                {item.status === 'failed' ? '失败' : (item.progress > 0 ? `${item.progress}%` : '生成中')}
-                                            </span>
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                            })}
+                        <div className="flex items-center gap-2 pt-1">
+                            <button
+                                type="button"
+                                className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
+                                onClick={() => setVidStart(Math.max(0, vidStart - 1))}
+                                disabled={vidStart <= 0}
+                                title="向左"
+                            >
+                                <ChevronLeft size={14} />
+                            </button>
+                            <div className="flex gap-2 overflow-hidden">
+                                {videoItems.slice(vidStart, vidStart + visibleVidCount).map((item) => {
+                                    const isActive = item.id === activeVideoId || (!activeVideoId && videoItems[0]?.id === item.id);
+                                    return (
+                                    <div 
+                                        key={item.id} 
+                                        className={`aspect-video w-28 rounded overflow-hidden border bg-black relative transition-all group/video flex-shrink-0 cursor-pointer ${isActive ? 'border-accent scale-100 opacity-100' : 'border-dark-700 scale-[0.94] opacity-70'}`}
+                                        onClick={() => setActiveVideoId(item.id)}
+                                    >
+                                        {item.url ? (
+                                            <video src={item.url} className="w-full h-full object-cover" />
+                                        ) : (
+                                            <div className="w-full h-full flex flex-col items-center justify-center gap-1 bg-dark-900/30 text-dark-500">
+                                                <Video size={14}/>
+                                                <span className="text-[10px]">
+                                                    {item.status === 'failed' ? '失败' : (item.progress > 0 ? `${item.progress}%` : '生成中')}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                                })}
+                            </div>
+                            <button
+                                type="button"
+                                className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
+                                onClick={() => setVidStart(Math.min((videoItems.length - visibleVidCount), vidStart + 1))}
+                                disabled={vidStart >= Math.max(0, videoItems.length - visibleVidCount)}
+                                title="向右"
+                            >
+                                <ChevronRight size={14} />
+                            </button>
                         </div>
                     </div>
                 ) : (

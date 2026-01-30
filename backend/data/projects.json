@@ -981,14 +981,14 @@
       {
         "id": "char_1769361790834_d1k8ujkys",
         "name": "庾晚音",
-        "avatar_url": "http://localhost:8001/static/uploads/8b842d92-6257-4d00-b414-0006791c75c4.png",
+        "avatar_url": "/static/uploads/2c1afb13-91d4-4905-b3fb-9cf2006ee0f0/2033c24b-3e9a-4110-a1de-4715b6cbc0e5.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "char_1769361790834_21qhwdezs",
         "name": "夏侯澹",
-        "avatar_url": "http://localhost:8001/static/uploads/39dfb94b-3d50-4551-b0ec-aff67ed1bcb6.png",
+        "avatar_url": "/static/uploads/2c1afb13-91d4-4905-b3fb-9cf2006ee0f0/f0c44b6c-5b9e-4bdf-900c-3ed4f5fd4324.png",
         "tags": [],
         "prompt": ""
       }
@@ -1018,7 +1018,7 @@
     ],
     "default_scene_id": null,
     "default_panel_layout": "3-panel",
-    "default_image_count": 4
+    "default_image_count": 3
   },
   "0cd7aa59-b1f2-4451-aa21-c8932e1c9f31": {
     "id": "0cd7aa59-b1f2-4451-aa21-c8932e1c9f31",
@@ -2834,19 +2834,19 @@
     "style": "chinese_anime",
     "shots": [
       {
-        "prompt": "特写镜头，王翠花一脸疲惫地坐在拥挤的地铁车厢内。她扎着略显凌乱的马尾，戴着黑框眼镜 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [时空隧道: 抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。]",
+        "prompt": "特写镜头，王翠花一脸疲惫地坐在拥挤的地铁车厢内。她扎着略显凌乱的马尾，戴着黑框眼镜 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [深夜地铁车厢: 现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。]",
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "f8e28f92-91b8-4165-aca7-ac9abb76d5bd",
         "order": 0,
         "characters": [
           "char_1769596756936_1zhtblaoy"
         ],
-        "scene_id": "scene_1769596757528_oypui5qnp",
-        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/28792b39-da8e-45ec-8c60-bee22ff619c5.png",
+        "scene_id": "scene_1769596757528_pkaw9ae9q",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/efb9ef31-71ff-41be-b8f2-7378628b02de.png",
         "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fa5859a6-bbd8-4b2e-984b-e36d9bc15d19.png",
         "image_candidates": [
           "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/25ff2c20-bc5d-4fde-8370-f8b67d505ab6.png",
@@ -2878,14 +2878,14 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "0deba0d8-0854-4e43-96ca-cc20e1515da7",
         "order": 1,
         "characters": [
           "char_1769596756936_1zhtblaoy"
         ],
         "scene_id": "scene_1769596757528_pkaw9ae9q",
-        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fbe17f35-53bd-4e29-86a7-15ec01a4d0a4.png",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/533279fb-0938-4614-9960-7a41a755a9e2.png",
         "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8396aeff-b774-44fb-a755-db2744d78b0a.png",
         "image_candidates": [
           "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/533279fb-0938-4614-9960-7a41a755a9e2.png",
@@ -2909,7 +2909,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "3387abd1-cf8c-4d45-92e9-f6c63592c56e",
         "order": 2,
         "characters": [
@@ -2939,7 +2939,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "532c5e64-ffea-42de-a929-82b659be1546",
         "order": 3,
         "characters": [
@@ -2970,7 +2970,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "01adae35-3780-40e9-bf36-66f55cf0a817",
         "order": 4,
         "characters": [
@@ -3000,7 +3000,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "3e330113-3db4-4259-99aa-dd8c0d0a5bc1",
         "order": 5,
         "characters": [
@@ -3023,7 +3023,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "e9dd448a-4c8f-47d5-884f-ca937dde6505",
         "order": 6,
         "characters": [
@@ -3046,7 +3046,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "4b5f9aa3-21a2-4ced-9425-fc4d7e6ce2ac",
         "order": 7,
         "characters": [
@@ -3069,12 +3069,12 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": "/static/uploads/c36ca01b-6008-4f92-b6a5-b61b2c48f1a1_屏幕截图 2026-01-26 001937.png",
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "3f3f2538-9710-4473-a553-5a6cbae6f621",
         "order": 8,
         "characters": [],
         "scene_id": "scene_1769596757528_pkaw9ae9q",
-        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/dbdaf73f-27d5-4cd7-90e3-b56f4427dc06.png",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
         "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
         "image_candidates": [
           "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
@@ -3092,7 +3092,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": "/static/uploads/aa6ec126-2d27-4397-9c81-2e68243a9df5_屏幕截图 2026-01-26 001937.png",
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "90b66540-9920-466d-a57d-c2273a278eba",
         "order": 9,
         "characters": [
@@ -3121,7 +3121,7 @@
         "audio_prompt": null,
         "use_scene_ref": true,
         "custom_image_url": null,
-        "panel_layout": "1-panel",
+        "panel_layout": "3-panel",
         "id": "b9f6e896-20f3-45f9-8ef9-ab41fde4959c",
         "order": 10,
         "characters": [],
@@ -3175,7 +3175,7 @@
       }
     ],
     "default_scene_id": null,
-    "default_panel_layout": "1-panel",
+    "default_panel_layout": "3-panel",
     "default_image_count": 1
   },
   "eb5d26ac-ca0e-42ad-99cc-1a249e770483": {

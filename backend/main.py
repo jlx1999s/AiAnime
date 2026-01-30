@@ -689,6 +689,14 @@ async def delete_shot(project_id: str, shot_id: str):
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...), project_id: str | None = None):
+    # Check if file is already uploaded by checking hash or filename
+    # But for simplicity, we just save it.
+    # However, user mentioned "use previous image hosting url if uploaded locally without url"
+    # The current logic ALREADY returns a local URL: /static/uploads/...
+    # If the user means "upload to external hosting" that's different.
+    # Assuming the user means: Ensure local uploads have valid URLs that can be used by the model.
+    # Our local URLs /static/uploads/... are handled by _image_url_to_base64 correctly now.
+    
     filename = f"{uuid.uuid4()}_{file.filename}"
     if project_id:
         dir_path = os.path.join("static", "uploads", project_id)
@@ -699,8 +707,10 @@ async def upload_file(file: UploadFile = File(...), project_id: str | None = Non
         os.makedirs("static/uploads", exist_ok=True)
         file_path = f"static/uploads/{filename}"
         url = f"/static/uploads/{filename}"
+    
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
+        
     return {"url": url}
 
 @app.post("/projects/{project_id}/characters", response_model=Character)
@@ -1246,7 +1256,7 @@ def volcengine_generate_image(prompt: str, reference_images: list[dict] | None =
                     "prompt": marked_prompt,
                     "binary_data_base64": b64_list,
                     "seed": -1,
-                    "scale": 0.5
+                    "scale": 1.0  # Increase scale to strengthen reference influence
                 }
                 
                 # Use jimeng_t2i_v40 for multi-image support if possible, or fallback/use standard logic

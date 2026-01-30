@@ -123,16 +123,19 @@ const ProjectEditor = () => {
 
     const handleGenerateAllCharacters = async () => {
         const targets = characters.filter(c => !c.avatar_url || c.avatar_url.includes('dicebear'));
-        const targetList = targets.length > 0 ? targets : characters;
+        if (targets.length === 0) {
+            alert("没有需要生成的角色");
+            return;
+        }
         
-        if (!confirm(`确定要为 ${targetList.length} 个角色生成图片吗？`)) return;
+        if (!confirm(`确定要为 ${targets.length} 个角色生成图片吗？`)) return;
 
         setIsGeneratingCharacters(true);
         const currentProject = projects.find(p => p.id === projectId);
         const style = currentProject?.style || 'anime';
         
         try {
-            for (const char of targetList) {
+            for (const char of targets) {
                 const prompt = `${char.name}, ${char.prompt || char.description || 'character portrait'}, ${style} style, high quality`;
                 try {
                     const result = await ApiService.generateAsset(prompt, 'character', projectId);
@@ -150,16 +153,19 @@ const ProjectEditor = () => {
 
     const handleGenerateAllScenes = async () => {
         const targets = scenes.filter(s => !s.image_url);
-        const targetList = targets.length > 0 ? targets : scenes;
+        if (targets.length === 0) {
+            alert("没有需要生成的场景");
+            return;
+        }
 
-        if (!confirm(`确定要为 ${targetList.length} 个场景生成图片吗？`)) return;
+        if (!confirm(`确定要为 ${targets.length} 个场景生成图片吗？`)) return;
 
         setIsGeneratingScenes(true);
         const currentProject = projects.find(p => p.id === projectId);
         const style = currentProject?.style || 'anime';
 
         try {
-            for (const scene of targetList) {
+            for (const scene of targets) {
                 const prompt = `${scene.name}, ${scene.prompt || scene.description || 'scenery'}, ${style} style, high quality`;
                 try {
                     const result = await ApiService.generateAsset(prompt, 'scene', projectId);
@@ -177,14 +183,17 @@ const ProjectEditor = () => {
 
     const handleGenerateAllStoryboards = async () => {
         const targets = shots.filter(s => !s.image_url || s.image_url.includes('placehold'));
-        const targetList = targets.length > 0 ? targets : shots;
+        if (targets.length === 0) {
+            alert("没有需要生成的分镜");
+            return;
+        }
 
-        if (!confirm(`确定要为 ${targetList.length} 个分镜生成图片吗？`)) return;
+        if (!confirm(`确定要为 ${targets.length} 个分镜生成图片吗？`)) return;
 
         setIsGeneratingStoryboards(true);
         try {
             // Process in batches or parallel
-            const promises = targetList.map(shot => handleGenerate(shot.id, 'image', defaultImageCount, true));
+            const promises = targets.map(shot => handleGenerate(shot.id, 'image', defaultImageCount, true));
             await Promise.all(promises);
         } finally {
             setIsGeneratingStoryboards(false);
