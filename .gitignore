@@ -40,3 +40,7 @@ backend/static/
 backend/uploads/
 backend/.env
 backend/.env.*
+
+# Secrets
+backend/data/api_config.json
+backend/data/api_presets.json

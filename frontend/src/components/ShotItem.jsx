@@ -1,10 +1,91 @@
-import React, { useState } from 'react';
-import { Plus, Trash2, Image, Play, Video, MoveUp, MoveDown, Maximize } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { Plus, Trash2, Image, Video, MoveUp, MoveDown, Maximize, Upload } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
+import { ApiService } from '../services/api';
 
-const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMoveDown, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate }) => {
-    const [candidateCount, setCandidateCount] = useState(3);
+const updatePromptWithAsset = (currentPrompt, action, assetType, asset, oldAsset) => {
+    let newPrompt = currentPrompt || "";
+    
+    // Helper to escape regex special chars
+    const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    if (action === 'add') {
+        const assetName = asset?.name;
+        const assetPrompt = asset?.prompt;
+        if (!assetName) return newPrompt;
+
+        // Check if already exists to avoid duplication
+        const exists = newPrompt.includes(`[${assetName}`);
+        
+        if (!exists) {
+            // Append at the end
+            const tag = assetPrompt ? ` [${assetName}: ${assetPrompt}]` : ` [${assetName}]`;
+            newPrompt = newPrompt.trimEnd() + tag;
+        }
+    } else if (action === 'remove') {
+        const assetName = asset?.name;
+        if (!assetName) return newPrompt;
+        
+        // Remove [Name: ...] or [Name]
+        const escapedName = escapeRegExp(assetName);
+        const regex = new RegExp(`\\s*\\[${escapedName}(:.*?)?\\]`, 'g');
+        newPrompt = newPrompt.replace(regex, '');
+    } else if (action === 'replace') {
+        // Remove old asset
+        if (oldAsset) {
+            newPrompt = updatePromptWithAsset(newPrompt, 'remove', assetType, oldAsset);
+        }
+        // Add new asset
+        if (asset) {
+            newPrompt = updatePromptWithAsset(newPrompt, 'add', assetType, asset);
+        }
+    }
+    
+    return newPrompt.trim();
+};
+
+const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId }) => {
+    const [candidateCount, setCandidateCount] = useState(defaultImageCount || 3);
+    const customImageInputRef = useRef(null);
+
+    const handleCustomImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (!file || !projectId) return;
+        
+        try {
+            const result = await ApiService.uploadFile(file, projectId);
+            if (result && result.url) {
+                 onUpdate(shot.id, { ...shot, custom_image_url: result.url });
+            }
+        } catch (error) {
+            console.error("Custom image upload failed", error);
+            alert("上传失败");
+        }
+        e.target.value = null;
+    };
+
+    useEffect(() => {
+        if (defaultImageCount) {
+            setCandidateCount(defaultImageCount);
+        }
+    }, [defaultImageCount]);
     const [previewUrl, setPreviewUrl] = useState(null);
+    const videoItems = Array.isArray(shot.video_items) && shot.video_items.length
+        ? shot.video_items
+        : (shot.video_url ? [{ id: 'legacy', url: shot.video_url, progress: shot.video_progress, status: shot.status }] : []);
+    const [activeVideoId, setActiveVideoId] = useState(videoItems[0]?.id ?? null);
+
+    useEffect(() => {
+        if (!videoItems.length) {
+            if (activeVideoId !== null) {
+                setActiveVideoId(null);
+            }
+            return;
+        }
+        if (!videoItems.some(v => v.id === activeVideoId)) {
+            setActiveVideoId(videoItems[0].id);
+        }
+    }, [videoItems, activeVideoId]);
 
     return (
         <div className="grid grid-cols-[40px_minmax(200px,1.5fr)_1fr_1fr_1.5fr_1.5fr_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
@@ -16,7 +97,12 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
             {/* Column 1: Index */}
             <div className="flex flex-col items-center gap-2 pt-1">
                 <span className="text-xs font-mono text-gray-500 bg-dark-900 px-1.5 py-0.5 rounded-full min-w-[24px] text-center">{index + 1}</span>
-                <input type="checkbox" className="rounded bg-dark-700 border-dark-600 w-4 h-4 cursor-pointer accent-accent"/>
+                <input 
+                    type="checkbox" 
+                    className="rounded bg-dark-700 border-dark-600 w-4 h-4 cursor-pointer accent-accent"
+                    checked={isSelected || false}
+                    onChange={(e) => onSelect && onSelect(e.target.checked)}
+                />
             </div>
 
             {/* Column 2: Script */}
@@ -62,7 +148,8 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                                         e.stopPropagation();
                                         if (confirm(`确定移除 ${char?.name || '该角色'} 出场吗？`)) {
                                             const newCharacters = (shot.characters || []).filter(id => id !== charId);
-                                            onUpdate && onUpdate(shot.id, { ...shot, characters: newCharacters });
+                                            const newPrompt = updatePromptWithAsset(shot.prompt, 'remove', 'character', char);
+                                            onUpdate && onUpdate(shot.id, { ...shot, characters: newCharacters, prompt: newPrompt });
                                         }
                                     }}
                                     title="移除角色"
@@ -80,7 +167,9 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                                 if (e.target.value) {
                                     const newCharId = e.target.value;
                                     if (!shot.characters.includes(newCharId)) {
-                                        onUpdate(shot.id, { ...shot, characters: [...shot.characters, newCharId] });
+                                        const charToAdd = allCharacters?.find(c => c.id === newCharId);
+                                        const newPrompt = updatePromptWithAsset(shot.prompt, 'add', 'character', charToAdd);
+                                        onUpdate(shot.id, { ...shot, characters: [...shot.characters, newCharId], prompt: newPrompt });
                                     }
                                     e.target.value = "";
                                 }
@@ -108,7 +197,10 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                                 if (e.target.value) {
                                     const nextId = e.target.value;
                                     if (nextId !== shot.scene_id) {
-                                        onUpdate(shot.id, { ...shot, scene_id: nextId });
+                                        const oldScene = allScenes?.find(s => s.id === shot.scene_id);
+                                        const newScene = allScenes?.find(s => s.id === nextId);
+                                        const newPrompt = updatePromptWithAsset(shot.prompt, 'replace', 'scene', newScene, oldScene);
+                                        onUpdate(shot.id, { ...shot, scene_id: nextId, use_scene_ref: true, prompt: newPrompt });
                                     }
                                     e.target.value = "";
                                 }
@@ -158,7 +250,13 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                     <div className="flex gap-1">
                         <select 
                             className="flex-1 bg-dark-900 border border-dark-700 rounded text-xs text-gray-400 p-1 outline-none focus:border-accent appearance-none truncate"
-                            onChange={(e) => onUpdate(shot.id, { ...shot, scene_id: e.target.value })}
+                            onChange={(e) => {
+                                const nextId = e.target.value;
+                                const oldScene = allScenes?.find(s => s.id === shot.scene_id);
+                                const newScene = allScenes?.find(s => s.id === nextId);
+                                const newPrompt = updatePromptWithAsset(shot.prompt, 'replace', 'scene', newScene, oldScene);
+                                onUpdate(shot.id, { ...shot, scene_id: nextId, use_scene_ref: true, prompt: newPrompt });
+                            }}
                             value=""
                         >
                             <option value="" disabled>选择场景...</option>
@@ -175,7 +273,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                         <input 
                             type="checkbox" 
                             id={`use-scene-ref-${shot.id}`}
-                            checked={shot.use_scene_ref || false}
+                            checked={shot.use_scene_ref !== false}
                             onChange={(e) => onUpdate(shot.id, { ...shot, use_scene_ref: e.target.checked })}
                             className="rounded bg-dark-700 border-dark-600 w-3 h-3 cursor-pointer accent-accent"
                         />
@@ -184,6 +282,54 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                         </label>
                      </div>
                  )}
+
+                 {/* Custom Reference Image */}
+                 <div className="pt-2 border-t border-dark-700 mt-2">
+                    <div className="flex justify-between items-center mb-1">
+                        <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">自定义参考图</label>
+                    </div>
+                    
+                    <input 
+                        type="file" 
+                        ref={customImageInputRef} 
+                        className="hidden" 
+                        accept="image/*"
+                        onChange={handleCustomImageUpload}
+                    />
+
+                    {shot.custom_image_url ? (
+                        <div 
+                           className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/custom cursor-pointer"
+                           onClick={() => customImageInputRef.current?.click()}
+                           title="点击更换自定义参考图"
+                        >
+                           <img src={shot.custom_image_url} className="w-full h-full object-cover" alt="custom ref" />
+                           <div className="absolute inset-0 bg-black/50 hidden group-hover/custom:flex items-center justify-center">
+                               <span className="text-xs text-white">更换图片</span>
+                           </div>
+                           <button
+                               className="absolute top-0 right-0 p-1 bg-black/50 rounded-bl hidden group-hover/custom:block"
+                               onClick={(e) => {
+                                   e.stopPropagation();
+                                   if (confirm('确定移除自定义参考图吗？')) {
+                                       onUpdate(shot.id, { ...shot, custom_image_url: null });
+                                   }
+                               }}
+                               title="移除参考图"
+                           >
+                               <Trash2 size={10} className="text-red-400"/>
+                           </button>
+                        </div>
+                    ) : (
+                        <div 
+                            className="aspect-video w-full rounded border border-dashed border-dark-600 flex items-center justify-center gap-1 cursor-pointer hover:bg-dark-800 text-dark-500 hover:text-gray-400 transition-colors"
+                            onClick={() => customImageInputRef.current?.click()}
+                        >
+                            <Upload size={14}/>
+                            <span className="text-[10px]">上传参考图</span>
+                        </div>
+                    )}
+                 </div>
             </div>
 
             <div className="space-y-2">
@@ -192,7 +338,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                     <div className="flex items-center gap-1 text-[10px] text-dark-500">
                         {/* Panel Layout Selector */}
                         <select
-                            value={shot.panel_layout || "3-panel"}
+                            value={shot.panel_layout || "1-panel"}
                             onChange={(e) => onUpdate(shot.id, { ...shot, panel_layout: e.target.value })}
                             className="bg-dark-900 border border-dark-700 rounded px-1 py-0.5 text-[10px] text-gray-400 outline-none focus:border-accent mr-1"
                         >
@@ -228,7 +374,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                     </div>
                  </div>
 
-                 {shot.image_url ? (
+                {shot.image_url ? (
                     <div 
                         className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/image cursor-pointer"
                         onClick={() => onShotImageClick && onShotImageClick(shot.id)}
@@ -249,6 +395,18 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                         >
                             <Maximize size={16} />
                         </button>
+                        <button
+                            className="absolute top-2 left-2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded hidden group-hover/image:block z-10"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if (confirm('确定删除当前分镜图吗？')) {
+                                    onDeleteShotImage && onDeleteShotImage(shot.id, shot.image_url);
+                                }
+                            }}
+                            title="删除分镜"
+                        >
+                            <Trash2 size={16} />
+                        </button>
                     </div>
                 ) : (
                     <div className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 text-dark-500 bg-dark-900/30">
@@ -268,6 +426,21 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
                                     onClick={() => onSelectCandidate && onSelectCandidate(shot.id, url)}
                                 >
                                     <img src={url} alt="candidate" className="w-full h-full object-cover" />
+                                    <div className="absolute top-0 right-0 p-0.5 bg-black/60 text-white rounded-bl">
+                                        <button
+                                            type="button"
+                                            className="block"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                if (confirm('确定删除这张分镜图吗？')) {
+                                                    onDeleteShotImage && onDeleteShotImage(shot.id, url);
+                                                }
+                                            }}
+                                            title="删除分镜"
+                                        >
+                                            <Trash2 size={10} />
+                                        </button>
+                                    </div>
                                 </button>
                             );
                         })}
@@ -278,30 +451,78 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onMoveUp, onMov
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视频</label>
-                    {shot.video_url && (
+                    {shot.image_url && (
                         <span
                             className="text-[10px] text-dark-500 cursor-pointer hover:text-accent"
                             onClick={() => onGenerate && onGenerate(shot.id, 'video')}
                         >
-                            重生成
+                            生成视频
                         </span>
                     )}
                  </div>
 
-                 {shot.video_url ? (
-                     <div className="aspect-video w-full rounded overflow-hidden border border-dark-700 bg-black relative group/video">
-                        <video src={shot.video_url} className="w-full h-full object-cover" controls />
-                     </div>
-                 ) : (
+                {videoItems.length > 0 ? (
+                    <div className="space-y-2">
+                        {(() => {
+                            const activeItem = videoItems.find(v => v.id === activeVideoId) || videoItems[0];
+                            return (
+                                <div className="aspect-video w-full rounded overflow-hidden border border-accent bg-black relative group/video">
+                                    {activeItem?.url ? (
+                                        <video src={activeItem.url} className="w-full h-full object-cover" controls />
+                                    ) : (
+                                        <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-dark-900/30 text-dark-500">
+                                            <Video size={20}/>
+                                            <span className="text-[10px]">
+                                                {activeItem?.status === 'failed' ? '生成失败' : (activeItem?.progress > 0 ? `生成中 ${activeItem.progress}%` : '生成中...')}
+                                            </span>
+                                        </div>
+                                    )}
+                                    <button
+                                        className="absolute top-2 right-2 p-1 bg-black/60 hover:bg-black/80 text-white rounded hidden group-hover/video:block"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (activeItem && confirm('确定删除该视频吗？')) {
+                                                onDeleteVideo && onDeleteVideo(shot.id, activeItem.id, activeItem.url);
+                                            }
+                                        }}
+                                        title="删除视频"
+                                    >
+                                        <Trash2 size={14} />
+                                    </button>
+                                </div>
+                            );
+                        })()}
+                        <div className="flex gap-2 overflow-x-auto pt-1">
+                            {videoItems.map((item) => {
+                                const isActive = item.id === activeVideoId || (!activeVideoId && videoItems[0]?.id === item.id);
+                                return (
+                                <div 
+                                    key={item.id} 
+                                    className={`aspect-video w-28 rounded overflow-hidden border bg-black relative transition-all group/video flex-shrink-0 cursor-pointer ${isActive ? 'border-accent scale-100 opacity-100' : 'border-dark-700 scale-[0.94] opacity-70'}`}
+                                    onClick={() => setActiveVideoId(item.id)}
+                                >
+                                    {item.url ? (
+                                        <video src={item.url} className="w-full h-full object-cover" />
+                                    ) : (
+                                        <div className="w-full h-full flex flex-col items-center justify-center gap-1 bg-dark-900/30 text-dark-500">
+                                            <Video size={14}/>
+                                            <span className="text-[10px]">
+                                                {item.status === 'failed' ? '失败' : (item.progress > 0 ? `${item.progress}%` : '生成中')}
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                            })}
+                        </div>
+                    </div>
+                ) : (
                     <div className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 bg-dark-900/30 relative">
                         {shot.image_url ? (
-                             <button 
-                                onClick={() => onGenerate(shot.id, 'video')}
-                                className="absolute inset-0 flex flex-col items-center justify-center gap-2 hover:bg-dark-700 text-dark-500 hover:text-accent hover:border-accent transition-colors rounded"
-                            >
+                            <div className="flex flex-col items-center justify-center gap-2 text-dark-500">
                                 <Video size={20}/>
-                                <span className="text-xs">生成视频</span>
-                            </button>
+                                <span className="text-xs">{shot.status === 'failed' ? '生成失败' : '点击右上角生成视频'}</span>
+                            </div>
                         ) : (
                             <div className="flex flex-col items-center justify-center gap-2 text-dark-600">
                                 <Video size={20} className="opacity-50"/>

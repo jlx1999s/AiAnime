@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Film, Trash2, Search, User, Plus, Wand2, RefreshCw, Maximize } from 'lucide-react';
+import { Trash2, Search, Plus, Wand2, RefreshCw, Maximize } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
 
-const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene }) => {
+const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene, onGenerateAllCharacters, onGenerateAllScenes, isGeneratingCharacters, isGeneratingScenes, defaultSceneId, onSetDefaultScene }) => {
     const [activeTab, setActiveTab] = useState('chars');
     const [previewUrl, setPreviewUrl] = useState(null);
 
@@ -32,9 +32,20 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                                 <h3 className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
                                     角色列表 ({characters?.length || 0})
                                 </h3>
-                                <div className="relative">
-                                    <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>
-                                    <Search size={10} className="absolute left-1.5 top-1.5 text-gray-500"/>
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={onGenerateAllCharacters}
+                                        disabled={isGeneratingCharacters}
+                                        className={`text-[10px] px-2 py-1 rounded transition-colors flex items-center gap-1 ${isGeneratingCharacters ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-dark-700 hover:bg-accent text-gray-300 hover:text-white'}`}
+                                        title="为所有角色生成图片（仅未生成的）"
+                                    >
+                                        {isGeneratingCharacters ? <RefreshCw size={10} className="animate-spin"/> : <Wand2 size={10} />} 
+                                        {isGeneratingCharacters ? '生成中...' : '一键生成'}
+                                    </button>
+                                    <div className="relative">
+                                        <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>
+                                        <Search size={10} className="absolute left-1.5 top-1.5 text-gray-500"/>
+                                    </div>
                                 </div>
                             </div>
                             <div className="grid grid-cols-3 gap-2">
@@ -104,9 +115,20 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                                 <h3 className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
                                     场景列表 ({scenes?.length || 0})
                                 </h3>
-                                <div className="relative">
-                                    <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>
-                                    <Search size={10} className="absolute left-1.5 top-1.5 text-gray-500"/>
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={onGenerateAllScenes}
+                                        disabled={isGeneratingScenes}
+                                        className={`text-[10px] px-2 py-1 rounded transition-colors flex items-center gap-1 ${isGeneratingScenes ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-dark-700 hover:bg-accent text-gray-300 hover:text-white'}`}
+                                        title="为所有场景生成图片（仅未生成的）"
+                                    >
+                                        {isGeneratingScenes ? <RefreshCw size={10} className="animate-spin"/> : <Wand2 size={10} />} 
+                                        {isGeneratingScenes ? '生成中...' : '一键生成'}
+                                    </button>
+                                    <div className="relative">
+                                        <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>
+                                        <Search size={10} className="absolute left-1.5 top-1.5 text-gray-500"/>
+                                    </div>
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-2">
@@ -124,6 +146,13 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                                             )}
                                             <div className="absolute top-1 right-1 hidden group-hover:flex gap-1">
                                                 <button 
+                                                    className={`p-1 ${defaultSceneId === scene.id ? 'bg-accent text-white' : 'bg-black/50 hover:bg-black/70 text-white'} rounded`}
+                                                    onClick={(e) => { e.stopPropagation(); onSetDefaultScene && onSetDefaultScene(scene.id); }}
+                                                    title={defaultSceneId === scene.id ? "取消默认参考图" : "设为默认参考图"}
+                                                >
+                                                    <span className="text-[10px] font-bold">Ref</span>
+                                                </button>
+                                                <button 
                                                     className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
                                                     onClick={(e) => { e.stopPropagation(); setPreviewUrl(scene.image_url); }}
                                                     title="放大查看"
@@ -138,6 +167,11 @@ const Sidebar = ({ characters, scenes, onSceneClick, onAddCharacter, onAddScene,
                                                     <RefreshCw size={12} />
                                                 </button>
                                             </div>
+                                            {defaultSceneId === scene.id && (
+                                                <div className="absolute top-1 left-1 bg-accent text-white text-[8px] px-1 rounded shadow-sm font-bold">
+                                                    默认参考
+                                                </div>
+                                            )}
                                         </div>
                                         <span className="text-[10px] text-gray-400 truncate w-full">{scene.name}</span>
                                     </div>

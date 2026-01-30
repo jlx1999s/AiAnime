@@ -2,14 +2,15 @@
   "default_project": {
     "id": "default_project",
     "name": "测试项目",
-    "style": "anime",
+    "style": "manga",
     "shots": [
       {
         "prompt": "镜头仰拍刻家入口，巨石上“刻家”二字布满剑痕...",
         "dialogue": "(深吸一口气)",
         "audio_prompt": null,
         "use_scene_ref": false,
-        "panel_layout": "3-panel",
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
         "id": "bae9e86c-a1f2-4a0f-82f6-af5bb4b30a93",
         "order": 0,
         "characters": [
@@ -17,8 +18,11 @@
         ],
         "scene_id": null,
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=Shot+2",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -26,6 +30,7 @@
         "dialogue": "抬头。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "27f368e9-4582-449e-817b-9fdece1ea338",
         "order": 1,
@@ -34,20 +39,37 @@
           "char_1769188438358_36f2znvxg"
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
-        "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252324281C088D1760BDFFC4046A-8068-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441068&x-signature=F%2Bk4VVeIi2MBdytyURJcvvUhmYs%3D",
+        "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125232407568FDAAE0F00BBC968F4-2159-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441048&x-signature=FnDMgiIqzYgDY6tubG2E5wnfidY%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125232407568FDAAE0F00BBC968F4-2159-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441048&x-signature=FnDMgiIqzYgDY6tubG2E5wnfidY%3D",
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523241831165D0850422731191E-5651-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441058&x-signature=PJmdQdeIB0dzXyVy%2BZevsZu6FrQ%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252324281C088D1760BDFFC4046A-8068-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441068&x-signature=F%2Bk4VVeIi2MBdytyURJcvvUhmYs%3D"
         ],
-        "video_url": null,
-        "status": "completed"
+        "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "legacy",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "progress": null,
+            "status": "GenerationStatus.COMPLETED"
+          },
+          {
+            "id": "92515982-142f-4144-8964-c0f4cc59b20e",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          }
+        ],
+        "status": "failed"
       },
       {
         "prompt": "0.1-3秒: 低角度，快速推拉镜头。陆远受到重力冲击向后滑行...",
         "dialogue": "陆远：滚去黑暗剑冢里自生自灭吧！",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "fabab185-2308-42a8-8ba7-ce7ec6c152e7",
         "order": 2,
@@ -56,12 +78,22 @@
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
         "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340473A143308CD6499C63E2A-2332-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442047&x-signature=%2BD4YXlUlYQe%2FQPpVhdAjCu5SYuA%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340473A143308CD6499C63E2A-2332-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442047&x-signature=%2BD4YXlUlYQe%2FQPpVhdAjCu5SYuA%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340561F7AD15D550BB1116C13-3691-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442056&x-signature=JABOgEKOQr6a9LkjSNtrQIcDtMg%3D",
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252341067EA44E4406BDF43470BC-3534-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442067&x-signature=DCCBWdTyGo41zctmC4WbQt0xQ%2FU%3D"
         ],
-        "video_url": null,
+        "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "legacy",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "progress": null,
+            "status": "GenerationStatus.COMPLETED"
+          }
+        ],
         "status": "completed"
       },
       {
@@ -69,6 +101,7 @@
         "dialogue": "……参见皇上。",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "ea53fe10-754f-437e-895c-02fcd4f8aeab",
         "order": 3,
@@ -79,8 +112,11 @@
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -88,6 +124,7 @@
         "dialogue": "本帝不碰你。你若乖乖听话，或许还能多活几日。",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "bb29740e-9314-4886-acea-86f83f44090d",
         "order": 4,
@@ -97,12 +134,15 @@
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
         "image_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252337511058B71228DEBF338FB5-9156-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441871&x-signature=VolP4e2cQhyY6dt4exFYlHFRyKU%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252337511058B71228DEBF338FB5-9156-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441871&x-signature=VolP4e2cQhyY6dt4exFYlHFRyKU%3D",
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233807FF594E7279F51032F35F-5221-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441888&x-signature=VVhtxMeLZXi%2Fql4aEUwxed7gImw%3D",
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233817CED4F4707D10C3C3CBD8-1646-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441898&x-signature=H8n7eIQne3%2FIpTijd8%2Bs6Yv1sm4%3D"
         ],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "completed"
       },
       {
@@ -110,6 +150,7 @@
         "dialogue": "好家伙，这不就是书里三天后要被处死的恶魔宠妃本人吗……",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "a53f97b7-fd26-47c4-bbcf-fba77df74eec",
         "order": 5,
@@ -117,13 +158,16 @@
           "char_1769188438358_36f2znvxg"
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
-        "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233100640DAF4DBC1F07101D41-5895-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441461&x-signature=XiYbyIwYRujdqqjSPQEaDDEIa8E%3D",
+        "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252330415FDD70A40B3B1CC360D7-7228-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441441&x-signature=YHJU0sHE6T2psiLpqrCP8UAmwUk%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252330415FDD70A40B3B1CC360D7-7228-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441441&x-signature=YHJU0sHE6T2psiLpqrCP8UAmwUk%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233050D9DE67BADFEF03C1C9D3-4269-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441451&x-signature=39C5U0Rr1iJMAJQDYqeq8q%2FzCZY%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233100640DAF4DBC1F07101D41-5895-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441461&x-signature=XiYbyIwYRujdqqjSPQEaDDEIa8E%3D"
         ],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "completed"
       },
       {
@@ -131,6 +175,7 @@
         "dialogue": "身份危机 ing。按剧情发展，今晚我要是装疯卖傻，明天就得掉脑袋……",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "e84807b1-8f23-4cfb-84af-69123e57005e",
         "order": 6,
@@ -139,12 +184,15 @@
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
         "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523390108C3A054C4779B14E9A4-6621-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441941&x-signature=MSJiTz5ACDbeeMqIXAfO%2FnnwZr4%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523390108C3A054C4779B14E9A4-6621-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441941&x-signature=MSJiTz5ACDbeeMqIXAfO%2FnnwZr4%3D",
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233912212170C5EBA3570FF884-8169-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441952&x-signature=Q9IUco5tfIBCbI19sCzB5wgoPcE%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523392261242B97338DC8C366BF-3401-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441962&x-signature=iIw6E1H074c%2FUJSE%2Fuk3G10Ob4U%3D"
         ],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "completed"
       },
       {
@@ -152,6 +200,7 @@
         "dialogue": "皇上可还记得三日前，御花园那场刺杀？",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "77d43749-88c6-471b-99b5-166d6d8a0218",
         "order": 7,
@@ -161,12 +210,15 @@
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
         "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234145FE39852E0DE4F4C4A14B-1048-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442106&x-signature=eJPt6NaxOqP%2BbivHrUuVVSm%2Fr9A%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234145FE39852E0DE4F4C4A14B-1048-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442106&x-signature=eJPt6NaxOqP%2BbivHrUuVVSm%2Fr9A%3D",
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234156D3FB911240464A31BD58-4873-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442116&x-signature=AZKJEz7p66Go2oq35A4W6IpJgho%3D",
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523420716EAE0521F8F9D10AAC1-5615-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442127&x-signature=H6HqCcz3lNRHhizKJFGU1h4PGfM%3D"
         ],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "completed"
       },
       {
@@ -174,6 +226,7 @@
         "dialogue": "你不该知道的事，说得倒详细。",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "1-panel",
         "id": "3c9c31ac-44f5-42fd-8dab-7f02c9547b42",
         "order": 8,
@@ -182,12 +235,15 @@
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
         "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252346570173C3F71A5B5413C112-4769-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442417&x-signature=Ts7%2FZRy96BNP7whTrLaf9Pd0VKs%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252346479A628EF9B15EA23564DC-9304-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442408&x-signature=nmKC7hadwa5fhUC3IhuI%2BhDq46s%3D",
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252346570173C3F71A5B5413C112-4769-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442417&x-signature=Ts7%2FZRy96BNP7whTrLaf9Pd0VKs%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523470702C6A864865DC8C3A84C-6722-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442427&x-signature=USr99BCrjwIA18gGaWGRvFHfaa8%3D"
         ],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "completed"
       },
       {
@@ -195,6 +251,7 @@
         "dialogue": "所以，你在求活命？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "1-panel",
         "id": "9edf0678-ab27-45eb-aad4-f5b59d65fbd4",
         "order": 9,
@@ -203,13 +260,16 @@
           "char_1769188438358_36f2znvxg"
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
-        "image_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523482014F9B028049DEA358D58-6263-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442500&x-signature=HMX9IJiDvAIOMSUCjnoEoP9zHE8%3D",
+        "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252347598AD79F0A97A06B3795F7-1803-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442479&x-signature=gkwnf2pFhL%2Bf8tb2RfXdvp1dE5o%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252347598AD79F0A97A06B3795F7-1803-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442479&x-signature=gkwnf2pFhL%2Bf8tb2RfXdvp1dE5o%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234809AFA1199A9AA1933263B2-4615-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442490&x-signature=cQB4LJ%2FbDz%2FxLccZ2qQrS1NUzLI%3D",
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523482014F9B028049DEA358D58-6263-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442500&x-signature=HMX9IJiDvAIOMSUCjnoEoP9zHE8%3D"
         ],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "completed"
       },
       {
@@ -217,6 +277,7 @@
         "dialogue": "臣妾在求一场合作。",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "1-panel",
         "id": "6fa68bfd-0ab1-415b-ab8a-ecf870e5b34c",
         "order": 10,
@@ -226,12 +287,22 @@
         ],
         "scene_id": "scene_1769188438366_mq6hmsr6b",
         "image_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260105062318022658B615C6AD6D-1305-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447106&x-signature=LI7%2Fg0pV3%2BeUx5UXd97Rk4EpSaI%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260105062318022658B615C6AD6D-1305-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447106&x-signature=LI7%2Fg0pV3%2BeUx5UXd97Rk4EpSaI%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126010515C665E7DBEEC3C2174B11-3795-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447115&x-signature=HAJjcg3bHbnMffgU6XBcssHxZys%3D",
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126010525BD18832046DA161659E8-8362-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447125&x-signature=gxh7EzcWIIJu2WbSeFzVdN1dGJc%3D"
         ],
-        "video_url": null,
+        "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "legacy",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "progress": null,
+            "status": "GenerationStatus.COMPLETED"
+          }
+        ],
         "status": "completed"
       },
       {
@@ -239,6 +310,7 @@
         "dialogue": "你凭什么，让朕信你不是来送死的？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "45e3d384-0af0-4483-8a2f-78682b0fe5a0",
         "order": 11,
@@ -247,15 +319,26 @@
         ],
         "scene_id": "scene_1769188438366_cf3fgfpt5",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
-        "video_url": null,
-        "status": "idle"
+        "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "legacy",
+            "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "progress": null,
+            "status": "GenerationStatus.COMPLETED"
+          }
+        ],
+        "status": "completed"
       },
       {
         "prompt": "特写庾晚音嘴角——一抹极淡、极稳的弧度浮现，右眼微眯，烛光在她眼尾划出一道锐利金线；背景彻底虚焦，唯她唇边笑意如刃出鞘，冷静中透出不容置疑的笃定。",
         "dialogue": "凭臣妾知道，谁是明日要在朝堂上倒下的第一颗棋子。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "289e4bad-d834-4385-b07d-c0413040b5bc",
         "order": 12,
@@ -264,8 +347,11 @@
         ],
         "scene_id": "scene_1769188438366_cf3fgfpt5",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -273,6 +359,7 @@
         "dialogue": "说下去。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "a6b45f3d-452f-4aec-9beb-6200a8bee6d7",
         "order": 13,
@@ -281,8 +368,11 @@
         ],
         "scene_id": "scene_1769188438366_cf3fgfpt5",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -290,6 +380,7 @@
         "dialogue": "臣妾献上一局局中局——你要的头，我帮你送上；你要的局，我帮你搅乱。条件是，从今夜起，庾晚音这一条命，归皇上保。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "d70bc5d1-5bcd-4125-b512-7b0d722d3158",
         "order": 14,
@@ -299,8 +390,11 @@
         ],
         "scene_id": "scene_1769188438366_cf3fgfpt5",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -308,6 +402,7 @@
         "dialogue": "好。从今晚起，你说的每一句话，都算数。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "34570875-b3e7-4dfd-9387-2bbd623b94e6",
         "order": 15,
@@ -317,8 +412,11 @@
         ],
         "scene_id": "scene_1769188438366_cf3fgfpt5",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -326,6 +424,7 @@
         "dialogue": "成了。恶魔宠妃剧本，临时改成——冷帝合伙人。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "acb67481-657b-4b7a-8fc8-e5ca130bef3a",
         "order": 16,
@@ -335,8 +434,118 @@
         ],
         "scene_id": "scene_1769188438366_cf3fgfpt5",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "远景，阳光明媚的院子。10岁的小明身穿黄色T恤，手里端着一个盛满狗粮的蓝色小碗，正从屋门走出来。背景是绿意盎然的草坪和木质围栏，光影柔和。 [小明: 一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+        "dialogue": "大黄，开饭啦！快过来！",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "fa04d8e9-9ca8-49f6-be67-8065246e7819",
+        "order": 17,
+        "characters": [
+          "char_1769588744442_ml4fd1sj9"
+        ],
+        "scene_id": "scene_1769588744452_x0wm24owb",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写，金毛寻回犬大黄的特写。它听到声音后猛地抬头，耳朵竖起，尾巴疯狂摇摆，眼神中充满期待和兴奋。背景是虚化的草地。 [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+        "dialogue": "（欢快的吠叫声）",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "9dab55e6-17d6-4309-b3c8-0f0481b84a90",
+        "order": 18,
+        "characters": [
+          "char_1769588744442_jdvssvnq2"
+        ],
+        "scene_id": "scene_1769588744452_x0wm24owb",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "中景，侧拍镜头。小明走到大黄面前蹲下，小心翼翼地将蓝色狗碗放在草地上。大黄已经迫不及待地凑近，用鼻子嗅着食物。阳光洒在他们身上，氛围温馨。 [小明: 一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。] [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+        "dialogue": "慢点吃，别噎着。",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "2245e229-731d-434b-a29e-942ef67bc465",
+        "order": 19,
+        "characters": [
+          "char_1769588744442_ml4fd1sj9",
+          "char_1769588744442_jdvssvnq2"
+        ],
+        "scene_id": "scene_1769588744452_x0wm24owb",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "俯拍特写，狗碗内部。大黄金色的脑袋占据画面，它正欢快地舔食着狗粮，发出清脆的咀嚼声。一些碎屑掉落在碗边。 [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "8ffede6d-ddb7-411b-b5a5-900f67c606ed",
+        "order": 20,
+        "characters": [
+          "char_1769588744442_jdvssvnq2"
+        ],
+        "scene_id": "scene_1769588744452_x0wm24owb",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "近景，特写小明的手。小明温柔地抚摸着大黄头顶金色的毛发。小明脸上洋溢着开心的笑容，大黄眯着眼睛，显得非常享受。温暖的夕阳余晖勾勒出两者的轮廓。 [小明: 一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。] [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+        "dialogue": "真乖，多吃点长壮实。 ",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "d0ddc649-7cba-40d3-b662-0308839576ae",
+        "order": 21,
+        "characters": [
+          "char_1769588744442_ml4fd1sj9",
+          "char_1769588744442_jdvssvnq2"
+        ],
+        "scene_id": "scene_1769588744452_x0wm24owb",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       }
     ],
@@ -351,14 +560,14 @@
       {
         "id": "c2",
         "name": "神秘师兄",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Brother",
+        "avatar_url": "http://localhost:8001/static/uploads/7f354946-4f25-44bd-b1c8-863adf6dd239.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "c3",
         "name": "陈远 (剑主)",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=ChenMaster",
+        "avatar_url": "http://localhost:8001/static/uploads/c63ff68d-6bc8-4e93-9664-92867d6bcecf.png",
         "tags": [],
         "prompt": ""
       },
@@ -372,14 +581,14 @@
       {
         "id": "char_1769188438358_sh5zhi4e",
         "name": "太监甲",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=太监甲",
+        "avatar_url": "http://localhost:8001/static/uploads/81828191-9ab7-461b-a30d-4f24ac8c9946.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "char_1769188438358_1q8ahu8a2",
         "name": "太监乙",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=太监乙",
+        "avatar_url": "http://localhost:8001/static/uploads/7b81d32a-754e-4d13-8d3d-e27d052f9e4e.png",
         "tags": [],
         "prompt": ""
       },
@@ -389,6 +598,20 @@
         "avatar_url": "http://localhost:8001/static/uploads/bbccc315-a25c-46f2-b430-5268bcbb8201_屏幕截图 2026-01-26 002002.png",
         "tags": [],
         "prompt": ""
+      },
+      {
+        "id": "char_1769588744442_ml4fd1sj9",
+        "name": "小明",
+        "avatar_url": "http://localhost:8001/static/uploads/1c0be5e1-88de-4cfc-9f5b-67227369ee95.png",
+        "tags": [],
+        "prompt": "一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。"
+      },
+      {
+        "id": "char_1769588744442_jdvssvnq2",
+        "name": "大黄",
+        "avatar_url": "http://localhost:8001/static/uploads/4274047d-c100-4340-be34-eb30fe28091f.png",
+        "tags": [],
+        "prompt": "一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。"
       }
     ],
     "scenes": [
@@ -402,29 +625,40 @@
       {
         "id": "scene_1769188438366_cmuux66oq",
         "name": "帝王寝殿内·帷幕后",
-        "image_url": "",
+        "image_url": "http://localhost:8001/static/uploads/5874f22e-efa0-4a70-8d3f-3f896272315f.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "scene_1769188438366_cf3fgfpt5",
         "name": "帝王寝殿·龙榻前",
-        "image_url": "",
+        "image_url": "http://localhost:8001/static/uploads/0766f6cd-94a3-4ea8-ad16-ee0b7ce8ea9b.png",
         "tags": [],
         "prompt": ""
+      },
+      {
+        "id": "scene_1769588744452_x0wm24owb",
+        "name": "阳光小院",
+        "image_url": "http://localhost:8001/static/uploads/f297ba21-73c2-418f-aef1-1c599518bc37.png",
+        "tags": [],
+        "prompt": "一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。"
       }
-    ]
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
   },
   "2c1afb13-91d4-4905-b3fb-9cf2006ee0f0": {
     "id": "2c1afb13-91d4-4905-b3fb-9cf2006ee0f0",
     "name": "123",
-    "style": "anime",
+    "style": "realistic",
     "shots": [
       {
         "prompt": "俯视镜头，金红双色龙纹帷帐垂落如血瀑，烛火在雕龙紫檀案上摇曳，光影在青金石地砖上跳动；庾晚音身着素白宫装跪于龙榻前，发髻微松，指尖死死攥住袖口布料，指节泛白，两名黑衣太监立于两侧阴影中，身形僵直如傀儡。",
         "dialogue": "……参见皇上。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "f2ff6a6a-fcb7-419a-8020-828a41394a36",
         "order": 0,
@@ -433,8 +667,11 @@
         ],
         "scene_id": "scene_1769361790840_bdcgmiiyx",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -442,6 +679,7 @@
         "dialogue": "抬头。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "42e14ce9-f6be-44e0-9ce7-aebc91bf8b98",
         "order": 1,
@@ -451,8 +689,11 @@
         ],
         "scene_id": "scene_1769361790840_bdcgmiiyx",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -460,6 +701,7 @@
         "dialogue": "好家伙，这不就是书里三天后要被处死的恶魔宠妃本人吗……",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "1b7f6a54-ff67-4b35-b477-03e529e70b85",
         "order": 2,
@@ -468,8 +710,11 @@
         ],
         "scene_id": "scene_1769361790840_bdcgmiiyx",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -477,6 +722,7 @@
         "dialogue": "本帝不碰你。你若乖乖听话，或许还能多活几日。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "ba5a670a-f644-4fcd-869f-fd7683d27253",
         "order": 3,
@@ -486,8 +732,11 @@
         ],
         "scene_id": "scene_1769361790840_bdcgmiiyx",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -495,6 +744,7 @@
         "dialogue": "身份危机 ing。按剧情发展，今晚我要是装疯卖傻，明天就得掉脑袋……",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "5d002997-1159-4c6c-a436-41d0b7cc0f00",
         "order": 4,
@@ -503,8 +753,11 @@
         ],
         "scene_id": "scene_1769361790840_bdcgmiiyx",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -512,6 +765,7 @@
         "dialogue": "皇上可还记得三日前，御花园那场刺杀？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "4f371fe6-199e-471f-be50-ff28311b269d",
         "order": 5,
@@ -521,8 +775,11 @@
         ],
         "scene_id": "scene_1769361790840_ehr84xv67",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -530,6 +787,7 @@
         "dialogue": "你不该知道的事，说得倒详细。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "c1c5c294-826f-45fa-a3c0-17eeddc08884",
         "order": 6,
@@ -538,8 +796,11 @@
         ],
         "scene_id": "scene_1769361790840_ehr84xv67",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -547,6 +808,7 @@
         "dialogue": "臣妾只是……做了些梦。梦见有人要害你，也梦见臣妾会被当成祸根处死。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "a9c57899-0e46-4a81-8f94-6556d0efc72e",
         "order": 7,
@@ -556,8 +818,11 @@
         ],
         "scene_id": "scene_1769361790840_ehr84xv67",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -565,6 +830,7 @@
         "dialogue": "所以，你在求活命？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "c666cc3d-6f4e-40e8-b808-ea5e67da5f2a",
         "order": 8,
@@ -574,8 +840,11 @@
         ],
         "scene_id": "scene_1769361790840_ehr84xv67",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -583,6 +852,7 @@
         "dialogue": "皇上要的是稳江山、除内患。臣妾要的是活命，不当三日短命妖妃。不如——结个盟？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "e6c37560-b77d-4916-bf0d-d245acb9adc6",
         "order": 9,
@@ -592,8 +862,11 @@
         ],
         "scene_id": "scene_1769361790840_idaz7ol9x",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -601,6 +874,7 @@
         "dialogue": "你凭什么，让朕信你不是来送死的？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "42a571d1-bdf5-4e3e-b230-187992fff934",
         "order": 10,
@@ -609,8 +883,11 @@
         ],
         "scene_id": "scene_1769361790840_idaz7ol9x",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -618,6 +895,7 @@
         "dialogue": "凭臣妾知道，谁是明日要在朝堂上倒下的第一颗棋子。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "1f1b36b1-32c7-4f53-aa6f-d493aa233b82",
         "order": 11,
@@ -626,8 +904,11 @@
         ],
         "scene_id": "scene_1769361790840_idaz7ol9x",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -635,6 +916,7 @@
         "dialogue": "说下去。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "b28e6a3c-3ec9-4a39-b141-314d869012e1",
         "order": 12,
@@ -643,8 +925,11 @@
         ],
         "scene_id": "scene_1769361790840_idaz7ol9x",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -652,6 +937,7 @@
         "dialogue": "臣妾献上一局局中局——你要的头，我帮你送上；你要的局，我帮你搅乱。条件是，从今夜起，庾晚音这一条命，归皇上保。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "70a14003-d133-47a1-8877-5522b10a565f",
         "order": 13,
@@ -661,8 +947,11 @@
         ],
         "scene_id": "scene_1769361790840_idaz7ol9x",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -670,6 +959,7 @@
         "dialogue": "好。从今晚起，你说的每一句话，都算数。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "8c8e3e78-961d-49a0-9fea-5ad5a411a1fa",
         "order": 14,
@@ -679,8 +969,11 @@
         ],
         "scene_id": "scene_1769361790840_idaz7ol9x",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       }
     ],
@@ -688,14 +981,14 @@
       {
         "id": "char_1769361790834_d1k8ujkys",
         "name": "庾晚音",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=庾晚音",
+        "avatar_url": "http://localhost:8001/static/uploads/8b842d92-6257-4d00-b414-0006791c75c4.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "char_1769361790834_21qhwdezs",
         "name": "夏侯澹",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=夏侯澹",
+        "avatar_url": "http://localhost:8001/static/uploads/39dfb94b-3d50-4551-b0ec-aff67ed1bcb6.png",
         "tags": [],
         "prompt": ""
       }
@@ -722,7 +1015,10 @@
         "tags": [],
         "prompt": ""
       }
-    ]
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
   },
   "0cd7aa59-b1f2-4451-aa21-c8932e1c9f31": {
     "id": "0cd7aa59-b1f2-4451-aa21-c8932e1c9f31",
@@ -734,14 +1030,18 @@
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "16a20db6-20c2-437b-930a-7b2a21721caf",
         "order": 0,
         "characters": [],
         "scene_id": null,
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -749,14 +1049,18 @@
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "33e9c3f8-feb2-45bc-935d-1aeed999d396",
         "order": 1,
         "characters": [],
         "scene_id": null,
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -764,38 +1068,49 @@
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "70d4a7ef-345c-40b9-a458-48fb03d2366c",
         "order": 2,
         "characters": [],
         "scene_id": null,
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       }
     ],
     "characters": [],
-    "scenes": []
+    "scenes": [],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
   },
   "c70e1278-5d2c-46aa-a507-1e165f9a9278": {
     "id": "c70e1278-5d2c-46aa-a507-1e165f9a9278",
     "name": "Test Reorder",
-    "style": "anime",
+    "style": "realistic",
     "shots": [
       {
         "prompt": "Shot 2",
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "c3e3b394-6bc6-4e36-9000-b6cd7d828e63",
         "order": 0,
         "characters": [],
         "scene_id": null,
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -803,14 +1118,18 @@
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "6ce5a143-c85b-4b40-b93d-103ac0ea3513",
         "order": 1,
         "characters": [],
         "scene_id": null,
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -818,30 +1137,38 @@
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "0a2e857e-4eef-45cf-b799-fb5a7291de3e",
         "order": 2,
         "characters": [],
         "scene_id": null,
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       }
     ],
     "characters": [],
-    "scenes": []
+    "scenes": [],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
   },
   "e6630e76-9b9c-4ab6-bf03-86f1fa752cfa": {
     "id": "e6630e76-9b9c-4ab6-bf03-86f1fa752cfa",
     "name": "最新测试",
-    "style": "anime",
+    "style": "realistic",
     "shots": [
       {
         "prompt": "俯视镜头，金红双色龙纹刺绣帐幔垂落如壁，烛火在雕龙紫檀烛台上摇曳，光影在鎏金地砖上跳动；庾晚音身着素白宫装跪于龙榻前，两名黑衣太监一左一右按其肩，她指尖用力攥紧袖口，指节泛白，低垂着头，发间一支素银簪微颤。",
         "dialogue": "……参见皇上。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "cb3cdeb7-58b2-42c9-a105-1dd9f201f9f1",
         "order": 0,
@@ -852,8 +1179,11 @@
         ],
         "scene_id": "scene_1769362362457_71knd1746",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -861,6 +1191,7 @@
         "dialogue": "抬头。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "65b80af2-a002-41ee-bf13-47487e4a1b1f",
         "order": 1,
@@ -870,8 +1201,11 @@
         ],
         "scene_id": "scene_1769362362457_71knd1746",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -879,6 +1213,7 @@
         "dialogue": "好家伙，这不就是书里三天后要被处死的恶魔宠妃本人吗……",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "b36736aa-12cd-46dd-8a13-d672574b0807",
         "order": 2,
@@ -887,8 +1222,11 @@
         ],
         "scene_id": "scene_1769362362457_71knd1746",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -896,6 +1234,7 @@
         "dialogue": "本帝不碰你。你若乖乖听话，或许还能多活几日。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "28e0ea10-5002-4ed3-9d71-ed2af553d978",
         "order": 3,
@@ -905,8 +1244,11 @@
         ],
         "scene_id": "scene_1769362362457_71knd1746",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -914,6 +1256,7 @@
         "dialogue": "身份危机 ing。按剧情发展，今晚我要是装疯卖傻，明天就得掉脑袋……",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "1e693b49-51fd-4fb5-85ae-675e35952254",
         "order": 4,
@@ -922,8 +1265,11 @@
         ],
         "scene_id": "scene_1769362362457_71knd1746",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -931,6 +1277,7 @@
         "dialogue": "皇上可还记得三日前，御花园那场刺杀？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "47e237e5-69b0-420f-af11-4c5ec5d296a5",
         "order": 5,
@@ -940,8 +1287,11 @@
         ],
         "scene_id": "scene_1769362362457_e7tbdojyz",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -949,6 +1299,7 @@
         "dialogue": "你不该知道的事，说得倒详细。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "29f229b5-5dab-42b0-97d3-9107f909721e",
         "order": 6,
@@ -957,8 +1308,11 @@
         ],
         "scene_id": "scene_1769362362457_e7tbdojyz",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -966,6 +1320,7 @@
         "dialogue": "臣妾只是……做了些梦。梦见有人要害你，也梦见臣妾会被当成祸根处死。",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "a1d6e220-1b0c-48d9-966a-e6891482fa49",
         "order": 7,
@@ -975,8 +1330,11 @@
         ],
         "scene_id": "scene_1769362362457_e7tbdojyz",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -984,6 +1342,7 @@
         "dialogue": "所以，你在求活命？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "b854cb44-58c4-4bf9-9de5-8d437fd7c1f1",
         "order": 8,
@@ -993,8 +1352,11 @@
         ],
         "scene_id": "scene_1769362362457_e7tbdojyz",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -1002,6 +1364,7 @@
         "dialogue": "皇上要的是稳江山、除内患。臣妾要的是活命，不当三日短命妖妃。不如——结个盟？",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "2cdee9f8-4416-4828-aad5-9d89bcce1144",
         "order": 9,
@@ -1011,8 +1374,11 @@
         ],
         "scene_id": "scene_1769362362457_0lc9t32da",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       },
       {
@@ -1020,6 +1386,7 @@
         "dialogue": "",
         "audio_prompt": null,
         "use_scene_ref": false,
+        "custom_image_url": null,
         "panel_layout": "3-panel",
         "id": "fe1b36ff-bb78-41ac-a0bd-e8d2fcd3c597",
         "order": 10,
@@ -1028,8 +1395,11 @@
         ],
         "scene_id": "scene_1769362362457_0lc9t32da",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       }
     ],
@@ -1037,28 +1407,28 @@
       {
         "id": "char_1769362362445_rbe14l8it",
         "name": "庾晚音",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=庾晚音",
+        "avatar_url": "http://localhost:8001/static/uploads/0a4538ee-fa96-4f90-8fb0-694782a2355a.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "char_1769362362445_jrvzbk1yr",
         "name": "太监甲",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=太监甲",
+        "avatar_url": "http://localhost:8001/static/uploads/430848bd-4ec9-4852-b09e-757a79d899f0.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "char_1769362362445_8crniq7v7",
         "name": "太监乙",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=太监乙",
+        "avatar_url": "http://localhost:8001/static/uploads/e9fdebc7-ab40-4589-b82e-2ff589838d6e.png",
         "tags": [],
         "prompt": ""
       },
       {
         "id": "char_1769362362445_0rn04roi8",
         "name": "夏侯澹",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=夏侯澹",
+        "avatar_url": "http://localhost:8001/static/uploads/cb32b643-fc2b-43d4-935f-1543f6ebfe1e.png",
         "tags": [],
         "prompt": ""
       }
@@ -1085,37 +1455,57 @@
         "tags": [],
         "prompt": ""
       }
-    ]
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
   },
   "b25e5210-f8ba-4b5c-9b88-eba1497ccbcf": {
     "id": "b25e5210-f8ba-4b5c-9b88-eba1497ccbcf",
     "name": "最新最新测试",
-    "style": "anime",
+    "style": "realistic",
     "shots": [
       {
         "prompt": "俯视镜头，金红双色龙纹刺绣帷帐垂落如瀑，烛火在青铜蟠龙烛台上摇曳，光影在鎏金地砖上跳动；殿内雕梁画栋，朱漆蟠龙柱矗立，空气弥漫微尘与冷香；庾晚音身着素白宫装立于龙榻前，两名黑衣净面太监一左一右押其臂膀，她指尖用力攥紧袖缘，指节泛白。 [庾晚音: 年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。] [太监甲: 中年太监，净面无须，肤色蜡黄，细长眼，薄唇紧抿；头戴乌纱小帽，身着石青圆领蟒纹宦官常服，腰束墨绿丝绦；左手执拂尘，右手按在庾晚音左臂上，指节粗大，神情木然肃穆。] [太监乙: 中年太监，净面无须，颧骨高凸，眼神浑浊；着同款石青蟒纹宦官常服，右手执拂尘，左手按在庾晚音右臂上，袖口微磨旧；身形略佝偻，站姿刻板如桩。] [帝王寝殿: 盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。]",
         "dialogue": "……参见皇上。",
         "audio_prompt": null,
         "use_scene_ref": false,
-        "panel_layout": "3-panel",
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
         "id": "819deed7-8ba3-4986-9a35-dcc2aed2098f",
         "order": 0,
         "characters": [
-          "char_1769362443706_gaa3qy5x4",
-          "char_1769362443706_7rghjwsjk",
-          "char_1769362443706_79ghsgskn"
+          "char_1769362443706_gaa3qy5x4"
         ],
         "scene_id": "scene_1769362443721_nc8iqeywd",
-        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-        "image_candidates": [],
-        "video_url": null,
-        "status": "idle"
+        "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601270212520215154CF6A14D81322D-6774-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769537573&x-signature=N8MoZ5TGBDaS5Ur1ENH4CJ9OlHM%3D",
+        "original_image_url": null,
+        "image_candidates": [
+          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260157243CF7561038DF483B963B-3222-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769450245&x-signature=h7XhPb97t6r3rNoQ3eK%2BB4%2FbHGs%3D",
+          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126015744372ACA94AC4504C89F42-4870-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769450264&x-signature=uvYSPts3ECwCMoHGNkeUv9GV4q0%3D",
+          "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260158245584B5EC3DDE97C7D8BF-9788-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769450305&x-signature=z3j2lMGRcDB7%2B%2F5yH%2FDuN%2Fj518I%3D",
+          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126015837CDB6FC02C119E618789D-7380-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769450317&x-signature=W0MZaO1tPUPY9aluhS3T4cc4Bng%3D",
+          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012601584951C91725A7BEBD3E5FF8-8783-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769450329&x-signature=Z5ATEYIUUijVuDQ7MeD5TCuggXo%3D",
+          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601270212520215154CF6A14D81322D-6774-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769537573&x-signature=N8MoZ5TGBDaS5Ur1ENH4CJ9OlHM%3D"
+        ],
+        "video_url": "http://localhost:8001/static/uploads/b31c0328-3c88-43f4-8131-8d28f4923739.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "24805e0a-ac89-4186-9f8c-543b183bf21e",
+            "url": "http://localhost:8001/static/uploads/b31c0328-3c88-43f4-8131-8d28f4923739.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
       },
       {
         "prompt": "中景侧拍，夏侯澹半倚在明黄云龙纹锦被龙榻上，玄黑龙袍广袖垂落，腰束赤金螭纹带，墨发未冠仅以玉簪松挽；他眉峰凌厉，眼瞳幽深如寒潭，目光自庾晚音发顶缓缓下移至足尖，神情漠然如观器物；背景烛光在他冷峻侧脸投下锐利阴影。 [庾晚音: 年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。] [夏侯澹: 青年帝王，约二十二岁，身高挺拔，面容俊美凌厉，剑眉入鬓，凤眼狭长冷冽，瞳色深褐近黑，鼻梁高挺，下颌线条如刀削；墨发以单支玄玉螭首簪束于脑后，余发垂落；常服为玄底金线盘龙纹常服，广袖垂地，腰束赤金螭纹革带，足踏云头赤金履；气质阴鸷沉郁，不怒自威，举手投足皆含压迫感，右手拇指戴一枚温润白玉螭纹扳指。] [帝王寝殿: 盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。]",
         "dialogue": "抬头。",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "1-panel",
         "id": "2223b4cf-0cc4-4bd2-973d-146166464de9",
         "order": 1,
@@ -1124,16 +1514,33 @@
           "char_1769362443706_gaa3qy5x4"
         ],
         "scene_id": "scene_1769362443721_nc8iqeywd",
-        "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012601353605F54B7C5674F5CE7E23-4178-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448936&x-signature=snWJ5LnFLFNzE9IEK8Qs4qpd6Xg%3D",
+        "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013619FF9C6CF2C31099C9DF74-4516-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448979&x-signature=yaYxVrURFYPYZuFiz4oQPJG02Ow%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012601352431AD677345A0E5193EC6-6632-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448924&x-signature=lDQOpCyuOEkD7G2higAWw0Z%2BGt0%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012601353605F54B7C5674F5CE7E23-4178-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448936&x-signature=snWJ5LnFLFNzE9IEK8Qs4qpd6Xg%3D",
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013547DAE22A9D7D71DA37EAAC-3632-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448947&x-signature=RGByqCPO8H%2F0JadXvKo%2FcFb6Ego%3D",
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013619FF9C6CF2C31099C9DF74-4516-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448979&x-signature=yaYxVrURFYPYZuFiz4oQPJG02Ow%3D",
           "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012601363125BF8AC5133105193873-5841-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448992&x-signature=B6obBgq7MmCvsBY7LLbijxJENh4%3D",
-          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013643B537F7953EF88E3B2A8E-7422-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769449004&x-signature=dVf6codDqHJkWph2k0PGza0FBt0%3D"
+          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013643B537F7953EF88E3B2A8E-7422-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769449004&x-signature=dVf6codDqHJkWph2k0PGza0FBt0%3D",
+          "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012702480826A881DC9A3D06B09C99-1558-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769539688&x-signature=qUS86UNj2ltnBmRg7HHyQtWQ%2BC0%3D"
         ],
-        "video_url": null,
+        "video_url": "http://localhost:8001/static/uploads/620eeb13-43a9-4607-98e4-aec21f0f3b87.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "970a1933-c5e1-4152-812a-2dd3254ae4ee",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "1ad17faf-eb5c-44f0-9ed5-e37e346539f7",
+            "url": "http://localhost:8001/static/uploads/620eeb13-43a9-4607-98e4-aec21f0f3b87.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
         "status": "completed"
       },
       {
@@ -1141,28 +1548,42 @@
         "dialogue": "好家伙，这不就是书里三天后要被处死的恶魔宠妃本人吗……",
         "audio_prompt": null,
         "use_scene_ref": true,
+        "custom_image_url": null,
         "panel_layout": "1-panel",
         "id": "cc61d155-5e8a-4714-ad7e-4a9424622fe2",
         "order": 2,
         "characters": [
-          "char_1769362443706_gaa3qy5x4"
+          "char_1769362443706_gaa3qy5x4",
+          "char_1769362443706_cfanm39ca"
         ],
         "scene_id": "scene_1769362443721_nc8iqeywd",
         "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013713B0D4D41635C3ADC88C18-2028-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769449033&x-signature=8zXGCxi2SDv%2FyHFGLe827%2BITfT4%3D",
+        "original_image_url": null,
         "image_candidates": [
           "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013713B0D4D41635C3ADC88C18-2028-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769449033&x-signature=8zXGCxi2SDv%2FyHFGLe827%2BITfT4%3D",
           "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260137243BE5EF9414E32CC75F5D-2943-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769449044&x-signature=0ehEzPZI459QntRbe8hdmDIS4vw%3D",
-          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013736B970E0294E7CC8401E57-2923-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769449056&x-signature=yGKanXp3gXFG1LkAuS5vQR52BB8%3D"
+          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126013736B970E0294E7CC8401E57-2923-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769449056&x-signature=yGKanXp3gXFG1LkAuS5vQR52BB8%3D",
+          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601270253367F198A8519E2368B9368-8206-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769540016&x-signature=eX9k44G6f%2FLYhcjUOC2p6SVX8tc%3D"
         ],
-        "video_url": null,
+        "video_url": "http://localhost:8001/static/uploads/6671baa1-32c6-437b-93b9-4e6e41ed9f38.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "0fd6bacc-ec21-44e9-a0a4-768222190f6c",
+            "url": "http://localhost:8001/static/uploads/6671baa1-32c6-437b-93b9-4e6e41ed9f38.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
         "status": "completed"
       },
       {
         "prompt": "中景平视，夏侯澹已起身，玄黑龙袍下摆随步轻扬，赤金履踏在金砖上无声；他缓步绕行至庾晚音右侧，背手而立，下颌微抬，神情讥诮；庾晚音垂首僵立，肩线紧绷，素白衣袖微颤；烛光将二人身影拉长交叠于蟠龙金柱之上。 [庾晚音: 年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。] [夏侯澹: 青年帝王，约二十二岁，身高挺拔，面容俊美凌厉，剑眉入鬓，凤眼狭长冷冽，瞳色深褐近黑，鼻梁高挺，下颌线条如刀削；墨发以单支玄玉螭首簪束于脑后，余发垂落；常服为玄底金线盘龙纹常服，广袖垂地，腰束赤金螭纹革带，足踏云头赤金履；气质阴鸷沉郁，不怒自威，举手投足皆含压迫感，右手拇指戴一枚温润白玉螭纹扳指。] [帝王寝殿: 盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。]",
         "dialogue": "庾晚音，你知道，自己现在是什么身份？",
         "audio_prompt": null,
-        "use_scene_ref": false,
-        "panel_layout": "3-panel",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
         "id": "17c3389b-2018-46ad-a85d-22d5c63a047f",
         "order": 3,
         "characters": [
@@ -1170,34 +1591,71 @@
           "char_1769362443706_gaa3qy5x4"
         ],
         "scene_id": "scene_1769362443721_nc8iqeywd",
-        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-        "image_candidates": [],
-        "video_url": null,
-        "status": "idle"
+        "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260127025438A1B9704CEB37F6145ED1-7225-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769540078&x-signature=SGTxo6vSswMruDhuELbYNc4pXuE%3D",
+        "original_image_url": null,
+        "image_candidates": [
+          "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126021338F9453ECB2060A6191032-7306-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769451219&x-signature=oF%2BxShpl69mL4kHEG3TQE2x1Gps%3D",
+          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260213535C305D94DF02573C761A-5992-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769451233&x-signature=fJk5HyGriyCI4b6GUyjGSKfh%2FiU%3D",
+          "https://picsum.photos/seed/46c5d3f3-f7d1-4716-a235-3f99e0ca7e5b/512/512",
+          "https://picsum.photos/seed/ddef237f-7a51-4340-a7eb-f33572f209dd/512/512",
+          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260127025438A1B9704CEB37F6145ED1-7225-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769540078&x-signature=SGTxo6vSswMruDhuELbYNc4pXuE%3D"
+        ],
+        "video_url": "http://localhost:8001/static/uploads/ff4bf896-c3e8-4ef6-bc0d-1f227f351101.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "f8369e04-a1e1-4f5c-9dce-47960b0a0bc8",
+            "url": "http://localhost:8001/static/uploads/ff4bf896-c3e8-4ef6-bc0d-1f227f351101.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
       },
       {
         "prompt": "近景微俯，庾晚音勉强扬起干涩笑意，眼尾微弯却无暖意，双手交叠于腹前，指尖仍藏于袖中暗扣；她颈间一枚旧银铃穗子（隐于领口）若隐若现；背景是夏侯澹垂落的玄色袖角与半幅晃动的龙纹帐。 [庾晚音: 年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。] [帝王寝殿: 盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。]",
         "dialogue": "……臣妾，是来侍寝的？",
         "audio_prompt": null,
-        "use_scene_ref": false,
-        "panel_layout": "3-panel",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
         "id": "1226ec4a-4814-4e53-921d-025113e37a18",
         "order": 4,
         "characters": [
           "char_1769362443706_gaa3qy5x4"
         ],
         "scene_id": "scene_1769362443721_nc8iqeywd",
-        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-        "image_candidates": [],
-        "video_url": null,
-        "status": "idle"
+        "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126021406C929B6C0D2B46B19FA3A-7505-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769451246&x-signature=O%2FJ6ZVtkXgtFsINsBBKK4mr6ARA%3D",
+        "original_image_url": null,
+        "image_candidates": [
+          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126021406C929B6C0D2B46B19FA3A-7505-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769451246&x-signature=O%2FJ6ZVtkXgtFsINsBBKK4mr6ARA%3D",
+          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126021430903053F297EB281C4500-2275-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769451271&x-signature=P%2Fibx2uuMU3Og9Hyk8KYGm1LllU%3D",
+          "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260214419F9CC2173D3BF6CFC62E-8203-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769451281&x-signature=zcPtu3PBqtL6VajxpzCyiZ0NxGs%3D",
+          "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260214523C736746903BD01A4F84-4941-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769451293&x-signature=Wl6ydhoLKA32GZ5sZEqdXFUDvUM%3D",
+          "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260127025348AA32FFE5F6F440B21E9A-1058-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769540028&x-signature=5qRDl%2FzTU%2FfXqauFijdunj%2F2JMA%3D",
+          "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260127025400CA5E1DABF6C0F813AE30-9043-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769540040&x-signature=X76boL9FtwF3obPgQq%2BqtiGpuTw%3D",
+          "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601270254116D9255A7832356B39B5E-9748-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769540052&x-signature=WepN%2Fb0lL4c3JMp8%2FSrGCh0%2FBEc%3D",
+          "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601270255073BC9047AF02AF5B159BC-6932-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769540107&x-signature=%2F%2FqYyXZF9NP3xMgAdtqVWlTYZO4%3D"
+        ],
+        "video_url": "http://localhost:8001/static/uploads/132dea03-5fd9-4742-bacb-a7bad3b80882.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "0b3fa698-6d5d-4aa9-8886-87a23dbfd601",
+            "url": "http://localhost:8001/static/uploads/132dea03-5fd9-4742-bacb-a7bad3b80882.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
       },
       {
         "prompt": "低角度中景，夏侯澹停步于庾晚音正前方半步之距，微微倾身，唇角勾起一丝极淡的嗤笑；他右手食指慢捻左手拇指玉扳指，玄袍袖口滑落，露出一截冷白手腕与腕骨分明的手背；庾晚音垂眸不敢直视，睫毛剧烈颤动，烛光在她睫下投出蝶翼般阴影。 [庾晚音: 年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。] [夏侯澹: 青年帝王，约二十二岁，身高挺拔，面容俊美凌厉，剑眉入鬓，凤眼狭长冷冽，瞳色深褐近黑，鼻梁高挺，下颌线条如刀削；墨发以单支玄玉螭首簪束于脑后，余发垂落；常服为玄底金线盘龙纹常服，广袖垂地，腰束赤金螭纹革带，足踏云头赤金履；气质阴鸷沉郁，不怒自威，举手投足皆含压迫感，右手拇指戴一枚温润白玉螭纹扳指。] [帝王寝殿: 盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。]",
         "dialogue": "（无声嗤笑）",
         "audio_prompt": null,
-        "use_scene_ref": false,
-        "panel_layout": "3-panel",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
         "id": "de56459c-ea75-4610-8a85-276a4e667553",
         "order": 5,
         "characters": [
@@ -1205,9 +1663,67 @@
           "char_1769362443706_gaa3qy5x4"
         ],
         "scene_id": "scene_1769362443721_nc8iqeywd",
+        "image_url": "https://dalleproduse.blob.core.windows.net/private/images/91e5703f-35a2-4ac4-bd2f-1fb01428f452/generated_00.png?se=2026-01-28T15%3A03%3A11Z&sig=G0bFxEC98ib%2FoTexWnJw86dzoPiYxaB5PtNIwXnNAt4%3D&ske=2026-01-30T07%3A55%3A53Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2026-01-23T07%3A55%3A53Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02",
+        "original_image_url": null,
+        "image_candidates": [
+          "https://picsum.photos/seed/8e8e3ecc-1fdc-440e-9dff-92b1fd2c35c1/512/512",
+          "https://picsum.photos/seed/0d2e9f1b-b86f-4215-9a7c-05e868c761ef/512/512",
+          "https://picsum.photos/seed/acdcb2c7-c04f-4cd4-adf0-9317faa9adb5/512/512",
+          "https://picsum.photos/seed/09d036d0-2927-4ba6-b49b-4478f929fba1/512/512",
+          "https://dalleproduse.blob.core.windows.net/private/images/c218fa34-d832-4c98-9e8a-527c500f2e82/generated_00.png?se=2026-01-28T14%3A59%3A03Z&sig=AIqGpU1LtgLWmCc3IzAnZ5Qz%2F1W275tp2Nt8RkM5hVo%3D&ske=2026-01-30T22%3A15%3A57Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2026-01-23T22%3A15%3A57Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02",
+          "https://dalleproduse.blob.core.windows.net/private/images/21436090-ee43-4185-a5e5-b90808c4d71f/generated_00.png?se=2026-01-28T15%3A01%3A45Z&sig=Epo0kttYa3e5hiyLny71691WCWLj1m70FM58LDXl51A%3D&ske=2026-01-30T00%3A51%3A21Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2026-01-23T00%3A51%3A21Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02",
+          "https://dalleproduse.blob.core.windows.net/private/images/91e5703f-35a2-4ac4-bd2f-1fb01428f452/generated_00.png?se=2026-01-28T15%3A03%3A11Z&sig=G0bFxEC98ib%2FoTexWnJw86dzoPiYxaB5PtNIwXnNAt4%3D&ske=2026-01-30T07%3A55%3A53Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2026-01-23T07%3A55%3A53Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "39681c59-8755-4dc4-afde-ecaad28e3e0f",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "cfb7fcaa-5f02-4ffd-9dce-2b4920580ce5",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "202a0f9e-b3c7-45f4-854b-224a69ba1ad0",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "d01d4f87-e049-4ef3-890e-bbfcdd6b7761",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "低角度中景，夏侯澹停步于庾晚音正前方半步之距，微微倾身，唇角勾起一丝极淡的嗤笑；他右手食指慢捻左手拇指玉扳指，玄袍袖口滑落，露出一截冷白手腕与腕骨分明的手背；庾晚音垂眸不敢直视，睫毛剧烈颤动，烛光在她睫下投出蝶翼般阴影。 [庾晚音: 年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。] [夏侯澹: 青年帝王，约二十二岁，身高挺拔，面容俊美凌厉，剑眉入鬓，凤眼狭长冷冽，瞳色深褐近黑，鼻梁高挺，下颌线条如刀削；墨发以单支玄玉螭首簪束于脑后，余发垂落；常服为玄底金线盘龙纹常服，广袖垂地，腰束赤金螭纹革带，足踏云头赤金履；气质阴鸷沉郁，不怒自威，举手投足皆含压迫感，右手拇指戴一枚温润白玉螭纹扳指。] [帝王寝殿: 盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "e53b0530-181a-4354-9b40-c19f16b113e0",
+        "order": 6,
+        "characters": [
+          "char_1769362443706_cfanm39ca",
+          "char_1769362443706_gaa3qy5x4"
+        ],
+        "scene_id": "scene_1769362443721_nc8iqeywd",
         "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
         "image_candidates": [],
         "video_url": null,
+        "video_progress": null,
+        "video_items": [],
         "status": "idle"
       }
     ],
@@ -1215,7 +1731,7 @@
       {
         "id": "char_1769362443706_gaa3qy5x4",
         "name": "庾晚音",
-        "avatar_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260134239C6E2CB2AB78EE1704E1-1822-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448864&x-signature=lnuXCm%2BS3c0O3Rt5Z55c479gyuw%3D",
+        "avatar_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601262338240DAB6FB583FCA20ABF0F-3937-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769528305&x-signature=ULFB%2F0EVmyIdOdiGfIJfl1fspzc%3D",
         "tags": [],
         "prompt": "年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。"
       },
@@ -1225,20 +1741,6 @@
         "avatar_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260134439D8FE4CA8A68713AD3D0-3717-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448883&x-signature=Okw1Ih5ABWrW4%2B7qapnw%2FZfdhhQ%3D",
         "tags": [],
         "prompt": "青年帝王，约二十二岁，身高挺拔，面容俊美凌厉，剑眉入鬓，凤眼狭长冷冽，瞳色深褐近黑，鼻梁高挺，下颌线条如刀削；墨发以单支玄玉螭首簪束于脑后，余发垂落；常服为玄底金线盘龙纹常服，广袖垂地，腰束赤金螭纹革带，足踏云头赤金履；气质阴鸷沉郁，不怒自威，举手投足皆含压迫感，右手拇指戴一枚温润白玉螭纹扳指。"
-      },
-      {
-        "id": "char_1769362443706_7rghjwsjk",
-        "name": "太监甲",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=太监甲",
-        "tags": [],
-        "prompt": "中年太监，净面无须，肤色蜡黄，细长眼，薄唇紧抿；头戴乌纱小帽，身着石青圆领蟒纹宦官常服，腰束墨绿丝绦；左手执拂尘，右手按在庾晚音左臂上，指节粗大，神情木然肃穆。"
-      },
-      {
-        "id": "char_1769362443706_79ghsgskn",
-        "name": "太监乙",
-        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=太监乙",
-        "tags": [],
-        "prompt": "中年太监，净面无须，颧骨高凸，眼神浑浊；着同款石青蟒纹宦官常服，右手执拂尘，左手按在庾晚音右臂上，袖口微磨旧；身形略佝偻，站姿刻板如桩。"
       }
     ],
     "scenes": [
@@ -1249,6 +1751,2121 @@
         "tags": [],
         "prompt": "盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。"
       }
-    ]
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "c08648a8-aea9-4867-906d-6ac0f2c4697c": {
+    "id": "c08648a8-aea9-4867-906d-6ac0f2c4697c",
+    "name": "api测试",
+    "style": "chinese_anime",
+    "shots": [
+      {
+        "prompt": "wide shot, dimly lit imperial bedroom at night, ornate Qing-style dragon-carved bed with heavy crimson silk bed curtains partially drawn, golden lanterns casting flickering amber light on lacquered floors and jade-inlaid walls;庾晚音 kneels gracefully on a crimson silk cushion before the bed, wearing a vivid red qipao-style gown with black phoenix embroidery, her hair piled high with gold hairpins and red peony blossoms, makeup sharp and theatrical—deep red lips, kohl-rimmed eyes, pale powdered skin; she gazes upward with seductive, expectant expression; cinematic lighting, chiaroscuro contrast, shallow depth of field [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "陛下~臣妾为您跳一支舞可好？",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "3dc35f07-16a3-438a-b18f-6e1010047c37",
+        "order": 0,
+        "characters": [
+          "char_1769526217224_rshectyvb"
+        ],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "medium close-up, low angle from floor level: pale, slender hand with long fingers and faint blue veins emerges from dark crimson bed curtains, fingers loosely splayed—motion dismissive, almost languid; background blurred but hints of embroidered dragon motifs on fabric; cool ambient light, subtle dust motes in air [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "滚吧。",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "faf02508-26d9-4e00-a1cb-1a7019a52c1b",
+        "order": 1,
+        "characters": [],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "tight close-up on 庾晚音's face: her painted smile freezes mid-expression, lips slightly parted, eyes widening imperceptibly; one delicate eyebrow lifts in quiet shock; candlelight catches the glint of a single pearl earring; shallow focus on her eyes, background softly out-of-focus [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "54cf9a02-00d3-4324-9bbe-96ec64a17e68",
+        "order": 2,
+        "characters": [
+          "char_1769526217224_rshectyvb"
+        ],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "medium two-shot, eye-level: two armored imperial guards in black-and-gold lamellar armor step forward symmetrically, each gripping one of 庾晚音's upper arms firmly but without brutality; she remains kneeling, spine straight, head tilted slightly down, red sleeves pooling around her hands; background shows receding palace columns and distant flickering torchlight; moody, tense atmosphere [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [侍卫: two male imperial guards, mid-20s, stern-faced and physically imposing; wear black-and-gold lacquered lamellar armor with dragon-scale patterning, iron greaves, and crimson sashes; short-cropped black hair under black lacquered helmets with red plumes; expressionless, disciplined, utterly obedient; move with synchronized precision] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "f3d6f662-e1a3-4d4e-b1ab-d3005adc8aa4",
+        "order": 3,
+        "characters": [
+          "char_1769526217224_rshectyvb",
+          "char_1769526217224_opkf5tfl5"
+        ],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "over-the-shoulder shot from behind 庾晚音: view toward the bed; voice emanates from darkness behind thick curtains—no visible speaker; 庾晚音’s shoulders tense subtly; her red sleeve brushes the polished black floor as she stays frozen; deep shadows pool beneath the bed frame; dramatic backlighting from wall lanterns creates long, sharp silhouettes [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "她不留下侍寝就得死吗？",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "229a3049-5084-43b2-b202-a09ac5d6140c",
+        "order": 4,
+        "characters": [],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "low-angle wide shot: two guards drop instantly to their knees on marble floor, foreheads touching ground in absolute submission; other palace attendants—eunuchs and maids in muted grey-blue robes—file swiftly and silently out through towering double doors, sliding shut with soft thud; vast emptiness opens around 庾晚音, who remains alone, tiny and still amid grand scale; cold moonlight now bleeds in from high lattice windows, casting geometric shadows [侍卫: two male imperial guards, mid-20s, stern-faced and physically imposing; wear black-and-gold lacquered lamellar armor with dragon-scale patterning, iron greaves, and crimson sashes; short-cropped black hair under black lacquered helmets with red plumes; expressionless, disciplined, utterly obedient; move with synchronized precision] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "b3cc7ad5-fa96-4d59-8c05-ea3d210a56f6",
+        "order": 5,
+        "characters": [
+          "char_1769526217224_opkf5tfl5"
+        ],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "extreme close-up on 庾晚音's eyes: pupils dilated, gaze locked on the pale hand still visible at curtain’s edge; faint reflection of candlelight in her irises; slight tremor in her lower lip; shallow breathing visible at base of throat; background completely blurred into velvety blackness [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "a38a192c-aef7-418d-bdb6-0312ab0e83fc",
+        "order": 6,
+        "characters": [
+          "char_1769526217224_rshectyvb"
+        ],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "hand-held POV shot from 庾晚音's perspective: her slender, red-nailed hand reaches forward slowly, fingertips brushing aside heavy crimson bed curtain edged with silver cloud motifs; fabric parts to reveal deep shadow—and just beyond, the faint gleam of a pale, motionless wrist resting atop dark silk sheets; suspenseful stillness, breath held; shallow focus, foreground curtain texture sharply rendered [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "1f49102c-71a8-404c-acd5-13e7e62d64d9",
+        "order": 7,
+        "characters": [
+          "char_1769526217224_rshectyvb"
+        ],
+        "scene_id": "scene_1769526217235_au7l1opnx",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "char_1769526217224_rshectyvb",
+        "name": "庾晚音",
+        "avatar_url": "https://dalleproduse.blob.core.windows.net/private/images/39ef6532-b315-4e7e-9197-ab91ebf0dc1e/generated_00.png?se=2026-01-28T15%3A04%3A00Z&sig=9lVUJnAiC%2BQRtrGPOKZR4uK2TPmP4v9sfcQz8tMJAq8%3D&ske=2026-01-30T00%3A51%3A21Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2026-01-23T00%3A51%3A21Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02",
+        "tags": [],
+        "prompt": "young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous"
+      },
+      {
+        "id": "char_1769526217224_swz9vmkiw",
+        "name": "暴君",
+        "avatar_url": "http://localhost:8001/static/uploads/366c5e2c-a6b2-4621-aed3-dd5759b86119.png",
+        "tags": [],
+        "prompt": "unnamed emperor, late 20s to early 30s; unseen full face, only glimpses suggested: extremely pale, slender hand with long fingers and faint blue veins; voice is cold, weary, and unnervingly precise; implied presence is oppressive and detached—no regal ornamentation visible, only austere darkness and silence; aura of exhausted authority and latent volatility"
+      },
+      {
+        "id": "char_1769526217224_opkf5tfl5",
+        "name": "侍卫",
+        "avatar_url": "http://localhost:8001/static/uploads/f94b7ae1-9885-4782-ad8d-4e992e33ad7a.png",
+        "tags": [],
+        "prompt": "two male imperial guards, mid-20s, stern-faced and physically imposing; wear black-and-gold lacquered lamellar armor with dragon-scale patterning, iron greaves, and crimson sashes; short-cropped black hair under black lacquered helmets with red plumes; expressionless, disciplined, utterly obedient; move with synchronized precision"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene_1769526217235_au7l1opnx",
+        "name": "皇帝寝殿",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread"
+      }
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "9386e637-9a40-439e-a5f2-998d13d5f0e5": {
+    "id": "9386e637-9a40-439e-a5f2-998d13d5f0e5",
+    "name": "最新api测试",
+    "style": "anime",
+    "shots": [
+      {
+        "prompt": "Low-angle shot, dim candlelight flickering across ornate imperial dragon-carved pillars and heavy crimson silk bed curtains in the emperor's night chamber. A woman in a vivid red qipao-style gown with gold phoenix embroidery kneels on jade floor tiles, her black hair piled high with jade hairpins, lips painted deep vermilion, eyes lined with kohl, expression both seductive and tense. Smoke curls from bronze incense burners. Cinematic lighting, rich shadows, Tang-inspired palace interior. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+        "dialogue": "陛下~臣妾为您跳一支舞可好？",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "52641c3d-25bb-402c-8dfe-8ac88a4d7b72",
+        "order": 0,
+        "characters": [
+          "char_1769526328860_i8o6zxa8k"
+        ],
+        "scene_id": "scene_1769526328873_dmattmija",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "Close-up of a pale, slender hand emerging from behind thick, embroidered crimson bed curtains — fingers long and bloodless, nails faintly bluish, resting limply on the curtain’s edge. Background blurred but hinting at dark silhouettes within the canopy. High-contrast chiaroscuro lighting, cold tone. [暴君: An unseen but powerfully implied figure — only his hand is shown: unnaturally pale, slender, long-fingered, with translucent skin and faint blue veins; nails clean but slightly elongated and cool-toned. Voice suggests youth masked by exhaustion and disdain; presence radiates lethality and profound weariness. No full visual, but aura is regal, detached, and ominously indifferent.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+        "dialogue": "滚吧。",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "294d7941-c6a0-4adf-bc3b-366bd2f13d7e",
+        "order": 1,
+        "characters": [
+          "char_1769526328860_828dmruwt"
+        ],
+        "scene_id": "scene_1769526328873_dmattmija",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "Medium close-up of Yu Wanyin’s face: her painted smile frozen mid-expression, eyes wide with shock and dawning humiliation; delicate jaw clenched, one tear glistening but unshed; red sleeves trembling slightly. Background: shallow depth-of-field showing two armored imperial guards stepping forward in synchronized motion. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "01840b0e-f5ec-4646-9769-20974b4d8f71",
+        "order": 2,
+        "characters": [
+          "char_1769526328860_i8o6zxa8k"
+        ],
+        "scene_id": "scene_1769526328873_dmattmija",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "Over-the-shoulder shot from behind庾晚音: two stern-faced imperial guards in black lacquered armor and crimson sashes grip her upper arms firmly but without brutality. She remains kneeling, spine rigid. Behind them, the vast hall recedes into gloom — towering columns, distant lanterns, empty throne dais. Mood: oppressive silence, suffocating hierarchy. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [暴君: An unseen but powerfully implied figure — only his hand is shown: unnaturally pale, slender, long-fingered, with translucent skin and faint blue veins; nails clean but slightly elongated and cool-toned. Voice suggests youth masked by exhaustion and disdain; presence radiates lethality and profound weariness. No full visual, but aura is regal, detached, and ominously indifferent.] [侍卫: Two identical imperial guards in polished black lacquered armor with crimson shoulder guards and sashes; stern, clean-shaven faces, short-cropped black hair under iron helmets with crimson plumes; expressions impassive, disciplined, utterly obedient. Carry no visible weapons but wear ceremonial halberd belts. Embodiment of silent, absolute authority.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+        "dialogue": "她不留下侍寝就得死吗？",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "2dcfe090-88a3-4d49-853f-5bf9be305e9b",
+        "order": 3,
+        "characters": [
+          "char_1769526328860_i8o6zxa8k",
+          "char_1769526328860_828dmruwt",
+          "char_1769526328860_f51790a70"
+        ],
+        "scene_id": "scene_1769526328873_dmattmija",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "Wide static shot: the entire imperial sleeping chamber now nearly empty — only庾晚音 remains kneeling at center frame, tiny against the cavernous space. Guards and courtiers vanish through towering double doors as they exit in perfect unison. Candlelight pools around her like a halo; the bed looms large and ominous behind. Atmosphere: eerie stillness, psychological isolation. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "e802f17a-6ba0-4d3b-9c92-3ef69ec4df9d",
+        "order": 4,
+        "characters": [
+          "char_1769526328860_i8o6zxa8k"
+        ],
+        "scene_id": "scene_1769526328873_dmattmija",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "Extreme close-up of庾晚音’s eyes — dilated, focused, calculating — then cut to her gloved hand (red silk, black lace cuff) slowly reaching toward the bed curtain. Her fingertips brush the heavy fabric. Shallow focus: curtain texture sharp, background (the shadowed bed interior) blurred but menacing. Warm light on her face contrasts with cold darkness beyond the veil. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "89a31acf-6823-49c1-9bab-226505652a1d",
+        "order": 5,
+        "characters": [
+          "char_1769526328860_i8o6zxa8k"
+        ],
+        "scene_id": "scene_1769526328873_dmattmija",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "char_1769526328860_i8o6zxa8k",
+        "name": "庾晚音",
+        "avatar_url": "/static/uploads/9386e637-9a40-439e-a5f2-998d13d5f0e5/86ef54e3-2d32-4331-9e76-c7d39709cd48.png",
+        "tags": [],
+        "prompt": "A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious."
+      },
+      {
+        "id": "char_1769526328860_828dmruwt",
+        "name": "暴君",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=暴君",
+        "tags": [],
+        "prompt": "An unseen but powerfully implied figure — only his hand is shown: unnaturally pale, slender, long-fingered, with translucent skin and faint blue veins; nails clean but slightly elongated and cool-toned. Voice suggests youth masked by exhaustion and disdain; presence radiates lethality and profound weariness. No full visual, but aura is regal, detached, and ominously indifferent."
+      },
+      {
+        "id": "char_1769526328860_f51790a70",
+        "name": "侍卫",
+        "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=侍卫",
+        "tags": [],
+        "prompt": "Two identical imperial guards in polished black lacquered armor with crimson shoulder guards and sashes; stern, clean-shaven faces, short-cropped black hair under iron helmets with crimson plumes; expressions impassive, disciplined, utterly obedient. Carry no visible weapons but wear ceremonial halberd belts. Embodiment of silent, absolute authority."
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene_1769526328873_dmattmija",
+        "name": "皇帝寝殿",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger."
+      }
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "572043f0-bfd3-489a-a3c0-d0c4de8d99dd": {
+    "id": "572043f0-bfd3-489a-a3c0-d0c4de8d99dd",
+    "name": "banana",
+    "style": "real",
+    "shots": [
+      {
+        "prompt": "中景，傍晚地铁车厢内，冷白荧光灯映照拥挤人群，玻璃窗倒映出疲惫都市白领侧脸。王翠花（25岁，黑框眼镜，松垮丸子头，格子衬衫配洗旧牛仔裤）低头刷手机，屏幕亮光映在她泛着油光的额头和眼下青黑上；窗外飞驰而过的隧道广告牌模糊闪烁。光影写实，略带胶片颗粒感，色调偏冷灰蓝。 [王翠花: 25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。] [地铁车厢: 现代都市晚高峰地铁1号线车厢内部，不锈钢扶手泛冷光，顶灯为惨白LED，玻璃窗映出流动隧道与模糊广告牌；乘客密集站立，多数低头看手机，表情麻木；地面有零星纸巾与饮料瓶；车窗边框锈迹斑驳；整体氛围压抑、拥挤、时间粘滞，色调为青灰+暖黄灯光冲突。]",
+        "dialogue": "这是在写我自己吗？",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "d8671abd-0209-45d7-9763-7383afb41a08",
+        "order": 0,
+        "characters": [
+          "char_1769526429259_tqcq555is"
+        ],
+        "scene_id": "scene_1769526429267_ctggvh3aq",
+        "image_url": "http://localhost:8001/static/uploads/786aa170-2b23-4035-a68e-6579363d1634.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "http://localhost:8001/static/uploads/b32bc04f-ff17-428e-810e-aef06a955b94.png",
+          "http://localhost:8001/static/uploads/ae609c92-3f45-4b91-ab4b-c0f3f79ca4e4.png",
+          "http://localhost:8001/static/uploads/930120ca-7eaa-441f-9ef3-2c536d62a715.png",
+          "https://picsum.photos/seed/97092ae9-8cb1-419b-841a-f42840c155a0/512/512",
+          "http://localhost:8001/static/uploads/786aa170-2b23-4035-a68e-6579363d1634.png"
+        ],
+        "video_url": "http://localhost:8001/static/uploads/b98dd034-0d50-4506-b0d4-866ef5b62ff0.mp4",
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "8f358148-7966-406e-90c1-a4b7d2b62d7b",
+            "url": "http://localhost:8001/static/uploads/b98dd034-0d50-4506-b0d4-866ef5b62ff0.mp4",
+            "progress": 100,
+            "status": "completed"
+          },
+          {
+            "id": "954e8f8a-8dae-430a-81cd-0b58d1928895",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "af28806b-ac02-42ad-9d67-aabb14dc858c",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "特写，手机屏幕显示网文界面：标题《穿书之恶魔宠妃》猩红大字，下方简介‘社畜马春春穿成炮灰女，手撕女主，暴君跪舔，登基封后’，页面滑动至开头段落，文字清晰可辨。背景虚化为晃动的地铁扶手与人影。 [地铁车厢: 现代都市晚高峰地铁1号线车厢内部，不锈钢扶手泛冷光，顶灯为惨白LED，玻璃窗映出流动隧道与模糊广告牌；乘客密集站立，多数低头看手机，表情麻木；地面有零星纸巾与饮料瓶；车窗边框锈迹斑驳；整体氛围压抑、拥挤、时间粘滞，色调为青灰+暖黄灯光冲突。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "8bcce735-9833-482b-a9ab-b3fe6d6a417a",
+        "order": 1,
+        "characters": [
+          "char_1769526429259_tqcq555is"
+        ],
+        "scene_id": "scene_1769526429267_ctggvh3aq",
+        "image_url": "http://localhost:8001/static/uploads/fe17bee3-285d-437f-a115-978362d8304c.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "http://localhost:8001/static/uploads/fe17bee3-285d-437f-a115-978362d8304c.png"
+        ],
+        "video_url": "http://localhost:8001/static/uploads/60401421-45e7-4cce-82ee-10783cc38f9d.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "ab5ad06a-d038-4b79-8b37-efb1edb46165",
+            "url": "http://localhost:8001/static/uploads/60401421-45e7-4cce-82ee-10783cc38f9d.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "主观镜头+眩晕转场：手机屏幕骤然爆发出刺目白光，强光吞噬画面；伴随轰鸣音效视觉化呈现——扭曲的像素流、崩解的文字碎片、飞散的‘东风夜放花千树’书名残影。画面剧烈旋转，色温由冷转炽白，边缘泛紫晕。 [意识过渡空间: 抽象超现实空间：无限延伸的破碎书页悬浮于虚空，文字如墨鱼游弋消散；中央一道垂直白光裂隙，边缘燃烧幽紫数据流火焰；背景是坍缩的像素化宫殿剪影与扭曲的‘穿书’二字篆印；无重力感，光线来自内部自发光，饱和度极高，充满不祥的数字眩晕感。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "42b0baf3-8de9-44d8-9794-b32897d54f1f",
+        "order": 2,
+        "characters": [
+          "char_1769526429259_tqcq555is"
+        ],
+        "scene_id": "scene_1769526429267_ywedmb0gk",
+        "image_url": "http://localhost:8001/static/uploads/5c08eeaa-3e9f-49d2-8b6f-72519b2fa6c1.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "http://localhost:8001/static/uploads/5c08eeaa-3e9f-49d2-8b6f-72519b2fa6c1.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "仰角低机位，古风寝殿内景：雕花拔步床帷幔半垂，青灰色绣金缠枝莲帐纱随微风轻漾；晨光斜切过菱花窗棂，在檀木地板投下细密光栅。王翠花（身穿素白中衣，赤足踩在冰凉金砖上，发髻散乱，眼神惊疑）踉跄坐起，一手撑床沿，一手下意识摸向脸颊。 [王翠花: 25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。] [庾晚音闺房: 北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "be41385e-576e-4e08-9d04-78fda9c207a8",
+        "order": 3,
+        "characters": [
+          "char_1769526429259_tqcq555is"
+        ],
+        "scene_id": "scene_1769526429267_0q074tzt9",
+        "image_url": "http://localhost:8001/static/uploads/276757d6-84f9-48ee-9e52-93150ae01839.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "http://localhost:8001/static/uploads/276757d6-84f9-48ee-9e52-93150ae01839.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "镜面反射构图：黄铜葵花镜中映出庾晚音的脸——肤若凝脂却苍白无血色，柳叶眉微蹙，眼尾天然上挑含三分冷艳，鼻梁高挺，唇色淡粉；未施粉黛，乌发如瀑垂至腰际，仅一支素银蝴蝶簪斜挽。镜框雕云纹，镜面略有水汽氤氲。背景虚化为描金屏风与湘妃竹帘。 [王翠花: 25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。] [庾晚音闺房: 北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。]",
+        "dialogue": "想来也该知道，炮灰女已经被别人占了，不会再留给她。",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "4e613d6f-d39d-409b-97ae-e0e23c625deb",
+        "order": 4,
+        "characters": [
+          "char_1769526429259_tqcq555is"
+        ],
+        "scene_id": "scene_1769526429267_0q074tzt9",
+        "image_url": "http://localhost:8001/static/uploads/332f3c7d-7ce2-4790-9de7-03dc52b1bee4.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "http://localhost:8001/static/uploads/332f3c7d-7ce2-4790-9de7-03dc52b1bee4.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "近景，王翠花（此刻以庾晚音相貌呈现）猛然抬眼直视镜中自己，瞳孔收缩，指尖掐进掌心；镜中倒影与现实同步震颤。窗外忽有宫人细碎脚步声掠过，远处隐约传来编钟余韵与鸦啼。光影对比强烈，面部半明半暗，突出眼底惊惶与强压的冷静。 [庾晚音: 18岁古典美人，肤白胜雪，眉如远山含黛，眼型狭长微挑，瞳色深褐似浸墨玉，眼尾天然上扬带冷冽感；鼻梁秀挺，唇形饱满但唇色淡；乌发浓密及腰，发质柔亮；日常着素雅宋制襦裙（月白交领中单+浅青褙子），衣料是细密杭罗，袖口与襟缘绣银丝暗云纹；气质清冷疏离，体态纤 slender，手指修长，指甲泛天然粉晕；颈间戴一枚小巧玲珑的羊脂白玉蝉佩。] [庾晚音闺房: 北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。]",
+        "dialogue": "庾晚音一阵焦虑。",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "01ea6cad-a3cf-4d29-8250-523c43d3d40e",
+        "order": 5,
+        "characters": [
+          "char_1769526429259_xwi14wv90"
+        ],
+        "scene_id": "scene_1769526429267_0q074tzt9",
+        "image_url": "http://localhost:8001/static/uploads/b977700c-e6b0-44ba-b037-47510658aba5.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "http://localhost:8001/static/uploads/c70acbbf-54d6-40b5-9d2c-214ee87fa5e2.png",
+          "http://localhost:8001/static/uploads/34e8bb7b-6f1d-45c5-bea2-a9b6696b9940.png",
+          "http://localhost:8001/static/uploads/b977700c-e6b0-44ba-b037-47510658aba5.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      }
+    ],
+    "characters": [
+      {
+        "id": "char_1769526429259_tqcq555is",
+        "name": "王翠花",
+        "avatar_url": "/static/uploads/572043f0-bfd3-489a-a3c0-d0c4de8d99dd/833aca50-fe76-487f-acb8-138a888cab8b.png",
+        "tags": [],
+        "prompt": "25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。"
+      },
+      {
+        "id": "char_1769526429259_xwi14wv90",
+        "name": "庾晚音",
+        "avatar_url": "/static/uploads/572043f0-bfd3-489a-a3c0-d0c4de8d99dd/6d951b64-5bef-4f2b-8fd7-68a897e15161.png",
+        "tags": [],
+        "prompt": "18岁古典美人，肤白胜雪，眉如远山含黛，眼型狭长微挑，瞳色深褐似浸墨玉，眼尾天然上扬带冷冽感；鼻梁秀挺，唇形饱满但唇色淡；乌发浓密及腰，发质柔亮；日常着素雅宋制襦裙（月白交领中单+浅青褙子），衣料是细密杭罗，袖口与襟缘绣银丝暗云纹；气质清冷疏离，体态纤 slender，手指修长，指甲泛天然粉晕；颈间戴一枚小巧玲珑的羊脂白玉蝉佩。"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene_1769526429267_ctggvh3aq",
+        "name": "地铁车厢",
+        "image_url": "http://localhost:8001/static/uploads/72dc00f7-568a-42a1-9bf9-8bf65fc6927d.png",
+        "tags": [],
+        "prompt": "现代都市晚高峰地铁1号线车厢内部，不锈钢扶手泛冷光，顶灯为惨白LED，玻璃窗映出流动隧道与模糊广告牌；乘客密集站立，多数低头看手机，表情麻木；地面有零星纸巾与饮料瓶；车窗边框锈迹斑驳；整体氛围压抑、拥挤、时间粘滞，色调为青灰+暖黄灯光冲突。"
+      },
+      {
+        "id": "scene_1769526429267_0q074tzt9",
+        "name": "庾晚音闺房",
+        "image_url": "http://localhost:8001/static/uploads/805923c5-5417-4d8b-bd86-d7484788d5c6.png",
+        "tags": [],
+        "prompt": "北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。"
+      },
+      {
+        "id": "scene_1769526429267_ywedmb0gk",
+        "name": "意识过渡空间",
+        "image_url": "http://localhost:8001/static/uploads/fa705cad-909b-4998-92ad-a77c08d8d996.png",
+        "tags": [],
+        "prompt": "抽象超现实空间：无限延伸的破碎书页悬浮于虚空，文字如墨鱼游弋消散；中央一道垂直白光裂隙，边缘燃烧幽紫数据流火焰；背景是坍缩的像素化宫殿剪影与扭曲的‘穿书’二字篆印；无重力感，光线来自内部自发光，饱和度极高，充满不祥的数字眩晕感。"
+      }
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "f066a339-e766-4eea-82cc-b90c924ae648": {
+    "id": "f066a339-e766-4eea-82cc-b90c924ae648",
+    "name": "目录测试",
+    "style": "anime",
+    "shots": [
+      {
+        "prompt": "近景镜头，王翠花坐在拥挤的地铁车厢内，她神情疲惫，眼下有淡淡的黑眼圈，穿着一件普通的白色衬衫，头发略显凌乱地扎成马尾。她正低头盯着手机屏幕，屏幕的微光映在她的脸上。 [王翠花: 24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。] [晚高峰地铁车厢: 现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。]",
+        "dialogue": "（旁白）我叫王翠花，一个名字土味、生活更土味的社畜。",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "709663c9-c98c-44d4-808a-95dc4714d7c0",
+        "order": 0,
+        "characters": [
+          "char_1769591968048_39op2u7ot"
+        ],
+        "scene_id": "scene_1769591968641_hmc15hjr5",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，手机屏幕上的网文界面，标题写着《穿书之恶魔宠妃》，文字快速滚动。画面随后切换到王翠花的半身，她百无聊赖地单手滑着屏幕，嘴角带着一丝嫌弃的冷笑。 [王翠花: 24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。] [晚高峰地铁车厢: 现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。]",
+        "dialogue": "（旁白）这文名，一听就是垃圾。要不是为了打发这该死的通勤时间……",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "34dda868-d418-428f-b222-d32f36ac7855",
+        "order": 1,
+        "characters": [
+          "char_1769591968048_39op2u7ot"
+        ],
+        "scene_id": "scene_1769591968641_hmc15hjr5",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "中景镜头，王翠花的脑内幻想画面。画面色彩变得浓郁且带有插画感。一个长相平凡的现代女子（马春春）穿着古装，正指挥着士兵将一名美艳的妃子（原女主）推下深渊，背景是宏伟的宫殿火光冲天。 [马春春: 书中的穿书者。外貌最初是寡淡的小白花风格，清秀但不出众。后期穿着华丽的皇后凤袍，眼神阴狠毒辣，妆容浓艳，带有一种小人得志的攻击性。] [幻想中的古代皇宫: 夸张的影视剧风格，金碧辉煌的宫殿，台阶高耸入云。背景有夕阳残血般的红光，象征着权力的争夺和杀戮，气氛凝重且带有悲剧色彩。]",
+        "dialogue": "（旁白）又是这种逆袭套路，马春春穿成炮灰，抢了女主路线，最后当了皇后。我看过不下十八遍了。",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "e4ff9844-0f71-426b-9177-aab82b6e016a",
+        "order": 2,
+        "characters": [
+          "char_1769591968048_q96ddi227"
+        ],
+        "scene_id": "scene_1769591968641_cog3avqfn",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "主观镜头，王翠花的视线从手机移开，突然车厢剧烈震动，整个画面被耀眼的白光瞬间吞噬，手机屏幕碎裂，光芒呈螺旋状将镜头吸入。 [王翠花: 24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。] [晚高峰地铁车厢: 现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。]",
+        "dialogue": "（旁白）等等，这动静不对劲！",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "26143b0a-f3c9-4979-83cc-53281bc06859",
+        "order": 3,
+        "characters": [
+          "char_1769591968048_39op2u7ot"
+        ],
+        "scene_id": "scene_1769591968641_hmc15hjr5",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "全景镜头，一个古色古香、装饰奢华的寝殿。阳光透过雕花木窗洒在红色的地毯上。王翠花（已变身为庾晚音）躺在丝绒大床上，猛地坐起，一脸茫然地环顾四周。 [庾晚音: 王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。] [古风华丽寝殿: 典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。]",
+        "dialogue": "（王翠花）……这又是哪儿？",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "fb12eb21-d707-438f-9657-9b19ef283835",
+        "order": 4,
+        "characters": [
+          "char_1769591968048_n2n6z676n"
+        ],
+        "scene_id": "scene_1769591968641_ta8wl8xg2",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "近景镜头，王翠花跌跌撞撞地跑到一面巨大的青铜镜前。镜中倒映出一张绝美且艳丽的脸庞：肤如凝脂，双眸剪水，未施粉黛却自带勾魂摄魄的魅力。 [庾晚音: 王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。] [古风华丽寝殿: 典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。]",
+        "dialogue": "（王翠花）这不是马春春那张小白花脸……这张脸太漂亮了，难道是……",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "5d2cd307-750c-4290-9414-d1d707364817",
+        "order": 5,
+        "characters": [
+          "char_1769591968048_n2n6z676n"
+        ],
+        "scene_id": "scene_1769591968641_ta8wl8xg2",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，镜中的庾晚音露出惊恐和焦虑的神色，眉头紧锁，双手颤抖地抚摸着自己的脸颊。 [庾晚音: 王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。] [古风华丽寝殿: 典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。]",
+        "dialogue": "（王翠花）完了，我穿成了那个注定要被弄死的原女主，庾晚音！",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "d515d7b4-bdd9-4656-bfa4-b66844ea598e",
+        "order": 6,
+        "characters": [
+          "char_1769591968048_n2n6z676n"
+        ],
+        "scene_id": "scene_1769591968641_ta8wl8xg2",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "char_1769591968048_39op2u7ot",
+        "name": "王翠花",
+        "avatar_url": "/static/uploads/f68d1fe3-9319-411f-9f75-e3016b60f673.png",
+        "tags": [],
+        "prompt": "24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。"
+      },
+      {
+        "id": "char_1769591968048_q96ddi227",
+        "name": "马春春",
+        "avatar_url": "/static/uploads/ddd5d526-bc2c-4468-a1a3-ff291dac48b0.png",
+        "tags": [],
+        "prompt": "书中的穿书者。外貌最初是寡淡的小白花风格，清秀但不出众。后期穿着华丽的皇后凤袍，眼神阴狠毒辣，妆容浓艳，带有一种小人得志的攻击性。"
+      },
+      {
+        "id": "char_1769591968048_n2n6z676n",
+        "name": "庾晚音",
+        "avatar_url": "/static/uploads/6c824c32-2899-4b11-8a44-cb8337bb18ad.png",
+        "tags": [],
+        "prompt": "王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene_1769591968641_hmc15hjr5",
+        "name": "晚高峰地铁车厢",
+        "image_url": "",
+        "tags": [],
+        "prompt": "现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。"
+      },
+      {
+        "id": "scene_1769591968641_cog3avqfn",
+        "name": "幻想中的古代皇宫",
+        "image_url": "",
+        "tags": [],
+        "prompt": "夸张的影视剧风格，金碧辉煌的宫殿，台阶高耸入云。背景有夕阳残血般的红光，象征着权力的争夺和杀戮，气氛凝重且带有悲剧色彩。"
+      },
+      {
+        "id": "scene_1769591968641_ta8wl8xg2",
+        "name": "古风华丽寝殿",
+        "image_url": "",
+        "tags": [],
+        "prompt": "典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。"
+      }
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "2d102839-e088-4dc0-bf78-e4337ba0ae09": {
+    "id": "2d102839-e088-4dc0-bf78-e4337ba0ae09",
+    "name": "项目测试",
+    "style": "anime",
+    "shots": [],
+    "characters": [],
+    "scenes": [],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "324306a9-da75-46f4-b9cf-0410db4582b0": {
+    "id": "324306a9-da75-46f4-b9cf-0410db4582b0",
+    "name": "1test",
+    "style": "chinese_anime",
+    "shots": [
+      {
+        "prompt": "近景镜头，王翠花一脸疲惫地坐在拥挤的地铁车厢内。她穿着普通的白色衬衫，头发略显凌乱，黑眼圈明显，眼神空洞地盯着手中的发光手机屏幕。背景是模糊的地铁乘客和不锈钢扶手，冷色调的荧光灯光。 [王翠花: 一名24岁左右的中国现代职场女性。面容普通但耐看，带着长期熬夜的黑眼圈，眼神疲惫而犀利。扎着简单的马尾，几缕碎发散乱。穿着职业装白衬衫，显得有些不修边幅，气质是典型的吐槽系社畜。] [晚高峰地铁车厢: 现代中国地铁内部。蓝色的塑料座椅，不锈钢立柱和扶手。车厢内光线是明亮而冰冷的白色荧光灯，窗外是黑暗的隧道和模糊的灯光信号。充满拥挤、压抑和现代都市的孤独感。]",
+        "dialogue": "（旁白）入职两年，饱受上司和甲方刁难，纵然有满腔抱负也被磨平了棱角。更何况，我也没什么抱负。",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "c66dd6b9-fcc9-4216-b07f-651fd2e87d67",
+        "order": 0,
+        "characters": [
+          "char_1769592545327_5lg6v5201"
+        ],
+        "scene_id": "scene_1769592545359_xob1gaaed",
+        "image_url": "/static/uploads/4c9ea0d2-c956-41d3-b9cf-8bda1e6be945.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/4c9ea0d2-c956-41d3-b9cf-8bda1e6be945.png",
+          "/static/uploads/50408969-affb-4548-ae77-453945189c4e.png",
+          "/static/uploads/049e0fe3-2fd2-4e94-b376-069403c88fbe.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "eb9a54a8-ca9f-4449-844b-de27d7735242",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "ac1420ae-a06e-4b1a-81d8-86af3c5909d4",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "0613a393-159a-4a77-8680-f18cef7759fb",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "7d3accd5-6f88-4079-afc7-fc016b20221d",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          }
+        ],
+        "status": "failed"
+      },
+      {
+        "prompt": "特写镜头，手机屏幕上的网文界面。标题写着《穿书之恶魔宠妃》，正文文字快速划过，停在一段描述上：‘马春春是个平平无奇的社畜……’。手机屏幕的亮光映在王翠花略显惊讶的瞳孔里。 [王翠花: 一名24岁左右的中国现代职场女性。面容普通但耐看，带着长期熬夜的黑眼圈，眼神疲惫而犀利。扎着简单的马尾，几缕碎发散乱。穿着职业装白衬衫，显得有些不修边幅，气质是典型的吐槽系社畜。] [晚高峰地铁车厢: 现代中国地铁内部。蓝色的塑料座椅，不锈钢立柱和扶手。车厢内光线是明亮而冰冷的白色荧光灯，窗外是黑暗的隧道和模糊的灯光信号。充满拥挤、压抑和现代都市的孤独感。]",
+        "dialogue": "（王翠花心声）这是在写我自己吗？",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "cec05745-4c4c-4861-a13f-c3ced5ce4bd1",
+        "order": 1,
+        "characters": [
+          "char_1769592545327_5lg6v5201"
+        ],
+        "scene_id": "scene_1769592545359_xob1gaaed",
+        "image_url": "/static/uploads/324306a9-da75-46f4-b9cf-0410db4582b0/7449ec1d-567a-41bc-8771-135be40b6fb2.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/324306a9-da75-46f4-b9cf-0410db4582b0/7449ec1d-567a-41bc-8771-135be40b6fb2.png",
+          "/static/uploads/324306a9-da75-46f4-b9cf-0410db4582b0/2c8655bc-bc90-4c0e-8284-876a4cf55b73.png",
+          "/static/uploads/324306a9-da75-46f4-b9cf-0410db4582b0/b8555502-1bb8-4dd2-9517-a2388f7898c6.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [
+          {
+            "id": "7b52b9c7-d731-4959-8eaa-32aa00c3bb71",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "cb6470fb-59f0-4eee-a300-13ad6d15b33d",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "a5763f88-43b4-4b9f-96ff-a9b4006e9c12",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          }
+        ],
+        "status": "failed"
+      },
+      {
+        "prompt": "中景镜头，王翠花靠在地铁车门旁，表情不屑，带着一丝嘲讽的微笑。车窗外是快速掠过的隧道灯火。她修长的手指在屏幕上不耐烦地滑动。 [王翠花: 一名24岁左右的中国现代职场女性。面容普通但耐看，带着长期熬夜的黑眼圈，眼神疲惫而犀利。扎着简单的马尾，几缕碎发散乱。穿着职业装白衬衫，显得有些不修边幅，气质是典型的吐槽系社畜。] [晚高峰地铁车厢: 现代中国地铁内部。蓝色的塑料座椅，不锈钢立柱和扶手。车厢内光线是明亮而冰冷的白色荧光灯，窗外是黑暗的隧道和模糊的灯光信号。充满拥挤、压抑和现代都市的孤独感。]",
+        "dialogue": "（王翠花心声）啧，又是这种逆袭套路。看了十八遍都不止了。",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "425bc837-4675-463d-9c53-20b5c01a0590",
+        "order": 2,
+        "characters": [
+          "char_1769592545327_5lg6v5201"
+        ],
+        "scene_id": "scene_1769592545359_xob1gaaed",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "主观镜头，手机屏幕突然爆发出强烈的白光，白光迅速扩散，吞噬了整个画面。周围的地铁噪音瞬间消失，取而代之的是尖锐的鸣响。 [王翠花: 一名24岁左右的中国现代职场女性。面容普通但耐看，带着长期熬夜的黑眼圈，眼神疲惫而犀利。扎着简单的马尾，几缕碎发散乱。穿着职业装白衬衫，显得有些不修边幅，气质是典型的吐槽系社畜。] [晚高峰地铁车厢: 现代中国地铁内部。蓝色的塑料座椅，不锈钢立柱和扶手。车厢内光线是明亮而冰冷的白色荧光灯，窗外是黑暗的隧道和模糊的灯光信号。充满拥挤、压抑和现代都市的孤独感。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "01c27f3e-5c7a-444a-abe7-c8e16e0b7212",
+        "order": 3,
+        "characters": [
+          "char_1769592545327_5lg6v5201"
+        ],
+        "scene_id": "scene_1769592545359_xob1gaaed",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "全景镜头，王翠花在一个充满古风气息的华丽卧室中醒来。她躺在铺着丝绸被褥的红木床上，四周是半透明的轻纱帷幔。阳光透过雕花窗棂洒下，空气中飘着淡淡的檀香。 [王翠花: 一名24岁左右的中国现代职场女性。面容普通但耐看，带着长期熬夜的黑眼圈，眼神疲惫而犀利。扎着简单的马尾，几缕碎发散乱。穿着职业装白衬衫，显得有些不修边幅，气质是典型的吐槽系社畜。] [华丽古风卧室: 中国古代皇家寝宫。室内有巨大的红木雕花床，挂着淡粉色的蝉翼纱帐。一侧是精致的红木梳妆台，上面摆放着古朴的青铜镜和各种玉制妆奁。阳光透过窗户的木格栅，在地板上投下复杂的几何阴影。氛围奢华、静谧却暗藏危机。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "1a926d4b-a1a3-4899-bfea-d6bb8966fc68",
+        "order": 4,
+        "characters": [
+          "char_1769592545327_5lg6v5201"
+        ],
+        "scene_id": "scene_1769592545359_ff8fwctuo",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "中景镜头，王翠花（此时已是庾晚音的外貌）急切地走到一面精致的青铜镜前。她穿着华贵的丝绸睡袍，领口微敞，动作略显僵硬。 [庾晚音: 顶级古典美女，气质高贵且明艳动人。拥有完美的鹅蛋脸，深邃的杏眼，朱唇皓齿。长发如瀑，头戴简约但昂贵的玉簪。身穿淡紫色和金色丝绸交织的古装长裙，神情此时充满了现代人的焦虑与违和感。] [华丽古风卧室: 中国古代皇家寝宫。室内有巨大的红木雕花床，挂着淡粉色的蝉翼纱帐。一侧是精致的红木梳妆台，上面摆放着古朴的青铜镜和各种玉制妆奁。阳光透过窗户的木格栅，在地板上投下复杂的几何阴影。氛围奢华、静谧却暗藏危机。]",
+        "dialogue": "（王翠花心声）冷静，先看看我是谁……",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "165bc18d-a323-4f45-bf74-1631d0042cc6",
+        "order": 5,
+        "characters": [
+          "char_1769592545327_0u0g7s62z"
+        ],
+        "scene_id": "scene_1769592545359_ff8fwctuo",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，青铜镜中的倒影。一张绝美、艳丽且具有侵略性的脸庞，皮肤白皙如玉，眉如远黛，眼含秋波。这完全不是所谓的“寡淡小白花”形象，而是一个标准的宠妃长相。 [庾晚音: 顶级古典美女，气质高贵且明艳动人。拥有完美的鹅蛋脸，深邃的杏眼，朱唇皓齿。长发如瀑，头戴简约但昂贵的玉簪。身穿淡紫色和金色丝绸交织的古装长裙，神情此时充满了现代人的焦虑与违和感。] [华丽古风卧室: 中国古代皇家寝宫。室内有巨大的红木雕花床，挂着淡粉色的蝉翼纱帐。一侧是精致的红木梳妆台，上面摆放着古朴的青铜镜和各种玉制妆奁。阳光透过窗户的木格栅，在地板上投下复杂的几何阴影。氛围奢华、静谧却暗藏危机。]",
+        "dialogue": "（王翠花心声）这脸……不对劲。炮灰女不可能长这样。",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "f86ac484-31a2-4b9b-b45a-d9827167b70e",
+        "order": 6,
+        "characters": [
+          "char_1769592545327_0u0g7s62z"
+        ],
+        "scene_id": "scene_1769592545359_ff8fwctuo",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "近景镜头，庾晚音（王翠花）脸色惨白，双手撑在梳妆台上，眼神中充满了绝望和焦虑。背景的宫廷装饰显得格外压抑。 [庾晚音: 顶级古典美女，气质高贵且明艳动人。拥有完美的鹅蛋脸，深邃的杏眼，朱唇皓齿。长发如瀑，头戴简约但昂贵的玉簪。身穿淡紫色和金色丝绸交织的古装长裙，神情此时充满了现代人的焦虑与违和感。] [华丽古风卧室: 中国古代皇家寝宫。室内有巨大的红木雕花床，挂着淡粉色的蝉翼纱帐。一侧是精致的红木梳妆台，上面摆放着古朴的青铜镜和各种玉制妆奁。阳光透过窗户的木格栅，在地板上投下复杂的几何阴影。氛围奢华、静谧却暗藏危机。]",
+        "dialogue": "（王翠花心声）我穿成了那个注定被炮灰女迫害而死的原女主……庾晚音？",
+        "audio_prompt": null,
+        "use_scene_ref": false,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "bd75d9d5-2f97-469c-ad51-8589e0d68373",
+        "order": 7,
+        "characters": [
+          "char_1769592545327_0u0g7s62z"
+        ],
+        "scene_id": "scene_1769592545359_ff8fwctuo",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "char_1769592545327_5lg6v5201",
+        "name": "王翠花",
+        "avatar_url": "/static/uploads/3de9bb4b-aa3f-4f8b-9fe8-d47a7b2a13c8.png",
+        "tags": [],
+        "prompt": "一名24岁左右的中国现代职场女性。面容普通但耐看，带着长期熬夜的黑眼圈，眼神疲惫而犀利。扎着简单的马尾，几缕碎发散乱。穿着职业装白衬衫，显得有些不修边幅，气质是典型的吐槽系社畜。"
+      },
+      {
+        "id": "char_1769592545327_0u0g7s62z",
+        "name": "庾晚音",
+        "avatar_url": "/static/uploads/25933575-cef5-4ace-a631-c5e17ade8dcf.png",
+        "tags": [],
+        "prompt": "顶级古典美女，气质高贵且明艳动人。拥有完美的鹅蛋脸，深邃的杏眼，朱唇皓齿。长发如瀑，头戴简约但昂贵的玉簪。身穿淡紫色和金色丝绸交织的古装长裙，神情此时充满了现代人的焦虑与违和感。"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene_1769592545359_xob1gaaed",
+        "name": "晚高峰地铁车厢",
+        "image_url": "/static/uploads/e83bb884-2063-43de-b3cc-1b8bc4655656.png",
+        "tags": [],
+        "prompt": "现代中国地铁内部。蓝色的塑料座椅，不锈钢立柱和扶手。车厢内光线是明亮而冰冷的白色荧光灯，窗外是黑暗的隧道和模糊的灯光信号。充满拥挤、压抑和现代都市的孤独感。"
+      },
+      {
+        "id": "scene_1769592545359_ff8fwctuo",
+        "name": "华丽古风卧室",
+        "image_url": "/static/uploads/26425eb6-2453-4db4-9ba8-69321ca14f4f.png",
+        "tags": [],
+        "prompt": "中国古代皇家寝宫。室内有巨大的红木雕花床，挂着淡粉色的蝉翼纱帐。一侧是精致的红木梳妆台，上面摆放着古朴的青铜镜和各种玉制妆奁。阳光透过窗户的木格栅，在地板上投下复杂的几何阴影。氛围奢华、静谧却暗藏危机。"
+      }
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "96c201bf-98c1-4660-8e25-f844f5a69af5": {
+    "id": "96c201bf-98c1-4660-8e25-f844f5a69af5",
+    "name": "盗墓笔记",
+    "style": "chinese_anime",
+    "shots": [
+      {
+        "prompt": "特写镜头，王翠花一脸疲惫地坐在拥挤的地铁车厢内。她扎着略显凌乱的马尾，戴着黑框眼镜 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [时空隧道: 抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "f8e28f92-91b8-4165-aca7-ac9abb76d5bd",
+        "order": 0,
+        "characters": [
+          "char_1769596756936_1zhtblaoy"
+        ],
+        "scene_id": "scene_1769596757528_oypui5qnp",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/28792b39-da8e-45ec-8c60-bee22ff619c5.png",
+        "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fa5859a6-bbd8-4b2e-984b-e36d9bc15d19.png",
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/25ff2c20-bc5d-4fde-8370-f8b67d505ab6.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4bc3b4e9-d679-4d3a-9f78-8bb71c41ccab.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/80863678-e6da-43e6-a8a9-e2863df0c92d.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fa5859a6-bbd8-4b2e-984b-e36d9bc15d19.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b69451d0-2dbb-4540-b380-b7af2a23eade.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/efb9ef31-71ff-41be-b8f2-7378628b02de.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ca76620f-9014-4e7e-88d3-e41c0632fae5.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/6bb85582-b8bf-43b9-ad15-d25cb144f7b9.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9933311b-638f-4457-8252-858bff5e4e2e.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/28792b39-da8e-45ec-8c60-bee22ff619c5.png"
+        ],
+        "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/1a2f4c81-87bf-4cae-8db4-2d8a73cf2ca0.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "60b8fae7-8477-424c-b816-1c407de05553",
+            "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/1a2f4c81-87bf-4cae-8db4-2d8a73cf2ca0.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "手机屏幕特写。屏幕上显示着网文页面，标题是《穿书之恶魔宠妃》，文字清晰可见：‘马春春是个平平无奇的社畜……’。王翠花的指尖在屏幕上轻轻滑动。 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [深夜地铁车厢: 现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。]",
+        "dialogue": "这是在写我自己吗？",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "0deba0d8-0854-4e43-96ca-cc20e1515da7",
+        "order": 1,
+        "characters": [
+          "char_1769596756936_1zhtblaoy"
+        ],
+        "scene_id": "scene_1769596757528_pkaw9ae9q",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fbe17f35-53bd-4e29-86a7-15ec01a4d0a4.png",
+        "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8396aeff-b774-44fb-a755-db2744d78b0a.png",
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/533279fb-0938-4614-9960-7a41a755a9e2.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fbe17f35-53bd-4e29-86a7-15ec01a4d0a4.png"
+        ],
+        "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/777ba3c9-cc95-4b56-8323-b01bd0942f23.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "00eb7656-b5e2-4f79-8ef7-446444beda36",
+            "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/777ba3c9-cc95-4b56-8323-b01bd0942f23.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "中景镜头，王翠花靠在地铁扶手上，翻了个白眼，露出一副‘又来这套’的嫌弃表情。地铁内忽明忽暗的灯光勾勒出她平凡的轮廓。 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [深夜地铁车厢: 现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "3387abd1-cf8c-4d45-92e9-f6c63592c56e",
+        "order": 2,
+        "characters": [
+          "char_1769596756936_1zhtblaoy"
+        ],
+        "scene_id": "scene_1769596757528_pkaw9ae9q",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/1f814b8c-bc57-43e0-9528-59dcef69e48e.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/1f814b8c-bc57-43e0-9528-59dcef69e48e.png"
+        ],
+        "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4ed04b56-1fed-43c1-83ef-17978a8cd054.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "fb12a6f0-5ed6-4c63-8181-fd7a1b71b8d7",
+            "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4ed04b56-1fed-43c1-83ef-17978a8cd054.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "第一人称视角。手机屏幕突然爆发出强烈的白光，光芒迅速扩散，吞噬了整个地铁视野。画面充满动态模糊和粒子感，伴随着强烈的震荡感。 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [时空隧道: 抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。] [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "532c5e64-ffea-42de-a929-82b659be1546",
+        "order": 3,
+        "characters": [
+          "char_1769596756936_1zhtblaoy",
+          "char_1769596756936_vzn47mmcg"
+        ],
+        "scene_id": "scene_1769596757528_oypui5qnp",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/3b2efa7c-3004-4a21-bfc6-b1fee527feef.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/3b2efa7c-3004-4a21-bfc6-b1fee527feef.png"
+        ],
+        "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8dc2e919-b64c-4e63-9581-92a669633775.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "5e3f02c1-a1d4-401e-a25e-46c0062e6219",
+            "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8dc2e919-b64c-4e63-9581-92a669633775.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "全景镜头。王翠花猛然从一张华丽的古式雕花大床上坐起，四周是古色古香的宫殿陈设，轻盈的纱幔随风飘动，清晨的阳光透过窗棂洒在地面上。她神情错愕，环顾四周。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "01adae35-3780-40e9-bf36-66f55cf0a817",
+        "order": 4,
+        "characters": [
+          "char_1769596756936_vzn47mmcg"
+        ],
+        "scene_id": "scene_1769596757528_1gml4z4ck",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/14a0e924-d761-464b-b4e2-b187dd464252.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/14a0e924-d761-464b-b4e2-b187dd464252.png"
+        ],
+        "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f2221d60-bb1b-4f3c-9a70-3a5f4c4d6f4c.mp4",
+        "video_progress": 100,
+        "video_items": [
+          {
+            "id": "e4b7bceb-4cc8-4ec9-9788-f1e0ceaa1863",
+            "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f2221d60-bb1b-4f3c-9a70-3a5f4c4d6f4c.mp4",
+            "progress": 100,
+            "status": "completed"
+          }
+        ],
+        "status": "completed"
+      },
+      {
+        "prompt": "中景镜头。庾晚音（王翠花）急切地跪在梳妆台前，双手颤抖地抓起一面古朴的青铜镜，照向自己的脸。她的动作显得有些笨拙，与华丽的服饰形成反差。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "3e330113-3db4-4259-99aa-dd8c0d0a5bc1",
+        "order": 5,
+        "characters": [
+          "char_1769596756936_vzn47mmcg"
+        ],
+        "scene_id": "scene_1769596757528_1gml4z4ck",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4bce8fa1-778a-4b2d-a244-9af579055970.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4bce8fa1-778a-4b2d-a244-9af579055970.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "特写镜头，青铜镜中的倒影。一张惊世骇俗、艳丽夺目的脸庞，眉眼如画，肤若凝脂，未施粉黛却自带一股尊贵气息。镜中人瞪大了眼睛，满脸写着绝望。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+        "dialogue": "（心声）怎么会是她……那个注定被炮灰女迫害而死的原女主，庾晚音。",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "e9dd448a-4c8f-47d5-884f-ca937dde6505",
+        "order": 6,
+        "characters": [
+          "char_1769596756936_vzn47mmcg"
+        ],
+        "scene_id": "scene_1769596757528_1gml4z4ck",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b07c103d-0ee6-42c0-8b40-448de7442a43.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b07c103d-0ee6-42c0-8b40-448de7442a43.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "低角度仰拍，庾晚音瘫坐在地，华丽的长袍铺散开来。她双手抱头，显得极其焦虑，背景是深邃而充满压迫感的古代宫廷建筑，光影交错，暗示着未来的危机。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "4b5f9aa3-21a2-4ced-9425-fc4d7e6ce2ac",
+        "order": 7,
+        "characters": [
+          "char_1769596756936_vzn47mmcg"
+        ],
+        "scene_id": "scene_1769596757528_1gml4z4ck",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/5b9f96da-732f-4f93-9fd7-88019b2c2885.png",
+        "original_image_url": null,
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/5b9f96da-732f-4f93-9fd7-88019b2c2885.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "合成两张参考图",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": "/static/uploads/c36ca01b-6008-4f92-b6a5-b61b2c48f1a1_屏幕截图 2026-01-26 001937.png",
+        "panel_layout": "1-panel",
+        "id": "3f3f2538-9710-4473-a553-5a6cbae6f621",
+        "order": 8,
+        "characters": [],
+        "scene_id": "scene_1769596757528_pkaw9ae9q",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/dbdaf73f-27d5-4cd7-90e3-b56f4427dc06.png",
+        "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/5537c678-dac1-42d3-95f6-f0ad8e4e6553.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/dbdaf73f-27d5-4cd7-90e3-b56f4427dc06.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "生成自定义参考图中人物喂狗的图像 [时空隧道: 抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。] [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": "/static/uploads/aa6ec126-2d27-4397-9c81-2e68243a9df5_屏幕截图 2026-01-26 001937.png",
+        "panel_layout": "1-panel",
+        "id": "90b66540-9920-466d-a57d-c2273a278eba",
+        "order": 9,
+        "characters": [
+          "char_1769596756936_1zhtblaoy"
+        ],
+        "scene_id": "scene_1769596757528_oypui5qnp",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b6d898a2-f751-47d6-b146-2c8e8c72d357.png",
+        "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ac741017-5ae5-4c49-b35a-89726a47f438.png",
+        "image_candidates": [
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ac741017-5ae5-4c49-b35a-89726a47f438.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ad7398a0-a75f-4f59-a7b9-6e61bdbc3e85.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8369acc7-35ac-49dd-87c1-fd4d1df4656c.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f79585c8-4012-4ccd-8bae-dd654677fd5e.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/38172917-3ef5-4d86-859e-4a3c8a205d4d.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/500f21c0-55cb-4d10-bf63-90e9525797cb.png",
+          "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b6d898a2-f751-47d6-b146-2c8e8c72d357.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "b9f6e896-20f3-45f9-8ef9-ab41fde4959c",
+        "order": 10,
+        "characters": [],
+        "scene_id": null,
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "char_1769596756936_1zhtblaoy",
+        "name": "王翠花",
+        "avatar_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/bc9537de-357d-46ba-bfc1-add44230685d.png",
+        "tags": [],
+        "prompt": "一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。"
+      },
+      {
+        "id": "char_1769596756936_vzn47mmcg",
+        "name": "庾晚音",
+        "avatar_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9ffff7bb-b678-482f-8344-646c40880a66.png",
+        "tags": [],
+        "prompt": "绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene_1769596757528_pkaw9ae9q",
+        "name": "深夜地铁车厢",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9ce52023-6fcb-42af-816e-fcb8ff57c4b7.png",
+        "tags": [],
+        "prompt": "现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。"
+      },
+      {
+        "id": "scene_1769596757528_oypui5qnp",
+        "name": "时空隧道",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f8d247a7-1d7f-417c-9480-9ef76b23d61b.png",
+        "tags": [],
+        "prompt": "抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。"
+      },
+      {
+        "id": "scene_1769596757528_1gml4z4ck",
+        "name": "寝宫卧室",
+        "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b0d4c6bf-1a20-4a59-9ed3-e4bb0e0e8918.png",
+        "tags": [],
+        "prompt": "奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。"
+      }
+    ],
+    "default_scene_id": null,
+    "default_panel_layout": "1-panel",
+    "default_image_count": 1
+  },
+  "eb5d26ac-ca0e-42ad-99cc-1a249e770483": {
+    "id": "eb5d26ac-ca0e-42ad-99cc-1a249e770483",
+    "name": "yh-t",
+    "style": "real",
+    "shots": [
+      {
+        "prompt": "",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "4-panel",
+        "id": "c735cf12-a77d-4ee5-aeda-1ed339cd4211",
+        "order": 0,
+        "characters": [],
+        "scene_id": null,
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [],
+    "scenes": [],
+    "default_scene_id": null,
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
+  },
+  "063781cb-83ed-4fb9-a385-caad9b769db4": {
+    "id": "063781cb-83ed-4fb9-a385-caad9b769db4",
+    "name": "箱子里的大明",
+    "style": "real",
+    "shots": [
+      {
+        "prompt": "",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "f0d3dee0-d4e1-4aa4-a4cd-190fae7a390f",
+        "order": 0,
+        "characters": [],
+        "scene_id": null,
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "全景镜头，深夜杂乱的现代卧室。李道玄瘫坐在黑色电竞椅上，电脑屏幕散发着幽幽蓝光映在他疲惫的脸上，双眼布满红血丝。脚边放着一个巨大的快递纸箱，胶带上写着“生日快乐”。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "fb6a86b8-8e87-412e-8429-a5c1b38663bb",
+        "order": 1,
+        "characters": [],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，李道玄用力撕开纸箱胶带，纸屑飞溅。箱中露出一座精致的长方形玻璃造景箱，内部是一座微缩的明代荒村，黄沙漫天，枯木横陈，呈现出极度的荒凉感。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "167e9e18-c43b-4bd7-97d9-a81f80040e9c",
+        "order": 2,
+        "characters": [],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "主观视角，透过放大镜观察。镜头急速拉近至造景箱内部。枯萎的歪脖子树下，一个指甲盖大小的少女正在用手疯狂刨着干硬的土地，指尖带血。 [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "77cad34c-5030-4941-96f4-8c86aea07b97",
+        "order": 3,
+        "characters": [],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "中景镜头，高一叶衣衫褴褛，瘦骨嶙峋，她颤抖着将一截挖出的草根塞进嘴里，眼神中透着求生本能的渴望。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "（独白）现在的模型都做得这么变态吗？连饥饿感都做得这么真实……",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "972ea20a-9f48-41f3-9120-7b6fcab4f674",
+        "order": 4,
+        "characters": [],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "远景镜头，村口尘土漫天。一队骑着战马、面目狰狞的微型流寇挥舞着锈迹斑斑的长刀冲入村庄，地面上出现“流寇袭村”的金色虚幻文字。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "ffecc330-9bce-4d9f-99ff-92dd455b3402",
+        "order": 5,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "俯拍镜头，流寇在村中肆虐。村民四散奔逃，鲜血像微小的红色水滴一样溅洒在干燥的黄土地上。惨叫声和马蹄声交织。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "3af8310d-36e8-49d1-b1be-b7821840a3b4",
+        "order": 6,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "近景镜头，墙角处，高一叶和母亲紧紧相拥缩在一起。一名满脸横肉、身形魁梧的山贼踹开摇摇欲坠的篱笆，狞笑着举起钢刀。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "a528b823-2a6b-41e1-b69f-70e17b9c00cf",
+        "order": 7,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，长刀挥下。母亲猛地转身将高一叶护在身下，背部被砍开一道血口，红色液体喷溅。母亲脸色惨白，缓缓倒地。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "77e341ae-b7c9-4501-8ace-c0324a715bbf",
+        "order": 8,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "中景镜头，高一叶死死抱着母亲的尸体，满脸泪水与泥土，绝望地抬头看向再次举刀的山贼，刀锋在阳光下闪着寒光。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "娘——！！",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "a90e65b3-81d0-4c03-a692-0fd294b6b8d3",
+        "order": 9,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "低角度仰拍，李道玄在现实世界中猛地站起，愤怒地俯视着造景箱。他掀开造景箱顶盖，右手伸向箱内，巨大的阴影如乌云般笼罩了整个微缩村庄。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "（独白）这剧情……太过分了！",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "5184ab35-19cf-42d0-8083-c8c26ea0f470",
+        "order": 10,
+        "characters": [],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/8845575f-9594-4053-9685-0a48a5cd67bc.png",
+        "original_image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/1dfdc6bf-7ac5-4f24-94c4-2504f4b31f10.png",
+        "image_candidates": [
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/1dfdc6bf-7ac5-4f24-94c4-2504f4b31f10.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/669f60cc-e8db-44c4-b53e-e42c984eca01.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/95788794-cbbe-46f8-a729-d7da201e67f0.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/5df68e65-d7ac-416c-a3b7-9aac2ba2752a.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/064562e0-b416-44c0-9c32-9d8663cdabe6.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/8845575f-9594-4053-9685-0a48a5cd67bc.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/c6d2a962-f5f7-4219-ac33-cb43f7abe71f.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/bff644a7-4f3b-4670-94a6-ea99e26f03d9.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "箱内视角仰拍，天空中云层剧烈翻涌，一只遮天蔽日的巨大肉色手掌破云而降，指关节清晰可见，仿佛神明降世。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "aa92e896-f474-437b-8028-307d036500e9",
+        "order": 11,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/41fe3e41-9cc3-4ddf-a66f-97e92382911e.png",
+        "original_image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/1af03eaa-d1b4-4753-afe9-456f1e071f2c.png",
+        "image_candidates": [
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/4057cf8c-b6fb-4e94-b16f-1e3b3cd8426d.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/41fe3e41-9cc3-4ddf-a66f-97e92382911e.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "动作特写，李道玄在箱外屈起中指，对着那名行凶的山贼用力一弹。指尖与微缩山贼接触的瞬间，产生了一股强烈的气浪冲击波。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 完整大型微缩世界，明末陕西灾荒时期完整大型村庄，含破旧茅草屋群、干枯农田，全景视角，主观视角，纯场景无人物，真实照片质感，无过度后期处理，开阔沙尘环境，破旧茅草屋群（青砖地基、木质板门、屋顶茅草稀疏且局部脱落、墙面泥灰剥落露出夯土），干枯农田，村内地面干燥龟裂呈网状纹路，村外沙地散落枯朽树木，一缕炊烟从屋顶缓缓升起，单一漫射光源来自阴沉天空，低照度形成柔和压抑的阴影，主色调：土黄色、灰褐色、青灰色，空气弥漫沙尘略显浑浊，画面干净，无文字、无标识、无水印，高分辨率，细节清晰，无畸变\n]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "acaafbc8-3923-494a-a024-54eee804e685",
+        "order": 12,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/fceb67f6-5673-4660-901b-39da94aee57b.png",
+        "original_image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/fceb67f6-5673-4660-901b-39da94aee57b.png",
+        "image_candidates": [
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/fceb67f6-5673-4660-901b-39da94aee57b.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/7732983c-0cac-4ce2-b715-83be7654824d.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/4c7c20cf-bea8-4f43-808c-f132d057bd92.png",
+          "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/b4375787-2264-4a57-bb2a-7fcb17b39ee5.png"
+        ],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "completed"
+      },
+      {
+        "prompt": "侧拍镜头，山贼像被重型炮弹击中一般，身体瞬间折断倒飞出去，在空中划过一道长长的抛物线，重重砸在沙盘边缘，脖颈扭曲成诡异角度，当场毙命。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "c9cc912e-c7e7-4bb8-840f-58fad3fe6153",
+        "order": 13,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "全景镜头，全场死寂。剩下的山贼和惊恐的村民都像石化了一样，僵硬地维持着动作，呆滞地仰望着天空中的巨手。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "702938e1-7ffb-4ec9-bb94-0ed60a3154a0",
+        "order": 14,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，李道玄收回右手，疑惑地注视着指尖上沾染的一抹鲜红血迹。血迹湿润且带有真实质感。他的瞳孔因极度震惊而骤然收缩。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "（独白）那是……真的血？",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "c563042f-1c8e-45f6-bcea-26eb7e149a6b",
+        "order": 15,
+        "characters": [
+          "char_1769739618922_4q3m1f9ld"
+        ],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "俯冲特写镜头，黄沙地上躺着一具扭曲的山贼尸体，肢体以非人类的角度折断，周围地面凹陷，血迹在干燥的沙土中迅速干涸。 [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "f4cc7825-8d3e-4fdd-a9f5-479d2dffdbdc",
+        "order": 16,
+        "characters": [],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "中景镜头，众山贼呆若木鸡，眼神中充满了极度的惊恐，背景是破败的土墙和干旱的荒村。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "5eb32330-51ca-4cc0-bdd0-bc4a3b0f56eb",
+        "order": 17,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，山贼头目面目狰狞，额头青筋暴起，他猛地转头看向墙角的高一叶，眼神中透着疯狂与绝望。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "妖法！是这小贱人使的妖法！杀了她！别让她再作怪！",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "6a4a2f54-a255-4567-aadc-3d9cb9db5821",
+        "order": 18,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "低视角镜头，山贼头目高举锈迹斑斑的长刀，刀锋在烈日下闪着寒光，指向缩在墙角、抱着母亲尸体的高一叶。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "aa53a1d5-1500-4153-8908-6b871d0fa7f5",
+        "order": 19,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "侧拍镜头，现代公寓内，李道玄俯视着桌上的造景箱，眉头紧锁，眼神中带着一丝不耐烦和冷意。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "还不死心？",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "f0d93d55-4971-4c10-ab9c-def1c33549ed",
+        "order": 20,
+        "characters": [],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "宏观特写镜头，李道玄巨大的右手食指扣住拇指，悬停在微缩景观中那小小的山贼头目头顶，指纹清晰可见，如同一座肉色的山岳。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "走好。",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "381ab848-9464-44ac-89b0-2512e174702a",
+        "order": 21,
+        "characters": [],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "慢动作特写，山贼头目的胸口突然像被重锤击中般凹陷，整个人化作一道残影向后飞去，长刀脱手而出。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "d47a2629-fb32-4df4-8bd5-96ccbb09affa",
+        "order": 22,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "远景镜头，山贼头目撞碎了远处的断壁残垣，激起漫天尘土，剩下的山贼丢下武器，连滚带爬地四散逃窜。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "鬼啊！快跑！",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "361c174a-1e74-4621-aa2c-9a761821d66c",
+        "order": 23,
+        "characters": [
+          "char_1769739059509_ifzdj240n"
+        ],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "高一叶的视角，仰望天空。翻涌的云雾裂开一道缝隙，一张巨大、威严且悲悯的人脸若隐若现，占据了整个苍穹。 [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "999e705c-c2c1-4ca0-83d7-d0a0c580b4ff",
+        "order": 24,
+        "characters": [],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "全景镜头，高一叶跪在血泊与黄沙中，对着天空重重叩首，身影在巨大的阴影下显得极其渺小。 [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "天神大人……救救我们……",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "2180e02d-11d9-4949-8cef-d43958ab0658",
+        "order": 25,
+        "characters": [],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "微距镜头，李道玄通过放大镜观察，看到箱子里那个米粒大小的塑料小人（高一叶）脸上竟然挂着晶莹的泪珠，眼神中透着真实的绝望。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "既然做了，就做到底。",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "c8ded88a-ba7b-4b8c-8063-46d9aca4078b",
+        "order": 26,
+        "characters": [],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "仰拍镜头，箱内世界的天空突然变暗，一只遮天蔽日的巨大手掌带着风雷之势从云层中压下，阴影笼罩了整个村庄。 [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "f482d635-8fc5-4acb-b1c4-c27b8a024c01",
+        "order": 27,
+        "characters": [],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "震撼全景，巨大的手掌连续拍击地面，每一次落下都引发剧烈的地震，尘土呈环形向外扩散，山贼们瞬间被拍扁在地上。 [高家村: 位于玻璃造景箱内的微缩世界。明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
+        "dialogue": "",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "deaf9dd2-c96b-4460-a8ad-ec53a13e2763",
+        "order": 28,
+        "characters": [],
+        "scene_id": "scene_1769739378108_fepxt6uuu",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "特写镜头，李道玄收回手，掌心沾染了明显的红色液体。他用白色纸巾擦拭，纸巾上留下大片鲜艳的血迹。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
+        "dialogue": "他们……能看见我？",
+        "audio_prompt": null,
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "3-panel",
+        "id": "58d075de-fd23-4b8b-8600-cb681adbc640",
+        "order": 29,
+        "characters": [],
+        "scene_id": "scene_1769739378108_9iv8flxsp",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "char_1769739059509_ifzdj240n",
+        "name": "山贼",
+        "avatar_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/bbe9a490-5899-4560-86e7-4bcc1ea90823.png",
+        "tags": [],
+        "prompt": "凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性"
+      },
+      {
+        "id": "char_1769739618922_4q3m1f9ld",
+        "name": "李道玄",
+        "avatar_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/2f180623-8d69-470b-bbe7-a096da8fce2a.png",
+        "tags": [],
+        "prompt": ""
+      }
+    ],
+    "scenes": [
+      {
+        "id": "scene_1769739378108_9iv8flxsp",
+        "name": "现代公寓-卧室",
+        "image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/6af25e49-3efc-43ee-b636-7933272bef12.png",
+        "tags": [],
+        "prompt": "现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。"
+      },
+      {
+        "id": "scene_1769739378108_fepxt6uuu",
+        "name": "高家村",
+        "image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/cd62a86a-eb7d-4880-b2de-0f8dfd3dd9b9.png",
+        "tags": [],
+        "prompt": "完整大型微缩世界，明末陕西灾荒时期完整大型村庄，含破旧茅草屋群、干枯农田，全景视角，主观视角，纯场景无人物，真实照片质感，无过度后期处理，开阔沙尘环境，破旧茅草屋群（青砖地基、木质板门、屋顶茅草稀疏且局部脱落、墙面泥灰剥落露出夯土），干枯农田，村内地面干燥龟裂呈网状纹路，村外沙地散落枯朽树木，一缕炊烟从屋顶缓缓升起，单一漫射光源来自阴沉天空，低照度形成柔和压抑的阴影，主色调：土黄色、灰褐色、青灰色，空气弥漫沙尘略显浑浊，画面干净，无文字、无标识、无水印，高分辨率，细节清晰，无畸变\n"
+      }
+    ],
+    "default_scene_id": "scene_1769739378108_fepxt6uuu",
+    "default_panel_layout": "3-panel",
+    "default_image_count": 4
   }
 }
