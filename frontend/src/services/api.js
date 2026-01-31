@@ -227,6 +227,39 @@ export const ApiService = {
         return data.url;
     },
 
+    importCharactersFromMd: async (projectId, file) => {
+        if (USE_MOCK) return { added: 1, characters: [] };
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/characters/import_from_md`, {
+            method: 'POST',
+            body: formData
+        });
+        return res.json();
+    },
+    
+    importScenesFromMd: async (projectId, file) => {
+        if (USE_MOCK) return { added: 1, scenes: [] };
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/scenes/import_from_md`, {
+            method: 'POST',
+            body: formData
+        });
+        return res.json();
+    },
+    
+    importShotsFromMd: async (projectId, file) => {
+        if (USE_MOCK) return { added: 1, shots: [] };
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/shots/import_from_md`, {
+            method: 'POST',
+            body: formData
+        });
+        return res.json();
+    },
+
     createCharacter: async (projectId, charData) => {
         if (USE_MOCK) return charData;
         const res = await fetch(`${API_BASE_URL}/projects/${projectId}/characters`, {

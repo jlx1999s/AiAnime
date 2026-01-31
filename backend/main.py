@@ -727,6 +727,82 @@ async def create_character(project_id: str, character: Character):
     save_db()
     return character
 
+@app.post("/projects/{project_id}/characters/import_from_md")
+async def import_characters_from_md(project_id: str, file: UploadFile = File(...)):
+    project = get_project_or_404(project_id)
+    content = await file.read()
+    try:
+        text = content.decode("utf-8")
+    except:
+        text = content.decode("gbk", errors="ignore")
+    
+    lines = text.split("\n")
+    new_characters = []
+    
+    header_found = False
+    name_idx = -1
+    desc_idx = -1
+    prompt_idx = -1
+    
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+            
+        parts = [p.strip() for p in line.split("|")]
+        # Remove empty first/last elements if they are just from the boundary pipes
+        if len(parts) > 0 and parts[0] == "":
+            parts.pop(0)
+        if len(parts) > 0 and parts[-1] == "":
+            parts.pop()
+            
+        if not parts:
+            continue
+
+        # Check for header
+        if not header_found:
+            for i, p in enumerate(parts):
+                if "角色名" in p:
+                    name_idx = i
+                    header_found = True
+                elif "描述" in p:
+                    desc_idx = i
+                elif "提示词" in p:
+                    prompt_idx = i
+            continue
+            
+        # Check for separator
+        if all(c in "- :" for c in "".join(parts)):
+            continue
+            
+        # Data row
+        if name_idx != -1 and len(parts) > name_idx:
+            name = parts[name_idx]
+            if "角色名" in name: continue
+            
+            desc = parts[desc_idx] if desc_idx != -1 and len(parts) > desc_idx else ""
+            prompt = parts[prompt_idx] if prompt_idx != -1 and len(parts) > prompt_idx else ""
+            
+            if name:
+                char_id = str(uuid.uuid4())
+                avatar_url = f"https://api.dicebear.com/7.x/adventurer/svg?seed={name}"
+                
+                new_char = Character(
+                    id=char_id,
+                    name=name,
+                    avatar_url=avatar_url,
+                    prompt=prompt,
+                    description=desc
+                )
+                new_characters.append(new_char)
+
+    if new_characters:
+        project.characters.extend(new_characters)
+        save_db()
+        
+    return {"added": len(new_characters), "characters": new_characters}
+
+
 @app.post("/projects/{project_id}/scenes", response_model=Scene)
 async def create_scene(project_id: str, scene: Scene):
     project = get_project_or_404(project_id)
@@ -741,6 +817,276 @@ async def create_scene(project_id: str, scene: Scene):
     save_db()
     return scene
 
+@app.post("/projects/{project_id}/scenes/import_from_md")
+async def import_scenes_from_md(project_id: str, file: UploadFile = File(...)):
+    project = get_project_or_404(project_id)
+    content = await file.read()
+    try:
+        text = content.decode("utf-8")
+    except:
+        text = content.decode("gbk", errors="ignore")
+    
+    lines = text.split("\n")
+    new_scenes = []
+    
+    header_found = False
+    name_idx = -1
+    desc_idx = -1
+    prompt_idx = -1
+    
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        parts = [p.strip() for p in line.split("|")]
+        if len(parts) > 0 and parts[0] == "":
+            parts.pop(0)
+        if len(parts) > 0 and parts[-1] == "":
+            parts.pop()
+        if not parts:
+            continue
+        
+        if not header_found:
+            for i, p in enumerate(parts):
+                if "场景名" in p:
+                    name_idx = i
+                    header_found = True
+                elif "描述" in p:
+                    desc_idx = i
+                elif "提示词" in p or "生图提示词" in p:
+                    prompt_idx = i
+            continue
+        
+        if all(c in "- :" for c in "".join(parts)):
+            continue
+        
+        if name_idx != -1 and len(parts) > name_idx:
+            name = parts[name_idx]
+            if "场景名" in name:
+                continue
+            desc = parts[desc_idx] if desc_idx != -1 and len(parts) > desc_idx else ""
+            prompt = parts[prompt_idx] if prompt_idx != -1 and len(parts) > prompt_idx else ""
+            if name:
+                scene_id = str(uuid.uuid4())
+                new_scene = Scene(
+                    id=scene_id,
+                    name=name,
+                    image_url="",
+                    prompt=prompt,
+                    description=desc,
+                    tags=[]
+                )
+                new_scenes.append(new_scene)
+    
+    if new_scenes:
+        project.scenes.extend(new_scenes)
+        save_db()
+    
+    return {"added": len(new_scenes), "scenes": new_scenes}
+
+@app.post("/projects/{project_id}/shots/import_from_md")
+async def import_shots_from_md(project_id: str, file: UploadFile = File(...)):
+    project = get_project_or_404(project_id)
+    content = await file.read()
+    try:
+        text = content.decode("utf-8")
+    except:
+        text = content.decode("gbk", errors="ignore")
+    
+    lines = text.split("\n")
+    rows = []
+    
+    header_found = False
+    idx_no = -1
+    idx_chars = -1
+    idx_scene = -1
+    idx_prompt = -1
+    idx_video = -1
+    
+    print("DEBUG: Starting MD Import parsing")
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+            
+        parts = [p.strip() for p in line.split("|")]
+        # Remove empty first/last elements if they are just from the boundary pipes
+        if len(parts) > 0 and parts[0] == "":
+            parts.pop(0)
+        if len(parts) > 0 and parts[-1] == "":
+            parts.pop()
+            
+        if not parts:
+            continue
+
+        # Check for header
+        if not header_found:
+            # Clean parts for checking (remove spaces inside words too?)
+            clean_parts = [p.replace(" ", "").replace("\t", "") for p in parts]
+            print(f"DEBUG: Checking header candidate: {clean_parts}")
+            
+            temp_idx_no = -1
+            temp_idx_chars = -1
+            temp_idx_scene = -1
+            temp_idx_prompt = -1
+            temp_idx_video = -1
+
+            for i, p in enumerate(clean_parts):
+                if "编号" in p or "序号" in p: temp_idx_no = i
+                elif "出场人物" in p or "角色" in p: temp_idx_chars = i
+                elif "场景" in p: temp_idx_scene = i
+                elif "视频提示词" in p: temp_idx_video = i
+                elif "分镜提示词" in p: temp_idx_prompt = i
+                # Fallback for "提示词" only if not matched specific ones
+                elif "提示词" in p and temp_idx_prompt == -1 and temp_idx_video == -1: temp_idx_prompt = i
+
+            # If we found at least a few key columns, assume it's the header
+            if temp_idx_chars != -1 or temp_idx_prompt != -1 or temp_idx_video != -1:
+                idx_no = temp_idx_no
+                idx_chars = temp_idx_chars
+                idx_scene = temp_idx_scene
+                idx_prompt = temp_idx_prompt
+                idx_video = temp_idx_video
+                header_found = True
+                print(f"DEBUG: Header Found! Indices: no={idx_no}, chars={idx_chars}, scene={idx_scene}, prompt={idx_prompt}, video={idx_video}")
+            continue
+            
+        # Check for separator
+        joined = "".join(parts)
+        if all(c in "- :|" for c in joined):
+            continue
+            
+        # Data row
+        number = None
+        if idx_no != -1 and len(parts) > idx_no:
+            try:
+                number = int(parts[idx_no])
+            except:
+                pass 
+        
+        char_names = []
+        if idx_chars != -1 and len(parts) > idx_chars:
+            raw = parts[idx_chars]
+            for sep in ["、", ",", "，", "/", "|"]:
+                raw = raw.replace(sep, " ")
+            char_names = [x.strip() for x in raw.split() if x.strip()]
+            
+        scene_name = parts[idx_scene].strip() if idx_scene != -1 and len(parts) > idx_scene else ""
+        prompt = parts[idx_prompt].strip() if idx_prompt != -1 and len(parts) > idx_prompt else ""
+        video_prompt = parts[idx_video].strip() if idx_video != -1 and len(parts) > idx_video else ""
+        
+        if char_names or scene_name or prompt or video_prompt:
+            rows.append({
+                "number": number,
+                "char_names": char_names,
+                "scene_name": scene_name,
+                "prompt": prompt,
+                "video_prompt": video_prompt,
+            })
+
+    print(f"DEBUG: Parsed {len(rows)} rows")
+    rows.sort(key=lambda r: (r["number"] if isinstance(r["number"], int) else 1_000_000))
+    
+    def normalize(s):
+        if not s: return ""
+        s = s.strip().lower()
+        # Remove common punctuation and whitespace
+        for char in [" ", "\t", "，", ",", "。", ".", "：", ":", "“", "”", "'", '"', "（", "）", "(", ")", "-", "_"]:
+            s = s.replace(char, "")
+        return s
+
+    # Resolve IDs
+    name_to_char = {c.name.strip(): c.id for c in (project.characters or [])}
+    norm_to_char = {normalize(c.name): c.id for c in (project.characters or [])}
+    id_to_char_obj = {c.id: c for c in (project.characters or [])}
+
+    name_to_scene = {s.name.strip(): s.id for s in (project.scenes or [])}
+    norm_to_scene = {normalize(s.name): s.id for s in (project.scenes or [])}
+    id_to_scene_obj = {s.id: s for s in (project.scenes or [])}
+    
+    new_shots = []
+    for r in rows:
+        char_ids = []
+        for n in r["char_names"]:
+            n_clean = n.strip()
+            # 1. Exact match
+            if n_clean in name_to_char:
+                char_ids.append(name_to_char[n_clean])
+            # 2. Normalized match
+            elif normalize(n_clean) in norm_to_char:
+                char_ids.append(norm_to_char[normalize(n_clean)])
+            else:
+                # 3. Try to find if one contains the other (fallback)
+                found = False
+                n_norm = normalize(n_clean)
+                for c_name, c_id in name_to_char.items():
+                    c_norm = normalize(c_name)
+                    if n_norm and (n_norm in c_norm or c_norm in n_norm):
+                        char_ids.append(c_id)
+                        found = True
+                        break
+                if not found:
+                    print(f"DEBUG: Character '{n}' not found")
+
+        scene_id = None
+        if r["scene_name"]:
+            s_name = r["scene_name"].strip()
+            # 1. Exact match
+            if s_name in name_to_scene:
+                scene_id = name_to_scene[s_name]
+            # 2. Normalized match
+            elif normalize(s_name) in norm_to_scene:
+                scene_id = norm_to_scene[normalize(s_name)]
+            else:
+                # 3. Try partial match
+                found = False
+                s_norm = normalize(s_name)
+                for sc_name, sc_id in name_to_scene.items():
+                    sc_norm = normalize(sc_name)
+                    if s_norm and (s_norm in sc_norm or sc_norm in s_norm):
+                        scene_id = sc_id
+                        found = True
+                        break
+                if not found:
+                    print(f"DEBUG: Scene '{s_name}' not found")
+
+        # Auto-append asset prompts
+        final_prompt = r["prompt"]
+        for cid in char_ids:
+            c = id_to_char_obj.get(cid)
+            if c and c.prompt:
+                final_prompt += f" [{c.name}: {c.prompt}]"
+        
+        if scene_id:
+            s = id_to_scene_obj.get(scene_id)
+            if s and s.prompt:
+                final_prompt += f" [{s.name}: {s.prompt}]"
+
+        shot_dict = {
+            "prompt": final_prompt,
+            "dialogue": "",
+            "audio_prompt": r["video_prompt"] if r["video_prompt"] else None,
+            "use_scene_ref": True,
+            "custom_image_url": None,
+            "panel_layout": project.default_panel_layout or "3-panel",
+            "characters": char_ids,
+            "scene_id": scene_id,
+        }
+        
+        new_shot = Shot(
+            id=str(uuid.uuid4()),
+            order=len(project.shots),
+            **shot_dict
+        )
+        if not new_shot.image_url:
+            new_shot.image_url = f"https://placehold.co/300x169/25262b/FFF?text=New+Shot"
+            
+        project.shots.append(new_shot)
+        new_shots.append(new_shot)
+        
+    save_db()
+    return {"added": len(new_shots), "shots": new_shots}
 @app.put("/characters/{project_id}/{char_id}", response_model=Character)
 async def update_character(project_id: str, char_id: str, updates: CharacterUpdate):
     project = get_project_or_404(project_id)
@@ -1276,6 +1622,8 @@ def volcengine_generate_image(prompt: str, reference_images: list[dict] | None =
                      return _save_base64_image(image_data_b64, sub_dir=sub_dir)
             except Exception as e:
                 print(f"Multi-Reference Generation Failed: {e}")
+                import traceback
+                traceback.print_exc()
                 # Fallback logic could go here if needed, but for now we let it fail or try simple T2I
 
         print(f"Using Standard T2I ({current_api_config.volc_image_model})...")
@@ -1561,7 +1909,8 @@ def vectorengine_generate_image(prompt: str, negative_prompt: str = "", sub_dir:
             
     raise Exception("VectorEngine timeout")
 
-async def openai_generate_image(prompt: str, sub_dir: str = None) -> str:
+async def openai_generate_image(prompt: str, sub_dir: str = None, reference_image_url: str = None) -> str:
+    print(f"openai_generate_image called with ref_url: {reference_image_url}")
     if not image_client:
         raise Exception("OpenAI image client not initialized")
     
@@ -1573,9 +1922,26 @@ async def openai_generate_image(prompt: str, sub_dir: str = None) -> str:
         # The user's screenshot confirms this model uses /v1/chat/completions
         if "gemini" in model.lower() and "image" in model.lower():
             print(f"Using Chat Completion for image generation with model: {model}")
+            
+            messages_content = [{"type": "text", "text": prompt}]
+            
+            # Inject Reference Image if provided
+            if reference_image_url:
+                print(f"[Gemini] Using reference image: {reference_image_url}")
+                b64 = _image_url_to_base64(reference_image_url)
+                if b64:
+                    messages_content.append({
+                        "type": "image_url",
+                        "image_url": {"url": f"data:image/jpeg;base64,{b64}"}
+                    })
+                    # Add instruction to use the image as reference
+                    messages_content[0]["text"] += " (Use the attached image as a style and composition reference)"
+                else:
+                    print(f"[Gemini] Failed to load reference image: {reference_image_url}")
+
             resp = await image_client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": messages_content}],
                 max_tokens=100000  # Large token limit for base64 images
             )
             content = resp.choices[0].message.content
@@ -1976,6 +2342,43 @@ def volcengine_generate_video(prompt: str, image_path: str = None, progress_call
         print(f"Video Generation Failed: {e}")
         raise
 
+async def _describe_image_with_vision(image_url: str) -> str:
+    if not client:
+        return ""
+    
+    # Simple heuristic to skip models known not to support vision to save time/errors
+    # If uncertain, we try anyway.
+    if "gpt-3.5" in current_llm_model and "turbo" in current_llm_model and "16k" not in current_llm_model:
+        # Most basic 3.5 doesn't support vision, but let's just try-catch to be safe
+        pass
+
+    print(f"[Vision] Analyzing custom reference image: {image_url}")
+    b64 = _image_url_to_base64(image_url)
+    if not b64:
+        print(f"[Vision] Failed to load image for analysis")
+        return ""
+        
+    try:
+        response = await client.chat.completions.create(
+            model=current_llm_model,
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "Describe the visual style, composition, lighting, and key elements of this image concisely. This description will be used as a style reference for generating a new image."},
+                        {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64}"}}
+                    ]
+                }
+            ],
+            max_tokens=200
+        )
+        description = response.choices[0].message.content
+        print(f"[Vision] Generated description: {description[:50]}...")
+        return description
+    except Exception as e:
+        print(f"[Vision] Failed to describe image: {e}")
+        return ""
+
 async def ai_generation_task(project_id: str, shot_id: str, type: str, count: int | None = None, video_id: str | None = None):
     project = DB.get(project_id)
     if not project: return
@@ -1984,7 +2387,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
     if not target_shot: return
 
     try:
-        prompt = target_shot.prompt or ""
+        prompt = (target_shot.audio_prompt or target_shot.prompt or "") if type == "video" else (target_shot.prompt or "")
         
         # Clean existing layout keywords to avoid conflicts with selected panel_layout
         remove_patterns = [
@@ -2022,8 +2425,32 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
         }
         layout_prompt = layout_prompts.get(target_shot.panel_layout, layout_prompts["3-panel"])
         
-        # Construct base prompt - Put style FIRST
-        base_prompt = f"{style_desc}, {prompt}, {layout_prompt}, high quality, detailed"
+        # Auto-inject Character and Scene prompts
+        additional_prompts = []
+        
+        # 1. Add Scene Prompt
+        if target_shot.scene_id:
+            scene_by_id = {s.id: s for s in (project.scenes or [])}
+            scene = scene_by_id.get(target_shot.scene_id)
+            if scene and scene.prompt:
+                additional_prompts.append(f"Scene location: {scene.prompt}")
+                
+        # 2. Add Character Prompts
+        if target_shot.characters:
+            char_by_id = {c.id: c for c in (project.characters or [])}
+            for char_id in target_shot.characters:
+                char = char_by_id.get(char_id)
+                if char and char.prompt:
+                    additional_prompts.append(f"Character {char.name}: {char.prompt}")
+
+        # Construct base prompt - Put style FIRST, then user prompt, then injected context, then layout
+        base_parts = [style_desc, prompt]
+        if additional_prompts:
+            base_parts.extend(additional_prompts)
+        base_parts.append(layout_prompt)
+        base_parts.append("high quality, detailed")
+        
+        base_prompt = ", ".join(base_parts)
         
         negative_prompt = ""
         if project.style == "real":
@@ -2039,16 +2466,34 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 if not image_client:
                     raise Exception("OpenAI image provider not configured")
                 
+                # Gemini/OpenAI Native Image-to-Image Support
+                # If the underlying model (like Gemini) supports image input, we pass it directly.
+                # We do NOT use the Vision-to-Text fallback here anymore as requested by user.
+                
                 # OpenAI doesn't support negative_prompt natively usually, append to prompt
                 final_prompt = f"{base_prompt}. Exclude: {negative_prompt}"
                 
                 images = []
                 candidate_count = count or CANDIDATE_IMAGE_COUNT
                 candidate_count = max(1, min(8, candidate_count))
-                for _ in range(candidate_count):
-                    image_url = await openai_generate_image(final_prompt, sub_dir=project.id)
-                    if image_url:
-                        images.append(image_url)
+                
+                # Generate in parallel
+                tasks = [
+                    openai_generate_image(
+                        final_prompt, 
+                        sub_dir=project.id,
+                        reference_image_url=target_shot.custom_image_url # Pass the custom reference image
+                    )
+                    for _ in range(candidate_count)
+                ]
+                results = await asyncio.gather(*tasks, return_exceptions=True)
+                
+                for res in results:
+                    if isinstance(res, str) and res:
+                        images.append(res)
+                    elif isinstance(res, Exception):
+                        print(f"OpenAI Image Gen failed: {res}")
+
                 if images:
                     if target_shot.image_candidates is None:
                         target_shot.image_candidates = []
@@ -2073,14 +2518,19 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 images = []
                 candidate_count = count or CANDIDATE_IMAGE_COUNT
                 candidate_count = max(1, min(8, candidate_count))
-                for _ in range(candidate_count):
-                    try:
-                        # Pass negative_prompt explicitly
-                        image_url = await asyncio.to_thread(vectorengine_generate_image, base_prompt, negative_prompt, sub_dir=project.id)
-                        if image_url:
-                            images.append(image_url)
-                    except Exception as e:
-                        print(f"VectorEngine gen failed: {e}")
+                
+                # Generate in parallel
+                tasks = [
+                    asyncio.to_thread(vectorengine_generate_image, base_prompt, negative_prompt, sub_dir=project.id)
+                    for _ in range(candidate_count)
+                ]
+                results = await asyncio.gather(*tasks, return_exceptions=True)
+                
+                for res in results:
+                    if isinstance(res, str) and res:
+                        images.append(res)
+                    elif isinstance(res, Exception):
+                        print(f"VectorEngine gen failed: {res}")
                 
                 if images:
                     if target_shot.image_candidates is None:
@@ -2156,10 +2606,18 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 images = []
                 candidate_count = count or CANDIDATE_IMAGE_COUNT
                 candidate_count = max(1, min(8, candidate_count))
-                for _ in range(candidate_count):
-                    image_url = await asyncio.to_thread(volcengine_generate_image, prompt, reference_images, project.id)
-                    if image_url:
-                        images.append(image_url)
+                # Generate in parallel
+                tasks = [
+                    asyncio.to_thread(volcengine_generate_image, prompt, reference_images, project.id) 
+                    for _ in range(candidate_count)
+                ]
+                results = await asyncio.gather(*tasks, return_exceptions=True)
+                
+                for res in results:
+                    if isinstance(res, str) and res:
+                        images.append(res)
+                    elif isinstance(res, Exception):
+                        print(f"Volcengine gen failed: {res}")
 
                 if images:
                     if target_shot.image_candidates is None:

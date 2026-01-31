@@ -14,6 +14,7 @@ class Character(BaseModel):
     avatar_url: str
     tags: List[str] = []
     prompt: str = ""
+    description: str = ""
 
 class Scene(BaseModel):
     id: str
@@ -21,6 +22,7 @@ class Scene(BaseModel):
     image_url: str
     tags: List[str] = []
     prompt: str = ""
+    description: str = ""
 
 class CharacterUpdate(BaseModel):
     name: Optional[str] = None
@@ -33,6 +35,7 @@ class SceneUpdate(BaseModel):
     image_url: Optional[str] = None
     tags: Optional[List[str]] = None
     prompt: Optional[str] = None
+    description: Optional[str] = None
 
 class ShotBase(BaseModel):
     prompt: str = ""
@@ -82,8 +85,8 @@ class Project(BaseModel):
     
     # Project Settings
     default_scene_id: Optional[str] = None
-    default_panel_layout: str = "3-panel"
-    default_image_count: int = 4
+    default_panel_layout: str = "1-panel"
+    default_image_count: int = 1
 
 # API Request/Response Models
 class GenerateRequest(BaseModel):

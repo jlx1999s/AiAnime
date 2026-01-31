@@ -1,19 +1,51 @@
 import React, { useState } from 'react';
-import { Trash2, Search, Plus, Wand2, RefreshCw, Maximize } from 'lucide-react';
+import { Trash2, Search, Plus, Wand2, RefreshCw, Maximize, Save, ChevronLeft, ChevronRight, User, Image as ImageIcon } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
 
-const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene, onGenerateAllCharacters, onGenerateAllScenes, isGeneratingCharacters, isGeneratingScenes, defaultSceneId, onSetDefaultScene }) => {
+const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene, onGenerateAllCharacters, onGenerateAllScenes, isGeneratingCharacters, isGeneratingScenes, defaultSceneId, onSetDefaultScene, onImportCharacters, isCollapsed, onToggleCollapse }) => {
     const [activeTab, setActiveTab] = useState('chars');
     const [previewUrl, setPreviewUrl] = useState(null);
 
+    if (isCollapsed) {
+        return (
+            <aside className="w-12 border-l border-dark-700 bg-dark-800 flex flex-col flex-shrink-0 items-center py-2 transition-all duration-300">
+                <button 
+                    onClick={onToggleCollapse}
+                    className="mb-4 p-2 text-gray-400 hover:text-white hover:bg-dark-700 rounded"
+                    title="展开"
+                >
+                    <ChevronLeft size={20} />
+                </button>
+                <div className="flex flex-col gap-4 w-full items-center">
+                    <button 
+                        onClick={() => { onToggleCollapse(); setActiveTab('chars'); }}
+                        className={`p-2 rounded flex flex-col items-center gap-1 ${activeTab === 'chars' ? 'text-accent' : 'text-gray-400 hover:text-white'}`}
+                        title="角色资产"
+                    >
+                        <User size={20} />
+                        <span className="text-[10px]">角色</span>
+                    </button>
+                    <button 
+                        onClick={() => { onToggleCollapse(); setActiveTab('scenes'); }}
+                        className={`p-2 rounded flex flex-col items-center gap-1 ${activeTab === 'scenes' ? 'text-accent' : 'text-gray-400 hover:text-white'}`}
+                        title="场景资产"
+                    >
+                        <ImageIcon size={20} />
+                        <span className="text-[10px]">场景</span>
+                    </button>
+                </div>
+            </aside>
+        );
+    }
+
     return (
-        <aside className="w-80 border-l border-dark-700 bg-dark-800 flex flex-col flex-shrink-0">
+        <aside className="w-80 border-l border-dark-700 bg-dark-800 flex flex-col flex-shrink-0 transition-all duration-300">
             <ImagePreviewModal 
                 isOpen={!!previewUrl} 
                 imageUrl={previewUrl} 
                 onClose={() => setPreviewUrl(null)} 
             />
-            <div className="flex border-b border-dark-700">
+            <div className="flex border-b border-dark-700 relative">
                 <button 
                     className={`flex-1 py-3 text-sm font-medium ${activeTab === 'chars' ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}
                     onClick={() => setActiveTab('chars')}
@@ -22,6 +54,14 @@ const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddChar
                     className={`flex-1 py-3 text-sm font-medium ${activeTab === 'scenes' ? 'text-accent border-b-2 border-accent' : 'text-gray-400'}`}
                     onClick={() => setActiveTab('scenes')}
                 >场景资产</button>
+                
+                <button 
+                    onClick={onToggleCollapse}
+                    className="absolute right-0 top-0 bottom-0 w-8 flex items-center justify-center text-gray-400 hover:text-white hover:bg-dark-700"
+                    title="收起"
+                >
+                    <ChevronRight size={16} />
+                </button>
             </div>
             
             <div className="p-4 flex-1 overflow-y-auto custom-scrollbar">
@@ -41,6 +81,13 @@ const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddChar
                                     >
                                         {isGeneratingCharacters ? <RefreshCw size={10} className="animate-spin"/> : <Wand2 size={10} />} 
                                         {isGeneratingCharacters ? '生成中...' : '一键生成'}
+                                    </button>
+                                    <button
+                                        onClick={onImportCharacters}
+                                        className="bg-dark-700 hover:bg-accent text-gray-300 hover:text-white p-1 rounded transition-colors"
+                                        title="导入MD角色"
+                                    >
+                                        <Save size={14} />
                                     </button>
                                     <div className="relative">
                                         <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>

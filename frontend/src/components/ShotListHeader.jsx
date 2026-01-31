@@ -52,7 +52,7 @@ const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDef
                 </button>
                 <select 
                     className="bg-dark-700 text-[10px] text-gray-300 rounded border border-dark-600 focus:border-accent outline-none px-1 py-0.5"
-                    value={defaultPanelLayout || '3-panel'}
+                    value={defaultPanelLayout || '1-panel'}
                     onChange={(e) => onSetDefaultPanelLayout && onSetDefaultPanelLayout(e.target.value)}
                     title="默认分镜布局"
                 >
@@ -66,7 +66,7 @@ const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDef
                     min="1" 
                     max="4" 
                     className="w-8 bg-dark-700 text-[10px] text-gray-300 rounded border border-dark-600 focus:border-accent outline-none px-1 py-0.5 text-center"
-                    value={defaultImageCount || 4}
+                    value={defaultImageCount || 1}
                     onChange={(e) => onSetDefaultImageCount && onSetDefaultImageCount(e.target.value)}
                     title="默认生成张数"
                 />

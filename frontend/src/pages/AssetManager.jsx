@@ -12,6 +12,9 @@ const AssetManager = () => {
     const [loading, setLoading] = useState(true);
     const [previewUrl, setPreviewUrl] = useState(null);
     const [generatingId, setGeneratingId] = useState(null);
+    const importMdRef = React.useRef(null);
+    const [isBulkGeneratingChars, setIsBulkGeneratingChars] = useState(false);
+    const [isBulkGeneratingScenes, setIsBulkGeneratingScenes] = useState(false);
 
     useEffect(() => {
         loadProject();
@@ -136,14 +139,118 @@ const AssetManager = () => {
                         场景 ({project.scenes?.length || 0})
                     </button>
                 </div>
+                <div className="flex items-center gap-2">
+                    <button
+                        className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingChars ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
+                        disabled={isBulkGeneratingChars || !!generatingId}
+                        onClick={async () => {
+                            if (!project) return;
+                            const targets = (project.characters || []).filter(c => !c.avatar_url || c.avatar_url.includes('dicebear'));
+                            if (targets.length === 0) {
+                                alert('没有需要生成的角色');
+                                return;
+                            }
+                            if (!confirm(`确定要为 ${targets.length} 个角色生成图片吗？`)) return;
+                            setIsBulkGeneratingChars(true);
+                            const style = project?.style || 'anime';
+                            try {
+                                for (const char of targets) {
+                                    try {
+                                        const prompt = `${char.name}, ${char.prompt || char.description || 'character portrait'}, ${style} style, high quality`;
+                                        const result = await ApiService.generateAsset(prompt, 'character', projectId);
+                                        const updated = { avatar_url: result.url };
+                                        setProject(prev => ({ ...prev, characters: (prev.characters || []).map(c => c.id === char.id ? { ...c, ...updated } : c) }));
+                                        await ApiService.updateCharacter(projectId, char.id, { ...char, ...updated });
+                                    } catch (e) {}
+                                }
+                            } finally {
+                                setIsBulkGeneratingChars(false);
+                            }
+                        }}
+                    >
+                        角色一键生成
+                    </button>
+                    <button
+                        className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingScenes ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
+                        disabled={isBulkGeneratingScenes || !!generatingId}
+                        onClick={async () => {
+                            if (!project) return;
+                            const targets = (project.scenes || []).filter(s => !s.image_url);
+                            if (targets.length === 0) {
+                                alert('没有需要生成的场景');
+                                return;
+                            }
+                            if (!confirm(`确定要为 ${targets.length} 个场景生成图片吗？`)) return;
+                            setIsBulkGeneratingScenes(true);
+                            const style = project?.style || 'anime';
+                            try {
+                                for (const scene of targets) {
+                                    try {
+                                        const prompt = `${scene.name}, ${scene.prompt || scene.description || 'scenery'}, ${style} style, high quality`;
+                                        const result = await ApiService.generateAsset(prompt, 'scene', projectId);
+                                        const updated = { image_url: result.url };
+                                        setProject(prev => ({ ...prev, scenes: (prev.scenes || []).map(s => s.id === scene.id ? { ...s, ...updated } : s) }));
+                                        await ApiService.updateScene(projectId, scene.id, { ...scene, ...updated });
+                                    } catch (e) {}
+                                }
+                            } finally {
+                                setIsBulkGeneratingScenes(false);
+                            }
+                        }}
+                    >
+                        场景一键生成
+                    </button>
+                    <button
+                        className="p-2 hover:bg-dark-700 rounded-full transition-colors text-gray-400 hover:text-white"
+                        title={activeTab === 'characters' ? '导入角色MD' : '导入场景MD'}
+                        onClick={() => importMdRef.current?.click()}
+                    >
+                        <Save size={18} />
+                    </button>
+                    <input
+                        type="file"
+                        ref={importMdRef}
+                        className="hidden"
+                        accept=".md"
+                        onChange={async (e) => {
+                            const file = e.target.files?.[0];
+                            if (!file) return;
+                            try {
+                                if (activeTab === 'characters') {
+                                    const res = await ApiService.importCharactersFromMd(projectId, file);
+                                    const added = res.characters || [];
+                                    if (added.length) {
+                                        setProject(prev => ({ ...prev, characters: [...(prev.characters || []), ...added] }));
+                                        alert(`成功导入 ${added.length} 个角色`);
+                                    } else {
+                                        alert('未解析到有效角色数据');
+                                    }
+                                } else {
+                                    const res = await ApiService.importScenesFromMd(projectId, file);
+                                    const added = res.scenes || [];
+                                    if (added.length) {
+                                        setProject(prev => ({ ...prev, scenes: [...(prev.scenes || []), ...added] }));
+                                        alert(`成功导入 ${added.length} 个场景`);
+                                    } else {
+                                        alert('未解析到有效场景数据');
+                                    }
+                                }
+                            } catch (err) {
+                                console.error('Import MD failed', err);
+                                alert('导入失败');
+                            }
+                            e.target.value = null;
+                        }}
+                    />
+                </div>
             </header>
 
             {/* Content */}
             <main className="flex-1 p-6 overflow-y-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
                     {/* Add New Card */}
                     <div 
-                        className="aspect-video bg-dark-800 border-2 border-dashed border-dark-600 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-accent hover:bg-dark-700 transition-colors group"
+                        className="bg-dark-800 border-2 border-dashed border-dark-600 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-accent hover:bg-dark-700 transition-colors group h-56"
                         onClick={async () => {
                             const name = prompt(`请输入新${activeTab === 'characters' ? '角色' : '场景'}名称`);
                             if (name) {
@@ -170,13 +277,13 @@ const AssetManager = () => {
 
                     {/* Asset Cards */}
                     {assets?.map(asset => (
-                        <div key={asset.id} className="bg-dark-800 rounded-xl overflow-hidden border border-dark-700 shadow-lg flex flex-col">
+                        <div key={asset.id} className="bg-dark-800 rounded-lg overflow-hidden border border-dark-700 shadow-lg flex flex-col">
                             {/* Image Area */}
-                            <div className="relative aspect-video bg-dark-900 group">
+                            <div className="relative bg-dark-900 group h-56">
                                 <img 
                                     src={asset.avatar_url || asset.avatar || asset.image_url} 
                                     alt={asset.name} 
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain"
                                     onError={(e) => { e.target.src = 'https://placehold.co/600x400/1a1b1e/FFF?text=No+Image'; }}
                                 />
                                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
@@ -191,7 +298,7 @@ const AssetManager = () => {
                                         className={`p-2 bg-dark-700 rounded-full hover:bg-accent text-white transition-colors ${generatingId === asset.id ? 'animate-spin' : ''}`}
                                         onClick={() => handleGenerateAsset(activeTab === 'characters' ? 'character' : 'scene', asset)}
                                         title="重新生成"
-                                        disabled={generatingId === asset.id}
+                                        disabled={generatingId === asset.id || (activeTab === 'characters' ? isBulkGeneratingChars : isBulkGeneratingScenes)}
                                     >
                                         {generatingId === asset.id ? <RefreshCw size={18} /> : <Wand2 size={18} />}
                                     </button>
@@ -206,14 +313,14 @@ const AssetManager = () => {
                             </div>
 
                             {/* Info Area */}
-                            <div className="p-4 flex-1 flex flex-col gap-3">
+                            <div className="p-3 flex-1 flex flex-col gap-2">
                                 <div>
                                     <label className="text-[10px] uppercase text-gray-500 font-bold mb-1 block">名称</label>
                                     <input 
                                         type="text" 
                                         value={asset.name}
                                         onChange={(e) => handleUpdateAsset(activeTab === 'characters' ? 'character' : 'scene', asset.id, { name: e.target.value })}
-                                        className="w-full bg-dark-900 border border-dark-700 rounded px-2 py-1.5 text-sm text-white focus:border-accent outline-none"
+                                        className="w-full bg-dark-900 border border-dark-700 rounded px-2 py-1 text-sm text-white focus:border-accent outline-none"
                                     />
                                 </div>
                                 <div className="flex-1">
@@ -223,7 +330,7 @@ const AssetManager = () => {
                                     <textarea 
                                         value={asset.prompt || ''}
                                         onChange={(e) => handleUpdateAsset(activeTab === 'characters' ? 'character' : 'scene', asset.id, { prompt: e.target.value })}
-                                        className="w-full h-24 bg-dark-900 border border-dark-700 rounded px-2 py-1.5 text-xs text-gray-300 focus:border-accent outline-none resize-none"
+                                        className="w-full h-20 bg-dark-900 border border-dark-700 rounded px-2 py-1 text-xs text-gray-300 focus:border-accent outline-none resize-none"
                                         placeholder="输入外观描述..."
                                     />
                                 </div>

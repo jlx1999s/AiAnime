@@ -53,7 +53,8 @@ const ProjectEditor = () => {
     // Project Settings
     const [defaultSceneId, setDefaultSceneId] = useState(null);
     const [defaultPanelLayout, setDefaultPanelLayout] = useState('1-panel');
-    const [defaultImageCount, setDefaultImageCount] = useState(3);
+    const [defaultImageCount, setDefaultImageCount] = useState(1);
+    const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     
     // File Inputs
     const fileInputRef = React.useRef(null);
@@ -62,6 +63,8 @@ const ProjectEditor = () => {
     const newCharFileInputRef = React.useRef(null);
     const newSceneFileInputRef = React.useRef(null);
     const importFileInputRef = React.useRef(null);
+    const importShotsMdFileInputRef = React.useRef(null);
+    const importCharsFileInputRef = React.useRef(null);
 
     const loadProjects = async () => {
         try {
@@ -93,7 +96,7 @@ const ProjectEditor = () => {
                 setScenes(project.scenes || []);
                 setDefaultSceneId(project.default_scene_id || null);
                 setDefaultPanelLayout(project.default_panel_layout || '1-panel');
-                setDefaultImageCount(project.default_image_count || 3);
+                setDefaultImageCount(project.default_image_count || 1);
                 setSelectedShots(new Set());
             } catch (error) {
                 console.error("Failed to load project", error);
@@ -327,7 +330,7 @@ const ProjectEditor = () => {
     const handleSetDefaultImageCount = async (count) => {
         if (!projectId) return;
         try {
-            const newCount = parseInt(count, 10) || 4;
+            const newCount = parseInt(count, 10) || 1;
             await ApiService.updateProject(projectId, { default_image_count: newCount });
             setDefaultImageCount(newCount);
         } catch (error) {
@@ -343,7 +346,7 @@ const ProjectEditor = () => {
             characters: [],
             scene_id: defaultSceneId || null,
             use_scene_ref: true,
-            panel_layout: defaultPanelLayout || '3-panel',
+            panel_layout: defaultPanelLayout || '1-panel',
         };
         
         // Optimistic UI
@@ -725,6 +728,25 @@ const ProjectEditor = () => {
         e.target.value = null;
     };
 
+    const handleImportCharactersFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        try {
+            const res = await ApiService.importCharactersFromMd(projectId, file);
+            if (res.characters && res.characters.length > 0) {
+                setCharacters(prev => [...prev, ...res.characters]);
+                alert(`成功导入 ${res.characters.length} 个角色`);
+            } else {
+                alert("未找到可导入的角色数据");
+            }
+        } catch (e) {
+            console.error("Import characters failed", e);
+            alert("导入失败");
+        }
+        e.target.value = null;
+    };
+
     const handleOpenGenerateModal = (type, existingData = null) => {
         setGenerateType(type);
         setRegenerateAssetData(existingData);
@@ -887,6 +909,12 @@ const ProjectEditor = () => {
                         <button onClick={handleAddShot} className="hover:text-white flex items-center gap-1 transition-colors">
                             <Plus size={12}/> 添加空白镜头
                         </button>
+                        <button 
+                            onClick={() => importShotsMdFileInputRef.current?.click()} 
+                            className="hover:text-white flex items-center gap-1 transition-colors"
+                        >
+                            导入分镜MD
+                        </button>
                         <div className="h-4 w-px bg-dark-600"></div>
                         <button 
                             className="hover:text-white flex items-center gap-1 transition-colors ml-auto text-accent"
@@ -963,6 +991,8 @@ const ProjectEditor = () => {
                     </div>
                 </main>
                 <Sidebar 
+                    isCollapsed={isSidebarCollapsed}
+                    onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
                     characters={characters} 
                     scenes={scenes} 
                     onCharacterClick={onCharacterClick}
@@ -993,6 +1023,7 @@ const ProjectEditor = () => {
                     isGeneratingScenes={isGeneratingScenes}
                     defaultSceneId={defaultSceneId}
                     onSetDefaultScene={handleSetDefaultScene}
+                    onImportCharacters={() => importCharsFileInputRef.current?.click()}
                 />
             </div>
             <input 
@@ -1015,6 +1046,36 @@ const ProjectEditor = () => {
                 className="hidden" 
                 accept="image/*" 
                 onChange={handleShotFileChange}
+            />
+            <input
+                type="file"
+                ref={importShotsMdFileInputRef}
+                className="hidden"
+                accept=".md"
+                onChange={async (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    try {
+                        const res = await ApiService.importShotsFromMd(projectId, file);
+                        const added = (res.shots || []).map(normalizeShot);
+                        if (added.length) {
+                            setShots(prev => [...prev, ...added]);
+                            alert(`成功导入 ${added.length} 个分镜`);
+                        } else {
+                            alert('未解析到有效分镜数据');
+                        }
+                    } catch (err) {
+                        alert('导入分镜失败');
+                    }
+                    e.target.value = null;
+                }}
+            />
+            <input
+                type="file"
+                ref={importCharsFileInputRef}
+                className="hidden"
+                accept=".md"
+                onChange={handleImportCharactersFileChange}
             />
             <input
                 type="file"

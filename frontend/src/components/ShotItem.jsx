@@ -45,7 +45,7 @@ const updatePromptWithAsset = (currentPrompt, action, assetType, asset, oldAsset
 };
 
 const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId }) => {
-    const [candidateCount, setCandidateCount] = useState(defaultImageCount || 3);
+    const [candidateCount, setCandidateCount] = useState(defaultImageCount || 1);
     const customImageInputRef = useRef(null);
 
     const handleCustomImageUpload = async (e) => {
@@ -70,14 +70,23 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
         }
     }, [defaultImageCount]);
     const [previewUrl, setPreviewUrl] = useState(null);
-    const [imgStart, setImgStart] = useState(0);
-    const [vidStart, setVidStart] = useState(0);
-    const visibleImgCount = 6;
-    const visibleVidCount = 4;
+    const imageScrollRef = useRef(null);
+    const videoScrollRef = useRef(null);
+
     const videoItems = Array.isArray(shot.video_items) && shot.video_items.length
         ? shot.video_items
         : (shot.video_url ? [{ id: 'legacy', url: shot.video_url, progress: shot.video_progress, status: shot.status }] : []);
     const [activeVideoId, setActiveVideoId] = useState(videoItems[0]?.id ?? null);
+
+    const scrollContainer = (ref, direction) => {
+        if (ref.current) {
+            const scrollAmount = 300;
+            ref.current.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
 
     useEffect(() => {
         if (!videoItems.length) {
@@ -90,21 +99,6 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             setActiveVideoId(videoItems[0].id);
         }
     }, [videoItems, activeVideoId]);
-
-    useEffect(() => {
-        if (!Array.isArray(shot.image_candidates)) return;
-        const maxStart = Math.max(0, shot.image_candidates.length - visibleImgCount);
-        if (imgStart > maxStart) {
-            setImgStart(maxStart);
-        }
-    }, [shot.image_candidates, imgStart, visibleImgCount]);
-
-    useEffect(() => {
-        const maxStart = Math.max(0, videoItems.length - visibleVidCount);
-        if (vidStart > maxStart) {
-            setVidStart(maxStart);
-        }
-    }, [videoItems, vidStart, visibleVidCount]);
 
     return (
         <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
@@ -128,7 +122,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             <div className="space-y-3">
                  <div className="relative">
                      <div className="flex justify-between items-center mb-1">
-                       <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视觉描述 (Prompt)</label>
+                       <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">分镜提示词</label>
                        <span className="text-[10px] text-dark-600 cursor-pointer hover:text-accent">AI 优化</span>
                     </div>
                     <textarea 
@@ -136,6 +130,17 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                         value={shot.prompt}
                         placeholder="描述画面内容、镜头角度、光影..."
                         onChange={(e) => onUpdate(shot.id, { ...shot, prompt: e.target.value })}
+                    />
+                </div>
+                <div className="relative">
+                    <div className="flex justify-between items-center mb-1">
+                       <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视频提示词</label>
+                    </div>
+                    <textarea 
+                        className="w-full bg-dark-900/50 border border-dark-700 rounded p-2 text-sm text-gray-300 focus:border-accent focus:outline-none resize-none h-16 placeholder-gray-700 transition-colors"
+                        value={shot.audio_prompt || ''}
+                        placeholder="描述视频风格、运动、节奏、氛围等..."
+                        onChange={(e) => onUpdate(shot.id, { ...shot, audio_prompt: e.target.value })}
                     />
                 </div>
             </div>
@@ -154,27 +159,40 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                             <div 
                                 key={i} 
                                 className="aspect-square rounded bg-dark-700 border border-dark-600 overflow-hidden relative group/char cursor-pointer"
-                                onClick={() => onCharacterClick && onCharacterClick(charId)}
+                                onClick={() => setPreviewUrl(avatarUrl)}
                                 title={char?.name || "未知角色"}
                             >
                                 <img src={avatarUrl} className="w-full h-full object-cover" alt="character"/>
-                                <div className="absolute inset-0 bg-black/60 hidden group-hover/char:flex items-center justify-center">
-                                    <span className="text-[8px] text-white">换图</span>
+                                <div className="absolute inset-0 bg-black/60 hidden group-hover/char:flex items-center justify-center pointer-events-none">
+                                    <Maximize size={16} className="text-white"/>
                                 </div>
-                                <button
-                                    className="absolute top-0 right-0 p-0.5 bg-black/50 rounded-bl hidden group-hover/char:block"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        if (confirm(`确定移除 ${char?.name || '该角色'} 出场吗？`)) {
-                                            const newCharacters = (shot.characters || []).filter(id => id !== charId);
-                                            const newPrompt = updatePromptWithAsset(shot.prompt, 'remove', 'character', char);
-                                            onUpdate && onUpdate(shot.id, { ...shot, characters: newCharacters, prompt: newPrompt });
-                                        }
-                                    }}
-                                    title="移除角色"
-                                >
-                                    <Trash2 size={10} className="text-red-400"/>
-                                </button>
+                                <div className="absolute top-0 right-0 flex gap-1 p-1 opacity-0 group-hover/char:opacity-100 transition-opacity">
+                                    <button
+                                        className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            onCharacterClick && onCharacterClick(charId);
+                                        }}
+                                        title="更换图片"
+                                    >
+                                        <Upload size={10} />
+                                    </button>
+                                    <button
+                                        className="p-1 bg-black/50 hover:bg-black/70 text-red-400 rounded"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (confirm(`确定移除 ${char?.name || '该角色'} 出场吗？`)) {
+                                                const newCharacters = (shot.characters || []).filter(id => id !== charId);
+                                                const newPrompt = updatePromptWithAsset(shot.prompt, 'remove', 'character', char);
+                                                const newAudioPrompt = updatePromptWithAsset(shot.audio_prompt, 'remove', 'character', char);
+                                                onUpdate && onUpdate(shot.id, { ...shot, characters: newCharacters, prompt: newPrompt, audio_prompt: newAudioPrompt });
+                                            }
+                                        }}
+                                        title="移除角色"
+                                    >
+                                        <Trash2 size={10} />
+                                    </button>
+                                </div>
                             </div>
                         );
                     })}
@@ -188,7 +206,8 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                     if (!shot.characters.includes(newCharId)) {
                                         const charToAdd = allCharacters?.find(c => c.id === newCharId);
                                         const newPrompt = updatePromptWithAsset(shot.prompt, 'add', 'character', charToAdd);
-                                        onUpdate(shot.id, { ...shot, characters: [...shot.characters, newCharId], prompt: newPrompt });
+                                        const newAudioPrompt = updatePromptWithAsset(shot.audio_prompt, 'add', 'character', charToAdd);
+                                        onUpdate(shot.id, { ...shot, characters: [...shot.characters, newCharId], prompt: newPrompt, audio_prompt: newAudioPrompt });
                                     }
                                     e.target.value = "";
                                 }
@@ -219,7 +238,8 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                         const oldScene = allScenes?.find(s => s.id === shot.scene_id);
                                         const newScene = allScenes?.find(s => s.id === nextId);
                                         const newPrompt = updatePromptWithAsset(shot.prompt, 'replace', 'scene', newScene, oldScene);
-                                        onUpdate(shot.id, { ...shot, scene_id: nextId, use_scene_ref: true, prompt: newPrompt });
+                                        const newAudioPrompt = updatePromptWithAsset(shot.audio_prompt, 'replace', 'scene', newScene, oldScene);
+                                        onUpdate(shot.id, { ...shot, scene_id: nextId, use_scene_ref: true, prompt: newPrompt, audio_prompt: newAudioPrompt });
                                     }
                                     e.target.value = "";
                                 }
@@ -238,8 +258,11 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                  {shot.scene_id && allScenes ? (
                      <div 
                         className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/scene cursor-pointer"
-                        onClick={() => onSceneClick && onSceneClick(shot.scene_id)}
-                        title="点击更换场景图片"
+                        onClick={() => {
+                            const scene = allScenes.find(s => s.id === shot.scene_id);
+                            if (scene?.image_url) setPreviewUrl(scene.image_url);
+                        }}
+                        title="点击放大查看"
                      >
                         {(() => {
                             const scene = allScenes.find(s => s.id === shot.scene_id);
@@ -252,8 +275,21 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                             );
                         })()}
                         
-                        <div className="absolute inset-0 bg-black/50 hidden group-hover/scene:flex items-center justify-center">
-                            <span className="text-xs text-white">更换图片</span>
+                        <div className="absolute inset-0 bg-black/50 hidden group-hover/scene:flex items-center justify-center pointer-events-none">
+                            <Maximize size={20} className="text-white"/>
+                        </div>
+
+                        <div className="absolute top-2 right-2 flex gap-1 hidden group-hover/scene:flex">
+                             <button
+                                className="p-1.5 bg-black/50 hover:bg-black/70 text-white rounded"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onSceneClick && onSceneClick(shot.scene_id);
+                                }}
+                                title="更换场景图片"
+                            >
+                                <Upload size={14} />
+                            </button>
                         </div>
                         
                         <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-1">
@@ -271,7 +307,8 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                 const oldScene = allScenes?.find(s => s.id === shot.scene_id);
                                 const newScene = allScenes?.find(s => s.id === nextId);
                                 const newPrompt = updatePromptWithAsset(shot.prompt, 'replace', 'scene', newScene, oldScene);
-                                onUpdate(shot.id, { ...shot, scene_id: nextId, use_scene_ref: true, prompt: newPrompt });
+                                const newAudioPrompt = updatePromptWithAsset(shot.audio_prompt, 'replace', 'scene', newScene, oldScene);
+                                onUpdate(shot.id, { ...shot, scene_id: nextId, use_scene_ref: true, prompt: newPrompt, audio_prompt: newAudioPrompt });
                             }}
                             value=""
                         >
@@ -391,23 +428,23 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                 {shot.image_url ? (
                     <div 
                         className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/image cursor-pointer"
-                        onClick={() => onShotImageClick && onShotImageClick(shot.id)}
+                        onClick={() => setPreviewUrl(shot.image_url)}
                     >
                         <img src={shot.image_url} className="w-full h-full object-cover" alt="scene"/>
                         <div 
                             className="absolute inset-0 bg-black/50 hidden group-hover/image:flex items-center justify-center pointer-events-none" 
                         >
-                            <span className="text-xs text-white">点击更换图片</span>
+                            <Maximize size={24} className="text-white"/>
                         </div>
                         <button
                             className="absolute top-2 right-2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded hidden group-hover/image:block z-10"
                             onClick={(e) => {
                                 e.stopPropagation();
-                                setPreviewUrl(shot.image_url);
+                                onShotImageClick && onShotImageClick(shot.id);
                             }}
-                            title="放大查看"
+                            title="更换图片"
                         >
-                            <Maximize size={16} />
+                            <Upload size={16} />
                         </button>
                         <button
                             className="absolute top-2 left-2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded hidden group-hover/image:block z-10"
@@ -422,29 +459,43 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                             <Trash2 size={16} />
                         </button>
                     </div>
+                ) : shot.status === 'generating' ? (
+                    <div className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative flex items-center justify-center bg-dark-900">
+                        <img 
+                            src="https://placehold.co/600x340/1a1b1e/666?text=Generating..." 
+                            className="w-full h-full object-cover opacity-50" 
+                            alt="generating"
+                        />
+                         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                            <div className="animate-spin rounded-full h-8 w-8 border-2 border-transparent border-t-accent border-r-accent"></div>
+                            <span className="text-xs text-gray-300">生成中...</span>
+                        </div>
+                    </div>
                 ) : (
                     <div className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 text-dark-500 bg-dark-900/30">
                         <Image size={20}/>
                         <span className="text-xs">暂无分镜，右侧输入数量后点击“生成”</span>
                     </div>
                  )}
-                {Array.isArray(shot.image_candidates) && shot.image_candidates.length > 1 && (
+                {Array.isArray(shot.image_candidates) && (shot.image_candidates.length > 1 || (shot.image_candidates.length > 0 && shot.status === 'generating')) && (
                     <div className="flex items-center gap-2 pt-1">
                         <button
                             type="button"
                             className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
-                            onClick={() => setImgStart(Math.max(0, imgStart - 1))}
-                            disabled={imgStart <= 0}
+                            onClick={() => scrollContainer(imageScrollRef, 'left')}
                             title="向左"
                         >
                             <ChevronLeft size={14} />
                         </button>
-                        <div className="flex gap-2 overflow-hidden">
-                            {shot.image_candidates.slice(imgStart, imgStart + visibleImgCount).map((url, idx) => {
+                        <div 
+                            className="flex gap-2 overflow-x-hidden scroll-smooth" 
+                            ref={imageScrollRef}
+                        >
+                            {shot.image_candidates.map((url, idx) => {
                                 const isActive = url === shot.image_url;
                                 return (
                                     <button
-                                        key={`${imgStart}-${idx}`}
+                                        key={idx}
                                         type="button"
                                         className={`relative w-16 h-10 rounded border ${isActive ? 'border-accent' : 'border-dark-700'} overflow-hidden flex-shrink-0`}
                                         onClick={() => onSelectCandidate && onSelectCandidate(shot.id, url)}
@@ -468,12 +519,16 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                     </button>
                                 );
                             })}
+                            {shot.status === 'generating' && (
+                                <div className="relative w-16 h-10 rounded border border-dark-700 overflow-hidden flex-shrink-0 flex items-center justify-center bg-dark-900">
+                                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-transparent border-t-accent border-r-accent"></div>
+                                </div>
+                            )}
                         </div>
                         <button
                             type="button"
                             className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
-                            onClick={() => setImgStart(Math.min((shot.image_candidates.length - visibleImgCount), imgStart + 1))}
-                            disabled={imgStart >= Math.max(0, shot.image_candidates.length - visibleImgCount)}
+                            onClick={() => scrollContainer(imageScrollRef, 'right')}
                             title="向右"
                         >
                             <ChevronRight size={14} />
@@ -530,14 +585,16 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                             <button
                                 type="button"
                                 className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
-                                onClick={() => setVidStart(Math.max(0, vidStart - 1))}
-                                disabled={vidStart <= 0}
+                                onClick={() => scrollContainer(videoScrollRef, 'left')}
                                 title="向左"
                             >
                                 <ChevronLeft size={14} />
                             </button>
-                            <div className="flex gap-2 overflow-hidden">
-                                {videoItems.slice(vidStart, vidStart + visibleVidCount).map((item) => {
+                            <div 
+                                className="flex gap-2 overflow-x-hidden scroll-smooth"
+                                ref={videoScrollRef}
+                            >
+                                {videoItems.map((item) => {
                                     const isActive = item.id === activeVideoId || (!activeVideoId && videoItems[0]?.id === item.id);
                                     return (
                                     <div 
@@ -562,8 +619,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                             <button
                                 type="button"
                                 className="w-6 h-10 flex items-center justify-center rounded border border-dark-700 text-gray-400 hover:text-white hover:border-accent disabled:opacity-40"
-                                onClick={() => setVidStart(Math.min((videoItems.length - visibleVidCount), vidStart + 1))}
-                                disabled={vidStart >= Math.max(0, videoItems.length - visibleVidCount)}
+                                onClick={() => scrollContainer(videoScrollRef, 'right')}
                                 title="向右"
                             >
                                 <ChevronRight size={14} />
