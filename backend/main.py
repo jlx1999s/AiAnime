@@ -8,9 +8,8 @@ import imghdr
 import io
 import urllib.request
 import re
-import time
 from urllib.parse import urlparse, unquote
-from typing import List, Dict, Callable, Any
+from typing import List, Dict, Any
 from pydantic import BaseModel
 from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File
 from fastapi.staticfiles import StaticFiles
@@ -19,6 +18,7 @@ from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from volcengine.visual.VisualService import VisualService
 from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest, CharacterUpdate, SceneUpdate, VideoItem
+from providers import generate_image, generate_video
 class ProjectCreate(BaseModel):
     name: str
     style: str = "anime"
@@ -1282,73 +1282,6 @@ async def parse_script(request: ScriptRequest):
 
 CANDIDATE_IMAGE_COUNT = 3
 
-def _volcengine_extract_url_or_base64(response: dict) -> tuple[str | None, str | None]:
-    current = response
-    for _ in range(3):
-        if isinstance(current, dict) and ("Result" in current or "result" in current):
-            current = current.get("Result") or current.get("result")
-        else:
-            break
-
-    if isinstance(current, dict):
-        data = current.get("data") if isinstance(current.get("data"), dict) else current
-
-        for k in ("image_url", "video_url", "url"):
-            v = data.get(k)
-            if isinstance(v, str) and v:
-                # Check if URL is valid (starts with http/https)
-                if v.startswith("http://") or v.startswith("https://"):
-                    return v, None
-                # If it's not a URL but looks like base64 (very long, no spaces), might be mislabeled
-                if len(v) > 1000 and " " not in v:
-                    return None, v
-
-        for k in ("image_urls", "urls"):
-            v = data.get(k)
-            if isinstance(v, list) and v and isinstance(v[0], str) and v[0]:
-                # Check first item similarly
-                if v[0].startswith("http://") or v[0].startswith("https://"):
-                    return v[0], None
-                if len(v[0]) > 1000 and " " not in v[0]:
-                    return None, v[0]
-                return v[0], None # Fallback
-
-        b64_list = data.get("binary_data_base64")
-        if isinstance(b64_list, list) and b64_list and isinstance(b64_list[0], str) and b64_list[0]:
-            return None, b64_list[0]
-
-    return None, None
-
-def _volcengine_extract_progress(response: dict) -> int | None:
-    data = response.get("data") if isinstance(response.get("data"), dict) else {}
-    candidates = [
-        data.get("progress"),
-        data.get("progress_percent"),
-        data.get("progress_percentage"),
-        data.get("percent"),
-        data.get("process"),
-        data.get("task_progress"),
-        data.get("progress_ratio")
-    ]
-    for value in candidates:
-        if value is None:
-            continue
-        if isinstance(value, str):
-            value = value.strip().replace("%", "")
-            try:
-                value = float(value)
-            except Exception:
-                continue
-        if isinstance(value, (int, float)):
-            if value <= 1:
-                value = value * 100
-            progress = int(round(value))
-            if progress < 0:
-                return 0
-            if progress > 100:
-                return 100
-            return progress
-    return None
 
 def _image_url_to_base64(url: str) -> str | None:
     if not url:
@@ -1520,132 +1453,6 @@ def _resolve_video_image_path(shot: Shot, project: Project) -> str | None:
         return image_path
     return None
 
-def _volcengine_sync2async_generate(req_key: str, submit_form: dict, req_json: dict | None = None, timeout_s: float = 120.0, poll_s: float = 1.0, on_progress: Callable[[int | None, str | None], None] | None = None) -> tuple[str | None, str | None]:
-    if not visual_service:
-        raise Exception("Volcengine service not initialized")
-
-    import time
-
-    submit_form = dict(submit_form or {})
-    submit_form["req_key"] = req_key
-    submit_resp = visual_service.cv_sync2async_submit_task(submit_form)
-    if not isinstance(submit_resp, dict) or submit_resp.get("code") != 10000:
-        raise Exception(submit_resp)
-
-    data = submit_resp.get("data") if isinstance(submit_resp.get("data"), dict) else {}
-    task_id = data.get("task_id")
-    if not task_id:
-        raise Exception(submit_resp)
-
-    deadline = time.time() + timeout_s
-    last_resp = None
-    last_progress = None
-    last_status = None
-
-    while time.time() < deadline:
-        get_form = {"req_key": req_key, "task_id": task_id}
-        if req_json is not None:
-            get_form["req_json"] = json.dumps(req_json, ensure_ascii=False)
-
-        resp = visual_service.cv_sync2async_get_result(get_form)
-        last_resp = resp
-
-        if not isinstance(resp, dict) or resp.get("code") != 10000:
-            raise Exception(resp)
-
-        url, b64 = _volcengine_extract_url_or_base64(resp)
-        if url or b64:
-            return url, b64
-
-        resp_data = resp.get("data") if isinstance(resp.get("data"), dict) else {}
-        status = resp_data.get("status") or resp_data.get("task_status") or resp_data.get("state")
-        progress = _volcengine_extract_progress(resp)
-        if on_progress and (progress != last_progress or status != last_status):
-            on_progress(progress, status if isinstance(status, str) else None)
-            last_progress = progress
-            last_status = status
-        if isinstance(status, str) and status.lower() in ("failed", "error", "canceled", "cancelled"):
-            raise Exception(resp)
-
-        time.sleep(poll_s)
-
-    raise Exception(last_resp or "Volcengine task timeout")
-
-def volcengine_generate_image(prompt: str, reference_images: list[dict] | None = None, sub_dir: str = None) -> str:
-    if not visual_service:
-        raise Exception("Volcengine service not initialized")
-    
-    print(f"Generating image for prompt: {prompt[:50]}...")
-    
-    try:
-        # reference_images expects list of {"name": str, "b64": str}
-        valid_refs = [r for r in (reference_images or []) if isinstance(r, dict) and r.get("b64")]
-        
-        if valid_refs:
-            try:
-                # Mark characters in prompt
-                ref_desc = []
-                b64_list = []
-                for i, ref in enumerate(valid_refs):
-                    name = ref.get("name", f"Character_{i+1}")
-                    if name in ["Custom Reference", "Reference Image"]:
-                        ref_desc.append(f"Reference Image {i+1}")
-                    else:
-                        ref_desc.append(f"Reference Image {i+1} is {name}")
-                    b64_list.append(ref["b64"])
-                
-                marked_prompt = f"{prompt}. References: {', '.join(ref_desc)}."
-                print(f"Using Multi-Reference Generation with {len(valid_refs)} images.")
-                print(f"Augmented Prompt: {marked_prompt}")
-
-                body = {
-                    "prompt": marked_prompt,
-                    "binary_data_base64": b64_list,
-                    "seed": -1,
-                    "scale": 1.0  # Increase scale to strengthen reference influence
-                }
-                
-                # Use jimeng_t2i_v40 for multi-image support if possible, or fallback/use standard logic
-                # Assuming jimeng_t2i_v40 supports binary_data_base64 like others
-                model_version = "jimeng_t2i_v40" 
-                # For now we don't use the config for multi-reference because logic might differ
-                # But we can try to use the configured model if it starts with jimeng_t2i
-                if "jimeng_t2i" in current_api_config.volc_image_model:
-                     model_version = current_api_config.volc_image_model
-                     
-                print(f"Attempting Generation with {model_version}...")
-                
-                url, image_data_b64 = _volcengine_sync2async_generate(model_version, body, req_json={"return_url": True}, timeout_s=180.0, poll_s=2.0)
-                if url:
-                    return _save_image_from_url(url, sub_dir=sub_dir)
-                if image_data_b64:
-                     return _save_base64_image(image_data_b64, sub_dir=sub_dir)
-            except Exception as e:
-                print(f"Multi-Reference Generation Failed: {e}")
-                import traceback
-                traceback.print_exc()
-                # Fallback logic could go here if needed, but for now we let it fail or try simple T2I
-
-        print(f"Using Standard T2I ({current_api_config.volc_image_model})...")
-        body = {
-            "prompt": prompt,
-            "seed": -1
-        }
-        url, image_data_b64 = _volcengine_sync2async_generate(current_api_config.volc_image_model, body, req_json={"return_url": True}, timeout_s=120.0, poll_s=1.0)
-        if url:
-            return _save_image_from_url(url, sub_dir=sub_dir)
-        if image_data_b64:
-             return _save_base64_image(image_data_b64, sub_dir=sub_dir)
-            
-        raise Exception("No image content returned from Volcengine")
-        
-    except Exception as e:
-        print(f"Image Generation Failed: {e}")
-        print("Falling back to Mock Image due to API error...")
-        import time
-        time.sleep(1)
-        return f"https://picsum.photos/seed/{uuid.uuid4()}/512/512"
-
 def _save_base64_image(b64_data: str, sub_dir: str = None) -> str:
     image_data = base64.b64decode(b64_data)
     filename = f"{uuid.uuid4()}.png"
@@ -1675,139 +1482,6 @@ def _save_base64_image_file(b64_data: str, sub_dir: str = None) -> str:
     with open(filepath, "wb") as f:
         f.write(image_data)
     return filepath
-
-def _openai_parse_sse_json(raw: bytes) -> list[dict]:
-    items = []
-    for line in raw.splitlines():
-        line = line.strip()
-        if not line.startswith(b"data:"):
-            continue
-        payload = line[5:].strip()
-        if not payload or payload == b"[DONE]":
-            continue
-        try:
-            items.append(json.loads(payload.decode("utf-8")))
-        except Exception:
-            continue
-    return items
-
-def _openai_parse_response(raw: bytes, content_type: str) -> tuple[dict | None, bytes | None]:
-    if not raw:
-        return None, None
-    if content_type.startswith("video/") or content_type == "application/octet-stream":
-        return None, raw
-    try:
-        parsed = json.loads(raw.decode("utf-8"))
-        if isinstance(parsed, dict) and isinstance(parsed.get("data"), dict):
-            return parsed["data"], None
-        return parsed, None
-    except json.JSONDecodeError:
-        items = _openai_parse_sse_json(raw)
-        if items:
-            last = items[-1]
-            if isinstance(last, dict) and isinstance(last.get("data"), dict):
-                return last["data"], None
-            return last, None
-    return None, None
-
-def _debug_openai_video_response(label: str, raw: bytes | None = None, content_type: str = "", data: dict | None = None) -> None:
-    try:
-        if data is not None:
-            print(f"{label}: {json.dumps(data, ensure_ascii=False)}")
-            return
-        if raw is None:
-            print(f"{label}: <empty>")
-            return
-        if content_type.startswith("video/") or content_type == "application/octet-stream":
-            print(f"{label}: <binary {len(raw)} bytes>")
-            return
-        text = raw.decode("utf-8", errors="replace")
-        print(f"{label}: {text}")
-    except Exception as e:
-        print(f"{label}: <failed to log response: {e}>")
-
-def _openai_extract_url_or_base64(response: dict) -> tuple[str | None, str | None]:
-    if isinstance(response, dict):
-        data = response.get("data")
-        if isinstance(data, list) and data:
-            item = data[0]
-            if isinstance(item, dict):
-                if isinstance(item.get("url"), str) and item.get("url"):
-                    return item["url"], None
-                if isinstance(item.get("b64_json"), str) and item.get("b64_json"):
-                    return None, item["b64_json"]
-        if isinstance(data, dict):
-            if isinstance(data.get("url"), str) and data.get("url"):
-                return data["url"], None
-            if isinstance(data.get("b64_json"), str) and data.get("b64_json"):
-                return None, data["b64_json"]
-        results = response.get("results")
-        if isinstance(results, list) and results:
-            item = results[0]
-            if isinstance(item, dict):
-                if isinstance(item.get("url"), str) and item.get("url"):
-                    return item["url"], None
-                if isinstance(item.get("b64_json"), str) and item.get("b64_json"):
-                    return None, item["b64_json"]
-                if isinstance(item.get("video_url"), str) and item.get("video_url"):
-                    return item["video_url"], None
-        output = response.get("output")
-        if isinstance(output, list) and output:
-            item = output[0]
-            if isinstance(item, dict):
-                if isinstance(item.get("url"), str) and item.get("url"):
-                    return item["url"], None
-                if isinstance(item.get("b64_json"), str) and item.get("b64_json"):
-                    return None, item["b64_json"]
-        if isinstance(output, dict):
-            if isinstance(output.get("url"), str) and output.get("url"):
-                return output["url"], None
-            if isinstance(output.get("b64_json"), str) and output.get("b64_json"):
-                return None, output["b64_json"]
-        result = response.get("result")
-        if isinstance(result, dict):
-            if isinstance(result.get("url"), str) and result.get("url"):
-                return result["url"], None
-            if isinstance(result.get("b64_json"), str) and result.get("b64_json"):
-                return None, result["b64_json"]
-        if isinstance(response.get("url"), str) and response.get("url"):
-            return response["url"], None
-        if isinstance(response.get("video_url"), str) and response.get("video_url"):
-            return response["video_url"], None
-        if isinstance(response.get("b64_json"), str) and response.get("b64_json"):
-            return None, response["b64_json"]
-    return None, None
-
-def _openai_normalize_poll_url(callback_url: str | None, base_url: str, default_url: str) -> str:
-    if callback_url:
-        if callback_url.startswith("http://") or callback_url.startswith("https://"):
-            return callback_url
-        return f"{base_url.rstrip('/')}/{callback_url.lstrip('/')}"
-    return default_url
-
-async def _openai_poll_video_result(poll_url: str, headers: dict, method: str = "GET", payload: dict | None = None) -> tuple[dict | None, bytes | None]:
-    last_data = None
-    for _ in range(40):
-        body = None
-        if payload is not None:
-            body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-        req = urllib.request.Request(poll_url, headers=headers, method=method, data=body)
-        with urllib.request.urlopen(req, timeout=240) as resp:
-            raw = resp.read()
-            content_type = resp.headers.get("Content-Type", "")
-        data, video_bytes = _openai_parse_response(raw, content_type)
-        if video_bytes:
-            return None, video_bytes
-        if isinstance(data, dict):
-            last_data = data
-            media_url, media_b64 = _openai_extract_url_or_base64(data)
-            if media_url or media_b64:
-                return data, None
-            status = data.get("status")
-            if status in ("succeeded", "completed", "success", "failed", "error", "canceled", "cancelled"):
-                return data, None
-        await asyncio.sleep(3)
-    return last_data, None
 
 def _save_image_from_url(url: str, sub_dir: str = None) -> str:
     try:
@@ -1839,508 +1513,6 @@ def _save_image_from_url(url: str, sub_dir: str = None) -> str:
     except Exception as e:
         print(f"Failed to save image from url: {e}")
         return url
-
-def vectorengine_generate_image(prompt: str, negative_prompt: str = "", sub_dir: str = None) -> str:
-    api_key = current_api_config.vectorengine_api_key
-    base_url = current_api_config.vectorengine_api_base.rstrip("/")
-    model = current_api_config.vectorengine_image_model or "flux-1/dev"
-    
-    if not api_key:
-        raise Exception("VectorEngine API key not configured")
-
-    url = f"{base_url}/fal-ai/{model}"
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
-    payload = {
-        "prompt": prompt,
-        "num_images": 1
-    }
-    if negative_prompt:
-        payload["negative_prompt"] = negative_prompt
-    
-    print(f"[VectorEngine] Creating task: {url}")
-    req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers, method="POST")
-    try:
-        with urllib.request.urlopen(req) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        error_body = e.read().decode("utf-8")
-        print(f"[VectorEngine] HTTP Error Body: {error_body}")
-        raise Exception(f"VectorEngine task creation failed: {e} - Body: {error_body}")
-    except Exception as e:
-         raise Exception(f"VectorEngine task creation failed: {e}")
-         
-    request_id = data.get("request_id")
-    status_url = data.get("status_url")
-    response_url = data.get("response_url")
-    
-    # Prioritize status_url, then response_url
-    poll_url = status_url or response_url
-    if not poll_url and request_id:
-        poll_url = f"{base_url}/fal-ai/{model}/requests/{request_id}/status"
-    
-    if poll_url:
-        poll_url = poll_url.replace("https://queue.fal.run", base_url)
-        
-    print(f"[VectorEngine] Polling: {poll_url}")
-    
-    for i in range(60): 
-        time.sleep(2)
-        req = urllib.request.Request(poll_url, headers=headers, method="GET")
-        try:
-            with urllib.request.urlopen(req) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-        except Exception as e:
-            print(f"Polling failed: {e}")
-            continue
-            
-        status = data.get("status")
-        if status == "COMPLETED":
-            images = data.get("images", [])
-            if images and images[0].get("url"):
-                 return _save_image_from_url(images[0]["url"], sub_dir=sub_dir)
-            break
-        elif status in ("IN_QUEUE", "IN_PROGRESS"):
-            continue
-        else:
-            raise Exception(f"VectorEngine failed with status: {status}")
-            
-    raise Exception("VectorEngine timeout")
-
-async def openai_generate_image(prompt: str, sub_dir: str = None, reference_image_url: str = None) -> str:
-    print(f"openai_generate_image called with ref_url: {reference_image_url}")
-    if not image_client:
-        raise Exception("OpenAI image client not initialized")
-    
-    model = current_api_config.openai_image_model or "gpt-image-1"
-    
-    try:
-        # Special handling for Gemini models via Chat Completions
-        # Heuristic: model name contains 'gemini' and 'image' (e.g. gemini-2.5-flash-image)
-        # The user's screenshot confirms this model uses /v1/chat/completions
-        if "gemini" in model.lower() and "image" in model.lower():
-            print(f"Using Chat Completion for image generation with model: {model}")
-            
-            messages_content = [{"type": "text", "text": prompt}]
-            
-            # Inject Reference Image if provided
-            if reference_image_url:
-                print(f"[Gemini] Using reference image: {reference_image_url}")
-                b64 = _image_url_to_base64(reference_image_url)
-                if b64:
-                    messages_content.append({
-                        "type": "image_url",
-                        "image_url": {"url": f"data:image/jpeg;base64,{b64}"}
-                    })
-                    # Add instruction to use the image as reference
-                    messages_content[0]["text"] += " (Use the attached image as a style and composition reference)"
-                else:
-                    print(f"[Gemini] Failed to load reference image: {reference_image_url}")
-
-            resp = await image_client.chat.completions.create(
-                model=model,
-                messages=[{"role": "user", "content": messages_content}],
-                max_tokens=100000  # Large token limit for base64 images
-            )
-            content = resp.choices[0].message.content
-            if not content:
-                raise Exception("Empty response from chat completion")
-            
-            # 1. Check for Markdown image ![alt](url)
-            import re
-            match = re.search(r"!\[.*?\]\((.*?)\)", content)
-            if match:
-                url_or_data = match.group(1)
-                if url_or_data.startswith("data:image"):
-                    return _save_base64_image(url_or_data.split(",", 1)[1], sub_dir=sub_dir)
-                return url_or_data
-            
-            # 2. Check for raw Base64 (heuristic)
-            clean_content = content.strip().replace("\n", "").replace("\r", "")
-            # Base64 chars are A-Z, a-z, 0-9, +, /, =. Check start to avoid false positives.
-            if len(clean_content) > 100 and all(c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=" for c in clean_content[:50]):
-                 return _save_base64_image(clean_content, sub_dir=sub_dir)
-                 
-            # 3. Check for URL
-            if content.strip().startswith("http"):
-                return _save_image_from_url(content.strip(), sub_dir=sub_dir)
-
-            print(f"Gemini response content prefix: {content[:200]}...")
-            raise Exception("Could not identify image in Gemini response")
-
-        # Standard OpenAI Image Generation
-        resp = await image_client.images.generate(
-            model=model,
-            prompt=prompt,
-            size="1024x1024"
-        )
-        data = getattr(resp, "data", [])
-        if data and getattr(data[0], "url", None):
-            return _save_image_from_url(data[0].url, sub_dir=sub_dir)
-        if data and getattr(data[0], "b64_json", None):
-            return _save_base64_image(data[0].b64_json, sub_dir=sub_dir)
-        raise Exception("No image content returned from OpenAI image")
-    except Exception as e:
-        print(f"OpenAI Image Generation Failed: {e}")
-        await asyncio.sleep(1)
-        return f"https://picsum.photos/seed/{uuid.uuid4()}/512/512"
-
-import mimetypes
-
-async def _runninghub_generate_video(prompt: str, image_path: str | None, api_key: str, base_url: str, source_url: str | None = None) -> str:
-    # Try to determine firstImageUrl
-    first_image_url = None
-    
-    # 1. Prefer source_url if it is remote and accessible
-    if source_url and (source_url.startswith("http://") or source_url.startswith("https://")) and "localhost" not in source_url and "127.0.0.1" not in source_url:
-        first_image_url = source_url
-        
-    # 2. Fallback to Data URI from local file
-    if not first_image_url and image_path and os.path.exists(image_path):
-        # Try to upload to temporary host first (Best solution for RunningHub)
-        print(f"[RunningHub] Local image detected. Attempting to upload to temporary host...")
-        try:
-            # 1. Try Catbox.moe (Stable, simple)
-            import requests
-            try:
-                with open(image_path, "rb") as f:
-                    print(f"[RunningHub] Uploading to Catbox.moe...")
-                    response = requests.post(
-                        "https://catbox.moe/user/api.php",
-                        data={"reqtype": "fileupload"},
-                        files={"fileToUpload": f},
-                        timeout=60
-                    )
-                    if response.status_code == 200 and response.text.startswith("http"):
-                        first_image_url = response.text.strip()
-                        print(f"[RunningHub] Upload success: {first_image_url}")
-            except Exception as e:
-                print(f"[RunningHub] Catbox upload failed: {e}")
-
-            # 2. Fallback to File.io (Ephemeral, 1 download limit usually)
-            if not first_image_url:
-                try:
-                    with open(image_path, "rb") as f:
-                        print(f"[RunningHub] Uploading to File.io...")
-                        response = requests.post(
-                            "https://file.io",
-                            files={"file": f},
-                            timeout=60
-                        )
-                        if response.status_code == 200:
-                            data = response.json()
-                            if data.get("success") and data.get("link"):
-                                first_image_url = data.get("link")
-                                print(f"[RunningHub] Upload success: {first_image_url}")
-                except Exception as e:
-                    print(f"[RunningHub] File.io upload failed: {e}")
-        except Exception as e:
-            print(f"[RunningHub] Temporary upload failed: {e}")
-
-        # 3. Fallback to Data URI if uploads fail
-        if not first_image_url:
-            print("[RunningHub] Uploads failed, falling back to Data URI optimization...")
-            try:
-                # Optimize image for API transmission
-                from PIL import Image
-                import io
-                
-                with Image.open(image_path) as img:
-                    # Resize if too large (e.g. > 1280 on long side)
-                    max_size = 1280
-                    if max(img.size) > max_size:
-                        ratio = max_size / max(img.size)
-                        new_size = (int(img.width * ratio), int(img.height * ratio))
-                        img = img.resize(new_size, Image.Resampling.LANCZOS)
-                    
-                    # Convert to RGB (remove alpha channel which might cause issues in JPEG or some APIs)
-                    if img.mode in ('RGBA', 'P'):
-                        img = img.convert('RGB')
-                    
-                    # Save to JPEG buffer with compression
-                    buffer = io.BytesIO()
-                    img.save(buffer, format="JPEG", quality=85)
-                    img_bytes = buffer.getvalue()
-                    
-                    print(f"[RunningHub] Optimized image size: {len(img_bytes)} bytes (JPEG)")
-            
-                img_b64 = base64.b64encode(img_bytes).decode("utf-8")
-                first_image_url = f"data:image/jpeg;base64,{img_b64}"
-            
-            except Exception as e:
-                print(f"[RunningHub] Failed to optimize image: {e}")
-            # Fallback to original raw read if PIL fails
-            try:
-                with open(image_path, "rb") as f:
-                    img_bytes = f.read()
-                img_b64 = base64.b64encode(img_bytes).decode("utf-8")
-                mime_type, _ = mimetypes.guess_type(image_path)
-                if not mime_type:
-                    mime_type = "image/png"
-                first_image_url = f"data:{mime_type};base64,{img_b64}"
-            except Exception as e2:
-                print(f"[RunningHub] Failed to create raw Data URI: {e2}")
-
-    if not first_image_url:
-        raise Exception("RunningHub requires a remote URL or valid local image for video generation")
-
-    if not first_image_url:
-        raise Exception("RunningHub requires a remote URL or valid local image for video generation")
-
-    url = f"{base_url.rstrip('/')}/openapi/v2/kling-video-o1/image-to-video"
-    
-    # Map duration (5 or 10)
-    duration = "5"
-    if "long" in prompt.lower() or "10s" in prompt.lower():
-        duration = "10"
-        
-    payload = {
-        "prompt": prompt,
-        "aspectRatio": "16:9", # Default to 16:9
-        "duration": duration,
-        "firstImageUrl": first_image_url,
-        "mode": "std"
-    }
-    
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}"
-    }
-    
-    print(f"[RunningHub] Submitting video task to {url}")
-    # Debug: Print truncated firstImageUrl to check if it's URL or Data URI
-    if first_image_url:
-        print(f"[RunningHub] firstImageUrl type: {'Remote URL' if first_image_url.startswith('http') else 'Data URI'}")
-        if first_image_url.startswith('data:'):
-            print(f"[RunningHub] Data URI length: {len(first_image_url)}")
-        else:
-            print(f"[RunningHub] Remote URL: {first_image_url}")
-
-    req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
-    
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-    except Exception as e:
-        # Check if it's a 412 or similar
-        raise Exception(f"RunningHub submission failed: {e}")
-        
-    if data.get("code") and data.get("code") != 0:
-        raise Exception(f"RunningHub API Error: {data}")
-        
-    task_id = data.get("taskId")
-    if not task_id:
-        if data.get("errorMessage"):
-             raise Exception(f"RunningHub error: {data.get('errorMessage')}")
-        raise Exception(f"No taskId returned: {data}")
-        
-    print(f"[RunningHub] Task submitted: {task_id}")
-    
-    # Poll
-    query_url = f"{base_url.rstrip('/')}/openapi/v2/query"
-    for _ in range(120): # Poll for up to 10 minutes (5s * 120)
-        await asyncio.sleep(5)
-        
-        q_req = urllib.request.Request(query_url, data=json.dumps({"taskId": task_id}).encode("utf-8"), headers=headers)
-        try:
-            with urllib.request.urlopen(q_req, timeout=30) as q_resp:
-                q_data = json.loads(q_resp.read().decode("utf-8"))
-        except Exception as e:
-            print(f"[RunningHub] Poll request failed: {e}")
-            continue
-            
-        status = q_data.get("status")
-        # QUEUED, RUNNING, SUCCESS, FAILED
-        if status == "SUCCESS":
-            results = q_data.get("results")
-            if results and len(results) > 0:
-                return results[0].get("url")
-            raise Exception("RunningHub reported success but no results found")
-        elif status == "FAILED":
-            print(f"[RunningHub] Task Failed Full Response: {json.dumps(q_data)}")
-            raise Exception(f"RunningHub task failed: {q_data.get('errorMessage')} {q_data.get('failedReason')}")
-        elif status not in ("QUEUED", "RUNNING"):
-            print(f"[RunningHub] Unknown status: {status}")
-            
-    raise Exception("RunningHub task timed out")
-
-async def openai_generate_video(prompt: str, image_path: str | None = None, sub_dir: str = None, source_url: str | None = None) -> str:
-    if not video_client:
-        # If video_client is None but we have a runninghub config, we might proceed?
-        # But existing code checks video_client.
-        # We'll allow if api_key is present.
-        pass
-
-    base_url = current_api_config.openai_video_api_base or current_api_config.openai_api_base or "https://api.openai.com/v1"
-    api_key = current_api_config.openai_video_api_key or current_api_config.openai_api_key
-    
-    if not api_key:
-        raise Exception("OpenAI video API key not configured")
-        
-    model = current_api_config.openai_video_model
-    if not model:
-        raise Exception("OpenAI video model not configured")
-        
-    # Check for RunningHub / Kling
-    if "runninghub" in base_url or "kling" in model.lower():
-        return await _runninghub_generate_video(prompt, image_path, api_key, base_url, source_url)
-
-    if not video_client:
-        raise Exception("OpenAI video client not initialized")
-
-    payload = {"model": model, "prompt": prompt}
-    if image_path and os.path.exists(image_path):
-        with open(image_path, "rb") as f:
-            img_bytes = f.read()
-        img_b64 = base64.b64encode(img_bytes).decode("utf-8")
-        img_type = imghdr.what(None, h=img_bytes) or "png"
-        payload["url"] = f"data:image/{img_type};base64,{img_b64}"
-    payload.setdefault("aspectRatio", "16:9")
-    
-    # Specific defaults for Sora models
-    if "sora" in model.lower():
-        payload.setdefault("duration", 10) # sora-2-all supports 10s, 15s
-        if "sora-2-all" in model.lower():
-             payload["size"] = "1280x720" # User specified 720p for sora-2-all
-        else:
-             payload.setdefault("size", "1920x1080")
-    elif "veo" in model.lower():
-        payload.setdefault("duration", 10)
-        payload.setdefault("support_audio", True)
-    else:
-        payload.setdefault("duration", 10)
-        payload.setdefault("size", "small")
-        
-    payload.setdefault("webHook", "-1")
-    payload.setdefault("shutProgress", False)
-    
-    default_endpoint = "/videos/generations"
-    if model.lower().startswith("sora"):
-        if "sora-2-all" in model.lower():
-             default_endpoint = "/v1/video/create" # Unified format for sora-2-all
-        else:
-             default_endpoint = "/v1/video/sora-video"
-    elif "veo" in model.lower():
-        default_endpoint = "/v1/videos"
-             
-    endpoint = current_api_config.openai_video_endpoint or default_endpoint
-    if endpoint.startswith("http://") or endpoint.startswith("https://"):
-        url = endpoint
-    else:
-        if base_url.rstrip("/").endswith("/v1") and endpoint.startswith("/v1/"):
-            endpoint = endpoint[len("/v1"):]
-        url = f"{base_url.rstrip('/')}/{endpoint.lstrip('/')}"
-    headers = {
-        "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    }
-    if api_key:
-        headers["Authorization"] = f"Bearer {api_key}"
-        headers["api-key"] = api_key
-        headers["x-api-key"] = api_key
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
-        headers=headers
-    )
-    with urllib.request.urlopen(req, timeout=240) as resp:
-        raw = resp.read()
-        content_type = resp.headers.get("Content-Type", "")
-    data, video_bytes = _openai_parse_response(raw, content_type)
-    if video_bytes:
-        return _save_video_bytes(video_bytes, sub_dir=sub_dir)
-    if not data:
-        _debug_openai_video_response("OpenAI video raw response", raw=raw, content_type=content_type)
-        text = raw.decode("utf-8", errors="replace").strip()
-        raise Exception(f"Non-JSON response from OpenAI video: {text[:200]}")
-    media_url, media_b64 = _openai_extract_url_or_base64(data)
-    if media_url:
-        return media_url
-    if media_b64:
-        return _save_base64_video(media_b64, sub_dir=sub_dir)
-    status = data.get("status")
-    task_id = data.get("id")
-    callback_url = data.get("callback_url")
-    if callback_url is None and "webHook" in data:
-        callback_url = data.get("webHook")
-    if task_id:
-        # Only try legacy result endpoint if not sora-2-all
-        if "sora-2-all" not in model.lower():
-            try:
-                result_endpoint = f"{base_url.rstrip('/')}/v1/draw/result"
-                result_data, result_video = await _openai_poll_video_result(result_endpoint, headers, method="POST", payload={"id": task_id})
-                if result_video:
-                    return _save_video_bytes(result_video, sub_dir=sub_dir)
-                if isinstance(result_data, dict):
-                    media_url, media_b64 = _openai_extract_url_or_base64(result_data)
-                    if media_url:
-                        return media_url
-                    if media_b64:
-                        return _save_base64_video(media_b64, sub_dir=sub_dir)
-                    # Don't fail here, let it fall through to standard polling
-            except Exception:
-                pass
-
-        if status in ("running", "queued", "processing"):
-            if "sora-2-all" in model.lower():
-                 poll_url = f"{base_url.rstrip('/')}/v1/video/query?id={task_id}"
-            else:
-                 default_poll_url = f"{url.rstrip('/')}/{task_id}"
-                 poll_url = _openai_normalize_poll_url(callback_url, base_url, default_poll_url)
-            
-            polled_data, polled_video = await _openai_poll_video_result(poll_url, headers)
-            if polled_video:
-                return _save_video_bytes(polled_video, sub_dir=sub_dir)
-            if isinstance(polled_data, dict):
-                media_url, media_b64 = _openai_extract_url_or_base64(polled_data)
-                if media_url:
-                    return media_url
-                if media_b64:
-                    return _save_base64_video(media_b64, sub_dir=sub_dir)
-                failure_reason = polled_data.get("failure_reason") or polled_data.get("error") or polled_data.get("message")
-                if failure_reason:
-                    _debug_openai_video_response("OpenAI video poll response", data=polled_data)
-                    raise Exception(f"OpenAI video failed: {failure_reason}")
-        
-        # If we are here, we might have result_data from the legacy call above if it didn't return media
-        # But result_data variable is only defined inside the if block.
-        # So we can't safely use it here.
-        # But we don't need it. If polling failed or didn't return media, we raise exception below.
-    
-    raise Exception("No video content returned from OpenAI video")
-
-def volcengine_generate_video(prompt: str, image_path: str = None, progress_callback: Callable[[int | None, str | None], None] | None = None, sub_dir: str = None) -> str:
-    if not visual_service:
-        raise Exception("Volcengine service not initialized")
-        
-    print(f"Generating video for prompt: {prompt[:50]}...")
-    
-    try:
-        if image_path and os.path.exists(image_path):
-            with open(image_path, "rb") as f:
-                img_b64 = base64.b64encode(f.read()).decode("utf-8")
-
-            body = {
-                "prompt": prompt,
-                "binary_data_base64": [img_b64],
-                "seed": -1,
-                "frames": 121
-            }
-            url, video_data_b64 = _volcengine_sync2async_generate(current_api_config.volc_video_model, body, req_json=None, timeout_s=600.0, poll_s=5.0, on_progress=progress_callback)
-            if url:
-                return url
-            if video_data_b64:
-                return _save_base64_video(video_data_b64, sub_dir=sub_dir)
-
-            raise Exception("No video content returned from Volcengine")
-
-        raise Exception("Image is required for video generation")
-
-    except Exception as e:
-        print(f"Video Generation Failed: {e}")
-        raise
 
 async def _describe_image_with_vision(image_url: str) -> str:
     if not client:
@@ -2479,10 +1651,19 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 
                 # Generate in parallel
                 tasks = [
-                    openai_generate_image(
-                        final_prompt, 
+                    generate_image(
+                        provider,
+                        final_prompt,
                         sub_dir=project.id,
-                        reference_image_url=target_shot.custom_image_url # Pass the custom reference image
+                        config=current_api_config,
+                        image_client=image_client,
+                        visual_service=visual_service,
+                        negative_prompt=negative_prompt,
+                        reference_images=None,
+                        reference_image_url=target_shot.custom_image_url,
+                        image_url_to_base64=_image_url_to_base64,
+                        save_image_from_url=_save_image_from_url,
+                        save_base64_image=_save_base64_image
                     )
                     for _ in range(candidate_count)
                 ]
@@ -2521,7 +1702,20 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 
                 # Generate in parallel
                 tasks = [
-                    asyncio.to_thread(vectorengine_generate_image, base_prompt, negative_prompt, sub_dir=project.id)
+                    generate_image(
+                        provider,
+                        base_prompt,
+                        sub_dir=project.id,
+                        config=current_api_config,
+                        image_client=image_client,
+                        visual_service=visual_service,
+                        negative_prompt=negative_prompt,
+                        reference_images=None,
+                        reference_image_url=None,
+                        image_url_to_base64=_image_url_to_base64,
+                        save_image_from_url=_save_image_from_url,
+                        save_base64_image=_save_base64_image
+                    )
                     for _ in range(candidate_count)
                 ]
                 results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -2597,10 +1791,6 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 print(f"[DEBUG] Final Reference Images: {[r.get('name') for r in reference_images]}")
 
                 if not reference_images:
-                    # If no reference images, fallback to simple T2I without reference_images parameter
-                    # This prevents valid_refs empty check failure if we were relying on it implicitly somewhere else,
-                    # though volcengine_generate_image handles empty list gracefully now.
-                    # But to be safe and clear:
                     print("[DEBUG] No reference images found (characters or scene). Using text-only generation.")
 
                 images = []
@@ -2608,7 +1798,20 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 candidate_count = max(1, min(8, candidate_count))
                 # Generate in parallel
                 tasks = [
-                    asyncio.to_thread(volcengine_generate_image, prompt, reference_images, project.id) 
+                    generate_image(
+                        provider,
+                        prompt,
+                        sub_dir=project.id,
+                        config=current_api_config,
+                        image_client=image_client,
+                        visual_service=visual_service,
+                        negative_prompt=negative_prompt,
+                        reference_images=reference_images,
+                        reference_image_url=None,
+                        image_url_to_base64=_image_url_to_base64,
+                        save_image_from_url=_save_image_from_url,
+                        save_base64_image=_save_base64_image
+                    )
                     for _ in range(candidate_count)
                 ]
                 results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -2667,7 +1870,19 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 # Determine source_url: prefer original_image_url (remote) over image_url (local)
                 source_url = target_shot.original_image_url if target_shot.original_image_url else target_shot.image_url
 
-                video_url = await openai_generate_video(video_prompt, image_path, sub_dir=project.id, source_url=source_url)
+                video_url = await generate_video(
+                    provider,
+                    video_prompt,
+                    image_path,
+                    sub_dir=project.id,
+                    source_url=source_url,
+                    config=current_api_config,
+                    video_client=video_client,
+                    visual_service=visual_service,
+                    save_video_bytes=_save_video_bytes,
+                    save_base64_video=_save_base64_video,
+                    progress_callback=None
+                )
                 video_url = _normalize_video_url(video_url, sub_dir=project.id)
                 target_shot.video_url = video_url
                 target_shot.video_progress = 100
@@ -2697,7 +1912,19 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 if is_real:
                      video_prompt += f" --no {negative_prompt}" # Some video models support --no for negative prompts, or just append it
                 
-                video_url = await asyncio.to_thread(volcengine_generate_video, video_prompt, image_path, handle_progress, project.id)
+                video_url = await generate_video(
+                    provider,
+                    video_prompt,
+                    image_path,
+                    sub_dir=project.id,
+                    source_url=None,
+                    config=current_api_config,
+                    video_client=video_client,
+                    visual_service=visual_service,
+                    save_video_bytes=_save_video_bytes,
+                    save_base64_video=_save_base64_video,
+                    progress_callback=handle_progress
+                )
                 video_url = _normalize_video_url(video_url, sub_dir=project.id)
                 target_shot.video_url = video_url
                 target_shot.video_progress = 100
@@ -2710,12 +1937,14 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
             else:
                 raise Exception(f"Unsupported video provider: {provider}")
 
-        target_shot.status = GenerationStatus.COMPLETED
+        if type == "image":
+            target_shot.status = GenerationStatus.COMPLETED
         save_db()
         
     except Exception as e:
         print(f"Generation Task Failed: {e}")
-        target_shot.status = GenerationStatus.FAILED
+        if type == "image":
+            target_shot.status = GenerationStatus.FAILED
         target_shot.video_progress = None
         if video_id and target_shot.video_items:
             item = next((v for v in target_shot.video_items if v.id == video_id), None)
@@ -2732,7 +1961,8 @@ async def generate_asset(request: GenerateRequest, background_tasks: BackgroundT
     if not target_shot:
         raise HTTPException(status_code=404, detail="Shot not found")
         
-    target_shot.status = GenerationStatus.GENERATING
+    if request.type == "image":
+        target_shot.status = GenerationStatus.GENERATING
     video_id = None
     if request.type == "video":
         target_shot.video_progress = 0
@@ -2856,17 +2086,55 @@ async def generate_asset_raw(request: AssetGenerateRequest):
         if provider == "openai":
             if not image_client:
                 raise HTTPException(status_code=400, detail="OpenAI image provider not configured")
-            
             final_prompt = f"{prompt}. Exclude: {negative_prompt}"
-            image_url = await openai_generate_image(final_prompt, sub_dir=request.project_id)
+            image_url = await generate_image(
+                provider,
+                final_prompt,
+                sub_dir=request.project_id,
+                config=current_api_config,
+                image_client=image_client,
+                visual_service=visual_service,
+                negative_prompt=negative_prompt,
+                reference_images=None,
+                reference_image_url=None,
+                image_url_to_base64=_image_url_to_base64,
+                save_image_from_url=_save_image_from_url,
+                save_base64_image=_save_base64_image
+            )
             return {"url": image_url}
         elif provider == "vectorengine":
-            image_url = await asyncio.to_thread(vectorengine_generate_image, prompt, negative_prompt, sub_dir=request.project_id)
+            image_url = await generate_image(
+                provider,
+                prompt,
+                sub_dir=request.project_id,
+                config=current_api_config,
+                image_client=image_client,
+                visual_service=visual_service,
+                negative_prompt=negative_prompt,
+                reference_images=None,
+                reference_image_url=None,
+                image_url_to_base64=_image_url_to_base64,
+                save_image_from_url=_save_image_from_url,
+                save_base64_image=_save_base64_image
+            )
             return {"url": image_url}
         elif provider == "volcengine":
             if not visual_service:
                 raise HTTPException(status_code=400, detail="Volcengine image provider not configured")
-            image_url = await asyncio.to_thread(volcengine_generate_image, prompt, sub_dir=request.project_id)
+            image_url = await generate_image(
+                provider,
+                prompt,
+                sub_dir=request.project_id,
+                config=current_api_config,
+                image_client=image_client,
+                visual_service=visual_service,
+                negative_prompt=negative_prompt,
+                reference_images=None,
+                reference_image_url=None,
+                image_url_to_base64=_image_url_to_base64,
+                save_image_from_url=_save_image_from_url,
+                save_base64_image=_save_base64_image
+            )
             return {"url": image_url}
         else:
             raise HTTPException(status_code=400, detail=f"Unsupported image provider: {provider}")
