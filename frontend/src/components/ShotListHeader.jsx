@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wand2, RefreshCw } from 'lucide-react';
 
-const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDefaultPanelLayout, defaultImageCount, onSetDefaultImageCount, onGenerateAllStoryboards, isGeneratingStoryboards, onGenerateAllCharacters, isGeneratingCharacters, onGenerateAllScenes, isGeneratingScenes }) => (
+const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDefaultPanelLayout, defaultImageCount, onSetDefaultImageCount, onGenerateAllStoryboards, isGeneratingStoryboards, onGenerateAllCharacters, isGeneratingCharacters, onGenerateAllScenes, isGeneratingScenes, onRefreshShots, isRefreshingShots }) => (
     <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 px-4 py-2 bg-dark-800 border-b border-dark-700 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 z-10 shadow-sm">
         <div className="flex items-center justify-center">
             <input 
@@ -72,7 +72,18 @@ const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDef
                 />
             </div>
         </div>
-        <div>视频</div>
+        <div className="flex items-center justify-between">
+            <span>视频</span>
+            <button
+                onClick={onRefreshShots}
+                disabled={isRefreshingShots}
+                className={`text-[10px] px-2 py-0.5 rounded transition-colors flex items-center gap-1 ${isRefreshingShots ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-dark-700 hover:bg-accent text-gray-300 hover:text-white'}`}
+                title="刷新分镜数据"
+            >
+                <RefreshCw size={10} className={isRefreshingShots ? 'animate-spin' : ''} />
+                {isRefreshingShots ? '刷新中...' : '刷新'}
+            </button>
+        </div>
         <div className="text-center">操作</div>
     </div>
 );

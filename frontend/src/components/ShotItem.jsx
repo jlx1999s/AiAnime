@@ -44,7 +44,7 @@ const updatePromptWithAsset = (currentPrompt, action, assetType, asset, oldAsset
     return newPrompt.trim();
 };
 
-const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId }) => {
+const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, onInsertBefore, onInsertAfter, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId }) => {
     const [candidateCount, setCandidateCount] = useState(defaultImageCount || 1);
     const customImageInputRef = useRef(null);
 
@@ -76,7 +76,13 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
     const videoItems = Array.isArray(shot.video_items) && shot.video_items.length
         ? shot.video_items
         : (shot.video_url ? [{ id: 'legacy', url: shot.video_url, progress: shot.video_progress, status: shot.status }] : []);
-    const [activeVideoId, setActiveVideoId] = useState(videoItems[0]?.id ?? null);
+    const pickActiveVideoId = () => {
+        const ready = videoItems.find(v => v.url);
+        if (ready) return ready.id;
+        const pending = [...videoItems].reverse().find(v => v.task_id);
+        return pending?.id ?? videoItems[0]?.id ?? null;
+    };
+    const [activeVideoId, setActiveVideoId] = useState(pickActiveVideoId());
 
     const scrollContainer = (ref, direction) => {
         if (ref.current) {
@@ -96,9 +102,26 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             return;
         }
         if (!videoItems.some(v => v.id === activeVideoId)) {
-            setActiveVideoId(videoItems[0].id);
+            setActiveVideoId(pickActiveVideoId());
         }
     }, [videoItems, activeVideoId]);
+
+    const getVideoStatusText = (item) => {
+        if (!item) return '生成中...';
+        if (item.status === 'failed') return '生成失败';
+        if (item.url) return '';
+        if (item.progress > 0) return `生成中 ${item.progress}%`;
+        if (item.task_id) return '已提交';
+        return '生成中...';
+    };
+
+    const getVideoThumbStatusText = (item) => {
+        if (!item) return '生成中';
+        if (item.status === 'failed') return '失败';
+        if (item.progress > 0) return `${item.progress}%`;
+        if (item.task_id) return '已提交';
+        return '生成中';
+    };
 
     return (
         <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 p-4 border-b border-dark-700 bg-dark-800/30 hover:bg-dark-800 transition-colors group items-start">
@@ -562,7 +585,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                         <div className="w-full h-full flex flex-col items-center justify-center gap-2 bg-dark-900/30 text-dark-500">
                                             <Video size={20}/>
                                             <span className="text-[10px]">
-                                                {activeItem?.status === 'failed' ? '生成失败' : (activeItem?.progress > 0 ? `生成中 ${activeItem.progress}%` : '生成中...')}
+                                                {getVideoStatusText(activeItem)}
                                             </span>
                                         </div>
                                     )}
@@ -608,7 +631,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                             <div className="w-full h-full flex flex-col items-center justify-center gap-1 bg-dark-900/30 text-dark-500">
                                                 <Video size={14}/>
                                                 <span className="text-[10px]">
-                                                    {item.status === 'failed' ? '失败' : (item.progress > 0 ? `${item.progress}%` : '生成中')}
+                                                    {getVideoThumbStatusText(item)}
                                                 </span>
                                             </div>
                                         )}
@@ -645,6 +668,8 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
 
             {/* Column 6: Actions */}
             <div className="flex flex-col gap-2 pt-1 items-center">
+                <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="在此行前添加空白镜头" onClick={() => onInsertBefore && onInsertBefore()}><Plus size={14}/></button>
+                <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="在此行后添加空白镜头" onClick={() => onInsertAfter && onInsertAfter()}><Plus size={14}/></button>
                 <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="上移" onClick={onMoveUp}><MoveUp size={14}/></button>
                 <button className="hover:text-white hover:bg-dark-700 p-1 rounded text-gray-500" title="下移" onClick={onMoveDown}><MoveDown size={14}/></button>
                 <button className="hover:text-red-400 hover:bg-dark-700 p-1 rounded mt-2 text-gray-500" onClick={() => onDelete(shot.id)} title="删除"><Trash2 size={14}/></button>

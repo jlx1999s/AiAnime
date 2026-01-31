@@ -1,4 +1,5 @@
 import asyncio
+import time
 import uuid
 import os
 import json
@@ -18,7 +19,7 @@ from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from volcengine.visual.VisualService import VisualService
 from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest, CharacterUpdate, SceneUpdate, VideoItem
-from providers import generate_image, generate_video
+from providers import generate_image, generate_video, rongyiyun_provider
 class ProjectCreate(BaseModel):
     name: str
     style: str = "anime"
@@ -65,6 +66,10 @@ class ApiConfig(BaseModel):
     vectorengine_api_key: str = ""
     vectorengine_image_model: str = "flux-1/dev"
     vectorengine_api_base: str = "https://api.vectorengine.ai"
+    rongyiyun_token: str = ""
+    rongyiyun_api_base: str = "https://zcbservice.aizfw.cn/kyyApi"
+    rongyiyun_ratio: str = "16:9"
+    rongyiyun_duration: int = 10
 
 class ApiPreset(BaseModel):
     name: str
@@ -116,6 +121,10 @@ def load_api_config():
     current_api_config.vectorengine_api_key = os.getenv("VECTORENGINE_API_KEY", "")
     current_api_config.vectorengine_image_model = os.getenv("VECTORENGINE_IMAGE_MODEL", "flux-1/dev")
     current_api_config.vectorengine_api_base = os.getenv("VECTORENGINE_API_BASE", "https://api.vectorengine.ai")
+    current_api_config.rongyiyun_token = os.getenv("RONGYIYUN_TOKEN", "")
+    current_api_config.rongyiyun_api_base = os.getenv("RONGYIYUN_API_BASE", "https://zcbservice.aizfw.cn/kyyApi")
+    current_api_config.rongyiyun_ratio = os.getenv("RONGYIYUN_RATIO", "16:9")
+    current_api_config.rongyiyun_duration = int(os.getenv("RONGYIYUN_DURATION", "10") or 10)
 
     # 2. Override with config file if exists
     if os.path.exists(API_CONFIG_FILE):
@@ -164,6 +173,14 @@ def load_api_config():
                     current_api_config.vectorengine_image_model = data["vectorengine_image_model"]
                 if data.get("vectorengine_api_base"):
                     current_api_config.vectorengine_api_base = data["vectorengine_api_base"]
+                if data.get("rongyiyun_token"):
+                    current_api_config.rongyiyun_token = data["rongyiyun_token"]
+                if data.get("rongyiyun_api_base"):
+                    current_api_config.rongyiyun_api_base = data["rongyiyun_api_base"]
+                if data.get("rongyiyun_ratio"):
+                    current_api_config.rongyiyun_ratio = data["rongyiyun_ratio"]
+                if data.get("rongyiyun_duration") is not None:
+                    current_api_config.rongyiyun_duration = int(data["rongyiyun_duration"])
         except Exception as e:
             print(f"Failed to load API Config: {e}")
 
@@ -1934,6 +1951,67 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                         item.url = video_url
                         item.progress = 100
                         item.status = "completed"
+            elif provider == "rongyiyun":
+                video_prompt = f"{style_desc}, {prompt}, high quality, detailed"
+                if is_real:
+                     video_prompt += f". Exclude: {negative_prompt}"
+                source_url = target_shot.original_image_url if target_shot.original_image_url else target_shot.image_url
+                project_id = await generate_video(
+                    provider,
+                    video_prompt,
+                    image_path,
+                    sub_dir=project.id,
+                    source_url=source_url,
+                    config=current_api_config,
+                    video_client=video_client,
+                    visual_service=visual_service,
+                    save_video_bytes=_save_video_bytes,
+                    save_base64_video=_save_base64_video,
+                    progress_callback=None
+                )
+                target_shot.video_progress = 0
+                if video_id and target_shot.video_items:
+                    item = next((v for v in target_shot.video_items if v.id == video_id), None)
+                    if item:
+                        item.task_id = project_id
+                        item.progress = 0
+                        item.status = "queued"
+                poll_started = time.time()
+                poll_timeout = 20 * 60
+                poll_interval = 5
+                while time.time() - poll_started < poll_timeout:
+                    result = await asyncio.to_thread(rongyiyun_provider.get_task_result, project_id, current_api_config)
+                    status = result.get("status")
+                    media_url = result.get("mediaUrl")
+                    if video_id and target_shot.video_items:
+                        item = next((v for v in target_shot.video_items if v.id == video_id), None)
+                        if item:
+                            item.status = "running" if status == 0 else item.status
+                            item.progress = 0 if status == 0 else item.progress
+                    if status == 1 and media_url:
+                        video_url = _normalize_video_url(media_url, sub_dir=project.id)
+                        target_shot.video_url = video_url
+                        target_shot.video_progress = 100
+                        if video_id and target_shot.video_items:
+                            item = next((v for v in target_shot.video_items if v.id == video_id), None)
+                            if item:
+                                item.url = video_url
+                                item.progress = 100
+                                item.status = "completed"
+                        break
+                    if status == 2:
+                        if video_id and target_shot.video_items:
+                            item = next((v for v in target_shot.video_items if v.id == video_id), None)
+                            if item:
+                                item.status = "failed"
+                        break
+                    save_db()
+                    await asyncio.sleep(poll_interval)
+                else:
+                    if video_id and target_shot.video_items:
+                        item = next((v for v in target_shot.video_items if v.id == video_id), None)
+                        if item:
+                            item.status = "timeout"
             else:
                 raise Exception(f"Unsupported video provider: {provider}")
 

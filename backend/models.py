@@ -57,6 +57,7 @@ class ShotUpdate(ShotBase):
 class VideoItem(BaseModel):
     id: str
     url: Optional[str] = None
+    task_id: Optional[str] = None
     progress: Optional[int] = None
     status: Optional[str] = None
 

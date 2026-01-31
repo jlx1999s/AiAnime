@@ -6,6 +6,7 @@ import mimetypes
 import os
 import re
 import urllib.request
+import urllib.error
 import uuid
 from typing import Callable
 
@@ -67,11 +68,23 @@ def _openai_extract_url_or_base64(response: dict) -> tuple[str | None, str | Non
             if isinstance(item, dict):
                 if isinstance(item.get("url"), str) and item.get("url"):
                     return item["url"], None
+                if isinstance(item.get("original_video_url"), str) and item.get("original_video_url"):
+                    return item["original_video_url"], None
+                if isinstance(item.get("video_url"), str) and item.get("video_url"):
+                    return item["video_url"], None
+                if isinstance(item.get("video"), str) and item.get("video"):
+                    return item["video"], None
                 if isinstance(item.get("b64_json"), str) and item.get("b64_json"):
                     return None, item["b64_json"]
         if isinstance(data, dict):
             if isinstance(data.get("url"), str) and data.get("url"):
                 return data["url"], None
+            if isinstance(data.get("original_video_url"), str) and data.get("original_video_url"):
+                return data["original_video_url"], None
+            if isinstance(data.get("video_url"), str) and data.get("video_url"):
+                return data["video_url"], None
+            if isinstance(data.get("video"), str) and data.get("video"):
+                return data["video"], None
             if isinstance(data.get("b64_json"), str) and data.get("b64_json"):
                 return None, data["b64_json"]
         results = response.get("results")
@@ -84,6 +97,10 @@ def _openai_extract_url_or_base64(response: dict) -> tuple[str | None, str | Non
                     return None, item["b64_json"]
                 if isinstance(item.get("video_url"), str) and item.get("video_url"):
                     return item["video_url"], None
+                if isinstance(item.get("original_video_url"), str) and item.get("original_video_url"):
+                    return item["original_video_url"], None
+                if isinstance(item.get("video"), str) and item.get("video"):
+                    return item["video"], None
         output = response.get("output")
         if isinstance(output, list) and output:
             item = output[0]
@@ -92,21 +109,43 @@ def _openai_extract_url_or_base64(response: dict) -> tuple[str | None, str | Non
                     return item["url"], None
                 if isinstance(item.get("b64_json"), str) and item.get("b64_json"):
                     return None, item["b64_json"]
+                if isinstance(item.get("original_video_url"), str) and item.get("original_video_url"):
+                    return item["original_video_url"], None
+                if isinstance(item.get("video_url"), str) and item.get("video_url"):
+                    return item["video_url"], None
+                if isinstance(item.get("video"), str) and item.get("video"):
+                    return item["video"], None
         if isinstance(output, dict):
             if isinstance(output.get("url"), str) and output.get("url"):
                 return output["url"], None
             if isinstance(output.get("b64_json"), str) and output.get("b64_json"):
                 return None, output["b64_json"]
+            if isinstance(output.get("original_video_url"), str) and output.get("original_video_url"):
+                return output["original_video_url"], None
+            if isinstance(output.get("video_url"), str) and output.get("video_url"):
+                return output["video_url"], None
+            if isinstance(output.get("video"), str) and output.get("video"):
+                return output["video"], None
         result = response.get("result")
         if isinstance(result, dict):
             if isinstance(result.get("url"), str) and result.get("url"):
                 return result["url"], None
             if isinstance(result.get("b64_json"), str) and result.get("b64_json"):
                 return None, result["b64_json"]
+            if isinstance(result.get("original_video_url"), str) and result.get("original_video_url"):
+                return result["original_video_url"], None
+            if isinstance(result.get("video_url"), str) and result.get("video_url"):
+                return result["video_url"], None
+            if isinstance(result.get("video"), str) and result.get("video"):
+                return result["video"], None
         if isinstance(response.get("url"), str) and response.get("url"):
             return response["url"], None
+        if isinstance(response.get("original_video_url"), str) and response.get("original_video_url"):
+            return response["original_video_url"], None
         if isinstance(response.get("video_url"), str) and response.get("video_url"):
             return response["video_url"], None
+        if isinstance(response.get("video"), str) and response.get("video"):
+            return response["video"], None
         if isinstance(response.get("b64_json"), str) and response.get("b64_json"):
             return None, response["b64_json"]
     return None, None
@@ -120,26 +159,68 @@ def _openai_normalize_poll_url(callback_url: str | None, base_url: str, default_
 
 async def _openai_poll_video_result(poll_url: str, headers: dict, method: str = "GET", payload: dict | None = None) -> tuple[dict | None, bytes | None]:
     last_data = None
-    for _ in range(40):
+    consecutive_errors = 0
+    for _ in range(150):  # Increase polling duration to 12.5 minutes for slow queues
         body = None
         if payload is not None:
             body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         req = urllib.request.Request(poll_url, headers=headers, method=method, data=body)
-        with urllib.request.urlopen(req, timeout=240) as resp:
-            raw = resp.read()
-            content_type = resp.headers.get("Content-Type", "")
+        try:
+            with urllib.request.urlopen(req, timeout=240) as resp:
+                consecutive_errors = 0  # Reset error count on success
+                raw = resp.read()
+                content_type = resp.headers.get("Content-Type", "")
+        except urllib.error.HTTPError as e:
+            raw = e.read()
+            content_type = e.headers.get("Content-Type", "")
+            data, _ = _openai_parse_response(raw, content_type)
+            if isinstance(data, dict):
+                _debug_openai_video_response("OpenAI video poll error response", data=data)
+                error_msg = data.get("message") or data.get("error") or data.get("detail") or data.get("msg")
+                if not error_msg and isinstance(data.get("error"), dict):
+                    error_msg = data["error"].get("message")
+                if not error_msg:
+                    error_msg = json.dumps(data, ensure_ascii=False)
+            else:
+                _debug_openai_video_response("OpenAI video poll error response", raw=raw, content_type=content_type)
+                error_msg = raw.decode("utf-8", errors="replace").strip()
+            raise Exception(f"OpenAI video poll failed ({e.code}): {error_msg[:300]}")
+        except urllib.error.URLError as e:
+            consecutive_errors += 1
+            if consecutive_errors > 10:
+                raise Exception(f"OpenAI video poll failed after 10 retries: {e}")
+            _debug_openai_video_response(f"OpenAI video poll network error (retry {consecutive_errors}/10): {e}")
+            await asyncio.sleep(5)
+            continue
         data, video_bytes = _openai_parse_response(raw, content_type)
         if video_bytes:
             return None, video_bytes
         if isinstance(data, dict):
+            # Flatten nested data list if present (e.g. apimart.ai)
+            if isinstance(data.get("data"), list) and data["data"]:
+                first_item = data["data"][0]
+                if isinstance(first_item, dict):
+                    if not data.get("status"):
+                        data["status"] = first_item.get("status")
+                    if not data.get("url"):
+                        data["url"] = first_item.get("url") or first_item.get("video_url") or first_item.get("video") or first_item.get("original_video_url")
+                    if not data.get("failure_reason"):
+                        data["failure_reason"] = first_item.get("failure_reason") or first_item.get("error")
+
             last_data = data
             media_url, media_b64 = _openai_extract_url_or_base64(data)
             if media_url or media_b64:
                 return data, None
             status = data.get("status")
-            if status in ("succeeded", "completed", "success", "failed", "error", "canceled", "cancelled"):
+            if status in ("succeeded", "completed", "success", "SUCCESS", "failed", "error", "canceled", "cancelled"):
                 return data, None
-        await asyncio.sleep(3)
+            if status == "QUEUED" or status == "submitted" or status == "IN_PROGRESS":
+                 # Some providers (apimart) return QUEUED for a long time, treat as running
+                 pass
+            # Debug log for intermediate polling status
+            if status not in ("running", "queued", "processing", "submitted", "IN_PROGRESS", "QUEUED"):
+                _debug_openai_video_response(f"OpenAI video polling unknown status: {status}", data=data)
+        await asyncio.sleep(5)
     return last_data, None
 
 async def _runninghub_generate_video(prompt: str, image_path: str | None, api_key: str, base_url: str, source_url: str | None = None) -> str:
@@ -350,12 +431,21 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
     if not video_client:
         raise Exception("OpenAI video client not initialized")
     payload = {"model": model, "prompt": prompt}
-    if image_path and os.path.exists(image_path):
+    is_apimarket = "apimarket.ai" in base_url.lower() or "apimart.ai" in base_url.lower()
+    image_url = None
+    if source_url and (source_url.startswith("http://") or source_url.startswith("https://")) and "localhost" not in source_url and "127.0.0.1" not in source_url:
+        image_url = source_url
+    if not image_url and image_path and os.path.exists(image_path):
         with open(image_path, "rb") as f:
             img_bytes = f.read()
         img_b64 = base64.b64encode(img_bytes).decode("utf-8")
         img_type = imghdr.what(None, h=img_bytes) or "png"
-        payload["url"] = f"data:image/{img_type};base64,{img_b64}"
+        image_url = f"data:image/{img_type};base64,{img_b64}"
+    if image_url:
+        if is_apimarket:
+            payload["image_url"] = image_url
+        else:
+            payload["url"] = image_url
     payload.setdefault("aspectRatio", "16:9")
     if "sora" in model.lower():
         payload.setdefault("duration", 10)
@@ -399,9 +489,27 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
         data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
         headers=headers
     )
-    with urllib.request.urlopen(req, timeout=240) as resp:
-        raw = resp.read()
-        content_type = resp.headers.get("Content-Type", "")
+    try:
+        with urllib.request.urlopen(req, timeout=240) as resp:
+            raw = resp.read()
+            content_type = resp.headers.get("Content-Type", "")
+    except urllib.error.HTTPError as e:
+        raw = e.read()
+        content_type = e.headers.get("Content-Type", "")
+        data, _ = _openai_parse_response(raw, content_type)
+        if isinstance(data, dict):
+            _debug_openai_video_response("OpenAI video error response", data=data)
+            error_msg = data.get("message") or data.get("error") or data.get("detail") or data.get("msg")
+            if not error_msg and isinstance(data.get("error"), dict):
+                error_msg = data["error"].get("message")
+            if not error_msg:
+                error_msg = json.dumps(data, ensure_ascii=False)
+        else:
+            _debug_openai_video_response("OpenAI video error response", raw=raw, content_type=content_type)
+            error_msg = raw.decode("utf-8", errors="replace").strip()
+        raise Exception(f"OpenAI video request failed ({e.code}): {error_msg[:300]}")
+    except urllib.error.URLError as e:
+        raise Exception(f"OpenAI video request failed: {e}")
     data, video_bytes = _openai_parse_response(raw, content_type)
     if video_bytes:
         return save_video_bytes(video_bytes, sub_dir=sub_dir)
@@ -414,12 +522,25 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
         return media_url
     if media_b64:
         return save_base64_video(media_b64, sub_dir=sub_dir)
+
+    # Handle nested data list (e.g. apimart.ai returns {data: [{task_id: ...}]})
+    if isinstance(data.get("data"), list) and data["data"]:
+        first_item = data["data"][0]
+        if isinstance(first_item, dict):
+            if not data.get("id"):
+                data["id"] = first_item.get("task_id") or first_item.get("id")
+            if not data.get("status"):
+                data["status"] = first_item.get("status")
+
     status = data.get("status")
     task_id = data.get("id")
     callback_url = data.get("callback_url")
     if callback_url is None and "webHook" in data:
         callback_url = data.get("webHook")
     if task_id:
+        # Debug base_url for troubleshooting
+        _debug_openai_video_response(f"OpenAI video polling init. Model: {model}, Base URL: {base_url}")
+        
         if "sora-2-all" not in model.lower():
             try:
                 result_endpoint = f"{base_url.rstrip('/')}/v1/draw/result"
@@ -434,7 +555,7 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
                         return save_base64_video(media_b64, sub_dir=sub_dir)
             except Exception:
                 pass
-        if status in ("running", "queued", "processing"):
+        if status in ("running", "queued", "processing", "submitted", "QUEUED", "IN_PROGRESS"):
             if "sora-2-all" in model.lower():
                 poll_url = f"{base_url.rstrip('/')}/v1/video/query?id={task_id}"
             else:
@@ -453,4 +574,12 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
                 if failure_reason:
                     _debug_openai_video_response("OpenAI video poll response", data=polled_data)
                     raise Exception(f"OpenAI video failed: {failure_reason}")
+                last_status = polled_data.get("status")
+                if last_status:
+                    _debug_openai_video_response("OpenAI video poll timeout", data=polled_data)
+                    raise Exception(f"OpenAI video polling timed out. Last status: {last_status}")
+                _debug_openai_video_response("OpenAI video poll timeout", data=polled_data)
+                raise Exception("OpenAI video polling timed out without result")
+    
+    _debug_openai_video_response("OpenAI video final unhandled response", data=data)
     raise Exception("No video content returned from OpenAI video")

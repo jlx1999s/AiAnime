@@ -24,7 +24,11 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
         volc_video_model: 'jimeng_i2v_first_v30',
         vectorengine_api_key: '',
         vectorengine_image_model: 'flux-1/dev',
-        vectorengine_api_base: 'https://api.vectorengine.ai'
+        vectorengine_api_base: 'https://api.vectorengine.ai',
+        rongyiyun_token: '',
+        rongyiyun_api_base: 'https://zcbservice.aizfw.cn/kyyApi',
+        rongyiyun_ratio: '16:9',
+        rongyiyun_duration: 10
     });
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
@@ -38,7 +42,7 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
     const CONFIG_FIELDS = {
         text: ['text_provider', 'openai_api_base', 'openai_api_key', 'openai_model', 'dashscope_api_key'],
         image: ['image_provider', 'openai_image_api_base', 'openai_image_api_key', 'openai_image_model', 'volc_access_key', 'volc_secret_key', 'volc_image_model', 'vectorengine_api_key', 'vectorengine_image_model', 'vectorengine_api_base'],
-        video: ['video_provider', 'openai_video_api_base', 'openai_video_api_key', 'openai_video_model', 'openai_video_endpoint', 'volc_access_key', 'volc_secret_key', 'volc_video_model']
+        video: ['video_provider', 'openai_video_api_base', 'openai_video_api_key', 'openai_video_model', 'openai_video_endpoint', 'volc_access_key', 'volc_secret_key', 'volc_video_model', 'rongyiyun_token', 'rongyiyun_api_base', 'rongyiyun_ratio', 'rongyiyun_duration']
     };
 
     useEffect(() => {
@@ -507,94 +511,146 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
                                         >
                                             <option value="openai">OpenAI</option>
                                             <option value="volcengine">Volcengine</option>
+                                            <option value="rongyiyun">RongYiYun</option>
                                         </select>
                                     </div>
 
-                                    <div className="space-y-3">
-                                        <div className="grid grid-cols-2 gap-3">
+                                    {config.video_provider === 'openai' && (
+                                        <>
+                                            <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">视频模型 (OpenAI Compatible)</h3>
+                                            <div className="space-y-3">
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">OpenAI Base URL</label>
+                                                        <input 
+                                                            type="text"
+                                                            value={config.openai_video_api_base || ''}
+                                                            onChange={(e) => setConfig({...config, openai_video_api_base: e.target.value})}
+                                                            placeholder="https://api.openai.com/v1"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Model Name</label>
+                                                        <input 
+                                                            type="text"
+                                                            value={config.openai_video_model || ''}
+                                                            onChange={(e) => setConfig({...config, openai_video_model: e.target.value})}
+                                                            placeholder="gpt-video-1"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">Endpoint</label>
+                                                    <input 
+                                                        type="text"
+                                                        value={config.openai_video_endpoint || ''}
+                                                        onChange={(e) => setConfig({...config, openai_video_endpoint: e.target.value})}
+                                                        placeholder="/videos/generations"
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">OpenAI API Key</label>
+                                                    <input 
+                                                        type="password"
+                                                        value={config.openai_video_api_key || ''}
+                                                        onChange={(e) => setConfig({...config, openai_video_api_key: e.target.value})}
+                                                        placeholder="sk-..."
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {config.video_provider === 'volcengine' && (
+                                        <>
+                                            <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">视频模型 (Volcengine)</h3>
                                             <div>
-                                                <label className="block text-xs text-gray-500 mb-1">OpenAI Base URL</label>
+                                                <label className="block text-xs text-gray-500 mb-1">Model Version</label>
+                                                <select
+                                                    value={config.volc_video_model || 'jimeng_i2v_first_v30'}
+                                                    onChange={(e) => setConfig({...config, volc_video_model: e.target.value})}
+                                                    className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                >
+                                                    <option value="jimeng_i2v_first_v30">Jimeng I2V First v3.0</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label className="block text-xs text-gray-500 mb-1">Access Key (AK)</label>
                                                 <input 
+                                                    type="password"
+                                                    value={config.volc_access_key || ''}
+                                                    onChange={(e) => setConfig({...config, volc_access_key: e.target.value})}
+                                                    placeholder="AK..."
+                                                    className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-xs text-gray-500 mb-1">Secret Key (SK)</label>
+                                                <input 
+                                                    type="password"
+                                                    value={config.volc_secret_key || ''}
+                                                    onChange={(e) => setConfig({...config, volc_secret_key: e.target.value})}
+                                                    placeholder="SK..."
+                                                    className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
+                                                />
+                                            </div>
+                                            <p className="text-[10px] text-gray-500 italic">* AccessKey and SecretKey are shared with Image Model</p>
+                                        </>
+                                    )}
+
+                                    {config.video_provider === 'rongyiyun' && (
+                                        <>
+                                            <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">视频模型 (RongYiYun)</h3>
+                                            <div>
+                                                <label className="block text-xs text-gray-500 mb-1">API Base URL</label>
+                                                <input
                                                     type="text"
-                                                    value={config.openai_video_api_base || ''}
-                                                    onChange={(e) => setConfig({...config, openai_video_api_base: e.target.value})}
-                                                    placeholder="https://api.openai.com/v1"
+                                                    value={config.rongyiyun_api_base || ''}
+                                                    onChange={(e) => setConfig({...config, rongyiyun_api_base: e.target.value})}
+                                                    placeholder="https://zcbservice.aizfw.cn/kyyApi"
                                                     className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-xs text-gray-500 mb-1">Model Name</label>
-                                                <input 
-                                                    type="text"
-                                                    value={config.openai_video_model || ''}
-                                                    onChange={(e) => setConfig({...config, openai_video_model: e.target.value})}
-                                                    placeholder="gpt-video-1"
+                                                <label className="block text-xs text-gray-500 mb-1">Token</label>
+                                                <input
+                                                    type="password"
+                                                    value={config.rongyiyun_token || ''}
+                                                    onChange={(e) => setConfig({...config, rongyiyun_token: e.target.value})}
+                                                    placeholder="token"
                                                     className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
                                                 />
                                             </div>
-                                        </div>
-                                        <div>
-                                            <label className="block text-xs text-gray-500 mb-1">Endpoint</label>
-                                            <input 
-                                                type="text"
-                                                value={config.openai_video_endpoint || ''}
-                                                onChange={(e) => setConfig({...config, openai_video_endpoint: e.target.value})}
-                                                placeholder="/videos/generations"
-                                                className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-xs text-gray-500 mb-1">OpenAI API Key</label>
-                                            <input 
-                                                type="password"
-                                                value={config.openai_video_api_key || ''}
-                                                onChange={(e) => setConfig({...config, openai_video_api_key: e.target.value})}
-                                                placeholder="sk-..."
-                                                className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="relative flex items-center">
-                                        <div className="flex-grow border-t border-dark-700"></div>
-                                        <span className="flex-shrink-0 mx-2 text-dark-500 text-[10px]">OR USE VOLCENGINE</span>
-                                        <div className="flex-grow border-t border-dark-700"></div>
-                                    </div>
-
-                                    <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">视频模型 (Volcengine)</h3>
-                                    
-                                    <div>
-                                        <label className="block text-xs text-gray-500 mb-1">Model Version</label>
-                                        <select
-                                            value={config.volc_video_model || 'jimeng_i2v_first_v30'}
-                                            onChange={(e) => setConfig({...config, volc_video_model: e.target.value})}
-                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
-                                        >
-                                            <option value="jimeng_i2v_first_v30">Jimeng I2V First v3.0</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-xs text-gray-500 mb-1">Access Key (AK)</label>
-                                        <input 
-                                            type="password"
-                                            value={config.volc_access_key || ''}
-                                            onChange={(e) => setConfig({...config, volc_access_key: e.target.value})}
-                                            placeholder="AK..."
-                                            className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs text-gray-500 mb-1">Secret Key (SK)</label>
-                                        <input 
-                                            type="password"
-                                            value={config.volc_secret_key || ''}
-                                            onChange={(e) => setConfig({...config, volc_secret_key: e.target.value})}
-                                            placeholder="SK..."
-                                            className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
-                                        />
-                                    </div>
-                                    <p className="text-[10px] text-gray-500 italic">* AccessKey and SecretKey are shared with Image Model</p>
+                                            <div className="grid grid-cols-2 gap-3">
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">Ratio</label>
+                                                    <select
+                                                        value={config.rongyiyun_ratio || '16:9'}
+                                                        onChange={(e) => setConfig({...config, rongyiyun_ratio: e.target.value})}
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    >
+                                                        <option value="9:16">9:16</option>
+                                                        <option value="16:9">16:9</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">Duration</label>
+                                                    <select
+                                                        value={Number(config.rongyiyun_duration) || 10}
+                                                        onChange={(e) => setConfig({...config, rongyiyun_duration: Number(e.target.value)})}
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    >
+                                                        <option value={10}>10</option>
+                                                        <option value={15}>15</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             )}
                         </>

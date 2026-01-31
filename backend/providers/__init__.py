@@ -2,6 +2,7 @@ import asyncio
 from . import openai_provider
 from . import volcengine_provider
 from . import vectorengine_provider
+from . import rongyiyun_provider
 
 async def generate_image(provider: str, prompt: str, sub_dir: str | None, config, image_client, visual_service, negative_prompt: str = "", reference_images: list[dict] | None = None, reference_image_url: str | None = None, image_url_to_base64=None, save_image_from_url=None, save_base64_image=None) -> str:
     if provider == "openai":
@@ -59,5 +60,12 @@ async def generate_video(provider: str, prompt: str, image_path: str | None, sub
             visual_service,
             config,
             save_base64_video
+        )
+    if provider == "rongyiyun":
+        return await asyncio.to_thread(
+            rongyiyun_provider.generate_video,
+            prompt,
+            source_url,
+            config
         )
     raise Exception(f"Unsupported video provider: {provider}")

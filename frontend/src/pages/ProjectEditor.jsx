@@ -49,6 +49,8 @@ const ProjectEditor = () => {
     const [isGeneratingScenes, setIsGeneratingScenes] = useState(false);
     const [isGeneratingStoryboards, setIsGeneratingStoryboards] = useState(false);
     const [selectedShots, setSelectedShots] = useState(new Set());
+    const [isRefreshingShots, setIsRefreshingShots] = useState(false);
+    const [apiConfig, setApiConfig] = useState(null);
     
     // Project Settings
     const [defaultSceneId, setDefaultSceneId] = useState(null);
@@ -75,10 +77,25 @@ const ProjectEditor = () => {
         }
     };
 
+    const loadApiConfig = async () => {
+        try {
+            const data = await ApiService.getApiConfig();
+            setApiConfig(data || null);
+        } catch (e) {
+            console.error("Failed to load api config", e);
+        }
+    };
+
     // Load initial data
     useEffect(() => {
         loadProjects();
     }, []);
+
+    useEffect(() => {
+        if (!isApiConfigOpen) {
+            loadApiConfig();
+        }
+    }, [isApiConfigOpen]);
 
     useEffect(() => {
         const loadData = async () => {
@@ -106,6 +123,19 @@ const ProjectEditor = () => {
         };
         loadData();
     }, [projectId, navigate]);
+
+    const handleRefreshShots = async () => {
+        if (!projectId) return;
+        setIsRefreshingShots(true);
+        try {
+            const project = await ApiService.getProject(projectId);
+            setShots((project?.shots || []).map(normalizeShot));
+        } catch (e) {
+            console.error("Failed to refresh project", e);
+        } finally {
+            setIsRefreshingShots(false);
+        }
+    };
 
     const handleSelectShot = (id, selected) => {
         setSelectedShots(prev => {
@@ -338,16 +368,18 @@ const ProjectEditor = () => {
         }
     };
 
+    const getBlankShotData = () => ({
+        prompt: "",
+        dialogue: "",
+        characters: [],
+        scene_id: defaultSceneId || null,
+        use_scene_ref: true,
+        panel_layout: defaultPanelLayout || '1-panel',
+    });
+
     const handleAddShot = async () => {
         const tempId = Date.now();
-        const newShotData = {
-            prompt: "",
-            dialogue: "",
-            characters: [],
-            scene_id: defaultSceneId || null,
-            use_scene_ref: true,
-            panel_layout: defaultPanelLayout || '1-panel',
-        };
+        const newShotData = getBlankShotData();
         
         // Optimistic UI
         const optimisitcShot = {
@@ -366,6 +398,31 @@ const ProjectEditor = () => {
         }
     };
 
+    const handleInsertBlankShot = async (index, position) => {
+        if (!projectId) return;
+        const insertIndex = position === 'before' ? index : index + 1;
+        const tempId = `temp-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+        const newShotData = getBlankShotData();
+        const optimisitcShot = {
+            id: tempId,
+            ...newShotData,
+            image_url: "https://placehold.co/300x169/25262b/FFF?text=Loading..."
+        };
+        const originalShots = [...shots];
+        const nextShots = [...shots];
+        nextShots.splice(insertIndex, 0, optimisitcShot);
+        setShots(nextShots);
+        try {
+            const createdShot = await ApiService.createShot(projectId, newShotData);
+            const replacedShots = nextShots.map(s => s.id === tempId ? normalizeShot(createdShot) : s);
+            setShots(replacedShots);
+            await ApiService.reorderShots(projectId, replacedShots.map(s => s.id));
+        } catch (e) {
+            console.error("Create failed", e);
+            setShots(originalShots);
+        }
+    };
+
     const handleGenerate = async (shotId, type, count, silent = false) => {
         if (type === 'video') {
             const shot = shots.find(s => s.id === shotId);
@@ -376,21 +433,32 @@ const ProjectEditor = () => {
             }
         }
         if (!silent) alert(`正在请求后端生成 ${type}...`);
-        setShots(prev => prev.map(s => s.id === shotId ? { ...s, status: 'generating', video_progress: type === 'video' ? 0 : s.video_progress } : s));
+        setShots(prev => prev.map(s => {
+            if (s.id !== shotId) return s;
+            if (type === 'video') {
+                return { ...s, video_progress: 0 };
+            }
+            return { ...s, status: 'generating' };
+        }));
         const result = await ApiService.generate(projectId, shotId, type, count);
+        const videoId = type === 'video' ? result?.video_id : null;
         if (type === 'video' && result?.video_id) {
             setShots(prev => prev.map(s => {
                 if (s.id !== shotId) return s;
                 const items = Array.isArray(s.video_items) ? [...s.video_items] : [];
                 if (!items.some(v => v.id === result.video_id)) {
-                    items.unshift({ id: result.video_id, progress: 0, status: 'generating' });
+                    items.unshift({ id: result.video_id, progress: 0, status: 'queued' });
                 }
                 return { ...s, video_items: items };
             }));
         }
 
          const startedAt = Date.now();
-         const timeoutMs = type === 'video' ? 5 * 60 * 1000 : 2 * 60 * 1000;
+         const videoProvider = apiConfig?.video_provider || 'openai';
+         const timeoutMs = type === 'video'
+            ? (videoProvider === 'rongyiyun' ? 20 * 60 * 1000 : 5 * 60 * 1000)
+            : 2 * 60 * 1000;
+         const pollIntervalMs = type === 'video' && videoProvider === 'rongyiyun' ? 10000 : 1500;
 
          while (Date.now() - startedAt < timeoutMs) {
              try {
@@ -398,15 +466,21 @@ const ProjectEditor = () => {
                     const nextShot = (project.shots || []).find(s => s.id === shotId);
                     if (nextShot) {
                         setShots(prev => prev.map(s => s.id === shotId ? normalizeShot(nextShot) : s));
-                        if (nextShot.status === 'completed' || nextShot.status === 'failed') {
+                        if (type === 'video') {
+                            const items = Array.isArray(nextShot.video_items) ? nextShot.video_items : [];
+                            const current = videoId ? items.find(v => v.id === videoId) : items.find(v => v.url);
+                            if (current?.url || current?.status === 'failed') {
+                                return;
+                            }
+                        } else if (nextShot.status === 'completed' || nextShot.status === 'failed') {
                             return;
                         }
-                 }
+                }
              } catch (e) {
                  console.error('Polling generation status failed', e);
              }
-             await new Promise(r => setTimeout(r, 1500));
-         }
+            await new Promise(r => setTimeout(r, pollIntervalMs));
+        }
     };
 
     const handleParseScript = async (content) => {
@@ -953,6 +1027,8 @@ const ProjectEditor = () => {
                         isGeneratingCharacters={isGeneratingCharacters}
                         onGenerateAllScenes={handleGenerateAllScenes}
                         isGeneratingScenes={isGeneratingScenes}
+                        onRefreshShots={handleRefreshShots}
+                        isRefreshingShots={isRefreshingShots}
                     />
                         <div className="flex-1 overflow-y-auto pb-20 custom-scrollbar">
                             {shots.map((shot, index) => (
@@ -969,6 +1045,8 @@ const ProjectEditor = () => {
                                     onDeleteVideo={handleDeleteShotVideo}
                                     onMoveUp={() => handleMoveUp(index)}
                                     onMoveDown={() => handleMoveDown(index)}
+                                    onInsertBefore={() => handleInsertBlankShot(index, 'before')}
+                                    onInsertAfter={() => handleInsertBlankShot(index, 'after')}
                                     allCharacters={characters}
                                     onCharacterClick={onCharacterClick}
                                     allScenes={scenes}
