@@ -17870,8 +17870,39 @@
         ],
         "video_url": null,
         "video_progress": null,
-        "video_items": [],
-        "status": "completed"
+        "video_items": [
+          {
+            "id": "e225e4ff-0a63-42f8-8a8c-31dd427b4799",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "f83b9dd7-8261-4e01-981e-bf54878e4638",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "12d338ca-c603-4437-801e-4b3e76848b5f",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "fb9dd333-44fa-4ceb-9ba4-37f4c5fe7d90",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "cb4b3c6c-1d41-49d0-94f1-b3899a4de0ce",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          }
+        ],
+        "status": "failed"
       },
       {
         "prompt": "特写镜头，李道玄用力撕开纸箱胶带，纸屑飞溅。箱中露出一座精致的长方形玻璃造景箱，内部是一座微缩的明代荒村，黄沙漫天，枯木横陈，呈现出极度的荒凉感。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
@@ -24064,13 +24095,19 @@
         "video_progress": null,
         "video_items": [
           {
-            "id": "3347e4b4-9afc-4b02-995d-56493671bab2",
+            "id": "bd18fe5f-1d54-4765-9e31-b1806f9e4528",
             "url": null,
             "progress": 0,
             "status": "failed"
           },
           {
-            "id": "a2ad4e45-1526-48e1-a922-14028481940f",
+            "id": "0a072e7f-b70a-4b31-b7b4-62d0b468f1c5",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          },
+          {
+            "id": "ed38f468-180b-4170-9422-bd61dde30d54",
             "url": null,
             "progress": 0,
             "status": "failed"
@@ -24102,19 +24139,19 @@
         "video_progress": null,
         "video_items": [
           {
-            "id": "1a56685f-f27e-40b4-80d5-6bd01cf93495",
+            "id": "f859772c-b6fb-42d5-a931-855b8d425211",
             "url": null,
             "progress": 0,
             "status": "failed"
           },
           {
-            "id": "f859772c-b6fb-42d5-a931-855b8d425211",
+            "id": "59bdfcd8-95aa-4036-b9fd-0ee486ca468c",
             "url": null,
             "progress": 0,
             "status": "failed"
           }
         ],
-        "status": "completed"
+        "status": "failed"
       },
       {
         "prompt": "视角：主观视角（POV）。箱底铺满了真实的黄土，枯萎的微缩树木和几间破败的茅草屋散落在角落。尘土在光束中飞舞。 重点：微缩世界的荒凉感与逼真度。 [无（环境）: no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot] [箱内微缩世界: miniature diorama, yellow loess soil, cracked earth, withered miniature tree, tiny fences, ancient village ruins, macro photography, tilt-shift, shallow depth of field, warm lighting, realistic texture]",
@@ -24134,8 +24171,15 @@
         "image_candidates": [],
         "video_url": null,
         "video_progress": null,
-        "video_items": [],
-        "status": "idle"
+        "video_items": [
+          {
+            "id": "c24254a3-a71d-4d86-831f-5f687d6e1701",
+            "url": null,
+            "progress": 0,
+            "status": "failed"
+          }
+        ],
+        "status": "failed"
       },
       {
         "prompt": "视角：侧拍。李道玄拿起一个巨大的黑色手柄放大镜，凑近箱口。放大镜的玻璃表面反射着箱内的景象。 重点：工具的使用，观测者的姿态。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代公寓 / 箱口: edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field]",
@@ -25433,6 +25477,1143 @@
       }
     ],
     "default_scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
+    "default_panel_layout": "1-panel",
+    "default_image_count": 1
+  },
+  "6b55c541-16ab-4781-ba05-dcf6724f494c": {
+    "id": "6b55c541-16ab-4781-ba05-dcf6724f494c",
+    "name": "21321312",
+    "style": "anime",
+    "shots": [
+      {
+        "prompt": "视角：特写。美工刀锋利的刀尖划过纸箱上的透明胶带。刀片反射着电脑屏幕的冷蓝光。背景虚化，隐约可见杂乱的房间。 重点：动作的质感，开箱的仪式感。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗的现代公寓: dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting]",
+        "dialogue": "",
+        "audio_prompt": "Extreme close-up, sharp utility knife blade slices smoothly through clear tape, cold blue screen light reflects on the metal, shallow depth of field.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "21bdb1be-8bc3-4ec1-a94e-7d7a37bb89d9",
+        "order": 0,
+        "characters": [
+          "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01"
+        ],
+        "scene_id": "8c2ea0a8-35ee-43ab-9785-1840b96a5e15",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：过肩镜头（Over the shoulder）。李道玄双手掀开巨大的纸箱盖板。箱内涌出一股温暖、干燥的土黄色光线，照亮了他的轮廓。 重点：光影对比，冷暖色调的碰撞。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗的现代公寓: dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting]",
+        "dialogue": "",
+        "audio_prompt": "Over-the-shoulder shot, hands lifting the heavy cardboard flaps, warm yellow light erupts from within, illuminating the dark room, dynamic lighting shift.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "9c0c8fc2-af86-4bc5-8933-68498c9711ea",
+        "order": 1,
+        "characters": [
+          "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01"
+        ],
+        "scene_id": "8c2ea0a8-35ee-43ab-9785-1840b96a5e15",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：仰拍中景。暖光完全照亮了李道玄的脸，他疲惫的眼神中流露出惊讶与好奇。他微微张嘴，身体前倾。 重点：角色的反应，被箱内景象吸引。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗的现代公寓: dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting]",
+        "dialogue": "",
+        "audio_prompt": "Low angle medium shot, Li Daoxuan leans forward, eyes widen in amazement, mouth slightly opens, warm light washing over his face, subtle camera push in.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "06ba8ca1-15f4-4c50-887c-52d609124110",
+        "order": 2,
+        "characters": [
+          "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01"
+        ],
+        "scene_id": "8c2ea0a8-35ee-43ab-9785-1840b96a5e15",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：主观视角（POV）。箱底铺满了真实的黄土，枯萎的微缩树木和几间破败的茅草屋散落在角落。尘土在光束中飞舞。 重点：微缩世界的荒凉感与逼真度。 [无（环境）: no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot] [箱内微缩世界: miniature diorama, yellow loess soil, cracked earth, withered miniature tree, tiny fences, ancient village ruins, macro photography, tilt-shift, shallow depth of field, warm lighting, realistic texture]",
+        "dialogue": "",
+        "audio_prompt": "POV shot, looking down into the box, dust motes floating in shafts of light, miniature dry trees and tiny thatched houses visible, slight handheld camera movement.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "5c337da7-ed7b-45aa-97f8-dde484e01676",
+        "order": 3,
+        "characters": [
+          "ea62958a-3a1d-4e31-ae9f-809154fd641e"
+        ],
+        "scene_id": "61ac710e-5d3a-4a98-8a4d-10fae313fc3f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：侧拍。李道玄拿起一个巨大的黑色手柄放大镜，凑近箱口。放大镜的玻璃表面反射着箱内的景象。 重点：工具的使用，观测者的姿态。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代公寓 / 箱口: edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field]",
+        "dialogue": "",
+        "audio_prompt": "Side shot, hand lifts a large black magnifying glass into frame, adjusting position over the box, glass reflects ambient light, focus shifts to the lens.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "50974df5-144e-47b0-b966-6ca6cc8e758b",
+        "order": 4,
+        "characters": [
+          "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01"
+        ],
+        "scene_id": "8095bef9-b69e-46c5-942c-64ec9ee4efc7",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：通过放大镜的主观视角。画面边缘有明显的球形畸变和色散。中心逐渐对焦，模糊的色块变成了清晰的人形。 重点：焦点的寻找与锁定。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内微缩荒原: barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones]",
+        "dialogue": "",
+        "audio_prompt": "POV through magnifying glass, optical spherical distortion at edges, blurry colors rack focus into a sharp image of a tiny human figure, chromatic aberration.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "03ce80be-ac9e-454d-8d1b-661b0ff9e0af",
+        "order": 5,
+        "characters": [
+          "709ac943-efd2-40a2-bbe6-e81daef00cc7"
+        ],
+        "scene_id": "2a06492a-1fd2-48e6-9429-834d8ffd07d0",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：微距特写。高一叶满是泥垢的手颤抖着将一根枯干的草根塞进嘴里。她的嘴唇干裂起皮，眼神空洞。 重点：细节的残酷，真实的饥饿感。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内微缩荒原: barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones]",
+        "dialogue": "",
+        "audio_prompt": "Macro close-up, dirty trembling hand stuffs dry grass root into cracked lips, chewing slowly, extreme detail on skin texture, heartbreaking realism.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "58664eb9-c28d-4371-b894-531c85f844f1",
+        "order": 6,
+        "characters": [
+          "709ac943-efd2-40a2-bbe6-e81daef00cc7"
+        ],
+        "scene_id": "2a06492a-1fd2-48e6-9429-834d8ffd07d0",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：微距特写。她艰难地吞咽，喉咙滚动，眉头因粗糙草根划过食道而痛苦地皱起。 重点：生存的挣扎，引发同情。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内微缩荒原: barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones]",
+        "dialogue": "",
+        "audio_prompt": "Macro close-up, throat swallowing with difficulty, facial muscles tense up in pain, eyes tearing up, subtle camera shake to emphasize struggle.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "7074c538-2755-4012-bf85-2b72235c23d0",
+        "order": 7,
+        "characters": [
+          "709ac943-efd2-40a2-bbe6-e81daef00cc7"
+        ],
+        "scene_id": "2a06492a-1fd2-48e6-9429-834d8ffd07d0",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：低角度地面视角。地面上的石子在跳动，村民们惊恐地停下手中的动作，看向村口方向。 重点：危险来临前的征兆。 [微缩村民: miniature people, ancient Chinese peasant clothes, running in panic, swarm of ants, macro photography, tilt-shift effect, high angle view, chaotic formation] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Low angle ground view, small pebbles vibrating and jumping on the ground, background villagers freeze and turn heads, rack focus from ground to villagers.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "670a442e-8062-4ab5-8e6e-8cc164ff0743",
+        "order": 8,
+        "characters": [
+          "564ee6d8-a669-468d-847c-1eee452db8de"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：中景。滚滚黄尘中，一匹战马冲破烟尘。山贼面目狰狞，挥舞着锈刀，嘴里似乎在咆哮。 重点：动势与冲击力。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄入口: village entrance, yellow dust clouds, heavy atmosphere, blurred background, macro perspective, dynamic motion, war torn]",
+        "dialogue": "",
+        "audio_prompt": "Medium shot, warhorse bursts through thick yellow dust, bandit shouting with ferocious expression, debris flying, high shutter speed, impact frame.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "16b2dec6-37af-4db4-a345-ac04eab8d831",
+        "order": 9,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "260b0589-eb40-4613-9ef1-828b4ec8ede9",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：俯拍全景。山贼骑马冲入人群，村民四散奔逃。一名村民被撞倒在地。画面充满混乱的运动模糊。 重点：混乱与暴力的爆发。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [村民: tiny ancient Chinese peasants, running, fleeing, panic, tattered clothes, miniature figures, blurred background, swarm, helpless, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "High angle overhead shot, horse crashing into crowd, villagers scattering in panic, chaotic movement, camera shakes violently, motion blur.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "bf6b18f8-9f3a-4abc-bc46-693b3414325e",
+        "order": 10,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23",
+          "61a1169e-4a57-4cab-ae05-d897bdba5bb9"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：极低角度仰拍（荷兰角）。山贼高举钢刀，阳光在刀刃上反射出刺眼的光芒，刀锋下是惊恐的村民剪影。 重点：压迫感与致命威胁。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Dutch angle low shot, bandit raises rusty steel blade high, sunlight glints sharply on the edge, ominous shadow cast over camera, freeze frame feel.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "7f1d4384-b677-4e14-b0de-4877bfddc1c5",
+        "order": 11,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：中景。母亲一把将高一叶推到身后，张开双臂，用瘦弱的身体挡在前方。她的表情决绝而恐惧。 重点：母爱的本能反应。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [母亲: ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Medium shot, mother desperately pushes girl behind her back, arms spreading wide, face filled with fear but determination, fast camera push in.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "3546a991-6fe4-46d3-9dc0-08849b48314d",
+        "order": 12,
+        "characters": [
+          "709ac943-efd2-40a2-bbe6-e81daef00cc7",
+          "83a3f739-6fd7-400e-8c0f-81da7a7a53cf"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：侧面特写。山贼的刀无情地砍下。画面定格在刀刃接触母亲背部的瞬间，衣物破裂，鲜血喷涌而出。 重点：暴力的直接展现，痛感。 [母亲: ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting] [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Side profile close-up, sword blade slashing down, impact frame, clothes tearing, sudden burst of blood mist, brutal and fast motion.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "318648e2-9f16-4869-8fb2-a8e99088d9ea",
+        "order": 13,
+        "characters": [
+          "83a3f739-6fd7-400e-8c0f-81da7a7a53cf",
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：主观视角（高一叶视角）。母亲的身体像断线的风筝一样软倒下去，露出了前方骑在马上的巨大山贼阴影。 重点：保护屏障的消失。 [母亲: ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting] [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "POV shot from low angle, mother's body goes limp and collapses slowly to the side, revealing the towering bandit on horse behind her, tragic slow motion.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "c94c8fc9-8373-4e44-84dc-ad46662a1706",
+        "order": 14,
+        "characters": [
+          "83a3f739-6fd7-400e-8c0f-81da7a7a53cf",
+          "709ac943-efd2-40a2-bbe6-e81daef00cc7"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：正面特写。高一叶脸上溅到了母亲的血点。她瞳孔地震，嘴巴张大到极限，发出无声的尖叫。 重点：极度的创伤与绝望。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Frontal close-up, Gao Yiye's face splattered with blood specks, mouth opens wide in a silent scream, pupils trembling, extreme emotional shock, camera dolly zoom (vertigo effect).",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "aa3eb2d0-5bc8-4ce6-a0e0-0f0c5d068282",
+        "order": 15,
+        "characters": [
+          "709ac943-efd2-40a2-bbe6-e81daef00cc7"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：极特写。山贼粗糙的舌头舔过刀刃上的血迹。他的牙齿发黄，眼神中透着变态的兴奋。 重点：反派的非人性化。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Extreme close-up, bandit's rough tongue licks blood off the blade, yellow teeth exposed, eyes widening in manic excitement, creepy micro-movements.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "012587db-14d8-4bb8-a20d-a0e68444dbb9",
+        "order": 16,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：中景。山贼勒转马头，目光锁定了瘫坐在地上的高一叶。战马不安地喷着鼻息。 重点：捕食者锁定猎物。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Medium shot, horse turns around, hooves stomping, bandit's gaze locks onto the target below, camera tracks the turning motion.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "c4aca400-c44b-4065-87c3-0ac792c66d6c",
+        "order": 17,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：俯拍。高一叶手脚并用地向后挪动，背部撞上了土墙，退无可退。她浑身颤抖，泪水冲刷着脸上的尘土。 重点：无助与死局。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "High angle looking down, Gao Yiye crawling backward on hands and feet, back hits the wall, body shaking violently, dust rising from movement.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "db250488-0c42-4713-8952-1ef85ca95dcd",
+        "order": 18,
+        "characters": [
+          "709ac943-efd2-40a2-bbe6-e81daef00cc7"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：低角度仰拍。山贼再次举起屠刀，刀尖对准了下方的镜头（高一叶）。天空湛蓝而残酷。 重点：最后的审判时刻。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Low angle POV, bandit raises the butcher knife again, tip pointing directly at lens, blue sky in background, camera creates a sense of shrinking back.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "0157274a-53b1-48fc-9ae3-2b53ffa6401b",
+        "order": 19,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：中景。山贼正要挥刀，突然停住。他疑惑地抬头看向天空，原本明亮的阳光迅速暗淡下来。 重点：环境光骤变，未知恐惧。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Medium shot, bandit stops mid-swing, looks up in confusion, sunlight rapidly dims to darkness, dramatic lighting change.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "ca9a16a4-f3a6-4a43-a58b-789a673c2775",
+        "order": 20,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：仰视大远景。箱顶的模拟云层被暴力排开。巨大的阴影笼罩了整个村庄。 重点：巨物出现的压迫感。 [李道玄（手）: Giant human hand, massive scale, hyper-realistic skin texture, fingerprints visible as grooves, jade-like fingernail, muscular tension, descending from sky, god-like perspective, megalophobia, dramatic lighting] [箱内天空: simulated sky, painted clouds, giant hand breaking through, dramatic shadows, surreal, low angle shot, looking up]",
+        "dialogue": "",
+        "audio_prompt": "Looking up, massive realistic clouds are pushed aside physically, revealing a gigantic skin-textured ceiling, heavy atmosphere.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "8a573e9f-ba59-44eb-b5c2-01b8474d77af",
+        "order": 21,
+        "characters": [
+          "0b574474-4d92-4aa7-a58b-19ea5b9ac15d"
+        ],
+        "scene_id": "c8686549-6dc1-4a29-a80c-e58c4f1b533c",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：广角全景。一只巨大的手掌（肤色苍白，纹理清晰）从天而降，占据了画面上方三分之二。地上的山贼和马匹显得如蚂蚁般渺小。 重点：极致的大小对比。 [李道玄（手）: Giant human hand, massive scale, hyper-realistic skin texture, fingerprints visible as grooves, jade-like fingernail, muscular tension, descending from sky, god-like perspective, megalophobia, dramatic lighting] [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Wide angle, a titanic hand descends slowly from top frame, covering the sky, bandit and horse look like ants, shadow engulfs the village, slow epic movement.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "c4da631f-e0ad-412f-94b2-980d7256962f",
+        "order": 22,
+        "characters": [
+          "0b574474-4d92-4aa7-a58b-19ea5b9ac15d",
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：中景。山贼保持着举刀仰望的姿势，整个人完全呆滞。马匹受惊前蹄跪地。巨手的指尖悬停在他们头顶上方。 重点：神性降临带来的震慑。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Medium shot, bandit and horse frozen in place, horse kneeling in fear, giant fingertips hover just above their heads, absolute stillness.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "52f028ae-13fc-4fde-849b-58b06b793081",
+        "order": 23,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：侧视特写。巨大的食指扣在拇指上，形成蓄力姿势。指尖对准了骑在马上的山贼。 重点：力量的积蓄。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Side profile close-up, giant index finger curls against thumb, skin texture and fingerprints visible like landscapes, aiming carefully.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "56ddcae0-193c-4043-9110-22b4aeb48d77",
+        "order": 24,
+        "characters": [
+          "a5f6cdb4-f8f0-47ab-aae4-fd8119af702a",
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：微距镜头。前景是巨大的指纹纹路（像沟壑一样），后景是微小的、惊恐的山贼脸部。焦平面在两者之间切换。 重点：维度的差异。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Rack focus shot, focus shifts from the deep grooves of the giant fingerprint in foreground to the terrified tiny bandit in background.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "bc9b911c-ee37-4231-937b-66be6b069bb8",
+        "order": 25,
+        "characters": [
+          "a5f6cdb4-f8f0-47ab-aae4-fd8119af702a",
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：特写。拇指指甲因用力压迫而变白，肌肉紧绷。周围的空气似乎都在震动。 重点：即将释放的张力。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Extreme close-up, thumb nail turning white from pressure, skin stretching, air shimmering around the finger, maximum tension.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "727b8a46-d0ae-49ae-bce1-e4d7d567613f",
+        "order": 26,
+        "characters": [
+          "a5f6cdb4-f8f0-47ab-aae4-fd8119af702a"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：侧拍。食指弹出的瞬间，手指化作一道模糊的肉色残影。 重点：瞬间爆发的速度感。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Side shot, finger releases, instant motion blur, explosive release of energy, shockwave visual effect, high velocity.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "6ec8c7b8-d2b3-46f0-9c51-922ebd5b415c",
+        "order": 27,
+        "characters": [
+          "a5f6cdb4-f8f0-47ab-aae4-fd8119af702a"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：定格特写。巨大的指尖接触到山贼和马匹的瞬间。铠甲凹陷，马身变形。物理法则在绝对力量面前失效。 重点：接触瞬间的毁灭性。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting]",
+        "dialogue": "",
+        "audio_prompt": "Frozen time shot, giant finger makes contact, armor crumples instantly, horse body deforms, shockwave ripples, extreme physics impact.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "67397a84-ac71-4782-b638-3ff09384062c",
+        "order": 28,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：跟拍镜头。山贼连人带马变成一颗炮弹，在空中划出一道残影，飞越了整个微缩村庄。 重点：夸张的位移。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [箱内空间: empty air inside box, motion blur background, depth of field, mid-air, cinematic action shot]",
+        "dialogue": "",
+        "audio_prompt": "Fast tracking shot, bandit becomes a blur, flying horizontally across the miniature landscape, camera struggles to keep up, wind effects.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "4e9e5202-41c8-4a33-973c-35be19312e97",
+        "order": 29,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "57ec4ac4-e202-4d01-91f3-09c6ba0a7e67",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：侧拍。山贼重重地撞在箱子的玻璃壁上。身体扭曲成不自然的形状，血雾在玻璃表面炸开。 重点：惨烈的物理反馈。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [箱壁边缘: glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere]",
+        "dialogue": "",
+        "audio_prompt": "Side shot, body slams into the glass wall of the tank, violent impact, blood splatters on the glass surface, body twists unnaturally.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "b51ea146-9cf3-4677-8971-f9b8876f49e1",
+        "order": 30,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "746f62eb-e3a6-434f-bdc5-fb71a4c9070d",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：全景。玻璃上留下一道长长的血痕。扭曲的尸体滑落到箱子边缘的沙土中，一动不动。 重点：尘埃落定的死亡。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [箱壁边缘: glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere]",
+        "dialogue": "",
+        "audio_prompt": "Static wide shot, distorted corpse slides slowly down the glass wall leaving a red streak, dust settles, silence, heavy atmosphere.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "3d4ea06b-cf9b-45d5-8cb5-c64f59f2d979",
+        "order": 31,
+        "characters": [
+          "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23"
+        ],
+        "scene_id": "746f62eb-e3a6-434f-bdc5-fb71a4c9070d",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：中景。李道玄猛地将手抽回，动作带着一丝惊慌。他坐在昏暗的房间里，呼吸急促。 重点：从干预中抽离，回到现实。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代公寓: Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field]",
+        "dialogue": "",
+        "audio_prompt": "Medium shot, Li Daoxuan jerks his hand back violently, breathing heavily, chest rising and falling rapidly, camera handheld shake.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "0954ea18-8cca-4a11-9ce1-d6650d240f7d",
+        "order": 32,
+        "characters": [
+          "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01"
+        ],
+        "scene_id": "5f75e970-280b-4d8c-ba5c-4269bcabd0a7",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：近景。他举起右手，眉头紧锁，目光聚焦在食指指尖上。蓝色的屏幕光映在他侧脸。 重点：发现异常。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代公寓: Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field]",
+        "dialogue": "",
+        "audio_prompt": "Close up, holding hand up to face, eyes squinting to inspect, blue monitor light illuminating the side of his face, focus hunting.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "74a56b64-593c-4abf-a4a3-5e81872d7fa3",
+        "order": 33,
+        "characters": [
+          "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01"
+        ],
+        "scene_id": "5f75e970-280b-4d8c-ba5c-4269bcabd0a7",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：极特写。食指指腹上，清晰地印着一抹鲜红的血迹。血迹渗入指纹的纹路中，显得格外刺眼。 重点：虚构变为现实的证据。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [现代公寓: Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field]",
+        "dialogue": "",
+        "audio_prompt": "Macro extreme close-up, a smear of bright red blood clearly visible on the finger ridges, blood soaking into skin texture, sharp focus.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "5910c667-7d85-47be-a8c7-c4e53a06eeb2",
+        "order": 34,
+        "characters": [
+          "a5f6cdb4-f8f0-47ab-aae4-fd8119af702a"
+        ],
+        "scene_id": "5f75e970-280b-4d8c-ba5c-4269bcabd0a7",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      },
+      {
+        "prompt": "视角：正面大特写。李道玄的双眼圆睁，瞳孔收缩。恐惧与不可置信的神情爬满脸庞。背景完全黑暗，只有那一抹血红在指尖（虚焦）和眼中（聚焦）呼应。 重点：世界观崩塌的心理冲击。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代公寓: Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field]",
+        "dialogue": "",
+        "audio_prompt": "Frontal big close-up, Li Daoxuan's eyes wide open, pupils contract sharply (dolly zoom), expression of pure disbelief and terror, background fades to black.",
+        "use_scene_ref": true,
+        "custom_image_url": null,
+        "panel_layout": "1-panel",
+        "id": "2d016899-723c-4d82-9965-8a46f58c6be1",
+        "order": 35,
+        "characters": [
+          "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01"
+        ],
+        "scene_id": "5f75e970-280b-4d8c-ba5c-4269bcabd0a7",
+        "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+        "original_image_url": null,
+        "image_candidates": [],
+        "video_url": null,
+        "video_progress": null,
+        "video_items": [],
+        "status": "idle"
+      }
+    ],
+    "characters": [
+      {
+        "id": "0b7fc345-5b3a-418d-9a15-d5e8c69b2a23",
+        "name": "山贼",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼",
+        "tags": [],
+        "prompt": "ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography",
+        "description": "A violent antagonist in the miniature world, dressed in dirty leather armor, riding a horse, and wielding a rusty machete. He represents imminent death and destruction."
+      },
+      {
+        "id": "0cc6e310-d962-490a-afbd-152f72d74f68",
+        "name": "无（以物件为主）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（以物件为主）",
+        "tags": [],
+        "prompt": "large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light",
+        "description": "Focus on inanimate objects, specifically a large, mysterious, unopened cardboard box sitting on a cluttered desk."
+      },
+      {
+        "id": "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01",
+        "name": "李道玄",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄",
+        "tags": [],
+        "prompt": "young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k",
+        "description": "A modern young man in a dimly lit bedroom. He looks tired, wearing casual home clothes. He is the observer and 'god' figure looking into the box."
+      },
+      {
+        "id": "a5f6cdb4-f8f0-47ab-aae4-fd8119af702a",
+        "name": "李道玄（手指）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手指）",
+        "tags": [],
+        "prompt": "extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail",
+        "description": "Extreme close-up of a finger acting as a weapon or tool. Focus on the skin texture, fingerprints, and the massive scale compared to the miniature world."
+      },
+      {
+        "id": "0bb71097-84de-4956-99dc-cd5a6e8f17d6",
+        "name": "李道玄（手部）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手部）",
+        "tags": [],
+        "prompt": "giant human hand, palm and fingers, casting huge shadow, realistic skin texture, hovering over miniature village, god-like perspective, megalophobia, dramatic scale contrast",
+        "description": "A giant human hand entering the miniature world, casting a massive shadow. It represents a divine intervention or a force of nature."
+      },
+      {
+        "id": "61a1169e-4a57-4cab-ae05-d897bdba5bb9",
+        "name": "村民",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=村民",
+        "tags": [],
+        "prompt": "tiny ancient Chinese peasants, running, fleeing, panic, tattered clothes, miniature figures, blurred background, swarm, helpless, macro photography",
+        "description": "Tiny, insignificant figures in the miniature world, fleeing in panic. They are dressed in ancient peasant rags."
+      },
+      {
+        "id": "83a3f739-6fd7-400e-8c0f-81da7a7a53cf",
+        "name": "母亲",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=母亲",
+        "tags": [],
+        "prompt": "ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting",
+        "description": "A tragic figure in the miniature village, an ancient peasant woman who has been stabbed and is falling, reaching out to her child."
+      },
+      {
+        "id": "709ac943-efd2-40a2-bbe6-e81daef00cc7",
+        "name": "高一叶",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶",
+        "tags": [],
+        "prompt": "young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography",
+        "description": "A young peasant girl in the miniature world. She has a muddy face, messy hair, and wears rags. She transitions from numbness to extreme terror and despair."
+      },
+      {
+        "id": "fcb24631-41f0-49fd-9112-d5bb517eef67",
+        "name": "高一叶（模糊）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶（模糊）",
+        "tags": [],
+        "prompt": "young Chinese peasant girl, blurry, out of focus, bokeh effect, seen through magnifying glass, optical distortion, heavy vignette, vague silhouette",
+        "description": "The girl seen through a magnifying glass or out of focus, representing the optical process of finding a target."
+      },
+      {
+        "id": "564ee6d8-a669-468d-847c-1eee452db8de",
+        "name": "微缩村民",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民",
+        "tags": [],
+        "prompt": "miniature people, ancient Chinese peasant clothes, running in panic, swarm of ants, macro photography, tilt-shift effect, high angle view, chaotic formation",
+        "description": "Tiny inhabitants of the box world, dressed in ancient peasant clothing, reacting with panic and chaos like a disturbed ant colony."
+      },
+      {
+        "id": "25d8d52d-6fff-4c6e-89ad-0f2a4cdaf1a6",
+        "name": "无（主观视角）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（主观视角）",
+        "tags": [],
+        "prompt": "POV shot, optical distortion, chromatic aberration, heavy vignette, blurred edges, macro texture of yellow earth, out of focus, magnifying glass effect",
+        "description": "A point-of-view perspective looking through a magnifying lens, characterized by optical imperfections and focus transitions."
+      },
+      {
+        "id": "427bbf61-8c98-45ce-933b-54baa1f99895",
+        "name": "李道玄的手",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄的手",
+        "tags": [],
+        "prompt": "giant human hand, extreme close-up, visible fingerprints, skin pores, dirty fingernails, oily skin texture, dramatic lighting, interacting with miniature objects, massive scale contrast",
+        "description": "A massive, realistic human hand entering the miniature world, showing detailed skin texture, fingerprints, and dirt/oil, acting as a god-like force."
+      },
+      {
+        "id": "8bda7705-34c6-470c-b722-98a8f5ce467e",
+        "name": "李道玄（局部）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（局部）",
+        "tags": [],
+        "prompt": "giant finger hovering in sky, massive fingerprint ridges, blurred giant face in background, atmospheric perspective, looking down from clouds, god-like scale",
+        "description": "Parts of Li Daoxuan seen from the perspective of the miniature world, appearing as colossal, god-like features in the sky."
+      },
+      {
+        "id": "8901e529-f727-4aed-a4b3-3ee17f6790bc",
+        "name": "流寇",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=流寇",
+        "tags": [],
+        "prompt": "miniature bandit, savage face, beard, cruel smile, holding steel sword, tattered leather armor, riding thin horse, dynamic pose, motion blur, menacing atmosphere",
+        "description": "Violent bandits riding thin horses or sprinting, wearing tattered armor, wielding steel knives, with savage and cruel expressions."
+      },
+      {
+        "id": "c6f68c4a-043e-4e7b-bcfd-e88bcfbec91c",
+        "name": "山贼（尸体）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼（尸体）",
+        "tags": [],
+        "prompt": "Flattened body against glass surface, gore, blood splatter, crushed armor, abstract flesh texture, gruesome, high contrast, slide mark of blood, realistic texture, cinematic horror",
+        "description": "The aftermath of the bandit being flicked by the giant finger. A flattened, unrecognizable mass of flesh and blood smashed against the glass wall of the box."
+      },
+      {
+        "id": "f6664609-fd15-47f2-a024-572817613c40",
+        "name": "微缩村民（群演）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民（群演）",
+        "tags": [],
+        "prompt": "Crowd of tiny ancient Chinese peasants, ragged clothes, panic, running, chaotic formation, top-down view, ant-like scale, dust clouds, motion blur, depth of field, cinematic disaster scene",
+        "description": "The tiny inhabitants of the box world. They look like ants from a distance, dressed in rags, running in panic and chaos."
+      },
+      {
+        "id": "0b574474-4d92-4aa7-a58b-19ea5b9ac15d",
+        "name": "李道玄（手）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手）",
+        "tags": [],
+        "prompt": "Giant human hand, massive scale, hyper-realistic skin texture, fingerprints visible as grooves, jade-like fingernail, muscular tension, descending from sky, god-like perspective, megalophobia, dramatic lighting",
+        "description": "Li Daoxuan's hand appearing as a colossal, god-like structure within the miniature world. Features realistic skin texture, fingerprints like valleys, and immense power."
+      },
+      {
+        "id": "c2c1d1a6-2b48-4863-aae4-92f2712905f3",
+        "name": "高一叶母亲",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶母亲",
+        "tags": [],
+        "prompt": "Ancient Chinese peasant woman, frail body, thin, ragged clothes, protective posture, back view, bloodstains, dramatic composition, tragic atmosphere, photorealistic",
+        "description": "A frail miniature woman who sacrifices herself to protect Gao Yiye. She is thin, wears rags, and is depicted in a protective stance or dying."
+      },
+      {
+        "id": "ea62958a-3a1d-4e31-ae9f-809154fd641e",
+        "name": "无（环境）",
+        "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（环境）",
+        "tags": [],
+        "prompt": "no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot",
+        "description": "No specific character focus; emphasis on the environment, atmosphere, or POV shots."
+      }
+    ],
+    "scenes": [
+      {
+        "id": "a38fc4f0-5380-4d47-b614-5b788750f5ea",
+        "name": "微缩荒村",
+        "image_url": "",
+        "tags": [],
+        "prompt": "miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect",
+        "description": "A miniature diorama of a desolate ancient Chinese village. Features yellow earth, dry cracked ground, thatched huts, broken walls, and smoke."
+      },
+      {
+        "id": "4c4a4b07-95c2-436e-949e-f454f465260b",
+        "name": "微缩荒村上空",
+        "image_url": "",
+        "tags": [],
+        "prompt": "aerial view of miniature village, top-down perspective, yellow earth terrain, tiny houses, dramatic shadows, bright white light beam from above, divine light, wide angle",
+        "description": "The view from above the miniature village, looking up at the 'sky' (the opening of the box) or looking down from a god's eye view."
+      },
+      {
+        "id": "3dfcd3e7-f757-4194-ac46-b7908ece9520",
+        "name": "微缩荒村边缘",
+        "image_url": "",
+        "tags": [],
+        "prompt": "edge of diorama, glass wall boundary, pile of gravel, miniature terrain meeting glass, debris, reflection on glass, cross-section of soil",
+        "description": "The boundary of the miniature world where the terrain meets the glass wall of the box. Contains debris and gravel."
+      },
+      {
+        "id": "12616110-180a-485e-8440-4b1a283ebb42",
+        "name": "昏暗杂乱的现代卧室",
+        "image_url": "",
+        "tags": [],
+        "prompt": "modern bedroom, dim lighting, cluttered desk, computer monitor with blue light, takeaway boxes, messy, claustrophobic atmosphere, cinematic lighting, cyberpunk vibes, cold color temperature, realistic interior",
+        "description": "A messy, dimly lit modern room. Filled with takeaway boxes, a computer monitor emitting cold blue light, and a general sense of depression/isolation."
+      },
+      {
+        "id": "5074e8a3-4590-4996-8480-888c38bd4895",
+        "name": "半空中",
+        "image_url": "",
+        "tags": [],
+        "prompt": "mid-air freeze frame, motion blur, tumbling body, dust trail, suspended in air, cinematic action shot, depth of field",
+        "description": "The airspace within the box where the bandit is flung, showing motion and height relative to the miniature ground."
+      },
+      {
+        "id": "dc411029-d6e6-4806-977c-cafae52e2176",
+        "name": "昏暗杂乱的出租屋",
+        "image_url": "",
+        "tags": [],
+        "prompt": "dimly lit room, messy apartment, clutter, trash, cardboard boxes, e-sports chair, computer monitor, cold blue ambient light, contrast with warm yellow light from box, cinematic atmosphere, realistic",
+        "description": "A dark, messy room filled with clutter, cardboard boxes, and an e-sports chair, lit by the cold blue light of a monitor and warm light from the box."
+      },
+      {
+        "id": "12419fb1-0592-4a0c-91e8-646e75ed2e40",
+        "name": "玻璃箱壁",
+        "image_url": "",
+        "tags": [],
+        "prompt": "transparent glass surface, spiderweb cracks, blood mist splatter, impact point, reflection, macro detail, texture of glass",
+        "description": "The transparent boundary of the miniature world, which cracks upon impact."
+      },
+      {
+        "id": "61ac710e-5d3a-4a98-8a4d-10fae313fc3f",
+        "name": "箱内微缩世界",
+        "image_url": "",
+        "tags": [],
+        "prompt": "miniature diorama, yellow loess soil, cracked earth, withered miniature tree, tiny fences, ancient village ruins, macro photography, tilt-shift, shallow depth of field, warm lighting, realistic texture",
+        "description": "A miniature landscape inside a cardboard box featuring yellow loess soil, dry earth, withered trees, and tiny ancient structures, lit by external light."
+      },
+      {
+        "id": "7272e13b-92ee-428b-b68c-7e927894f51e",
+        "name": "昏暗杂乱的现代公寓房间",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Messy modern apartment room, dimly lit, computer screen blue light, cluttered desk, cardboard boxes, atmospheric dust, cinematic lighting, low key, realistic interior",
+        "description": "Li Daoxuan's living space. Dark, cluttered, illuminated by the cold blue light of a computer screen and the warm glow from the box."
+      },
+      {
+        "id": "5f75e970-280b-4d8c-ba5c-4269bcabd0a7",
+        "name": "现代公寓",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field",
+        "description": "The broader setting of the protagonist's reality. Cold tones contrasting with the warm light of the miniature world."
+      },
+      {
+        "id": "1e19e589-1daf-41b8-9a4b-0372f0dc4747",
+        "name": "现代公寓 / 微缩世界边界",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Giant magnifying glass lens, optical distortion, glass reflection, split screen effect, blue light vs warm yellow light, macro detail of glass edge, boundary concept",
+        "description": "The interface between reality and the box. Features optical glass, reflections, and the contrast between the giant room and the tiny world."
+      },
+      {
+        "id": "d0659bba-6cbe-4e2d-8d61-bb4e76b6358b",
+        "name": "箱内世界",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Miniature diorama, ancient Chinese setting, warm yellow lighting, atmospheric dust, high detail, tilt-shift photography, photorealistic",
+        "description": "The miniature world inside the landscaping box. It resembles the Ming Dynasty, filled with warm yellow light and dust."
+      },
+      {
+        "id": "0ee4c3fe-62a2-42b5-affd-a980b66be279",
+        "name": "箱内世界边缘",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Glass wall barrier, transparent texture, reflection, blood smear on glass, limit of the world, macro perspective, high contrast",
+        "description": "The glass wall of the landscaping box viewed from the inside or outside. The limit of the miniature universe."
+      },
+      {
+        "id": "f5039231-dc84-48dd-ba6b-bbffc4fa710b",
+        "name": "箱内世界（天空/箱顶）",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Artificial sky, cotton wool clouds, dramatic lighting, turbulent clouds, giant shadow casting over, surreal atmosphere, low angle view",
+        "description": "The 'sky' of the miniature world, made of cotton clouds, which can be breached by the outside world (the giant hand)."
+      },
+      {
+        "id": "88199e0f-eeda-4484-bfeb-32c3524eff21",
+        "name": "箱内世界（天空）",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Miniature sky, bright yellow turning to dark shadow, atmospheric perspective, clouds, sense of impending doom, cinematic sky",
+        "description": "The upper atmosphere of the box, shifting from bright to ominous as the giant hand descends."
+      },
+      {
+        "id": "9ab55b73-b1ee-40b5-b24f-df93d52379d1",
+        "name": "箱内世界（微缩荒村）",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Miniature desolate village, cracked dry earth, yellow dust, withered plants, famine setting, macro photography, high detail, texture focus, warm arid lighting",
+        "description": "A drought-stricken, desolate village setting inside the box. Cracked earth and signs of famine."
+      },
+      {
+        "id": "e0301f60-c0ec-4109-8992-827d2dcdf685",
+        "name": "箱内世界（村口）",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Village entrance, dirt road, rising dust clouds, dry grass, low angle ground view, anticipation of danger, ancient architecture ruins, macro scale",
+        "description": "The entrance to the miniature village. Dusty, open, used as the staging ground for the bandit's charge."
+      },
+      {
+        "id": "35643778-58f1-449a-b07a-1713246bbb5c",
+        "name": "箱内世界（村庄）",
+        "image_url": "",
+        "tags": [],
+        "prompt": "Ancient Chinese village huts, dilapidated structures, dusty ground, chaotic scene, aerial view or eye-level macro, warm tones, dramatic shadows",
+        "description": "The center of the miniature village where the chaos takes place. Dilapidated huts and dusty ground."
+      },
+      {
+        "id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
+        "name": "微缩村庄",
+        "image_url": "",
+        "tags": [],
+        "prompt": "miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting",
+        "description": "A tiny, dilapidated ancient village made of yellow earth and thatch. It is chaotic, filled with dust and panic during the raid."
+      },
+      {
+        "id": "260b0589-eb40-4613-9ef1-828b4ec8ede9",
+        "name": "微缩村庄入口",
+        "image_url": "",
+        "tags": [],
+        "prompt": "village entrance, yellow dust clouds, heavy atmosphere, blurred background, macro perspective, dynamic motion, war torn",
+        "description": "The entrance to the village, filled with rolling yellow dust as the bandit charges through."
+      },
+      {
+        "id": "8c2ea0a8-35ee-43ab-9785-1840b96a5e15",
+        "name": "昏暗的现代公寓",
+        "image_url": "",
+        "tags": [],
+        "prompt": "dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting",
+        "description": "A dark, messy modern room. Cluttered background, illuminated by cold blue computer screen light and shadows."
+      },
+      {
+        "id": "8095bef9-b69e-46c5-942c-64ec9ee4efc7",
+        "name": "现代公寓 / 箱口",
+        "image_url": "",
+        "tags": [],
+        "prompt": "edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field",
+        "description": "The boundary between the real world and the box. Shows the cardboard edge and the contrast between the dark room and the warm light inside."
+      },
+      {
+        "id": "c8686549-6dc1-4a29-a80c-e58c4f1b533c",
+        "name": "箱内天空",
+        "image_url": "",
+        "tags": [],
+        "prompt": "simulated sky, painted clouds, giant hand breaking through, dramatic shadows, surreal, low angle shot, looking up",
+        "description": "The ceiling of the box, painted to look like a sky or covered in clouds, broken by the intrusion of the giant hand."
+      },
+      {
+        "id": "2a06492a-1fd2-48e6-9429-834d8ffd07d0",
+        "name": "箱内微缩荒原",
+        "image_url": "",
+        "tags": [],
+        "prompt": "barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones",
+        "description": "A barren, desolate landscape inside the box with dry yellow soil and withered vegetation."
+      },
+      {
+        "id": "57ec4ac4-e202-4d01-91f3-09c6ba0a7e67",
+        "name": "箱内空间",
+        "image_url": "",
+        "tags": [],
+        "prompt": "empty air inside box, motion blur background, depth of field, mid-air, cinematic action shot",
+        "description": "The air space within the box, used for shots of characters flying through the air."
+      },
+      {
+        "id": "746f62eb-e3a6-434f-bdc5-fb71a4c9070d",
+        "name": "箱壁边缘",
+        "image_url": "",
+        "tags": [],
+        "prompt": "glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere",
+        "description": "The glass or cardboard wall of the vivarium. Features sand at the bottom and a blood smear from the impact."
+      }
+    ],
+    "default_scene_id": null,
     "default_panel_layout": "1-panel",
     "default_image_count": 1
   }
