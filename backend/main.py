@@ -18,7 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from volcengine.visual.VisualService import VisualService
-from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest, CharacterUpdate, SceneUpdate, VideoItem
+from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest, CharacterUpdate, SceneUpdate, VideoItem, ImportShotsAutoRequest
 from providers import generate_image, generate_video, rongyiyun_provider
 class ProjectCreate(BaseModel):
     name: str
@@ -70,6 +70,7 @@ class ApiConfig(BaseModel):
     rongyiyun_api_base: str = "https://zcbservice.aizfw.cn/kyyApi"
     rongyiyun_ratio: str = "16:9"
     rongyiyun_duration: int = 10
+    storyboard_root_dir: str = ""
 
 class ApiPreset(BaseModel):
     name: str
@@ -125,6 +126,7 @@ def load_api_config():
     current_api_config.rongyiyun_api_base = os.getenv("RONGYIYUN_API_BASE", "https://zcbservice.aizfw.cn/kyyApi")
     current_api_config.rongyiyun_ratio = os.getenv("RONGYIYUN_RATIO", "16:9")
     current_api_config.rongyiyun_duration = int(os.getenv("RONGYIYUN_DURATION", "10") or 10)
+    current_api_config.storyboard_root_dir = os.getenv("STORYBOARD_ROOT_DIR", "")
 
     # 2. Override with config file if exists
     if os.path.exists(API_CONFIG_FILE):
@@ -181,6 +183,8 @@ def load_api_config():
                     current_api_config.rongyiyun_ratio = data["rongyiyun_ratio"]
                 if data.get("rongyiyun_duration") is not None:
                     current_api_config.rongyiyun_duration = int(data["rongyiyun_duration"])
+                if data.get("storyboard_root_dir") is not None:
+                    current_api_config.storyboard_root_dir = data["storyboard_root_dir"]
         except Exception as e:
             print(f"Failed to load API Config: {e}")
 
@@ -744,39 +748,26 @@ async def create_character(project_id: str, character: Character):
     save_db()
     return character
 
-@app.post("/projects/{project_id}/characters/import_from_md")
-async def import_characters_from_md(project_id: str, file: UploadFile = File(...)):
-    project = get_project_or_404(project_id)
-    content = await file.read()
-    try:
-        text = content.decode("utf-8")
-    except:
-        text = content.decode("gbk", errors="ignore")
-    
+def _import_characters_from_md_text(project: Project, text: str):
     lines = text.split("\n")
     new_characters = []
-    
+    existing_names = {((c.name or "").strip().lower()) for c in project.characters}
+    seen_names = set()
     header_found = False
     name_idx = -1
     desc_idx = -1
     prompt_idx = -1
-    
     for line in lines:
         line = line.strip()
         if not line:
             continue
-            
         parts = [p.strip() for p in line.split("|")]
-        # Remove empty first/last elements if they are just from the boundary pipes
         if len(parts) > 0 and parts[0] == "":
             parts.pop(0)
         if len(parts) > 0 and parts[-1] == "":
             parts.pop()
-            
         if not parts:
             continue
-
-        # Check for header
         if not header_found:
             for i, p in enumerate(parts):
                 if "角色名" in p:
@@ -787,23 +778,20 @@ async def import_characters_from_md(project_id: str, file: UploadFile = File(...
                 elif "提示词" in p:
                     prompt_idx = i
             continue
-            
-        # Check for separator
         if all(c in "- :" for c in "".join(parts)):
             continue
-            
-        # Data row
         if name_idx != -1 and len(parts) > name_idx:
             name = parts[name_idx]
-            if "角色名" in name: continue
-            
+            if "角色名" in name:
+                continue
+            normalized_name = (name or "").strip().lower()
+            if not normalized_name or normalized_name in existing_names or normalized_name in seen_names:
+                continue
             desc = parts[desc_idx] if desc_idx != -1 and len(parts) > desc_idx else ""
             prompt = parts[prompt_idx] if prompt_idx != -1 and len(parts) > prompt_idx else ""
-            
             if name:
                 char_id = str(uuid.uuid4())
                 avatar_url = f"https://api.dicebear.com/7.x/adventurer/svg?seed={name}"
-                
                 new_char = Character(
                     id=char_id,
                     name=name,
@@ -812,12 +800,48 @@ async def import_characters_from_md(project_id: str, file: UploadFile = File(...
                     description=desc
                 )
                 new_characters.append(new_char)
-
+                seen_names.add(normalized_name)
     if new_characters:
         project.characters.extend(new_characters)
         save_db()
-        
     return {"added": len(new_characters), "characters": new_characters}
+
+@app.post("/projects/{project_id}/characters/import_from_md")
+async def import_characters_from_md(project_id: str, file: UploadFile = File(...)):
+    project = get_project_or_404(project_id)
+    content = await file.read()
+    try:
+        text = content.decode("utf-8")
+    except:
+        text = content.decode("gbk", errors="ignore")
+    return _import_characters_from_md_text(project, text)
+
+@app.post("/projects/{project_id}/characters/import_auto_md")
+async def import_characters_from_auto_md(project_id: str, data: ImportShotsAutoRequest):
+    project = get_project_or_404(project_id)
+    root = (data.root or "").strip().strip('"').strip("'")
+    root = os.path.normpath(root)
+    project_name = (data.project_name or "").strip()
+    if not root or not project_name:
+        raise HTTPException(status_code=400, detail="root or project_name is empty")
+    if not os.path.isdir(root):
+        raise HTTPException(status_code=404, detail=f"root folder not found: {root}")
+    target_dir = root if os.path.basename(root) == project_name else os.path.join(root, project_name)
+    if not os.path.isdir(target_dir):
+        raise HTTPException(status_code=404, detail=f"project folder not found: {target_dir}")
+    file_path = os.path.join(target_dir, "character-overview.md")
+    if not os.path.isfile(file_path):
+        raise HTTPException(status_code=404, detail=f"character overview not found: {file_path}")
+    try:
+        with open(file_path, "rb") as f:
+            content = f.read()
+        try:
+            text = content.decode("utf-8")
+        except:
+            text = content.decode("gbk", errors="ignore")
+        return _import_characters_from_md_text(project, text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"failed to read {file_path}: {e}")
 
 
 @app.post("/projects/{project_id}/scenes", response_model=Scene)
@@ -834,23 +858,15 @@ async def create_scene(project_id: str, scene: Scene):
     save_db()
     return scene
 
-@app.post("/projects/{project_id}/scenes/import_from_md")
-async def import_scenes_from_md(project_id: str, file: UploadFile = File(...)):
-    project = get_project_or_404(project_id)
-    content = await file.read()
-    try:
-        text = content.decode("utf-8")
-    except:
-        text = content.decode("gbk", errors="ignore")
-    
+def _import_scenes_from_md_text(project: Project, text: str):
     lines = text.split("\n")
     new_scenes = []
-    
+    existing_names = {((s.name or "").strip().lower()) for s in project.scenes}
+    seen_names = set()
     header_found = False
     name_idx = -1
     desc_idx = -1
     prompt_idx = -1
-    
     for line in lines:
         line = line.strip()
         if not line:
@@ -862,7 +878,6 @@ async def import_scenes_from_md(project_id: str, file: UploadFile = File(...)):
             parts.pop()
         if not parts:
             continue
-        
         if not header_found:
             for i, p in enumerate(parts):
                 if "场景名" in p:
@@ -873,13 +888,14 @@ async def import_scenes_from_md(project_id: str, file: UploadFile = File(...)):
                 elif "提示词" in p or "生图提示词" in p:
                     prompt_idx = i
             continue
-        
         if all(c in "- :" for c in "".join(parts)):
             continue
-        
         if name_idx != -1 and len(parts) > name_idx:
             name = parts[name_idx]
             if "场景名" in name:
+                continue
+            normalized_name = (name or "").strip().lower()
+            if not normalized_name or normalized_name in existing_names or normalized_name in seen_names:
                 continue
             desc = parts[desc_idx] if desc_idx != -1 and len(parts) > desc_idx else ""
             prompt = parts[prompt_idx] if prompt_idx != -1 and len(parts) > prompt_idx else ""
@@ -894,22 +910,50 @@ async def import_scenes_from_md(project_id: str, file: UploadFile = File(...)):
                     tags=[]
                 )
                 new_scenes.append(new_scene)
-    
+                seen_names.add(normalized_name)
     if new_scenes:
         project.scenes.extend(new_scenes)
         save_db()
-    
     return {"added": len(new_scenes), "scenes": new_scenes}
 
-@app.post("/projects/{project_id}/shots/import_from_md")
-async def import_shots_from_md(project_id: str, file: UploadFile = File(...)):
+@app.post("/projects/{project_id}/scenes/import_from_md")
+async def import_scenes_from_md(project_id: str, file: UploadFile = File(...)):
     project = get_project_or_404(project_id)
     content = await file.read()
     try:
         text = content.decode("utf-8")
     except:
         text = content.decode("gbk", errors="ignore")
-    
+    return _import_scenes_from_md_text(project, text)
+
+@app.post("/projects/{project_id}/scenes/import_auto_md")
+async def import_scenes_from_auto_md(project_id: str, data: ImportShotsAutoRequest):
+    project = get_project_or_404(project_id)
+    root = (data.root or "").strip().strip('"').strip("'")
+    root = os.path.normpath(root)
+    project_name = (data.project_name or "").strip()
+    if not root or not project_name:
+        raise HTTPException(status_code=400, detail="root or project_name is empty")
+    if not os.path.isdir(root):
+        raise HTTPException(status_code=404, detail=f"root folder not found: {root}")
+    target_dir = root if os.path.basename(root) == project_name else os.path.join(root, project_name)
+    if not os.path.isdir(target_dir):
+        raise HTTPException(status_code=404, detail=f"project folder not found: {target_dir}")
+    file_path = os.path.join(target_dir, "scene-overview.md")
+    if not os.path.isfile(file_path):
+        raise HTTPException(status_code=404, detail=f"scene overview not found: {file_path}")
+    try:
+        with open(file_path, "rb") as f:
+            content = f.read()
+        try:
+            text = content.decode("utf-8")
+        except:
+            text = content.decode("gbk", errors="ignore")
+        return _import_scenes_from_md_text(project, text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"failed to read {file_path}: {e}")
+
+def _import_shots_from_md_text(project: Project, text: str):
     lines = text.split("\n")
     rows = []
     
@@ -1021,6 +1065,20 @@ async def import_shots_from_md(project_id: str, file: UploadFile = File(...)):
     name_to_scene = {s.name.strip(): s.id for s in (project.scenes or [])}
     norm_to_scene = {normalize(s.name): s.id for s in (project.scenes or [])}
     id_to_scene_obj = {s.id: s for s in (project.scenes or [])}
+
+    def shot_key(prompt, dialogue, audio_prompt, characters, scene_id):
+        prompt_key = normalize(prompt)
+        dialogue_key = normalize(dialogue)
+        audio_key = normalize(audio_prompt or "")
+        scene_key = scene_id or ""
+        chars_key = ",".join(sorted([c or "" for c in (characters or [])]))
+        return (prompt_key, dialogue_key, audio_key, scene_key, chars_key)
+
+    existing_keys = {
+        shot_key(s.prompt, s.dialogue, s.audio_prompt, s.characters, s.scene_id)
+        for s in (project.shots or [])
+    }
+    seen_keys = set()
     
     new_shots = []
     for r in rows:
@@ -1090,6 +1148,16 @@ async def import_shots_from_md(project_id: str, file: UploadFile = File(...)):
             "characters": char_ids,
             "scene_id": scene_id,
         }
+        key = shot_key(
+            shot_dict["prompt"],
+            shot_dict["dialogue"],
+            shot_dict["audio_prompt"],
+            shot_dict["characters"],
+            shot_dict["scene_id"]
+        )
+        if key in existing_keys or key in seen_keys:
+            continue
+        seen_keys.add(key)
         
         new_shot = Shot(
             id=str(uuid.uuid4()),
@@ -1104,6 +1172,56 @@ async def import_shots_from_md(project_id: str, file: UploadFile = File(...)):
         
     save_db()
     return {"added": len(new_shots), "shots": new_shots}
+
+@app.post("/projects/{project_id}/shots/import_from_md")
+async def import_shots_from_md(project_id: str, file: UploadFile = File(...)):
+    project = get_project_or_404(project_id)
+    content = await file.read()
+    try:
+        text = content.decode("utf-8")
+    except:
+        text = content.decode("gbk", errors="ignore")
+    return _import_shots_from_md_text(project, text)
+
+@app.post("/projects/{project_id}/shots/import_auto_md")
+async def import_shots_from_auto_md(project_id: str, data: ImportShotsAutoRequest):
+    project = get_project_or_404(project_id)
+    root = (data.root or "").strip().strip('"').strip("'")
+    root = os.path.normpath(root)
+    project_name = (data.project_name or "").strip()
+    if not root or not project_name:
+        raise HTTPException(status_code=400, detail="root or project_name is empty")
+    if not os.path.isdir(root):
+        raise HTTPException(status_code=404, detail=f"root folder not found: {root}")
+    target_dir = root if os.path.basename(root) == project_name else os.path.join(root, project_name)
+    if not os.path.isdir(target_dir):
+        raise HTTPException(status_code=404, detail=f"project folder not found: {target_dir}")
+    pattern = re.compile(r"^storyboard-table__Episode-(\d+)\.md$")
+    files = []
+    for name in os.listdir(target_dir):
+        match = pattern.match(name)
+        if match:
+            files.append((int(match.group(1)), name))
+    files.sort(key=lambda x: x[0])
+    if not files:
+        return {"added": 0, "shots": []}
+    all_shots = []
+    for _, filename in files:
+        file_path = os.path.join(target_dir, filename)
+        try:
+            with open(file_path, "rb") as f:
+                content = f.read()
+            try:
+                text = content.decode("utf-8")
+            except:
+                text = content.decode("gbk", errors="ignore")
+            res = _import_shots_from_md_text(project, text)
+            shots = res.get("shots") if isinstance(res, dict) else None
+            if shots:
+                all_shots.extend(shots)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"failed to read {filename}: {e}")
+    return {"added": len(all_shots), "shots": all_shots}
 @app.put("/characters/{project_id}/{char_id}", response_model=Character)
 async def update_character(project_id: str, char_id: str, updates: CharacterUpdate):
     project = get_project_or_404(project_id)

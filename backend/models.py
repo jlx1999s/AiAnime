@@ -54,6 +54,13 @@ class ShotUpdate(ShotBase):
     characters: Optional[List[str]] = None
     scene_id: Optional[str] = None
 
+class ImportShotsAutoRequest(BaseModel):
+    root: str
+    project_name: str = Field(alias="projectName")
+
+    class Config:
+        allow_population_by_field_name = True
+
 class VideoItem(BaseModel):
     id: str
     url: Optional[str] = None
