@@ -1,0 +1,384 @@
+{
+  "id": "96c201bf-98c1-4660-8e25-f844f5a69af5",
+  "name": "盗墓笔记",
+  "style": "chinese_anime",
+  "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
+  "shots": [
+    {
+      "prompt": "特写镜头，王翠花一脸疲惫地坐在拥挤的地铁车厢内。她扎着略显凌乱的马尾，戴着黑框眼镜 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [深夜地铁车厢: 现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "f8e28f92-91b8-4165-aca7-ac9abb76d5bd",
+      "order": 0,
+      "characters": [
+        "char_1769596756936_1zhtblaoy"
+      ],
+      "scene_id": "scene_1769596757528_pkaw9ae9q",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/efb9ef31-71ff-41be-b8f2-7378628b02de.png",
+      "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fa5859a6-bbd8-4b2e-984b-e36d9bc15d19.png",
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/25ff2c20-bc5d-4fde-8370-f8b67d505ab6.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4bc3b4e9-d679-4d3a-9f78-8bb71c41ccab.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/80863678-e6da-43e6-a8a9-e2863df0c92d.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fa5859a6-bbd8-4b2e-984b-e36d9bc15d19.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b69451d0-2dbb-4540-b380-b7af2a23eade.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/efb9ef31-71ff-41be-b8f2-7378628b02de.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ca76620f-9014-4e7e-88d3-e41c0632fae5.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/6bb85582-b8bf-43b9-ad15-d25cb144f7b9.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9933311b-638f-4457-8252-858bff5e4e2e.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/28792b39-da8e-45ec-8c60-bee22ff619c5.png"
+      ],
+      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/c188753f-de62-4117-9ca1-e4b653d53e8c.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "60b8fae7-8477-424c-b816-1c407de05553",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/1a2f4c81-87bf-4cae-8db4-2d8a73cf2ca0.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "961765b3-9e01-4981-a58b-464aa1483ab7",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/c188753f-de62-4117-9ca1-e4b653d53e8c.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "手机屏幕特写。屏幕上显示着网文页面，标题是《穿书之恶魔宠妃》，文字清晰可见：‘马春春是个平平无奇的社畜……’。王翠花的指尖在屏幕上轻轻滑动。 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [深夜地铁车厢: 现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。]",
+      "dialogue": "这是在写我自己吗？",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "0deba0d8-0854-4e43-96ca-cc20e1515da7",
+      "order": 1,
+      "characters": [
+        "char_1769596756936_1zhtblaoy"
+      ],
+      "scene_id": "scene_1769596757528_pkaw9ae9q",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/533279fb-0938-4614-9960-7a41a755a9e2.png",
+      "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8396aeff-b774-44fb-a755-db2744d78b0a.png",
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/533279fb-0938-4614-9960-7a41a755a9e2.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fbe17f35-53bd-4e29-86a7-15ec01a4d0a4.png"
+      ],
+      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/777ba3c9-cc95-4b56-8323-b01bd0942f23.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "00eb7656-b5e2-4f79-8ef7-446444beda36",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/777ba3c9-cc95-4b56-8323-b01bd0942f23.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "中景镜头，王翠花靠在地铁扶手上，翻了个白眼，露出一副‘又来这套’的嫌弃表情。地铁内忽明忽暗的灯光勾勒出她平凡的轮廓。 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [深夜地铁车厢: 现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "3387abd1-cf8c-4d45-92e9-f6c63592c56e",
+      "order": 2,
+      "characters": [
+        "char_1769596756936_1zhtblaoy"
+      ],
+      "scene_id": "scene_1769596757528_pkaw9ae9q",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/1f814b8c-bc57-43e0-9528-59dcef69e48e.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/1f814b8c-bc57-43e0-9528-59dcef69e48e.png"
+      ],
+      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4ed04b56-1fed-43c1-83ef-17978a8cd054.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "fb12a6f0-5ed6-4c63-8181-fd7a1b71b8d7",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4ed04b56-1fed-43c1-83ef-17978a8cd054.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "第一人称视角。手机屏幕突然爆发出强烈的白光，光芒迅速扩散，吞噬了整个地铁视野。画面充满动态模糊和粒子感，伴随着强烈的震荡感。 [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。] [时空隧道: 抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。] [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "532c5e64-ffea-42de-a929-82b659be1546",
+      "order": 3,
+      "characters": [
+        "char_1769596756936_1zhtblaoy",
+        "char_1769596756936_vzn47mmcg"
+      ],
+      "scene_id": "scene_1769596757528_oypui5qnp",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/3b2efa7c-3004-4a21-bfc6-b1fee527feef.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/3b2efa7c-3004-4a21-bfc6-b1fee527feef.png"
+      ],
+      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8dc2e919-b64c-4e63-9581-92a669633775.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "5e3f02c1-a1d4-401e-a25e-46c0062e6219",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8dc2e919-b64c-4e63-9581-92a669633775.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "全景镜头。王翠花猛然从一张华丽的古式雕花大床上坐起，四周是古色古香的宫殿陈设，轻盈的纱幔随风飘动，清晨的阳光透过窗棂洒在地面上。她神情错愕，环顾四周。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "01adae35-3780-40e9-bf36-66f55cf0a817",
+      "order": 4,
+      "characters": [
+        "char_1769596756936_vzn47mmcg"
+      ],
+      "scene_id": "scene_1769596757528_1gml4z4ck",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/14a0e924-d761-464b-b4e2-b187dd464252.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/14a0e924-d761-464b-b4e2-b187dd464252.png"
+      ],
+      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f2221d60-bb1b-4f3c-9a70-3a5f4c4d6f4c.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "e4b7bceb-4cc8-4ec9-9788-f1e0ceaa1863",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f2221d60-bb1b-4f3c-9a70-3a5f4c4d6f4c.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "中景镜头。庾晚音（王翠花）急切地跪在梳妆台前，双手颤抖地抓起一面古朴的青铜镜，照向自己的脸。她的动作显得有些笨拙，与华丽的服饰形成反差。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "3e330113-3db4-4259-99aa-dd8c0d0a5bc1",
+      "order": 5,
+      "characters": [
+        "char_1769596756936_vzn47mmcg"
+      ],
+      "scene_id": "scene_1769596757528_1gml4z4ck",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4bce8fa1-778a-4b2d-a244-9af579055970.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/4bce8fa1-778a-4b2d-a244-9af579055970.png"
+      ],
+      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f3c0a655-b027-491f-9e94-7472acc45673.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "595fe98d-3723-419a-842a-282d58c4cb79",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f3c0a655-b027-491f-9e94-7472acc45673.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "特写镜头，青铜镜中的倒影。一张惊世骇俗、艳丽夺目的脸庞，眉眼如画，肤若凝脂，未施粉黛却自带一股尊贵气息。镜中人瞪大了眼睛，满脸写着绝望。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+      "dialogue": "（心声）怎么会是她……那个注定被炮灰女迫害而死的原女主，庾晚音。",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "e9dd448a-4c8f-47d5-884f-ca937dde6505",
+      "order": 6,
+      "characters": [
+        "char_1769596756936_vzn47mmcg"
+      ],
+      "scene_id": "scene_1769596757528_1gml4z4ck",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b07c103d-0ee6-42c0-8b40-448de7442a43.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b07c103d-0ee6-42c0-8b40-448de7442a43.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "ed2d7512-1d4a-49f4-99c4-09e4df659648",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
+      "status": "failed"
+    },
+    {
+      "prompt": "低角度仰拍，庾晚音瘫坐在地，华丽的长袍铺散开来。她双手抱头，显得极其焦虑，背景是深邃而充满压迫感的古代宫廷建筑，光影交错，暗示着未来的危机。 [庾晚音: 绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。] [寝宫卧室: 奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "4b5f9aa3-21a2-4ced-9425-fc4d7e6ce2ac",
+      "order": 7,
+      "characters": [
+        "char_1769596756936_vzn47mmcg"
+      ],
+      "scene_id": "scene_1769596757528_1gml4z4ck",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/5b9f96da-732f-4f93-9fd7-88019b2c2885.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/5b9f96da-732f-4f93-9fd7-88019b2c2885.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "failed"
+    },
+    {
+      "prompt": "合成两张参考图",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": "/static/uploads/c36ca01b-6008-4f92-b6a5-b61b2c48f1a1_屏幕截图 2026-01-26 001937.png",
+      "panel_layout": "3-panel",
+      "id": "3f3f2538-9710-4473-a553-5a6cbae6f621",
+      "order": 8,
+      "characters": [],
+      "scene_id": "scene_1769596757528_pkaw9ae9q",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
+      "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/54bee3e0-1458-4ae7-afd3-5cbb100df045.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/5537c678-dac1-42d3-95f6-f0ad8e4e6553.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/dbdaf73f-27d5-4cd7-90e3-b56f4427dc06.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "failed"
+    },
+    {
+      "prompt": "生成自定义参考图中人物喂狗的图像 [时空隧道: 抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。] [王翠花: 一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": "/static/uploads/aa6ec126-2d27-4397-9c81-2e68243a9df5_屏幕截图 2026-01-26 001937.png",
+      "panel_layout": "3-panel",
+      "id": "90b66540-9920-466d-a57d-c2273a278eba",
+      "order": 9,
+      "characters": [
+        "char_1769596756936_1zhtblaoy"
+      ],
+      "scene_id": "scene_1769596757528_oypui5qnp",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b6d898a2-f751-47d6-b146-2c8e8c72d357.png",
+      "original_image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ac741017-5ae5-4c49-b35a-89726a47f438.png",
+      "image_candidates": [
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ac741017-5ae5-4c49-b35a-89726a47f438.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/ad7398a0-a75f-4f59-a7b9-6e61bdbc3e85.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/8369acc7-35ac-49dd-87c1-fd4d1df4656c.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f79585c8-4012-4ccd-8bae-dd654677fd5e.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/38172917-3ef5-4d86-859e-4a3c8a205d4d.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/500f21c0-55cb-4d10-bf63-90e9525797cb.png",
+        "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b6d898a2-f751-47d6-b146-2c8e8c72d357.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "b9f6e896-20f3-45f9-8ef9-ab41fde4959c",
+      "order": 10,
+      "characters": [],
+      "scene_id": null,
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char_1769596756936_1zhtblaoy",
+      "name": "王翠花",
+      "avatar_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/bc9537de-357d-46ba-bfc1-add44230685d.png",
+      "tags": [],
+      "prompt": "一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。",
+      "description": ""
+    },
+    {
+      "id": "char_1769596756936_vzn47mmcg",
+      "name": "庾晚音",
+      "avatar_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9ffff7bb-b678-482f-8344-646c40880a66.png",
+      "tags": [],
+      "prompt": "绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。",
+      "description": ""
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1769596757528_pkaw9ae9q",
+      "name": "深夜地铁车厢",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9ce52023-6fcb-42af-816e-fcb8ff57c4b7.png",
+      "tags": [],
+      "prompt": "现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。",
+      "description": ""
+    },
+    {
+      "id": "scene_1769596757528_oypui5qnp",
+      "name": "时空隧道",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f8d247a7-1d7f-417c-9480-9ef76b23d61b.png",
+      "tags": [],
+      "prompt": "抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。",
+      "description": ""
+    },
+    {
+      "id": "scene_1769596757528_1gml4z4ck",
+      "name": "寝宫卧室",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b0d4c6bf-1a20-4a59-9ed3-e4bb0e0e8918.png",
+      "tags": [],
+      "prompt": "奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。",
+      "description": ""
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "3-panel",
+  "default_image_count": 1
+}

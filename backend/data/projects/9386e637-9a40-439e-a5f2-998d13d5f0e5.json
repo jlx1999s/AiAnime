@@ -1,0 +1,175 @@
+{
+  "id": "9386e637-9a40-439e-a5f2-998d13d5f0e5",
+  "name": "最新api测试",
+  "style": "anime",
+  "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
+  "shots": [
+    {
+      "prompt": "Low-angle shot, dim candlelight flickering across ornate imperial dragon-carved pillars and heavy crimson silk bed curtains in the emperor's night chamber. A woman in a vivid red qipao-style gown with gold phoenix embroidery kneels on jade floor tiles, her black hair piled high with jade hairpins, lips painted deep vermilion, eyes lined with kohl, expression both seductive and tense. Smoke curls from bronze incense burners. Cinematic lighting, rich shadows, Tang-inspired palace interior. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+      "dialogue": "陛下~臣妾为您跳一支舞可好？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "52641c3d-25bb-402c-8dfe-8ac88a4d7b72",
+      "order": 0,
+      "characters": [
+        "char_1769526328860_i8o6zxa8k"
+      ],
+      "scene_id": "scene_1769526328873_dmattmija",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "Close-up of a pale, slender hand emerging from behind thick, embroidered crimson bed curtains — fingers long and bloodless, nails faintly bluish, resting limply on the curtain’s edge. Background blurred but hinting at dark silhouettes within the canopy. High-contrast chiaroscuro lighting, cold tone. [暴君: An unseen but powerfully implied figure — only his hand is shown: unnaturally pale, slender, long-fingered, with translucent skin and faint blue veins; nails clean but slightly elongated and cool-toned. Voice suggests youth masked by exhaustion and disdain; presence radiates lethality and profound weariness. No full visual, but aura is regal, detached, and ominously indifferent.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+      "dialogue": "滚吧。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "294d7941-c6a0-4adf-bc3b-366bd2f13d7e",
+      "order": 1,
+      "characters": [
+        "char_1769526328860_828dmruwt"
+      ],
+      "scene_id": "scene_1769526328873_dmattmija",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "Medium close-up of Yu Wanyin’s face: her painted smile frozen mid-expression, eyes wide with shock and dawning humiliation; delicate jaw clenched, one tear glistening but unshed; red sleeves trembling slightly. Background: shallow depth-of-field showing two armored imperial guards stepping forward in synchronized motion. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "01840b0e-f5ec-4646-9769-20974b4d8f71",
+      "order": 2,
+      "characters": [
+        "char_1769526328860_i8o6zxa8k"
+      ],
+      "scene_id": "scene_1769526328873_dmattmija",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "Over-the-shoulder shot from behind庾晚音: two stern-faced imperial guards in black lacquered armor and crimson sashes grip her upper arms firmly but without brutality. She remains kneeling, spine rigid. Behind them, the vast hall recedes into gloom — towering columns, distant lanterns, empty throne dais. Mood: oppressive silence, suffocating hierarchy. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [暴君: An unseen but powerfully implied figure — only his hand is shown: unnaturally pale, slender, long-fingered, with translucent skin and faint blue veins; nails clean but slightly elongated and cool-toned. Voice suggests youth masked by exhaustion and disdain; presence radiates lethality and profound weariness. No full visual, but aura is regal, detached, and ominously indifferent.] [侍卫: Two identical imperial guards in polished black lacquered armor with crimson shoulder guards and sashes; stern, clean-shaven faces, short-cropped black hair under iron helmets with crimson plumes; expressions impassive, disciplined, utterly obedient. Carry no visible weapons but wear ceremonial halberd belts. Embodiment of silent, absolute authority.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+      "dialogue": "她不留下侍寝就得死吗？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "2dcfe090-88a3-4d49-853f-5bf9be305e9b",
+      "order": 3,
+      "characters": [
+        "char_1769526328860_i8o6zxa8k",
+        "char_1769526328860_828dmruwt",
+        "char_1769526328860_f51790a70"
+      ],
+      "scene_id": "scene_1769526328873_dmattmija",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "Wide static shot: the entire imperial sleeping chamber now nearly empty — only庾晚音 remains kneeling at center frame, tiny against the cavernous space. Guards and courtiers vanish through towering double doors as they exit in perfect unison. Candlelight pools around her like a halo; the bed looms large and ominous behind. Atmosphere: eerie stillness, psychological isolation. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "e802f17a-6ba0-4d3b-9c92-3ef69ec4df9d",
+      "order": 4,
+      "characters": [
+        "char_1769526328860_i8o6zxa8k"
+      ],
+      "scene_id": "scene_1769526328873_dmattmija",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "Extreme close-up of庾晚音’s eyes — dilated, focused, calculating — then cut to her gloved hand (red silk, black lace cuff) slowly reaching toward the bed curtain. Her fingertips brush the heavy fabric. Shallow focus: curtain texture sharp, background (the shadowed bed interior) blurred but menacing. Warm light on her face contrasts with cold darkness beyond the veil. [庾晚音: A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.] [皇帝寝殿: Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "89a31acf-6823-49c1-9bab-226505652a1d",
+      "order": 5,
+      "characters": [
+        "char_1769526328860_i8o6zxa8k"
+      ],
+      "scene_id": "scene_1769526328873_dmattmija",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char_1769526328860_i8o6zxa8k",
+      "name": "庾晚音",
+      "avatar_url": "/static/uploads/9386e637-9a40-439e-a5f2-998d13d5f0e5/86ef54e3-2d32-4331-9e76-c7d39709cd48.png",
+      "tags": [],
+      "prompt": "A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.",
+      "description": ""
+    },
+    {
+      "id": "char_1769526328860_828dmruwt",
+      "name": "暴君",
+      "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=暴君",
+      "tags": [],
+      "prompt": "An unseen but powerfully implied figure — only his hand is shown: unnaturally pale, slender, long-fingered, with translucent skin and faint blue veins; nails clean but slightly elongated and cool-toned. Voice suggests youth masked by exhaustion and disdain; presence radiates lethality and profound weariness. No full visual, but aura is regal, detached, and ominously indifferent.",
+      "description": ""
+    },
+    {
+      "id": "char_1769526328860_f51790a70",
+      "name": "侍卫",
+      "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=侍卫",
+      "tags": [],
+      "prompt": "Two identical imperial guards in polished black lacquered armor with crimson shoulder guards and sashes; stern, clean-shaven faces, short-cropped black hair under iron helmets with crimson plumes; expressions impassive, disciplined, utterly obedient. Carry no visible weapons but wear ceremonial halberd belts. Embodiment of silent, absolute authority.",
+      "description": ""
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1769526328873_dmattmija",
+      "name": "皇帝寝殿",
+      "image_url": "",
+      "tags": [],
+      "prompt": "Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.",
+      "description": ""
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "3-panel",
+  "default_image_count": 4
+}

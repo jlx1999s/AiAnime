@@ -1,0 +1,229 @@
+{
+  "id": "572043f0-bfd3-489a-a3c0-d0c4de8d99dd",
+  "name": "banana",
+  "style": "real",
+  "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
+  "shots": [
+    {
+      "prompt": "中景，傍晚地铁车厢内，冷白荧光灯映照拥挤人群，玻璃窗倒映出疲惫都市白领侧脸。王翠花（25岁，黑框眼镜，松垮丸子头，格子衬衫配洗旧牛仔裤）低头刷手机，屏幕亮光映在她泛着油光的额头和眼下青黑上；窗外飞驰而过的隧道广告牌模糊闪烁。光影写实，略带胶片颗粒感，色调偏冷灰蓝。 [王翠花: 25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。] [地铁车厢: 现代都市晚高峰地铁1号线车厢内部，不锈钢扶手泛冷光，顶灯为惨白LED，玻璃窗映出流动隧道与模糊广告牌；乘客密集站立，多数低头看手机，表情麻木；地面有零星纸巾与饮料瓶；车窗边框锈迹斑驳；整体氛围压抑、拥挤、时间粘滞，色调为青灰+暖黄灯光冲突。]",
+      "dialogue": "这是在写我自己吗？",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "d8671abd-0209-45d7-9763-7383afb41a08",
+      "order": 0,
+      "characters": [
+        "char_1769526429259_tqcq555is"
+      ],
+      "scene_id": "scene_1769526429267_ctggvh3aq",
+      "image_url": "http://localhost:8001/static/uploads/786aa170-2b23-4035-a68e-6579363d1634.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "http://localhost:8001/static/uploads/b32bc04f-ff17-428e-810e-aef06a955b94.png",
+        "http://localhost:8001/static/uploads/ae609c92-3f45-4b91-ab4b-c0f3f79ca4e4.png",
+        "http://localhost:8001/static/uploads/930120ca-7eaa-441f-9ef3-2c536d62a715.png",
+        "https://picsum.photos/seed/97092ae9-8cb1-419b-841a-f42840c155a0/512/512",
+        "http://localhost:8001/static/uploads/786aa170-2b23-4035-a68e-6579363d1634.png"
+      ],
+      "video_url": "http://localhost:8001/static/uploads/b98dd034-0d50-4506-b0d4-866ef5b62ff0.mp4",
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "8f358148-7966-406e-90c1-a4b7d2b62d7b",
+          "url": "http://localhost:8001/static/uploads/b98dd034-0d50-4506-b0d4-866ef5b62ff0.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "954e8f8a-8dae-430a-81cd-0b58d1928895",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "af28806b-ac02-42ad-9d67-aabb14dc858c",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "特写，手机屏幕显示网文界面：标题《穿书之恶魔宠妃》猩红大字，下方简介‘社畜马春春穿成炮灰女，手撕女主，暴君跪舔，登基封后’，页面滑动至开头段落，文字清晰可辨。背景虚化为晃动的地铁扶手与人影。 [地铁车厢: 现代都市晚高峰地铁1号线车厢内部，不锈钢扶手泛冷光，顶灯为惨白LED，玻璃窗映出流动隧道与模糊广告牌；乘客密集站立，多数低头看手机，表情麻木；地面有零星纸巾与饮料瓶；车窗边框锈迹斑驳；整体氛围压抑、拥挤、时间粘滞，色调为青灰+暖黄灯光冲突。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "8bcce735-9833-482b-a9ab-b3fe6d6a417a",
+      "order": 1,
+      "characters": [
+        "char_1769526429259_tqcq555is"
+      ],
+      "scene_id": "scene_1769526429267_ctggvh3aq",
+      "image_url": "http://localhost:8001/static/uploads/fe17bee3-285d-437f-a115-978362d8304c.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "http://localhost:8001/static/uploads/fe17bee3-285d-437f-a115-978362d8304c.png"
+      ],
+      "video_url": "http://localhost:8001/static/uploads/60401421-45e7-4cce-82ee-10783cc38f9d.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "ab5ad06a-d038-4b79-8b37-efb1edb46165",
+          "url": "http://localhost:8001/static/uploads/60401421-45e7-4cce-82ee-10783cc38f9d.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "主观镜头+眩晕转场：手机屏幕骤然爆发出刺目白光，强光吞噬画面；伴随轰鸣音效视觉化呈现——扭曲的像素流、崩解的文字碎片、飞散的‘东风夜放花千树’书名残影。画面剧烈旋转，色温由冷转炽白，边缘泛紫晕。 [意识过渡空间: 抽象超现实空间：无限延伸的破碎书页悬浮于虚空，文字如墨鱼游弋消散；中央一道垂直白光裂隙，边缘燃烧幽紫数据流火焰；背景是坍缩的像素化宫殿剪影与扭曲的‘穿书’二字篆印；无重力感，光线来自内部自发光，饱和度极高，充满不祥的数字眩晕感。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "42b0baf3-8de9-44d8-9794-b32897d54f1f",
+      "order": 2,
+      "characters": [
+        "char_1769526429259_tqcq555is"
+      ],
+      "scene_id": "scene_1769526429267_ywedmb0gk",
+      "image_url": "http://localhost:8001/static/uploads/5c08eeaa-3e9f-49d2-8b6f-72519b2fa6c1.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "http://localhost:8001/static/uploads/5c08eeaa-3e9f-49d2-8b6f-72519b2fa6c1.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "仰角低机位，古风寝殿内景：雕花拔步床帷幔半垂，青灰色绣金缠枝莲帐纱随微风轻漾；晨光斜切过菱花窗棂，在檀木地板投下细密光栅。王翠花（身穿素白中衣，赤足踩在冰凉金砖上，发髻散乱，眼神惊疑）踉跄坐起，一手撑床沿，一手下意识摸向脸颊。 [王翠花: 25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。] [庾晚音闺房: 北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "be41385e-576e-4e08-9d04-78fda9c207a8",
+      "order": 3,
+      "characters": [
+        "char_1769526429259_tqcq555is"
+      ],
+      "scene_id": "scene_1769526429267_0q074tzt9",
+      "image_url": "http://localhost:8001/static/uploads/276757d6-84f9-48ee-9e52-93150ae01839.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "http://localhost:8001/static/uploads/276757d6-84f9-48ee-9e52-93150ae01839.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "镜面反射构图：黄铜葵花镜中映出庾晚音的脸——肤若凝脂却苍白无血色，柳叶眉微蹙，眼尾天然上挑含三分冷艳，鼻梁高挺，唇色淡粉；未施粉黛，乌发如瀑垂至腰际，仅一支素银蝴蝶簪斜挽。镜框雕云纹，镜面略有水汽氤氲。背景虚化为描金屏风与湘妃竹帘。 [王翠花: 25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。] [庾晚音闺房: 北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。]",
+      "dialogue": "想来也该知道，炮灰女已经被别人占了，不会再留给她。",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "4e613d6f-d39d-409b-97ae-e0e23c625deb",
+      "order": 4,
+      "characters": [
+        "char_1769526429259_tqcq555is"
+      ],
+      "scene_id": "scene_1769526429267_0q074tzt9",
+      "image_url": "http://localhost:8001/static/uploads/332f3c7d-7ce2-4790-9de7-03dc52b1bee4.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "http://localhost:8001/static/uploads/332f3c7d-7ce2-4790-9de7-03dc52b1bee4.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "近景，王翠花（此刻以庾晚音相貌呈现）猛然抬眼直视镜中自己，瞳孔收缩，指尖掐进掌心；镜中倒影与现实同步震颤。窗外忽有宫人细碎脚步声掠过，远处隐约传来编钟余韵与鸦啼。光影对比强烈，面部半明半暗，突出眼底惊惶与强压的冷静。 [庾晚音: 18岁古典美人，肤白胜雪，眉如远山含黛，眼型狭长微挑，瞳色深褐似浸墨玉，眼尾天然上扬带冷冽感；鼻梁秀挺，唇形饱满但唇色淡；乌发浓密及腰，发质柔亮；日常着素雅宋制襦裙（月白交领中单+浅青褙子），衣料是细密杭罗，袖口与襟缘绣银丝暗云纹；气质清冷疏离，体态纤 slender，手指修长，指甲泛天然粉晕；颈间戴一枚小巧玲珑的羊脂白玉蝉佩。] [庾晚音闺房: 北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。]",
+      "dialogue": "庾晚音一阵焦虑。",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "01ea6cad-a3cf-4d29-8250-523c43d3d40e",
+      "order": 5,
+      "characters": [
+        "char_1769526429259_xwi14wv90"
+      ],
+      "scene_id": "scene_1769526429267_0q074tzt9",
+      "image_url": "http://localhost:8001/static/uploads/b977700c-e6b0-44ba-b037-47510658aba5.png",
+      "original_image_url": null,
+      "image_candidates": [
+        "http://localhost:8001/static/uploads/c70acbbf-54d6-40b5-9d2c-214ee87fa5e2.png",
+        "http://localhost:8001/static/uploads/34e8bb7b-6f1d-45c5-bea2-a9b6696b9940.png",
+        "http://localhost:8001/static/uploads/b977700c-e6b0-44ba-b037-47510658aba5.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char_1769526429259_tqcq555is",
+      "name": "王翠花",
+      "avatar_url": "/static/uploads/572043f0-bfd3-489a-a3c0-d0c4de8d99dd/833aca50-fe76-487f-acb8-138a888cab8b.png",
+      "tags": [],
+      "prompt": "25岁中国女性，黑框圆眼镜（右腿断胶带缠绕），齐肩黑发随意扎成歪斜丸子头，几缕碎发垂落；肤色偏黄，眼下有明显青黑，嘴唇干燥起皮；常穿廉价快时尚单品——褪色格子衬衫、起球牛仔裤、帆布鞋；气质蔫蔫的，肩膀微塌，习惯性皱眉，但嘴角偶尔泄出一丝自嘲弧度；手持一台屏幕有裂痕的旧款安卓手机。",
+      "description": ""
+    },
+    {
+      "id": "char_1769526429259_xwi14wv90",
+      "name": "庾晚音",
+      "avatar_url": "/static/uploads/572043f0-bfd3-489a-a3c0-d0c4de8d99dd/6d951b64-5bef-4f2b-8fd7-68a897e15161.png",
+      "tags": [],
+      "prompt": "18岁古典美人，肤白胜雪，眉如远山含黛，眼型狭长微挑，瞳色深褐似浸墨玉，眼尾天然上扬带冷冽感；鼻梁秀挺，唇形饱满但唇色淡；乌发浓密及腰，发质柔亮；日常着素雅宋制襦裙（月白交领中单+浅青褙子），衣料是细密杭罗，袖口与襟缘绣银丝暗云纹；气质清冷疏离，体态纤 slender，手指修长，指甲泛天然粉晕；颈间戴一枚小巧玲珑的羊脂白玉蝉佩。",
+      "description": ""
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1769526429267_ctggvh3aq",
+      "name": "地铁车厢",
+      "image_url": "http://localhost:8001/static/uploads/72dc00f7-568a-42a1-9bf9-8bf65fc6927d.png",
+      "tags": [],
+      "prompt": "现代都市晚高峰地铁1号线车厢内部，不锈钢扶手泛冷光，顶灯为惨白LED，玻璃窗映出流动隧道与模糊广告牌；乘客密集站立，多数低头看手机，表情麻木；地面有零星纸巾与饮料瓶；车窗边框锈迹斑驳；整体氛围压抑、拥挤、时间粘滞，色调为青灰+暖黄灯光冲突。",
+      "description": ""
+    },
+    {
+      "id": "scene_1769526429267_0q074tzt9",
+      "name": "庾晚音闺房",
+      "image_url": "http://localhost:8001/static/uploads/805923c5-5417-4d8b-bd86-d7484788d5c6.png",
+      "tags": [],
+      "prompt": "北宋风格贵族女子闺房，空间清雅克制：紫檀木拔步床配青灰缠枝莲帐，床前铺素色羊毛地毯；黄铜葵花镜立于楠木妆台，台面置素银梳篦、青瓷胭脂盒（未启封）、半卷《毛诗正义》；墙挂水墨兰竹扇面，角落立湘妃竹落地罩；菱花窗透入清冽晨光，窗外可见一角太湖石假山与垂丝海棠；空气静谧，浮尘微闪，有淡淡沉水香余韵。",
+      "description": ""
+    },
+    {
+      "id": "scene_1769526429267_ywedmb0gk",
+      "name": "意识过渡空间",
+      "image_url": "http://localhost:8001/static/uploads/fa705cad-909b-4998-92ad-a77c08d8d996.png",
+      "tags": [],
+      "prompt": "抽象超现实空间：无限延伸的破碎书页悬浮于虚空，文字如墨鱼游弋消散；中央一道垂直白光裂隙，边缘燃烧幽紫数据流火焰；背景是坍缩的像素化宫殿剪影与扭曲的‘穿书’二字篆印；无重力感，光线来自内部自发光，饱和度极高，充满不祥的数字眩晕感。",
+      "description": ""
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "3-panel",
+  "default_image_count": 4
+}

@@ -1,0 +1,51 @@
+{
+  "id": "0cb4d40a-b997-4977-99ab-17018d80df2a",
+  "name": "读写测试",
+  "style": "anime",
+  "owner_id": "ec4c8fbd-3154-43ed-8b62-2a52bf19650f",
+  "shots": [
+    {
+      "prompt": "123123",
+      "dialogue": "",
+      "audio_prompt": "123123",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "a17f7809-9890-4ba1-8ec4-65f36512351e",
+      "order": 0,
+      "characters": [],
+      "scene_id": null,
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "34d5eb17-54a3-4910-a421-5a5e823a5e09",
+      "order": 1,
+      "characters": [],
+      "scene_id": null,
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [],
+  "scenes": [],
+  "default_scene_id": null,
+  "default_panel_layout": "1-panel",
+  "default_image_count": 1
+}

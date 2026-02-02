@@ -1,0 +1,210 @@
+{
+  "id": "f066a339-e766-4eea-82cc-b90c924ae648",
+  "name": "目录测试",
+  "style": "anime",
+  "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
+  "shots": [
+    {
+      "prompt": "近景镜头，王翠花坐在拥挤的地铁车厢内，她神情疲惫，眼下有淡淡的黑眼圈，穿着一件普通的白色衬衫，头发略显凌乱地扎成马尾。她正低头盯着手机屏幕，屏幕的微光映在她的脸上。 [王翠花: 24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。] [晚高峰地铁车厢: 现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。]",
+      "dialogue": "（旁白）我叫王翠花，一个名字土味、生活更土味的社畜。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "709663c9-c98c-44d4-808a-95dc4714d7c0",
+      "order": 0,
+      "characters": [
+        "char_1769591968048_39op2u7ot"
+      ],
+      "scene_id": "scene_1769591968641_hmc15hjr5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写镜头，手机屏幕上的网文界面，标题写着《穿书之恶魔宠妃》，文字快速滚动。画面随后切换到王翠花的半身，她百无聊赖地单手滑着屏幕，嘴角带着一丝嫌弃的冷笑。 [王翠花: 24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。] [晚高峰地铁车厢: 现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。]",
+      "dialogue": "（旁白）这文名，一听就是垃圾。要不是为了打发这该死的通勤时间……",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "34dda868-d418-428f-b222-d32f36ac7855",
+      "order": 1,
+      "characters": [
+        "char_1769591968048_39op2u7ot"
+      ],
+      "scene_id": "scene_1769591968641_hmc15hjr5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "中景镜头，王翠花的脑内幻想画面。画面色彩变得浓郁且带有插画感。一个长相平凡的现代女子（马春春）穿着古装，正指挥着士兵将一名美艳的妃子（原女主）推下深渊，背景是宏伟的宫殿火光冲天。 [马春春: 书中的穿书者。外貌最初是寡淡的小白花风格，清秀但不出众。后期穿着华丽的皇后凤袍，眼神阴狠毒辣，妆容浓艳，带有一种小人得志的攻击性。] [幻想中的古代皇宫: 夸张的影视剧风格，金碧辉煌的宫殿，台阶高耸入云。背景有夕阳残血般的红光，象征着权力的争夺和杀戮，气氛凝重且带有悲剧色彩。]",
+      "dialogue": "（旁白）又是这种逆袭套路，马春春穿成炮灰，抢了女主路线，最后当了皇后。我看过不下十八遍了。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "e4ff9844-0f71-426b-9177-aab82b6e016a",
+      "order": 2,
+      "characters": [
+        "char_1769591968048_q96ddi227"
+      ],
+      "scene_id": "scene_1769591968641_cog3avqfn",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "主观镜头，王翠花的视线从手机移开，突然车厢剧烈震动，整个画面被耀眼的白光瞬间吞噬，手机屏幕碎裂，光芒呈螺旋状将镜头吸入。 [王翠花: 24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。] [晚高峰地铁车厢: 现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。]",
+      "dialogue": "（旁白）等等，这动静不对劲！",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "26143b0a-f3c9-4979-83cc-53281bc06859",
+      "order": 3,
+      "characters": [
+        "char_1769591968048_39op2u7ot"
+      ],
+      "scene_id": "scene_1769591968641_hmc15hjr5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "全景镜头，一个古色古香、装饰奢华的寝殿。阳光透过雕花木窗洒在红色的地毯上。王翠花（已变身为庾晚音）躺在丝绒大床上，猛地坐起，一脸茫然地环顾四周。 [庾晚音: 王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。] [古风华丽寝殿: 典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。]",
+      "dialogue": "（王翠花）……这又是哪儿？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "fb12eb21-d707-438f-9657-9b19ef283835",
+      "order": 4,
+      "characters": [
+        "char_1769591968048_n2n6z676n"
+      ],
+      "scene_id": "scene_1769591968641_ta8wl8xg2",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "近景镜头，王翠花跌跌撞撞地跑到一面巨大的青铜镜前。镜中倒映出一张绝美且艳丽的脸庞：肤如凝脂，双眸剪水，未施粉黛却自带勾魂摄魄的魅力。 [庾晚音: 王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。] [古风华丽寝殿: 典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。]",
+      "dialogue": "（王翠花）这不是马春春那张小白花脸……这张脸太漂亮了，难道是……",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "5d2cd307-750c-4290-9414-d1d707364817",
+      "order": 5,
+      "characters": [
+        "char_1769591968048_n2n6z676n"
+      ],
+      "scene_id": "scene_1769591968641_ta8wl8xg2",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写镜头，镜中的庾晚音露出惊恐和焦虑的神色，眉头紧锁，双手颤抖地抚摸着自己的脸颊。 [庾晚音: 王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。] [古风华丽寝殿: 典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。]",
+      "dialogue": "（王翠花）完了，我穿成了那个注定要被弄死的原女主，庾晚音！",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "d515d7b4-bdd9-4656-bfa4-b66844ea598e",
+      "order": 6,
+      "characters": [
+        "char_1769591968048_n2n6z676n"
+      ],
+      "scene_id": "scene_1769591968641_ta8wl8xg2",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char_1769591968048_39op2u7ot",
+      "name": "王翠花",
+      "avatar_url": "/static/uploads/f68d1fe3-9319-411f-9f75-e3016b60f673.png",
+      "tags": [],
+      "prompt": "24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。",
+      "description": ""
+    },
+    {
+      "id": "char_1769591968048_q96ddi227",
+      "name": "马春春",
+      "avatar_url": "/static/uploads/ddd5d526-bc2c-4468-a1a3-ff291dac48b0.png",
+      "tags": [],
+      "prompt": "书中的穿书者。外貌最初是寡淡的小白花风格，清秀但不出众。后期穿着华丽的皇后凤袍，眼神阴狠毒辣，妆容浓艳，带有一种小人得志的攻击性。",
+      "description": ""
+    },
+    {
+      "id": "char_1769591968048_n2n6z676n",
+      "name": "庾晚音",
+      "avatar_url": "/static/uploads/6c824c32-2899-4b11-8a44-cb8337bb18ad.png",
+      "tags": [],
+      "prompt": "王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。",
+      "description": ""
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1769591968641_hmc15hjr5",
+      "name": "晚高峰地铁车厢",
+      "image_url": "",
+      "tags": [],
+      "prompt": "现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。",
+      "description": ""
+    },
+    {
+      "id": "scene_1769591968641_cog3avqfn",
+      "name": "幻想中的古代皇宫",
+      "image_url": "",
+      "tags": [],
+      "prompt": "夸张的影视剧风格，金碧辉煌的宫殿，台阶高耸入云。背景有夕阳残血般的红光，象征着权力的争夺和杀戮，气氛凝重且带有悲剧色彩。",
+      "description": ""
+    },
+    {
+      "id": "scene_1769591968641_ta8wl8xg2",
+      "name": "古风华丽寝殿",
+      "image_url": "",
+      "tags": [],
+      "prompt": "典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。",
+      "description": ""
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "3-panel",
+  "default_image_count": 4
+}

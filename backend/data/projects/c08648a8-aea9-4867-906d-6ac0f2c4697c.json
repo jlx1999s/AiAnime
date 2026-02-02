@@ -1,0 +1,212 @@
+{
+  "id": "c08648a8-aea9-4867-906d-6ac0f2c4697c",
+  "name": "api测试",
+  "style": "chinese_anime",
+  "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
+  "shots": [
+    {
+      "prompt": "wide shot, dimly lit imperial bedroom at night, ornate Qing-style dragon-carved bed with heavy crimson silk bed curtains partially drawn, golden lanterns casting flickering amber light on lacquered floors and jade-inlaid walls;庾晚音 kneels gracefully on a crimson silk cushion before the bed, wearing a vivid red qipao-style gown with black phoenix embroidery, her hair piled high with gold hairpins and red peony blossoms, makeup sharp and theatrical—deep red lips, kohl-rimmed eyes, pale powdered skin; she gazes upward with seductive, expectant expression; cinematic lighting, chiaroscuro contrast, shallow depth of field [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "陛下~臣妾为您跳一支舞可好？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "3dc35f07-16a3-438a-b18f-6e1010047c37",
+      "order": 0,
+      "characters": [
+        "char_1769526217224_rshectyvb"
+      ],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "medium close-up, low angle from floor level: pale, slender hand with long fingers and faint blue veins emerges from dark crimson bed curtains, fingers loosely splayed—motion dismissive, almost languid; background blurred but hints of embroidered dragon motifs on fabric; cool ambient light, subtle dust motes in air [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "滚吧。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "faf02508-26d9-4e00-a1cb-1a7019a52c1b",
+      "order": 1,
+      "characters": [],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "tight close-up on 庾晚音's face: her painted smile freezes mid-expression, lips slightly parted, eyes widening imperceptibly; one delicate eyebrow lifts in quiet shock; candlelight catches the glint of a single pearl earring; shallow focus on her eyes, background softly out-of-focus [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "54cf9a02-00d3-4324-9bbe-96ec64a17e68",
+      "order": 2,
+      "characters": [
+        "char_1769526217224_rshectyvb"
+      ],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "medium two-shot, eye-level: two armored imperial guards in black-and-gold lamellar armor step forward symmetrically, each gripping one of 庾晚音's upper arms firmly but without brutality; she remains kneeling, spine straight, head tilted slightly down, red sleeves pooling around her hands; background shows receding palace columns and distant flickering torchlight; moody, tense atmosphere [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [侍卫: two male imperial guards, mid-20s, stern-faced and physically imposing; wear black-and-gold lacquered lamellar armor with dragon-scale patterning, iron greaves, and crimson sashes; short-cropped black hair under black lacquered helmets with red plumes; expressionless, disciplined, utterly obedient; move with synchronized precision] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "f3d6f662-e1a3-4d4e-b1ab-d3005adc8aa4",
+      "order": 3,
+      "characters": [
+        "char_1769526217224_rshectyvb",
+        "char_1769526217224_opkf5tfl5"
+      ],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "over-the-shoulder shot from behind 庾晚音: view toward the bed; voice emanates from darkness behind thick curtains—no visible speaker; 庾晚音’s shoulders tense subtly; her red sleeve brushes the polished black floor as she stays frozen; deep shadows pool beneath the bed frame; dramatic backlighting from wall lanterns creates long, sharp silhouettes [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "她不留下侍寝就得死吗？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "229a3049-5084-43b2-b202-a09ac5d6140c",
+      "order": 4,
+      "characters": [],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "low-angle wide shot: two guards drop instantly to their knees on marble floor, foreheads touching ground in absolute submission; other palace attendants—eunuchs and maids in muted grey-blue robes—file swiftly and silently out through towering double doors, sliding shut with soft thud; vast emptiness opens around 庾晚音, who remains alone, tiny and still amid grand scale; cold moonlight now bleeds in from high lattice windows, casting geometric shadows [侍卫: two male imperial guards, mid-20s, stern-faced and physically imposing; wear black-and-gold lacquered lamellar armor with dragon-scale patterning, iron greaves, and crimson sashes; short-cropped black hair under black lacquered helmets with red plumes; expressionless, disciplined, utterly obedient; move with synchronized precision] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "b3cc7ad5-fa96-4d59-8c05-ea3d210a56f6",
+      "order": 5,
+      "characters": [
+        "char_1769526217224_opkf5tfl5"
+      ],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "extreme close-up on 庾晚音's eyes: pupils dilated, gaze locked on the pale hand still visible at curtain’s edge; faint reflection of candlelight in her irises; slight tremor in her lower lip; shallow breathing visible at base of throat; background completely blurred into velvety blackness [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "a38a192c-aef7-418d-bdb6-0312ab0e83fc",
+      "order": 6,
+      "characters": [
+        "char_1769526217224_rshectyvb"
+      ],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "hand-held POV shot from 庾晚音's perspective: her slender, red-nailed hand reaches forward slowly, fingertips brushing aside heavy crimson bed curtain edged with silver cloud motifs; fabric parts to reveal deep shadow—and just beyond, the faint gleam of a pale, motionless wrist resting atop dark silk sheets; suspenseful stillness, breath held; shallow focus, foreground curtain texture sharply rendered [庾晚音: young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous] [皇帝寝殿: Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "1f49102c-71a8-404c-acd5-13e7e62d64d9",
+      "order": 7,
+      "characters": [
+        "char_1769526217224_rshectyvb"
+      ],
+      "scene_id": "scene_1769526217235_au7l1opnx",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char_1769526217224_rshectyvb",
+      "name": "庾晚音",
+      "avatar_url": "https://dalleproduse.blob.core.windows.net/private/images/39ef6532-b315-4e7e-9197-ab91ebf0dc1e/generated_00.png?se=2026-01-28T15%3A04%3A00Z&sig=9lVUJnAiC%2BQRtrGPOKZR4uK2TPmP4v9sfcQz8tMJAq8%3D&ske=2026-01-30T00%3A51%3A21Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2026-01-23T00%3A51%3A21Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02",
+      "tags": [],
+      "prompt": "young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous",
+      "description": ""
+    },
+    {
+      "id": "char_1769526217224_swz9vmkiw",
+      "name": "暴君",
+      "avatar_url": "http://localhost:8001/static/uploads/366c5e2c-a6b2-4621-aed3-dd5759b86119.png",
+      "tags": [],
+      "prompt": "unnamed emperor, late 20s to early 30s; unseen full face, only glimpses suggested: extremely pale, slender hand with long fingers and faint blue veins; voice is cold, weary, and unnervingly precise; implied presence is oppressive and detached—no regal ornamentation visible, only austere darkness and silence; aura of exhausted authority and latent volatility",
+      "description": ""
+    },
+    {
+      "id": "char_1769526217224_opkf5tfl5",
+      "name": "侍卫",
+      "avatar_url": "http://localhost:8001/static/uploads/f94b7ae1-9885-4782-ad8d-4e992e33ad7a.png",
+      "tags": [],
+      "prompt": "two male imperial guards, mid-20s, stern-faced and physically imposing; wear black-and-gold lacquered lamellar armor with dragon-scale patterning, iron greaves, and crimson sashes; short-cropped black hair under black lacquered helmets with red plumes; expressionless, disciplined, utterly obedient; move with synchronized precision",
+      "description": ""
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1769526217235_au7l1opnx",
+      "name": "皇帝寝殿",
+      "image_url": "",
+      "tags": [],
+      "prompt": "Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread",
+      "description": ""
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "3-panel",
+  "default_image_count": 4
+}

@@ -308,27 +308,43 @@ app.add_middleware(
 # --- In-Memory Database with Persistence ---
 DB: Dict[str, Project] = {}
 DATA_DIR = "data"
+PROJECTS_DIR = os.path.join(DATA_DIR, "projects")
+PROJECTS_INDEX_FILE = os.path.join(DATA_DIR, "projects_index.json")
 DATA_FILE = os.path.join(DATA_DIR, "projects.json")
 USERS: Dict[str, User] = {}
 USERS_FILE = os.path.join(DATA_DIR, "users.json")
 
+def _project_file_path(project_id: str) -> str:
+    return os.path.join(PROJECTS_DIR, f"{project_id}.json")
+
 def save_db():
     try:
         os.makedirs(DATA_DIR, exist_ok=True)
-        # Convert Project objects to dicts
-        data = {pid: project.model_dump() for pid, project in DB.items()}
-        
-        # Atomic write: write to temp file then rename
-        temp_file = f"{DATA_FILE}.tmp"
-        with open(temp_file, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        
-        # Replace original file atomically (or near-atomically on Windows)
-        if os.path.exists(DATA_FILE):
-            os.replace(temp_file, DATA_FILE)
+        os.makedirs(PROJECTS_DIR, exist_ok=True)
+        index_data = {}
+        for pid, project in DB.items():
+            project_data = project.model_dump()
+            temp_file = f"{_project_file_path(pid)}.tmp"
+            with open(temp_file, "w", encoding="utf-8") as f:
+                json.dump(project_data, f, ensure_ascii=False, indent=2)
+            target_file = _project_file_path(pid)
+            if os.path.exists(target_file):
+                os.replace(temp_file, target_file)
+            else:
+                os.rename(temp_file, target_file)
+            index_data[pid] = {
+                "id": project.id,
+                "name": project.name,
+                "style": project.style,
+                "owner_id": project.owner_id
+            }
+        temp_index = f"{PROJECTS_INDEX_FILE}.tmp"
+        with open(temp_index, "w", encoding="utf-8") as f:
+            json.dump(index_data, f, ensure_ascii=False, indent=2)
+        if os.path.exists(PROJECTS_INDEX_FILE):
+            os.replace(temp_index, PROJECTS_INDEX_FILE)
         else:
-            os.rename(temp_file, DATA_FILE)
-            
+            os.rename(temp_index, PROJECTS_INDEX_FILE)
     except Exception as e:
         print(f"Error saving DB: {e}")
 
@@ -500,8 +516,50 @@ def _export_project_video(project: Project) -> tuple[str, str]:
     url = f"http://localhost:8001/static/uploads/{os.path.basename(zip_path)}"
     return url, "zip"
 
+def _hydrate_project(project: Project):
+    for shot in project.shots or []:
+        shot.image_url = _sanitize_url(shot.image_url)
+        if isinstance(shot.image_candidates, list):
+            shot.image_candidates = [u for u in (_sanitize_url(x) for x in shot.image_candidates) if u]
+        shot.video_url = _sanitize_url(shot.video_url)
+        if isinstance(shot.video_items, list):
+            for item in shot.video_items:
+                item.url = _sanitize_url(item.url)
+        if (not shot.video_items) and shot.video_url:
+            shot.video_items = [VideoItem(id="legacy", url=shot.video_url, progress=shot.video_progress, status=str(shot.status))]
+
 def load_db():
     global DB
+    if os.path.exists(PROJECTS_INDEX_FILE):
+        try:
+            with open(PROJECTS_INDEX_FILE, "r", encoding="utf-8") as f:
+                content = f.read()
+                if not content:
+                    return
+                try:
+                    index_data = json.loads(content)
+                except json.JSONDecodeError:
+                    return
+            DB.clear()
+            for pid in index_data.keys():
+                project_file = _project_file_path(pid)
+                if not os.path.exists(project_file):
+                    continue
+                with open(project_file, "r", encoding="utf-8") as pf:
+                    p_content = pf.read()
+                    if not p_content:
+                        continue
+                    try:
+                        project_data = json.loads(p_content)
+                    except json.JSONDecodeError:
+                        continue
+                    DB[pid] = Project(**project_data)
+                    _hydrate_project(DB[pid])
+            print(f"Loaded {len(DB)} projects from {PROJECTS_INDEX_FILE}")
+            return
+        except Exception as e:
+            print(f"Failed to load DB: {e}")
+            return
     if not os.path.exists(DATA_FILE):
         return
     try:
@@ -515,22 +573,12 @@ def load_db():
             except json.JSONDecodeError:
                 print("Warning: DB file contains invalid JSON")
                 return
-                
             DB.clear()
             for pid, project_data in data.items():
                 DB[pid] = Project(**project_data)
-                project = DB[pid]
-                for shot in project.shots or []:
-                    shot.image_url = _sanitize_url(shot.image_url)
-                    if isinstance(shot.image_candidates, list):
-                        shot.image_candidates = [u for u in (_sanitize_url(x) for x in shot.image_candidates) if u]
-                    shot.video_url = _sanitize_url(shot.video_url)
-                    if isinstance(shot.video_items, list):
-                        for item in shot.video_items:
-                            item.url = _sanitize_url(item.url)
-                    if (not shot.video_items) and shot.video_url:
-                        shot.video_items = [VideoItem(id="legacy", url=shot.video_url, progress=shot.video_progress, status=str(shot.status))]
+                _hydrate_project(DB[pid])
         print(f"Loaded {len(DB)} projects from {DATA_FILE}")
+        save_db()
     except Exception as e:
         print(f"Failed to load DB: {e}")
 
@@ -540,7 +588,7 @@ def seed_data():
     if DB: 
         return
     
-    if os.path.exists(DATA_FILE) and os.path.getsize(DATA_FILE) > 0:
+    if (os.path.exists(PROJECTS_INDEX_FILE) and os.path.getsize(PROJECTS_INDEX_FILE) > 0) or (os.path.exists(DATA_FILE) and os.path.getsize(DATA_FILE) > 0):
          # File exists and is not empty, but DB is empty. 
          # This implies load failed or file is invalid JSON.
          # Do NOT overwrite to prevent data loss.

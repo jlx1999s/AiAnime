@@ -1,0 +1,668 @@
+{
+  "id": "default_project",
+  "name": "测试项目",
+  "style": "manga",
+  "owner_id": "ec4c8fbd-3154-43ed-8b62-2a52bf19650f",
+  "shots": [
+    {
+      "prompt": "镜头仰拍刻家入口，巨石上“刻家”二字布满剑痕...",
+      "dialogue": "(深吸一口气)",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "bae9e86c-a1f2-4a0f-82f6-af5bb4b30a93",
+      "order": 0,
+      "characters": [
+        "c1"
+      ],
+      "scene_id": null,
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=Shot+2",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "场景描述：中景，奢华但光线阴郁的寝宫内景。红烛高照，帷幔低垂，龙床位于画面深处。床帐半掩，隐约可见暴君的身影背对外侧。\n主体动作：庾晚音身着红色华服，以卑微姿态跪于床前，双手交叠于膝，抬头望向床榻方向，眼神中带着讨好与小心翼翼。画面左侧两名侍卫已准备上前架走她。\n\n光线与氛围：暖色烛光无法驱散房间的寒意，光影在帷幕上摇曳。整体气氛压抑，华丽的装饰反而凸显困兽般的处境。\n构图重点：强调庾晚音华服与卑微姿态的反差。暴君的背影形成拒绝的屏障，侍卫的介入增添紧张感。",
+      "dialogue": "抬头。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "27f368e9-4582-449e-817b-9fdece1ea338",
+      "order": 1,
+      "characters": [
+        "char_1769188438358_27bwto4l0",
+        "char_1769188438358_36f2znvxg"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125232407568FDAAE0F00BBC968F4-2159-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441048&x-signature=FnDMgiIqzYgDY6tubG2E5wnfidY%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125232407568FDAAE0F00BBC968F4-2159-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441048&x-signature=FnDMgiIqzYgDY6tubG2E5wnfidY%3D",
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523241831165D0850422731191E-5651-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441058&x-signature=PJmdQdeIB0dzXyVy%2BZevsZu6FrQ%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252324281C088D1760BDFFC4046A-8068-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441068&x-signature=F%2Bk4VVeIi2MBdytyURJcvvUhmYs%3D"
+      ],
+      "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "legacy",
+          "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+          "task_id": null,
+          "progress": null,
+          "status": "GenerationStatus.COMPLETED"
+        },
+        {
+          "id": "92515982-142f-4144-8964-c0f4cc59b20e",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
+      "status": "failed"
+    },
+    {
+      "prompt": "0.1-3秒: 低角度，快速推拉镜头。陆远受到重力冲击向后滑行...",
+      "dialogue": "陆远：滚去黑暗剑冢里自生自灭吧！",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "fabab185-2308-42a8-8ba7-ce7ec6c152e7",
+      "order": 2,
+      "characters": [
+        "c1"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340473A143308CD6499C63E2A-2332-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442047&x-signature=%2BD4YXlUlYQe%2FQPpVhdAjCu5SYuA%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340473A143308CD6499C63E2A-2332-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442047&x-signature=%2BD4YXlUlYQe%2FQPpVhdAjCu5SYuA%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340561F7AD15D550BB1116C13-3691-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442056&x-signature=JABOgEKOQr6a9LkjSNtrQIcDtMg%3D",
+        "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252341067EA44E4406BDF43470BC-3534-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442067&x-signature=DCCBWdTyGo41zctmC4WbQt0xQ%2FU%3D"
+      ],
+      "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "legacy",
+          "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+          "task_id": null,
+          "progress": null,
+          "status": "GenerationStatus.COMPLETED"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "俯视镜头，金红双色龙纹帷帐垂落如瀑，烛火在雕龙紫檀案上摇曳，光影在青金石地砖上跳动；庾晚音身着素白中衣外罩浅绯宫装，被两名垂首太监左右押送至龙榻前，她指尖用力攥紧袖角，指节泛白，低垂眼睫投下颤动阴影。",
+      "dialogue": "……参见皇上。",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "ea53fe10-754f-437e-895c-02fcd4f8aeab",
+      "order": 3,
+      "characters": [
+        "char_1769188438358_36f2znvxg",
+        "char_1769188438358_sh5zhi4e",
+        "char_1769188438358_1q8ahu8a2"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "中近景平视，夏侯澹已起身，玄色常服下摆拂过金砖，缓步绕行庾晚音身侧；他停步于她斜后方，左手负于背后，右手垂落，袖口微扬，烛光在他冷硬侧脸投下刀锋般阴影；庾晚音静立未动，肩线紧绷。",
+      "dialogue": "本帝不碰你。你若乖乖听话，或许还能多活几日。",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "bb29740e-9314-4886-acea-86f83f44090d",
+      "order": 4,
+      "characters": [
+        "char_1769188438358_27bwto4l0",
+        "char_1769188438358_36f2znvxg"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252337511058B71228DEBF338FB5-9156-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441871&x-signature=VolP4e2cQhyY6dt4exFYlHFRyKU%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252337511058B71228DEBF338FB5-9156-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441871&x-signature=VolP4e2cQhyY6dt4exFYlHFRyKU%3D",
+        "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233807FF594E7279F51032F35F-5221-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441888&x-signature=VVhtxMeLZXi%2Fql4aEUwxed7gImw%3D",
+        "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233817CED4F4707D10C3C3CBD8-1646-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441898&x-signature=H8n7eIQne3%2FIpTijd8%2Bs6Yv1sm4%3D"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "特写仰角，庾晚音缓缓抬眸，瞳孔映着晃动烛火，额间细汗微沁；镜头焦点虚化后方龙榻与夏侯澹身影，唯她眼中倒映出一双寒潭般幽深瞳眸，脊背绷直如弦，发尾轻颤。",
+      "dialogue": "好家伙，这不就是书里三天后要被处死的恶魔宠妃本人吗……",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "a53f97b7-fd26-47c4-bbcf-fba77df74eec",
+      "order": 5,
+      "characters": [
+        "char_1769188438358_36f2znvxg"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252330415FDD70A40B3B1CC360D7-7228-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441441&x-signature=YHJU0sHE6T2psiLpqrCP8UAmwUk%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252330415FDD70A40B3B1CC360D7-7228-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441441&x-signature=YHJU0sHE6T2psiLpqrCP8UAmwUk%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233050D9DE67BADFEF03C1C9D3-4269-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441451&x-signature=39C5U0Rr1iJMAJQDYqeq8q%2FzCZY%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233100640DAF4DBC1F07101D41-5895-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441461&x-signature=XiYbyIwYRujdqqjSPQEaDDEIa8E%3D"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "低角度广角，背景骤暗压黑，唯顶灯一束冷光打下；庾晚音孤身立于中央，身形被巨大扭曲的蟠龙投影完全笼罩，龙首阴影覆于她头顶，爪影横贯肩颈，她垂眸静立，呼吸微不可察。",
+      "dialogue": "身份危机 ing。按剧情发展，今晚我要是装疯卖傻，明天就得掉脑袋……",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "e84807b1-8f23-4cfb-84af-69123e57005e",
+      "order": 6,
+      "characters": [
+        "char_1769188438358_36f2znvxg"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523390108C3A054C4779B14E9A4-6621-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441941&x-signature=MSJiTz5ACDbeeMqIXAfO%2FnnwZr4%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523390108C3A054C4779B14E9A4-6621-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441941&x-signature=MSJiTz5ACDbeeMqIXAfO%2FnnwZr4%3D",
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125233912212170C5EBA3570FF884-8169-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441952&x-signature=Q9IUco5tfIBCbI19sCzB5wgoPcE%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523392261242B97338DC8C366BF-3401-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441962&x-signature=iIw6E1H074c%2FUJSE%2Fuk3G10Ob4U%3D"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "中景对称构图，半卷素纱珠帘垂落中央，帘珠莹润反光；帘左庾晚音端坐绣凳，双手交叠膝上，姿态恭谨却眼神清醒；帘右夏侯澹坐于紫檀嵌玉小案后，指尖轻叩案沿，目光沉郁如墨，烛火在他瞳底跳动。",
+      "dialogue": "皇上可还记得三日前，御花园那场刺杀？",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "77d43749-88c6-471b-99b5-166d6d8a0218",
+      "order": 7,
+      "characters": [
+        "char_1769188438358_36f2znvxg",
+        "char_1769188438358_27bwto4l0"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234145FE39852E0DE4F4C4A14B-1048-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442106&x-signature=eJPt6NaxOqP%2BbivHrUuVVSm%2Fr9A%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234145FE39852E0DE4F4C4A14B-1048-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442106&x-signature=eJPt6NaxOqP%2BbivHrUuVVSm%2Fr9A%3D",
+        "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234156D3FB911240464A31BD58-4873-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442116&x-signature=AZKJEz7p66Go2oq35A4W6IpJgho%3D",
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523420716EAE0521F8F9D10AAC1-5615-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442127&x-signature=H6HqCcz3lNRHhizKJFGU1h4PGfM%3D"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "特写夏侯澹双眼，瞳孔骤缩，烛火倒影瞬间凝滞；镜头微微震颤模拟心跳顿挫，背景珠帘流光忽暗，窗外风声掠过檐角铃铛，余音清冷。",
+      "dialogue": "你不该知道的事，说得倒详细。",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "3c9c31ac-44f5-42fd-8dab-7f02c9547b42",
+      "order": 8,
+      "characters": [
+        "char_1769188438358_27bwto4l0"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252346570173C3F71A5B5413C112-4769-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442417&x-signature=Ts7%2FZRy96BNP7whTrLaf9Pd0VKs%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252346479A628EF9B15EA23564DC-9304-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442408&x-signature=nmKC7hadwa5fhUC3IhuI%2BhDq46s%3D",
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252346570173C3F71A5B5413C112-4769-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442417&x-signature=Ts7%2FZRy96BNP7whTrLaf9Pd0VKs%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523470702C6A864865DC8C3A84C-6722-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442427&x-signature=USr99BCrjwIA18gGaWGRvFHfaa8%3D"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "中景侧拍，庾晚音垂眸轻笑，指尖无意识摩挲腕间旧银镯，烛光在她睫毛下铺开扇形暗影；夏侯澹已离座逼近，玄色衣摆扫过青砖，高大身影将她完全笼罩，两人距离不足半尺，空气紧绷如弓弦。",
+      "dialogue": "所以，你在求活命？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "9edf0678-ab27-45eb-aad4-f5b59d65fbd4",
+      "order": 9,
+      "characters": [
+        "char_1769188438358_27bwto4l0",
+        "char_1769188438358_36f2znvxg"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252347598AD79F0A97A06B3795F7-1803-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442479&x-signature=gkwnf2pFhL%2Bf8tb2RfXdvp1dE5o%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252347598AD79F0A97A06B3795F7-1803-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442479&x-signature=gkwnf2pFhL%2Bf8tb2RfXdvp1dE5o%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125234809AFA1199A9AA1933263B2-4615-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442490&x-signature=cQB4LJ%2FbDz%2FxLccZ2qQrS1NUzLI%3D",
+        "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523482014F9B028049DEA358D58-6263-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442500&x-signature=HMX9IJiDvAIOMSUCjnoEoP9zHE8%3D"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "低角度仰拍，庾晚音跪于龙榻前金丝绒垫，脊背挺直如松，下巴微扬，眼神澄澈锐利直视夏侯澹；她唇角微提，笑意未达眼底，烛火在她瞳中燃起两簇冷静火苗；背景龙纹地砖延伸至画面深处，气势迫人。",
+      "dialogue": "臣妾在求一场合作。",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "panel_layout": "1-panel",
+      "id": "6fa68bfd-0ab1-415b-ab8a-ecf870e5b34c",
+      "order": 10,
+      "characters": [
+        "char_1769188438358_36f2znvxg",
+        "char_1769188438358_27bwto4l0"
+      ],
+      "scene_id": "scene_1769188438366_mq6hmsr6b",
+      "image_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260105062318022658B615C6AD6D-1305-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447106&x-signature=LI7%2Fg0pV3%2BeUx5UXd97Rk4EpSaI%3D",
+      "original_image_url": null,
+      "image_candidates": [
+        "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260105062318022658B615C6AD6D-1305-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447106&x-signature=LI7%2Fg0pV3%2BeUx5UXd97Rk4EpSaI%3D",
+        "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126010515C665E7DBEEC3C2174B11-3795-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447115&x-signature=HAJjcg3bHbnMffgU6XBcssHxZys%3D",
+        "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260126010525BD18832046DA161659E8-8362-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769447125&x-signature=gxh7EzcWIIJu2WbSeFzVdN1dGJc%3D"
+      ],
+      "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "legacy",
+          "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+          "task_id": null,
+          "progress": null,
+          "status": "GenerationStatus.COMPLETED"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "特写龙案，夏侯澹骨节分明的右手三指缓慢叩击紫檀桌面，木纹清晰，每一下敲击都激起细微尘埃浮游；烛火随节奏明灭，背景虚化，唯指节与案面构成权力张力中心。",
+      "dialogue": "你凭什么，让朕信你不是来送死的？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "45e3d384-0af0-4483-8a2f-78682b0fe5a0",
+      "order": 11,
+      "characters": [
+        "char_1769188438358_27bwto4l0"
+      ],
+      "scene_id": "scene_1769188438366_cf3fgfpt5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "legacy",
+          "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+          "task_id": null,
+          "progress": null,
+          "status": "GenerationStatus.COMPLETED"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "特写庾晚音嘴角——一抹极淡、极稳的弧度浮现，右眼微眯，烛光在她眼尾划出一道锐利金线；背景彻底虚焦，唯她唇边笑意如刃出鞘，冷静中透出不容置疑的笃定。",
+      "dialogue": "凭臣妾知道，谁是明日要在朝堂上倒下的第一颗棋子。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "289e4bad-d834-4385-b07d-c0413040b5bc",
+      "order": 12,
+      "characters": [
+        "char_1769188438358_36f2znvxg"
+      ],
+      "scene_id": "scene_1769188438366_cf3fgfpt5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写夏侯澹双眼，瞳孔骤然收缩，寒意裂冰般碎开，转为幽邃兴味；烛火在他虹膜中剧烈跃动，倒影里似有血色一闪而逝；背景龙纹屏风阴影浮动，仿佛活物低语。",
+      "dialogue": "说下去。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "a6b45f3d-452f-4aec-9beb-6200a8bee6d7",
+      "order": 13,
+      "characters": [
+        "char_1769188438358_27bwto4l0"
+      ],
+      "scene_id": "scene_1769188438366_cf3fgfpt5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "中景双人镜头，庾晚音立姿未变，声音沉稳如钟；夏侯澹静立倾听，左手终于从背后缓缓抬起，掌心向上——镜头聚焦于他伸出的手，五指修长有力，悬停于半空，等待承接某种契约。",
+      "dialogue": "臣妾献上一局局中局——你要的头，我帮你送上；你要的局，我帮你搅乱。条件是，从今夜起，庾晚音这一条命，归皇上保。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "d70bc5d1-5bcd-4125-b512-7b0d722d3158",
+      "order": 14,
+      "characters": [
+        "char_1769188438358_36f2znvxg",
+        "char_1769188438358_27bwto4l0"
+      ],
+      "scene_id": "scene_1769188438366_cf3fgfpt5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写交握之手：夏侯澹玄色袖口滑落至小臂，露出冷白手腕与青色脉络；庾晚音素白指尖微凉，被他稳稳托起，掌心相贴刹那，烛火轰然暴涨，金红火舌舔舐镜头边缘，光影在两人交错指缝间激烈奔涌。",
+      "dialogue": "好。从今晚起，你说的每一句话，都算数。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "34570875-b3e7-4dfd-9387-2bbd623b94e6",
+      "order": 15,
+      "characters": [
+        "char_1769188438358_27bwto4l0",
+        "char_1769188438358_36f2znvxg"
+      ],
+      "scene_id": "scene_1769188438366_cf3fgfpt5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "全景慢拉镜头，龙榻退至远景，烛光在两人身后拉出两道修长剪影——一深一浅，一凌厉一清绝，足下金砖龙纹蜿蜒交汇；画面右上角极暗处，一缕未被烛光照亮的阴影悄然浮凸，隐约勾勒第三只窥视之眼轮廓。",
+      "dialogue": "成了。恶魔宠妃剧本，临时改成——冷帝合伙人。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "acb67481-657b-4b7a-8fc8-e5ca130bef3a",
+      "order": 16,
+      "characters": [
+        "char_1769188438358_36f2znvxg",
+        "char_1769188438358_27bwto4l0"
+      ],
+      "scene_id": "scene_1769188438366_cf3fgfpt5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "远景，阳光明媚的院子。10岁的小明身穿黄色T恤，手里端着一个盛满狗粮的蓝色小碗，正从屋门走出来。背景是绿意盎然的草坪和木质围栏，光影柔和。 [小明: 一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+      "dialogue": "大黄，开饭啦！快过来！",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "fa04d8e9-9ca8-49f6-be67-8065246e7819",
+      "order": 17,
+      "characters": [
+        "char_1769588744442_ml4fd1sj9"
+      ],
+      "scene_id": "scene_1769588744452_x0wm24owb",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写，金毛寻回犬大黄的特写。它听到声音后猛地抬头，耳朵竖起，尾巴疯狂摇摆，眼神中充满期待和兴奋。背景是虚化的草地。 [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+      "dialogue": "（欢快的吠叫声）",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "9dab55e6-17d6-4309-b3c8-0f0481b84a90",
+      "order": 18,
+      "characters": [
+        "char_1769588744442_jdvssvnq2"
+      ],
+      "scene_id": "scene_1769588744452_x0wm24owb",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "中景，侧拍镜头。小明走到大黄面前蹲下，小心翼翼地将蓝色狗碗放在草地上。大黄已经迫不及待地凑近，用鼻子嗅着食物。阳光洒在他们身上，氛围温馨。 [小明: 一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。] [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+      "dialogue": "慢点吃，别噎着。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "2245e229-731d-434b-a29e-942ef67bc465",
+      "order": 19,
+      "characters": [
+        "char_1769588744442_ml4fd1sj9",
+        "char_1769588744442_jdvssvnq2"
+      ],
+      "scene_id": "scene_1769588744452_x0wm24owb",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "俯拍特写，狗碗内部。大黄金色的脑袋占据画面，它正欢快地舔食着狗粮，发出清脆的咀嚼声。一些碎屑掉落在碗边。 [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "8ffede6d-ddb7-411b-b5a5-900f67c606ed",
+      "order": 20,
+      "characters": [
+        "char_1769588744442_jdvssvnq2"
+      ],
+      "scene_id": "scene_1769588744452_x0wm24owb",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "近景，特写小明的手。小明温柔地抚摸着大黄头顶金色的毛发。小明脸上洋溢着开心的笑容，大黄眯着眼睛，显得非常享受。温暖的夕阳余晖勾勒出两者的轮廓。 [小明: 一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。] [大黄: 一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。] [阳光小院: 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。]",
+      "dialogue": "真乖，多吃点长壮实。 ",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "d0ddc649-7cba-40d3-b662-0308839576ae",
+      "order": 21,
+      "characters": [
+        "char_1769588744442_ml4fd1sj9",
+        "char_1769588744442_jdvssvnq2"
+      ],
+      "scene_id": "scene_1769588744452_x0wm24owb",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [
+    {
+      "id": "c1",
+      "name": "陈远 (外门弟子)",
+      "avatar_url": "http://localhost:8001/static/uploads/06ce126c-74ba-4b8b-a5e7-39e88edb635d_21b9461e-03cb-4c2f-80da-6efb23134889.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "c2",
+      "name": "神秘师兄",
+      "avatar_url": "http://localhost:8001/static/uploads/7f354946-4f25-44bd-b1c8-863adf6dd239.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "c3",
+      "name": "陈远 (剑主)",
+      "avatar_url": "http://localhost:8001/static/uploads/c63ff68d-6bc8-4e93-9664-92867d6bcecf.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769188438358_36f2znvxg",
+      "name": "庾晚音",
+      "avatar_url": "http://localhost:8001/static/uploads/2e12891b-ee07-4166-ba71-1bea35a9b307_屏幕截图 2026-01-26 001937.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769188438358_sh5zhi4e",
+      "name": "太监甲",
+      "avatar_url": "http://localhost:8001/static/uploads/81828191-9ab7-461b-a30d-4f24ac8c9946.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769188438358_1q8ahu8a2",
+      "name": "太监乙",
+      "avatar_url": "http://localhost:8001/static/uploads/7b81d32a-754e-4d13-8d3d-e27d052f9e4e.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769188438358_27bwto4l0",
+      "name": "夏侯澹",
+      "avatar_url": "http://localhost:8001/static/uploads/bbccc315-a25c-46f2-b430-5268bcbb8201_屏幕截图 2026-01-26 002002.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769588744442_ml4fd1sj9",
+      "name": "小明",
+      "avatar_url": "http://localhost:8001/static/uploads/1c0be5e1-88de-4cfc-9f5b-67227369ee95.png",
+      "tags": [],
+      "prompt": "一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。",
+      "description": ""
+    },
+    {
+      "id": "char_1769588744442_jdvssvnq2",
+      "name": "大黄",
+      "avatar_url": "http://localhost:8001/static/uploads/4274047d-c100-4340-be34-eb30fe28091f.png",
+      "tags": [],
+      "prompt": "一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。",
+      "description": ""
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1769188438366_mq6hmsr6b",
+      "name": "帝王寝殿",
+      "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125231421B451438455B37C310283-8423-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769440461&x-signature=D4wGHR3m17P0sGRkAFA27USWLDs%3D",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "scene_1769188438366_cmuux66oq",
+      "name": "帝王寝殿内·帷幕后",
+      "image_url": "http://localhost:8001/static/uploads/5874f22e-efa0-4a70-8d3f-3f896272315f.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "scene_1769188438366_cf3fgfpt5",
+      "name": "帝王寝殿·龙榻前",
+      "image_url": "http://localhost:8001/static/uploads/0766f6cd-94a3-4ea8-ad16-ee0b7ce8ea9b.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "scene_1769588744452_x0wm24owb",
+      "name": "阳光小院",
+      "image_url": "http://localhost:8001/static/uploads/f297ba21-73c2-418f-aef1-1c599518bc37.png",
+      "tags": [],
+      "prompt": "一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。",
+      "description": ""
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "3-panel",
+  "default_image_count": 4
+}

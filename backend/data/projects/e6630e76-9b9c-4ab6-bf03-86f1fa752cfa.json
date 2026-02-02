@@ -1,0 +1,310 @@
+{
+  "id": "e6630e76-9b9c-4ab6-bf03-86f1fa752cfa",
+  "name": "最新测试",
+  "style": "realistic",
+  "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
+  "shots": [
+    {
+      "prompt": "俯视镜头，金红双色龙纹刺绣帐幔垂落如壁，烛火在雕龙紫檀烛台上摇曳，光影在鎏金地砖上跳动；庾晚音身着素白宫装跪于龙榻前，两名黑衣太监一左一右按其肩，她指尖用力攥紧袖口，指节泛白，低垂着头，发间一支素银簪微颤。",
+      "dialogue": "……参见皇上。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "cb3cdeb7-58b2-42c9-a105-1dd9f201f9f1",
+      "order": 0,
+      "characters": [
+        "char_1769362362445_rbe14l8it",
+        "char_1769362362445_jrvzbk1yr",
+        "char_1769362362445_8crniq7v7"
+      ],
+      "scene_id": "scene_1769362362457_71knd1746",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "中景侧拍，夏侯澹半倚蟠龙金丝软枕，玄黑龙袍松垮披身，腰带未系，一手支额，目光如刃扫过庾晚音全身；烛光在他冷峻下颌投下锐利阴影，背景是巨大蟠龙屏风，龙目似睁未睁。",
+      "dialogue": "抬头。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "65b80af2-a002-41ee-bf13-47487e4a1b1f",
+      "order": 1,
+      "characters": [
+        "char_1769362362445_0rn04roi8",
+        "char_1769362362445_rbe14l8it"
+      ],
+      "scene_id": "scene_1769362362457_71knd1746",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写仰角，庾晚音缓缓抬脸，睫毛微颤，瞳孔映着跳动烛火；镜头微微晃动模拟呼吸感；她与画外夏侯澹视线交汇，背后龙纹帐影随风轻动，如活物般压向她肩颈。",
+      "dialogue": "好家伙，这不就是书里三天后要被处死的恶魔宠妃本人吗……",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "b36736aa-12cd-46dd-8a13-d672574b0807",
+      "order": 2,
+      "characters": [
+        "char_1769362362445_rbe14l8it"
+      ],
+      "scene_id": "scene_1769362362457_71knd1746",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "中景平视，夏侯澹已起身，赤足踩在织金地毯上，玄色袍摆垂坠如墨；他缓步绕至庾晚音右侧，左手负于身后，右手随意垂落，指节修长；庾晚音仍跪姿未动，脖颈线条绷紧，珠帘倒影在她瞳中碎裂。",
+      "dialogue": "本帝不碰你。你若乖乖听话，或许还能多活几日。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "28e0ea10-5002-4ed3-9d71-ed2af553d978",
+      "order": 3,
+      "characters": [
+        "char_1769362362445_0rn04roi8",
+        "char_1769362362445_rbe14l8it"
+      ],
+      "scene_id": "scene_1769362362457_71knd1746",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "低角度广角，背景骤暗，唯余一束顶光打在庾晚音身上；她身影被放大扭曲，头顶投下巨大蟠龙剪影，龙首正覆其天灵，鳞爪虚张；她垂眸静跪，呼吸可见。",
+      "dialogue": "身份危机 ing。按剧情发展，今晚我要是装疯卖傻，明天就得掉脑袋……",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "1e693b49-51fd-4fb5-85ae-675e35952254",
+      "order": 4,
+      "characters": [
+        "char_1769362362445_rbe14l8it"
+      ],
+      "scene_id": "scene_1769362362457_71knd1746",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "过肩镜头，前景为半卷青玉珠帘，珠粒剔透泛冷光；庾晚音坐于左侧矮锦杌，双手交叠膝上，姿态恭谨却脊背挺直；夏侯澹坐于右侧紫檀案后，指尖搭在案沿，眉峰微蹙，烛火在他瞳中缩成一点寒星。",
+      "dialogue": "皇上可还记得三日前，御花园那场刺杀？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "47e237e5-69b0-420f-af11-4c5ec5d296a5",
+      "order": 5,
+      "characters": [
+        "char_1769362362445_rbe14l8it",
+        "char_1769362362445_0rn04roi8"
+      ],
+      "scene_id": "scene_1769362362457_e7tbdojyz",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写夏侯澹双眼，瞳孔骤然收缩，烛火倒影剧烈晃动；镜头轻微推进，他眼尾细纹绷紧，下颌线如刀削，背景珠帘光影凝滞。",
+      "dialogue": "你不该知道的事，说得倒详细。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "29f229b5-5dab-42b0-97d3-9107f909721e",
+      "order": 6,
+      "characters": [
+        "char_1769362362445_0rn04roi8"
+      ],
+      "scene_id": "scene_1769362362457_e7tbdojyz",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "中景双人构图，珠帘柔光漫射，庾晚音垂眸轻语，指尖无意识摩挲腕间褪色红绳；夏侯澹身体前倾半寸，龙纹袖口滑落，露出一截骨节分明的手腕，案上茶盏热气将散未散。",
+      "dialogue": "臣妾只是……做了些梦。梦见有人要害你，也梦见臣妾会被当成祸根处死。",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "a1d6e220-1b0c-48d9-966a-e6891482fa49",
+      "order": 7,
+      "characters": [
+        "char_1769362362445_rbe14l8it",
+        "char_1769362362445_0rn04roi8"
+      ],
+      "scene_id": "scene_1769362362457_e7tbdojyz",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "仰角中近景，夏侯澹一步跨出案前，玄色袍角翻飞，阴影瞬间吞没庾晚音半边脸颊；她未退，反抬眼直视，烛光在她眼中燃起一小簇冷静火苗；珠帘在两人之间折射出细碎金芒。",
+      "dialogue": "所以，你在求活命？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "b854cb44-58c4-4bf9-9de5-8d437fd7c1f1",
+      "order": 8,
+      "characters": [
+        "char_1769362362445_0rn04roi8",
+        "char_1769362362445_rbe14l8it"
+      ],
+      "scene_id": "scene_1769362362457_e7tbdojyz",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "正面中景，庾晚音双膝跪正，脊柱如弓拉满，素白衣领衬得脖颈纤长；她双手伏地，额头未触，目光沉静上扬；夏侯澹立于三步之外，龙纹腰带扣反射一点冷光，背景龙榻帷帐低垂如幕。",
+      "dialogue": "皇上要的是稳江山、除内患。臣妾要的是活命，不当三日短命妖妃。不如——结个盟？",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "2cdee9f8-4416-4828-aad5-9d89bcce1144",
+      "order": 9,
+      "characters": [
+        "char_1769362362445_rbe14l8it",
+        "char_1769362362445_0rn04roi8"
+      ],
+      "scene_id": "scene_1769362362457_0lc9t32da",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "特写龙案一角，夏侯澹右手食指与中指缓慢叩击乌木案面，指节骨感有力，案上一道旧刻痕随敲击微微反光；背景虚化，烛火在铜鹤灯架上稳定燃烧，影子随节奏轻颤。",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": false,
+      "custom_image_url": null,
+      "panel_layout": "3-panel",
+      "id": "fe1b36ff-bb78-41ac-a0bd-e8d2fcd3c597",
+      "order": 10,
+      "characters": [
+        "char_1769362362445_0rn04roi8"
+      ],
+      "scene_id": "scene_1769362362457_0lc9t32da",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char_1769362362445_rbe14l8it",
+      "name": "庾晚音",
+      "avatar_url": "http://localhost:8001/static/uploads/0a4538ee-fa96-4f90-8fb0-694782a2355a.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769362362445_jrvzbk1yr",
+      "name": "太监甲",
+      "avatar_url": "http://localhost:8001/static/uploads/430848bd-4ec9-4852-b09e-757a79d899f0.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769362362445_8crniq7v7",
+      "name": "太监乙",
+      "avatar_url": "http://localhost:8001/static/uploads/e9fdebc7-ab40-4589-b82e-2ff589838d6e.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1769362362445_0rn04roi8",
+      "name": "夏侯澹",
+      "avatar_url": "http://localhost:8001/static/uploads/cb32b643-fc2b-43d4-935f-1543f6ebfe1e.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1769362362457_71knd1746",
+      "name": "帝王寝殿",
+      "image_url": "",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "scene_1769362362457_e7tbdojyz",
+      "name": "帝王寝殿内·帷幕后",
+      "image_url": "",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "scene_1769362362457_0lc9t32da",
+      "name": "帝王寝殿·龙榻前",
+      "image_url": "",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "3-panel",
+  "default_image_count": 4
+}
