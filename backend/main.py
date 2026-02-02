@@ -13,7 +13,7 @@ import hashlib
 from urllib.parse import urlparse, unquote
 from typing import List, Dict, Any
 from pydantic import BaseModel
-from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File
+from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
@@ -313,6 +313,12 @@ PROJECTS_INDEX_FILE = os.path.join(DATA_DIR, "projects_index.json")
 DATA_FILE = os.path.join(DATA_DIR, "projects.json")
 USERS: Dict[str, User] = {}
 USERS_FILE = os.path.join(DATA_DIR, "users.json")
+AUTH_SESSIONS: Dict[str, str] = {}
+
+def _get_client_ip(request: Request) -> str | None:
+    if request.client:
+        return request.client.host
+    return None
 
 def _project_file_path(project_id: str) -> str:
     return os.path.join(PROJECTS_DIR, f"{project_id}.json")
@@ -670,13 +676,43 @@ async def register_user(data: RegisterRequest):
     return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
 
 @app.post("/auth/login", response_model=UserPublic)
-async def login_user(data: LoginRequest):
+async def login_user(data: LoginRequest, request: Request):
     username = data.username.strip()
     password = data.password
     user = next((u for u in USERS.values() if u.username == username), None)
     if not user or not _verify_password(password, user.password_hash):
         raise HTTPException(status_code=400, detail="invalid credentials")
+    client_ip = _get_client_ip(request)
+    if client_ip:
+        AUTH_SESSIONS[client_ip] = user.id
     return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
+
+@app.get("/auth/user/{user_id}", response_model=UserPublic)
+async def get_user_by_id(user_id: str):
+    user = _get_user(user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
+
+@app.get("/auth/whoami", response_model=UserPublic)
+async def whoami(request: Request):
+    client_ip = _get_client_ip(request)
+    if not client_ip:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    user_id = AUTH_SESSIONS.get(client_ip)
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    user = _get_user(user_id)
+    if not user:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
+
+@app.post("/auth/logout")
+async def logout(request: Request):
+    client_ip = _get_client_ip(request)
+    if client_ip and client_ip in AUTH_SESSIONS:
+        del AUTH_SESSIONS[client_ip]
+    return {"ok": True}
 
 class AssignProjectRequest(BaseModel):
     owner_id: str | None = None
@@ -1437,6 +1473,73 @@ async def import_shots_from_auto_md(project_id: str, data: ImportShotsAutoReques
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"failed to read {filename}: {e}")
     return {"added": len(all_shots), "shots": all_shots}
+def _import_voiceover_from_md_text(project: Project, text: str):
+    blocks = [b.strip() for b in re.split(r"\r?\n\s*\r?\n", (text or "").strip()) if b.strip()]
+    shots_sorted = sorted(project.shots or [], key=lambda s: (s.order if isinstance(s.order, int) else 0))
+    updated = 0
+    for i, item in enumerate(blocks):
+        if i >= len(shots_sorted):
+            break
+        shots_sorted[i].dialogue = item
+        updated += 1
+    save_db()
+    return {"updated": updated}
+
+@app.post("/projects/{project_id}/voiceover/import_from_md")
+async def import_voiceover_from_md(project_id: str, file: UploadFile = File(...)):
+    project = get_project_or_404(project_id)
+    content = await file.read()
+    try:
+        text = content.decode("utf-8")
+    except:
+        text = content.decode("gbk", errors="ignore")
+    return _import_voiceover_from_md_text(project, text)
+
+@app.post("/projects/{project_id}/voiceover/import_auto_md")
+async def import_voiceover_from_auto_md(project_id: str, data: ImportShotsAutoRequest):
+    project = get_project_or_404(project_id)
+    root = (data.root or "").strip().strip('"').strip("'")
+    root = os.path.normpath(root)
+    project_name = (data.project_name or "").strip()
+    if not root or not project_name:
+        raise HTTPException(status_code=400, detail="root or project_name is empty")
+    if not os.path.isdir(root):
+        raise HTTPException(status_code=404, detail=f"root folder not found: {root}")
+    project_dir = root if os.path.basename(root) == project_name else os.path.join(root, project_name)
+    target_dir = os.path.join(project_dir, "storyboard_output")
+    if not os.path.isdir(target_dir):
+        target_dir = project_dir
+
+    if not os.path.isdir(target_dir):
+        raise HTTPException(status_code=404, detail=f"project folder not found: {target_dir}")
+    pattern = re.compile(r"^Episode-(\d+)__voiceover_table\.md$")
+    files = []
+    for name in os.listdir(target_dir):
+        m = pattern.match(name)
+        if m:
+            files.append((int(m.group(1)), name))
+    files.sort(key=lambda x: x[0])
+    if not files:
+        return {"updated": 0}
+    entries = []
+    for _, filename in files:
+        file_path = os.path.join(target_dir, filename)
+        with open(file_path, "rb") as f:
+            content = f.read()
+        try:
+            text = content.decode("utf-8")
+        except:
+            text = content.decode("gbk", errors="ignore")
+        entries.extend([b.strip() for b in re.split(r"\r?\n\s*\r?\n", (text or "").strip()) if b.strip()])
+    shots_sorted = sorted(project.shots or [], key=lambda s: (s.order if isinstance(s.order, int) else 0))
+    updated = 0
+    for i, item in enumerate(entries):
+        if i >= len(shots_sorted):
+            break
+        shots_sorted[i].dialogue = item
+        updated += 1
+    save_db()
+    return {"updated": updated}
 @app.put("/characters/{project_id}/{char_id}", response_model=Character)
 async def update_character(project_id: str, char_id: str, updates: CharacterUpdate):
     project = get_project_or_404(project_id)

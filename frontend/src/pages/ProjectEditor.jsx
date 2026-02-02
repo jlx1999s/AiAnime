@@ -67,6 +67,7 @@ const ProjectEditor = () => {
     const importFileInputRef = React.useRef(null);
     const importShotsMdFileInputRef = React.useRef(null);
     const importCharsFileInputRef = React.useRef(null);
+    const importVoiceoverMdFileInputRef = React.useRef(null);
 
     const loadProjects = async () => {
         try {
@@ -305,6 +306,29 @@ const ProjectEditor = () => {
                 alert(`自动导入成功：新增 ${added.length} 个场景`);
             } else {
                 alert("未找到匹配的场景文件");
+            }
+        } catch (e) {
+            alert(e.message || "自动检索导入失败");
+        }
+    };
+
+    const handleAutoImportVoiceover = async () => {
+        try {
+            if (!projectId) return;
+            const root = await resolveAutoImportRoot();
+            if (!root) return;
+            const project = projects.find(p => p.id === projectId);
+            const name = (project?.name || "").trim();
+            if (!name) {
+                alert("项目名称为空，无法检索");
+                return;
+            }
+            const res = await ApiService.autoImportVoiceoverMd(projectId, { root, projectName: name });
+            if ((res.updated || 0) > 0) {
+                await handleRefreshShots();
+                alert(`自动导入成功：更新 ${res.updated} 条配音`);
+            } else {
+                alert("未找到匹配的配音文件");
             }
         } catch (e) {
             alert(e.message || "自动检索导入失败");
@@ -899,6 +923,25 @@ const ProjectEditor = () => {
         e.target.value = null;
     };
 
+    const handleImportVoiceoverFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        try {
+            if (!projectId) return;
+            const res = await ApiService.importVoiceoverFromMd(projectId, file);
+            if ((res.updated || 0) > 0) {
+                await handleRefreshShots();
+                alert(`成功导入：更新 ${res.updated} 条配音`);
+            } else {
+                alert("未解析到有效配音表数据");
+            }
+        } catch (e) {
+            alert("导入配音表失败");
+        }
+        e.target.value = null;
+    };
+
     const handleOpenGenerateModal = (type, existingData = null) => {
         setGenerateType(type);
         setRegenerateAssetData(existingData);
@@ -1109,6 +1152,18 @@ const ProjectEditor = () => {
                         >
                             自动检索并导入分镜MD
                         </button>
+                        <button 
+                            onClick={() => importVoiceoverMdFileInputRef.current?.click()} 
+                            className="hover:text-white flex items-center gap-1 transition-colors"
+                        >
+                            导入配音表MD
+                        </button>
+                        <button 
+                            onClick={handleAutoImportVoiceover} 
+                            className="hover:text-white flex items-center gap-1 transition-colors"
+                        >
+                            自动检索并导入配音表MD
+                        </button>
                         <div className="h-4 w-px bg-dark-600"></div>
                         <button 
                             className="hover:text-white flex items-center gap-1 transition-colors ml-auto text-accent"
@@ -1133,57 +1188,60 @@ const ProjectEditor = () => {
                     </div>
 
                     {/* Shot List Header & Content */}
-                    <div className="flex-1 flex flex-col overflow-hidden">
-                        <ShotListHeader 
-                        allSelected={shots.length > 0 && selectedShots.size === shots.length}
-                        onSelectAll={handleSelectAllShots}
-                        defaultPanelLayout={defaultPanelLayout}
-                        onSetDefaultPanelLayout={handleSetDefaultPanelLayout}
-                        defaultImageCount={defaultImageCount}
-                        onSetDefaultImageCount={handleSetDefaultImageCount}
-                        onGenerateAllStoryboards={handleGenerateAllStoryboards}
-                        isGeneratingStoryboards={isGeneratingStoryboards}
-                        onGenerateAllCharacters={handleGenerateAllCharacters}
-                        isGeneratingCharacters={isGeneratingCharacters}
-                        onGenerateAllScenes={handleGenerateAllScenes}
-                        isGeneratingScenes={isGeneratingScenes}
-                        onRefreshShots={handleRefreshShots}
-                        isRefreshingShots={isRefreshingShots}
-                    />
-                        <div className="flex-1 overflow-y-auto pb-20 custom-scrollbar">
-                            {shots.map((shot, index) => (
-                                <ShotItem 
-                                    key={shot.id} 
-                                    shot={shot} 
-                                    index={index}
-                                    projectId={projectId}
-                                    defaultImageCount={defaultImageCount}
-                                    onDelete={handleDelete}
-                                    onUpdate={handleUpdate}
-                                    onGenerate={handleGenerate}
-                                    onDeleteShotImage={handleDeleteShotImage}
-                                    onDeleteVideo={handleDeleteShotVideo}
-                                    onMoveUp={() => handleMoveUp(index)}
-                                    onMoveDown={() => handleMoveDown(index)}
-                                    onInsertBefore={() => handleInsertBlankShot(index, 'before')}
-                                    onInsertAfter={() => handleInsertBlankShot(index, 'after')}
-                                    allCharacters={characters}
-                                    onCharacterClick={onCharacterClick}
-                                    allScenes={scenes}
-                                    onSceneClick={onSceneClick}
-                                    onShotImageClick={onShotImageClick}
-                                    onSelectCandidate={handleSelectShotCandidate}
-                                    isSelected={selectedShots.has(shot.id)}
-                                    onSelect={(selected) => handleSelectShot(shot.id, selected)}
-                                />
-                            ))}
-                            <div className="p-4">
-                                <button 
-                                    onClick={handleAddShot}
-                                    className="w-full py-4 border-2 border-dashed border-dark-700 rounded-lg text-gray-500 hover:border-accent hover:text-accent flex items-center justify-center gap-2 transition-all hover:bg-dark-800"
-                                >
-                                    <Plus size={20}/> 添加新镜头
-                                </button>
+                    <div className="flex-1 overflow-auto custom-scrollbar bg-dark-900">
+                        <div className="min-w-[1500px] flex flex-col h-full">
+                            <ShotListHeader 
+                                allSelected={shots.length > 0 && selectedShots.size === shots.length}
+                                onSelectAll={handleSelectAllShots}
+                                defaultPanelLayout={defaultPanelLayout}
+                                onSetDefaultPanelLayout={handleSetDefaultPanelLayout}
+                                defaultImageCount={defaultImageCount}
+                                onSetDefaultImageCount={handleSetDefaultImageCount}
+                                onGenerateAllStoryboards={handleGenerateAllStoryboards}
+                                isGeneratingStoryboards={isGeneratingStoryboards}
+                                onGenerateAllCharacters={handleGenerateAllCharacters}
+                                isGeneratingCharacters={isGeneratingCharacters}
+                                onGenerateAllScenes={handleGenerateAllScenes}
+                                isGeneratingScenes={isGeneratingScenes}
+                                onRefreshShots={handleRefreshShots}
+                                isRefreshingShots={isRefreshingShots}
+                            />
+                            <div className="flex-1 pb-20">
+                                {shots.map((shot, index) => (
+                                    <ShotItem 
+                                        key={shot.id} 
+                                        shot={shot} 
+                                        index={index}
+                                        allShots={shots}
+                                        projectId={projectId}
+                                        defaultImageCount={defaultImageCount}
+                                        onDelete={handleDelete}
+                                        onUpdate={handleUpdate}
+                                        onGenerate={handleGenerate}
+                                        onDeleteShotImage={handleDeleteShotImage}
+                                        onDeleteVideo={handleDeleteShotVideo}
+                                        onMoveUp={() => handleMoveUp(index)}
+                                        onMoveDown={() => handleMoveDown(index)}
+                                        onInsertBefore={() => handleInsertBlankShot(index, 'before')}
+                                        onInsertAfter={() => handleInsertBlankShot(index, 'after')}
+                                        allCharacters={characters}
+                                        onCharacterClick={onCharacterClick}
+                                        allScenes={scenes}
+                                        onSceneClick={onSceneClick}
+                                        onShotImageClick={onShotImageClick}
+                                        onSelectCandidate={handleSelectShotCandidate}
+                                        isSelected={selectedShots.has(shot.id)}
+                                        onSelect={(selected) => handleSelectShot(shot.id, selected)}
+                                    />
+                                ))}
+                                <div className="p-4">
+                                    <button 
+                                        onClick={handleAddShot}
+                                        className="w-full py-4 border-2 border-dashed border-dark-700 rounded-lg text-gray-500 hover:border-accent hover:text-accent flex items-center justify-center gap-2 transition-all hover:bg-dark-800"
+                                    >
+                                        <Plus size={20}/> 添加新镜头
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1276,6 +1334,13 @@ const ProjectEditor = () => {
                 className="hidden"
                 accept=".md"
                 onChange={handleImportCharactersFileChange}
+            />
+            <input
+                type="file"
+                ref={importVoiceoverMdFileInputRef}
+                className="hidden"
+                accept=".md"
+                onChange={handleImportVoiceoverFileChange}
             />
             <input
                 type="file"

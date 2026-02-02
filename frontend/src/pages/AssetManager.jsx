@@ -8,9 +8,10 @@ const AssetManager = () => {
     const { projectId } = useParams();
     const navigate = useNavigate();
     const [project, setProject] = useState(null);
-    const [activeTab, setActiveTab] = useState('characters'); // 'characters' or 'scenes'
+    const [activeTab, setActiveTab] = useState('characters'); // 'characters', 'scenes', 'shots', 'videos'
     const [loading, setLoading] = useState(true);
     const [previewUrl, setPreviewUrl] = useState(null);
+    const [previewVideoUrl, setPreviewVideoUrl] = useState(null);
     const [generatingId, setGeneratingId] = useState(null);
     const importMdRef = React.useRef(null);
     const [isBulkGeneratingChars, setIsBulkGeneratingChars] = useState(false);
@@ -40,7 +41,10 @@ const AssetManager = () => {
     const handleUpdateAsset = async (type, assetId, updates) => {
         if (!project) return;
         
-        const listKey = type === 'character' ? 'characters' : 'scenes';
+        let listKey = 'characters';
+        if (type === 'scene') listKey = 'scenes';
+        if (type === 'shot') listKey = 'shots';
+
         const updatedList = project[listKey].map(item => 
             item.id === assetId ? { ...item, ...updates } : item
         );
@@ -49,7 +53,11 @@ const AssetManager = () => {
         setProject(prev => ({ ...prev, [listKey]: updatedList }));
 
         try {
-            await ApiService.updateProject(projectId, { [listKey]: updatedList });
+            if (type === 'shot') {
+                await ApiService.updateShot(projectId, assetId, updates);
+            } else {
+                await ApiService.updateProject(projectId, { [listKey]: updatedList });
+            }
         } catch (error) {
             console.error(`Failed to update ${type}`, error);
             loadProject(); // Revert on error
@@ -59,13 +67,20 @@ const AssetManager = () => {
     const handleDeleteAsset = async (type, assetId) => {
         if (!confirm('确定要删除这个资产吗？')) return;
         
-        const listKey = type === 'character' ? 'characters' : 'scenes';
+        let listKey = 'characters';
+        if (type === 'scene') listKey = 'scenes';
+        if (type === 'shot') listKey = 'shots';
+
         const updatedList = project[listKey].filter(item => item.id !== assetId);
         
         setProject(prev => ({ ...prev, [listKey]: updatedList }));
 
         try {
-            await ApiService.updateProject(projectId, { [listKey]: updatedList });
+            if (type === 'shot') {
+                await ApiService.deleteShot(projectId, assetId);
+            } else {
+                await ApiService.updateProject(projectId, { [listKey]: updatedList });
+            }
         } catch (error) {
             console.error(`Failed to delete ${type}`, error);
             loadProject();
@@ -106,7 +121,15 @@ const AssetManager = () => {
     if (loading) return <div className="h-screen flex items-center justify-center bg-dark-900 text-white">加载中...</div>;
     if (!project) return <div className="h-screen flex items-center justify-center bg-dark-900 text-white">项目未找到</div>;
 
-    const assets = activeTab === 'characters' ? project.characters : project.scenes;
+    const assets = (() => {
+        if (activeTab === 'characters') return project.characters;
+        if (activeTab === 'scenes') return project.scenes;
+        if (activeTab === 'shots') return project.shots;
+        if (activeTab === 'videos') return (project.shots || []).filter(s => s.video_url);
+        return [];
+    })();
+
+    const isReadOnlyTab = activeTab === 'shots' || activeTab === 'videos';
 
     return (
         <div className="min-h-screen bg-dark-900 text-gray-200 flex flex-col">
@@ -115,6 +138,20 @@ const AssetManager = () => {
                 imageUrl={previewUrl} 
                 onClose={() => setPreviewUrl(null)} 
             />
+            {/* Simple Video Preview Modal */}
+            {previewVideoUrl && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4" onClick={() => setPreviewVideoUrl(null)}>
+                    <div className="relative max-w-5xl w-full max-h-screen bg-black rounded-lg overflow-hidden" onClick={e => e.stopPropagation()}>
+                         <button 
+                            className="absolute top-2 right-2 p-2 bg-dark-800/80 rounded-full hover:bg-dark-700 text-white z-10"
+                            onClick={() => setPreviewVideoUrl(null)}
+                        >
+                            <ArrowLeft size={20} />
+                        </button>
+                        <video src={previewVideoUrl} controls autoPlay className="w-full h-full max-h-[80vh] object-contain" />
+                    </div>
+                </div>
+            )}
             
             {/* Header */}
             <header className="h-14 border-b border-dark-700 bg-dark-800 flex items-center justify-between px-6 sticky top-0 z-10">
@@ -130,7 +167,7 @@ const AssetManager = () => {
                         资产管理 <span className="text-gray-500 text-sm font-normal">| {project.name}</span>
                     </h1>
                 </div>
-                <div className="flex bg-dark-900 rounded p-1">
+                <div className="flex bg-dark-900 rounded p-1 gap-1">
                     <button 
                         className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${activeTab === 'characters' ? 'bg-accent text-white' : 'text-gray-400 hover:text-white'}`}
                         onClick={() => setActiveTab('characters')}
@@ -143,75 +180,91 @@ const AssetManager = () => {
                     >
                         场景 ({project.scenes?.length || 0})
                     </button>
+                    <button 
+                        className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${activeTab === 'shots' ? 'bg-accent text-white' : 'text-gray-400 hover:text-white'}`}
+                        onClick={() => setActiveTab('shots')}
+                    >
+                        分镜 ({project.shots?.length || 0})
+                    </button>
+                    <button 
+                        className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${activeTab === 'videos' ? 'bg-accent text-white' : 'text-gray-400 hover:text-white'}`}
+                        onClick={() => setActiveTab('videos')}
+                    >
+                        视频 ({project.shots?.filter(s => s.video_url).length || 0})
+                    </button>
                 </div>
                 <div className="flex items-center gap-2">
-                    <button
-                        className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingChars ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
-                        disabled={isBulkGeneratingChars || !!generatingId}
-                        onClick={async () => {
-                            if (!project) return;
-                            const targets = (project.characters || []).filter(c => !c.avatar_url || c.avatar_url.includes('dicebear'));
-                            if (targets.length === 0) {
-                                alert('没有需要生成的角色');
-                                return;
-                            }
-                            if (!confirm(`确定要为 ${targets.length} 个角色生成图片吗？`)) return;
-                            setIsBulkGeneratingChars(true);
-                            const style = project?.style || 'anime';
-                            try {
-                                for (const char of targets) {
+                    {!isReadOnlyTab && (
+                        <>
+                            <button
+                                className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingChars ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
+                                disabled={isBulkGeneratingChars || !!generatingId}
+                                onClick={async () => {
+                                    if (!project) return;
+                                    const targets = (project.characters || []).filter(c => !c.avatar_url || c.avatar_url.includes('dicebear'));
+                                    if (targets.length === 0) {
+                                        alert('没有需要生成的角色');
+                                        return;
+                                    }
+                                    if (!confirm(`确定要为 ${targets.length} 个角色生成图片吗？`)) return;
+                                    setIsBulkGeneratingChars(true);
+                                    const style = project?.style || 'anime';
                                     try {
-                                        const prompt = `${char.name}, ${char.prompt || char.description || 'character portrait'}, ${style} style, high quality`;
-                                        const result = await ApiService.generateAsset(prompt, 'character', projectId);
-                                        const updated = { avatar_url: result.url };
-                                        setProject(prev => ({ ...prev, characters: (prev.characters || []).map(c => c.id === char.id ? { ...c, ...updated } : c) }));
-                                        await ApiService.updateCharacter(projectId, char.id, { ...char, ...updated });
-                                    } catch (e) {}
-                                }
-                            } finally {
-                                setIsBulkGeneratingChars(false);
-                            }
-                        }}
-                    >
-                        角色一键生成
-                    </button>
-                    <button
-                        className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingScenes ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
-                        disabled={isBulkGeneratingScenes || !!generatingId}
-                        onClick={async () => {
-                            if (!project) return;
-                            const targets = (project.scenes || []).filter(s => !s.image_url);
-                            if (targets.length === 0) {
-                                alert('没有需要生成的场景');
-                                return;
-                            }
-                            if (!confirm(`确定要为 ${targets.length} 个场景生成图片吗？`)) return;
-                            setIsBulkGeneratingScenes(true);
-                            const style = project?.style || 'anime';
-                            try {
-                                for (const scene of targets) {
+                                        for (const char of targets) {
+                                            try {
+                                                const prompt = `${char.name}, ${char.prompt || char.description || 'character portrait'}, ${style} style, high quality`;
+                                                const result = await ApiService.generateAsset(prompt, 'character', projectId);
+                                                const updated = { avatar_url: result.url };
+                                                setProject(prev => ({ ...prev, characters: (prev.characters || []).map(c => c.id === char.id ? { ...c, ...updated } : c) }));
+                                                await ApiService.updateCharacter(projectId, char.id, { ...char, ...updated });
+                                            } catch (e) {}
+                                        }
+                                    } finally {
+                                        setIsBulkGeneratingChars(false);
+                                    }
+                                }}
+                            >
+                                角色一键生成
+                            </button>
+                            <button
+                                className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingScenes ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
+                                disabled={isBulkGeneratingScenes || !!generatingId}
+                                onClick={async () => {
+                                    if (!project) return;
+                                    const targets = (project.scenes || []).filter(s => !s.image_url);
+                                    if (targets.length === 0) {
+                                        alert('没有需要生成的场景');
+                                        return;
+                                    }
+                                    if (!confirm(`确定要为 ${targets.length} 个场景生成图片吗？`)) return;
+                                    setIsBulkGeneratingScenes(true);
+                                    const style = project?.style || 'anime';
                                     try {
-                                        const prompt = `${scene.name}, ${scene.prompt || scene.description || 'scenery'}, ${style} style, high quality`;
-                                        const result = await ApiService.generateAsset(prompt, 'scene', projectId);
-                                        const updated = { image_url: result.url };
-                                        setProject(prev => ({ ...prev, scenes: (prev.scenes || []).map(s => s.id === scene.id ? { ...s, ...updated } : s) }));
-                                        await ApiService.updateScene(projectId, scene.id, { ...scene, ...updated });
-                                    } catch (e) {}
-                                }
-                            } finally {
-                                setIsBulkGeneratingScenes(false);
-                            }
-                        }}
-                    >
-                        场景一键生成
-                    </button>
-                    <button
-                        className="p-2 hover:bg-dark-700 rounded-full transition-colors text-gray-400 hover:text-white"
-                        title={activeTab === 'characters' ? '导入角色MD' : '导入场景MD'}
-                        onClick={() => importMdRef.current?.click()}
-                    >
-                        <Save size={18} />
-                    </button>
+                                        for (const scene of targets) {
+                                            try {
+                                                const prompt = `${scene.name}, ${scene.prompt || scene.description || 'scenery'}, ${style} style, high quality`;
+                                                const result = await ApiService.generateAsset(prompt, 'scene', projectId);
+                                                const updated = { image_url: result.url };
+                                                setProject(prev => ({ ...prev, scenes: (prev.scenes || []).map(s => s.id === scene.id ? { ...s, ...updated } : s) }));
+                                                await ApiService.updateScene(projectId, scene.id, { ...scene, ...updated });
+                                            } catch (e) {}
+                                        }
+                                    } finally {
+                                        setIsBulkGeneratingScenes(false);
+                                    }
+                                }}
+                            >
+                                场景一键生成
+                            </button>
+                            <button
+                                className="p-2 hover:bg-dark-700 rounded-full transition-colors text-gray-400 hover:text-white"
+                                title={activeTab === 'characters' ? '导入角色MD' : '导入场景MD'}
+                                onClick={() => importMdRef.current?.click()}
+                            >
+                                <Save size={18} />
+                            </button>
+                        </>
+                    )}
                     <input
                         type="file"
                         ref={importMdRef}
@@ -253,7 +306,8 @@ const AssetManager = () => {
             {/* Content */}
             <main className="flex-1 p-6 overflow-y-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-                    {/* Add New Card */}
+                    {/* Add New Card - Only for Characters/Scenes */}
+                    {!isReadOnlyTab && (
                     <div 
                         className="bg-dark-800 border-2 border-dashed border-dark-600 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-accent hover:bg-dark-700 transition-colors group h-56"
                         onClick={async () => {
@@ -279,26 +333,46 @@ const AssetManager = () => {
                             新建{activeTab === 'characters' ? '角色' : '场景'}
                         </span>
                     </div>
+                    )}
 
                     {/* Asset Cards */}
-                    {assets?.map(asset => (
+                    {assets?.map(asset => {
+                        const isVideoTab = activeTab === 'videos';
+                        const imageUrl = activeTab === 'characters' ? asset.avatar_url || asset.avatar : asset.image_url;
+                        const displayImage = isVideoTab ? (asset.image_url || 'https://placehold.co/600x400/1a1b1e/FFF?text=Video') : imageUrl;
+                        
+                        return (
                         <div key={asset.id} className="bg-dark-800 rounded-lg overflow-hidden border border-dark-700 shadow-lg flex flex-col">
                             {/* Image Area */}
                             <div className="relative bg-dark-900 group h-56">
                                 <img 
-                                    src={asset.avatar_url || asset.avatar || asset.image_url} 
-                                    alt={asset.name} 
+                                    src={displayImage} 
+                                    alt={asset.name || `Shot ${asset.order}`} 
                                     className="w-full h-full object-contain"
                                     onError={(e) => { e.target.src = 'https://placehold.co/600x400/1a1b1e/FFF?text=No+Image'; }}
                                 />
+                                {isVideoTab && asset.video_url && (
+                                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                        <div className="bg-black/50 rounded-full p-2">
+                                            <Film size={24} className="text-white" />
+                                        </div>
+                                     </div>
+                                )}
                                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                                     <button 
                                         className="p-2 bg-dark-700 rounded-full hover:bg-accent text-white transition-colors"
-                                        onClick={() => setPreviewUrl(asset.avatar_url || asset.avatar || asset.image_url)}
+                                        onClick={() => {
+                                            if (isVideoTab && asset.video_url) {
+                                                setPreviewVideoUrl(asset.video_url);
+                                            } else {
+                                                setPreviewUrl(displayImage);
+                                            }
+                                        }}
                                         title="预览"
                                     >
                                         <Maximize size={18} />
                                     </button>
+                                    {!isReadOnlyTab && (
                                     <button 
                                         className={`p-2 bg-dark-700 rounded-full hover:bg-accent text-white transition-colors ${generatingId === asset.id ? 'animate-spin' : ''}`}
                                         onClick={() => handleGenerateAsset(activeTab === 'characters' ? 'character' : 'scene', asset)}
@@ -307,9 +381,10 @@ const AssetManager = () => {
                                     >
                                         {generatingId === asset.id ? <RefreshCw size={18} /> : <Wand2 size={18} />}
                                     </button>
+                                    )}
                                     <button 
                                         className="p-2 bg-red-900/80 hover:bg-red-600 rounded-full text-white transition-colors"
-                                        onClick={() => handleDeleteAsset(activeTab === 'characters' ? 'character' : 'scene', asset.id)}
+                                        onClick={() => handleDeleteAsset(activeTab === 'characters' ? 'character' : (activeTab === 'scenes' ? 'scene' : 'shot'), asset.id)}
                                         title="删除"
                                     >
                                         <Trash2 size={18} />
@@ -320,12 +395,13 @@ const AssetManager = () => {
                             {/* Info Area */}
                             <div className="p-3 flex-1 flex flex-col gap-2">
                                 <div>
-                                    <label className="text-[10px] uppercase text-gray-500 font-bold mb-1 block">名称</label>
+                                    <label className="text-[10px] uppercase text-gray-500 font-bold mb-1 block">名称/序号</label>
                                     <input 
                                         type="text" 
-                                        value={asset.name}
-                                        onChange={(e) => handleUpdateAsset(activeTab === 'characters' ? 'character' : 'scene', asset.id, { name: e.target.value })}
-                                        className="w-full bg-dark-900 border border-dark-700 rounded px-2 py-1 text-sm text-white focus:border-accent outline-none"
+                                        value={asset.name || (typeof asset.order === 'number' ? `Shot ${asset.order}` : 'Shot')}
+                                        readOnly={isReadOnlyTab}
+                                        onChange={(e) => !isReadOnlyTab && handleUpdateAsset(activeTab === 'characters' ? 'character' : 'scene', asset.id, { name: e.target.value })}
+                                        className={`w-full bg-dark-900 border border-dark-700 rounded px-2 py-1 text-sm text-white focus:border-accent outline-none ${isReadOnlyTab ? 'cursor-default text-gray-400' : ''}`}
                                     />
                                 </div>
                                 <div className="flex-1">
@@ -334,14 +410,15 @@ const AssetManager = () => {
                                     </label>
                                     <textarea 
                                         value={asset.prompt || ''}
-                                        onChange={(e) => handleUpdateAsset(activeTab === 'characters' ? 'character' : 'scene', asset.id, { prompt: e.target.value })}
-                                        className="w-full h-20 bg-dark-900 border border-dark-700 rounded px-2 py-1 text-xs text-gray-300 focus:border-accent outline-none resize-none"
+                                        readOnly={isReadOnlyTab}
+                                        onChange={(e) => !isReadOnlyTab && handleUpdateAsset(activeTab === 'characters' ? 'character' : 'scene', asset.id, { prompt: e.target.value })}
+                                        className={`w-full h-20 bg-dark-900 border border-dark-700 rounded px-2 py-1 text-xs text-gray-300 focus:border-accent outline-none resize-none ${isReadOnlyTab ? 'cursor-default' : ''}`}
                                         placeholder="输入外观描述..."
                                     />
                                 </div>
                             </div>
                         </div>
-                    ))}
+                    )})}
                 </div>
             </main>
         </div>

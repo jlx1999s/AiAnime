@@ -1,0 +1,1 @@
+streamlit run app.py --server.headless=true --browser.gatherUsageStats=false

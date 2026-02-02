@@ -64,7 +64,11 @@ const ProjectList = () => {
         }
     };
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        try {
+            await ApiService.logout();
+        } catch {
+        }
         ApiService.clearCurrentUser();
         setUser(null);
         setProjects([]);
@@ -201,6 +205,14 @@ const ProjectList = () => {
                         <span className="text-sm text-gray-300 bg-dark-800 border border-dark-700 px-3 py-1.5 rounded-full">
                             {user.username}
                         </span>
+                        <a
+                            href="http://localhost:8501"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-gray-300 bg-dark-800 border border-dark-700 px-3 py-1.5 rounded-lg text-sm hover:border-accent hover:text-white transition-colors"
+                        >
+                            漫剧剧本管理
+                        </a>
                         <button
                             onClick={handleLogout}
                             className="text-gray-400 hover:text-white text-sm"

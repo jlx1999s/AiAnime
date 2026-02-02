@@ -46,6 +46,8 @@ const MockData = {
             characters: ['c1'],
             scene: null,
             image_url: "https://placehold.co/300x169/25262b/FFF?text=Shot+1",
+            first_frame_url: null,
+            last_frame_url: null,
         },
         {
             id: 2,
@@ -54,6 +56,8 @@ const MockData = {
             characters: ['c1'],
             scene: null,
             image_url: "https://placehold.co/300x169/25262b/FFF?text=Shot+2",
+            first_frame_url: null,
+            last_frame_url: null,
         },
          {
             id: 3,
@@ -62,6 +66,8 @@ const MockData = {
             characters: ['c1', 'c2'],
             scene: null,
             image_url: "https://placehold.co/300x169/25262b/FFF?text=Shot+3",
+            first_frame_url: null,
+            last_frame_url: null,
         }
     ]
 };
@@ -97,6 +103,12 @@ export const ApiService = {
             throw new Error(data.detail || `登录失败 (${res.status})`);
         }
         return data;
+    },
+
+    logout: async () => {
+        if (USE_MOCK) return true;
+        await fetch(`${API_BASE_URL}/auth/logout`, { method: 'POST' });
+        return true;
     },
 
     adminListUsers: async () => {
@@ -402,6 +414,31 @@ export const ApiService = {
             method: 'POST',
             body: formData
         });
+        return res.json();
+    },
+
+    importVoiceoverFromMd: async (projectId, file) => {
+        if (USE_MOCK) return { updated: 0 };
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/voiceover/import_from_md`, {
+            method: 'POST',
+            body: formData
+        });
+        return res.json();
+    },
+
+    autoImportVoiceoverMd: async (projectId, payload) => {
+        if (USE_MOCK) return { updated: 0 };
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/voiceover/import_auto_md`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.detail || `自动导入失败 (${res.status})`);
+        }
         return res.json();
     },
 

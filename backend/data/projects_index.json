@@ -172,5 +172,11 @@
     "name": "发送测试",
     "style": "anime",
     "owner_id": "ec4c8fbd-3154-43ed-8b62-2a52bf19650f"
+  },
+  "5b8a2186-cbeb-4614-aa4d-f8816089d8c0": {
+    "id": "5b8a2186-cbeb-4614-aa4d-f8816089d8c0",
+    "name": "配音测试",
+    "style": "anime",
+    "owner_id": "0f7f607e-7377-4b57-b499-aba811af17f6"
   }
 }

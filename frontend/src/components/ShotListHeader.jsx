@@ -2,8 +2,8 @@ import React from 'react';
 import { Wand2, RefreshCw } from 'lucide-react';
 
 const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDefaultPanelLayout, defaultImageCount, onSetDefaultImageCount, onGenerateAllStoryboards, isGeneratingStoryboards, onGenerateAllCharacters, isGeneratingCharacters, onGenerateAllScenes, isGeneratingScenes, onRefreshShots, isRefreshingShots }) => (
-    <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 px-4 py-2 bg-dark-800 border-b border-dark-700 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center justify-center">
+    <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 px-4 py-2 bg-dark-800 border-b border-dark-700 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 z-30 shadow-sm">
+        <div className="flex items-center justify-center sticky left-4 z-40 bg-dark-800">
             <input 
                 type="checkbox" 
                 className="rounded bg-dark-700 border-dark-600 w-4 h-4 cursor-pointer accent-accent"
@@ -12,7 +12,7 @@ const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDef
                 title="全选/取消全选"
             />
         </div>
-        <div>调整剧本</div>
+        <div className="sticky left-[72px] z-40 bg-dark-800">调整剧本</div>
         <div className="flex items-center justify-between">
             <span>出场人物</span>
             <button

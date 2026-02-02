@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Plus, Trash2, Image, Video, MoveUp, MoveDown, Maximize, Upload, ChevronLeft, ChevronRight } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
+import ShotSelectorModal from './ShotSelectorModal';
 import { ApiService } from '../services/api';
 
 const updatePromptWithAsset = (currentPrompt, action, assetType, asset, oldAsset) => {
@@ -44,9 +45,21 @@ const updatePromptWithAsset = (currentPrompt, action, assetType, asset, oldAsset
     return newPrompt.trim();
 };
 
-const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, onInsertBefore, onInsertAfter, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId }) => {
+const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, onInsertBefore, onInsertAfter, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId, allShots }) => {
     const [candidateCount, setCandidateCount] = useState(defaultImageCount || 1);
     const customImageInputRef = useRef(null);
+    const firstFrameInputRef = useRef(null);
+    const lastFrameInputRef = useRef(null);
+    const [isSelectorOpen, setIsSelectorOpen] = useState(false);
+    const [selectorField, setSelectorField] = useState(null); // 'first_frame_url', 'last_frame_url', or 'custom_image_url'
+
+    const handleShotSelect = (url) => {
+        if (selectorField && url) {
+            onUpdate(shot.id, { ...shot, [selectorField]: url });
+        }
+        setIsSelectorOpen(false);
+        setSelectorField(null);
+    };
 
     const handleCustomImageUpload = async (e) => {
         const file = e.target.files[0];
@@ -59,6 +72,21 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             }
         } catch (error) {
             console.error("Custom image upload failed", error);
+            alert("上传失败");
+        }
+        e.target.value = null;
+    };
+
+    const handleFrameUpload = async (e, field) => {
+        const file = e.target.files[0];
+        if (!file || !projectId) return;
+        try {
+            const result = await ApiService.uploadFile(file, projectId);
+            if (result && result.url) {
+                onUpdate(shot.id, { ...shot, [field]: result.url });
+            }
+        } catch (error) {
+            console.error("Frame upload failed", error);
             alert("上传失败");
         }
         e.target.value = null;
@@ -130,8 +158,14 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                 imageUrl={previewUrl} 
                 onClose={() => setPreviewUrl(null)} 
             />
+            <ShotSelectorModal
+                isOpen={isSelectorOpen}
+                onClose={() => { setIsSelectorOpen(false); setSelectorField(null); }}
+                onSelect={handleShotSelect}
+                shots={allShots || []}
+            />
             {/* Column 1: Index */}
-            <div className="flex flex-col items-center gap-2 pt-1">
+            <div className="flex flex-col items-center gap-2 pt-1 sticky left-4 z-20 bg-dark-900 group-hover:bg-dark-800">
                 <span className="text-xs font-mono text-gray-500 bg-dark-900 px-1.5 py-0.5 rounded-full min-w-[24px] text-center">{index + 1}</span>
                 <input 
                     type="checkbox" 
@@ -142,7 +176,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             </div>
 
             {/* Column 2: Script */}
-            <div className="space-y-3">
+            <div className="space-y-3 sticky left-[72px] z-20 bg-dark-900 group-hover:bg-dark-800">
                  <div className="relative">
                      <div className="flex justify-between items-center mb-1">
                        <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">分镜提示词</label>
@@ -165,6 +199,21 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                         placeholder="描述视频风格、运动、节奏、氛围等..."
                         onChange={(e) => onUpdate(shot.id, { ...shot, audio_prompt: e.target.value })}
                     />
+                </div>
+                
+                {/* Dubbing Table */}
+                <div className="relative">
+                    <div className="flex justify-between items-center mb-1">
+                       <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">配音表</label>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <textarea 
+                            className="w-full bg-dark-900/50 border border-dark-700 rounded p-2 text-sm text-gray-300 focus:border-accent focus:outline-none resize-none h-16 placeholder-gray-700 transition-colors"
+                            value={shot.dialogue || ''}
+                            placeholder="输入台词..."
+                            onChange={(e) => onUpdate(shot.id, { ...shot, dialogue: e.target.value })}
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -362,6 +411,13 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             <div className="space-y-2">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">自定义参考图</label>
+                    <button 
+                        onClick={() => { setSelectorField('custom_image_url'); setIsSelectorOpen(true); }}
+                        className="text-dark-500 hover:text-accent p-0.5 rounded hover:bg-dark-700"
+                        title="从已有分镜选择"
+                    >
+                        <Image size={12} />
+                    </button>
                  </div>
                  
                  <input 
@@ -376,41 +432,45 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                      <div 
                         className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/custom cursor-pointer"
                         onClick={() => setPreviewUrl(shot.custom_image_url)}
-                        onContextMenu={(e) => {
-                            e.preventDefault();
-                            customImageInputRef.current?.click();
-                        }}
-                        title="点击放大查看，右键上传"
+                        title="点击放大查看"
                      >
                         <img src={shot.custom_image_url} className="w-full h-full object-cover" alt="custom ref" />
                         <div className="absolute inset-0 bg-black/50 hidden group-hover/custom:flex items-center justify-center pointer-events-none">
                             <Maximize size={20} className="text-white"/>
                         </div>
-                        <button
-                            className="absolute top-0 right-0 p-1 bg-black/50 rounded-bl hidden group-hover/custom:block"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                if (confirm('确定移除自定义参考图吗？')) {
-                                    onUpdate(shot.id, { ...shot, custom_image_url: null });
-                                }
-                            }}
-                            onContextMenu={(e) => e.stopPropagation()}
-                            title="移除参考图"
-                        >
-                            <Trash2 size={10} className="text-red-400"/>
-                        </button>
+                        <div className="absolute top-1 right-1 flex gap-1 hidden group-hover/custom:flex">
+                            <button
+                                className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    customImageInputRef.current?.click();
+                                }}
+                                title="更换参考图"
+                            >
+                                <Upload size={10} />
+                            </button>
+                            <button
+                                className="p-1 bg-black/50 hover:bg-black/70 text-red-400 rounded"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (confirm('确定移除自定义参考图吗？')) {
+                                        onUpdate(shot.id, { ...shot, custom_image_url: null });
+                                    }
+                                }}
+                                title="移除参考图"
+                            >
+                                <Trash2 size={10} />
+                            </button>
+                        </div>
                      </div>
                  ) : (
                      <div 
                          className="aspect-video w-full rounded border border-dashed border-dark-600 flex items-center justify-center gap-1 cursor-pointer hover:bg-dark-800 text-dark-500 hover:text-gray-400 transition-colors"
-                         onContextMenu={(e) => {
-                             e.preventDefault();
-                             customImageInputRef.current?.click();
-                         }}
-                         title="右键上传参考图"
+                         onClick={() => customImageInputRef.current?.click()}
+                         title="上传参考图"
                      >
                          <Upload size={14}/>
-                         <span className="text-[10px]">右键上传</span>
+                         <span className="text-[10px]">上传参考图</span>
                      </div>
                  )}
             </div>
@@ -581,6 +641,137 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                         </span>
                     )}
                  </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                    <div className="space-y-1">
+                        <div className="flex justify-between items-center">
+                            <label className="text-[10px] text-gray-500">首帧</label>
+                            <button 
+                                onClick={() => { setSelectorField('first_frame_url'); setIsSelectorOpen(true); }}
+                                className="text-dark-500 hover:text-accent p-0.5 rounded hover:bg-dark-700"
+                                title="从已有分镜选择"
+                            >
+                                <Image size={12} />
+                            </button>
+                        </div>
+                        <input
+                            type="file"
+                            ref={firstFrameInputRef}
+                            className="hidden"
+                            accept="image/*"
+                            onChange={(e) => handleFrameUpload(e, "first_frame_url")}
+                        />
+                        {shot.first_frame_url ? (
+                            <div
+                                className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/frame cursor-pointer"
+                                onClick={() => setPreviewUrl(shot.first_frame_url)}
+                                title="点击放大查看"
+                            >
+                                <img src={shot.first_frame_url} className="w-full h-full object-cover" alt="first frame"/>
+                                <div className="absolute inset-0 bg-black/50 hidden group-hover/frame:flex items-center justify-center pointer-events-none">
+                                    <Maximize size={16} className="text-white"/>
+                                </div>
+                                <div className="absolute top-1 right-1 flex gap-1 hidden group-hover/frame:flex">
+                                    <button
+                                        className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            firstFrameInputRef.current?.click();
+                                        }}
+                                        title="更换首帧"
+                                    >
+                                        <Upload size={10} />
+                                    </button>
+                                    <button
+                                        className="p-1 bg-black/50 hover:bg-black/70 text-red-400 rounded"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (confirm('确定移除首帧吗？')) {
+                                                onUpdate(shot.id, { ...shot, first_frame_url: null });
+                                            }
+                                        }}
+                                        title="移除首帧"
+                                    >
+                                        <Trash2 size={10} />
+                                    </button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div
+                                className="aspect-video w-full rounded border border-dashed border-dark-600 flex items-center justify-center gap-1 cursor-pointer hover:bg-dark-800 text-dark-500 hover:text-gray-400 transition-colors"
+                                onClick={() => firstFrameInputRef.current?.click()}
+                                title="上传首帧"
+                            >
+                                <Upload size={12}/>
+                                <span className="text-[10px]">上传首帧</span>
+                            </div>
+                        )}
+                    </div>
+                    <div className="space-y-1">
+                        <div className="flex justify-between items-center">
+                            <label className="text-[10px] text-gray-500">尾帧</label>
+                            <button 
+                                onClick={() => { setSelectorField('last_frame_url'); setIsSelectorOpen(true); }}
+                                className="text-dark-500 hover:text-accent p-0.5 rounded hover:bg-dark-700"
+                                title="从已有分镜选择"
+                            >
+                                <Image size={12} />
+                            </button>
+                        </div>
+                        <input
+                            type="file"
+                            ref={lastFrameInputRef}
+                            className="hidden"
+                            accept="image/*"
+                            onChange={(e) => handleFrameUpload(e, "last_frame_url")}
+                        />
+                        {shot.last_frame_url ? (
+                            <div
+                                className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/frame cursor-pointer"
+                                onClick={() => setPreviewUrl(shot.last_frame_url)}
+                                title="点击放大查看"
+                            >
+                                <img src={shot.last_frame_url} className="w-full h-full object-cover" alt="last frame"/>
+                                <div className="absolute inset-0 bg-black/50 hidden group-hover/frame:flex items-center justify-center pointer-events-none">
+                                    <Maximize size={16} className="text-white"/>
+                                </div>
+                                <div className="absolute top-1 right-1 flex gap-1 hidden group-hover/frame:flex">
+                                    <button
+                                        className="p-1 bg-black/50 hover:bg-black/70 text-white rounded"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            lastFrameInputRef.current?.click();
+                                        }}
+                                        title="更换尾帧"
+                                    >
+                                        <Upload size={10} />
+                                    </button>
+                                    <button
+                                        className="p-1 bg-black/50 hover:bg-black/70 text-red-400 rounded"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (confirm('确定移除尾帧吗？')) {
+                                                onUpdate(shot.id, { ...shot, last_frame_url: null });
+                                            }
+                                        }}
+                                        title="移除尾帧"
+                                    >
+                                        <Trash2 size={10} />
+                                    </button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div
+                                className="aspect-video w-full rounded border border-dashed border-dark-600 flex items-center justify-center gap-1 cursor-pointer hover:bg-dark-800 text-dark-500 hover:text-gray-400 transition-colors"
+                                onClick={() => lastFrameInputRef.current?.click()}
+                                title="上传尾帧"
+                            >
+                                <Upload size={12}/>
+                                <span className="text-[10px]">上传尾帧</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
 
                 {videoItems.length > 0 ? (
                     <div className="space-y-2">
