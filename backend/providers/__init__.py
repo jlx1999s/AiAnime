@@ -38,13 +38,17 @@ async def generate_image(provider: str, prompt: str, sub_dir: str | None, config
         )
     raise Exception(f"Unsupported image provider: {provider}")
 
-async def generate_video(provider: str, prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, config, video_client, visual_service, save_video_bytes=None, save_base64_video=None, progress_callback=None) -> str:
+async def generate_video(provider: str, prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, config, video_client, visual_service, save_video_bytes=None, save_base64_video=None, progress_callback=None, first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None) -> str:
     if provider == "openai":
         return await openai_provider.generate_video(
             prompt=prompt,
             image_path=image_path,
             sub_dir=sub_dir,
             source_url=source_url,
+            first_frame_url=first_frame_url,
+            last_frame_url=last_frame_url,
+            first_frame_path=first_frame_path,
+            last_frame_path=last_frame_path,
             video_client=video_client,
             config=config,
             save_video_bytes=save_video_bytes,

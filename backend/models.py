@@ -43,6 +43,8 @@ class ShotBase(BaseModel):
     audio_prompt: Optional[str] = None
     use_scene_ref: bool = True
     custom_image_url: Optional[str] = None
+    first_frame_url: Optional[str] = None
+    last_frame_url: Optional[str] = None
     panel_layout: str = "1-panel" # 1-panel, 2-panel, 3-panel, 4-panel
 
 class ShotCreate(ShotBase):

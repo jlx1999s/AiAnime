@@ -886,6 +886,10 @@ async def update_shot(project_id: str, shot_id: str, update_data: ShotUpdate):
                 shot.video_url = _sanitize_url(shot.video_url)
             if "custom_image_url" in updated_data:
                 shot.custom_image_url = _sanitize_url(shot.custom_image_url)
+            if "first_frame_url" in updated_data:
+                shot.first_frame_url = _sanitize_url(shot.first_frame_url)
+            if "last_frame_url" in updated_data:
+                shot.last_frame_url = _sanitize_url(shot.last_frame_url)
             save_db()
             return shot
     raise HTTPException(status_code=404, detail="Shot not found")
@@ -1799,6 +1803,27 @@ def _resolve_video_image_path(shot: Shot, project: Project) -> str | None:
         return image_path
     return None
 
+def _resolve_video_frame_path(url: str | None, project: Project) -> str | None:
+    if not url:
+        return None
+    if url.startswith("http://localhost") or url.startswith("http://127.0.0.1") or url.startswith("/static/uploads/"):
+        rel = None
+        if "/static/uploads/" in url:
+            rel = url.split("/static/uploads/")[-1].lstrip("/")
+        else:
+            rel = url.split("/")[-1]
+        rel = unquote(rel)
+        candidate = os.path.join("static", "uploads", rel)
+        if os.path.exists(candidate):
+            return candidate
+    local_file = _image_url_to_local_file(url)
+    if local_file:
+        return local_file
+    b64 = _image_url_to_base64(url)
+    if b64:
+        return _save_base64_image_file(b64, sub_dir=project.id)
+    return None
+
 def _save_base64_image(b64_data: str, sub_dir: str = None) -> str:
     image_data = base64.b64decode(b64_data)
     filename = f"{uuid.uuid4()}.png"
@@ -2204,6 +2229,8 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     item.status = "generating"
             provider = current_api_config.video_provider or "openai"
             image_path = _resolve_video_image_path(target_shot, project)
+            first_frame_path = _resolve_video_frame_path(target_shot.first_frame_url, project)
+            last_frame_path = _resolve_video_frame_path(target_shot.last_frame_url, project)
             if provider == "openai":
                 if not video_client or not current_api_config.openai_video_model:
                     raise Exception("OpenAI video provider not configured")
@@ -2222,6 +2249,10 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     image_path,
                     sub_dir=project.id,
                     source_url=source_url,
+                    first_frame_url=target_shot.first_frame_url,
+                    last_frame_url=target_shot.last_frame_url,
+                    first_frame_path=first_frame_path,
+                    last_frame_path=last_frame_path,
                     config=current_api_config,
                     video_client=video_client,
                     visual_service=visual_service,
@@ -2264,6 +2295,10 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     image_path,
                     sub_dir=project.id,
                     source_url=None,
+                    first_frame_url=target_shot.first_frame_url,
+                    last_frame_url=target_shot.last_frame_url,
+                    first_frame_path=first_frame_path,
+                    last_frame_path=last_frame_path,
                     config=current_api_config,
                     video_client=video_client,
                     visual_service=visual_service,
@@ -2291,6 +2326,10 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     image_path,
                     sub_dir=project.id,
                     source_url=source_url,
+                    first_frame_url=target_shot.first_frame_url,
+                    last_frame_url=target_shot.last_frame_url,
+                    first_frame_path=first_frame_path,
+                    last_frame_path=last_frame_path,
                     config=current_api_config,
                     video_client=video_client,
                     visual_service=visual_service,

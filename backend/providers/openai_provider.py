@@ -223,17 +223,38 @@ async def _openai_poll_video_result(poll_url: str, headers: dict, method: str = 
         await asyncio.sleep(5)
     return last_data, None
 
-async def _runninghub_generate_video(prompt: str, image_path: str | None, api_key: str, base_url: str, source_url: str | None = None) -> str:
-    first_image_url = None
-    if source_url and (source_url.startswith("http://") or source_url.startswith("https://")) and "localhost" not in source_url and "127.0.0.1" not in source_url:
-        first_image_url = source_url
-    if not first_image_url and image_path and os.path.exists(image_path):
-        print(f"[RunningHub] Local image detected. Attempting to upload to temporary host...")
+async def _runninghub_generate_video(prompt: str, image_path: str | None, api_key: str, base_url: str, source_url: str | None = None, first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None) -> str:
+    def resolve_initial_url(frame_url: str | None, frame_path: str | None) -> str | None:
+        if frame_url and frame_url.startswith("data:image"):
+            return frame_url
+        if frame_url and (frame_url.startswith("http://") or frame_url.startswith("https://")) and "localhost" not in frame_url and "127.0.0.1" not in frame_url:
+            return frame_url
+        if frame_path and os.path.exists(frame_path):
+            return None
+        return None
+
+    def resolve_local_data_url(frame_path: str | None) -> str | None:
+        if not frame_path or not os.path.exists(frame_path):
+            return None
+        try:
+            with open(frame_path, "rb") as f:
+                img_bytes = f.read()
+            img_b64 = base64.b64encode(img_bytes).decode("utf-8")
+            mime_type, _ = mimetypes.guess_type(frame_path)
+            if not mime_type:
+                mime_type = "image/png"
+            return f"data:{mime_type};base64,{img_b64}"
+        except Exception:
+            return None
+
+    def upload_or_data_url(frame_path: str | None) -> str | None:
+        if not frame_path or not os.path.exists(frame_path):
+            return None
+        temp_url = None
         try:
             import requests
             try:
-                with open(image_path, "rb") as f:
-                    print(f"[RunningHub] Uploading to Catbox.moe...")
+                with open(frame_path, "rb") as f:
                     response = requests.post(
                         "https://catbox.moe/user/api.php",
                         data={"reqtype": "fileupload"},
@@ -241,15 +262,13 @@ async def _runninghub_generate_video(prompt: str, image_path: str | None, api_ke
                         timeout=60
                     )
                     if response.status_code == 200 and response.text.startswith("http"):
-                        first_image_url = response.text.strip()
-                        print(f"[RunningHub] Upload success: {first_image_url}")
-            except Exception as e:
-                print(f"[RunningHub] Catbox upload failed: {e}")
+                        temp_url = response.text.strip()
+            except Exception:
+                pass
 
-            if not first_image_url:
+            if not temp_url:
                 try:
-                    with open(image_path, "rb") as f:
-                        print(f"[RunningHub] Uploading to File.io...")
+                    with open(frame_path, "rb") as f:
                         response = requests.post(
                             "https://file.io",
                             files={"file": f},
@@ -258,47 +277,32 @@ async def _runninghub_generate_video(prompt: str, image_path: str | None, api_ke
                         if response.status_code == 200:
                             data = response.json()
                             if data.get("success") and data.get("link"):
-                                first_image_url = data.get("link")
-                                print(f"[RunningHub] Upload success: {first_image_url}")
-                except Exception as e:
-                    print(f"[RunningHub] File.io upload failed: {e}")
-        except Exception as e:
-            print(f"[RunningHub] Temporary upload failed: {e}")
+                                temp_url = data.get("link")
+                except Exception:
+                    pass
+        except Exception:
+            pass
 
-        if not first_image_url:
-            print("[RunningHub] Uploads failed, falling back to Data URI optimization...")
-            try:
-                from PIL import Image
-                import io
-                with Image.open(image_path) as img:
-                    max_size = 1280
-                    if max(img.size) > max_size:
-                        ratio = max_size / max(img.size)
-                        new_size = (int(img.width * ratio), int(img.height * ratio))
-                        img = img.resize(new_size, Image.Resampling.LANCZOS)
-                    if img.mode in ('RGBA', 'P'):
-                        img = img.convert('RGB')
-                    buffer = io.BytesIO()
-                    img.save(buffer, format="JPEG", quality=85)
-                    img_bytes = buffer.getvalue()
-                    print(f"[RunningHub] Optimized image size: {len(img_bytes)} bytes (JPEG)")
-                img_b64 = base64.b64encode(img_bytes).decode("utf-8")
-                first_image_url = f"data:image/jpeg;base64,{img_b64}"
-            except Exception as e:
-                print(f"[RunningHub] Failed to optimize image: {e}")
-            try:
-                with open(image_path, "rb") as f:
-                    img_bytes = f.read()
-                img_b64 = base64.b64encode(img_bytes).decode("utf-8")
-                mime_type, _ = mimetypes.guess_type(image_path)
-                if not mime_type:
-                    mime_type = "image/png"
-                first_image_url = f"data:{mime_type};base64,{img_b64}"
-            except Exception as e2:
-                print(f"[RunningHub] Failed to create raw Data URI: {e2}")
+        if temp_url:
+            return temp_url
+        data_url = resolve_local_data_url(frame_path)
+        if data_url:
+            return data_url
+        return None
+
+    first_image_url = None
+    first_image_url = resolve_initial_url(first_frame_url, first_frame_path)
+    if not first_image_url and source_url and (source_url.startswith("http://") or source_url.startswith("https://")) and "localhost" not in source_url and "127.0.0.1" not in source_url:
+        first_image_url = source_url
+    if not first_image_url:
+        first_image_url = upload_or_data_url(first_frame_path or image_path)
 
     if not first_image_url:
         raise Exception("RunningHub requires a remote URL or valid local image for video generation")
+
+    last_image_url = resolve_initial_url(last_frame_url, last_frame_path)
+    if not last_image_url:
+        last_image_url = upload_or_data_url(last_frame_path)
 
     url = f"{base_url.rstrip('/')}/openapi/v2/kling-video-o1/image-to-video"
     duration = "5"
@@ -311,6 +315,8 @@ async def _runninghub_generate_video(prompt: str, image_path: str | None, api_ke
         "firstImageUrl": first_image_url,
         "mode": "std"
     }
+    if last_image_url:
+        payload["lastImageUrl"] = last_image_url
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
@@ -416,7 +422,7 @@ async def generate_image(prompt: str, sub_dir: str | None, reference_image_url: 
         await asyncio.sleep(1)
         return f"https://picsum.photos/seed/{uuid.uuid4()}/512/512"
 
-async def generate_video(prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, video_client, config, save_video_bytes: Callable[[bytes, str | None], str], save_base64_video: Callable[[str, str | None], str]) -> str:
+async def generate_video(prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, video_client, config, save_video_bytes: Callable[[bytes, str | None], str], save_base64_video: Callable[[str, str | None], str], first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None) -> str:
     if not video_client:
         pass
     base_url = config.openai_video_api_base or config.openai_api_base or "https://api.openai.com/v1"
@@ -427,26 +433,146 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
     if not model:
         raise Exception("OpenAI video model not configured")
     if "runninghub" in base_url or "kling" in model.lower():
-        return await _runninghub_generate_video(prompt, image_path, api_key, base_url, source_url)
+        return await _runninghub_generate_video(prompt, image_path, api_key, base_url, source_url, first_frame_url, last_frame_url, first_frame_path, last_frame_path)
     if not video_client:
         raise Exception("OpenAI video client not initialized")
     payload = {"model": model, "prompt": prompt}
     is_apimarket = "apimarket.ai" in base_url.lower() or "apimart.ai" in base_url.lower()
-    image_url = None
-    if source_url and (source_url.startswith("http://") or source_url.startswith("https://")) and "localhost" not in source_url and "127.0.0.1" not in source_url:
-        image_url = source_url
-    if not image_url and image_path and os.path.exists(image_path):
-        with open(image_path, "rb") as f:
-            img_bytes = f.read()
-        img_b64 = base64.b64encode(img_bytes).decode("utf-8")
-        img_type = imghdr.what(None, h=img_bytes) or "png"
-        image_url = f"data:image/{img_type};base64,{img_b64}"
-    if image_url:
-        if is_apimarket:
-            payload["image_url"] = image_url
+    is_apimart_veo3 = is_apimarket and model.lower().startswith("veo3")
+    def resolve_image_input(frame_url: str | None, frame_path: str | None) -> str | None:
+        if frame_url and frame_url.startswith("data:image"):
+            return frame_url
+        if frame_url and (frame_url.startswith("http://") or frame_url.startswith("https://")) and "localhost" not in frame_url and "127.0.0.1" not in frame_url:
+            return frame_url
+        if frame_path and os.path.exists(frame_path):
+            with open(frame_path, "rb") as f:
+                img_bytes = f.read()
+            img_b64 = base64.b64encode(img_bytes).decode("utf-8")
+            img_type = imghdr.what(None, h=img_bytes) or "png"
+            return f"data:image/{img_type};base64,{img_b64}"
+        return None
+
+    first_image = resolve_image_input(first_frame_url, first_frame_path)
+    last_image = resolve_image_input(last_frame_url, last_frame_path)
+    if is_apimart_veo3:
+        def to_public_url(url_value: str | None) -> str | None:
+            if not url_value:
+                return None
+            if url_value.startswith("http://") or url_value.startswith("https://"):
+                if "localhost" in url_value or "127.0.0.1" in url_value:
+                    return None
+                return url_value
+            return None
+        def temp_upload(frame_path: str | None) -> str | None:
+            if not frame_path or not os.path.exists(frame_path):
+                return None
+            try:
+                import requests
+                try:
+                    with open(frame_path, "rb") as f:
+                        response = requests.post(
+                            "https://catbox.moe/user/api.php",
+                            data={"reqtype": "fileupload"},
+                            files={"fileToUpload": f},
+                            timeout=60
+                        )
+                    if response.status_code == 200 and response.text.startswith("http"):
+                        url = response.text.strip()
+                        print(f"[Apimart VEO3] Uploaded via catbox: {url}")
+                        return url
+                except Exception:
+                    pass
+                try:
+                    with open(frame_path, "rb") as f:
+                        response = requests.post(
+                            "https://file.io",
+                            files={"file": f},
+                            timeout=60
+                        )
+                    if response.status_code == 200:
+                        data = response.json()
+                        if data.get("success") and data.get("link"):
+                            url = data.get("link")
+                            print(f"[Apimart VEO3] Uploaded via file.io: {url}")
+                            return url
+                except Exception:
+                    pass
+            except Exception:
+                pass
+            return None
+        def resolve_public(frame_url: str | None, frame_path: str | None) -> str | None:
+            url = to_public_url(frame_url)
+            if url:
+                return url
+            temp = temp_upload(frame_path)
+            if temp:
+                return temp
+            return None
+
+        image_urls = []
+        public_first = resolve_public(first_frame_url, first_frame_path)
+        public_last = resolve_public(last_frame_url, last_frame_path)
+        public_source = to_public_url(source_url)
+        if public_first:
+            image_urls.append(public_first)
+        if public_last:
+            image_urls.append(public_last)
+        if public_source and len(image_urls) < 3:
+            image_urls.append(public_source)
+        if not image_urls:
+            temp_from_image = temp_upload(image_path)
+            if temp_from_image:
+                image_urls.append(temp_from_image)
+        if not image_urls:
+            print("[Apimart VEO3] No public image URLs available for image_urls")
         else:
-            payload["url"] = image_url
-    payload.setdefault("aspectRatio", "16:9")
+            print(f"[Apimart VEO3] image_urls={image_urls}")
+
+        payload = {
+            "model": model,
+            "prompt": prompt,
+            "duration": 8,
+            "aspect_ratio": "16:9"
+        }
+        if image_urls:
+            payload["image_urls"] = image_urls
+            if len(image_urls) == 2:
+                payload["generation_type"] = "frame"
+            elif len(image_urls) >= 3 and "quality" not in model.lower():
+                payload["generation_type"] = "reference"
+    else:
+        if first_image or last_image:
+            if first_image:
+                if is_apimarket:
+                    payload["first_image_url"] = first_image
+                    payload["firstImageUrl"] = first_image
+                else:
+                    payload["firstImageUrl"] = first_image
+            if last_image:
+                if is_apimarket:
+                    payload["last_image_url"] = last_image
+                    payload["lastImageUrl"] = last_image
+                else:
+                    payload["lastImageUrl"] = last_image
+        else:
+            image_url = None
+            if source_url and (source_url.startswith("http://") or source_url.startswith("https://")) and "localhost" not in source_url and "127.0.0.1" not in source_url:
+                image_url = source_url
+            if not image_url and image_path and os.path.exists(image_path):
+                with open(image_path, "rb") as f:
+                    img_bytes = f.read()
+                img_b64 = base64.b64encode(img_bytes).decode("utf-8")
+                img_type = imghdr.what(None, h=img_bytes) or "png"
+                image_url = f"data:image/{img_type};base64,{img_b64}"
+            if image_url:
+                if is_apimarket:
+                    payload["image_url"] = image_url
+                    payload["imageUrl"] = image_url
+                    payload["url"] = image_url
+                else:
+                    payload["url"] = image_url
+    if not is_apimart_veo3:
+        payload.setdefault("aspectRatio", "16:9")
     if "sora" in model.lower():
         payload.setdefault("duration", 10)
         if "sora-2-all" in model.lower():
@@ -454,8 +580,9 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
         else:
             payload.setdefault("size", "1920x1080")
     elif "veo" in model.lower():
-        payload.setdefault("duration", 10)
-        payload.setdefault("support_audio", True)
+        if not is_apimart_veo3:
+            payload.setdefault("duration", 10)
+            payload.setdefault("support_audio", True)
     else:
         payload.setdefault("duration", 10)
         payload.setdefault("size", "small")
@@ -468,7 +595,7 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
         else:
             default_endpoint = "/v1/video/sora-video"
     elif "veo" in model.lower():
-        default_endpoint = "/v1/videos"
+        default_endpoint = "/v1/videos/generations" if is_apimart_veo3 else "/v1/videos"
     endpoint = config.openai_video_endpoint or default_endpoint
     if endpoint.startswith("http://") or endpoint.startswith("https://"):
         url = endpoint
