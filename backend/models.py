@@ -68,6 +68,18 @@ class VideoItem(BaseModel):
     progress: Optional[int] = None
     status: Optional[str] = None
 
+class User(BaseModel):
+    id: str
+    username: str
+    password_hash: str
+    created_at: float
+    is_admin: bool = False
+
+class UserPublic(BaseModel):
+    id: str
+    username: str
+    is_admin: bool = False
+
 class Shot(ShotBase):
     id: str
     order: int
@@ -87,6 +99,7 @@ class Project(BaseModel):
     id: str
     name: str
     style: str = "anime"
+    owner_id: Optional[str] = None
     shots: List[Shot] = []
     characters: List[Character] = []
     scenes: List[Scene] = []

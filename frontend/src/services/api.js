@@ -1,6 +1,37 @@
 const API_BASE_URL = "/api";
 const USE_MOCK = false; // Set to false to use real backend
 
+const getStoredUser = () => {
+    try {
+        const raw = localStorage.getItem("current_user");
+        return raw ? JSON.parse(raw) : null;
+    } catch {
+        return null;
+    }
+};
+
+const setStoredUser = (user) => {
+    localStorage.setItem("current_user", JSON.stringify(user));
+};
+
+const clearStoredUser = () => {
+    localStorage.removeItem("current_user");
+};
+
+const withUserId = (url) => {
+    const user = getStoredUser();
+    if (!user?.id) return url;
+    const joiner = url.includes("?") ? "&" : "?";
+    return `${url}${joiner}user_id=${encodeURIComponent(user.id)}`;
+};
+
+const withAdminUserId = (url) => {
+    const user = getStoredUser();
+    if (!user?.id) return url;
+    const joiner = url.includes("?") ? "&" : "?";
+    return `${url}${joiner}admin_user_id=${encodeURIComponent(user.id)}`;
+};
+
 const MockData = {
     characters: [
         { id: 'c1', name: '陈远 (外门弟子)', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Chen' },
@@ -36,6 +67,76 @@ const MockData = {
 };
 
 export const ApiService = {
+    getCurrentUser: () => getStoredUser(),
+    setCurrentUser: (user) => setStoredUser(user),
+    clearCurrentUser: () => clearStoredUser(),
+
+    register: async (username, password) => {
+        if (USE_MOCK) return { id: `user_${Date.now()}`, username, is_admin: true };
+        const res = await fetch(`${API_BASE_URL}/auth/register`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data.detail || `注册失败 (${res.status})`);
+        }
+        return data;
+    },
+
+    login: async (username, password) => {
+        if (USE_MOCK) return { id: `user_${Date.now()}`, username, is_admin: false };
+        const res = await fetch(`${API_BASE_URL}/auth/login`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data.detail || `登录失败 (${res.status})`);
+        }
+        return data;
+    },
+
+    adminListUsers: async () => {
+        if (USE_MOCK) return [];
+        const res = await fetch(withAdminUserId(`${API_BASE_URL}/admin/users`));
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data.detail || `获取用户失败 (${res.status})`);
+        }
+        return data;
+    },
+
+    adminAssignProject: async (projectId, ownerId) => {
+        if (USE_MOCK) return true;
+        const res = await fetch(withAdminUserId(`${API_BASE_URL}/admin/projects/${projectId}/assign`), {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ owner_id: ownerId || null })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data.detail || `分配失败 (${res.status})`);
+        }
+        return data;
+    },
+
+    adminAssignProjectsBulk: async (projectIds, ownerId) => {
+        if (USE_MOCK) return [];
+        const res = await fetch(withAdminUserId(`${API_BASE_URL}/admin/projects/assign-bulk`), {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ project_ids: projectIds, owner_id: ownerId || null })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data.detail || `批量分配失败 (${res.status})`);
+        }
+        return data;
+    },
+
     getProjects: async () => {
         if (USE_MOCK) {
             return [{
@@ -47,7 +148,7 @@ export const ApiService = {
                 scenes: []
             }];
         }
-        const res = await fetch(`${API_BASE_URL}/projects`);
+        const res = await fetch(withUserId(`${API_BASE_URL}/projects`));
         return res.json();
     },
 
@@ -62,17 +163,18 @@ export const ApiService = {
                 scenes: []
             };
         }
+        const user = getStoredUser();
         const res = await fetch(`${API_BASE_URL}/projects`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ name, style })
+            body: JSON.stringify({ name, style, owner_id: user?.id || null })
         });
         return res.json();
     },
 
     updateProject: async (projectId, updates) => {
         if (USE_MOCK) return { id: projectId, ...updates };
-        const res = await fetch(`${API_BASE_URL}/projects/${projectId}`, {
+        const res = await fetch(withUserId(`${API_BASE_URL}/projects/${projectId}`), {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(updates)
@@ -82,7 +184,7 @@ export const ApiService = {
 
     deleteProject: async (projectId) => {
         if (USE_MOCK) return true;
-        await fetch(`${API_BASE_URL}/projects/${projectId}`, { method: 'DELETE' });
+        await fetch(withUserId(`${API_BASE_URL}/projects/${projectId}`), { method: 'DELETE' });
         return true;
     },
     getProject: async (id) => {
@@ -94,7 +196,7 @@ export const ApiService = {
                 characters: MockData.characters
             }), 500));
         }
-        const res = await fetch(`${API_BASE_URL}/projects/${id}`);
+        const res = await fetch(withUserId(`${API_BASE_URL}/projects/${id}`));
         return res.json();
     },
 
@@ -111,6 +213,21 @@ export const ApiService = {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(shotData)
         });
+        return res.json();
+    },
+    autoImportShotsMd: async (projectId, payload) => {
+        if (USE_MOCK) {
+            return { shots: [] };
+        }
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/shots/import_auto_md`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.detail || `自动导入失败 (${res.status})`);
+        }
         return res.json();
     },
 
@@ -237,6 +354,20 @@ export const ApiService = {
         });
         return res.json();
     },
+
+    autoImportCharactersMd: async (projectId, payload) => {
+        if (USE_MOCK) return { added: 0, characters: [] };
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/characters/import_auto_md`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.detail || `自动导入失败 (${res.status})`);
+        }
+        return res.json();
+    },
     
     importScenesFromMd: async (projectId, file) => {
         if (USE_MOCK) return { added: 1, scenes: [] };
@@ -246,6 +377,20 @@ export const ApiService = {
             method: 'POST',
             body: formData
         });
+        return res.json();
+    },
+
+    autoImportScenesMd: async (projectId, payload) => {
+        if (USE_MOCK) return { added: 0, scenes: [] };
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/scenes/import_auto_md`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.detail || `自动导入失败 (${res.status})`);
+        }
         return res.json();
     },
     

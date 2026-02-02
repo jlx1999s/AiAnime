@@ -2,9 +2,23 @@ import React, { useState } from 'react';
 import { Trash2, Search, Plus, Wand2, RefreshCw, Maximize, Save, ChevronLeft, ChevronRight, User, Image as ImageIcon } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
 
-const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene, onGenerateAllCharacters, onGenerateAllScenes, isGeneratingCharacters, isGeneratingScenes, defaultSceneId, onSetDefaultScene, onImportCharacters, isCollapsed, onToggleCollapse }) => {
+const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene, onGenerateAllCharacters, onGenerateAllScenes, isGeneratingCharacters, isGeneratingScenes, defaultSceneId, onSetDefaultScene, onImportCharacters, onAutoImportCharacters, onAutoImportScenes, isCollapsed, onToggleCollapse }) => {
     const [activeTab, setActiveTab] = useState('chars');
     const [previewUrl, setPreviewUrl] = useState(null);
+    const [characterQuery, setCharacterQuery] = useState('');
+    const [sceneQuery, setSceneQuery] = useState('');
+
+    const normalize = (value) => (value || '').toString().trim().toLowerCase();
+    const filteredCharacters = (characters || []).filter((char) => {
+        const query = normalize(characterQuery);
+        if (!query) return true;
+        return normalize(char?.name).includes(query);
+    });
+    const filteredScenes = (scenes || []).filter((scene) => {
+        const query = normalize(sceneQuery);
+        if (!query) return true;
+        return normalize(scene?.name).includes(query);
+    });
 
     if (isCollapsed) {
         return (
@@ -70,7 +84,7 @@ const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddChar
                         <div>
                             <div className="flex justify-between items-center mb-3">
                                 <h3 className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
-                                    角色列表 ({characters?.length || 0})
+                                    角色列表 ({filteredCharacters.length})
                                 </h3>
                                 <div className="flex items-center gap-2">
                                     <button
@@ -89,14 +103,27 @@ const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddChar
                                     >
                                         <Save size={14} />
                                     </button>
+                                    <button
+                                        onClick={onAutoImportCharacters}
+                                        className="bg-dark-700 hover:bg-accent text-gray-300 hover:text-white p-1 rounded transition-colors"
+                                        title="自动检索导入角色"
+                                    >
+                                        <Search size={14} />
+                                    </button>
                                     <div className="relative">
-                                        <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>
+                                        <input
+                                            type="text"
+                                            placeholder="搜索..."
+                                            value={characterQuery}
+                                            onChange={(e) => setCharacterQuery(e.target.value)}
+                                            className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"
+                                        />
                                         <Search size={10} className="absolute left-1.5 top-1.5 text-gray-500"/>
                                     </div>
                                 </div>
                             </div>
                             <div className="grid grid-cols-3 gap-2">
-                                {characters?.map(char => (
+                                {filteredCharacters.map(char => (
                                     <div 
                                         key={char.id} 
                                         className="flex flex-col items-center gap-1 group cursor-pointer"
@@ -160,7 +187,7 @@ const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddChar
                         <div>
                             <div className="flex justify-between items-center mb-3">
                                 <h3 className="text-xs font-bold text-gray-500 uppercase flex items-center gap-2">
-                                    场景列表 ({scenes?.length || 0})
+                                    场景列表 ({filteredScenes.length})
                                 </h3>
                                 <div className="flex items-center gap-2">
                                     <button
@@ -172,14 +199,27 @@ const Sidebar = ({ characters, scenes, onSceneClick, onCharacterClick, onAddChar
                                         {isGeneratingScenes ? <RefreshCw size={10} className="animate-spin"/> : <Wand2 size={10} />} 
                                         {isGeneratingScenes ? '生成中...' : '一键生成'}
                                     </button>
+                                    <button
+                                        onClick={onAutoImportScenes}
+                                        className="bg-dark-700 hover:bg-accent text-gray-300 hover:text-white p-1 rounded transition-colors"
+                                        title="自动检索导入场景"
+                                    >
+                                        <Search size={14} />
+                                    </button>
                                     <div className="relative">
-                                        <input type="text" placeholder="搜索..." className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"/>
+                                        <input
+                                            type="text"
+                                            placeholder="搜索..."
+                                            value={sceneQuery}
+                                            onChange={(e) => setSceneQuery(e.target.value)}
+                                            className="bg-dark-900 text-xs px-2 py-1 pl-6 rounded w-24 border border-dark-700 focus:border-accent outline-none"
+                                        />
                                         <Search size={10} className="absolute left-1.5 top-1.5 text-gray-500"/>
                                     </div>
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-2">
-                                {scenes?.map(scene => (
+                                {filteredScenes.map(scene => (
                                     <div 
                                         key={scene.id} 
                                         className="flex flex-col gap-1 group cursor-pointer"

@@ -17,6 +17,11 @@ const AssetManager = () => {
     const [isBulkGeneratingScenes, setIsBulkGeneratingScenes] = useState(false);
 
     useEffect(() => {
+        const user = ApiService.getCurrentUser();
+        if (!user) {
+            navigate('/');
+            return;
+        }
         loadProject();
     }, [projectId]);
 

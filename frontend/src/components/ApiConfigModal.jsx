@@ -28,7 +28,8 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
         rongyiyun_token: '',
         rongyiyun_api_base: 'https://zcbservice.aizfw.cn/kyyApi',
         rongyiyun_ratio: '16:9',
-        rongyiyun_duration: 10
+        rongyiyun_duration: 10,
+        storyboard_root_dir: ''
     });
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
@@ -196,6 +197,16 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
                         </div>
                     ) : (
                         <>
+                            <div>
+                                <label className="block text-xs text-gray-500 mb-1">分镜根目录（绝对路径）</label>
+                                <input
+                                    type="text"
+                                    value={config.storyboard_root_dir || ''}
+                                    onChange={(e) => setConfig({...config, storyboard_root_dir: e.target.value})}
+                                    placeholder="C:/storyboards"
+                                    className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                />
+                            </div>
                             {activeTab === 'text' && (
                                 <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
                                     <div className="flex items-center justify-between border-b border-dark-700 pb-2">

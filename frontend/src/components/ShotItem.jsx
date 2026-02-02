@@ -375,12 +375,16 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                  {shot.custom_image_url ? (
                      <div 
                         className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/custom cursor-pointer"
-                        onClick={() => customImageInputRef.current?.click()}
-                        title="点击更换自定义参考图"
+                        onClick={() => setPreviewUrl(shot.custom_image_url)}
+                        onContextMenu={(e) => {
+                            e.preventDefault();
+                            customImageInputRef.current?.click();
+                        }}
+                        title="点击放大查看，右键上传"
                      >
                         <img src={shot.custom_image_url} className="w-full h-full object-cover" alt="custom ref" />
-                        <div className="absolute inset-0 bg-black/50 hidden group-hover/custom:flex items-center justify-center">
-                            <span className="text-xs text-white">更换图片</span>
+                        <div className="absolute inset-0 bg-black/50 hidden group-hover/custom:flex items-center justify-center pointer-events-none">
+                            <Maximize size={20} className="text-white"/>
                         </div>
                         <button
                             className="absolute top-0 right-0 p-1 bg-black/50 rounded-bl hidden group-hover/custom:block"
@@ -390,6 +394,7 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                     onUpdate(shot.id, { ...shot, custom_image_url: null });
                                 }
                             }}
+                            onContextMenu={(e) => e.stopPropagation()}
                             title="移除参考图"
                         >
                             <Trash2 size={10} className="text-red-400"/>
@@ -398,10 +403,14 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                  ) : (
                      <div 
                          className="aspect-video w-full rounded border border-dashed border-dark-600 flex items-center justify-center gap-1 cursor-pointer hover:bg-dark-800 text-dark-500 hover:text-gray-400 transition-colors"
-                         onClick={() => customImageInputRef.current?.click()}
+                         onContextMenu={(e) => {
+                             e.preventDefault();
+                             customImageInputRef.current?.click();
+                         }}
+                         title="右键上传参考图"
                      >
                          <Upload size={14}/>
-                         <span className="text-[10px]">上传参考图</span>
+                         <span className="text-[10px]">右键上传</span>
                      </div>
                  )}
             </div>

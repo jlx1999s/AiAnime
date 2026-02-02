@@ -86,8 +86,33 @@ const ProjectEditor = () => {
         }
     };
 
+    const resolveAutoImportRoot = async () => {
+        let latestConfig = apiConfig;
+        if (!latestConfig) {
+            latestConfig = await ApiService.getApiConfig();
+            setApiConfig(latestConfig || null);
+        }
+        let root = (latestConfig?.storyboard_root_dir || "").trim();
+        if (!root) {
+            const input = prompt("请输入检索根目录（绝对路径）");
+            if (!input) return null;
+            root = input.trim();
+            const updated = await ApiService.updateApiConfig({
+                ...(latestConfig || {}),
+                storyboard_root_dir: root
+            });
+            setApiConfig(updated || null);
+        }
+        return root;
+    };
+
     // Load initial data
     useEffect(() => {
+        const user = ApiService.getCurrentUser();
+        if (!user) {
+            navigate('/');
+            return;
+        }
         loadProjects();
     }, []);
 
@@ -100,6 +125,11 @@ const ProjectEditor = () => {
     useEffect(() => {
         const loadData = async () => {
             if (!projectId) return;
+            const user = ApiService.getCurrentUser();
+            if (!user) {
+                navigate('/');
+                return;
+            }
             setLoading(true);
             try {
                 const project = await ApiService.getProject(projectId);
@@ -230,6 +260,54 @@ const ProjectEditor = () => {
             await Promise.all(promises);
         } finally {
             setIsGeneratingStoryboards(false);
+        }
+    };
+
+    const handleAutoImportCharacters = async () => {
+        try {
+            if (!projectId) return;
+            const root = await resolveAutoImportRoot();
+            if (!root) return;
+            const project = projects.find(p => p.id === projectId);
+            const name = (project?.name || "").trim();
+            if (!name) {
+                alert("项目名称为空，无法检索");
+                return;
+            }
+            const res = await ApiService.autoImportCharactersMd(projectId, { root, projectName: name });
+            const added = res.characters || [];
+            if (added.length) {
+                setCharacters(prev => [...prev, ...added]);
+                alert(`自动导入成功：新增 ${added.length} 个角色`);
+            } else {
+                alert("未找到匹配的角色文件");
+            }
+        } catch (e) {
+            alert(e.message || "自动检索导入失败");
+        }
+    };
+
+    const handleAutoImportScenes = async () => {
+        try {
+            if (!projectId) return;
+            const root = await resolveAutoImportRoot();
+            if (!root) return;
+            const project = projects.find(p => p.id === projectId);
+            const name = (project?.name || "").trim();
+            if (!name) {
+                alert("项目名称为空，无法检索");
+                return;
+            }
+            const res = await ApiService.autoImportScenesMd(projectId, { root, projectName: name });
+            const added = res.scenes || [];
+            if (added.length) {
+                setScenes(prev => [...prev, ...added]);
+                alert(`自动导入成功：新增 ${added.length} 个场景`);
+            } else {
+                alert("未找到匹配的场景文件");
+            }
+        } catch (e) {
+            alert(e.message || "自动检索导入失败");
         }
     };
 
@@ -989,6 +1067,48 @@ const ProjectEditor = () => {
                         >
                             导入分镜MD
                         </button>
+                        <button 
+                            onClick={async () => {
+                                try {
+                                    if (!projectId) return;
+                                    let latestConfig = apiConfig;
+                                    if (!latestConfig) {
+                                        latestConfig = await ApiService.getApiConfig();
+                                        setApiConfig(latestConfig || null);
+                                    }
+                                    let root = (latestConfig?.storyboard_root_dir || "").trim();
+                                    if (!root) {
+                                        const input = prompt("请输入检索根目录（绝对路径）");
+                                        if (!input) return;
+                                        root = input.trim();
+                                        const updated = await ApiService.updateApiConfig({
+                                            ...(latestConfig || {}),
+                                            storyboard_root_dir: root
+                                        });
+                                        setApiConfig(updated || null);
+                                    }
+                                    const project = projects.find(p => p.id === projectId);
+                                    const name = (project?.name || "").trim();
+                                    if (!name) {
+                                        alert("项目名称为空，无法检索");
+                                        return;
+                                    }
+                                    const res = await ApiService.autoImportShotsMd(projectId, { root, projectName: name });
+                                    const added = (res.shots || []).map(normalizeShot);
+                                    if (added.length) {
+                                        setShots(prev => [...prev, ...added]);
+                                        alert(`自动导入成功：新增 ${added.length} 个分镜`);
+                                    } else {
+                                        alert("未找到匹配的分镜文件");
+                                    }
+                                } catch (e) {
+                                    alert(e.message || "自动检索导入失败");
+                                }
+                            }} 
+                            className="hover:text-white flex items-center gap-1 transition-colors"
+                        >
+                            自动检索并导入分镜MD
+                        </button>
                         <div className="h-4 w-px bg-dark-600"></div>
                         <button 
                             className="hover:text-white flex items-center gap-1 transition-colors ml-auto text-accent"
@@ -1102,6 +1222,8 @@ const ProjectEditor = () => {
                     defaultSceneId={defaultSceneId}
                     onSetDefaultScene={handleSetDefaultScene}
                     onImportCharacters={() => importCharsFileInputRef.current?.click()}
+                    onAutoImportCharacters={handleAutoImportCharacters}
+                    onAutoImportScenes={handleAutoImportScenes}
                 />
             </div>
             <input 

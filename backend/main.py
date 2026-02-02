@@ -9,6 +9,7 @@ import imghdr
 import io
 import urllib.request
 import re
+import hashlib
 from urllib.parse import urlparse, unquote
 from typing import List, Dict, Any
 from pydantic import BaseModel
@@ -18,17 +19,26 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from volcengine.visual.VisualService import VisualService
-from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest, CharacterUpdate, SceneUpdate, VideoItem, ImportShotsAutoRequest
+from models import Project, Shot, Character, Scene, ShotCreate, ShotUpdate, GenerateRequest, GenerationStatus, AssetGenerateRequest, CharacterUpdate, SceneUpdate, VideoItem, ImportShotsAutoRequest, User, UserPublic
 from providers import generate_image, generate_video, rongyiyun_provider
 class ProjectCreate(BaseModel):
     name: str
     style: str = "anime"
+    owner_id: str | None = None
 class ProjectUpdate(BaseModel):
     name: str | None = None
     style: str | None = None
     default_scene_id: str | None = None
     default_panel_layout: str | None = None
     default_image_count: int | None = None
+
+class RegisterRequest(BaseModel):
+    username: str
+    password: str
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
 
 load_dotenv()
 
@@ -299,6 +309,8 @@ app.add_middleware(
 DB: Dict[str, Project] = {}
 DATA_DIR = "data"
 DATA_FILE = os.path.join(DATA_DIR, "projects.json")
+USERS: Dict[str, User] = {}
+USERS_FILE = os.path.join(DATA_DIR, "users.json")
 
 def save_db():
     try:
@@ -319,6 +331,50 @@ def save_db():
             
     except Exception as e:
         print(f"Error saving DB: {e}")
+
+def save_users():
+    try:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        data = {uid: user.model_dump() for uid, user in USERS.items()}
+        temp_file = f"{USERS_FILE}.tmp"
+        with open(temp_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        if os.path.exists(USERS_FILE):
+            os.replace(temp_file, USERS_FILE)
+        else:
+            os.rename(temp_file, USERS_FILE)
+    except Exception as e:
+        print(f"Error saving users: {e}")
+
+def load_users():
+    global USERS
+    if not os.path.exists(USERS_FILE):
+        return
+    try:
+        with open(USERS_FILE, "r", encoding="utf-8") as f:
+            content = f.read()
+            if not content:
+                return
+            try:
+                data = json.loads(content)
+            except json.JSONDecodeError:
+                return
+            USERS.clear()
+            for uid, user_data in data.items():
+                USERS[uid] = User(**user_data)
+    except Exception as e:
+        print(f"Failed to load users: {e}")
+
+def _get_user(user_id: str | None) -> User | None:
+    if not user_id:
+        return None
+    return USERS.get(user_id)
+
+def _hash_password(password: str) -> str:
+    return hashlib.sha256(password.encode("utf-8")).hexdigest()
+
+def _verify_password(password: str, password_hash: str) -> bool:
+    return _hash_password(password) == password_hash
 
 def _sanitize_url(url: str | None) -> str | None:
     if not url:
@@ -522,19 +578,100 @@ def seed_data():
     save_db()
 
 load_db()
+load_users()
 seed_data()
 
 # --- Helpers ---
-def get_project_or_404(project_id: str) -> Project:
+def get_project_or_404(project_id: str, user_id: str | None = None) -> Project:
     if project_id not in DB:
         raise HTTPException(status_code=404, detail="Project not found")
-    return DB[project_id]
+    project = DB[project_id]
+    if user_id:
+        user = _get_user(user_id)
+        if user and user.is_admin:
+            return project
+        if not project.owner_id or project.owner_id != user_id:
+            raise HTTPException(status_code=404, detail="Project not found")
+    return project
 
 # --- API Endpoints ---
 
 @app.get("/")
 async def root():
     return {"message": "MochiAni API is running"}
+
+@app.post("/auth/register", response_model=UserPublic)
+async def register_user(data: RegisterRequest):
+    username = data.username.strip()
+    password = data.password
+    if not username or not password:
+        raise HTTPException(status_code=400, detail="username or password is empty")
+    if any(u.username == username for u in USERS.values()):
+        raise HTTPException(status_code=400, detail="username already exists")
+    user_id = str(uuid.uuid4())
+    is_admin = len(USERS) == 0
+    user = User(
+        id=user_id,
+        username=username,
+        password_hash=_hash_password(password),
+        created_at=time.time(),
+        is_admin=is_admin
+    )
+    USERS[user_id] = user
+    save_users()
+    return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
+
+@app.post("/auth/login", response_model=UserPublic)
+async def login_user(data: LoginRequest):
+    username = data.username.strip()
+    password = data.password
+    user = next((u for u in USERS.values() if u.username == username), None)
+    if not user or not _verify_password(password, user.password_hash):
+        raise HTTPException(status_code=400, detail="invalid credentials")
+    return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
+
+class AssignProjectRequest(BaseModel):
+    owner_id: str | None = None
+
+class AssignProjectBulkRequest(BaseModel):
+    project_ids: List[str]
+    owner_id: str | None = None
+
+@app.get("/admin/users", response_model=List[UserPublic])
+async def list_users(admin_user_id: str):
+    admin = _get_user(admin_user_id)
+    if not admin or not admin.is_admin:
+        raise HTTPException(status_code=403, detail="admin only")
+    return [UserPublic(id=u.id, username=u.username, is_admin=u.is_admin) for u in USERS.values()]
+
+@app.put("/admin/projects/{project_id}/assign", response_model=Project)
+async def assign_project_owner(project_id: str, data: AssignProjectRequest, admin_user_id: str):
+    admin = _get_user(admin_user_id)
+    if not admin or not admin.is_admin:
+        raise HTTPException(status_code=403, detail="admin only")
+    if data.owner_id and data.owner_id not in USERS:
+        raise HTTPException(status_code=400, detail="owner not found")
+    project = get_project_or_404(project_id)
+    project.owner_id = data.owner_id
+    save_db()
+    return project
+
+@app.put("/admin/projects/assign-bulk", response_model=List[Project])
+async def assign_projects_bulk(data: AssignProjectBulkRequest, admin_user_id: str):
+    admin = _get_user(admin_user_id)
+    if not admin or not admin.is_admin:
+        raise HTTPException(status_code=403, detail="admin only")
+    if data.owner_id and data.owner_id not in USERS:
+        raise HTTPException(status_code=400, detail="owner not found")
+    updated = []
+    for project_id in data.project_ids:
+        if project_id in DB:
+            project = DB[project_id]
+            project.owner_id = data.owner_id
+            updated.append(project)
+    if updated:
+        save_db()
+    return updated
 
 @app.get("/api/config", response_model=ApiConfig)
 async def get_api_config():
@@ -571,12 +708,17 @@ async def delete_api_preset(type: str, name: str):
     return {"status": "success"}
 
 @app.get("/projects", response_model=List[Project])
-async def list_projects():
-    return list(DB.values())
+async def list_projects(user_id: str | None = None):
+    if not user_id:
+        return list(DB.values())
+    user = _get_user(user_id)
+    if user and user.is_admin:
+        return list(DB.values())
+    return [p for p in DB.values() if p.owner_id == user_id]
 
 @app.get("/projects/{project_id}", response_model=Project)
-async def get_project(project_id: str):
-    return get_project_or_404(project_id)
+async def get_project(project_id: str, user_id: str | None = None):
+    return get_project_or_404(project_id, user_id=user_id)
 
 @app.post("/projects/{project_id}/normalize-videos")
 async def normalize_project_videos(project_id: str):
@@ -609,13 +751,13 @@ async def create_project(data: ProjectCreate):
     project_dir = os.path.join("static", "uploads", project_id)
     os.makedirs(project_dir, exist_ok=True)
     
-    DB[project_id] = Project(id=project_id, name=data.name, style=data.style, shots=[], characters=[], scenes=[])
+    DB[project_id] = Project(id=project_id, name=data.name, style=data.style, owner_id=data.owner_id, shots=[], characters=[], scenes=[])
     save_db()
     return DB[project_id]
 
 @app.put("/projects/{project_id}", response_model=Project)
-async def update_project(project_id: str, data: ProjectUpdate):
-    project = get_project_or_404(project_id)
+async def update_project(project_id: str, data: ProjectUpdate, user_id: str | None = None):
+    project = get_project_or_404(project_id, user_id=user_id)
     if data.name is not None:
         project.name = data.name
     if data.style is not None:
@@ -630,10 +772,9 @@ async def update_project(project_id: str, data: ProjectUpdate):
     return project
 
 @app.delete("/projects/{project_id}")
-async def delete_project(project_id: str):
-    if project_id not in DB:
-        raise HTTPException(status_code=404, detail="Project not found")
-    del DB[project_id]
+async def delete_project(project_id: str, user_id: str | None = None):
+    project = get_project_or_404(project_id, user_id=user_id)
+    del DB[project.id]
     save_db()
     return {"ok": True}
 
@@ -1050,12 +1191,17 @@ def _import_shots_from_md_text(project: Project, text: str):
     rows.sort(key=lambda r: (r["number"] if isinstance(r["number"], int) else 1_000_000))
     
     def normalize(s):
-        if not s: return ""
+        if not s:
+            return ""
         s = s.strip().lower()
-        # Remove common punctuation and whitespace
         for char in [" ", "\t", "，", ",", "。", ".", "：", ":", "“", "”", "'", '"', "（", "）", "(", ")", "-", "_"]:
             s = s.replace(char, "")
         return s
+
+    def strip_asset_blocks(text):
+        if not text:
+            return ""
+        return re.sub(r"\s*\[[^\[\]]+?:[^\[\]]*?\]", "", text).strip()
 
     # Resolve IDs
     name_to_char = {c.name.strip(): c.id for c in (project.characters or [])}
@@ -1066,19 +1212,29 @@ def _import_shots_from_md_text(project: Project, text: str):
     norm_to_scene = {normalize(s.name): s.id for s in (project.scenes or [])}
     id_to_scene_obj = {s.id: s for s in (project.scenes or [])}
 
-    def shot_key(prompt, dialogue, audio_prompt, characters, scene_id):
+    def shot_key_primary(prompt, audio_prompt, scene_name, character_names):
         prompt_key = normalize(prompt)
-        dialogue_key = normalize(dialogue)
         audio_key = normalize(audio_prompt or "")
-        scene_key = scene_id or ""
-        chars_key = ",".join(sorted([c or "" for c in (characters or [])]))
-        return (prompt_key, dialogue_key, audio_key, scene_key, chars_key)
+        scene_key = normalize(scene_name or "")
+        chars_key = ",".join(sorted([normalize(c) for c in (character_names or []) if c]))
+        return (prompt_key, audio_key, scene_key, chars_key)
 
-    existing_keys = {
-        shot_key(s.prompt, s.dialogue, s.audio_prompt, s.characters, s.scene_id)
-        for s in (project.shots or [])
-    }
-    seen_keys = set()
+    def shot_key_fallback(prompt, audio_prompt):
+        prompt_key = normalize(prompt)
+        audio_key = normalize(audio_prompt or "")
+        return (prompt_key, audio_key)
+
+    existing_primary_keys = set()
+    existing_fallback_keys = set()
+    for s in (project.shots or []):
+        scene_name = id_to_scene_obj.get(s.scene_id).name if s.scene_id and id_to_scene_obj.get(s.scene_id) else ""
+        character_names = [id_to_char_obj.get(cid).name for cid in (s.characters or []) if id_to_char_obj.get(cid)]
+        base_prompt = strip_asset_blocks(s.prompt)
+        existing_primary_keys.add(shot_key_primary(base_prompt, s.audio_prompt, scene_name, character_names))
+        existing_fallback_keys.add(shot_key_fallback(base_prompt, s.audio_prompt))
+
+    seen_primary_keys = set()
+    seen_fallback_keys = set()
     
     new_shots = []
     for r in rows:
@@ -1148,16 +1304,23 @@ def _import_shots_from_md_text(project: Project, text: str):
             "characters": char_ids,
             "scene_id": scene_id,
         }
-        key = shot_key(
-            shot_dict["prompt"],
-            shot_dict["dialogue"],
+        base_prompt = strip_asset_blocks(r["prompt"])
+        primary_key = shot_key_primary(
+            base_prompt,
             shot_dict["audio_prompt"],
-            shot_dict["characters"],
-            shot_dict["scene_id"]
+            r["scene_name"],
+            r["char_names"]
         )
-        if key in existing_keys or key in seen_keys:
+        fallback_key = shot_key_fallback(base_prompt, shot_dict["audio_prompt"])
+        if (
+            primary_key in existing_primary_keys
+            or primary_key in seen_primary_keys
+            or fallback_key in existing_fallback_keys
+            or fallback_key in seen_fallback_keys
+        ):
             continue
-        seen_keys.add(key)
+        seen_primary_keys.add(primary_key)
+        seen_fallback_keys.add(fallback_key)
         
         new_shot = Shot(
             id=str(uuid.uuid4()),
