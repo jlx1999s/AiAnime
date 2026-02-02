@@ -19,5 +19,12 @@
     "password_hash": "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
     "created_at": 1769920161.9926994,
     "is_admin": false
+  },
+  "9e10fe66-ad34-4613-bad8-f178af921d3b": {
+    "id": "9e10fe66-ad34-4613-bad8-f178af921d3b",
+    "username": "zy",
+    "password_hash": "8cbbcbe5050ca985f5c422f3070ed948d61ab098de958c4b346ff27f0c60c882",
+    "created_at": 1770028805.4561093,
+    "is_admin": false
   }
 }

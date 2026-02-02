@@ -343,18 +343,6 @@ export const ApiService = {
         return data;
     },
 
-    uploadFile: async (file, projectId) => {
-        if (USE_MOCK) return "https://placehold.co/200";
-        const formData = new FormData();
-        formData.append('file', file);
-        const q = projectId ? `?project_id=${encodeURIComponent(projectId)}` : '';
-        const res = await fetch(`${API_BASE_URL}/upload${q}`, {
-            method: 'POST',
-            body: formData
-        });
-        const data = await res.json();
-        return data.url;
-    },
 
     importCharactersFromMd: async (projectId, file) => {
         if (USE_MOCK) return { added: 1, characters: [] };
@@ -558,10 +546,8 @@ export const ApiService = {
         if (USE_MOCK) return { url: URL.createObjectURL(file) };
         const formData = new FormData();
         formData.append('file', file);
-        if (projectId) {
-            formData.append('project_id', projectId);
-        }
-        const res = await fetch(`${API_BASE_URL}/upload`, {
+        const q = projectId ? `?project_id=${encodeURIComponent(projectId)}` : '';
+        const res = await fetch(`${API_BASE_URL}/upload${q}`, {
             method: 'POST',
             body: formData
         });

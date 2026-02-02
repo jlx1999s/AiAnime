@@ -149,7 +149,7 @@
         "184367d3-4391-4d77-9e4f-63ab3abd0632"
       ],
       "scene_id": "dcb32dff-bba8-4a03-8f17-77fddd25e2b6",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/cb562efc-8e3f-4b08-b3e9-ea0d3e9cc24d.png",
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62974418-8a74-4c3d-b3e3-6ec3e9afcde7.png",
       "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62974418-8a74-4c3d-b3e3-6ec3e9afcde7.png",
       "image_candidates": [
         "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62974418-8a74-4c3d-b3e3-6ec3e9afcde7.png",
@@ -1228,7 +1228,7 @@
     {
       "id": "4794bd56-50e1-4311-8c73-be1ec1539aba",
       "name": "无（以物件为主）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/f347846c-d2c4-46b6-90a8-89b80a4cd3cd.png",
+      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3ac294ca-363e-44ef-a8c6-f7ae67e31ab0_image-1769363085188.png",
       "tags": [],
       "prompt": "large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light",
       "description": "Focus on inanimate objects, specifically a large, mysterious, unopened cardboard box sitting on a cluttered desk."
@@ -1368,6 +1368,22 @@
       "tags": [],
       "prompt": "no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot",
       "description": "No specific character focus; emphasis on the environment, atmosphere, or POV shots."
+    },
+    {
+      "id": "char_1770031867917_8y7m6wpei",
+      "name": "新角色",
+      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0a3d2a37-3bc7-4701-89fd-74cbd19174be_image-1769363085188.png",
+      "tags": [],
+      "prompt": "",
+      "description": ""
+    },
+    {
+      "id": "char_1770031974784_zwtonzesa",
+      "name": "小明",
+      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/23ed48e2-ec06-4611-b406-916911f6e1e2_屏幕截图 2026-01-26 002002.png",
+      "tags": [],
+      "prompt": "校园风格",
+      "description": ""
     }
   ],
   "scenes": [
@@ -1534,7 +1550,7 @@
     {
       "id": "dcb32dff-bba8-4a03-8f17-77fddd25e2b6",
       "name": "昏暗的现代公寓",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3808b3f4-556d-4f7e-96a9-4916b6f16dcc.png",
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ba110427-107e-48b8-8914-093c01f1c657_三视图2.jpg",
       "tags": [],
       "prompt": "dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting",
       "description": "A dark, messy modern room. Cluttered background, illuminated by cold blue computer screen light and shadows."

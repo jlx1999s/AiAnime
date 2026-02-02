@@ -206,7 +206,7 @@ const ProjectList = () => {
                             {user.username}
                         </span>
                         <a
-                            href="http://localhost:8501"
+                            href="http://172.18.24.255:8501"
                             target="_blank"
                             rel="noreferrer"
                             className="text-gray-300 bg-dark-800 border border-dark-700 px-3 py-1.5 rounded-lg text-sm hover:border-accent hover:text-white transition-colors"

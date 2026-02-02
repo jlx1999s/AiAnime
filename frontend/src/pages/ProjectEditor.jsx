@@ -784,7 +784,9 @@ const ProjectEditor = () => {
         if (!file || !selectedCharId) return;
 
         try {
-            const url = await ApiService.uploadFile(file, projectId);
+            const result = await ApiService.uploadFile(file, projectId);
+            const url = result?.url;
+            if (!url) throw new Error("Upload failed");
             const char = characters.find(c => c.id === selectedCharId);
             if (char) {
                 const updated = { ...char, avatar_url: url };
@@ -803,7 +805,9 @@ const ProjectEditor = () => {
         if (!file || !selectedSceneId) return;
 
         try {
-            const url = await ApiService.uploadFile(file, projectId);
+            const result = await ApiService.uploadFile(file, projectId);
+            const url = result?.url;
+            if (!url) throw new Error("Upload failed");
             const scene = scenes.find(s => s.id === selectedSceneId);
             if (scene) {
                 const updated = { ...scene, image_url: url };
@@ -822,7 +826,9 @@ const ProjectEditor = () => {
         if (!file || !selectedShotId) return;
 
         try {
-            const url = await ApiService.uploadFile(file, projectId);
+            const result = await ApiService.uploadFile(file, projectId);
+            const url = result?.url;
+            if (!url) throw new Error("Upload failed");
             const shot = shots.find(s => s.id === selectedShotId);
             if (shot) {
                 const updated = { ...shot, image_url: url };
@@ -864,7 +870,9 @@ const ProjectEditor = () => {
         if (!name) return;
 
         try {
-            const url = await ApiService.uploadFile(file, projectId);
+            const result = await ApiService.uploadFile(file, projectId);
+            const url = result?.url;
+            if (!url) throw new Error("Upload failed");
             const newChar = {
                 id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                 name: name,
@@ -888,7 +896,9 @@ const ProjectEditor = () => {
         if (!name) return;
 
         try {
-            const url = await ApiService.uploadFile(file);
+            const result = await ApiService.uploadFile(file);
+            const url = result?.url;
+            if (!url) throw new Error("Upload failed");
             const newScene = {
                 id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                 name: name,

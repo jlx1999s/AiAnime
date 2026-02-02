@@ -299,16 +299,97 @@ def render_sidebar():
         
         # Load config
         config = load_config()
+
+        # --- Presets Migration & Initialization ---
+        if "presets" not in config:
+            default_preset = {
+                "api_key": config.get("api_key", ""),
+                "api_base": config.get("api_base", "https://api.openai.com/v1"),
+                "model_name": config.get("model_name", "gpt-4o"),
+                "api_style": config.get("api_style", "openai")
+            }
+            config["presets"] = {"Default": default_preset}
+            config["current_preset"] = "Default"
+            # Cleanup old keys
+            for k in ["api_key", "api_base", "model_name", "api_style"]:
+                if k in config:
+                    del config[k]
+            save_config(config)
+
+        presets = config.get("presets", {})
+        current_preset_name = config.get("current_preset", "Default")
         
+        # Fallback if current_preset_name is invalid or presets empty
+        if not presets:
+             presets = {"Default": {"api_key": "", "api_base": "https://api.openai.com/v1", "model_name": "gpt-4o", "api_style": "openai"}}
+             config["presets"] = presets
+             current_preset_name = "Default"
+             config["current_preset"] = "Default"
+             save_config(config)
+        elif current_preset_name not in presets:
+             current_preset_name = list(presets.keys())[0]
+             config["current_preset"] = current_preset_name
+             save_config(config)
+
+        # --- Preset Selector UI ---
+        st.subheader("🛠️ API 配置预设")
+        col_p1, col_p2 = st.columns([3, 1])
+        with col_p1:
+             preset_options = list(presets.keys())
+             try:
+                 idx = preset_options.index(current_preset_name)
+             except ValueError:
+                 idx = 0
+             selected_preset = st.selectbox("选择预设", preset_options, index=idx, key="preset_selector", label_visibility="collapsed")
+        
+        with col_p2:
+             if st.button("➕", help="新建配置预设"):
+                 st.session_state.show_add_preset = True
+
+        if st.session_state.get("show_add_preset", False):
+             with st.container(border=True):
+                 new_preset_name = st.text_input("新预设名称", key="new_preset_name_input")
+                 c1, c2 = st.columns(2)
+                 with c1:
+                     if st.button("确认", use_container_width=True):
+                         if new_preset_name and new_preset_name not in presets:
+                             presets[new_preset_name] = presets.get(current_preset_name, {}).copy()
+                             config["presets"] = presets
+                             config["current_preset"] = new_preset_name
+                             save_config(config)
+                             st.session_state.show_add_preset = False
+                             st.rerun()
+                         elif new_preset_name in presets:
+                             st.error("名称已存在")
+                 with c2:
+                     if st.button("取消", use_container_width=True):
+                         st.session_state.show_add_preset = False
+                         st.rerun()
+
+        # Handle Preset Switch
+        if selected_preset != current_preset_name:
+            config["current_preset"] = selected_preset
+            save_config(config)
+            # Force reload of inputs from new preset
+            preset_data = presets[selected_preset]
+            st.session_state.api_key_input = preset_data.get("api_key", "")
+            st.session_state.api_base_input = preset_data.get("api_base", "")
+            st.session_state.model_name_input = preset_data.get("model_name", "")
+            st.session_state.api_style_input = preset_data.get("api_style", "")
+            st.rerun()
+
+        # Get current preset data
+        current_data = presets[selected_preset]
+
         # Initialize session state with config values if not set
         if "api_key_input" not in st.session_state:
-            st.session_state.api_key_input = config.get("api_key", "")
+            st.session_state.api_key_input = current_data.get("api_key", "")
         if "api_base_input" not in st.session_state:
-            st.session_state.api_base_input = config.get("api_base", "https://api.openai.com/v1")
+            st.session_state.api_base_input = current_data.get("api_base", "https://api.openai.com/v1")
         if "model_name_input" not in st.session_state:
-            st.session_state.model_name_input = config.get("model_name", "gpt-4o")
+            st.session_state.model_name_input = current_data.get("model_name", "gpt-4o")
         if "api_style_input" not in st.session_state:
-            st.session_state.api_style_input = config.get("api_style", "openai")
+            st.session_state.api_style_input = current_data.get("api_style", "openai")
         if "user_api_base_input" not in st.session_state:
             st.session_state.user_api_base_input = config.get("user_api_base", "http://localhost:8001")
         if "auth_user" not in st.session_state:
@@ -318,24 +399,49 @@ def render_sidebar():
 
 
         def save_settings():
-            new_config = {
-                **config,
+            presets[selected_preset] = {
                 "api_key": st.session_state.api_key_input,
                 "api_base": st.session_state.api_base_input,
                 "model_name": st.session_state.model_name_input,
-                "api_style": st.session_state.api_style_input,
+                "api_style": st.session_state.api_style_input
+            }
+            new_config = {
+                **config,
+                "presets": presets,
+                "current_preset": selected_preset,
                 "user_api_base": st.session_state.user_api_base_input
             }
+            # Remove legacy keys if present
+            for k in ["api_key", "api_base", "model_name", "api_style"]:
+                if k in new_config:
+                    del new_config[k]
             save_config(new_config)
-            st.toast("✅ 设置已保存 (Settings Saved)")
+            st.toast(f"✅ 预设 '{selected_preset}' 已保存")
 
         api_key = st.text_input("API Key", type="password", help="OpenAI or Anthropic API Key", key="api_key_input")
         api_base = st.text_input("API Base URL", help="e.g. https://api.openai.com/v1", key="api_base_input")
         model_name = st.text_input("Model Name", help="e.g. gpt-4o, claude-3-5-sonnet", key="model_name_input")
         api_style = st.selectbox("API Style", ["openai", "anthropic"], key="api_style_input")
 
-        if st.button("💾 保存设置 (Save Settings)", use_container_width=True):
-            save_settings()
+        c_save, c_del = st.columns([2, 1])
+        with c_save:
+            if st.button("💾 保存当前配置", use_container_width=True):
+                save_settings()
+        with c_del:
+            if selected_preset != "Default":
+                if st.button("🗑️ 删除", use_container_width=True, help="删除当前预设"):
+                    del presets[selected_preset]
+                    new_current = "Default" if "Default" in presets else list(presets.keys())[0]
+                    config["presets"] = presets
+                    config["current_preset"] = new_current
+                    save_config(config)
+                    # Force reload inputs
+                    preset_data = presets[new_current]
+                    st.session_state.api_key_input = preset_data.get("api_key", "")
+                    st.session_state.api_base_input = preset_data.get("api_base", "")
+                    st.session_state.model_name_input = preset_data.get("model_name", "")
+                    st.session_state.api_style_input = preset_data.get("api_style", "")
+                    st.rerun()
 
         st.subheader("👤 用户系统")
         user_api_base = st.text_input("用户系统 API", key="user_api_base_input")
@@ -1025,7 +1131,7 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                     st.rerun()
 
             st.subheader("🚀 一键全流程 (One-Click Workflow)")
-            if st.button("⚡ 一键执行所有步骤 (Breakdown -> Motion)", key="sb_auto", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_auto",), use_container_width=True, type="primary"):
+            if st.button("⚡ 一键执行所有步骤 (Breakdown -> Dubbing)", key="sb_auto", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_auto",), use_container_width=True, type="primary"):
                 pass
             
             if st.session_state.processing_key == "sb_auto":

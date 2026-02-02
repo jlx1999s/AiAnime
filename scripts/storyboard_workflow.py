@@ -2495,27 +2495,31 @@ def cmd_auto(args):
     print("Starting One-Click Storyboard Generation...")
     
     # 1. Breakdown
-    print("\n[1/4] Generating Beat Breakdown...")
+    print("\n[1/5] Generating Beat Breakdown...")
     cmd_breakdown(args)
     
     # 2. Beat Board
-    print("\n[2/4] Generating Beat Board Prompts...")
+    print("\n[2/5] Generating Beat Board Prompts...")
     cmd_beatboard(args)
     
     # 3. Sequence Board
-    print("\n[3/4] Generating Sequence Board Prompts...")
+    print("\n[3/5] Generating Sequence Board Prompts...")
     cmd_sequence(args)
 
     # 3.5 Extract Overviews (Strict Mode)
-    print("\n[3.5/4] Extracting Character/Scene Overviews...")
+    print("\n[3.5/5] Extracting Character/Scene Overviews...")
     try:
         cmd_extract(args)
     except Exception as e:
         print(f"Warning: Overview extraction failed: {e}")
     
     # 4. Motion Prompts
-    print("\n[4/4] Generating Motion Prompts...")
+    print("\n[4/5] Generating Motion Prompts...")
     cmd_motion(args)
+
+    # 5. Voiceover Table
+    print("\n[5/5] Generating Voiceover Table...")
+    cmd_dubbing(args)
     
     print("\nAll steps completed successfully!")
 

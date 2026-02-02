@@ -178,5 +178,11 @@
     "name": "配音测试",
     "style": "anime",
     "owner_id": "0f7f607e-7377-4b57-b499-aba811af17f6"
+  },
+  "4ffed3bb-d97e-4acd-9131-de7d8c2b64e5": {
+    "id": "4ffed3bb-d97e-4acd-9131-de7d8c2b64e5",
+    "name": "箱子里的大明",
+    "style": "real",
+    "owner_id": "9e10fe66-ad34-4613-bad8-f178af921d3b"
   }
 }

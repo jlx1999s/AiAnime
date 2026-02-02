@@ -1,10 +1,22 @@
 {
-    "api_key": "sk-FgwXiypXr6CHpQhzL00Oixz5ckgaZK2Mw9AU6oz6I6QCZG3P",
-    "api_base": "https://api.vectorengine.ai/v1",
-    "model_name": "gemini-3-pro-preview",
-    "api_style": "openai",
     "project_owners": {
         "\u4e2d\u6587\u63d0\u793a\u8bcd": "ec4c8fbd-3154-43ed-8b62-2a52bf19650f",
         "\u53d1\u9001\u6d4b\u8bd5": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e"
-    }
+    },
+    "presets": {
+        "Default": {
+            "api_key": "sk-FgwXiypXr6CHpQhzL00Oixz5ckgaZK2Mw9AU6oz6I6QCZG3P",
+            "api_base": "https://api.vectorengine.ai/v1",
+            "model_name": "gemini-3-pro-preview",
+            "api_style": "openai"
+        },
+        "minimax": {
+            "api_key": "sk-FgwXiypXr6CHpQhzL00Oixz5ckgaZK2Mw9AU6oz6I6QCZG3P",
+            "api_base": "https://api.vectorengine.ai/v1",
+            "model_name": "gemini-3-pro-preview",
+            "api_style": "openai"
+        }
+    },
+    "current_preset": "minimax",
+    "user_api_base": "http://localhost:8001"
 }

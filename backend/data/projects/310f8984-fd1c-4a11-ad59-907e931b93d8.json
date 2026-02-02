@@ -5,9 +5,9 @@
   "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
   "shots": [
     {
-      "prompt": "",
+      "prompt": "[微缩荒村上空: aerial view of miniature village, top-down perspective, yellow earth terrain, tiny houses, dramatic shadows, bright white light beam from above, divine light, wide angle]",
       "dialogue": "",
-      "audio_prompt": null,
+      "audio_prompt": "[微缩荒村上空: aerial view of miniature village, top-down perspective, yellow earth terrain, tiny houses, dramatic shadows, bright white light beam from above, divine light, wide angle]",
       "use_scene_ref": true,
       "custom_image_url": null,
       "first_frame_url": null,
@@ -16,7 +16,7 @@
       "id": "13eda7af-1c0a-4e76-ac29-729028262912",
       "order": 0,
       "characters": [],
-      "scene_id": null,
+      "scene_id": "b035c86b-c736-40c2-af32-ea5d94425fa8",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
