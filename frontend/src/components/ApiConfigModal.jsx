@@ -20,6 +20,15 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
         openai_video_api_key: '',
         openai_video_model: '',
         openai_video_endpoint: '',
+        kling_api_key: '',
+        kling_access_key: '',
+        kling_secret_key: '',
+        kling_api_base: 'https://api-beijing.klingai.com',
+        kling_model_name: 'kling-v1',
+        kling_image_model: 'kling-v2',
+        kling_mode: 'std',
+        kling_duration: 5,
+        kling_cfg_scale: 0.5,
         volc_image_model: 'jimeng_t2i_v30',
         volc_video_model: 'jimeng_i2v_first_v30',
         vectorengine_api_key: '',
@@ -42,8 +51,8 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
     // Define relevant fields for each tab type
     const CONFIG_FIELDS = {
         text: ['text_provider', 'openai_api_base', 'openai_api_key', 'openai_model', 'dashscope_api_key'],
-        image: ['image_provider', 'openai_image_api_base', 'openai_image_api_key', 'openai_image_model', 'volc_access_key', 'volc_secret_key', 'volc_image_model', 'vectorengine_api_key', 'vectorengine_image_model', 'vectorengine_api_base'],
-        video: ['video_provider', 'openai_video_api_base', 'openai_video_api_key', 'openai_video_model', 'openai_video_endpoint', 'volc_access_key', 'volc_secret_key', 'volc_video_model', 'rongyiyun_token', 'rongyiyun_api_base', 'rongyiyun_ratio', 'rongyiyun_duration']
+        image: ['image_provider', 'openai_image_api_base', 'openai_image_api_key', 'openai_image_model', 'volc_access_key', 'volc_secret_key', 'volc_image_model', 'vectorengine_api_key', 'vectorengine_image_model', 'vectorengine_api_base', 'kling_api_key', 'kling_access_key', 'kling_secret_key', 'kling_api_base', 'kling_image_model'],
+        video: ['video_provider', 'openai_video_api_base', 'openai_video_api_key', 'openai_video_model', 'openai_video_endpoint', 'kling_api_key', 'kling_access_key', 'kling_secret_key', 'kling_api_base', 'kling_model_name', 'kling_mode', 'kling_duration', 'kling_cfg_scale', 'volc_access_key', 'volc_secret_key', 'volc_video_model', 'rongyiyun_token', 'rongyiyun_api_base', 'rongyiyun_ratio', 'rongyiyun_duration']
     };
 
     useEffect(() => {
@@ -356,10 +365,73 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
                                             className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
                                         >
                                             <option value="openai">OpenAI</option>
+                                            <option value="kling">Kling</option>
                                             <option value="vectorengine">VectorEngine (Fal-ai)</option>
                                             <option value="volcengine">Volcengine</option>
                                         </select>
                                     </div>
+
+                                    {config.image_provider === 'kling' && (
+                                        <>
+                                            <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">生图模型 (Kling)</h3>
+                                            <div className="space-y-3">
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">API Base URL</label>
+                                                        <input 
+                                                            type="text"
+                                                            value={config.kling_api_base || ''}
+                                                            onChange={(e) => setConfig({...config, kling_api_base: e.target.value})}
+                                                            placeholder="https://api-beijing.klingai.com"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Model Name</label>
+                                                        <input 
+                                                            type="text"
+                                                            value={config.kling_image_model || ''}
+                                                            onChange={(e) => setConfig({...config, kling_image_model: e.target.value})}
+                                                            placeholder="kling-v2"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">API Key</label>
+                                                    <input 
+                                                        type="password"
+                                                        value={config.kling_api_key || ''}
+                                                        onChange={(e) => setConfig({...config, kling_api_key: e.target.value})}
+                                                        placeholder="token"
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    />
+                                                </div>
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Access Key</label>
+                                                        <input
+                                                            type="password"
+                                                            value={config.kling_access_key || ''}
+                                                            onChange={(e) => setConfig({...config, kling_access_key: e.target.value})}
+                                                            placeholder="AK"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Secret Key</label>
+                                                        <input
+                                                            type="password"
+                                                            value={config.kling_secret_key || ''}
+                                                            onChange={(e) => setConfig({...config, kling_secret_key: e.target.value})}
+                                                            placeholder="SK"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
                                     {config.image_provider === 'vectorengine' && (
                                         <div className="space-y-3 p-3 bg-dark-800 rounded border border-dark-700 animate-in fade-in slide-in-from-top-2">
@@ -400,82 +472,82 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
                                         </div>
                                     )}
 
-                                    <div className="space-y-3">
-                                        <div className="grid grid-cols-2 gap-3">
-                                            <div>
-                                                <label className="block text-xs text-gray-500 mb-1">OpenAI Base URL</label>
-                                                <input 
-                                                    type="text"
-                                                    value={config.openai_image_api_base || ''}
-                                                    onChange={(e) => setConfig({...config, openai_image_api_base: e.target.value})}
-                                                    placeholder="https://api.openai.com/v1"
-                                                    className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
-                                                />
+                                    {config.image_provider === 'openai' && (
+                                        <div className="space-y-3">
+                                            <div className="grid grid-cols-2 gap-3">
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">OpenAI Base URL</label>
+                                                    <input 
+                                                        type="text"
+                                                        value={config.openai_image_api_base || ''}
+                                                        onChange={(e) => setConfig({...config, openai_image_api_base: e.target.value})}
+                                                        placeholder="https://api.openai.com/v1"
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">Model Name</label>
+                                                    <input 
+                                                        type="text"
+                                                        value={config.openai_image_model || ''}
+                                                        onChange={(e) => setConfig({...config, openai_image_model: e.target.value})}
+                                                        placeholder="gpt-image-1"
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    />
+                                                </div>
                                             </div>
                                             <div>
-                                                <label className="block text-xs text-gray-500 mb-1">Model Name</label>
+                                                <label className="block text-xs text-gray-500 mb-1">OpenAI API Key</label>
                                                 <input 
-                                                    type="text"
-                                                    value={config.openai_image_model || ''}
-                                                    onChange={(e) => setConfig({...config, openai_image_model: e.target.value})}
-                                                    placeholder="gpt-image-1"
+                                                    type="password"
+                                                    value={config.openai_image_api_key || ''}
+                                                    onChange={(e) => setConfig({...config, openai_image_api_key: e.target.value})}
+                                                    placeholder="sk-..."
                                                     className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
                                                 />
                                             </div>
                                         </div>
-                                        <div>
-                                            <label className="block text-xs text-gray-500 mb-1">OpenAI API Key</label>
-                                            <input 
-                                                type="password"
-                                                value={config.openai_image_api_key || ''}
-                                                onChange={(e) => setConfig({...config, openai_image_api_key: e.target.value})}
-                                                placeholder="sk-..."
-                                                className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
-                                            />
-                                        </div>
-                                    </div>
+                                    )}
 
-                                    <div className="relative flex items-center">
-                                        <div className="flex-grow border-t border-dark-700"></div>
-                                        <span className="flex-shrink-0 mx-2 text-dark-500 text-[10px]">OR USE VOLCENGINE</span>
-                                        <div className="flex-grow border-t border-dark-700"></div>
-                                    </div>
+                                    {config.image_provider === 'volcengine' && (
+                                        <>
+                                            <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">生图模型 (Volcengine)</h3>
+                                            
+                                            <div>
+                                                <label className="block text-xs text-gray-500 mb-1">Model Version</label>
+                                                <select
+                                                    value={config.volc_image_model || 'jimeng_t2i_v30'}
+                                                    onChange={(e) => setConfig({...config, volc_image_model: e.target.value})}
+                                                    className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                >
+                                                    <option value="jimeng_t2i_v30">Jimeng T2I v3.0 (Standard)</option>
+                                                    <option value="jimeng_t2i_v40">Jimeng T2I v4.0 (Enhanced)</option>
+                                                </select>
+                                            </div>
 
-                                    <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">生图模型 (Volcengine)</h3>
-                                    
-                                    <div>
-                                        <label className="block text-xs text-gray-500 mb-1">Model Version</label>
-                                        <select
-                                            value={config.volc_image_model || 'jimeng_t2i_v30'}
-                                            onChange={(e) => setConfig({...config, volc_image_model: e.target.value})}
-                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
-                                        >
-                                            <option value="jimeng_t2i_v30">Jimeng T2I v3.0 (Standard)</option>
-                                            <option value="jimeng_t2i_v40">Jimeng T2I v4.0 (Enhanced)</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-xs text-gray-500 mb-1">Access Key (AK)</label>
-                                        <input 
-                                            type="password"
-                                            value={config.volc_access_key || ''}
-                                            onChange={(e) => setConfig({...config, volc_access_key: e.target.value})}
-                                            placeholder="AK..."
-                                            className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs text-gray-500 mb-1">Secret Key (SK)</label>
-                                        <input 
-                                            type="password"
-                                            value={config.volc_secret_key || ''}
-                                            onChange={(e) => setConfig({...config, volc_secret_key: e.target.value})}
-                                            placeholder="SK..."
-                                            className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
-                                        />
-                                    </div>
-                                    <p className="text-[10px] text-gray-500 italic">* AccessKey and SecretKey are shared with Video Model</p>
+                                            <div>
+                                                <label className="block text-xs text-gray-500 mb-1">Access Key (AK)</label>
+                                                <input 
+                                                    type="password"
+                                                    value={config.volc_access_key || ''}
+                                                    onChange={(e) => setConfig({...config, volc_access_key: e.target.value})}
+                                                    placeholder="AK..."
+                                                    className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-xs text-gray-500 mb-1">Secret Key (SK)</label>
+                                                <input 
+                                                    type="password"
+                                                    value={config.volc_secret_key || ''}
+                                                    onChange={(e) => setConfig({...config, volc_secret_key: e.target.value})}
+                                                    placeholder="SK..."
+                                                    className="w-full bg-dark-900 text-gray-200 text-sm p-3 rounded border border-dark-700 outline-none focus:border-accent"
+                                                />
+                                            </div>
+                                            <p className="text-[10px] text-gray-500 italic">* AccessKey and SecretKey are shared with Video Model</p>
+                                        </>
+                                    )}
                                 </div>
                             )}
 
@@ -521,6 +593,7 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
                                             className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
                                         >
                                             <option value="openai">OpenAI</option>
+                                            <option value="kling">Kling</option>
                                             <option value="volcengine">Volcengine</option>
                                             <option value="rongyiyun">RongYiYun</option>
                                         </select>
@@ -571,6 +644,102 @@ const ApiConfigModal = ({ isOpen, onClose }) => {
                                                         placeholder="sk-..."
                                                         className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
                                                     />
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {config.video_provider === 'kling' && (
+                                        <>
+                                            <h3 className="text-xs font-bold text-accent uppercase border-b border-dark-700 pb-2">视频模型 (Kling)</h3>
+                                            <div className="space-y-3">
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">API Base URL</label>
+                                                        <input 
+                                                            type="text"
+                                                            value={config.kling_api_base || ''}
+                                                            onChange={(e) => setConfig({...config, kling_api_base: e.target.value})}
+                                                            placeholder="https://api-beijing.klingai.com"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Model Name</label>
+                                                        <input 
+                                                            type="text"
+                                                            value={config.kling_model_name || ''}
+                                                            onChange={(e) => setConfig({...config, kling_model_name: e.target.value})}
+                                                            placeholder="kling-v1"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs text-gray-500 mb-1">API Key</label>
+                                                    <input 
+                                                        type="password"
+                                                        value={config.kling_api_key || ''}
+                                                        onChange={(e) => setConfig({...config, kling_api_key: e.target.value})}
+                                                        placeholder="token"
+                                                        className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                    />
+                                                </div>
+                                                <div className="grid grid-cols-2 gap-3">
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Access Key</label>
+                                                        <input
+                                                            type="password"
+                                                            value={config.kling_access_key || ''}
+                                                            onChange={(e) => setConfig({...config, kling_access_key: e.target.value})}
+                                                            placeholder="AK"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Secret Key</label>
+                                                        <input
+                                                            type="password"
+                                                            value={config.kling_secret_key || ''}
+                                                            onChange={(e) => setConfig({...config, kling_secret_key: e.target.value})}
+                                                            placeholder="SK"
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="grid grid-cols-3 gap-3">
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Mode</label>
+                                                        <select
+                                                            value={config.kling_mode || 'std'}
+                                                            onChange={(e) => setConfig({...config, kling_mode: e.target.value})}
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        >
+                                                            <option value="std">std</option>
+                                                            <option value="pro">pro</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">Duration</label>
+                                                        <select
+                                                            value={Number(config.kling_duration) || 5}
+                                                            onChange={(e) => setConfig({...config, kling_duration: Number(e.target.value)})}
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        >
+                                                            <option value={5}>5</option>
+                                                            <option value={10}>10</option>
+                                                        </select>
+                                                    </div>
+                                                    <div>
+                                                        <label className="block text-xs text-gray-500 mb-1">CFG Scale</label>
+                                                        <input
+                                                            type="number"
+                                                            step="0.1"
+                                                            value={Number(config.kling_cfg_scale) || 0.5}
+                                                            onChange={(e) => setConfig({...config, kling_cfg_scale: Number(e.target.value)})}
+                                                            className="w-full bg-dark-900 text-gray-200 text-sm p-2 rounded border border-dark-700 outline-none focus:border-accent"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </>

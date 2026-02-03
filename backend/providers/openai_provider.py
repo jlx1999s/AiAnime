@@ -1,5 +1,7 @@
 import asyncio
 import base64
+import hashlib
+import hmac
 import imghdr
 import json
 import mimetypes
@@ -477,10 +479,355 @@ async def _runninghub_generate_video(prompt: str, image_path: str | None, api_ke
             print(f"[RunningHub] Unknown status: {status}")
     raise Exception("RunningHub task timed out")
 
+def _kling_extract_video_url(payload: dict) -> str | None:
+    if not isinstance(payload, dict):
+        return None
+    for key in ("video_url", "videoUrl", "url"):
+        val = payload.get(key)
+        if isinstance(val, str) and val:
+            return val
+    for key in ("result", "output", "task_result", "taskResult", "outputs", "results", "videos", "works", "images"):
+        val = payload.get(key)
+        if isinstance(val, dict):
+            url = _kling_extract_video_url(val)
+            if url:
+                return url
+        if isinstance(val, list) and val:
+            for item in val:
+                url = _kling_extract_video_url(item) if isinstance(item, dict) else None
+                if url:
+                    return url
+    return None
+
+def _kling_base64url(data: bytes) -> str:
+    return base64.urlsafe_b64encode(data).decode("utf-8").rstrip("=")
+
+def _kling_build_jwt(access_key: str, secret_key: str) -> str:
+    headers = {"alg": "HS256", "typ": "JWT"}
+    now = int(time.time())
+    payload = {"iss": access_key, "exp": now + 1800, "nbf": now - 5}
+    header_b64 = _kling_base64url(json.dumps(headers, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))
+    payload_b64 = _kling_base64url(json.dumps(payload, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))
+    signing_input = f"{header_b64}.{payload_b64}".encode("utf-8")
+    signature = hmac.new(secret_key.encode("utf-8"), signing_input, hashlib.sha256).digest()
+    signature_b64 = _kling_base64url(signature)
+    return f"{header_b64}.{payload_b64}.{signature_b64}"
+
+def _kling_get_auth_token(config) -> str | None:
+    access_key = getattr(config, "kling_access_key", "") or ""
+    secret_key = getattr(config, "kling_secret_key", "") or ""
+    if access_key and secret_key:
+        return _kling_build_jwt(access_key, secret_key)
+    token = getattr(config, "kling_api_key", "") or ""
+    if token:
+        return token
+    return None
+
+async def _kling_poll_task(task_id: str, config, base_url: str) -> str:
+    poll_urls = [
+        f"{base_url.rstrip('/')}/v1/images/multi-image2image/{task_id}",
+        f"{base_url.rstrip('/')}/v1/videos/omni-video/{task_id}",
+        f"{base_url.rstrip('/')}/v1/videos/image2video/{task_id}",
+        f"{base_url.rstrip('/')}/v1/videos/text2video/{task_id}",
+        f"{base_url.rstrip('/')}/v1/videos/tasks/{task_id}",
+        f"{base_url.rstrip('/')}/v1/videos/task/{task_id}",
+        f"{base_url.rstrip('/')}/v1/videos/{task_id}"
+    ]
+    last_error = None
+    last_status = None
+    for _ in range(120):
+        token = _kling_get_auth_token(config)
+        if not token:
+            raise Exception("Kling access key/secret key or api token not configured")
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {token}"
+        }
+        for url in poll_urls:
+            req = urllib.request.Request(url, headers=headers, method="GET")
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    raw = resp.read()
+                data = json.loads(raw.decode("utf-8"))
+            except urllib.error.HTTPError as e:
+                try:
+                    body = e.read().decode("utf-8")
+                except Exception:
+                    body = ""
+                last_error = f"{e} {body}".strip()
+                continue
+            except Exception as e:
+                last_error = e
+                continue
+            if not isinstance(data, dict):
+                last_error = data
+                continue
+            if data.get("code") not in (0, None):
+                last_error = data
+                continue
+            payload = data.get("data") if isinstance(data.get("data"), dict) else data
+            status = payload.get("task_status") or payload.get("status")
+            if isinstance(status, str):
+                status = status.lower()
+            if status:
+                last_status = status
+            if status in ("succeed", "success", "completed"):
+                video_url = _kling_extract_video_url(payload)
+                if video_url:
+                    return video_url
+                # Try to extract from root data if payload failed
+                if payload != data:
+                    video_url = _kling_extract_video_url(data)
+                    if video_url:
+                        return video_url
+                # If still no URL, check if there's a specific 'works' or 'videos' list
+                if isinstance(payload.get("works"), list) and payload["works"]:
+                     work = payload["works"][0]
+                     if isinstance(work.get("resource"), dict) and work["resource"].get("resource"):
+                         return work["resource"]["resource"]
+                raise Exception(f"Kling task succeeded but no video url found. Status: {status}. Data: {data}")
+            if status in ("failed", "error", "failure", "fail"):
+                raise Exception(f"Kling task failed: {data}")
+        await asyncio.sleep(5)
+    raise Exception(f"Kling task timed out. Last status: {last_status}. Last error: {last_error}")
+
+async def _kling_generate_image(prompt: str, reference_images: list[dict] | None, config, base_url: str) -> str:
+    token = _kling_get_auth_token(config)
+    if not token:
+        raise Exception("Kling access key/secret key or api token not configured")
+    
+    url = f"{base_url.rstrip('/')}/v1/images/multi-image2image"
+    model_name = getattr(config, "kling_image_model", "kling-v2") or "kling-v2"
+    
+    payload = {
+        "model_name": model_name,
+        "prompt": prompt,
+        "n": 1,
+        "aspect_ratio": "16:9"
+    }
+    
+    if reference_images:
+        subject_image_list = []
+        for ref in reference_images[:4]: # Max 4 images
+            b64 = ref.get("b64")
+            if b64:
+                subject_image_list.append({"subject_image": b64})
+        
+        if subject_image_list:
+            payload["subject_image_list"] = subject_image_list
+
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}"
+    }
+    
+    req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        try:
+            body = e.read().decode("utf-8")
+        except Exception:
+            body = ""
+        raise Exception(f"Kling image submission failed: {e} {body}".strip())
+    except Exception as e:
+        raise Exception(f"Kling image submission failed: {e}")
+        
+    if not isinstance(data, dict) or data.get("code") not in (0, None):
+        raise Exception(f"Kling API error: {data}")
+        
+    task_id = None
+    if isinstance(data.get("data"), dict):
+        task_id = data["data"].get("task_id")
+    if not task_id:
+        raise Exception(f"Kling missing task_id: {data}")
+        
+    return await _kling_poll_task(task_id, config, base_url)
+
+async def generate_kling_video(prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, config, first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None, save_video_bytes: Callable[[bytes, str | None], str] | None = None, save_base64_video: Callable[[str, str | None], str] | None = None, video_aspect_ratio: str = "16:9", video_resolution: str = "720p") -> str:
+    token = _kling_get_auth_token(config)
+    if not token:
+        raise Exception("Kling access key/secret key or api token not configured")
+    base_url = config.kling_api_base or "https://api-beijing.klingai.com"
+    if base_url.endswith("/v1"):
+        base_url = base_url[:-3]
+    elif base_url.endswith("/v1/"):
+        base_url = base_url[:-4]
+    model_name = config.kling_model_name or "kling-v1"
+    mode = config.kling_mode or "std"
+    duration = str(config.kling_duration or 5)
+    cfg_scale = config.kling_cfg_scale if config.kling_cfg_scale is not None else 0.5
+    is_omni = "o1" in model_name.lower() or "omni" in model_name.lower()
+
+    def resolve_initial_url(frame_url: str | None, frame_path: str | None) -> str | None:
+        if frame_url and frame_url.startswith("data:image"):
+            return frame_url
+        if frame_url and (frame_url.startswith("http://") or frame_url.startswith("https://")) and "localhost" not in frame_url and "127.0.0.1" not in frame_url:
+            return frame_url
+        if frame_path and os.path.exists(frame_path):
+            return None
+        return None
+
+    def resolve_local_data_url(frame_path: str | None) -> str | None:
+        if not frame_path or not os.path.exists(frame_path):
+            return None
+        try:
+            with open(frame_path, "rb") as f:
+                img_bytes = f.read()
+            img_b64 = base64.b64encode(img_bytes).decode("utf-8")
+            mime_type, _ = mimetypes.guess_type(frame_path)
+            if not mime_type:
+                mime_type = "image/png"
+            return f"data:{mime_type};base64,{img_b64}"
+        except Exception:
+            return None
+
+    def upload_or_data_url(frame_path: str | None) -> str | None:
+        if not frame_path or not os.path.exists(frame_path):
+            return None
+        temp_url = None
+        try:
+            import requests
+            try:
+                with open(frame_path, "rb") as f:
+                    response = requests.post(
+                        "https://catbox.moe/user/api.php",
+                        data={"reqtype": "fileupload"},
+                        files={"fileToUpload": f},
+                        timeout=60
+                    )
+                    if response.status_code == 200 and response.text.startswith("http"):
+                        temp_url = response.text.strip()
+            except Exception:
+                pass
+
+            if not temp_url:
+                try:
+                    with open(frame_path, "rb") as f:
+                        response = requests.post(
+                            "https://file.io",
+                            files={"file": f},
+                            timeout=60
+                        )
+                        if response.status_code == 200:
+                            data = response.json()
+                            if data.get("success") and data.get("link"):
+                                temp_url = data.get("link")
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+        if temp_url:
+            return temp_url
+        return resolve_local_data_url(frame_path)
+
+    # Resolve inputs
+    first_img_url = resolve_initial_url(first_frame_url, first_frame_path)
+    if not first_img_url:
+        # fallback: use image_path as first frame if no specific first frame provided
+        first_img_url = upload_or_data_url(first_frame_path or image_path)
+
+    last_img_url = resolve_initial_url(last_frame_url, last_frame_path)
+    if not last_img_url:
+        last_img_url = upload_or_data_url(last_frame_path)
+
+    if is_omni:
+        url = f"{base_url.rstrip('/')}/v1/videos/omni-video"
+        payload = {
+            "model_name": model_name,
+            "prompt": prompt,
+            "mode": mode,
+            "duration": duration,
+            "aspect_ratio": video_aspect_ratio
+        }
+        
+        # Handle Video List (Source Video)
+        has_video_ref = False
+        if source_url and (source_url.startswith("http://") or source_url.startswith("https://")):
+             payload["video_list"] = [{
+                 "video_url": source_url,
+                 "refer_type": "base",
+                 "keep_original_sound": "yes"
+             }]
+             has_video_ref = True
+             # "When using video editing function... cannot define video first/end frames"
+             # So we skip adding image_list for first/last frames if video is base.
+        
+        # Handle Image List (First/Last Frames)
+        if not has_video_ref:
+            image_list = []
+            if first_img_url:
+                image_list.append({"image_url": first_img_url, "type": "first_frame"})
+            if last_img_url:
+                image_list.append({"image_url": last_img_url, "type": "end_frame"})
+            
+            if image_list:
+                payload["image_list"] = image_list
+            else:
+                # If no images, and no video, then it is text-to-video.
+                # aspect_ratio is required (already added).
+                pass
+    else:
+        # Legacy Logic (image2video)
+        image_url = first_img_url
+        # Legacy fallback: use source_url as image if no first frame (weird but preserving behavior)
+        if not image_url and source_url and (source_url.startswith("http://") or source_url.startswith("https://")) and "localhost" not in source_url and "127.0.0.1" not in source_url:
+            image_url = source_url
+        
+        if not image_url:
+             # Try upload again? No, first_img_url already tried upload.
+             # If strictly no image, raise exception as per old logic
+             raise Exception("Kling requires a remote URL or valid local image for video generation")
+        
+        url = f"{base_url.rstrip('/')}/v1/videos/image2video"
+        payload = {
+            "model_name": model_name,
+            "mode": mode,
+            "duration": duration,
+            "image": image_url,
+            "prompt": prompt,
+            "cfg_scale": cfg_scale
+        }
+
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}"
+    }
+    
+    req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        try:
+            body = e.read().decode("utf-8")
+        except Exception:
+            body = ""
+        raise Exception(f"Kling submission failed: {e} {body}".strip())
+    except Exception as e:
+        raise Exception(f"Kling submission failed: {e}")
+    if not isinstance(data, dict) or data.get("code") not in (0, None):
+        raise Exception(f"Kling API error: {data}")
+    task_id = None
+    if isinstance(data.get("data"), dict):
+        task_id = data["data"].get("task_id")
+    if not task_id:
+        raise Exception(f"Kling missing task_id: {data}")
+    return await _kling_poll_task(task_id, config, base_url)
+
 async def generate_image(prompt: str, sub_dir: str | None, reference_image_url: str | None, image_client, config, image_url_to_base64: Callable[[str], str | None], save_image_from_url: Callable[[str, str | None], str], save_base64_image: Callable[[str, str | None], str], reference_images: list[dict] | None = None) -> str:
     print(f"openai_generate_image called with ref_url: {reference_image_url}, ref_images count: {len(reference_images) if reference_images else 0}")
     model = config.openai_image_model or "gpt-image-1"
     try:
+        if config.image_provider == 'kling':
+             base_url = config.kling_api_base or "https://api-beijing.klingai.com"
+             image_url = await _kling_generate_image(prompt, reference_images, config, base_url)
+             if image_url.startswith("http"):
+                return save_image_from_url(image_url, sub_dir=sub_dir)
+             return image_url
+
         image_base = config.openai_image_api_base or config.openai_api_base or "https://api.openai.com/v1"
         if "apimart.ai" in image_base.lower():
             api_key = config.openai_image_api_key or config.openai_api_key
@@ -572,7 +919,28 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
     model = config.openai_video_model
     if not model:
         raise Exception("OpenAI video model not configured")
-    if "runninghub" in base_url or "kling" in model.lower():
+    if "runninghub" in base_url:
+        return await _runninghub_generate_video(prompt, image_path, api_key, base_url, source_url, first_frame_url, last_frame_url, first_frame_path, last_frame_path)
+    if "kling" in model.lower():
+        if getattr(config, "kling_access_key", None):
+             return await generate_kling_video(
+                prompt=prompt,
+                image_path=image_path,
+                sub_dir=sub_dir,
+                source_url=source_url,
+                first_frame_url=first_frame_url,
+                last_frame_url=last_frame_url,
+                first_frame_path=first_frame_path,
+                last_frame_path=last_frame_path,
+                config=config,
+                save_video_bytes=save_video_bytes,
+                save_base64_video=save_base64_video,
+                video_aspect_ratio=video_aspect_ratio,
+                video_resolution=video_resolution
+            )
+        # If no Kling keys, maybe they mean RunningHub? Or maybe they haven't configured keys yet?
+        # Check if RunningHub is implicit or if we should fallback.
+        # Given previous logic was "kling in model -> runninghub", we keep it if no Kling keys.
         return await _runninghub_generate_video(prompt, image_path, api_key, base_url, source_url, first_frame_url, last_frame_url, first_frame_path, last_frame_path)
     if not video_client:
         raise Exception("OpenAI video client not initialized")

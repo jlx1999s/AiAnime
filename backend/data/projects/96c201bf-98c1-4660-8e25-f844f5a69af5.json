@@ -74,12 +74,19 @@
         "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/533279fb-0938-4614-9960-7a41a755a9e2.png",
         "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/fbe17f35-53bd-4e29-86a7-15ec01a4d0a4.png"
       ],
-      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/777ba3c9-cc95-4b56-8323-b01bd0942f23.mp4",
+      "video_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/2a6ddf34-1c76-4bb3-bf3f-c0f951d1241a.mp4",
       "video_progress": 100,
       "video_items": [
         {
           "id": "00eb7656-b5e2-4f79-8ef7-446444beda36",
           "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/777ba3c9-cc95-4b56-8323-b01bd0942f23.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "6707b528-1fc2-4c42-920b-ee8e1b14be73",
+          "url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/2a6ddf34-1c76-4bb3-bf3f-c0f951d1241a.mp4",
           "task_id": null,
           "progress": 100,
           "status": "completed"

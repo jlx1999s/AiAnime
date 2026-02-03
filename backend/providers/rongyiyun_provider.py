@@ -2,7 +2,7 @@ import json
 import urllib.error
 import urllib.request
 
-def generate_video(prompt: str, source_url: str | None, config, video_aspect_ratio: str = "16:9", video_resolution: str = "1080p") -> str:
+def generate_video(prompt: str, source_url: str | None, config, video_aspect_ratio: str = "16:9", video_resolution: str = "720p") -> str:
     token = config.rongyiyun_token
     if not token:
         raise Exception("RongYiYun token not configured")

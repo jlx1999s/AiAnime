@@ -44,3 +44,4 @@ backend/.env.*
 # Secrets
 backend/data/api_config.json
 backend/data/api_presets.json
+backend/data/users.json

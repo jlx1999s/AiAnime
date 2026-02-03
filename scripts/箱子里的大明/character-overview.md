@@ -24,3 +24,6 @@
 | 无（屏幕画面） | The digital content displayed on a computer monitor, showing a barrage of negative social media notifications and a formal termination email. | computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels |
 | 李道玄（倒影） | The distorted and ghostly reflection of Li Daoxuan's face seen on a dark computer monitor screen. | reflection on black glass screen, distorted face, ghostly silhouette, hollow eyes, dark tones, low key lighting, mysterious atmosphere, digital screen texture |
 | 李道玄（的手） | Li Daoxuan's hands, specifically showing palm prints with dark red bloodstains or holding a magnifying glass. | male hand close-up, palm lines visible, dark red dried blood stains, trembling fingers, holding a magnifying glass, realistic skin texture, tension in tendons, rubbing thumb against palm |
+| 无（主要是手） | 一只占据画面大部分的、巨大的写实人类手掌，皮肤纹理清晰，毛孔可见。它从天空探入，捏着一枚巨大的棕色带壳鸡蛋，形成强烈的压迫感与超现实对比。 | 巨大的手掌, 局部特写, 超写实主义, 皮肤纹理清晰, 可见毛孔, 捏着巨大的棕色鸡蛋, 上帝视角, 压迫感, 巨物恐惧症, 强烈的尺寸对比 |
+| 村民群像 | 如蚁群般密密麻麻的人群，从荒原四面八方汇聚。他们围绕巨蛋呈扇形跪拜，形成一种荒诞而整齐的宗教仪式感。 | 密密麻麻的人群, 黑色剪影, 如蚂蚁般汇聚, 扇形队列, 集体跪拜, 俯拍视角, 荒诞宗教感, 微缩景观风格, 史诗感 |
+| 高初五 | 濒临饿死的村民，躺在干枯的草地上。身形枯瘦如柴，眼神灰暗，但在看到食物（蛋黄）的瞬间眼中反射出金色的生命之光。 | 濒死之人, 极度消瘦, 枯瘦如柴的手, 灰暗的眼睛, 面部特写, 躺在地上, 眼神中的金黄反光, 渴望, 虚弱 |

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from enum import Enum
 
 class GenerationStatus(str, Enum):
@@ -78,6 +78,7 @@ class User(BaseModel):
     password_hash: str
     created_at: float
     is_admin: bool = False
+    api_config: Optional[Dict[str, Any]] = None
 
 class UserPublic(BaseModel):
     id: str

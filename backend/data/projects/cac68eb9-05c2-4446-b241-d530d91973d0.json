@@ -139,7 +139,7 @@
         "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2872d1d7-1a13-4801-942d-96c0344c958d.png"
       ],
       "video_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/a85376dc-8f12-49d2-b831-c0278e150a68.mp4",
-      "video_progress": 100,
+      "video_progress": null,
       "video_items": [
         {
           "id": "a59cc1be-f1ce-41cb-b44f-4aad4049e03d",
@@ -147,6 +147,13 @@
           "task_id": null,
           "progress": 100,
           "status": "completed"
+        },
+        {
+          "id": "a2a851ed-3f1c-46b0-8e4e-68419608f889",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
         }
       ],
       "status": "completed"
@@ -172,7 +179,7 @@
         "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e9c29e66-b95b-40b5-a47c-551ec2316325.png"
       ],
       "video_url": "https://storage.googleapis.com/ai-sandbox-videofx/video/7784a076-4169-439b-a7c7-4f832df6b942?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770137797&Signature=gq2b0FNC%2Bg0VGvlDIS9BzZDZjMlIvclco1N5MlNBoKpzadZ%2Bd17I5Jb26JXFHxidNTLh3xMN14y5Ki5EL%2FYs%2FaAkt%2Fi%2BiXIisFU9EGJv%2FnnLdd7bogaXpeEdvFHrL%2BwzZmA453MQwsJRRFzzsiJ9BGJEwplbe1w39%2BtyH2zVzXyYe%2FeXmkN9sQxHQhBSkwOrkM%2FYdmyS%2FnIohr0e5KJHOWCOK4pefmriFiJQ9fNIIe25v0R8QjycOL6jslQNqXhArYef0pHv717yan5QjjUxKcVpvYgQ%2Bt94T3i0aMGIPCu1Ds3sqMWB2mHbaGc5vwv6Xok3JKISaO9F2IsSVaucDg%3D%3D",
-      "video_progress": 100,
+      "video_progress": null,
       "video_items": [
         {
           "id": "8d969355-9b89-4013-9aa6-1dd1a71975c0",
@@ -187,6 +194,13 @@
           "task_id": null,
           "progress": 100,
           "status": "completed"
+        },
+        {
+          "id": "f6f9acd6-c789-4546-a250-5ca85167ff4d",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
         }
       ],
       "status": "completed"

@@ -17,6 +17,18 @@ async def generate_image(provider: str, prompt: str, sub_dir: str | None, config
             save_image_from_url=save_image_from_url,
             save_base64_image=save_base64_image
         )
+    if provider == "kling":
+        return await openai_provider.generate_image(
+            prompt=prompt,
+            sub_dir=sub_dir,
+            reference_image_url=reference_image_url,
+            reference_images=reference_images,
+            image_client=image_client,
+            config=config,
+            image_url_to_base64=image_url_to_base64,
+            save_image_from_url=save_image_from_url,
+            save_base64_image=save_base64_image
+        )
     if provider == "vectorengine":
         return await asyncio.to_thread(
             vectorengine_provider.generate_image,
@@ -51,6 +63,22 @@ async def generate_video(provider: str, prompt: str, image_path: str | None, sub
             first_frame_path=first_frame_path,
             last_frame_path=last_frame_path,
             video_client=video_client,
+            config=config,
+            save_video_bytes=save_video_bytes,
+            save_base64_video=save_base64_video,
+            video_aspect_ratio=video_aspect_ratio,
+            video_resolution=video_resolution
+        )
+    if provider == "kling":
+        return await openai_provider.generate_kling_video(
+            prompt=prompt,
+            image_path=image_path,
+            sub_dir=sub_dir,
+            source_url=source_url,
+            first_frame_url=first_frame_url,
+            last_frame_url=last_frame_url,
+            first_frame_path=first_frame_path,
+            last_frame_path=last_frame_path,
             config=config,
             save_video_bytes=save_video_bytes,
             save_base64_video=save_base64_video,

@@ -14,21 +14,30 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "fb6a86b8-8e87-412e-8429-a5c1b38663bb",
-      "order": 1,
+      "order": 0,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
       "scene_id": "scene_1769739378108_9iv8flxsp",
-      "image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/d0cccbc2-64ca-4e2c-86c5-0ccb6344f456.png",
+      "image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/e6d432ab-cb78-4c0a-ad40-2d434f008efe.png",
       "original_image_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/bf5ba8c0-b98b-40c9-a33e-caab7f8eddb6.png",
       "image_candidates": [
         "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/a6ff9289-a98a-4403-ba62-2e0130291e9d.png",
-        "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/d0cccbc2-64ca-4e2c-86c5-0ccb6344f456.png"
+        "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/d0cccbc2-64ca-4e2c-86c5-0ccb6344f456.png",
+        "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/e6d432ab-cb78-4c0a-ad40-2d434f008efe.png"
       ],
       "video_url": null,
       "video_progress": null,
-      "video_items": [],
-      "status": "failed"
+      "video_items": [
+        {
+          "id": "6eca4e77-6ffd-4cbd-a090-3edd0865a853",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
+      "status": "generating"
     },
     {
       "prompt": "特写镜头，李道玄用力撕开纸箱胶带，纸屑飞溅。箱中露出一座精致的长方形玻璃造景箱，内部是一座微缩的明代荒村，黄沙漫天，枯木横陈，呈现出极度的荒凉感。 [李道玄: 现代都市青年，社畜，颓废但眼神有神\t中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [现代公寓-卧室: 现代风格的单身公寓卧室。光线昏暗，只有电脑屏幕发出冷色调的蓝光。房间里堆满了外卖盒子、旧书和快递箱。环境显得凌乱且压抑，充满生活气息。]",
@@ -40,7 +49,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "167e9e18-c43b-4bd7-97d9-a81f80040e9c",
-      "order": 2,
+      "order": 1,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -51,9 +60,24 @@
         "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/c929bb15-0f2d-4da7-be83-305c77969030.png",
         "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/99444a48-e2e2-4e35-89e0-0f3d844b5c78.png"
       ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
+      "video_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/05052dcb-8e32-4f2a-af57-b123cf0048c3.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "242db777-add6-4f73-8811-b20fdd5c5c7c",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "9aff589c-754e-4cbc-af41-d8470ae3b1ea",
+          "url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/05052dcb-8e32-4f2a-af57-b123cf0048c3.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
       "status": "completed"
     },
     {
@@ -66,7 +90,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "77cad34c-5030-4941-96f4-8c86aea07b97",
-      "order": 3,
+      "order": 2,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -79,9 +103,24 @@
         "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/26d1a9eb-30f3-4489-8952-3bdbbdf30e56.png",
         "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/4ebbbcfd-e532-49fa-8aa0-f2a0b059af1c.png"
       ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
+      "video_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/c3035de0-c509-449c-8672-dd4fa846c41f.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "25145e71-a134-4327-a3cc-d8f14e776154",
+          "url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/332ade7b-b106-46f2-a4e7-a2b69af9a674.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "329b5600-2e32-443e-a01b-dea9bbc5fd4c",
+          "url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/c3035de0-c509-449c-8672-dd4fa846c41f.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
       "status": "completed"
     },
     {
@@ -94,7 +133,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "972ea20a-9f48-41f3-9120-7b6fcab4f674",
-      "order": 4,
+      "order": 3,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -107,10 +146,74 @@
         "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/2815b532-2071-4d95-b143-24f1b7f4741f.png",
         "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/aa90cab7-7d49-459a-a00e-342a5ff5f70d.png"
       ],
+      "video_url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/4e6b55cd-71cf-42ba-ba17-8b2aca66fbfb.mp4",
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "286f72cd-a3c1-4049-b063-a8b84ff946cb",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "b54317e1-2458-44db-9d0b-017d85bf799b",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "cf3561a7-d394-4200-891d-7439ab5d1e50",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "48d37e7e-c3e5-4cb2-bf91-ad6097518770",
+          "url": "/static/uploads/063781cb-83ed-4fb9-a385-caad9b769db4/4e6b55cd-71cf-42ba-ba17-8b2aca66fbfb.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "d8f640ea-9281-43de-8b6a-b76d6ad58a4f",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "d5c99476-9dc3-4b37-8c12-321597b929b8",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "4231595b-5465-4d8a-88e3-a6b285d3f5a8",
+      "order": 4,
+      "characters": [],
+      "scene_id": "scene_1769739378108_fepxt6uuu",
+      "image_url": null,
+      "original_image_url": null,
+      "image_candidates": [],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "completed"
+      "status": "idle"
     },
     {
       "prompt": "远景镜头，村口尘土漫天。一队骑着战马、面目狰狞的微型流寇挥舞着锈迹斑斑的长刀冲入村庄，地面上出现“流寇袭村”的金色虚幻文字。 [山贼: 凶残的中国古代流寇，面目狰狞\t，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈砍刀，表情狰狞凶恶，动作充满攻击性] [明朝末年风格的荒村，典型的黄土高原地貌。地面干旱龟裂，到处是断壁残垣和枯死的树木。阳光毒辣干燥，空气中弥漫着黄沙，整体色调为土黄色和灰褐色，氛围压抑绝望。]",
@@ -770,7 +873,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "f5902504-ed46-40d1-be7b-5a19325605a7",
-      "order": 29,
+      "order": 30,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -793,7 +896,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "26b3636b-dde9-44bf-88d4-04e168ccc099",
-      "order": 30,
+      "order": 31,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -816,7 +919,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "e0f61153-78ec-4dbe-91ca-d8999a957025",
-      "order": 31,
+      "order": 32,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -839,7 +942,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "9f4cff10-31b8-410f-a71e-00f77737fab6",
-      "order": 32,
+      "order": 33,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -860,7 +963,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "6cfcbc2d-278c-4685-9f67-60c00f9c40f2",
-      "order": 33,
+      "order": 34,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -883,7 +986,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "040c1143-8485-4dee-8a56-fffc3fbbb747",
-      "order": 34,
+      "order": 35,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -906,7 +1009,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "f8fc9fc6-af04-4d28-b41d-b586ff9d5151",
-      "order": 35,
+      "order": 36,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -929,7 +1032,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2adb61b8-cd3a-4813-91be-6b66de77d404",
-      "order": 36,
+      "order": 37,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -952,7 +1055,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cd3810e7-3c4e-4877-a2ef-17c9acd995af",
-      "order": 37,
+      "order": 38,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -973,7 +1076,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "3a798166-8690-4ccd-afe2-1a13d146f9e2",
-      "order": 38,
+      "order": 39,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -994,7 +1097,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2bdc2504-8a2e-469b-9ca1-106e958a8211",
-      "order": 39,
+      "order": 40,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1015,7 +1118,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "aa3690ff-2444-4c11-aa97-aaca602529e4",
-      "order": 40,
+      "order": 41,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1036,7 +1139,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "6f3b4f5d-883b-4584-b130-60d86fe931e7",
-      "order": 41,
+      "order": 42,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b",
         "39c49781-fee7-475e-9a19-ab125044fcf9"
@@ -1060,7 +1163,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "00e85c7f-f5db-4626-b220-67accbd9cd3b",
-      "order": 42,
+      "order": 43,
       "characters": [
         "39c49781-fee7-475e-9a19-ab125044fcf9"
       ],
@@ -1083,7 +1186,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "1c9635ab-f8fd-4827-b4b8-1debcdcc9f07",
-      "order": 43,
+      "order": 44,
       "characters": [
         "39c49781-fee7-475e-9a19-ab125044fcf9",
         "234d399c-36a0-4f6d-a641-e99249468e6b"
@@ -1107,7 +1210,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "d19dcf9b-a4ad-4da9-94ed-b03691d04a47",
-      "order": 44,
+      "order": 45,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -1130,7 +1233,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "b81f3c4c-52ba-42d9-894e-eeac188a2b4e",
-      "order": 45,
+      "order": 46,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1151,7 +1254,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "f20b73e7-ac14-43c4-87f8-c0b5dea2e952",
-      "order": 46,
+      "order": 47,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1172,7 +1275,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "1af9e484-6553-43c8-8b56-370b78bbee7c",
-      "order": 47,
+      "order": 48,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -1195,7 +1298,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "8e4a327a-1400-4d2b-a1b8-948f2f6bf7b8",
-      "order": 48,
+      "order": 49,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1216,7 +1319,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2a2510b9-2208-4815-8b50-b828754142c2",
-      "order": 49,
+      "order": 50,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1237,7 +1340,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "0d11ba60-bd00-4fbd-8d7e-2e11f090eef1",
-      "order": 50,
+      "order": 51,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1260,7 +1363,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2951a5ef-f319-4b70-8e99-b49e05f099e1",
-      "order": 51,
+      "order": 52,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1283,7 +1386,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "680846bb-52fc-43a8-b283-ced830496316",
-      "order": 52,
+      "order": 53,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1304,7 +1407,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "3d644426-f364-46c7-aecd-2b1125b8a934",
-      "order": 53,
+      "order": 54,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1327,7 +1430,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "93b9d9b7-8df8-44ed-b096-8c7687094c5e",
-      "order": 54,
+      "order": 55,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1350,7 +1453,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "f2a62955-1ba7-4c74-a1f0-e522d36e4044",
-      "order": 55,
+      "order": 56,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1373,7 +1476,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "fca18827-596b-4a72-a72e-b1cb5afbf1a5",
-      "order": 56,
+      "order": 57,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1396,7 +1499,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "fcca7a42-0f5c-4991-b1e8-d1aeb4a1e611",
-      "order": 57,
+      "order": 58,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1417,7 +1520,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "d5972620-0a2c-455c-bd34-f388913765af",
-      "order": 58,
+      "order": 59,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1438,7 +1541,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c257ed5d-e5dc-4cf4-a752-7f15faf26e98",
-      "order": 59,
+      "order": 60,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1459,7 +1562,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "aae32ca6-272d-4d10-a7ea-f2bcf62ed3ba",
-      "order": 60,
+      "order": 61,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1480,7 +1583,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "692780b8-07dd-4b3b-9dd5-9c625d650012",
-      "order": 61,
+      "order": 62,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1503,7 +1606,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "ed4fc481-f8c0-42eb-98ca-4feeb82ed3ef",
-      "order": 62,
+      "order": 63,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1526,7 +1629,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "bc6e8509-7116-40b4-a71b-244a5affc968",
-      "order": 63,
+      "order": 64,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1549,7 +1652,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2b9c80ca-80a1-4b92-b6bd-f00919495586",
-      "order": 64,
+      "order": 65,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1572,7 +1675,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cb26a12b-8d31-4a51-87c8-8e9faacb9721",
-      "order": 65,
+      "order": 66,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1595,7 +1698,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "340e34f5-de61-4869-a65f-fb01047cf373",
-      "order": 66,
+      "order": 67,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1618,7 +1721,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "be100a40-971f-4d92-af67-0ec9872ddc9b",
-      "order": 67,
+      "order": 68,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1641,7 +1744,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "e77ffcb5-93ae-4033-8939-90ea1a3ff05e",
-      "order": 68,
+      "order": 69,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1662,7 +1765,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "fe0fb076-2a53-4f63-8e35-f1ee5f3965a0",
-      "order": 69,
+      "order": 70,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -1685,7 +1788,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "f2f75c0f-0188-4f39-b886-27567b45bfd4",
-      "order": 70,
+      "order": 71,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -1708,7 +1811,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2f5952c4-2eb7-4605-9456-98db6b895f55",
-      "order": 71,
+      "order": 72,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -1731,7 +1834,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "6b4ce223-69e1-48ec-9edb-f40385909745",
-      "order": 72,
+      "order": 73,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -1754,7 +1857,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "85567847-4982-41b0-b192-cf872fdc5274",
-      "order": 73,
+      "order": 74,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1775,7 +1878,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "a30d45f0-c889-447a-a848-24b6bca069b4",
-      "order": 74,
+      "order": 75,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1796,7 +1899,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "a22b49bf-f42b-4be1-8705-8e032c3e9728",
-      "order": 75,
+      "order": 76,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1817,7 +1920,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "9018d531-319f-40c0-a31c-c658d9a3fa1c",
-      "order": 76,
+      "order": 77,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1838,7 +1941,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "421275ac-8721-464b-88da-981d175dbe68",
-      "order": 77,
+      "order": 78,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b",
         "39c49781-fee7-475e-9a19-ab125044fcf9"
@@ -1862,7 +1965,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "dc83f9cf-9517-426e-9882-7c17fabd294a",
-      "order": 78,
+      "order": 79,
       "characters": [
         "39c49781-fee7-475e-9a19-ab125044fcf9"
       ],
@@ -1885,7 +1988,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2f9932a7-00bc-437f-87a1-20f1b9548ec4",
-      "order": 79,
+      "order": 80,
       "characters": [
         "39c49781-fee7-475e-9a19-ab125044fcf9",
         "234d399c-36a0-4f6d-a641-e99249468e6b"
@@ -1909,7 +2012,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "5180999f-8812-41c9-8546-94457df29b51",
-      "order": 80,
+      "order": 81,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -1932,7 +2035,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "beac1a3d-4b89-49f1-8765-dd985dba4c32",
-      "order": 81,
+      "order": 82,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1953,7 +2056,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "a6ce0696-1062-45c8-bd3f-47114b1120d3",
-      "order": 82,
+      "order": 83,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1974,7 +2077,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "292d2a15-64a4-4b27-9fdf-f9acad3bec8b",
-      "order": 83,
+      "order": 84,
       "characters": [
         "234d399c-36a0-4f6d-a641-e99249468e6b"
       ],
@@ -1997,7 +2100,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cc56f5e8-19a5-4534-8094-132b46c377a0",
-      "order": 84,
+      "order": 85,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -2018,7 +2121,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "5f938e0c-4ccc-438c-9dad-9d6672e37d15",
-      "order": 85,
+      "order": 86,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -2039,7 +2142,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "e90f8cd9-5c7b-400f-a960-ff17806f3bf0",
-      "order": 86,
+      "order": 87,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2062,7 +2165,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c6ccf379-f2a1-498a-b47a-87d66321e796",
-      "order": 87,
+      "order": 88,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2085,7 +2188,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "aa4cc9e4-0aa3-4ceb-9be1-1865bf8ee69e",
-      "order": 88,
+      "order": 89,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -2106,7 +2209,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2bb53fcb-c48a-4f8d-97c8-3d029747bbe0",
-      "order": 89,
+      "order": 90,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2129,7 +2232,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "50485509-4c1d-4ff9-81cb-75a363cf510b",
-      "order": 90,
+      "order": 91,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2152,7 +2255,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "76ff4101-8c36-482d-8a1e-b585cac3c44e",
-      "order": 91,
+      "order": 92,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2175,7 +2278,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "b797de37-b395-4adf-8258-c74b767a6799",
-      "order": 92,
+      "order": 93,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2198,7 +2301,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "390fb510-3bb6-4d25-b648-68bb40409115",
-      "order": 93,
+      "order": 94,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -2219,7 +2322,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "657b684a-a911-4161-8adc-bb359278b317",
-      "order": 94,
+      "order": 95,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -2240,7 +2343,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cdaf4ef6-bf48-4a6f-8bb4-9935088b00dd",
-      "order": 95,
+      "order": 96,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -2261,7 +2364,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "1efa85a4-478f-42b6-adfb-bbf00bfdd09a",
-      "order": 96,
+      "order": 97,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -2282,7 +2385,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "fadfd6ab-99a6-4cff-bc10-ad5e5428cf79",
-      "order": 97,
+      "order": 98,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2305,7 +2408,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cd65faf8-c005-4b68-a877-a8f154584f29",
-      "order": 98,
+      "order": 99,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2328,7 +2431,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "034383fe-8043-4a36-b4ea-865d9777d04d",
-      "order": 99,
+      "order": 100,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2351,7 +2454,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "40a5328a-7ecb-4646-a8c4-87c65049b2b1",
-      "order": 100,
+      "order": 101,
       "characters": [
         "d1c149a0-3143-4a7c-8baa-e92442ae8ace"
       ],
@@ -2374,7 +2477,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "2d0ee7e6-24b8-4f96-bf58-7ab9868b876d",
-      "order": 101,
+      "order": 102,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2397,7 +2500,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "6b0fea4e-eacb-43d8-ad38-e648216c9d7f",
-      "order": 102,
+      "order": 103,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2420,7 +2523,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "ab0bd15d-3503-4738-82cb-3548eaa5a8a9",
-      "order": 103,
+      "order": 104,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2443,7 +2546,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "9844a6d0-ba73-4cf7-9486-46953deb41db",
-      "order": 104,
+      "order": 105,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2466,7 +2569,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "bce6ee78-4ecc-4ed1-aeba-7ff04b29ad7c",
-      "order": 105,
+      "order": 106,
       "characters": [
         "49f88c27-6afc-455a-8d84-38441f0a4f58"
       ],
@@ -2489,7 +2592,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "1415a3e1-5e91-481d-99fa-25b376eb0cc4",
-      "order": 106,
+      "order": 107,
       "characters": [
         "7648f879-cf4d-4374-8b94-fa29b213f3de"
       ],
@@ -2512,7 +2615,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c8091ec5-6799-497b-952a-fc65294f28d1",
-      "order": 107,
+      "order": 108,
       "characters": [
         "7648f879-cf4d-4374-8b94-fa29b213f3de"
       ],
@@ -2535,7 +2638,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "0b57f805-a612-4c5e-9e64-8fa0ee6846fe",
-      "order": 108,
+      "order": 109,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2558,7 +2661,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "17e634ed-6100-473d-8ab4-35129a4daa2c",
-      "order": 109,
+      "order": 110,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2581,7 +2684,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "bb308e84-a98f-4e78-bf7f-60a568db7cbb",
-      "order": 110,
+      "order": 111,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2604,7 +2707,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "ef9da8f1-9750-47ca-a239-80e875399cf3",
-      "order": 111,
+      "order": 112,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2627,7 +2730,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c8c5e919-b09c-4c4e-9053-f328e93d1a86",
-      "order": 112,
+      "order": 113,
       "characters": [
         "f4e9555a-054c-4aac-867c-a367dafae679"
       ],
@@ -2650,7 +2753,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "01ff7416-ee9f-41a0-8385-d192362b2b5c",
-      "order": 113,
+      "order": 114,
       "characters": [
         "ed038d51-4992-414b-b6a0-15d5e6c8d9a2"
       ],
@@ -2673,7 +2776,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "119eb2f1-3fdf-4ead-94a0-13eb514005b5",
-      "order": 114,
+      "order": 115,
       "characters": [
         "ed038d51-4992-414b-b6a0-15d5e6c8d9a2"
       ],
@@ -2696,7 +2799,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "1a0c5082-3e52-4a19-ac1f-ad68d1a1dca7",
-      "order": 115,
+      "order": 116,
       "characters": [
         "ed038d51-4992-414b-b6a0-15d5e6c8d9a2"
       ],
@@ -2719,12 +2822,33 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c72ea79e-dbc6-4fff-9797-0734b34d0121",
-      "order": 116,
+      "order": 117,
       "characters": [
         "287bf103-71b9-484c-b8f5-4f96131fd8a3"
       ],
       "scene_id": "85076c94-0428-4fb9-babf-0e8ccadc846e",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "6c4b173f-dcd5-45e1-93bd-006128ad79ac",
+      "order": 118,
+      "characters": [],
+      "scene_id": "scene_1769739378108_fepxt6uuu",
+      "image_url": null,
       "original_image_url": null,
       "image_candidates": [],
       "video_url": null,

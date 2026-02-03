@@ -69,6 +69,14 @@ class ApiConfig(BaseModel):
     openai_video_api_key: str = ""
     openai_video_model: str = ""
     openai_video_endpoint: str = ""
+    kling_api_key: str = ""
+    kling_access_key: str = ""
+    kling_secret_key: str = ""
+    kling_api_base: str = "https://api-beijing.klingai.com"
+    kling_model_name: str = "kling-v1"
+    kling_mode: str = "std"
+    kling_duration: int = 5
+    kling_cfg_scale: float = 0.5
     # Volcengine Models
     volc_image_model: str = "jimeng_t2i_v30"
     volc_video_model: str = "jimeng_i2v_first_v30"
@@ -127,6 +135,14 @@ def load_api_config():
     current_api_config.openai_video_api_key = os.getenv("OPENAI_VIDEO_API_KEY", "")
     current_api_config.openai_video_model = os.getenv("OPENAI_VIDEO_MODEL", "")
     current_api_config.openai_video_endpoint = os.getenv("OPENAI_VIDEO_ENDPOINT", "")
+    current_api_config.kling_api_key = os.getenv("KLING_API_KEY", "")
+    current_api_config.kling_access_key = os.getenv("KLING_ACCESS_KEY", "")
+    current_api_config.kling_secret_key = os.getenv("KLING_SECRET_KEY", "")
+    current_api_config.kling_api_base = os.getenv("KLING_API_BASE", "https://api-beijing.klingai.com")
+    current_api_config.kling_model_name = os.getenv("KLING_MODEL_NAME", "kling-v1")
+    current_api_config.kling_mode = os.getenv("KLING_MODE", "std")
+    current_api_config.kling_duration = int(os.getenv("KLING_DURATION", "5") or 5)
+    current_api_config.kling_cfg_scale = float(os.getenv("KLING_CFG_SCALE", "0.5") or 0.5)
     current_api_config.volc_image_model = os.getenv("VOLC_IMAGE_MODEL", "jimeng_t2i_v30")
     current_api_config.volc_video_model = os.getenv("VOLC_VIDEO_MODEL", "jimeng_i2v_first_v30")
     current_api_config.vectorengine_api_key = os.getenv("VECTORENGINE_API_KEY", "")
@@ -175,6 +191,22 @@ def load_api_config():
                     current_api_config.openai_video_model = data["openai_video_model"]
                 if data.get("openai_video_endpoint"):
                     current_api_config.openai_video_endpoint = data["openai_video_endpoint"]
+                if data.get("kling_api_key"):
+                    current_api_config.kling_api_key = data["kling_api_key"]
+                if data.get("kling_access_key"):
+                    current_api_config.kling_access_key = data["kling_access_key"]
+                if data.get("kling_secret_key"):
+                    current_api_config.kling_secret_key = data["kling_secret_key"]
+                if data.get("kling_api_base"):
+                    current_api_config.kling_api_base = data["kling_api_base"]
+                if data.get("kling_model_name"):
+                    current_api_config.kling_model_name = data["kling_model_name"]
+                if data.get("kling_mode"):
+                    current_api_config.kling_mode = data["kling_mode"]
+                if data.get("kling_duration") is not None:
+                    current_api_config.kling_duration = int(data["kling_duration"])
+                if data.get("kling_cfg_scale") is not None:
+                    current_api_config.kling_cfg_scale = float(data["kling_cfg_scale"])
                 if data.get("volc_image_model"):
                     current_api_config.volc_image_model = data["volc_image_model"]
                 if data.get("volc_video_model"):
@@ -391,6 +423,59 @@ def _get_user(user_id: str | None) -> User | None:
     if not user_id:
         return None
     return USERS.get(user_id)
+
+def _get_effective_api_config(user_id: str | None) -> ApiConfig:
+    if user_id:
+        user = _get_user(user_id)
+        if user and user.api_config:
+            try:
+                return ApiConfig(**user.api_config)
+            except Exception:
+                return current_api_config
+    return current_api_config
+
+def _build_clients_for_config(config: ApiConfig):
+    text_client = None
+    image_client_local = None
+    video_client_local = None
+    visual_service_local = None
+    llm_model = "qwen-plus"
+    if config.text_provider == "openai" and config.openai_api_key:
+        base_url = config.openai_api_base if config.openai_api_base else "https://api.openai.com/v1"
+        text_client = AsyncOpenAI(
+            api_key=config.openai_api_key,
+            base_url=base_url,
+            timeout=120.0
+        )
+        llm_model = config.openai_model if config.openai_model else "gpt-3.5-turbo"
+    elif config.text_provider == "dashscope" and config.dashscope_api_key:
+        text_client = AsyncOpenAI(
+            api_key=config.dashscope_api_key,
+            base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+            timeout=120.0
+        )
+        llm_model = "qwen-plus"
+    if config.image_provider == "openai" and (config.openai_image_api_key or (config.openai_api_key and config.openai_image_model)):
+        image_base = config.openai_image_api_base or config.openai_api_base or "https://api.openai.com/v1"
+        image_key = config.openai_image_api_key or config.openai_api_key
+        image_client_local = AsyncOpenAI(
+            api_key=image_key,
+            base_url=image_base,
+            timeout=180.0
+        )
+    if config.video_provider == "openai" and (config.openai_video_api_key or (config.openai_api_key and config.openai_video_model)):
+        video_base = config.openai_video_api_base or config.openai_api_base or "https://api.openai.com/v1"
+        video_key = config.openai_video_api_key or config.openai_api_key
+        video_client_local = AsyncOpenAI(
+            api_key=video_key,
+            base_url=video_base,
+            timeout=600.0
+        )
+    if (config.image_provider == "volcengine" or config.video_provider == "volcengine") and config.volc_access_key and config.volc_secret_key:
+        visual_service_local = VisualService()
+        visual_service_local.set_ak(config.volc_access_key)
+        visual_service_local.set_sk(config.volc_secret_key)
+    return text_client, image_client_local, video_client_local, visual_service_local, llm_model
 
 def _hash_password(password: str) -> str:
     return hashlib.sha256(password.encode("utf-8")).hexdigest()
@@ -757,11 +842,25 @@ async def assign_projects_bulk(data: AssignProjectBulkRequest, admin_user_id: st
     return updated
 
 @app.get("/api/config", response_model=ApiConfig)
-async def get_api_config():
+async def get_api_config(user_id: str | None = None):
+    if user_id:
+        user = _get_user(user_id)
+        if user and user.api_config:
+            try:
+                return ApiConfig(**user.api_config)
+            except Exception:
+                return current_api_config
     return current_api_config
 
 @app.post("/api/config", response_model=ApiConfig)
-async def update_api_config(config: ApiConfig):
+async def update_api_config(config: ApiConfig, user_id: str | None = None):
+    if user_id:
+        user = _get_user(user_id)
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        user.api_config = config.dict()
+        save_users()
+        return config
     save_api_config(config)
     return current_api_config
 
@@ -1600,12 +1699,14 @@ class ScriptParseResponse(BaseModel):
     scenes: List[ParsedScene] = []
 
 @app.post("/api/parse-script", response_model=ScriptParseResponse)
-async def parse_script(request: ScriptRequest):
+async def parse_script(request: ScriptRequest, user_id: str | None = None):
     """
     Parse script using Aliyun Bailian (Qwen) if API key is present.
     Fallback to simple splitting if not.
     """
-    if client:
+    api_config = _get_effective_api_config(user_id)
+    text_client, _, _, _, llm_model = _build_clients_for_config(api_config)
+    if text_client:
         try:
             system_prompt = """
             你是一位专业的动画分镜导演。请将用户提供的剧本解析为一系列分镜镜头，并提取出所有出现的角色和场景及其详细视觉描述。
@@ -1628,8 +1729,8 @@ async def parse_script(request: ScriptRequest):
             请直接返回JSON对象，不要包含任何Markdown格式或额外文字。
             """
             
-            response = await client.chat.completions.create(
-                model=current_llm_model,
+            response = await text_client.chat.completions.create(
+                model=llm_model,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": request.content}
@@ -2082,12 +2183,18 @@ async def _describe_image_with_vision(image_url: str) -> str:
         print(f"[Vision] Failed to describe image: {e}")
         return ""
 
-async def ai_generation_task(project_id: str, shot_id: str, type: str, count: int | None = None, video_id: str | None = None, video_aspect_ratio: str = "16:9", video_resolution: str = "720p"):
+async def ai_generation_task(project_id: str, shot_id: str, type: str, count: int | None = None, video_id: str | None = None, video_aspect_ratio: str = "16:9", video_resolution: str = "720p", user_id: str | None = None):
     project = DB.get(project_id)
     if not project: return
 
     target_shot = next((s for s in project.shots if s.id == shot_id), None)
     if not target_shot: return
+    effective_user_id = user_id or project.owner_id
+    if not project.owner_id and user_id:
+        project.owner_id = user_id
+        save_db()
+    api_config = _get_effective_api_config(effective_user_id)
+    _, image_client_local, video_client_local, visual_service_local, _ = _build_clients_for_config(api_config)
 
     try:
         prompt = (target_shot.audio_prompt or target_shot.prompt or "") if type == "video" else (target_shot.prompt or "")
@@ -2164,9 +2271,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
             negative_prompt = "photorealistic, real photo, 3d, bad anatomy, bad hands, text, watermark"
         
         if type == "image":
-            provider = current_api_config.image_provider or "openai"
+            provider = api_config.image_provider or "openai"
             if provider == "openai":
-                if not image_client:
+                if not image_client_local:
                     raise Exception("OpenAI image provider not configured")
                 
                 # Gemini/OpenAI Native Image-to-Image Support
@@ -2212,9 +2319,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                         provider,
                         final_prompt,
                         sub_dir=project.id,
-                        config=current_api_config,
-                        image_client=image_client,
-                        visual_service=visual_service,
+                        config=api_config,
+                        image_client=image_client_local,
+                        visual_service=visual_service_local,
                         negative_prompt=negative_prompt,
                         reference_images=reference_images,
                         reference_image_url=target_shot.custom_image_url,
@@ -2263,9 +2370,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                         provider,
                         base_prompt,
                         sub_dir=project.id,
-                        config=current_api_config,
-                        image_client=image_client,
-                        visual_service=visual_service,
+                        config=api_config,
+                        image_client=image_client_local,
+                        visual_service=visual_service_local,
                         negative_prompt=negative_prompt,
                         reference_images=None,
                         reference_image_url=None,
@@ -2305,7 +2412,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     target_shot.image_url = local_urls[0]
 
             elif provider == "volcengine":
-                if not visual_service:
+                if not visual_service_local:
                     raise Exception("Volcengine image provider not configured")
                 
                 # Use base_prompt constructed above
@@ -2359,9 +2466,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                         provider,
                         prompt,
                         sub_dir=project.id,
-                        config=current_api_config,
-                        image_client=image_client,
-                        visual_service=visual_service,
+                        config=api_config,
+                        image_client=image_client_local,
+                        visual_service=visual_service_local,
                         negative_prompt=negative_prompt,
                         reference_images=reference_images,
                         reference_image_url=None,
@@ -2399,6 +2506,79 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                             
                     target_shot.image_candidates.extend(local_urls)
                     target_shot.image_url = local_urls[0]
+
+            elif provider == "kling":
+                # Kling Image Generation
+                prompt = f"{base_prompt}. Exclude: {negative_prompt}"
+                
+                reference_images = []
+                if isinstance(target_shot.characters, list) and target_shot.characters:
+                    char_by_id = {c.id: c for c in (project.characters or []) if getattr(c, "id", None)}
+                    for cid in target_shot.characters:
+                        c = char_by_id.get(cid)
+                        if not c: continue
+                        b64 = _image_url_to_base64(getattr(c, "avatar_url", "") or "")
+                        if b64:
+                            reference_images.append({"name": c.name, "b64": b64})
+
+                if target_shot.use_scene_ref and target_shot.scene_id:
+                    scene_by_id = {s.id: s for s in (project.scenes or [])}
+                    scene = scene_by_id.get(target_shot.scene_id)
+                    if scene and scene.image_url:
+                        b64 = _image_url_to_base64(scene.image_url)
+                        if b64:
+                            reference_images.append({"name": scene.name, "b64": b64})
+
+                if target_shot.custom_image_url:
+                    b64 = _image_url_to_base64(target_shot.custom_image_url)
+                    if b64:
+                        reference_images.append({"name": "Custom Reference", "b64": b64})
+
+                images = []
+                candidate_count = count or CANDIDATE_IMAGE_COUNT
+                candidate_count = max(1, min(8, candidate_count))
+                
+                tasks = [
+                    generate_image(
+                        provider,
+                        prompt,
+                        sub_dir=project.id,
+                        config=api_config,
+                        image_client=image_client_local,
+                        visual_service=visual_service_local,
+                        negative_prompt=negative_prompt,
+                        reference_images=reference_images,
+                        reference_image_url=target_shot.custom_image_url,
+                        image_url_to_base64=_image_url_to_base64,
+                        save_image_from_url=_save_image_from_url,
+                        save_base64_image=_save_base64_image
+                    )
+                    for _ in range(candidate_count)
+                ]
+                results = await asyncio.gather(*tasks, return_exceptions=True)
+                
+                for res in results:
+                    if isinstance(res, str) and res:
+                        images.append(res)
+                    elif isinstance(res, Exception):
+                        print(f"Kling Image Gen failed: {res}")
+                
+                if images:
+                    if target_shot.image_candidates is None:
+                        target_shot.image_candidates = []
+                    remote_urls = list(images)
+                    if not target_shot.original_image_url and remote_urls:
+                         target_shot.original_image_url = remote_urls[0]
+                    local_urls = []
+                    for url in images:
+                        if url.startswith("http"):
+                            local = await asyncio.to_thread(_save_image_from_url, url, sub_dir=project.id)
+                            local_urls.append(local)
+                        else:
+                            local_urls.append(url)
+                    target_shot.image_candidates.extend(local_urls)
+                    target_shot.image_url = local_urls[0]
+
             else:
                 raise Exception(f"Unsupported image provider: {provider}")
                 
@@ -2413,12 +2593,12 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 else:
                     item.progress = 0
                     item.status = "generating"
-            provider = current_api_config.video_provider or "openai"
+            provider = api_config.video_provider or "openai"
             image_path = _resolve_video_image_path(target_shot, project)
             first_frame_path = _resolve_video_frame_path(target_shot.first_frame_url, project)
             last_frame_path = _resolve_video_frame_path(target_shot.last_frame_url, project)
             if provider == "openai":
-                if not video_client or not current_api_config.openai_video_model:
+                if not video_client_local or not api_config.openai_video_model:
                     raise Exception("OpenAI video provider not configured")
                 
                 # Use style-enhanced prompt for video too, but skip layout prompts
@@ -2439,9 +2619,47 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     last_frame_url=target_shot.last_frame_url,
                     first_frame_path=first_frame_path,
                     last_frame_path=last_frame_path,
-                    config=current_api_config,
-                    video_client=video_client,
-                    visual_service=visual_service,
+                    config=api_config,
+                    video_client=video_client_local,
+                    visual_service=visual_service_local,
+                    save_video_bytes=_save_video_bytes,
+                    save_base64_video=_save_base64_video,
+                    progress_callback=None,
+                    video_aspect_ratio=video_aspect_ratio,
+                    video_resolution=video_resolution
+                )
+                video_url = _normalize_video_url(video_url, sub_dir=project.id)
+                target_shot.video_url = video_url
+                target_shot.video_progress = 100
+                if video_id and target_shot.video_items:
+                    item = next((v for v in target_shot.video_items if v.id == video_id), None)
+                    if item:
+                        item.url = video_url
+                        item.progress = 100
+                        item.status = "completed"
+            elif provider == "kling":
+                if not api_config.kling_api_key:
+                    raise Exception("Kling video provider not configured")
+
+                video_prompt = f"{style_desc}, {prompt}, high quality, detailed"
+                if is_real:
+                     video_prompt += f". Exclude: {negative_prompt}"
+
+                source_url = target_shot.original_image_url if target_shot.original_image_url else target_shot.image_url
+
+                video_url = await generate_video(
+                    provider,
+                    video_prompt,
+                    image_path,
+                    sub_dir=project.id,
+                    source_url=source_url,
+                    first_frame_url=target_shot.first_frame_url,
+                    last_frame_url=target_shot.last_frame_url,
+                    first_frame_path=first_frame_path,
+                    last_frame_path=last_frame_path,
+                    config=api_config,
+                    video_client=video_client_local,
+                    visual_service=visual_service_local,
                     save_video_bytes=_save_video_bytes,
                     save_base64_video=_save_base64_video,
                     progress_callback=None,
@@ -2458,7 +2676,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                         item.progress = 100
                         item.status = "completed"
             elif provider == "volcengine":
-                if not visual_service:
+                if not visual_service_local:
                     raise Exception("Volcengine video provider not configured")
                 if not image_path:
                     raise Exception(f"Image is required for video generation. shot image_url={target_shot.image_url}")
@@ -2487,9 +2705,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     last_frame_url=target_shot.last_frame_url,
                     first_frame_path=first_frame_path,
                     last_frame_path=last_frame_path,
-                    config=current_api_config,
-                    video_client=video_client,
-                    visual_service=visual_service,
+                    config=api_config,
+                    video_client=video_client_local,
+                    visual_service=visual_service_local,
                     save_video_bytes=_save_video_bytes,
                     save_base64_video=_save_base64_video,
                     progress_callback=handle_progress,
@@ -2520,9 +2738,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     last_frame_url=target_shot.last_frame_url,
                     first_frame_path=first_frame_path,
                     last_frame_path=last_frame_path,
-                    config=current_api_config,
-                    video_client=video_client,
-                    visual_service=visual_service,
+                    config=api_config,
+                    video_client=video_client_local,
+                    visual_service=visual_service_local,
                     save_video_bytes=_save_video_bytes,
                     save_base64_video=_save_base64_video,
                     progress_callback=None,
@@ -2540,7 +2758,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 poll_timeout = 20 * 60
                 poll_interval = 5
                 while time.time() - poll_started < poll_timeout:
-                    result = await asyncio.to_thread(rongyiyun_provider.get_task_result, project_id, current_api_config)
+                    result = await asyncio.to_thread(rongyiyun_provider.get_task_result, project_id, api_config)
                     status = result.get("status")
                     media_url = result.get("mediaUrl")
                     if video_id and target_shot.video_items:
@@ -2591,7 +2809,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
         save_db()
 
 @app.post("/generate")
-async def generate_asset(request: GenerateRequest, background_tasks: BackgroundTasks):
+async def generate_asset(request: GenerateRequest, background_tasks: BackgroundTasks, user_id: str | None = None):
     project_id = request.project_id or "default_project"
     project = get_project_or_404(project_id)
     
@@ -2610,7 +2828,7 @@ async def generate_asset(request: GenerateRequest, background_tasks: BackgroundT
         target_shot.video_items.append(VideoItem(id=video_id, progress=0, status="generating"))
     save_db()
 
-    background_tasks.add_task(ai_generation_task, project_id, request.shot_id, request.type, request.count, video_id, request.video_aspect_ratio, request.video_resolution)
+    background_tasks.add_task(ai_generation_task, project_id, request.shot_id, request.type, request.count, video_id, request.video_aspect_ratio, request.video_resolution, user_id)
     
     return {"status": "queued", "message": f"{request.type} generation started", "video_id": video_id}
 
@@ -2708,20 +2926,20 @@ def _build_asset_prompt(prompt: str, asset_type: str, project_style: str):
         negative_prompt = "photorealistic, real photo, 3d, bad anatomy, bad hands, text, watermark"
     return prompt, negative_prompt
 
-async def _generate_asset_image(project_id: str | None, asset_type: str, project_style: str, prompt: str):
-    provider = current_api_config.image_provider or "openai"
+async def _generate_asset_image(project_id: str | None, asset_type: str, project_style: str, prompt: str, api_config: ApiConfig, image_client_local, visual_service_local):
+    provider = api_config.image_provider or "openai"
     final_prompt, negative_prompt = _build_asset_prompt(prompt, asset_type, project_style)
     if provider == "openai":
-        if not image_client:
+        if not image_client_local:
             raise HTTPException(status_code=400, detail="OpenAI image provider not configured")
         full_prompt = f"{final_prompt}. Exclude: {negative_prompt}"
         return await generate_image(
             provider,
             full_prompt,
             sub_dir=project_id,
-            config=current_api_config,
-            image_client=image_client,
-            visual_service=visual_service,
+            config=api_config,
+            image_client=image_client_local,
+            visual_service=visual_service_local,
             negative_prompt=negative_prompt,
             reference_images=None,
             reference_image_url=None,
@@ -2734,9 +2952,9 @@ async def _generate_asset_image(project_id: str | None, asset_type: str, project
             provider,
             final_prompt,
             sub_dir=project_id,
-            config=current_api_config,
-            image_client=image_client,
-            visual_service=visual_service,
+            config=api_config,
+            image_client=image_client_local,
+            visual_service=visual_service_local,
             negative_prompt=negative_prompt,
             reference_images=None,
             reference_image_url=None,
@@ -2745,15 +2963,15 @@ async def _generate_asset_image(project_id: str | None, asset_type: str, project
             save_base64_image=_save_base64_image
         )
     if provider == "volcengine":
-        if not visual_service:
+        if not visual_service_local:
             raise HTTPException(status_code=400, detail="Volcengine image provider not configured")
         return await generate_image(
             provider,
             final_prompt,
             sub_dir=project_id,
-            config=current_api_config,
-            image_client=image_client,
-            visual_service=visual_service,
+            config=api_config,
+            image_client=image_client_local,
+            visual_service=visual_service_local,
             negative_prompt=negative_prompt,
             reference_images=None,
             reference_image_url=None,
@@ -2802,15 +3020,21 @@ def _ensure_asset_for_generation(project: Project, asset_type: str, asset_id: st
         return target
     raise HTTPException(status_code=400, detail=f"Unsupported asset type: {asset_type}")
 
-async def asset_generation_task(project_id: str, asset_type: str, asset_id: str, asset_name: str | None, prompt: str | None):
+async def asset_generation_task(project_id: str, asset_type: str, asset_id: str, asset_name: str | None, prompt: str | None, user_id: str | None = None):
     try:
         project = DB.get(project_id)
         if not project:
             return
+        effective_user_id = user_id or project.owner_id
+        if not project.owner_id and user_id:
+            project.owner_id = user_id
+            save_db()
+        api_config = _get_effective_api_config(effective_user_id)
+        _, image_client_local, _, visual_service_local, _ = _build_clients_for_config(api_config)
         target = _ensure_asset_for_generation(project, asset_type, asset_id, asset_name, prompt)
         base_prompt = (prompt or "").strip() or (target.prompt or "").strip() or (target.name or "").strip()
         project_style = project.style or "anime"
-        image_url = await _generate_asset_image(project_id, asset_type, project_style, base_prompt)
+        image_url = await _generate_asset_image(project_id, asset_type, project_style, base_prompt, api_config, image_client_local, visual_service_local)
         if asset_type == "character":
             target.avatar_url = image_url
         elif asset_type == "scene":
@@ -2832,7 +3056,7 @@ async def asset_generation_task(project_id: str, asset_type: str, asset_id: str,
             save_db()
 
 @app.post("/api/generate-asset")
-async def generate_asset_raw(request: AssetGenerateRequest, background_tasks: BackgroundTasks):
+async def generate_asset_raw(request: AssetGenerateRequest, background_tasks: BackgroundTasks, user_id: str | None = None):
     try:
         project_style = "anime"
         project = None
@@ -2840,6 +3064,9 @@ async def generate_asset_raw(request: AssetGenerateRequest, background_tasks: Ba
             project = DB.get(request.project_id)
             if project:
                 project_style = project.style
+        effective_user_id = user_id or (project.owner_id if project else None)
+        api_config = _get_effective_api_config(effective_user_id)
+        _, image_client_local, _, visual_service_local, _ = _build_clients_for_config(api_config)
         if request.project_id and (request.asset_id or request.name):
             if not project:
                 raise HTTPException(status_code=404, detail="Project not found")
@@ -2851,10 +3078,11 @@ async def generate_asset_raw(request: AssetGenerateRequest, background_tasks: Ba
                 request.type,
                 asset_id,
                 request.name,
-                request.prompt
+                request.prompt,
+                effective_user_id
             )
             return {"status": "queued", "asset_id": asset_id, "asset": target.model_dump()}
-        image_url = await _generate_asset_image(request.project_id, request.type, project_style, request.prompt)
+        image_url = await _generate_asset_image(request.project_id, request.type, project_style, request.prompt, api_config, image_client_local, visual_service_local)
         return {"url": image_url}
     except Exception as e:
         print(f"Asset Generation Failed: {e}")

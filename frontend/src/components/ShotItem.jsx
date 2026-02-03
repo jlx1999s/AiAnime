@@ -578,9 +578,13 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                         </div>
                     </div>
                 ) : (
-                    <div className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 text-dark-500 bg-dark-900/30">
-                        <Image size={20}/>
-                        <span className="text-xs">暂无分镜，右侧输入数量后点击“生成”</span>
+                    <div 
+                        className="aspect-video w-full rounded border border-dashed border-dark-600 flex flex-col items-center justify-center gap-2 text-dark-500 bg-dark-900/30 cursor-pointer hover:bg-dark-800 hover:text-gray-400 transition-colors"
+                        onClick={() => onShotImageClick && onShotImageClick(shot.id)}
+                        title="点击上传分镜图"
+                    >
+                        <Upload size={20}/>
+                        <span className="text-xs">点击上传或生成</span>
                     </div>
                  )}
                 {Array.isArray(shot.image_candidates) && (shot.image_candidates.length > 1 || (shot.image_candidates.length > 0 && shot.status === 'generating')) && (

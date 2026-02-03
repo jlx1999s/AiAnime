@@ -1,7 +1,7 @@
 {
   "id": "2bdce51a-3a51-436a-8c98-b299961acf65",
   "name": "4444",
-  "style": "anime",
+  "style": "real",
   "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
   "shots": [
     {
@@ -121,12 +121,33 @@
       "image_candidates": [
         "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ab1efcaa-f7fe-4580-a2b7-545d5ced35b6.png"
       ],
-      "video_url": "https://storage.googleapis.com/ai-sandbox-videofx/video/d18a1db5-7fe9-4612-a347-4f0582be0ef7?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770039802&Signature=CsIjnBW%2BxwHikAHH37%2FwesSdFlDN3%2Bi49vcZ3UkwBF12dS2CrW%2FVQ8SOY8BfP7NKXtw0l%2B4lUM0hR8IVR9t26RHH%2BmdZhSCxjLh4foWFkzhjvEHkEwnRJA98hpvlrChOtVKv3U0xa16gWv%2BKRSDm7pmXNC%2FPL%2BuvfL3IoQtWePH2UYCbYvsyoB5VmF87DlbT9Oeg93vYRX90yeqPWKpfnPC7Lnxbp5Zx65aUOIwl1u4XnhIMdYyfi35E0p1O7whnzC2yQFbe1ya3NlMqsQieDLCJEGs2pAH%2BJvF5kxB2qlOq5%2F7oUcBsy8%2FTP5mUYZgrn7TI6%2FQ2q6xdAkcGlFz7Rw%3D%3D",
-      "video_progress": null,
+      "video_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/80c63982-5247-4791-a6ed-961c9b917412.mp4",
+      "video_progress": 100,
       "video_items": [
         {
           "id": "fc9e698f-4d62-455a-9578-9d702f75aca5",
           "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/d18a1db5-7fe9-4612-a347-4f0582be0ef7?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770039802&Signature=CsIjnBW%2BxwHikAHH37%2FwesSdFlDN3%2Bi49vcZ3UkwBF12dS2CrW%2FVQ8SOY8BfP7NKXtw0l%2B4lUM0hR8IVR9t26RHH%2BmdZhSCxjLh4foWFkzhjvEHkEwnRJA98hpvlrChOtVKv3U0xa16gWv%2BKRSDm7pmXNC%2FPL%2BuvfL3IoQtWePH2UYCbYvsyoB5VmF87DlbT9Oeg93vYRX90yeqPWKpfnPC7Lnxbp5Zx65aUOIwl1u4XnhIMdYyfi35E0p1O7whnzC2yQFbe1ya3NlMqsQieDLCJEGs2pAH%2BJvF5kxB2qlOq5%2F7oUcBsy8%2FTP5mUYZgrn7TI6%2FQ2q6xdAkcGlFz7Rw%3D%3D",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "6bcc2a0b-489b-4104-b3c8-b3a4b65ef47f",
+          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d4713a82-2ab1-4a24-bfe5-dfd21c5b934f.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "eb733c7a-64ac-445d-80ef-33324bc64cf3",
+          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/7a8bce4b-60e5-4080-85ef-f94667f7b174.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "276813b4-a1fa-4bda-b30f-c5677598cb98",
+          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/80c63982-5247-4791-a6ed-961c9b917412.mp4",
           "task_id": null,
           "progress": 100,
           "status": "completed"
@@ -153,9 +174,45 @@
         "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/992f8a23-848b-47d8-b7bd-287d4df90721.jpg",
         "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/56b676bb-4d27-4434-ab8b-0afc23268574.png"
       ],
-      "video_url": null,
+      "video_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fd1c0527-81bb-443d-9082-969393dfc715.mp4",
       "video_progress": null,
-      "video_items": [],
+      "video_items": [
+        {
+          "id": "46a11443-0965-4679-b8b1-68ff392b528d",
+          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/51d692a7-d4d8-4fb9-9d25-efa28bc3bb3d.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "fbb241b7-a996-4215-986d-0c42400f2110",
+          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/47b4e9d6-af9c-4a22-a0cd-abf801ebebac.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "83ed7a04-1a2c-45dc-bb21-10b03895437b",
+          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fd1c0527-81bb-443d-9082-969393dfc715.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "9565fdfd-a23b-4489-988e-e0ac2f3582b1",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "1f04957c-e2b9-4a26-92e4-14c2e146d8f3",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
       "status": "completed"
     },
     {
@@ -186,10 +243,10 @@
       "status": "failed"
     },
     {
-      "prompt": "",
+      "prompt": "真人学生",
       "dialogue": "",
       "audio_prompt": null,
-      "use_scene_ref": true,
+      "use_scene_ref": false,
       "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
@@ -198,7 +255,32 @@
       "order": 4,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/05ebe568-e226-4cff-b4ae-b9e14d34107f.png",
+      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/b4a80747-70de-48f4-ad57-3485c5522243.png",
+      "image_candidates": [
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/b4a80747-70de-48f4-ad57-3485c5522243.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/cfd51c82-c48f-41ba-bc64-42e10302154a.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/05ebe568-e226-4cff-b4ae-b9e14d34107f.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "2cdcfceb-0b23-4cfa-98c7-6b7051ca1ee5",
+      "order": 5,
+      "characters": [],
+      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
+      "image_url": null,
       "original_image_url": null,
       "image_candidates": [],
       "video_url": null,
@@ -216,7 +298,7 @@
       "last_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0d9c690f-7072-4ead-b4bf-5a170fe6badc.png",
       "panel_layout": "1-panel",
       "id": "a09c5fff-6a53-4613-b010-d16e5cb06104",
-      "order": 5,
+      "order": 6,
       "characters": [
         "ca2fa311-2f65-466b-b0cb-b3947cbb8282"
       ],
@@ -227,7 +309,7 @@
         "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0d9c690f-7072-4ead-b4bf-5a170fe6badc.png"
       ],
       "video_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/6c2917e6-201e-41f4-b4a4-9b7f692fe550.mp4",
-      "video_progress": 100,
+      "video_progress": null,
       "video_items": [
         {
           "id": "2704b48b-3090-47c2-96c1-859cba28f302",
@@ -235,6 +317,13 @@
           "task_id": null,
           "progress": 100,
           "status": "completed"
+        },
+        {
+          "id": "3e188e87-1975-47ce-b3a8-1895716ccbd6",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
         }
       ],
       "status": "completed"
@@ -249,7 +338,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "81578c8b-cd61-4681-9c92-73e4f3048874",
-      "order": 6,
+      "order": 7,
       "characters": [
         "184367d3-4391-4d77-9e4f-63ab3abd0632"
       ],
@@ -261,7 +350,15 @@
       ],
       "video_url": null,
       "video_progress": null,
-      "video_items": [],
+      "video_items": [
+        {
+          "id": "7c323e1f-d2e0-4d27-b6ad-449bcb65b35b",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
       "status": "completed"
     },
     {
@@ -274,7 +371,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "9fd868fd-1ea6-45bd-af47-9d1e0c1cffa6",
-      "order": 7,
+      "order": 8,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646"
       ],
@@ -297,7 +394,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "e6e37cc1-8e7b-4c7f-9192-c46be3932d58",
-      "order": 8,
+      "order": 9,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646"
       ],
@@ -320,7 +417,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cc363f3b-73e0-457f-ada0-cf020ca7653e",
-      "order": 9,
+      "order": 10,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646"
       ],
@@ -343,7 +440,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "4c094a66-0fa9-4a79-8f6a-a7fea055d35d",
-      "order": 10,
+      "order": 11,
       "characters": [
         "79d27115-06c2-48fd-a469-c68bf3a7cccf"
       ],
@@ -366,7 +463,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "b2eb0644-d023-41e3-971c-efb56465144d",
-      "order": 11,
+      "order": 12,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -389,7 +486,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c69e3205-9f59-4a96-a366-4d9b150ac208",
-      "order": 12,
+      "order": 13,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c",
         "b275410e-ff72-4c6f-add1-8da32c26a686"
@@ -413,7 +510,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "e267e199-c2e2-4721-9293-99ba60aa7b8b",
-      "order": 13,
+      "order": 14,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -436,7 +533,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "22335b91-b87c-4aa5-904d-36f6727f7d21",
-      "order": 14,
+      "order": 15,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646",
         "ff61b9ff-9619-42a1-a8b0-b3a033adb907"
@@ -460,7 +557,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "6c4aeb47-13f6-4c18-be2c-ce979c2351c8",
-      "order": 15,
+      "order": 16,
       "characters": [
         "ff61b9ff-9619-42a1-a8b0-b3a033adb907",
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
@@ -484,7 +581,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "677f9550-bb50-402c-976e-87d5f9e6d26c",
-      "order": 16,
+      "order": 17,
       "characters": [
         "ff61b9ff-9619-42a1-a8b0-b3a033adb907",
         "7480a98a-2b36-42ba-98e3-0fc995395646"
@@ -508,7 +605,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "bec150e6-732c-4519-9a57-33df2d607a91",
-      "order": 17,
+      "order": 18,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646"
       ],
@@ -531,7 +628,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "bc875894-7481-4f4e-979d-d74ed11098fc",
-      "order": 18,
+      "order": 19,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -554,7 +651,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "e15dfa49-0e1e-40aa-a91b-87025459cd40",
-      "order": 19,
+      "order": 20,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -577,7 +674,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "eb33038d-3cb0-4d05-86cb-042ae00c807c",
-      "order": 20,
+      "order": 21,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646"
       ],
@@ -600,7 +697,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "041af2c8-ecfd-4469-82eb-638ae26a3b61",
-      "order": 21,
+      "order": 22,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -623,7 +720,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "f2e83c0e-7d35-447f-9fd5-f8b092163299",
-      "order": 22,
+      "order": 23,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -646,7 +743,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "4e5a6add-d41a-4b7c-a038-3132a5e565dc",
-      "order": 23,
+      "order": 24,
       "characters": [
         "828b0135-5004-4eb0-826c-98bbafe4a09e"
       ],
@@ -669,7 +766,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "628518e6-bf21-453e-ae9f-f0597a870e66",
-      "order": 24,
+      "order": 25,
       "characters": [
         "828b0135-5004-4eb0-826c-98bbafe4a09e",
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
@@ -693,7 +790,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "8d60c157-267d-4b0b-8fca-980bd7e98b5b",
-      "order": 25,
+      "order": 26,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -716,7 +813,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "bf95f21f-83ec-4f3e-b222-e322e7254232",
-      "order": 26,
+      "order": 27,
       "characters": [
         "5e959892-b802-4752-8d28-d4b050985932",
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
@@ -740,7 +837,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "600cb284-c874-4103-9f3c-0e0a266d3049",
-      "order": 27,
+      "order": 28,
       "characters": [
         "5e959892-b802-4752-8d28-d4b050985932",
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
@@ -764,7 +861,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "454c75f6-d068-4d1b-b49d-4f6991a357d4",
-      "order": 28,
+      "order": 29,
       "characters": [
         "5e959892-b802-4752-8d28-d4b050985932"
       ],
@@ -787,7 +884,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "feb6274b-9df0-4037-b2ea-462d3979be51",
-      "order": 29,
+      "order": 30,
       "characters": [
         "5e959892-b802-4752-8d28-d4b050985932"
       ],
@@ -810,7 +907,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "a63a0bbb-c120-4cd7-9c58-e05b2677af45",
-      "order": 30,
+      "order": 31,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -833,7 +930,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "df9e10f1-b21b-409b-8261-21e9a56eb357",
-      "order": 31,
+      "order": 32,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -856,7 +953,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "33e43c54-4fe9-4078-a042-a952f8082d27",
-      "order": 32,
+      "order": 33,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -879,7 +976,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "1a5713d4-e9eb-475e-a5d6-838aba9f7271",
-      "order": 33,
+      "order": 34,
       "characters": [
         "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
       ],
@@ -902,7 +999,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "b933cc2a-0c4f-41d2-b212-3897c7b5607c",
-      "order": 34,
+      "order": 35,
       "characters": [
         "184367d3-4391-4d77-9e4f-63ab3abd0632"
       ],
@@ -925,7 +1022,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "bc5eb7ac-0a02-4181-b1f0-3c466a6add10",
-      "order": 35,
+      "order": 36,
       "characters": [
         "184367d3-4391-4d77-9e4f-63ab3abd0632"
       ],
@@ -948,7 +1045,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "9a75f26d-c246-413c-ab72-65abb31f4396",
-      "order": 36,
+      "order": 37,
       "characters": [
         "5e959892-b802-4752-8d28-d4b050985932"
       ],
@@ -971,7 +1068,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "6a29e23c-e7ad-4128-839f-6f23400ad3fd",
-      "order": 37,
+      "order": 38,
       "characters": [
         "184367d3-4391-4d77-9e4f-63ab3abd0632"
       ],
@@ -994,7 +1091,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "5ab626d4-5b3e-47d4-adc3-f48e3161cf78",
-      "order": 38,
+      "order": 39,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/92ca0d3f-d6b7-4a6f-86c9-85c6be914a44.png",
@@ -1017,7 +1114,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "802dd120-ea38-4296-b6b9-bf277d3875ae",
-      "order": 39,
+      "order": 40,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1038,7 +1135,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "7ec0361e-cffe-40d3-9d8d-86f9eb839a60",
-      "order": 40,
+      "order": 41,
       "characters": [
         "184367d3-4391-4d77-9e4f-63ab3abd0632"
       ],
@@ -1065,7 +1162,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c23e4f4c-88e4-4a83-8ce1-7d3153eb956b",
-      "order": 41,
+      "order": 42,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1086,7 +1183,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "7738e773-72f0-44a3-b052-d904d1b0097c",
-      "order": 42,
+      "order": 43,
       "characters": [],
       "scene_id": null,
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e6c802c1-5d1b-4261-aeca-f7a985d71e7a.png",
@@ -1115,7 +1212,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "8a93c652-7f28-420d-9b80-8c6d1915556e",
-      "order": 43,
+      "order": 44,
       "characters": [
         "0b0fef67-b8f4-49ef-8d1e-009d93b1a622"
       ],
@@ -1138,7 +1235,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "246f8a97-1e26-4038-ad3a-afd9d8b5d585",
-      "order": 44,
+      "order": 45,
       "characters": [],
       "scene_id": null,
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d24af8de-256f-4973-9a46-7db03fcc4c76.png",
@@ -1161,7 +1258,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "a8f0df1b-630e-4b7f-8582-87884f69015f",
-      "order": 45,
+      "order": 46,
       "characters": [],
       "scene_id": null,
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/eba371aa-4fcb-4560-852f-450d4d109b28.png",
@@ -1184,7 +1281,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cb47f3b2-1547-4349-b417-7cbc35750e63",
-      "order": 46,
+      "order": 47,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1205,7 +1302,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "5cd20bb6-fc89-4857-9cc7-8d3408126486",
-      "order": 47,
+      "order": 48,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1226,7 +1323,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c62161bb-58d9-4c69-8678-d8db30da2ffe",
-      "order": 48,
+      "order": 49,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0ce8ffad-cd19-4c03-a874-88de7bbd8d0b.png",
@@ -1257,7 +1354,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "d3ee4d88-e75e-4b74-9ed7-3625da163095",
-      "order": 49,
+      "order": 50,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646",
         "184367d3-4391-4d77-9e4f-63ab3abd0632",
@@ -1290,7 +1387,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "d99a93fa-0f60-4dd4-8776-5615299eeda9",
-      "order": 50,
+      "order": 51,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fef8a7e6-8a51-4af5-8daf-40a378bcaa06.png",
@@ -1499,7 +1596,7 @@
     {
       "id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "name": "微缩荒村",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/bb3e61df-4beb-43fc-85d0-470aee891627.png",
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d4c61a56-6c03-470d-87b7-ac661c30c5b1_2026012601352431AD677345A0E5193EC6-6632-0~tplv-vuqhorh59i-image-v1.jpg",
       "tags": [],
       "prompt": "miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect",
       "description": "A miniature diorama of a desolate ancient Chinese village. Features yellow earth, dry cracked ground, thatched huts, broken walls, and smoke.",

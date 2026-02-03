@@ -942,7 +942,35 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                 with subtab_novel:
                     if file_tree.get("novel"):
                         df_novel = pd.DataFrame({"文件名": file_tree["novel"]})
-                        st.dataframe(df_novel, use_container_width=True, hide_index=True, height=300)
+                        df_novel = df_novel.reset_index(drop=True)
+                        selection_novel = st.dataframe(
+                            df_novel,
+                            on_select="rerun",
+                            selection_mode="multi-row",
+                            use_container_width=True,
+                            hide_index=True,
+                            height=300,
+                            key="novel_file_table"
+                        )
+                        selected_rows = selection_novel.selection.rows
+                        if selected_rows:
+                            with st.popover("🗑️ 删除选中小说", use_container_width=True):
+                                st.warning("确定要删除选中的小说文件吗？此操作不可恢复。")
+                                if st.button("确认删除", key="delete_selected_novel", type="primary", use_container_width=True):
+                                    novel_dir = os.path.join(project_dir, "novel")
+                                    del_count = 0
+                                    for idx in selected_rows:
+                                        fname = df_novel.iloc[idx]["文件名"]
+                                        fpath = os.path.join(novel_dir, fname)
+                                        try:
+                                            os.remove(fpath)
+                                            del_count += 1
+                                        except Exception as e:
+                                            st.error(f"删除失败 {fname}: {e}")
+                                    if del_count > 0:
+                                        st.success(f"已删除 {del_count} 个小说文件")
+                                        time.sleep(1)
+                                        st.rerun()
                     else:
                         st.caption("（空）")
                 with subtab_scripts:
@@ -1506,6 +1534,7 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
         df_files = pd.DataFrame(table_files_data)
         
         st.caption("👇 请在列表中点击选择要查看的分镜表")
+        all_select_tables = st.checkbox("全选分镜表", value=False, key="storyboard_table_select_all")
         event = st.dataframe(
             df_files,
             column_config={
@@ -1517,28 +1546,56 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
             use_container_width=True,
             hide_index=True,
             on_select="rerun",
-            selection_mode="single-row",
+            selection_mode="multi-row",
             key="storyboard_file_list"
         )
         
-        selected_rows = event.selection.rows
+        selected_rows = list(range(len(df_files))) if all_select_tables else event.selection.rows
         if selected_rows:
             selected_index = selected_rows[0]
             selected_table = df_files.iloc[selected_index]["文件名"]
+            if len(selected_rows) > 1:
+                st.info(f"已选择 {len(selected_rows)} 个分镜表")
+            c_download, c_delete = st.columns([1, 1])
+            with c_download:
+                buf = io.BytesIO()
+                with zipfile.ZipFile(buf, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                    for idx in selected_rows:
+                        fname = df_files.iloc[idx]["文件名"]
+                        fpath = os.path.join(project_dir, fname)
+                        try:
+                            with open(fpath, "rb") as f:
+                                zf.writestr(fname, f.read())
+                        except Exception:
+                            pass
+                st.download_button(
+                    "⬇️ 下载选中分镜表",
+                    data=buf.getvalue(),
+                    file_name="storyboard_tables.zip",
+                    mime="application/zip",
+                    key="download_storyboard_tables",
+                    use_container_width=True
+                )
             
             # Delete Option for Storyboard Table
             st.divider()
-            with st.popover(f"🗑️ 删除 {selected_table}", use_container_width=True):
-                 st.warning(f"确定要删除分镜表 {selected_table} 吗？此操作不可恢复。")
-                 if st.button("确认删除", key="delete_sb_table_btn", type="primary", use_container_width=True):
-                     full_path = os.path.join(project_dir, selected_table)
-                     try:
-                         os.remove(full_path)
-                         st.success(f"已删除: {selected_table}")
-                         time.sleep(1)
-                         st.rerun()
-                     except Exception as e:
-                         st.error(f"删除失败: {e}")
+            with c_delete:
+                with st.popover("🗑️ 删除选中分镜表", use_container_width=True):
+                    st.warning("确定要删除选中的分镜表吗？此操作不可恢复。")
+                    if st.button("确认删除", key="delete_sb_table_btn", type="primary", use_container_width=True):
+                        del_count = 0
+                        for idx in selected_rows:
+                            fname = df_files.iloc[idx]["文件名"]
+                            fpath = os.path.join(project_dir, fname)
+                            try:
+                                os.remove(fpath)
+                                del_count += 1
+                            except Exception as e:
+                                st.error(f"删除失败 {fname}: {e}")
+                        if del_count > 0:
+                            st.success(f"已删除 {del_count} 个分镜表")
+                            time.sleep(1)
+                            st.rerun()
         else:
             if not df_files.empty:
                 selected_table = df_files.iloc[0]["文件名"]

@@ -128,7 +128,7 @@
   "2bdce51a-3a51-436a-8c98-b299961acf65": {
     "id": "2bdce51a-3a51-436a-8c98-b299961acf65",
     "name": "4444",
-    "style": "anime",
+    "style": "real",
     "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e"
   },
   "6b55c541-16ab-4781-ba05-dcf6724f494c": {
@@ -196,5 +196,11 @@
     "name": "自定义分镜测试",
     "style": "anime",
     "owner_id": "0f7f607e-7377-4b57-b499-aba811af17f6"
+  },
+  "545a5a15-335f-44b2-8f91-cf75bc3e2b5d": {
+    "id": "545a5a15-335f-44b2-8f91-cf75bc3e2b5d",
+    "name": "末世猫冬",
+    "style": "anime",
+    "owner_id": "c191690c-1b16-4be0-93d6-f64fbf11f3bd"
   }
 }

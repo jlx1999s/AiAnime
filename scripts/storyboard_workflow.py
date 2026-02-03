@@ -2199,6 +2199,7 @@ Format:
   ]
 }
 ```
+要求：JSON 内 name、description、visual_prompt 均使用中文。
 """
         prompt = prompt_template.replace("{grid_count}", str(grid_count)) \
                                 .replace("{panels_per_grid}", str(panels_per_grid)) \
@@ -2247,6 +2248,7 @@ Format:
   ]
 }
 ```
+要求：JSON 内 name、description、visual_prompt 均使用中文。
 """
         prompt = prompt_template.replace("{grid_count}", str(grid_count)) \
                                 .replace("{panels_per_grid}", str(panels_per_grid)) \
@@ -2503,7 +2505,8 @@ Instructions:
    - Generate a "description" (summary of environment based on context).
    - Generate a "visual_prompt" (keywords for image generation).
 
-3. Output the result in JSON format using the names as KEYS.
+3. 输出内容全部使用中文（description 与 visual_prompt 也必须为中文）。
+4. Output the result in JSON format using the names as KEYS.
 
 Format:
 ```json

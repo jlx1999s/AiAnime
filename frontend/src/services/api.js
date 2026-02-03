@@ -273,7 +273,7 @@ export const ApiService = {
         if (USE_MOCK) {
             return new Promise(resolve => setTimeout(() => resolve({ status: 'queued', video_id: type === 'video' ? `video_${Date.now()}` : null }), 1000));
         }
-        const res = await fetch(`${API_BASE_URL}/generate`, {
+        const res = await fetch(withUserId(`${API_BASE_URL}/generate`), {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ project_id: projectId, shot_id: shotId, type, count, ...options })
@@ -334,7 +334,7 @@ export const ApiService = {
 
     generateAsset: async (prompt, type, projectId, options = {}) => {
         if (USE_MOCK) return { url: "https://placehold.co/512" };
-        const res = await fetch(`${API_BASE_URL}/api/generate-asset`, {
+        const res = await fetch(withUserId(`${API_BASE_URL}/api/generate-asset`), {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ prompt, type, project_id: projectId, ...options })
@@ -501,7 +501,7 @@ export const ApiService = {
                 })));
             }, 1000));
         }
-        const res = await fetch(`${API_BASE_URL}/api/parse-script`, {
+        const res = await fetch(withUserId(`${API_BASE_URL}/api/parse-script`), {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ content })
@@ -517,13 +517,13 @@ export const ApiService = {
                 openai_model: 'gpt-3.5-turbo'
             };
         }
-        const res = await fetch(`${API_BASE_URL}/api/config`);
+        const res = await fetch(withUserId(`${API_BASE_URL}/api/config`));
         return res.json();
     },
 
     updateApiConfig: async (config) => {
         if (USE_MOCK) return config;
-        const res = await fetch(`${API_BASE_URL}/api/config`, {
+        const res = await fetch(withUserId(`${API_BASE_URL}/api/config`), {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(config)

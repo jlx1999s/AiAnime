@@ -34,3 +34,17 @@
 | 电脑屏幕 | A computer monitor display showing interface elements like notifications, emails, and social media, or a dark screen reflecting the user. | LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen |
 | 箱内黄土荒野 | A miniature landscape inside a glass box depicting a desolate wilderness with yellow earth, illuminated by warm light. | miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion |
 | 造景箱玻璃壁外 | The exterior glass surface of the landscape box, acting as a barrier between the cold room and the warm miniature world inside. | glass surface close-up, reflection of blue room, warm light glowing from within, magnifying glass lens pressed against glass, contrast between cold and warm tones, transparent texture |
+| 剥壳后的巨蛋 | 完全剥去外壳的巨蛋，如同一座巍峨洁白的玉山矗立在荒原。表面光滑晶莹，散发着热气和圣洁的微光。 | 巨大的熟蛋白, 白玉山, 光滑质感, 洁白晶莹, 蒸汽缭绕, 顶光, 圣洁氛围, 微缩景观, 移轴摄影, 超现实主义 |
+| 巨蛋内部坑洞 | 高一叶啃食出的深坑通道，周围是白色的蛋白壁，脚下是金黄粉糯的蛋黄核心，空间幽闭。 | 蛋白内部通道, 白色到黄色的渐变, 狭窄空间, 幽闭感, 蛋黄质感, 碎屑, 内部结构, 柔和的透射光 |
+| 巨蛋周围 | 巨蛋矗立的区域，地面被巨大的阴影覆盖或被阳光照亮，周围环绕着跪拜的渺小人群。 | 巨蛋脚下, 环绕的人群, 扇形队列, 几何构图, 阴影, 广角镜头, 荒凉背景, 肃穆氛围 |
+| 巨蛋底部 | 巨大的白色蛋白壁像高墙一样耸立，表面光滑、有弹性，散发着刚刚煮熟的热度。 | 巨大的白色墙壁, 蛋白表面特写, 光滑材质, 弹性触感, 洁白, 仰视视角, 压迫感, 极简主义 |
+| 巨蛋脚下 | 巨蛋与荒原接触的根部，散落着金黄色的蛋黄碎块，尘土飞扬，村民在此争抢。 | 巨蛋根部, 散落的蛋黄碎块, 尘土飞扬, 地面细节, 杂乱的脚印, 阴影处, 仰拍 |
+| 干裂的荒原 | 极度干旱贫瘠的土地，地面布满龟裂的纹路，色调枯黄，毫无生机。 | 干裂的土地, 龟裂纹理, 荒芜, 枯黄, 尘土, 移轴摄影, 高锐度, 荒凉氛围, 贫瘠 |
+| 荒原 | 广袤无垠的背景环境，地平线模糊，光影对比强烈，营造出孤独与绝望的基调。 | 广袤荒原, 贫瘠土地, 地平线, 自然光, 电影质感, 孤独感, 废土风格 |
+| 荒原上的巨蛋 | 远景视角下，巨大的棕色带壳鸡蛋或白色蛋白山矗立在平坦的荒原中央，形成强烈的视觉奇观。 | 荒原中央, 巨大鸡蛋, 棕色蛋壳, 裂纹, 蒸汽喷涌, 朦胧感, 微缩模型感, 奇观 |
+| 荒原上空 | 被巨手和巨蛋遮蔽的天空，光线急剧变暗，充满压迫感。 | 天空, 巨大阴影, 巨手遮天, 虚化的地平线, 压抑的色调, 上帝视角, 逆光 |
+| 荒原全景 | 宏大的史诗感画面，展示巨蛋的庞大与人类的渺小，阳光投下长长的影子。 | 极远景, 宏大场面, 苍茫天地, 长阴影, 史诗感, 孤独的巨物, 移轴摄影, 电影宽银幕 |
+| 荒原地面 | 贴近地面的视角，可见干枯的杂草、粗糙的土质和扬起的尘土。 | 低角度视角, 干枯杂草, 粗糙土质, 模糊前景, 景深效果, 尘土, 颗粒感 |
+| 荒原远景 | 极目远眺，荒原地形起伏平缓，人群如黑点般移动汇聚。 | 极远景, 广阔视野, 地形起伏, 渺小的黑点, 汇聚动势, 大气透视, 苍凉 |
+| 蛋黄深坑 | 巨蛋的核心区域，充满金黄色的浆液和粉糯的固体，阳光从上方洞口射入，形成戏剧性的高光。 | 金黄色空间, 蛋黄质感, 粉糯, 粘稠浆液, 坑洞内部, 戏剧性高光, 耶稣光, 层叠结构, 温暖色调 |
+| 高初五身边 | 高初五倒卧的地面，近处堆放着巨大的、散发热气的金黄蛋黄块，照亮了周围的灰暗。 | 地面近景, 巨大的金黄蛋黄块, 尘土, 温暖的反光, 枯草, 阴影对比, 希望之光 |
