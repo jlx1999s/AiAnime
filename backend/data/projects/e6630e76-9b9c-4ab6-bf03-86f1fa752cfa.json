@@ -273,7 +273,8 @@
       "avatar_url": "http://localhost:8001/static/uploads/0a4538ee-fa96-4f90-8fb0-694782a2355a.png",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769362362445_jrvzbk1yr",
@@ -281,7 +282,8 @@
       "avatar_url": "http://localhost:8001/static/uploads/430848bd-4ec9-4852-b09e-757a79d899f0.png",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769362362445_8crniq7v7",
@@ -289,7 +291,8 @@
       "avatar_url": "http://localhost:8001/static/uploads/e9fdebc7-ab40-4589-b82e-2ff589838d6e.png",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769362362445_0rn04roi8",
@@ -297,7 +300,8 @@
       "avatar_url": "http://localhost:8001/static/uploads/cb32b643-fc2b-43d4-935f-1543f6ebfe1e.png",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -307,7 +311,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769362362457_e7tbdojyz",
@@ -315,7 +320,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769362362457_0lc9t32da",
@@ -323,7 +329,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

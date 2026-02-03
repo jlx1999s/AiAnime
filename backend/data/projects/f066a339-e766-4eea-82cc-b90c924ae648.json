@@ -173,7 +173,8 @@
       "avatar_url": "/static/uploads/f68d1fe3-9319-411f-9f75-e3016b60f673.png",
       "tags": [],
       "prompt": "24岁中国女性，典型的现代社畜形象。黑色中长发扎成凌乱马尾，戴着细框眼镜，眼神疲惫但透着一丝吐槽的犀利。穿着职场新人常见的白衬衫和深色西装裤，气质平庸但真实。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769591968048_q96ddi227",
@@ -181,7 +182,8 @@
       "avatar_url": "/static/uploads/ddd5d526-bc2c-4468-a1a3-ff291dac48b0.png",
       "tags": [],
       "prompt": "书中的穿书者。外貌最初是寡淡的小白花风格，清秀但不出众。后期穿着华丽的皇后凤袍，眼神阴狠毒辣，妆容浓艳，带有一种小人得志的攻击性。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769591968048_n2n6z676n",
@@ -189,7 +191,8 @@
       "avatar_url": "/static/uploads/6c824c32-2899-4b11-8a44-cb8337bb18ad.png",
       "tags": [],
       "prompt": "王翠花穿书后的形象。极致的美艳动人，典型的古典东方大美人。长发如瀑，皮肤白皙如玉，眉目间自带一股妩媚。即使穿着素色的绸缎睡袍，也掩盖不住其倾国倾城的气质，此刻神情极其焦虑。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -199,7 +202,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "现代城市地铁内部，金属质感的扶手，深蓝色的座椅，车厢内挤满了疲惫的上班族。灯光是冷色调的荧光灯，窗外是快速掠过的隧道黑影，充满压抑的都市感。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769591968641_cog3avqfn",
@@ -207,7 +211,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "夸张的影视剧风格，金碧辉煌的宫殿，台阶高耸入云。背景有夕阳残血般的红光，象征着权力的争夺和杀戮，气氛凝重且带有悲剧色彩。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769591968641_ta8wl8xg2",
@@ -215,7 +220,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "典型的中国古代高级寝殿。红木家具，精致的屏风，层层叠叠的丝绸床幔。空气中仿佛飘着檀香，阳光斜射，尘埃在光影中跳动。室内摆放着巨大的青铜镜，整体氛围奢华却透着一种深宫的冷寂。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

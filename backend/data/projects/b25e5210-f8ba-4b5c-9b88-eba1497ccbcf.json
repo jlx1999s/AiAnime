@@ -297,7 +297,8 @@
       "avatar_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601262338240DAB6FB583FCA20ABF0F-3937-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769528305&x-signature=ULFB%2F0EVmyIdOdiGfIJfl1fspzc%3D",
       "tags": [],
       "prompt": "年轻女子，约十八岁，乌黑柔顺及腰长发，仅以一支素银缠枝莲簪松挽；鹅蛋脸，肌肤莹白如瓷，杏眼清亮却藏机敏，眼下微青显倦意；身着素白细绢宫装，窄袖收腰，襟口绣淡青竹叶暗纹，腰间系同色细绦；气质清冷中带三分佯怯，手指纤长，指甲修剪干净，左腕内侧有一枚极淡的月牙形旧疤。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769362443706_cfanm39ca",
@@ -305,7 +306,8 @@
       "avatar_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260134439D8FE4CA8A68713AD3D0-3717-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448883&x-signature=Okw1Ih5ABWrW4%2B7qapnw%2FZfdhhQ%3D",
       "tags": [],
       "prompt": "青年帝王，约二十二岁，身高挺拔，面容俊美凌厉，剑眉入鬓，凤眼狭长冷冽，瞳色深褐近黑，鼻梁高挺，下颌线条如刀削；墨发以单支玄玉螭首簪束于脑后，余发垂落；常服为玄底金线盘龙纹常服，广袖垂地，腰束赤金螭纹革带，足踏云头赤金履；气质阴鸷沉郁，不怒自威，举手投足皆含压迫感，右手拇指戴一枚温润白玉螭纹扳指。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -315,7 +317,8 @@
       "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601260135041D95573035E10E3C0DDA-9101-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769448905&x-signature=Gqahaq06vtTwbzCggkP8fj%2FZm54%3D",
       "tags": [],
       "prompt": "盛唐风格帝王寝宫，空间恢弘森严：穹顶绘星宿藻井，金漆蟠龙柱撑起朱红梁枋，地面铺满錾金云龙纹金砖；四角设蟠龙青铜烛台，燃牛油巨烛，暖光摇曳却难驱寒意；中央设紫檀嵌百宝龙榻，覆明黄云龙纹锦被与金红双色龙纹帷帐；殿门为黑檀嵌铜兽首门，已缓缓闭合，门缝透出一线幽暗宫廊光；空气静滞，浮尘微旋，弥漫龙涎香与冷冽松墨气息。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

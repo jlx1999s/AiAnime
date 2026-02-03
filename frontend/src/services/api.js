@@ -332,12 +332,12 @@ export const ApiService = {
         return res.json();
     },
 
-    generateAsset: async (prompt, type, projectId) => {
-        if (USE_MOCK) return "https://placehold.co/512";
+    generateAsset: async (prompt, type, projectId, options = {}) => {
+        if (USE_MOCK) return { url: "https://placehold.co/512" };
         const res = await fetch(`${API_BASE_URL}/api/generate-asset`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ prompt, type, project_id: projectId })
+            body: JSON.stringify({ prompt, type, project_id: projectId, ...options })
         });
         const data = await res.json();
         return data;

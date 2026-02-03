@@ -45,7 +45,7 @@ const updatePromptWithAsset = (currentPrompt, action, assetType, asset, oldAsset
     return newPrompt.trim();
 };
 
-const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, onInsertBefore, onInsertAfter, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId, allShots }) => {
+const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, onInsertBefore, onInsertAfter, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId, allShots, onShowShotsSidebar, onShowVideosSidebar }) => {
     const [candidateCount, setCandidateCount] = useState(defaultImageCount || 1);
     const customImageInputRef = useRef(null);
     const firstFrameInputRef = useRef(null);
@@ -520,7 +520,10 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                 {shot.image_url ? (
                     <div 
                         className="aspect-video w-full rounded overflow-hidden border border-dark-700 relative group/image cursor-pointer"
-                        onClick={() => setPreviewUrl(shot.image_url)}
+                        onClick={() => {
+                            onShowShotsSidebar && onShowShotsSidebar(shot.id);
+                            setPreviewUrl(shot.image_url);
+                        }}
                     >
                         <img src={shot.image_url} className="w-full h-full object-cover" alt="scene"/>
                         <div 
@@ -590,7 +593,10 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                         key={idx}
                                         type="button"
                                         className={`relative w-16 h-10 rounded border ${isActive ? 'border-accent' : 'border-dark-700'} overflow-hidden flex-shrink-0`}
-                                        onClick={() => onSelectCandidate && onSelectCandidate(shot.id, url)}
+                                        onClick={() => {
+                                            onShowShotsSidebar && onShowShotsSidebar(shot.id);
+                                            onSelectCandidate && onSelectCandidate(shot.id, url);
+                                        }}
                                     >
                                         <img src={url} alt="candidate" className="w-full h-full object-cover" />
                                         <div className="absolute top-0 right-0 p-0.5 bg-black/60 text-white rounded-bl">
@@ -778,7 +784,10 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                         {(() => {
                             const activeItem = videoItems.find(v => v.id === activeVideoId) || videoItems[0];
                             return (
-                                <div className="aspect-video w-full rounded overflow-hidden border border-accent bg-black relative group/video">
+                                    <div 
+                                        className="aspect-video w-full rounded overflow-hidden border border-accent bg-black relative group/video"
+                                    onClick={() => onShowVideosSidebar && onShowVideosSidebar(shot.id)}
+                                >
                                     {activeItem?.url ? (
                                         <video src={activeItem.url} className="w-full h-full object-cover" controls />
                                     ) : (
@@ -823,7 +832,10 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
                                     <div 
                                         key={item.id} 
                                         className={`aspect-video w-28 rounded overflow-hidden border bg-black relative transition-all group/video flex-shrink-0 cursor-pointer ${isActive ? 'border-accent scale-100 opacity-100' : 'border-dark-700 scale-[0.94] opacity-70'}`}
-                                        onClick={() => setActiveVideoId(item.id)}
+                                        onClick={() => {
+                                            onShowVideosSidebar && onShowVideosSidebar(shot.id);
+                                            setActiveVideoId(item.id);
+                                        }}
                                     >
                                         {item.url ? (
                                             <video src={item.url} className="w-full h-full object-cover" />

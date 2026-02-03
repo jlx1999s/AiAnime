@@ -365,7 +365,8 @@
       "avatar_url": "/static/uploads/2c1afb13-91d4-4905-b3fb-9cf2006ee0f0/2033c24b-3e9a-4110-a1de-4715b6cbc0e5.png",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769361790834_21qhwdezs",
@@ -373,7 +374,8 @@
       "avatar_url": "/static/uploads/2c1afb13-91d4-4905-b3fb-9cf2006ee0f0/f0c44b6c-5b9e-4bdf-900c-3ed4f5fd4324.png",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -383,7 +385,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769361790840_ehr84xv67",
@@ -391,7 +394,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769361790840_idaz7ol9x",
@@ -399,7 +403,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

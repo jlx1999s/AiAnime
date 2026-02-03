@@ -11,7 +11,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄",
       "tags": [],
       "prompt": "中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格",
-      "description": "现代都市青年，社畜，颓废但眼神有神"
+      "description": "现代都市青年，社畜，颓废但眼神有神",
+      "status": "idle"
     },
     {
       "id": "583fe01b-afe9-4051-b3e8-43c4fbf1163e",
@@ -19,7 +20,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶",
       "tags": [],
       "prompt": "古代中国少女，15岁左右，面黄肌瘦，头发枯黄凌乱，穿着破烂的粗麻布衣，脸上沾满泥土和泪痕，眼神惊恐绝望，古代战乱背景，尘土飞扬",
-      "description": "古代流民少女，极度瘦弱，衣衫褴褛"
+      "description": "古代流民少女，极度瘦弱，衣衫褴褛",
+      "status": "idle"
     },
     {
       "id": "274b64c2-b6d8-4be3-b848-bfa35fe937a1",
@@ -27,7 +29,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼",
       "tags": [],
       "prompt": "古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性",
-      "description": "凶残的古代流寇，面目狰狞"
+      "description": "凶残的古代流寇，面目狰狞",
+      "status": "idle"
     },
     {
       "id": "3a6f2679-c6d7-4a20-a5a1-505d89550d8a",
@@ -35,7 +38,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼头目",
       "tags": [],
       "prompt": "古代流寇，满脸胡渣，面目狰狞，穿着抢来的破旧皮甲，手持一把生锈的砍刀，动作夸张，神情暴虐。",
-      "description": "凶神恶煞的流寇，满脸横肉，手持锈刀。"
+      "description": "凶神恶煞的流寇，满脸横肉，手持锈刀。",
+      "status": "idle"
     },
     {
       "id": "fd40b4bb-f248-4720-84f4-6551b2331e48",
@@ -43,7 +47,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高初五",
       "tags": [],
       "prompt": "古代中国青年男性，身材高大但干瘦，皮肤黝黑，穿着破旧的短褐，眼神憨厚，表情震惊，嘴里塞满了食物。",
-      "description": "高家村村民，年轻力壮但因饥饿而虚弱，憨厚朴实。"
+      "description": "高家村村民，年轻力壮但因饥饿而虚弱，憨厚朴实。",
+      "status": "idle"
     },
     {
       "id": "358c7888-ffea-4b81-806b-808a965232e6",
@@ -51,7 +56,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=张耀彩",
       "tags": [],
       "prompt": "中国明朝知县，身穿深色官服，体型肥胖，满脸横肉，眼神凶恶阴鸷，正在发怒，胡须抖动，背景是昏暗的古代衙门大堂，影视级光影。",
-      "description": "澄城知县，反派，肥胖油腻，面相凶狠。"
+      "description": "澄城知县，反派，肥胖油腻，面相凶狠。",
+      "status": "idle"
     },
     {
       "id": "a8ff7573-752a-40c9-bce4-4e5d61fd07c2",
@@ -59,7 +65,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=师爷",
       "tags": [],
       "prompt": "中国古代师爷，身穿青色长衫，身形消瘦，留着山羊胡，正痛苦地蜷缩在地上，表情惊恐，背景是古代公堂地板。",
-      "description": "县衙师爷，瘦弱，留着山羊胡，显得有些滑稽又可怜。"
+      "description": "县衙师爷，瘦弱，留着山羊胡，显得有些滑稽又可怜。",
+      "status": "idle"
     },
     {
       "id": "20b11686-8306-49f6-af85-088ac6e8088a",
@@ -67,7 +74,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（巨手）",
       "tags": [],
       "prompt": "巨大的真人手掌，皮肤纹理清晰，从云层中探出，遮天蔽日，手指修长，带有神圣的光晕，与下方渺小的古代村民形成巨大比例反差，写实风格。",
-      "description": "现代人的手，相对于微缩世界巨大无比，充满神性与力量感。"
+      "description": "现代人的手，相对于微缩世界巨大无比，充满神性与力量感。",
+      "status": "idle"
     },
     {
       "id": "9bae7b8d-46e9-4dc0-acdf-75cfafacf3fe",
@@ -75,7 +83,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=衙役班头",
       "tags": [],
       "prompt": "明朝衙役，身穿红黑皂衣，胸前有'勇'或'捕'字，满脸横肉，表情狰狞贪婪，手持铁尺和腰刀，眼神凶狠，体格壮硕，充满压迫感。",
-      "description": "凶神恶煞的古代差役，满脸横肉，穿着红黑配色的公服，腰间挂刀。"
+      "description": "凶神恶煞的古代差役，满脸横肉，穿着红黑配色的公服，腰间挂刀。",
+      "status": "idle"
     },
     {
       "id": "92498893-13f5-46b0-955f-860a47a6a12a",
@@ -83,7 +92,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=官差（为首）",
       "tags": [],
       "prompt": "明朝衙役，身穿红黑色古代制服，头戴方巾，表情极度恐惧，被巨大的手指捏住衣服后背悬在半空，四肢挣扎，裤子湿了一片。",
-      "description": "明朝衙役，身穿红黑相间的公服，腰挂朴刀，满脸横肉，后被吓得扭曲。"
+      "description": "明朝衙役，身穿红黑相间的公服，腰挂朴刀，满脸横肉，后被吓得扭曲。",
+      "status": "idle"
     },
     {
       "id": "d4e4db0a-a634-4e37-b528-488bc5e138be",
@@ -91,7 +101,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=村长",
       "tags": [],
       "prompt": "古代中国老农，白发苍苍，满脸深深的皱纹，佝偻着背，眼神浑浊中透着狡黠，穿着破旧的长衫，手里拄着一根拐杖。",
-      "description": "高家村长者，满脸皱纹，精明世故。"
+      "description": "高家村长者，满脸皱纹，精明世故。",
+      "status": "idle"
     },
     {
       "id": "7209f915-f7de-46c0-8bcc-1268978c5e8e",
@@ -99,7 +110,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄 (Li Daoxuan)",
       "tags": [],
       "prompt": "Asian male, late 20s, modern casual home wear, sharp features, intense and cold expression, realistic style, indoor lighting.",
-      "description": "现代人类男性，箱子的观察者与主宰。神情冷峻，身穿现代家居服。"
+      "description": "现代人类男性，箱子的观察者与主宰。神情冷峻，身穿现代家居服。",
+      "status": "idle"
     },
     {
       "id": "8dd71cda-ba42-40b8-a455-263a1d54ee56",
@@ -107,7 +119,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶 (Gao Yiye)",
       "tags": [],
       "prompt": "Ancient Chinese teenage girl, ragged clothes, malnourished, dirty face, tear-streaked, expression of despair and awe, cinematic lighting, historical drama style.",
-      "description": "箱内世界的古代少女，衣衫褴褛，面容消瘦，满脸尘土与泪痕。"
+      "description": "箱内世界的古代少女，衣衫褴褛，面容消瘦，满脸尘土与泪痕。",
+      "status": "idle"
     },
     {
       "id": "ac1ad41f-5de3-4e51-803d-1d7b920df1d6",
@@ -115,7 +128,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼头目 (Bandit Leader)",
       "tags": [],
       "prompt": "Ancient Chinese bandit leader, fierce face, scar, muscular, holding a rusty long blade, dirty armor, aggressive posture, gritty realistic style.",
-      "description": "凶神恶煞的古代土匪，满脸横肉，手持锈迹斑斑的长刀。"
+      "description": "凶神恶煞的古代土匪，满脸横肉，手持锈迹斑斑的长刀。",
+      "status": "idle"
     },
     {
       "id": "890be341-1018-4e59-aca4-77d41e7e2ce0",
@@ -123,7 +137,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=母亲",
       "tags": [],
       "prompt": "Middle-aged ancient Chinese woman, starving and thin, wearing grey rags, protective posture, miniature scale.",
-      "description": "高一叶的母亲，憔悴，护女心切。"
+      "description": "高一叶的母亲，憔悴，护女心切。",
+      "status": "idle"
     },
     {
       "id": "a3ddb769-cd0d-4fb0-9200-132269153935",
@@ -131,7 +146,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼 (Bandit)",
       "tags": [],
       "prompt": "古代山贼，满脸横肉，皮肤黝黑粗糙，穿着破旧的皮甲，手持锈迹斑斑的砍刀。表情狰狞嗜血。微缩模型质感。",
-      "description": "Vicious bandit, muscular, scarred face, holding a rusty blade."
+      "description": "Vicious bandit, muscular, scarred face, holding a rusty blade.",
+      "status": "idle"
     },
     {
       "id": "512f4ffb-960c-4c37-95ae-5b6cd3814d90",
@@ -139,7 +155,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=母亲 (Mother)",
       "tags": [],
       "prompt": "中年古代农妇，面容憔悴，头发花白凌乱，穿着打补丁的粗布衣服。神情坚毅而悲苦。微缩模型质感。",
-      "description": "Middle-aged peasant woman, protective, ragged clothes."
+      "description": "Middle-aged peasant woman, protective, ragged clothes.",
+      "status": "idle"
     },
     {
       "id": "253d8767-bb86-4342-88d7-6a47a1532003",
@@ -147,7 +164,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼首领",
       "tags": [],
       "prompt": "Brutal bandit leader, scarred face, rotten teeth, wearing rusty ancient armor and leather, holding a bloodstained rusty sword, fierce expression, miniature scale.",
-      "description": "凶神恶煞，满脸横肉，穿着破旧的皮甲，手持锈刀。"
+      "description": "凶神恶煞，满脸横肉，穿着破旧的皮甲，手持锈刀。",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -157,7 +175,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "现代单身公寓卧室，光线昏暗，只有电脑屏幕的蓝光和台灯暖光，桌上堆满杂物，巨大的快递箱摆在房间中央，充满生活气息",
-      "description": "杂乱的单身公寓，夜晚氛围"
+      "description": "杂乱的单身公寓，夜晚氛围",
+      "status": "idle"
     },
     {
       "id": "3f8cbb1c-d9b5-4b82-868d-72640fdfcbb4",
@@ -165,7 +184,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "明末古代村庄，黄沙漫天，土地干裂，房屋破败不堪，茅草屋顶残缺，色调枯黄压抑，充满末世荒凉感，俯视微距视角",
-      "description": "大旱背景下的古代村庄，破败荒凉"
+      "description": "大旱背景下的古代村庄，破败荒凉",
+      "status": "idle"
     },
     {
       "id": "2b44abcc-751a-46e4-8f70-8dda64cc8e5b",
@@ -173,7 +193,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "微缩模型风格的古代村庄，明朝建筑风格，残垣断壁，黄沙遍地，地面上有鲜红的血迹和被压扁的尸体（肉饼状），光线强烈刺眼，充满荒凉和死亡的气息。",
-      "description": "明末大旱背景下的破败村庄，黄沙漫天，尸体横陈。"
+      "description": "明末大旱背景下的破败村庄，黄沙漫天，尸体横陈。",
+      "status": "idle"
     },
     {
       "id": "53208704-5de6-414a-b6df-bd00eab15726",
@@ -181,7 +202,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "仰视视角，天空中云层翻涌，一只巨大无比的真人手掌（皮肤纹理清晰）穿透云层向下按压，地面上的建筑和人物显得极其渺小，形成强烈的巨物压迫感。",
-      "description": "巨大的手掌破云而下，遮天蔽日。"
+      "description": "巨大的手掌破云而下，遮天蔽日。",
+      "status": "idle"
     },
     {
       "id": "9feb15c1-4675-49cd-bb6f-15717762b06a",
@@ -189,7 +211,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "现代公寓卧室，夜晚，光线昏暗，电脑屏幕发出幽蓝的光照亮书桌区域，桌上杂乱堆放着外卖盒和图纸，氛围压抑孤独",
-      "description": "昏暗的房间，只有电脑屏幕发出冷光"
+      "description": "昏暗的房间，只有电脑屏幕发出冷光",
+      "status": "idle"
     },
     {
       "id": "32f9a8fd-93a4-4957-af75-17236b932da5",
@@ -197,7 +220,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "微缩景观视角，中国古代村落，极度干旱，土地龟裂，黄沙遍地，枯树残垣，色调枯黄燥热，充满末世荒凉感",
-      "description": "明末大旱，黄沙漫天，荒凉绝望"
+      "description": "明末大旱，黄沙漫天，荒凉绝望",
+      "status": "idle"
     },
     {
       "id": "026fa284-a070-43df-9502-c04e16a2d4b9",
@@ -205,7 +229,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "仰视视角，巨大的云层裂缝中显露出一张巨大的人类面孔（李道玄），表情悲悯，下方是渺小的古代少女（高一叶）仰头对视，极具视觉冲击力的巨物感",
-      "description": "巨大的神明面孔俯瞰渺小的凡人"
+      "description": "巨大的神明面孔俯瞰渺小的凡人",
+      "status": "idle"
     },
     {
       "id": "ed92b9b2-550c-41fa-a542-1ba17a7306fb",
@@ -213,7 +238,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "微缩景观摄影风格，巨大的白色水煮蛋矗立在干裂的黄土地上，体积感极强，表面光滑有光泽，旁边有渺小如蚂蚁的古代人类，强烈的阳光，长长的阴影。",
-      "description": "干旱龟裂的黄土地，矗立着一颗巨大的剥壳水煮蛋，如同白色的山岳。"
+      "description": "干旱龟裂的黄土地，矗立着一颗巨大的剥壳水煮蛋，如同白色的山岳。",
+      "status": "idle"
     },
     {
       "id": "09c1ef58-0add-4959-ac7f-fa48ec17f27a",
@@ -221,7 +247,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "古代中国贫困村庄，残垣断壁，茅草屋顶破损，黄土色调，荒凉凄惨，烈日当空，空气中似乎弥漫着热浪。",
-      "description": "破败的明末村庄，黄土漫天，房屋倒塌。"
+      "description": "破败的明末村庄，黄土漫天，房屋倒塌。",
+      "status": "idle"
     },
     {
       "id": "5d8a82e6-d43e-4278-b9be-574d334ea1af",
@@ -229,7 +256,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "中国古代破旧茅草屋门口，黄土地面，堆积如山的巨大白色米粒（每颗米粒有磨盘大小），夕阳暖光照射，充满超现实感和丰收的喜悦，微距摄影风格。",
-      "description": "破旧的茅草屋，门口堆满了巨大的米粒。"
+      "description": "破旧的茅草屋，门口堆满了巨大的米粒。",
+      "status": "idle"
     },
     {
       "id": "73cbf300-13be-40eb-a4a0-8185e6d5039e",
@@ -237,7 +265,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "中国明代县衙内景，光线昏暗压抑，高堂之上摆放着公案，背后是'明镜高悬'匾额，冷色调光影，尘埃飞舞，氛围肃杀紧张。",
-      "description": "阴森压抑的古代官府大堂。"
+      "description": "阴森压抑的古代官府大堂。",
+      "status": "idle"
     },
     {
       "id": "06016c54-56ac-4d74-acd2-20dfe493418f",
@@ -245,7 +274,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "古代破败茅屋前，堆积如山的巨大白色米粒，每一粒米都像磨盘一样大，晶莹剔透，表面有光泽，与周围黄土环境形成鲜明对比，阳光照射下闪闪发光，视觉奇观。",
-      "description": "高一叶家门口，巨大的白色米粒如巨石般堆积，视觉冲击力极强。"
+      "description": "高一叶家门口，巨大的白色米粒如巨石般堆积，视觉冲击力极强。",
+      "status": "idle"
     },
     {
       "id": "8c12320a-c6d3-4403-b9d7-e0d79cca8aad",
@@ -253,7 +283,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "黄昏，光线昏暗压抑，古代荒凉村庄，地面干裂，几名凶恶的衙役手持兵器逼近一群衣衫褴褛、瑟瑟发抖的村民，背景是夕阳下的枯树和残垣断壁，紧张对峙氛围。",
-      "description": "黄昏时分的破败村庄，气氛肃杀，衙役与村民对峙。"
+      "description": "黄昏时分的破败村庄，气氛肃杀，衙役与村民对峙。",
+      "status": "idle"
     },
     {
       "id": "cdab7295-e14d-4938-a9a2-0461416e140a",
@@ -261,7 +292,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "超现实画面，巨大的现代人手指（皮肤纹理清晰）捏着一个微小的古代官差悬在半空，背景是黄沙漫天的古代破败村庄，强烈的比例反差，阳光刺眼。",
-      "description": "巨大的手指捏着渺小的人类，强烈的巨物恐惧感。"
+      "description": "巨大的手指捏着渺小的人类，强烈的巨物恐惧感。",
+      "status": "idle"
     },
     {
       "id": "4f735a41-d60b-4deb-ab60-8f063a86d248",
@@ -269,7 +301,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "微缩景观箱的边缘，透明的玻璃墙面，几个微小的古代人正在跑向玻璃，身体一半在箱内，一半已经虚化消失，带有轻微的空间波纹特效，箱外是模糊的现代客厅背景。",
-      "description": "官差穿过玻璃墙消失的瞬间。"
+      "description": "官差穿过玻璃墙消失的瞬间。",
+      "status": "idle"
     },
     {
       "id": "7f5a6321-6258-4960-b978-7980a2eebfc3",
@@ -277,7 +310,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "古代中国贫瘠村庄的空地，黄土漫天，地面干裂。场景中央堆放着几粒巨大的白色大米，每一粒米都有磨盘大小，表面晶莹剔透，与周围破败的环境形成强烈对比。月光冷冷地洒在米粒上。",
-      "description": "荒凉的古代村落空地，堆放着超现实的巨型米粒。"
+      "description": "荒凉的古代村落空地，堆放着超现实的巨型米粒。",
+      "status": "idle"
     },
     {
       "id": "a31eb4e6-d4ba-48b4-8bae-4d7568757d4b",
@@ -285,7 +319,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "昏暗的古代茅草屋内，土灶台燃着微弱的火光。一口缺角的破铁锅里，雪白的米汤翻滚，混杂着黑色的树皮和枯黄的野菜。光影摇曳，氛围凄凉而温馨。",
-      "description": "破败的茅屋内景，正在煮饭。"
+      "description": "破败的茅屋内景，正在煮饭。",
+      "status": "idle"
     },
     {
       "id": "5780536d-5b01-4d2b-9ba1-1f4a289bee6d",
@@ -293,7 +328,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "昏暗的房间，电脑屏幕发出冷光，桌上放着外卖盒和杂物，巨大的造景箱发出微弱的光芒，占据房间一角，氛围神秘而静谧。",
-      "description": "现代单身公寓卧室，略显凌乱但充满生活气息。"
+      "description": "现代单身公寓卧室，略显凌乱但充满生活气息。",
+      "status": "idle"
     },
     {
       "id": "4e36a8b5-640b-4a14-b3f8-e522af732e03",
@@ -301,7 +337,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "明末荒凉的黄土村落，天空中压下一片巨大的、半透明的翠绿色白菜叶，阳光透过叶脉洒下绿色的光斑，如同翡翠穹顶，村民们渺小如蚂蚁，仰头惊叹，极具巨物恐惧症与神圣感的视觉冲击。",
-      "description": "高家村上空被巨大的白菜叶覆盖，形成视觉奇观。"
+      "description": "高家村上空被巨大的白菜叶覆盖，形成视觉奇观。",
+      "status": "idle"
     },
     {
       "id": "6a6a6c64-82bd-4666-bcaa-a09705d5d421",
@@ -309,7 +346,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Ancient desolate Chinese village ruins, yellow sand everywhere, drought atmosphere, harsh sunlight, high contrast shadows, miniature effect tilt-shift optional.",
-      "description": "古代荒村，黄沙漫天，大旱背景，断壁残垣，强烈的日光。"
+      "description": "古代荒村，黄沙漫天，大旱背景，断壁残垣，强烈的日光。",
+      "status": "idle"
     },
     {
       "id": "09f5ebe9-bc7a-4225-8618-014eb385ff6b",
@@ -317,7 +355,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Modern apartment interior, dim lighting, focus on a large landscape box on the table, realistic texture, shallow depth of field.",
-      "description": "李道玄的居所，光线较暗，聚焦于桌上的造景箱。"
+      "description": "李道玄的居所，光线较暗，聚焦于桌上的造景箱。",
+      "status": "idle"
     },
     {
       "id": "3d86aa5e-b096-4fb9-aed0-a32b05fcacee",
@@ -325,7 +364,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Messy modern bedroom, night time, clutter of takeout boxes and wires, glowing computer screen illuminating the room, cold blue ambient light, claustrophobic atmosphere.",
-      "description": "昏暗杂乱的现代房间，电脑屏幕是主要光源。"
+      "description": "昏暗杂乱的现代房间，电脑屏幕是主要光源。",
+      "status": "idle"
     },
     {
       "id": "8be1af12-e60b-486b-9de7-ffce3137f990",
@@ -333,7 +373,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Miniature ancient Chinese village inside a glass tank, macro photography style, yellow sand ground, withered trees, ruined mud walls, dry and desolate atmosphere, harsh lighting simulating sunlight.",
-      "description": "微缩的古代村庄，黄沙漫天，枯树残垣。"
+      "description": "微缩的古代村庄，黄沙漫天，枯树残垣。",
+      "status": "idle"
     },
     {
       "id": "4b239077-86e3-4e6f-b8ec-84817d2ea91e",
@@ -341,7 +382,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "昏暗的现代卧室，杂乱无章。电脑屏幕发出冷蓝光，周围堆满外卖盒和杂物。地板上放着一个巨大的造景箱。写实电影感，冷色调。",
-      "description": "Messy, dimly lit room with a computer setup and a large cardboard box."
+      "description": "Messy, dimly lit room with a computer setup and a large cardboard box.",
+      "status": "idle"
     },
     {
       "id": "251e21a2-2662-4daa-b7e6-60a6a5f78360",
@@ -349,7 +391,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "微缩景观，古代破败村庄。黄沙漫天，枯树残垣，土地干裂。阳光刺眼，色调枯黄。具有移轴摄影（Tilt-shift）的微距质感。",
-      "description": "Miniature ancient village, drought-stricken, yellow dust, ruined walls."
+      "description": "Miniature ancient village, drought-stricken, yellow dust, ruined walls.",
+      "status": "idle"
     },
     {
       "id": "16b8ca57-4fc5-4834-9dd2-a98c7d69c026",
@@ -357,7 +400,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Miniature ancient Chinese village inside a glass terrarium, desert landscape, dry yellow sand, withered trees, ruined mud houses, harsh sunlight, tilt-shift photography effect, macro details.",
-      "description": "微缩的古代村庄，黄沙漫天，枯树残垣，极度干旱荒凉。"
+      "description": "微缩的古代村庄，黄沙漫天，枯树残垣，极度干旱荒凉。",
+      "status": "idle"
     },
     {
       "id": "fe2410eb-d7b4-4be0-a0e4-62f4c32e4f26",
@@ -365,7 +409,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Messy modern bedroom, night time, clutter on desk, gaming chair, cold blue light from computer screen, cardboard boxes on floor, realistic style.",
-      "description": "昏暗，杂乱，充满电子设备蓝光。"
+      "description": "昏暗，杂乱，充满电子设备蓝光。",
+      "status": "idle"
     },
     {
       "id": "9264fb30-d743-428f-991b-7a70f83e5d1c",
@@ -373,7 +418,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Miniature diorama of an ancient Chinese desolate village, yellow sand, withered trees, ruined mud walls, harsh sunlight, macro photography, shallow depth of field, tilt-shift effect.",
-      "description": "微缩模型，古代荒村，黄沙漫天，枯树残垣。"
+      "description": "微缩模型，古代荒村，黄沙漫天，枯树残垣。",
+      "status": "idle"
     },
     {
       "id": "96450972-ff3e-40fa-b2ee-7d08e29890bf",
@@ -381,7 +427,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Large rectangular glass vivarium terrarium sitting on a wooden floor, intricate miniature landscape inside, reflections on glass.",
-      "description": "放在地上的精致长方形玻璃箱。"
+      "description": "放在地上的精致长方形玻璃箱。",
+      "status": "idle"
     },
     {
       "id": "bd145298-fa3a-4e54-8fcc-894236658a94",
@@ -389,7 +436,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "现代室内场景，简约风格，冷色调灯光，桌上放置着巨大的造景箱，环境整洁但氛围压抑。",
-      "description": "李道玄的居所，现代简约风格，光线较暗。"
+      "description": "李道玄的居所，现代简约风格，光线较暗。",
+      "status": "idle"
     },
     {
       "id": "8be77a74-7aa6-4cb0-8dd2-06ecc4da6b6c",
@@ -397,7 +445,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Miniature world, ancient Chinese village ruins, yellow earth, drought, cracked ground, collapsed mud walls, harsh sunlight, dusty atmosphere, realistic texture but miniature scale.",
-      "description": "干旱的黄土高原村庄废墟，断壁残垣，烈日当空。"
+      "description": "干旱的黄土高原村庄废墟，断壁残垣，烈日当空。",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

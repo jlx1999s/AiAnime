@@ -40,6 +40,10 @@ st.markdown("""
         border-color: #4da6ff;
         transform: translateY(-2px);
     }
+    .block-container {
+        padding-top: 3rem !important;
+        padding-bottom: 2rem !important;
+    }
     .card-title {
         font-size: 18px;
         font-weight: bold;
@@ -90,11 +94,24 @@ def save_config(config):
     except Exception as e:
         st.error(f"Failed to save config: {e}")
 
+def get_auth_headers():
+    headers = {"Content-Type": "application/json"}
+    if "auth_cookie" in st.session_state and st.session_state.auth_cookie:
+        headers["Cookie"] = f"session_id={st.session_state.auth_cookie}"
+    return headers
+
 def api_post_json(url, payload):
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"}, method="POST")
+    req = urllib.request.Request(url, data=data, headers=get_auth_headers(), method="POST")
     try:
         with urllib.request.urlopen(req, timeout=20) as resp:
+            # Capture Set-Cookie if present
+            set_cookie = resp.headers.get("Set-Cookie")
+            if set_cookie:
+                m = re.search(r"session_id=([^;]+)", set_cookie)
+                if m:
+                    st.session_state.auth_cookie = m.group(1)
+
             text = resp.read().decode("utf-8")
             return json.loads(text) if text else {}
     except urllib.error.HTTPError as e:
@@ -106,6 +123,8 @@ def api_post_json(url, payload):
 def init_auth():
     if "auth_user" not in st.session_state:
         st.session_state.auth_user = None
+    if "auth_cookie" not in st.session_state:
+        st.session_state.auth_cookie = None
 
     config = load_config()
     if "user_api_base_input" not in st.session_state:
@@ -150,7 +169,7 @@ def init_auth():
 def api_get_json(url, params=None):
     if params:
         url = f"{url}?{urllib.parse.urlencode(params)}"
-    req = urllib.request.Request(url, headers={"Content-Type": "application/json"}, method="GET")
+    req = urllib.request.Request(url, headers=get_auth_headers(), method="GET")
     try:
         with urllib.request.urlopen(req, timeout=20) as resp:
             text = resp.read().decode("utf-8")
@@ -197,7 +216,7 @@ def get_file_info_df(directory, pattern="*.md"):
         return pd.DataFrame(columns=["文件名", "大小", "修改时间", "path"])
     
     df = pd.DataFrame(data)
-    df = df.sort_values(by="修改时间", ascending=False)
+    df = df.sort_values(by="文件名", ascending=True)
     # Reset index to ensure iloc matches 0..N
     df = df.reset_index(drop=True)
     return df
@@ -331,52 +350,137 @@ def render_sidebar():
              config["current_preset"] = current_preset_name
              save_config(config)
 
-        # --- Preset Selector UI ---
-        st.subheader("🛠️ API 配置预设")
-        col_p1, col_p2 = st.columns([3, 1])
-        with col_p1:
-             preset_options = list(presets.keys())
-             try:
-                 idx = preset_options.index(current_preset_name)
-             except ValueError:
-                 idx = 0
-             selected_preset = st.selectbox("选择预设", preset_options, index=idx, key="preset_selector", label_visibility="collapsed")
-        
-        with col_p2:
-             if st.button("➕", help="新建配置预设"):
-                 st.session_state.show_add_preset = True
+        if "user_api_base_input" not in st.session_state:
+            st.session_state.user_api_base_input = config.get("user_api_base", "http://localhost:8001")
+        if "auth_user" not in st.session_state:
+            st.session_state.auth_user = None
+        if "user_list" not in st.session_state:
+            st.session_state.user_list = None
 
-        if st.session_state.get("show_add_preset", False):
-             with st.container(border=True):
-                 new_preset_name = st.text_input("新预设名称", key="new_preset_name_input")
-                 c1, c2 = st.columns(2)
-                 with c1:
-                     if st.button("确认", use_container_width=True):
-                         if new_preset_name and new_preset_name not in presets:
-                             presets[new_preset_name] = presets.get(current_preset_name, {}).copy()
-                             config["presets"] = presets
-                             config["current_preset"] = new_preset_name
-                             save_config(config)
+        auth_user = st.session_state.auth_user
+
+        # --- Authentication & User System ---
+        st.subheader("👤 用户系统")
+        st.text_input("用户系统 API", key="user_api_base_input")
+        user_api_base = st.session_state.user_api_base_input
+
+        if not auth_user:
+            with st.form("login_form"):
+                username = st.text_input("用户名")
+                password = st.text_input("密码", type="password")
+                submitted = st.form_submit_button("登录", use_container_width=True)
+                if submitted:
+                    try:
+                        res = api_post_json(f"{user_api_base}/auth/login", {"username": username, "password": password})
+                        if res and "id" in res:
+                            st.session_state.auth_user = res
+                            st.query_params["auth_user_id"] = res.get("id")
+                            
+                            # Auto fetch users if admin
+                            if res.get("is_admin"):
+                                try:
+                                    users = api_get_json(f"{user_api_base}/admin/users", {"admin_user_id": res.get("id")})
+                                    st.session_state.user_list = users
+                                except:
+                                    pass
+
+                            st.success(f"登录成功: {res.get('username')}")
+                            st.rerun()
+                    except Exception as e:
+                        st.error(f"登录失败: {e}")
+        else:
+            st.info(f"已登录: {auth_user.get('username')}")
+            
+            c1, c2 = st.columns([1, 1])
+            with c1:
+                if st.button("退出登录", use_container_width=True, key="btn_logout"):
+                     try:
+                        api_post_json(f"{user_api_base}/auth/logout", {})
+                     except:
+                        pass
+                     st.session_state.auth_user = None
+                     st.session_state.auth_cookie = None
+                     st.session_state.user_list = None
+                     if "auth_user_id" in st.query_params:
+                         del st.query_params["auth_user_id"]
+                     st.rerun()
+            with c2:
+                if auth_user.get("is_admin"):
+                    if st.button("刷新用户", use_container_width=True, key="btn_refresh_users"):
+                        try:
+                            users = api_get_json(f"{user_api_base}/admin/users", {"admin_user_id": auth_user.get("id")})
+                            st.session_state.user_list = users
+                            st.toast("✅ 已刷新用户列表")
+                        except Exception as e:
+                            st.error(f"获取用户列表失败: {e}")
+
+        is_admin = bool(auth_user and auth_user.get("is_admin"))
+
+        selected_preset = current_preset_name
+        if is_admin:
+            # --- Preset Selector UI ---
+            st.subheader("🛠️ API 配置预设")
+            col_p1, col_p2, col_p3 = st.columns([5, 1, 1])
+            with col_p1:
+                 preset_options = list(presets.keys())
+                 try:
+                     idx = preset_options.index(current_preset_name)
+                 except ValueError:
+                     idx = 0
+                 selected_preset = st.selectbox("选择预设", preset_options, index=idx, key="preset_selector", label_visibility="collapsed")
+            
+            with col_p2:
+                 if st.button("➕", help="新建配置预设", use_container_width=True):
+                     st.session_state.show_add_preset = True
+
+            with col_p3:
+                 if st.button("🗑️", help="删除当前预设", disabled=(selected_preset == "Default"), use_container_width=True):
+                     if selected_preset != "Default":
+                        del presets[selected_preset]
+                        new_current = "Default" if "Default" in presets else list(presets.keys())[0]
+                        config["presets"] = presets
+                        config["current_preset"] = new_current
+                        save_config(config)
+                        # Force reload inputs
+                        preset_data = presets[new_current]
+                        st.session_state.api_key_input = preset_data.get("api_key", "")
+                        st.session_state.api_base_input = preset_data.get("api_base", "")
+                        st.session_state.model_name_input = preset_data.get("model_name", "")
+                        st.session_state.api_style_input = preset_data.get("api_style", "")
+                        st.toast(f"✅ 已删除预设: {selected_preset}")
+                        st.rerun()
+
+            if st.session_state.get("show_add_preset", False):
+                 with st.container(border=True):
+                     new_preset_name = st.text_input("新预设名称", key="new_preset_name_input")
+                     c1, c2 = st.columns(2)
+                     with c1:
+                         if st.button("确认", use_container_width=True):
+                             if new_preset_name and new_preset_name not in presets:
+                                 presets[new_preset_name] = presets.get(current_preset_name, {}).copy()
+                                 config["presets"] = presets
+                                 config["current_preset"] = new_preset_name
+                                 save_config(config)
+                                 st.session_state.show_add_preset = False
+                                 st.rerun()
+                             elif new_preset_name in presets:
+                                 st.error("名称已存在")
+                     with c2:
+                         if st.button("取消", use_container_width=True):
                              st.session_state.show_add_preset = False
                              st.rerun()
-                         elif new_preset_name in presets:
-                             st.error("名称已存在")
-                 with c2:
-                     if st.button("取消", use_container_width=True):
-                         st.session_state.show_add_preset = False
-                         st.rerun()
 
-        # Handle Preset Switch
-        if selected_preset != current_preset_name:
-            config["current_preset"] = selected_preset
-            save_config(config)
-            # Force reload of inputs from new preset
-            preset_data = presets[selected_preset]
-            st.session_state.api_key_input = preset_data.get("api_key", "")
-            st.session_state.api_base_input = preset_data.get("api_base", "")
-            st.session_state.model_name_input = preset_data.get("model_name", "")
-            st.session_state.api_style_input = preset_data.get("api_style", "")
-            st.rerun()
+            # Handle Preset Switch
+            if selected_preset != current_preset_name:
+                config["current_preset"] = selected_preset
+                save_config(config)
+                # Force reload of inputs from new preset
+                preset_data = presets[selected_preset]
+                st.session_state.api_key_input = preset_data.get("api_key", "")
+                st.session_state.api_base_input = preset_data.get("api_base", "")
+                st.session_state.model_name_input = preset_data.get("model_name", "")
+                st.session_state.api_style_input = preset_data.get("api_style", "")
+                st.rerun()
 
         # Get current preset data
         current_data = presets[selected_preset]
@@ -390,109 +494,45 @@ def render_sidebar():
             st.session_state.model_name_input = current_data.get("model_name", "gpt-4o")
         if "api_style_input" not in st.session_state:
             st.session_state.api_style_input = current_data.get("api_style", "openai")
-        if "user_api_base_input" not in st.session_state:
-            st.session_state.user_api_base_input = config.get("user_api_base", "http://localhost:8001")
-        if "auth_user" not in st.session_state:
-            st.session_state.auth_user = None
-        if "user_list" not in st.session_state:
-            st.session_state.user_list = None
+        if is_admin:
+            def save_settings():
+                presets[selected_preset] = {
+                    "api_key": st.session_state.api_key_input,
+                    "api_base": st.session_state.api_base_input,
+                    "model_name": st.session_state.model_name_input,
+                    "api_style": st.session_state.api_style_input
+                }
+                new_config = {
+                    **config,
+                    "presets": presets,
+                    "current_preset": selected_preset,
+                    "user_api_base": st.session_state.user_api_base_input
+                }
+                # Remove legacy keys if present
+                for k in ["api_key", "api_base", "model_name", "api_style"]:
+                    if k in new_config:
+                        del new_config[k]
+                save_config(new_config)
+                st.toast(f"✅ 预设 '{selected_preset}' 已保存")
 
-
-        def save_settings():
-            presets[selected_preset] = {
-                "api_key": st.session_state.api_key_input,
-                "api_base": st.session_state.api_base_input,
-                "model_name": st.session_state.model_name_input,
-                "api_style": st.session_state.api_style_input
-            }
-            new_config = {
-                **config,
-                "presets": presets,
-                "current_preset": selected_preset,
-                "user_api_base": st.session_state.user_api_base_input
-            }
-            # Remove legacy keys if present
-            for k in ["api_key", "api_base", "model_name", "api_style"]:
-                if k in new_config:
-                    del new_config[k]
-            save_config(new_config)
-            st.toast(f"✅ 预设 '{selected_preset}' 已保存")
-
-        api_key = st.text_input("API Key", type="password", help="OpenAI or Anthropic API Key", key="api_key_input")
-        api_base = st.text_input("API Base URL", help="e.g. https://api.openai.com/v1", key="api_base_input")
-        model_name = st.text_input("Model Name", help="e.g. gpt-4o, claude-3-5-sonnet", key="model_name_input")
-        api_style = st.selectbox("API Style", ["openai", "anthropic"], key="api_style_input")
-
-        c_save, c_del = st.columns([2, 1])
-        with c_save:
+            api_key = st.text_input("API Key", type="password", help="OpenAI or Anthropic API Key", key="api_key_input")
+            api_base = st.text_input("API Base URL", help="e.g. https://api.openai.com/v1", key="api_base_input")
+            model_name = st.text_input("Model Name", help="e.g. gpt-4o, claude-3-5-sonnet", key="model_name_input")
+            api_style = st.selectbox("API Style", ["openai", "anthropic"], key="api_style_input")
+            
             if st.button("💾 保存当前配置", use_container_width=True):
                 save_settings()
-        with c_del:
-            if selected_preset != "Default":
-                if st.button("🗑️ 删除", use_container_width=True, help="删除当前预设"):
-                    del presets[selected_preset]
-                    new_current = "Default" if "Default" in presets else list(presets.keys())[0]
-                    config["presets"] = presets
-                    config["current_preset"] = new_current
-                    save_config(config)
-                    # Force reload inputs
-                    preset_data = presets[new_current]
-                    st.session_state.api_key_input = preset_data.get("api_key", "")
-                    st.session_state.api_base_input = preset_data.get("api_base", "")
-                    st.session_state.model_name_input = preset_data.get("model_name", "")
-                    st.session_state.api_style_input = preset_data.get("api_style", "")
-                    st.rerun()
-
-        st.subheader("👤 用户系统")
-        user_api_base = st.text_input("用户系统 API", key="user_api_base_input")
-        auth_user = st.session_state.auth_user
-        if auth_user:
-            st.success(f"已登录: {auth_user.get('username', '')}")
-            c1, c2 = st.columns([1, 1])
-            with c1:
-                if st.button("退出登录", use_container_width=True):
-                    try:
-                        api_post_json(f"{user_api_base}/auth/logout", {})
-                    except Exception:
-                        pass
-                    st.session_state.auth_user = None
-                    st.session_state.user_list = None
-                    if "auth_user_id" in st.query_params:
-                        del st.query_params["auth_user_id"]
-                    st.rerun()
-            with c2:
-                if auth_user.get("is_admin"):
-                    if st.button("刷新用户列表", use_container_width=True):
-                        try:
-                            users = api_get_json(f"{user_api_base}/admin/users", {"admin_user_id": auth_user.get("id")})
-                            st.session_state.user_list = users
-                            st.toast("✅ 已刷新用户列表")
-                        except Exception as e:
-                            st.error(f"获取用户列表失败: {e}")
         else:
-            username = st.text_input("用户名", key="auth_username")
-            password = st.text_input("密码", type="password", key="auth_password")
-            if st.button("登录", use_container_width=True):
-                try:
-                    user = api_post_json(f"{user_api_base}/auth/login", {"username": username, "password": password})
-                    st.session_state.auth_user = user
-                    st.query_params["auth_user_id"] = user.get("id")
-                    if user.get("is_admin"):
-                        try:
-                            users = api_get_json(f"{user_api_base}/admin/users", {"admin_user_id": user.get("id")})
-                            st.session_state.user_list = users
-                        except Exception as e:
-                            st.error(f"获取用户列表失败: {e}")
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"登录失败: {e}")
+            api_key = st.session_state.api_key_input
+            api_base = st.session_state.api_base_input
+            model_name = st.session_state.model_name_input
+            api_style = st.session_state.api_style_input
 
         return api_key, api_base, model_name, api_style
 
 # --- Main Views ---
 
 def render_home(base_dir, projects):
-    st.title("田 漫剧项目管理")
     config = load_config()
     project_owners = config.get("project_owners", {})
     auth_user = st.session_state.get("auth_user")
@@ -504,39 +544,36 @@ def render_home(base_dir, projects):
     if auth_user and not auth_user.get("is_admin"):
         projects = [p for p in projects if project_owners.get(p) == auth_user.get("id")]
     
-    # Top Bar
-    col1, col2 = st.columns([6, 1])
-    with col2:
+    col_title, col_stat, col_action = st.columns([5, 2, 1])
+    with col_title:
+        st.title("田 漫剧项目管理")
+        st.caption(f"当前用户: {auth_user.get('username')}")
+    with col_stat:
+        st.metric("项目数", len(projects))
+    with col_action:
         if st.button("＋ 新建项目", use_container_width=True, type="primary"):
             st.session_state.show_create_modal = not st.session_state.show_create_modal
 
     # Create Project Area
     if st.session_state.show_create_modal:
-        with st.container():
+        with st.container(border=True):
             st.markdown("### 创建新项目")
-            c1, c2 = st.columns([3, 1])
+            c1, c2 = st.columns([4, 2])
             with c1:
                 new_project_name = st.text_input("项目名称", placeholder="输入项目名称 (例如: MyNewNovel)")
                 new_novel_name = st.text_input("小说名称", value="我的小说")
                 new_novel_type = st.text_input("小说类型", value="重生/古言")
             with c2:
-                st.write("") # Spacer
-                st.write("") 
-                st.write("") 
-                st.write("") 
                 if st.button("确认创建", use_container_width=True):
                     if new_project_name:
                         new_path = os.path.join(base_dir, new_project_name)
                         try:
-                            # 1. Create Directory
                             os.makedirs(new_path, exist_ok=True)
                             
-                            # 2. Auto Init
                             script_py_path = os.path.join(os.getcwd(), "script_workflow.py")
                             cmd = ["python", script_py_path, "--project-dir", new_path,
                                    "--novel-name", new_novel_name, "--novel-type", new_novel_type, "init"]
                             
-                            # We run this synchronously without showing output in UI, or show a toast
                             subprocess.run(cmd, check=True, cwd=os.getcwd())
                             
                             st.success(f"已创建并初始化: {new_path}")
@@ -603,12 +640,112 @@ def render_home(base_dir, projects):
                     st.rerun()
 
 def render_project_detail(project_dir, api_key, api_base, model_name, api_style):
-    st.title(f"📂 {os.path.basename(project_dir)}")
-    st.caption(f"项目路径: {project_dir}")
     config = load_config()
     project_owners = config.get("project_owners", {})
     auth_user = st.session_state.get("auth_user")
+    user_list = st.session_state.get("user_list") or []
+    user_name_by_id = {u.get("id"): u.get("username") for u in user_list if isinstance(u, dict)}
     project_name = os.path.basename(project_dir)
+    owner_id = project_owners.get(project_name)
+    owner_name = user_name_by_id.get(owner_id, owner_id) if owner_id else "未分配"
+
+    # --- 1. Calculate Stats (Moved to Top for Layout) ---
+    # Script Stats
+    plot_path = os.path.join(project_dir, "plot-breakdown.md")
+    plot_text = read_file_content(plot_path) if os.path.exists(plot_path) else ""
+    total_plots, used_plots, unused_plots = get_plot_counts(plot_text)
+    
+    scripts_dir = os.path.join(project_dir, "scripts")
+    eps = []
+    if os.path.exists(scripts_dir):
+        for f in os.listdir(scripts_dir):
+            if f.startswith("Episode-") and f.endswith(".md"):
+                eps.append(f)
+        eps = sorted(eps)
+    
+    novel_dir = os.path.join(project_dir, "novel")
+    chs = []
+    if os.path.exists(novel_dir):
+        for f in os.listdir(novel_dir):
+            if f.startswith("chapter-") and f.endswith(".txt"):
+                num = f[len("chapter-"):-4]
+                if num.isdigit():
+                    chs.append(int(num))
+        chs = sorted(chs)
+
+    # Storyboard Stats
+    sb_output_dir = os.path.join(project_dir, "storyboard_output")
+    breakdown_count = 0
+    beatboard_count = 0
+    sequence_count = 0
+    motion_count = 0
+    voiceover_count = 0
+    latest_file = None
+    latest_mtime = None
+    
+    if os.path.exists(sb_output_dir):
+        for f in os.listdir(sb_output_dir):
+            fp = os.path.join(sb_output_dir, f)
+            if not os.path.isfile(fp):
+                continue
+            if f.endswith(".md"):
+                if "beat_breakdown.md" in f:
+                    breakdown_count += 1
+                elif "beat_board_prompts.md" in f:
+                    beatboard_count += 1
+                elif "sequence_board_prompts.md" in f:
+                    sequence_count += 1
+                elif "motion_prompts.md" in f:
+                    motion_count += 1
+                elif "voiceover_table.md" in f:
+                    voiceover_count += 1
+                try:
+                    mt = os.path.getmtime(fp)
+                    if latest_mtime is None or mt > latest_mtime:
+                        latest_mtime = mt
+                        latest_file = f
+                except Exception:
+                    pass
+
+    # --- 2. Render Header & Project Overview ---
+    title_html = f"""
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <div style="font-size: 20px; font-weight: 700;">📂 {project_name}</div>
+        <div style="font-size: 12px; color: #666;">{project_dir}</div>
+    </div>
+    """
+
+    current_user = auth_user.get('username') if auth_user else ''
+    user_html = f"""
+    <div style="text-align: right; color: #666; font-size: 12px;">
+        负责人: {owner_name} &nbsp;|&nbsp; 登录: {current_user}
+    </div>
+    """
+
+    row1_col1, row1_col2 = st.columns([2, 1])
+    with row1_col1:
+        st.markdown(title_html, unsafe_allow_html=True)
+    with row1_col2:
+        st.markdown(user_html, unsafe_allow_html=True)
+
+    novel_range = f"{chs[0]}-{chs[-1]}" if chs else "无"
+
+    stats_html = f"""
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 4px 0 2px 0; font-size: 20px; color: #000;">
+        <div style="font-size: 20px; font-weight: 700; margin-right: 6px;">项目状态概览</div>
+        <div title="已用/总计"><span style="color: #555;">剧情:</span> <span style="color: #000; font-weight: 600;">{used_plots}/{total_plots}</span></div>
+        <div title="最新: {eps[-1] if eps else '无'}"><span style="color: #555;">剧本:</span> <span style="color: #000; font-weight: 600;">{len(eps)}</span></div>
+        <div title="范围: {novel_range}"><span style="color: #555;">小说:</span> <span style="color: #000; font-weight: 600;">{len(chs)}</span></div>
+        <div><span style="color: #555;">节拍:</span> <span style="color: #000; font-weight: 600;">{breakdown_count}</span></div>
+        <div><span style="color: #555;">九宫:</span> <span style="color: #000; font-weight: 600;">{beatboard_count}</span></div>
+        <div><span style="color: #555;">四宫:</span> <span style="color: #000; font-weight: 600;">{sequence_count}</span></div>
+        <div><span style="color: #555;">动态:</span> <span style="color: #000; font-weight: 600;">{motion_count}</span></div>
+        <div><span style="color: #555;">配音:</span> <span style="color: #000; font-weight: 600;">{voiceover_count}</span></div>
+    </div>
+    """
+
+    st.markdown(stats_html, unsafe_allow_html=True)
+
     if not auth_user:
         st.error("请先登录后访问项目")
         st.session_state.page = 'home'
@@ -638,7 +775,14 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
         return args
 
     # Tabs
-    tab_project, tab_script, tab_storyboard, tab_char, tab_scene, tab_shots = st.tabs(["📂 文件管理", "📜 剧本工作流", "🖼️ 分镜工作流", "👥 角色概览", "🎬 场景概览", "🎬 分镜表"])
+    tab_project, tab_script, tab_storyboard, tab_char, tab_scene, tab_shots = st.tabs([
+        "📂 文件管理",
+        "📜 剧本工作流",
+        "🖼️ 分镜工作流",
+        "👥 角色概览",
+        "🎬 场景概览",
+        "🎬 分镜表"
+    ])
 
     def render_overview_tab(file_name, title, icon, initial_content=None):
         st.header(f"{icon} {title}")
@@ -732,29 +876,6 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
     # --- Tab 0: Project Management ---
     with tab_project:
         st.header("📂 项目文件管理")
-        
-        # 1. Upload Novel
-        st.subheader("📤 上传小说 (Upload Novel)")
-        uploaded_files = st.file_uploader("选择小说文件 (.txt)", type=["txt"], accept_multiple_files=True)
-        if uploaded_files:
-            novel_dir = os.path.join(project_dir, "novel")
-            if not os.path.exists(novel_dir):
-                os.makedirs(novel_dir)
-            
-            for uploaded_file in uploaded_files:
-                file_path = os.path.join(novel_dir, uploaded_file.name)
-                try:
-                    with open(file_path, "wb") as f:
-                        f.write(uploaded_file.getbuffer())
-                    st.success(f"✅ 已保存: {uploaded_file.name} -> novel/")
-                except Exception as e:
-                    st.error(f"❌ 保存失败 {uploaded_file.name}: {e}")
-        
-        st.divider()
-
-        # 2. File Browser
-        st.subheader("🗂️ 项目文件概览")
-        
         def get_file_tree(root_dir):
             tree = {}
             if not os.path.exists(root_dir):
@@ -777,35 +898,71 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
             return tree
 
         file_tree = get_file_tree(project_dir)
+        col_left, col_right = st.columns([2, 3])
         
-        col_p1, col_p2, col_p3 = st.columns(3)
-        with col_p1:
-            st.markdown("### 📖 Novel (小说)")
-            if file_tree.get("novel"):
-                for f in file_tree["novel"]:
-                    st.text(f"📄 {f}")
-            else:
-                st.caption("（空）")
+        with col_left:
+            with st.container(border=True):
+                st.subheader("📤 上传小说 (Upload Novel)")
+                uploaded_files = st.file_uploader("选择小说文件 (.txt)", type=["txt"], accept_multiple_files=True)
+                if uploaded_files:
+                    novel_dir = os.path.join(project_dir, "novel")
+                    if not os.path.exists(novel_dir):
+                        os.makedirs(novel_dir)
+                    
+                    for uploaded_file in uploaded_files:
+                        file_path = os.path.join(novel_dir, uploaded_file.name)
+                        try:
+                            with open(file_path, "wb") as f:
+                                f.write(uploaded_file.getbuffer())
+                            st.success(f"✅ 已保存: {uploaded_file.name} -> novel/")
+                        except Exception as e:
+                            st.error(f"❌ 保存失败 {uploaded_file.name}: {e}")
 
-        with col_p2:
-            st.markdown("### 📜 Scripts (剧本)")
-            if file_tree.get("scripts"):
-                for f in file_tree["scripts"]:
-                    st.text(f"📄 {f}")
-            else:
-                st.caption("（空）")
-                
-        with col_p3:
-            st.markdown("### 🖼️ Storyboard (分镜)")
-            if file_tree.get("storyboard_output"):
-                for f in file_tree["storyboard_output"]:
-                    st.text(f"📄 {f}")
-            else:
-                st.caption("（空）")
-        
-        st.markdown("### 📁 Root Files (根目录)")
-        if file_tree.get("root"):
-            st.code("\n".join(file_tree["root"]), language="text")
+            with st.container(border=True):
+                st.subheader("📤 上传剧本 (Upload Script)")
+                uploaded_scripts = st.file_uploader("选择剧本文件 (.md/.txt)", type=["md", "txt"], accept_multiple_files=True, key="upload_scripts")
+                if uploaded_scripts:
+                    scripts_dir = os.path.join(project_dir, "scripts")
+                    if not os.path.exists(scripts_dir):
+                        os.makedirs(scripts_dir)
+                    
+                    for uploaded_file in uploaded_scripts:
+                        file_path = os.path.join(scripts_dir, uploaded_file.name)
+                        try:
+                            with open(file_path, "wb") as f:
+                                f.write(uploaded_file.getbuffer())
+                            st.success(f"✅ 已保存: {uploaded_file.name} -> scripts/")
+                        except Exception as e:
+                            st.error(f"❌ 保存失败 {uploaded_file.name}: {e}")
+
+        with col_right:
+            with st.container(border=True):
+                st.subheader("🗂️ 项目文件概览")
+                subtab_novel, subtab_scripts, subtab_storyboard, subtab_root = st.tabs(["📖 小说", "📜 剧本", "🖼️ 分镜", "📁 根目录"])
+                with subtab_novel:
+                    if file_tree.get("novel"):
+                        df_novel = pd.DataFrame({"文件名": file_tree["novel"]})
+                        st.dataframe(df_novel, use_container_width=True, hide_index=True, height=300)
+                    else:
+                        st.caption("（空）")
+                with subtab_scripts:
+                    if file_tree.get("scripts"):
+                        df_scripts = pd.DataFrame({"文件名": file_tree["scripts"]})
+                        st.dataframe(df_scripts, use_container_width=True, hide_index=True, height=300)
+                    else:
+                        st.caption("（空）")
+                with subtab_storyboard:
+                    if file_tree.get("storyboard_output"):
+                        df_story = pd.DataFrame({"文件名": file_tree["storyboard_output"]})
+                        st.dataframe(df_story, use_container_width=True, hide_index=True, height=300)
+                    else:
+                        st.caption("（空）")
+                with subtab_root:
+                    if file_tree.get("root"):
+                        df_root = pd.DataFrame({"文件名": file_tree["root"]})
+                        st.dataframe(df_root, use_container_width=True, hide_index=True, height=300)
+                    else:
+                        st.caption("（空）")
 
     # --- Tab 1: Script Workflow ---
     with tab_script:
@@ -815,217 +972,188 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
         col1, col2 = st.columns([1, 2])
         
         with col1:
-            st.subheader("项目状态概览")
-            plot_path = os.path.join(project_dir, "plot-breakdown.md")
-            plot_text = read_file_content(plot_path) if os.path.exists(plot_path) else ""
-            total_plots, used_plots, unused_plots = get_plot_counts(plot_text)
-            scripts_dir = os.path.join(project_dir, "scripts")
-            eps = []
-            if os.path.exists(scripts_dir):
-                for f in os.listdir(scripts_dir):
-                    if f.startswith("Episode-") and f.endswith(".md"):
-                        eps.append(f)
-                eps = sorted(eps)
-            novel_dir = os.path.join(project_dir, "novel")
-            chs = []
-            if os.path.exists(novel_dir):
-                for f in os.listdir(novel_dir):
-                    if f.startswith("chapter-") and f.endswith(".txt"):
-                        num = f[len("chapter-"):-4]
-                        if num.isdigit():
-                            chs.append(int(num))
-                chs = sorted(chs)
-            c1, c2, c3 = st.columns(3)
-            with c1:
-                st.metric("剧情点总数", total_plots)
-            with c2:
-                st.metric("未用剧情点", unused_plots)
-            with c3:
-                st.metric("已用剧情点", used_plots)
-            st.caption(f"剧本文件：{len(eps)} 集" + (f"，最新：{eps[-1]}" if eps else ""))
-            if chs:
-                st.caption(f"小说章节：{len(chs)} 章，范围：{chs[0]}-{chs[-1]}")
-            else:
-                st.caption("小说章节：0 章")
+            with st.container(border=True):
+                st.subheader("1. 剧情拆解")
+                use_range = st.checkbox("指定章节范围", value=False)
+                
+                col_range, col_batch = st.columns(2)
+                with col_range:
+                    chapters_range = st.text_input("章节范围 (e.g. 1-6)", value="1-6", disabled=not use_range)
+                with col_batch:
+                    batch_size = st.number_input("每批章节数", min_value=1, max_value=20, value=6, help="批量拆解时，每批包含的章节数量")
 
-            st.divider()
-            
-            st.subheader("1. 剧情拆解")
-            use_range = st.checkbox("指定章节范围", value=False)
-            chapters_range = st.text_input("章节范围 (e.g. 1-6)", value="1-6", disabled=not use_range)
-            
-            col_opts1, col_opts2 = st.columns(2)
-            with col_opts1:
                 process_all = st.checkbox("自动拆解所有剩余章节", value=False, disabled=use_range, help="如果勾选，将自动按批次拆解所有剩余章节")
-            with col_opts2:
-                batch_size = st.number_input("每批章节数", min_value=1, max_value=20, value=6, help="批量拆解时，每批包含的章节数量")
-
-            if st.button("🧩 生成剧情拆解", key="script_breakdown", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("script_breakdown",)):
-                pass
-            
-            if st.session_state.processing_key == "script_breakdown":
-                cmd = ["python", script_py_path, "--project-dir", project_dir]
-                cmd.extend(get_api_args())
-                cmd.append("breakdown")
-                cmd.extend(["--batch-size", str(batch_size)])
                 
-                if use_range:
-                    cmd.extend(["--chapters", chapters_range])
-                else:
-                    cmd.extend(["--include-examples", "--include-output-style"])
-                    if process_all:
-                        cmd.append("--all")
+                if st.button("🧩 生成剧情拆解", key="script_breakdown", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("script_breakdown",)):
+                    pass
                 
-                run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description="Generating breakdown...")
-                st.session_state.processing_key = None
-                st.rerun()
+                if st.session_state.processing_key == "script_breakdown":
+                    cmd = ["python", script_py_path, "--project-dir", project_dir]
+                    cmd.extend(get_api_args())
+                    cmd.append("breakdown")
+                    cmd.extend(["--batch-size", str(batch_size)])
+                    
+                    if use_range:
+                        cmd.extend(["--chapters", chapters_range])
+                    else:
+                        cmd.extend(["--include-examples", "--include-output-style"])
+                        if process_all:
+                            cmd.append("--all")
+                    
+                    run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description="Generating breakdown...")
+                    st.session_state.processing_key = None
+                    st.rerun()
 
-            st.divider()
-            
-            st.subheader("2. 生成剧本")
-            episode_num = st.number_input("集数 (Episode)", min_value=1, value=1)
-            overwrite_script = st.checkbox("允许覆盖 (--overwrite)", value=True)
-            check_script = st.checkbox("生成后质检 (--check)", value=False)
-            
-            if st.button("✍️ 生成单集剧本", key="script_gen", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("script_gen",)):
-                pass
-            
-            if st.session_state.processing_key == "script_gen":
-                cmd = ["python", script_py_path, "--project-dir", project_dir]
-                cmd.extend(get_api_args())
-                cmd.extend(["script", "--episode", str(episode_num)])
-                if overwrite_script:
-                    cmd.append("--overwrite")
-                if check_script:
-                    cmd.append("--check")
-                run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description=f"Generating script for Episode {episode_num}...")
-                st.session_state.processing_key = None
-                st.rerun()
+            with st.container(border=True):
+                st.subheader("2. 生成剧本")
+                col_ep, col_conc = st.columns([1, 1])
+                with col_ep:
+                    episode_num = st.number_input("集数 (Episode)", min_value=1, value=1)
+                with col_conc:
+                    concurrency = st.slider("并发数 (Workers)", min_value=1, max_value=10, value=1, help="同时生成的剧本数量。注意API速率限制。")
 
-            st.markdown("#### 批量生成设置")
-            concurrency = st.slider("并发数 (Workers)", min_value=1, max_value=10, value=1, help="同时生成的剧本数量。注意API速率限制。")
+                overwrite_script = st.checkbox("允许覆盖 (--overwrite)", value=True)
+                check_script = st.checkbox("生成后质检 (--check)", value=False)
 
-            if st.button("🚀 批量生成所有未用集数", key="script_gen_all", help="自动查找所有未用剧情点并批量生成剧本", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("script_gen_all",)):
-                pass
-            
-            if st.session_state.processing_key == "script_gen_all":
-                cmd = ["python", script_py_path, "--project-dir", project_dir]
-                cmd.extend(get_api_args())
-                cmd.append("script")
-                cmd.append("--all")
-                cmd.extend(["--concurrency", str(concurrency)])
-                if overwrite_script:
-                    cmd.append("--overwrite")
-                if check_script:
-                    cmd.append("--check")
-                run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description="Batch generating all unused episodes...")
-                # Clear all script editor keys
-                for k in list(st.session_state.keys()):
-                    if k.startswith("edit_script_"):
-                        del st.session_state[k]
-                time.sleep(0.5)
-                st.session_state.processing_key = None
-                st.rerun()
+                btn_col1, btn_col2 = st.columns(2)
+                with btn_col1:
+                    if st.button("✍️ 生成单集剧本", key="script_gen", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("script_gen",), use_container_width=True):
+                        pass
+                with btn_col2:
+                    if st.button("🚀 生成所有未用集数", key="script_gen_all", help="自动查找所有未用剧情点并批量生成剧本", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("script_gen_all",), use_container_width=True):
+                        pass
+
+                if st.session_state.processing_key == "script_gen":
+                    cmd = ["python", script_py_path, "--project-dir", project_dir]
+                    cmd.extend(get_api_args())
+                    cmd.extend(["script", "--episode", str(episode_num)])
+                    if overwrite_script:
+                        cmd.append("--overwrite")
+                    if check_script:
+                        cmd.append("--check")
+                    run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description=f"Generating script for Episode {episode_num}...")
+                    st.session_state.processing_key = None
+                    st.rerun()
+
+                if st.session_state.processing_key == "script_gen_all":
+                    cmd = ["python", script_py_path, "--project-dir", project_dir]
+                    cmd.extend(get_api_args())
+                    cmd.append("script")
+                    cmd.append("--all")
+                    cmd.extend(["--concurrency", str(concurrency)])
+                    if overwrite_script:
+                        cmd.append("--overwrite")
+                    if check_script:
+                        cmd.append("--check")
+                    run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description="Batch generating all unused episodes...")
+                    for k in list(st.session_state.keys()):
+                        if k.startswith("edit_script_"):
+                            del st.session_state[k]
+                    time.sleep(0.5)
+                    st.session_state.processing_key = None
+                    st.rerun()
 
         with col2:
-            st.subheader("文件预览")
-            breakdown_path = os.path.join(project_dir, "plot-breakdown.md")
-            if os.path.exists(breakdown_path):
-                with st.expander("📂 plot-breakdown.md (剧情拆解)", expanded=False):
-                    bd_content = read_file_content(breakdown_path)
-                    new_bd_content = st.text_area("编辑剧情拆解", value=bd_content, height=600, key="edit_breakdown")
-                    st.download_button("⬇️ 下载剧情拆解", data=bd_content, file_name="plot-breakdown.md", mime="text/markdown", key="download_breakdown")
-                    if st.button("💾 保存剧情拆解", key="save_breakdown"):
-                        res = write_file_content(breakdown_path, new_bd_content)
-                        if res is True:
-                            st.success("✅ 已保存")
-                        else:
-                            st.error(f"❌ 保存失败: {res}")
-            else:
-                st.info("暂无 plot-breakdown.md 文件")
+            with st.container(border=True):
+                st.subheader("文件预览")
+                breakdown_path = os.path.join(project_dir, "plot-breakdown.md")
+                if os.path.exists(breakdown_path):
+                    with st.expander("📂 plot-breakdown.md (剧情拆解)", expanded=False):
+                        bd_content = read_file_content(breakdown_path)
+                        new_bd_content = st.text_area("编辑剧情拆解", value=bd_content, height=600, key="edit_breakdown")
+                        st.download_button("⬇️ 下载剧情拆解", data=bd_content, file_name="plot-breakdown.md", mime="text/markdown", key="download_breakdown")
+                        if st.button("💾 保存剧情拆解", key="save_breakdown"):
+                            res = write_file_content(breakdown_path, new_bd_content)
+                            if res is True:
+                                st.success("✅ 已保存")
+                            else:
+                                st.error(f"❌ 保存失败: {res}")
+                else:
+                    st.info("暂无 plot-breakdown.md 文件")
 
             scripts_dir = os.path.join(project_dir, "scripts")
             if os.path.exists(scripts_dir):
-                st.markdown("### 📜 已生成剧本 (Generated Scripts)")
-                df_scripts_preview = get_file_info_df(scripts_dir)
-                
-                selected_script_preview = None
-                if not df_scripts_preview.empty:
-                    all_select_scripts = st.checkbox("全选剧本", value=False, key="script_select_all")
-                    height = min(len(df_scripts_preview) * 35 + 38, 300)
-                    selection_preview = st.dataframe(
-                        df_scripts_preview[["文件名", "大小", "修改时间"]],
-                        on_select="rerun",
-                        selection_mode="multi-row",
-                        use_container_width=True,
-                        hide_index=True,
-                        height=height,
-                        key="script_preview_table"
-                    )
-                    selected_rows_scripts = list(range(len(df_scripts_preview))) if all_select_scripts else selection_preview.selection.rows
-                    if selected_rows_scripts:
-                        if len(selected_rows_scripts) == 1:
-                            idx = selected_rows_scripts[0]
-                            selected_script_preview = df_scripts_preview.iloc[idx]["文件名"]
-                            st.info(f"📄 正在预览: **{selected_script_preview}**")
+                with st.container(border=True):
+                    st.markdown("### 📜 已生成剧本 (Generated Scripts)")
+                    df_scripts_preview = get_file_info_df(scripts_dir)
+                    
+                    selected_script_preview = None
+                    if not df_scripts_preview.empty:
+                        all_select_scripts = st.checkbox("全选剧本", value=False, key="script_select_all")
+                        height = min(len(df_scripts_preview) * 35 + 38, 300)
+                        selection_preview = st.dataframe(
+                            df_scripts_preview[["文件名", "大小", "修改时间"]],
+                            on_select="rerun",
+                            selection_mode="multi-row",
+                            use_container_width=True,
+                            hide_index=True,
+                            height=height,
+                            key="script_preview_table"
+                        )
+                        selected_rows_scripts = list(range(len(df_scripts_preview))) if all_select_scripts else selection_preview.selection.rows
+                        if selected_rows_scripts:
+                            if len(selected_rows_scripts) == 1:
+                                idx = selected_rows_scripts[0]
+                                selected_script_preview = df_scripts_preview.iloc[idx]["文件名"]
+                                st.info(f"📄 正在预览: **{selected_script_preview}**")
+                            else:
+                                st.info(f"已选择 {len(selected_rows_scripts)} 个剧本，可批量操作")
+                            
+                            c_dl_scr, c_del_scr = st.columns([1, 1])
+                            with c_dl_scr:
+                                if st.button("⬇️ 下载选中剧本为 ZIP", key="download_scripts_zip", use_container_width=True):
+                                    buf_scripts = io.BytesIO()
+                                    with zipfile.ZipFile(buf_scripts, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                                        for idx in selected_rows_scripts:
+                                            fname = df_scripts_preview.iloc[idx]["文件名"]
+                                            fpath = os.path.join(scripts_dir, fname)
+                                            try:
+                                                with open(fpath, "rb") as f:
+                                                    zf.writestr(fname, f.read())
+                                            except Exception:
+                                                pass
+                                    st.download_button(
+                                        "⬇️ 点击下载剧本 ZIP",
+                                        data=buf_scripts.getvalue(),
+                                        file_name="scripts_selected.zip",
+                                        mime="application/zip",
+                                        key="download_scripts_zip_btn",
+                                        use_container_width=True
+                                    )
+                            
+                            with c_del_scr:
+                                with st.popover("🗑️ 删除选中剧本", use_container_width=True):
+                                    st.warning("确定要删除选中的剧本吗？此操作不可恢复。")
+                                    if st.button("确认删除", key="delete_scripts_btn", type="primary", use_container_width=True):
+                                        del_count = 0
+                                        for idx in selected_rows_scripts:
+                                            fname = df_scripts_preview.iloc[idx]["文件名"]
+                                            fpath = os.path.join(scripts_dir, fname)
+                                            try:
+                                                os.remove(fpath)
+                                                del_count += 1
+                                            except Exception as e:
+                                                st.error(f"删除失败 {fname}: {e}")
+                                        if del_count > 0:
+                                            st.success(f"已删除 {del_count} 个剧本")
+                                            time.sleep(1)
+                                            st.rerun()
                         else:
-                            st.info(f"已选择 {len(selected_rows_scripts)} 个剧本，可批量操作")
-                        
-                        c_dl_scr, c_del_scr = st.columns([1, 1])
-                        with c_dl_scr:
-                            if st.button("⬇️ 下载选中剧本为 ZIP", key="download_scripts_zip", use_container_width=True):
-                                buf_scripts = io.BytesIO()
-                                with zipfile.ZipFile(buf_scripts, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-                                    for idx in selected_rows_scripts:
-                                        fname = df_scripts_preview.iloc[idx]["文件名"]
-                                        fpath = os.path.join(scripts_dir, fname)
-                                        try:
-                                            with open(fpath, "rb") as f:
-                                                zf.writestr(fname, f.read())
-                                        except Exception:
-                                            pass
-                                st.download_button(
-                                    "⬇️ 点击下载剧本 ZIP",
-                                    data=buf_scripts.getvalue(),
-                                    file_name="scripts_selected.zip",
-                                    mime="application/zip",
-                                    key="download_scripts_zip_btn",
-                                    use_container_width=True
-                                )
-                        
-                        with c_del_scr:
-                            with st.popover("🗑️ 删除选中剧本", use_container_width=True):
-                                st.warning("确定要删除选中的剧本吗？此操作不可恢复。")
-                                if st.button("确认删除", key="delete_scripts_btn", type="primary", use_container_width=True):
-                                    del_count = 0
-                                    for idx in selected_rows_scripts:
-                                        fname = df_scripts_preview.iloc[idx]["文件名"]
-                                        fpath = os.path.join(scripts_dir, fname)
-                                        try:
-                                            os.remove(fpath)
-                                            del_count += 1
-                                        except Exception as e:
-                                            st.error(f"删除失败 {fname}: {e}")
-                                    if del_count > 0:
-                                        st.success(f"已删除 {del_count} 个剧本")
-                                        time.sleep(1)
-                                        st.rerun()
+                            st.info("👈 请在列表中选择一个或多个剧本")
                     else:
-                        st.info("👈 请在列表中选择一个或多个剧本")
-                else:
-                    st.info("scripts 目录下暂无 .md 文件")
-                
-                if selected_script_preview:
-                    script_content_path = os.path.join(scripts_dir, selected_script_preview)
-                    sc_content = read_file_content(script_content_path)
-                    new_sc_content = st.text_area(f"编辑 {selected_script_preview}", value=sc_content, height=600, key=f"edit_script_{selected_script_preview}")
-                    st.download_button(f"⬇️ 下载 {selected_script_preview}", data=sc_content, file_name=selected_script_preview, mime="text/markdown", key=f"download_script_{selected_script_preview}")
-                    if st.button(f"💾 保存 {selected_script_preview}", key=f"save_script_{selected_script_preview}"):
-                        res = write_file_content(script_content_path, new_sc_content)
-                        if res is True:
-                            st.success("✅ 已保存")
-                        else:
-                            st.error(f"❌ 保存失败: {res}")
+                        st.info("scripts 目录下暂无 .md 文件")
+                    
+                    if selected_script_preview:
+                        script_content_path = os.path.join(scripts_dir, selected_script_preview)
+                        sc_content = read_file_content(script_content_path)
+                        new_sc_content = st.text_area(f"编辑 {selected_script_preview}", value=sc_content, height=600, key=f"edit_script_{selected_script_preview}")
+                        st.download_button(f"⬇️ 下载 {selected_script_preview}", data=sc_content, file_name=selected_script_preview, mime="text/markdown", key=f"download_script_{selected_script_preview}")
+                        if st.button(f"💾 保存 {selected_script_preview}", key=f"save_script_{selected_script_preview}"):
+                            res = write_file_content(script_content_path, new_sc_content)
+                            if res is True:
+                                st.success("✅ 已保存")
+                            else:
+                                st.error(f"❌ 保存失败: {res}")
             else:
                 st.info("scripts 目录不存在")
 
@@ -1038,57 +1166,6 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
         col3, col4 = st.columns([1, 2])
         
         with col3:
-            st.subheader("分镜状态概览")
-            # 全局统计（不依赖选择）
-            outputs_dir = sb_output_dir
-            breakdown_count = 0
-            beatboard_count = 0
-            sequence_count = 0
-            motion_count = 0
-            voiceover_count = 0
-            latest_file = None
-            latest_mtime = None
-            if os.path.exists(outputs_dir):
-                for f in os.listdir(outputs_dir):
-                    fp = os.path.join(outputs_dir, f)
-                    if not os.path.isfile(fp):
-                        continue
-                    if f.endswith(".md"):
-                        if "beat_breakdown.md" in f:
-                            breakdown_count += 1
-                        elif "beat_board_prompts.md" in f:
-                            beatboard_count += 1
-                        elif "sequence_board_prompts.md" in f:
-                            sequence_count += 1
-                        elif "motion_prompts.md" in f:
-                            motion_count += 1
-                        elif "voiceover_table.md" in f:
-                            voiceover_count += 1
-                        try:
-                            mt = os.path.getmtime(fp)
-                            if latest_mtime is None or mt > latest_mtime:
-                                latest_mtime = mt
-                                latest_file = f
-                        except Exception:
-                            pass
-            c1, c2, c3, c4, c5 = st.columns(5)
-            with c1:
-                st.metric("节拍拆解表", breakdown_count)
-            with c2:
-                st.metric("九宫格提示词", beatboard_count)
-            with c3:
-                st.metric("四宫格提示词", sequence_count)
-            with c4:
-                st.metric("动态提示词", motion_count)
-            with c5:
-                st.metric("配音表", voiceover_count)
-            if latest_file:
-                st.caption(f"最新输出：{latest_file}")
-            else:
-                st.caption("暂无分镜输出文件")
-
-            st.divider()
-            
             # 在操作面板顶部选择脚本文件，后续操作共用
             st.markdown("#### 1. 选择脚本文件 (Select Script)")
             scripts_dir = os.path.join(project_dir, "scripts")
@@ -1130,6 +1207,26 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                     st.session_state.processing_key = None
                     st.rerun()
 
+            # 分步骤生成按钮行（节拍拆解 / 九宫格 / 四宫格 / 动态提示词 / 配音表）
+            btn_col1, btn_col2, btn_col3, btn_col4, btn_col5 = st.columns(5)
+            with btn_col1:
+                if st.button("🎵 节拍拆解", key="sb_breakdown", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_breakdown",), use_container_width=True):
+                    pass
+            with btn_col2:
+                if st.button("🎨 九宫格", key="sb_beatboard", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_beatboard",), use_container_width=True):
+                    pass
+            with btn_col3:
+                if st.button("🎞️ 四宫格", key="sb_sequence", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_sequence",), use_container_width=True):
+                    pass
+            with btn_col4:
+                if st.button("🎥 动态提示词", key="sb_motion", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_motion",), use_container_width=True):
+                    pass
+            with btn_col5:
+                if st.button("🎙️ 配音表", key="sb_voiceover", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_voiceover",), use_container_width=True):
+                    pass
+
+            st.markdown("")
+
             st.subheader("🚀 一键全流程 (One-Click Workflow)")
             if st.button("⚡ 一键执行所有步骤 (Breakdown -> Dubbing)", key="sb_auto", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_auto",), use_container_width=True, type="primary"):
                 pass
@@ -1158,10 +1255,6 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
 
             st.divider()
             
-            st.subheader("2. 节拍拆解")
-            if st.button("🎵 生成节拍拆解表", key="sb_breakdown", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_breakdown",)):
-                pass
-            
             if st.session_state.processing_key == "sb_breakdown":
                 if selected_scripts:
                     for script in selected_scripts:
@@ -1183,11 +1276,6 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
 
                 st.session_state.processing_key = None
                 st.rerun()
-                
-            st.subheader("3. 九宫格")
-            if st.button("🎨 生成九宫格提示词", key="sb_beatboard", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_beatboard",)):
-                pass
-            
             if st.session_state.processing_key == "sb_beatboard":
                 if selected_scripts:
                     for script in selected_scripts:
@@ -1202,11 +1290,6 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                     time.sleep(2)
                 st.session_state.processing_key = None
                 st.rerun()
-                
-            st.subheader("4. 四宫格")
-            if st.button("🎞️ 生成四宫格提示词", key="sb_sequence", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_sequence",)):
-                pass
-            
             if st.session_state.processing_key == "sb_sequence":
                 if selected_scripts:
                     for script in selected_scripts:
@@ -1228,11 +1311,6 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                     time.sleep(2)
                 st.session_state.processing_key = None
                 st.rerun()
-                
-            st.subheader("5. 动态提示词")
-            if st.button("🎥 生成动态提示词", key="sb_motion", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_motion",)):
-                pass
-            
             if st.session_state.processing_key == "sb_motion":
                 if selected_scripts:
                     for script in selected_scripts:
@@ -1253,11 +1331,6 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                     time.sleep(2)
                 st.session_state.processing_key = None
                 st.rerun()
-
-            st.subheader("6. 配音表")
-            if st.button("🎙️ 生成配音表", key="sb_voiceover", disabled=(st.session_state.processing_key is not None), on_click=set_processing, args=("sb_voiceover",)):
-                pass
-            
             if st.session_state.processing_key == "sb_voiceover":
                 if selected_scripts:
                     for script in selected_scripts:

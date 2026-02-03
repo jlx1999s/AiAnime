@@ -13,7 +13,7 @@ import hashlib
 from urllib.parse import urlparse, unquote
 from typing import List, Dict, Any
 from pydantic import BaseModel
-from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File, Request
+from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File, Request, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
@@ -676,15 +676,15 @@ async def register_user(data: RegisterRequest):
     return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
 
 @app.post("/auth/login", response_model=UserPublic)
-async def login_user(data: LoginRequest, request: Request):
+async def login_user(data: LoginRequest, request: Request, response: Response):
     username = data.username.strip()
     password = data.password
     user = next((u for u in USERS.values() if u.username == username), None)
     if not user or not _verify_password(password, user.password_hash):
         raise HTTPException(status_code=400, detail="invalid credentials")
-    client_ip = _get_client_ip(request)
-    if client_ip:
-        AUTH_SESSIONS[client_ip] = user.id
+    session_id = uuid.uuid4().hex
+    AUTH_SESSIONS[session_id] = user.id
+    response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax")
     return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
 
 @app.get("/auth/user/{user_id}", response_model=UserPublic)
@@ -696,10 +696,10 @@ async def get_user_by_id(user_id: str):
 
 @app.get("/auth/whoami", response_model=UserPublic)
 async def whoami(request: Request):
-    client_ip = _get_client_ip(request)
-    if not client_ip:
+    session_id = request.cookies.get("session_id")
+    if not session_id:
         raise HTTPException(status_code=401, detail="Not logged in")
-    user_id = AUTH_SESSIONS.get(client_ip)
+    user_id = AUTH_SESSIONS.get(session_id)
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
     user = _get_user(user_id)
@@ -708,10 +708,11 @@ async def whoami(request: Request):
     return UserPublic(id=user.id, username=user.username, is_admin=user.is_admin)
 
 @app.post("/auth/logout")
-async def logout(request: Request):
-    client_ip = _get_client_ip(request)
-    if client_ip and client_ip in AUTH_SESSIONS:
-        del AUTH_SESSIONS[client_ip]
+async def logout(request: Request, response: Response):
+    session_id = request.cookies.get("session_id")
+    if session_id and session_id in AUTH_SESSIONS:
+        del AUTH_SESSIONS[session_id]
+    response.delete_cookie("session_id")
     return {"ok": True}
 
 class AssignProjectRequest(BaseModel):
@@ -2596,98 +2597,177 @@ async def remove_shot_video(project_id: str, shot_id: str, data: ShotVideoRemove
     save_db()
     return target_shot
 
+def _build_asset_prompt(prompt: str, asset_type: str, project_style: str):
+    style_prompts = {
+        "real": "photorealistic, raw photo, real person, 8k uhd, dslr, soft lighting, film grain, hyperrealistic",
+        "anime": "anime style, japanese anime, vibrant colors, cel shading",
+        "manga": "manga style, black and white, line art, comic book",
+        "realistic": "realistic style, detailed texture, 3d render, unreal engine 5",
+        "chinese_anime": "chinese anime style, guofeng, donghua, ancient chinese aesthetics, elegant, vibrant, 2d"
+    }
+    style_desc = style_prompts.get(project_style, f"{project_style} style")
+    is_real = project_style == "real" or project_style == "realistic"
+    if asset_type == "character":
+        prompt = f"{prompt}, character design, full body, white background, detailed, {style_desc}"
+    elif asset_type == "scene":
+        prompt = f"{prompt}, scene background, scenery, detailed, {style_desc}"
+    else:
+        prompt = f"{prompt}, {style_desc}"
+    negative_prompt = ""
+    if is_real:
+        negative_prompt = "anime, cartoon, drawing, illustration, painting, sketch, 2d, flat, deformed, ugly"
+    else:
+        negative_prompt = "photorealistic, real photo, 3d, bad anatomy, bad hands, text, watermark"
+    return prompt, negative_prompt
+
+async def _generate_asset_image(project_id: str | None, asset_type: str, project_style: str, prompt: str):
+    provider = current_api_config.image_provider or "openai"
+    final_prompt, negative_prompt = _build_asset_prompt(prompt, asset_type, project_style)
+    if provider == "openai":
+        if not image_client:
+            raise HTTPException(status_code=400, detail="OpenAI image provider not configured")
+        full_prompt = f"{final_prompt}. Exclude: {negative_prompt}"
+        return await generate_image(
+            provider,
+            full_prompt,
+            sub_dir=project_id,
+            config=current_api_config,
+            image_client=image_client,
+            visual_service=visual_service,
+            negative_prompt=negative_prompt,
+            reference_images=None,
+            reference_image_url=None,
+            image_url_to_base64=_image_url_to_base64,
+            save_image_from_url=_save_image_from_url,
+            save_base64_image=_save_base64_image
+        )
+    if provider == "vectorengine":
+        return await generate_image(
+            provider,
+            final_prompt,
+            sub_dir=project_id,
+            config=current_api_config,
+            image_client=image_client,
+            visual_service=visual_service,
+            negative_prompt=negative_prompt,
+            reference_images=None,
+            reference_image_url=None,
+            image_url_to_base64=_image_url_to_base64,
+            save_image_from_url=_save_image_from_url,
+            save_base64_image=_save_base64_image
+        )
+    if provider == "volcengine":
+        if not visual_service:
+            raise HTTPException(status_code=400, detail="Volcengine image provider not configured")
+        return await generate_image(
+            provider,
+            final_prompt,
+            sub_dir=project_id,
+            config=current_api_config,
+            image_client=image_client,
+            visual_service=visual_service,
+            negative_prompt=negative_prompt,
+            reference_images=None,
+            reference_image_url=None,
+            image_url_to_base64=_image_url_to_base64,
+            save_image_from_url=_save_image_from_url,
+            save_base64_image=_save_base64_image
+        )
+    raise HTTPException(status_code=400, detail=f"Unsupported image provider: {provider}")
+
+def _ensure_asset_for_generation(project: Project, asset_type: str, asset_id: str, asset_name: str | None, prompt: str | None):
+    if asset_type == "character":
+        target = next((c for c in project.characters if c.id == asset_id), None)
+        if not target:
+            target = Character(
+                id=asset_id,
+                name=asset_name or "未命名角色",
+                avatar_url="",
+                tags=[],
+                prompt=prompt or ""
+            )
+            project.characters.append(target)
+        if asset_name:
+            target.name = asset_name
+        if prompt:
+            target.prompt = prompt
+        target.status = GenerationStatus.GENERATING
+        save_db()
+        return target
+    if asset_type == "scene":
+        target = next((s for s in project.scenes if s.id == asset_id), None)
+        if not target:
+            target = Scene(
+                id=asset_id,
+                name=asset_name or "未命名场景",
+                image_url="",
+                tags=[],
+                prompt=prompt or ""
+            )
+            project.scenes.append(target)
+        if asset_name:
+            target.name = asset_name
+        if prompt:
+            target.prompt = prompt
+        target.status = GenerationStatus.GENERATING
+        save_db()
+        return target
+    raise HTTPException(status_code=400, detail=f"Unsupported asset type: {asset_type}")
+
+async def asset_generation_task(project_id: str, asset_type: str, asset_id: str, asset_name: str | None, prompt: str | None):
+    try:
+        project = DB.get(project_id)
+        if not project:
+            return
+        target = _ensure_asset_for_generation(project, asset_type, asset_id, asset_name, prompt)
+        base_prompt = (prompt or "").strip() or (target.prompt or "").strip() or (target.name or "").strip()
+        project_style = project.style or "anime"
+        image_url = await _generate_asset_image(project_id, asset_type, project_style, base_prompt)
+        if asset_type == "character":
+            target.avatar_url = image_url
+        elif asset_type == "scene":
+            target.image_url = image_url
+        target.status = GenerationStatus.COMPLETED
+        save_db()
+    except Exception as e:
+        print(f"Asset Generation Failed: {e}")
+        project = DB.get(project_id)
+        if not project:
+            return
+        target = None
+        if asset_type == "character":
+            target = next((c for c in project.characters if c.id == asset_id), None)
+        elif asset_type == "scene":
+            target = next((s for s in project.scenes if s.id == asset_id), None)
+        if target:
+            target.status = GenerationStatus.FAILED
+            save_db()
+
 @app.post("/api/generate-asset")
-async def generate_asset_raw(request: AssetGenerateRequest):
+async def generate_asset_raw(request: AssetGenerateRequest, background_tasks: BackgroundTasks):
     try:
         project_style = "anime"
+        project = None
         if request.project_id:
             project = DB.get(request.project_id)
             if project:
                 project_style = project.style
-
-        prompt = request.prompt
-        
-        # Style logic
-        style_prompts = {
-            "real": "photorealistic, raw photo, real person, 8k uhd, dslr, soft lighting, film grain, hyperrealistic",
-            "anime": "anime style, japanese anime, vibrant colors, cel shading",
-            "manga": "manga style, black and white, line art, comic book",
-            "realistic": "realistic style, detailed texture, 3d render, unreal engine 5",
-            "chinese_anime": "chinese anime style, guofeng, donghua, ancient chinese aesthetics, elegant, vibrant, 2d"
-        }
-        style_desc = style_prompts.get(project_style, f"{project_style} style")
-        is_real = project_style == "real" or project_style == "realistic"
-
-        if request.type == "character":
-            prompt += f", character design, full body, white background, detailed, {style_desc}"
-        elif request.type == "scene":
-            prompt += f", scene background, scenery, detailed, {style_desc}"
-        else:
-            prompt += f", {style_desc}"
-
-        negative_prompt = ""
-        if is_real:
-            negative_prompt = "anime, cartoon, drawing, illustration, painting, sketch, 2d, flat, deformed, ugly"
-        else:
-            negative_prompt = "photorealistic, real photo, 3d, bad anatomy, bad hands, text, watermark"
-            
-        provider = current_api_config.image_provider or "openai"
-        if provider == "openai":
-            if not image_client:
-                raise HTTPException(status_code=400, detail="OpenAI image provider not configured")
-            final_prompt = f"{prompt}. Exclude: {negative_prompt}"
-            image_url = await generate_image(
-                provider,
-                final_prompt,
-                sub_dir=request.project_id,
-                config=current_api_config,
-                image_client=image_client,
-                visual_service=visual_service,
-                negative_prompt=negative_prompt,
-                reference_images=None,
-                reference_image_url=None,
-                image_url_to_base64=_image_url_to_base64,
-                save_image_from_url=_save_image_from_url,
-                save_base64_image=_save_base64_image
+        if request.project_id and (request.asset_id or request.name):
+            if not project:
+                raise HTTPException(status_code=404, detail="Project not found")
+            asset_id = request.asset_id or str(uuid.uuid4())
+            target = _ensure_asset_for_generation(project, request.type, asset_id, request.name, request.prompt)
+            background_tasks.add_task(
+                asset_generation_task,
+                request.project_id,
+                request.type,
+                asset_id,
+                request.name,
+                request.prompt
             )
-            return {"url": image_url}
-        elif provider == "vectorengine":
-            image_url = await generate_image(
-                provider,
-                prompt,
-                sub_dir=request.project_id,
-                config=current_api_config,
-                image_client=image_client,
-                visual_service=visual_service,
-                negative_prompt=negative_prompt,
-                reference_images=None,
-                reference_image_url=None,
-                image_url_to_base64=_image_url_to_base64,
-                save_image_from_url=_save_image_from_url,
-                save_base64_image=_save_base64_image
-            )
-            return {"url": image_url}
-        elif provider == "volcengine":
-            if not visual_service:
-                raise HTTPException(status_code=400, detail="Volcengine image provider not configured")
-            image_url = await generate_image(
-                provider,
-                prompt,
-                sub_dir=request.project_id,
-                config=current_api_config,
-                image_client=image_client,
-                visual_service=visual_service,
-                negative_prompt=negative_prompt,
-                reference_images=None,
-                reference_image_url=None,
-                image_url_to_base64=_image_url_to_base64,
-                save_image_from_url=_save_image_from_url,
-                save_base64_image=_save_base64_image
-            )
-            return {"url": image_url}
-        else:
-            raise HTTPException(status_code=400, detail=f"Unsupported image provider: {provider}")
-            
+            return {"status": "queued", "asset_id": asset_id, "asset": target.model_dump()}
+        image_url = await _generate_asset_image(request.project_id, request.type, project_style, request.prompt)
+        return {"url": image_url}
     except Exception as e:
         print(f"Asset Generation Failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))

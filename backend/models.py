@@ -15,6 +15,7 @@ class Character(BaseModel):
     tags: List[str] = []
     prompt: str = ""
     description: str = ""
+    status: GenerationStatus = GenerationStatus.IDLE
 
 class Scene(BaseModel):
     id: str
@@ -23,6 +24,7 @@ class Scene(BaseModel):
     tags: List[str] = []
     prompt: str = ""
     description: str = ""
+    status: GenerationStatus = GenerationStatus.IDLE
 
 class CharacterUpdate(BaseModel):
     name: Optional[str] = None
@@ -122,3 +124,5 @@ class AssetGenerateRequest(BaseModel):
     project_id: Optional[str] = None
     prompt: str
     type: str = "character" # character or scene
+    asset_id: Optional[str] = None
+    name: Optional[str] = None

@@ -1724,7 +1724,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼",
       "tags": [],
       "prompt": "ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography",
-      "description": "A violent antagonist in the miniature world, dressed in dirty leather armor, riding a horse, and wielding a rusty machete. He represents imminent death and destruction."
+      "description": "A violent antagonist in the miniature world, dressed in dirty leather armor, riding a horse, and wielding a rusty machete. He represents imminent death and destruction.",
+      "status": "idle"
     },
     {
       "id": "0cc6e310-d962-490a-afbd-152f72d74f68",
@@ -1732,7 +1733,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（以物件为主）",
       "tags": [],
       "prompt": "large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light",
-      "description": "Focus on inanimate objects, specifically a large, mysterious, unopened cardboard box sitting on a cluttered desk."
+      "description": "Focus on inanimate objects, specifically a large, mysterious, unopened cardboard box sitting on a cluttered desk.",
+      "status": "idle"
     },
     {
       "id": "f349b1ce-4749-4e05-a00e-2a1b9e9f2d01",
@@ -1740,7 +1742,8 @@
       "avatar_url": "/static/uploads/6b55c541-16ab-4781-ba05-dcf6724f494c/b525d412-c591-4e2f-940d-8676dd78f69a.png",
       "tags": [],
       "prompt": "young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k",
-      "description": "A modern young man in a dimly lit bedroom. He looks tired, wearing casual home clothes. He is the observer and 'god' figure looking into the box."
+      "description": "A modern young man in a dimly lit bedroom. He looks tired, wearing casual home clothes. He is the observer and 'god' figure looking into the box.",
+      "status": "idle"
     },
     {
       "id": "a5f6cdb4-f8f0-47ab-aae4-fd8119af702a",
@@ -1748,7 +1751,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手指）",
       "tags": [],
       "prompt": "extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail",
-      "description": "Extreme close-up of a finger acting as a weapon or tool. Focus on the skin texture, fingerprints, and the massive scale compared to the miniature world."
+      "description": "Extreme close-up of a finger acting as a weapon or tool. Focus on the skin texture, fingerprints, and the massive scale compared to the miniature world.",
+      "status": "idle"
     },
     {
       "id": "0bb71097-84de-4956-99dc-cd5a6e8f17d6",
@@ -1756,7 +1760,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手部）",
       "tags": [],
       "prompt": "giant human hand, palm and fingers, casting huge shadow, realistic skin texture, hovering over miniature village, god-like perspective, megalophobia, dramatic scale contrast",
-      "description": "A giant human hand entering the miniature world, casting a massive shadow. It represents a divine intervention or a force of nature."
+      "description": "A giant human hand entering the miniature world, casting a massive shadow. It represents a divine intervention or a force of nature.",
+      "status": "idle"
     },
     {
       "id": "61a1169e-4a57-4cab-ae05-d897bdba5bb9",
@@ -1764,7 +1769,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=村民",
       "tags": [],
       "prompt": "tiny ancient Chinese peasants, running, fleeing, panic, tattered clothes, miniature figures, blurred background, swarm, helpless, macro photography",
-      "description": "Tiny, insignificant figures in the miniature world, fleeing in panic. They are dressed in ancient peasant rags."
+      "description": "Tiny, insignificant figures in the miniature world, fleeing in panic. They are dressed in ancient peasant rags.",
+      "status": "idle"
     },
     {
       "id": "83a3f739-6fd7-400e-8c0f-81da7a7a53cf",
@@ -1772,7 +1778,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=母亲",
       "tags": [],
       "prompt": "ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting",
-      "description": "A tragic figure in the miniature village, an ancient peasant woman who has been stabbed and is falling, reaching out to her child."
+      "description": "A tragic figure in the miniature village, an ancient peasant woman who has been stabbed and is falling, reaching out to her child.",
+      "status": "idle"
     },
     {
       "id": "709ac943-efd2-40a2-bbe6-e81daef00cc7",
@@ -1780,7 +1787,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶",
       "tags": [],
       "prompt": "young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography",
-      "description": "A young peasant girl in the miniature world. She has a muddy face, messy hair, and wears rags. She transitions from numbness to extreme terror and despair."
+      "description": "A young peasant girl in the miniature world. She has a muddy face, messy hair, and wears rags. She transitions from numbness to extreme terror and despair.",
+      "status": "idle"
     },
     {
       "id": "fcb24631-41f0-49fd-9112-d5bb517eef67",
@@ -1788,7 +1796,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶（模糊）",
       "tags": [],
       "prompt": "young Chinese peasant girl, blurry, out of focus, bokeh effect, seen through magnifying glass, optical distortion, heavy vignette, vague silhouette",
-      "description": "The girl seen through a magnifying glass or out of focus, representing the optical process of finding a target."
+      "description": "The girl seen through a magnifying glass or out of focus, representing the optical process of finding a target.",
+      "status": "idle"
     },
     {
       "id": "564ee6d8-a669-468d-847c-1eee452db8de",
@@ -1796,7 +1805,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民",
       "tags": [],
       "prompt": "miniature people, ancient Chinese peasant clothes, running in panic, swarm of ants, macro photography, tilt-shift effect, high angle view, chaotic formation",
-      "description": "Tiny inhabitants of the box world, dressed in ancient peasant clothing, reacting with panic and chaos like a disturbed ant colony."
+      "description": "Tiny inhabitants of the box world, dressed in ancient peasant clothing, reacting with panic and chaos like a disturbed ant colony.",
+      "status": "idle"
     },
     {
       "id": "25d8d52d-6fff-4c6e-89ad-0f2a4cdaf1a6",
@@ -1804,7 +1814,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（主观视角）",
       "tags": [],
       "prompt": "POV shot, optical distortion, chromatic aberration, heavy vignette, blurred edges, macro texture of yellow earth, out of focus, magnifying glass effect",
-      "description": "A point-of-view perspective looking through a magnifying lens, characterized by optical imperfections and focus transitions."
+      "description": "A point-of-view perspective looking through a magnifying lens, characterized by optical imperfections and focus transitions.",
+      "status": "idle"
     },
     {
       "id": "427bbf61-8c98-45ce-933b-54baa1f99895",
@@ -1812,7 +1823,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄的手",
       "tags": [],
       "prompt": "giant human hand, extreme close-up, visible fingerprints, skin pores, dirty fingernails, oily skin texture, dramatic lighting, interacting with miniature objects, massive scale contrast",
-      "description": "A massive, realistic human hand entering the miniature world, showing detailed skin texture, fingerprints, and dirt/oil, acting as a god-like force."
+      "description": "A massive, realistic human hand entering the miniature world, showing detailed skin texture, fingerprints, and dirt/oil, acting as a god-like force.",
+      "status": "idle"
     },
     {
       "id": "8bda7705-34c6-470c-b722-98a8f5ce467e",
@@ -1820,7 +1832,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（局部）",
       "tags": [],
       "prompt": "giant finger hovering in sky, massive fingerprint ridges, blurred giant face in background, atmospheric perspective, looking down from clouds, god-like scale",
-      "description": "Parts of Li Daoxuan seen from the perspective of the miniature world, appearing as colossal, god-like features in the sky."
+      "description": "Parts of Li Daoxuan seen from the perspective of the miniature world, appearing as colossal, god-like features in the sky.",
+      "status": "idle"
     },
     {
       "id": "8901e529-f727-4aed-a4b3-3ee17f6790bc",
@@ -1828,7 +1841,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=流寇",
       "tags": [],
       "prompt": "miniature bandit, savage face, beard, cruel smile, holding steel sword, tattered leather armor, riding thin horse, dynamic pose, motion blur, menacing atmosphere",
-      "description": "Violent bandits riding thin horses or sprinting, wearing tattered armor, wielding steel knives, with savage and cruel expressions."
+      "description": "Violent bandits riding thin horses or sprinting, wearing tattered armor, wielding steel knives, with savage and cruel expressions.",
+      "status": "idle"
     },
     {
       "id": "c6f68c4a-043e-4e7b-bcfd-e88bcfbec91c",
@@ -1836,7 +1850,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼（尸体）",
       "tags": [],
       "prompt": "Flattened body against glass surface, gore, blood splatter, crushed armor, abstract flesh texture, gruesome, high contrast, slide mark of blood, realistic texture, cinematic horror",
-      "description": "The aftermath of the bandit being flicked by the giant finger. A flattened, unrecognizable mass of flesh and blood smashed against the glass wall of the box."
+      "description": "The aftermath of the bandit being flicked by the giant finger. A flattened, unrecognizable mass of flesh and blood smashed against the glass wall of the box.",
+      "status": "idle"
     },
     {
       "id": "f6664609-fd15-47f2-a024-572817613c40",
@@ -1844,7 +1859,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民（群演）",
       "tags": [],
       "prompt": "Crowd of tiny ancient Chinese peasants, ragged clothes, panic, running, chaotic formation, top-down view, ant-like scale, dust clouds, motion blur, depth of field, cinematic disaster scene",
-      "description": "The tiny inhabitants of the box world. They look like ants from a distance, dressed in rags, running in panic and chaos."
+      "description": "The tiny inhabitants of the box world. They look like ants from a distance, dressed in rags, running in panic and chaos.",
+      "status": "idle"
     },
     {
       "id": "0b574474-4d92-4aa7-a58b-19ea5b9ac15d",
@@ -1852,7 +1868,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手）",
       "tags": [],
       "prompt": "Giant human hand, massive scale, hyper-realistic skin texture, fingerprints visible as grooves, jade-like fingernail, muscular tension, descending from sky, god-like perspective, megalophobia, dramatic lighting",
-      "description": "Li Daoxuan's hand appearing as a colossal, god-like structure within the miniature world. Features realistic skin texture, fingerprints like valleys, and immense power."
+      "description": "Li Daoxuan's hand appearing as a colossal, god-like structure within the miniature world. Features realistic skin texture, fingerprints like valleys, and immense power.",
+      "status": "idle"
     },
     {
       "id": "c2c1d1a6-2b48-4863-aae4-92f2712905f3",
@@ -1860,7 +1877,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶母亲",
       "tags": [],
       "prompt": "Ancient Chinese peasant woman, frail body, thin, ragged clothes, protective posture, back view, bloodstains, dramatic composition, tragic atmosphere, photorealistic",
-      "description": "A frail miniature woman who sacrifices herself to protect Gao Yiye. She is thin, wears rags, and is depicted in a protective stance or dying."
+      "description": "A frail miniature woman who sacrifices herself to protect Gao Yiye. She is thin, wears rags, and is depicted in a protective stance or dying.",
+      "status": "idle"
     },
     {
       "id": "ea62958a-3a1d-4e31-ae9f-809154fd641e",
@@ -1868,7 +1886,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（环境）",
       "tags": [],
       "prompt": "no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot",
-      "description": "No specific character focus; emphasis on the environment, atmosphere, or POV shots."
+      "description": "No specific character focus; emphasis on the environment, atmosphere, or POV shots.",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -1878,7 +1897,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect",
-      "description": "A miniature diorama of a desolate ancient Chinese village. Features yellow earth, dry cracked ground, thatched huts, broken walls, and smoke."
+      "description": "A miniature diorama of a desolate ancient Chinese village. Features yellow earth, dry cracked ground, thatched huts, broken walls, and smoke.",
+      "status": "idle"
     },
     {
       "id": "4c4a4b07-95c2-436e-949e-f454f465260b",
@@ -1886,7 +1906,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "aerial view of miniature village, top-down perspective, yellow earth terrain, tiny houses, dramatic shadows, bright white light beam from above, divine light, wide angle",
-      "description": "The view from above the miniature village, looking up at the 'sky' (the opening of the box) or looking down from a god's eye view."
+      "description": "The view from above the miniature village, looking up at the 'sky' (the opening of the box) or looking down from a god's eye view.",
+      "status": "idle"
     },
     {
       "id": "3dfcd3e7-f757-4194-ac46-b7908ece9520",
@@ -1894,7 +1915,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "edge of diorama, glass wall boundary, pile of gravel, miniature terrain meeting glass, debris, reflection on glass, cross-section of soil",
-      "description": "The boundary of the miniature world where the terrain meets the glass wall of the box. Contains debris and gravel."
+      "description": "The boundary of the miniature world where the terrain meets the glass wall of the box. Contains debris and gravel.",
+      "status": "idle"
     },
     {
       "id": "12616110-180a-485e-8440-4b1a283ebb42",
@@ -1902,7 +1924,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "modern bedroom, dim lighting, cluttered desk, computer monitor with blue light, takeaway boxes, messy, claustrophobic atmosphere, cinematic lighting, cyberpunk vibes, cold color temperature, realistic interior",
-      "description": "A messy, dimly lit modern room. Filled with takeaway boxes, a computer monitor emitting cold blue light, and a general sense of depression/isolation."
+      "description": "A messy, dimly lit modern room. Filled with takeaway boxes, a computer monitor emitting cold blue light, and a general sense of depression/isolation.",
+      "status": "idle"
     },
     {
       "id": "5074e8a3-4590-4996-8480-888c38bd4895",
@@ -1910,7 +1933,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "mid-air freeze frame, motion blur, tumbling body, dust trail, suspended in air, cinematic action shot, depth of field",
-      "description": "The airspace within the box where the bandit is flung, showing motion and height relative to the miniature ground."
+      "description": "The airspace within the box where the bandit is flung, showing motion and height relative to the miniature ground.",
+      "status": "idle"
     },
     {
       "id": "dc411029-d6e6-4806-977c-cafae52e2176",
@@ -1918,7 +1942,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "dimly lit room, messy apartment, clutter, trash, cardboard boxes, e-sports chair, computer monitor, cold blue ambient light, contrast with warm yellow light from box, cinematic atmosphere, realistic",
-      "description": "A dark, messy room filled with clutter, cardboard boxes, and an e-sports chair, lit by the cold blue light of a monitor and warm light from the box."
+      "description": "A dark, messy room filled with clutter, cardboard boxes, and an e-sports chair, lit by the cold blue light of a monitor and warm light from the box.",
+      "status": "idle"
     },
     {
       "id": "12419fb1-0592-4a0c-91e8-646e75ed2e40",
@@ -1926,7 +1951,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "transparent glass surface, spiderweb cracks, blood mist splatter, impact point, reflection, macro detail, texture of glass",
-      "description": "The transparent boundary of the miniature world, which cracks upon impact."
+      "description": "The transparent boundary of the miniature world, which cracks upon impact.",
+      "status": "idle"
     },
     {
       "id": "61ac710e-5d3a-4a98-8a4d-10fae313fc3f",
@@ -1934,7 +1960,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "miniature diorama, yellow loess soil, cracked earth, withered miniature tree, tiny fences, ancient village ruins, macro photography, tilt-shift, shallow depth of field, warm lighting, realistic texture",
-      "description": "A miniature landscape inside a cardboard box featuring yellow loess soil, dry earth, withered trees, and tiny ancient structures, lit by external light."
+      "description": "A miniature landscape inside a cardboard box featuring yellow loess soil, dry earth, withered trees, and tiny ancient structures, lit by external light.",
+      "status": "idle"
     },
     {
       "id": "7272e13b-92ee-428b-b68c-7e927894f51e",
@@ -1942,7 +1969,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Messy modern apartment room, dimly lit, computer screen blue light, cluttered desk, cardboard boxes, atmospheric dust, cinematic lighting, low key, realistic interior",
-      "description": "Li Daoxuan's living space. Dark, cluttered, illuminated by the cold blue light of a computer screen and the warm glow from the box."
+      "description": "Li Daoxuan's living space. Dark, cluttered, illuminated by the cold blue light of a computer screen and the warm glow from the box.",
+      "status": "idle"
     },
     {
       "id": "5f75e970-280b-4d8c-ba5c-4269bcabd0a7",
@@ -1950,7 +1978,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field",
-      "description": "The broader setting of the protagonist's reality. Cold tones contrasting with the warm light of the miniature world."
+      "description": "The broader setting of the protagonist's reality. Cold tones contrasting with the warm light of the miniature world.",
+      "status": "idle"
     },
     {
       "id": "1e19e589-1daf-41b8-9a4b-0372f0dc4747",
@@ -1958,7 +1987,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Giant magnifying glass lens, optical distortion, glass reflection, split screen effect, blue light vs warm yellow light, macro detail of glass edge, boundary concept",
-      "description": "The interface between reality and the box. Features optical glass, reflections, and the contrast between the giant room and the tiny world."
+      "description": "The interface between reality and the box. Features optical glass, reflections, and the contrast between the giant room and the tiny world.",
+      "status": "idle"
     },
     {
       "id": "d0659bba-6cbe-4e2d-8d61-bb4e76b6358b",
@@ -1966,7 +1996,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Miniature diorama, ancient Chinese setting, warm yellow lighting, atmospheric dust, high detail, tilt-shift photography, photorealistic",
-      "description": "The miniature world inside the landscaping box. It resembles the Ming Dynasty, filled with warm yellow light and dust."
+      "description": "The miniature world inside the landscaping box. It resembles the Ming Dynasty, filled with warm yellow light and dust.",
+      "status": "idle"
     },
     {
       "id": "0ee4c3fe-62a2-42b5-affd-a980b66be279",
@@ -1974,7 +2005,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Glass wall barrier, transparent texture, reflection, blood smear on glass, limit of the world, macro perspective, high contrast",
-      "description": "The glass wall of the landscaping box viewed from the inside or outside. The limit of the miniature universe."
+      "description": "The glass wall of the landscaping box viewed from the inside or outside. The limit of the miniature universe.",
+      "status": "idle"
     },
     {
       "id": "f5039231-dc84-48dd-ba6b-bbffc4fa710b",
@@ -1982,7 +2014,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Artificial sky, cotton wool clouds, dramatic lighting, turbulent clouds, giant shadow casting over, surreal atmosphere, low angle view",
-      "description": "The 'sky' of the miniature world, made of cotton clouds, which can be breached by the outside world (the giant hand)."
+      "description": "The 'sky' of the miniature world, made of cotton clouds, which can be breached by the outside world (the giant hand).",
+      "status": "idle"
     },
     {
       "id": "88199e0f-eeda-4484-bfeb-32c3524eff21",
@@ -1990,7 +2023,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Miniature sky, bright yellow turning to dark shadow, atmospheric perspective, clouds, sense of impending doom, cinematic sky",
-      "description": "The upper atmosphere of the box, shifting from bright to ominous as the giant hand descends."
+      "description": "The upper atmosphere of the box, shifting from bright to ominous as the giant hand descends.",
+      "status": "idle"
     },
     {
       "id": "9ab55b73-b1ee-40b5-b24f-df93d52379d1",
@@ -1998,7 +2032,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Miniature desolate village, cracked dry earth, yellow dust, withered plants, famine setting, macro photography, high detail, texture focus, warm arid lighting",
-      "description": "A drought-stricken, desolate village setting inside the box. Cracked earth and signs of famine."
+      "description": "A drought-stricken, desolate village setting inside the box. Cracked earth and signs of famine.",
+      "status": "idle"
     },
     {
       "id": "e0301f60-c0ec-4109-8992-827d2dcdf685",
@@ -2006,7 +2041,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Village entrance, dirt road, rising dust clouds, dry grass, low angle ground view, anticipation of danger, ancient architecture ruins, macro scale",
-      "description": "The entrance to the miniature village. Dusty, open, used as the staging ground for the bandit's charge."
+      "description": "The entrance to the miniature village. Dusty, open, used as the staging ground for the bandit's charge.",
+      "status": "idle"
     },
     {
       "id": "35643778-58f1-449a-b07a-1713246bbb5c",
@@ -2014,7 +2050,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Ancient Chinese village huts, dilapidated structures, dusty ground, chaotic scene, aerial view or eye-level macro, warm tones, dramatic shadows",
-      "description": "The center of the miniature village where the chaos takes place. Dilapidated huts and dusty ground."
+      "description": "The center of the miniature village where the chaos takes place. Dilapidated huts and dusty ground.",
+      "status": "idle"
     },
     {
       "id": "b68368f8-a56a-49fd-b197-6b60d1d2c27f",
@@ -2022,7 +2059,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting",
-      "description": "A tiny, dilapidated ancient village made of yellow earth and thatch. It is chaotic, filled with dust and panic during the raid."
+      "description": "A tiny, dilapidated ancient village made of yellow earth and thatch. It is chaotic, filled with dust and panic during the raid.",
+      "status": "idle"
     },
     {
       "id": "260b0589-eb40-4613-9ef1-828b4ec8ede9",
@@ -2030,7 +2068,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "village entrance, yellow dust clouds, heavy atmosphere, blurred background, macro perspective, dynamic motion, war torn",
-      "description": "The entrance to the village, filled with rolling yellow dust as the bandit charges through."
+      "description": "The entrance to the village, filled with rolling yellow dust as the bandit charges through.",
+      "status": "idle"
     },
     {
       "id": "8c2ea0a8-35ee-43ab-9785-1840b96a5e15",
@@ -2038,7 +2077,8 @@
       "image_url": "/static/uploads/6b55c541-16ab-4781-ba05-dcf6724f494c/784f4899-3d53-48b3-9520-2e3277c16c8e.png",
       "tags": [],
       "prompt": "dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting",
-      "description": "A dark, messy modern room. Cluttered background, illuminated by cold blue computer screen light and shadows."
+      "description": "A dark, messy modern room. Cluttered background, illuminated by cold blue computer screen light and shadows.",
+      "status": "idle"
     },
     {
       "id": "8095bef9-b69e-46c5-942c-64ec9ee4efc7",
@@ -2046,7 +2086,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field",
-      "description": "The boundary between the real world and the box. Shows the cardboard edge and the contrast between the dark room and the warm light inside."
+      "description": "The boundary between the real world and the box. Shows the cardboard edge and the contrast between the dark room and the warm light inside.",
+      "status": "idle"
     },
     {
       "id": "c8686549-6dc1-4a29-a80c-e58c4f1b533c",
@@ -2054,7 +2095,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "simulated sky, painted clouds, giant hand breaking through, dramatic shadows, surreal, low angle shot, looking up",
-      "description": "The ceiling of the box, painted to look like a sky or covered in clouds, broken by the intrusion of the giant hand."
+      "description": "The ceiling of the box, painted to look like a sky or covered in clouds, broken by the intrusion of the giant hand.",
+      "status": "idle"
     },
     {
       "id": "2a06492a-1fd2-48e6-9429-834d8ffd07d0",
@@ -2062,7 +2104,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones",
-      "description": "A barren, desolate landscape inside the box with dry yellow soil and withered vegetation."
+      "description": "A barren, desolate landscape inside the box with dry yellow soil and withered vegetation.",
+      "status": "idle"
     },
     {
       "id": "57ec4ac4-e202-4d01-91f3-09c6ba0a7e67",
@@ -2070,7 +2113,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "empty air inside box, motion blur background, depth of field, mid-air, cinematic action shot",
-      "description": "The air space within the box, used for shots of characters flying through the air."
+      "description": "The air space within the box, used for shots of characters flying through the air.",
+      "status": "idle"
     },
     {
       "id": "746f62eb-e3a6-434f-bdc5-fb71a4c9070d",
@@ -2078,7 +2122,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere",
-      "description": "The glass or cardboard wall of the vivarium. Features sand at the bottom and a blood smear from the impact."
+      "description": "The glass or cardboard wall of the vivarium. Features sand at the bottom and a blood smear from the impact.",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

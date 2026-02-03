@@ -57,6 +57,11 @@ const ProjectEditor = () => {
     const [defaultPanelLayout, setDefaultPanelLayout] = useState('1-panel');
     const [defaultImageCount, setDefaultImageCount] = useState(1);
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+    const [sidebarTab, setSidebarTab] = useState('chars');
+    const [sidebarShotId, setSidebarShotId] = useState(null);
+    const hasPendingAssets = (characters || []).some((item) => item?.status === 'generating')
+        || (scenes || []).some((item) => item?.status === 'generating');
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     
     // File Inputs
     const fileInputRef = React.useRef(null);
@@ -155,6 +160,18 @@ const ProjectEditor = () => {
         loadData();
     }, [projectId, navigate]);
 
+    useEffect(() => {
+        if (!projectId || !hasPendingAssets) return;
+        const interval = setInterval(async () => {
+            try {
+                const project = await ApiService.getProject(projectId);
+                setCharacters(project.characters || []);
+                setScenes(project.scenes || []);
+            } catch (e) {}
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [projectId, hasPendingAssets]);
+
     const handleRefreshShots = async () => {
         if (!projectId) return;
         setIsRefreshingShots(true);
@@ -185,6 +202,12 @@ const ProjectEditor = () => {
         }
     };
 
+    const openSidebarTab = (tab, shotId) => {
+        setIsSidebarCollapsed(false);
+        setSidebarTab(tab);
+        setSidebarShotId(shotId || null);
+    };
+
     const handleGenerateAllCharacters = async () => {
         const targets = characters.filter(c => !c.avatar_url || c.avatar_url.includes('dicebear'));
         if (targets.length === 0) {
@@ -199,15 +222,23 @@ const ProjectEditor = () => {
         const style = currentProject?.style || 'anime';
         
         try {
-            for (const char of targets) {
+            for (let i = 0; i < targets.length; i += 1) {
+                const char = targets[i];
                 const prompt = `${char.name}, ${char.prompt || char.description || 'character portrait'}, ${style} style, high quality`;
                 try {
-                    const result = await ApiService.generateAsset(prompt, 'character', projectId);
-                    const updated = { avatar_url: result.url };
-                    await ApiService.updateCharacter(projectId, char.id, { ...char, ...updated });
-                    setCharacters(prev => prev.map(c => c.id === char.id ? { ...c, ...updated } : c));
+                    const result = await ApiService.generateAsset(prompt, 'character', projectId, { asset_id: char.id, name: char.name });
+                    if (result?.asset) {
+                        setCharacters(prev => prev.map(c => c.id === result.asset.id ? result.asset : c));
+                    } else if (result?.url) {
+                        const updated = { avatar_url: result.url };
+                        await ApiService.updateCharacter(projectId, char.id, { ...char, ...updated });
+                        setCharacters(prev => prev.map(c => c.id === char.id ? { ...c, ...updated } : c));
+                    }
                 } catch (e) {
                     console.error(`Generate failed for ${char.name}`, e);
+                }
+                if (i < targets.length - 1) {
+                    await sleep(3000);
                 }
             }
         } finally {
@@ -229,15 +260,23 @@ const ProjectEditor = () => {
         const style = currentProject?.style || 'anime';
 
         try {
-            for (const scene of targets) {
+            for (let i = 0; i < targets.length; i += 1) {
+                const scene = targets[i];
                 const prompt = `${scene.name}, ${scene.prompt || scene.description || 'scenery'}, ${style} style, high quality`;
                 try {
-                    const result = await ApiService.generateAsset(prompt, 'scene', projectId);
-                    const updated = { image_url: result.url };
-                    await ApiService.updateScene(projectId, scene.id, { ...scene, ...updated });
-                    setScenes(prev => prev.map(s => s.id === scene.id ? { ...s, ...updated } : s));
+                    const result = await ApiService.generateAsset(prompt, 'scene', projectId, { asset_id: scene.id, name: scene.name });
+                    if (result?.asset) {
+                        setScenes(prev => prev.map(s => s.id === result.asset.id ? result.asset : s));
+                    } else if (result?.url) {
+                        const updated = { image_url: result.url };
+                        await ApiService.updateScene(projectId, scene.id, { ...scene, ...updated });
+                        setScenes(prev => prev.map(s => s.id === scene.id ? { ...s, ...updated } : s));
+                    }
                 } catch (e) {
                     console.error(`Generate failed for ${scene.name}`, e);
+                }
+                if (i < targets.length - 1) {
+                    await sleep(3000);
                 }
             }
         } finally {
@@ -960,26 +999,38 @@ const ProjectEditor = () => {
 
     const handleGenerateAsset = async (name, prompt, type) => {
         try {
-            // 1. Call Generation API
-            const result = await ApiService.generateAsset(prompt, type, projectId);
-            const url = result.url;
-            
-            if (regenerateAssetData) {
-                // Update existing asset
+            const createdId = regenerateAssetData?.id
+                || `${type === 'character' ? 'char' : 'scene'}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            const result = await ApiService.generateAsset(prompt, type, projectId, { asset_id: createdId, name });
+            if (result?.asset) {
                 if (type === 'character') {
-                     const updated = { avatar_url: url, prompt: prompt };
-                     await ApiService.updateCharacter(projectId, regenerateAssetData.id, { ...regenerateAssetData, ...updated });
-                     setCharacters(prev => prev.map(c => c.id === regenerateAssetData.id ? { ...c, ...updated } : c));
+                    setCharacters(prev => {
+                        const existing = prev.find(c => c.id === result.asset.id);
+                        return existing ? prev.map(c => c.id === result.asset.id ? result.asset : c) : [...prev, result.asset];
+                    });
                 } else if (type === 'scene') {
-                     const updated = { image_url: url, prompt: prompt };
-                     await ApiService.updateScene(projectId, regenerateAssetData.id, updated);
-                     setScenes(prev => prev.map(s => s.id === regenerateAssetData.id ? { ...s, ...updated } : s));
+                    setScenes(prev => {
+                        const existing = prev.find(s => s.id === result.asset.id);
+                        return existing ? prev.map(s => s.id === result.asset.id ? result.asset : s) : [...prev, result.asset];
+                    });
+                }
+                return;
+            }
+            const url = result.url;
+            if (regenerateAssetData) {
+                if (type === 'character') {
+                    const updated = { avatar_url: url, prompt: prompt };
+                    await ApiService.updateCharacter(projectId, regenerateAssetData.id, { ...regenerateAssetData, ...updated });
+                    setCharacters(prev => prev.map(c => c.id === regenerateAssetData.id ? { ...c, ...updated } : c));
+                } else if (type === 'scene') {
+                    const updated = { image_url: url, prompt: prompt };
+                    await ApiService.updateScene(projectId, regenerateAssetData.id, updated);
+                    setScenes(prev => prev.map(s => s.id === regenerateAssetData.id ? { ...s, ...updated } : s));
                 }
             } else {
-                // 2. Create Asset
                 if (type === 'character') {
                     const newChar = {
-                        id: `char_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                        id: createdId,
                         name: name,
                         avatar_url: url,
                         tags: [],
@@ -989,7 +1040,7 @@ const ProjectEditor = () => {
                     setCharacters(prev => [...prev, newChar]);
                 } else if (type === 'scene') {
                     const newScene = {
-                        id: `scene_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                        id: createdId,
                         name: name,
                         image_url: url,
                         tags: [],
@@ -1242,6 +1293,8 @@ const ProjectEditor = () => {
                                         onSelectCandidate={handleSelectShotCandidate}
                                         isSelected={selectedShots.has(shot.id)}
                                         onSelect={(selected) => handleSelectShot(shot.id, selected)}
+                                        onShowShotsSidebar={(shotId) => openSidebarTab('shots', shotId)}
+                                        onShowVideosSidebar={(shotId) => openSidebarTab('videos', shotId)}
                                     />
                                 ))}
                                 <div className="p-4">
@@ -1259,8 +1312,12 @@ const ProjectEditor = () => {
                 <Sidebar 
                     isCollapsed={isSidebarCollapsed}
                     onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                    activeTab={sidebarTab}
+                    onTabChange={setSidebarTab}
+                    focusShotId={sidebarShotId}
                     characters={characters} 
                     scenes={scenes} 
+                    shots={shots}
                     onCharacterClick={onCharacterClick}
                     onSceneClick={onSceneClick}
                     onAddCharacter={handleAddCharacterClick}

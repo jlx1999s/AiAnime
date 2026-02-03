@@ -363,7 +363,8 @@
       "avatar_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/bc9537de-357d-46ba-bfc1-add44230685d.png",
       "tags": [],
       "prompt": "一个24岁左右的现代中国女性，典型的社畜形象。长相平凡，戴着黑框眼镜，皮肤略显暗沉，有淡淡的黑眼圈。穿着普通的白色衬衫和深色西装裤，头发随意地扎成马尾，气质疲惫但眼神中带着一丝自嘲的幽默感。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769596756936_vzn47mmcg",
@@ -371,7 +372,17 @@
       "avatar_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9ffff7bb-b678-482f-8344-646c40880a66.png",
       "tags": [],
       "prompt": "绝世美女，古代宫廷装束。拥有极其精致的五官，桃花眼，唇红齿白，长发如瀑布般垂落。即便未施粉黛也显得明艳不可方物。穿着淡粉色的丝绸内衬睡袍，气质清冷高贵，但此刻脸上写满了现代人的焦虑与不安。",
-      "description": ""
+      "description": "",
+      "status": "idle"
+    },
+    {
+      "id": "char_1770039014734",
+      "name": "213",
+      "avatar_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/314d541b-18e1-4aa5-8b70-00af14131440.png",
+      "tags": [],
+      "prompt": "213",
+      "description": "",
+      "status": "completed"
     }
   ],
   "scenes": [
@@ -381,7 +392,8 @@
       "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/9ce52023-6fcb-42af-816e-fcb8ff57c4b7.png",
       "tags": [],
       "prompt": "现代地铁内部，金属质感的扶手和座椅，不锈钢表面有划痕。冷白色的荧光灯间歇闪烁，窗外是飞速掠过的隧道暗影。车厢内充满了疲惫的通勤族剪影，氛围压抑、写实。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769596757528_oypui5qnp",
@@ -389,7 +401,8 @@
       "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/f8d247a7-1d7f-417c-9480-9ef76b23d61b.png",
       "tags": [],
       "prompt": "抽象的视觉空间，充斥着刺眼的纯白强光，夹杂着破碎的文字符号和流光溢彩的线条，具有强烈的速度感和超现实主义色彩。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769596757528_1gml4z4ck",
@@ -397,7 +410,35 @@
       "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/b0d4c6bf-1a20-4a59-9ed3-e4bb0e0e8918.png",
       "tags": [],
       "prompt": "奢华的中国古代宫殿内部。精雕细琢的红木家具，垂落的半透明真丝帷幕，香炉中升起袅袅青烟。阳光透过精致的木质窗格投下复杂的阴影。整体色调华丽而厚重，透着一种深宫的寂寥与压抑。",
-      "description": ""
+      "description": "",
+      "status": "idle"
+    },
+    {
+      "id": "scene_1770038702096",
+      "name": "213",
+      "image_url": "/static/uploads/96c201bf-98c1-4660-8e25-f844f5a69af5/53b923c1-95ea-4d2f-8f66-e92ae0d9aa76.png",
+      "tags": [],
+      "prompt": "213, scenery, chinese_anime style, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "scene_1770038704767",
+      "name": "214214",
+      "image_url": "https://picsum.photos/seed/2d8e29b7-c74b-4cdc-b829-dadc9cb4b2bd/512/512",
+      "tags": [],
+      "prompt": "214214, scenery, chinese_anime style, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "scene_1770038706808",
+      "name": "515151",
+      "image_url": "https://picsum.photos/seed/64fd1d3d-c057-4950-8db0-0c84d774b4c2/512/512",
+      "tags": [],
+      "prompt": "515151, scenery, chinese_anime style, high quality",
+      "description": "",
+      "status": "completed"
     }
   ],
   "default_scene_id": null,

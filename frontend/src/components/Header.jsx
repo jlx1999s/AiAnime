@@ -6,9 +6,12 @@ const Header = ({ projects = [], currentProjectId, onChangeProject, onCreateProj
     const current = projects.find(p => p.id === currentProjectId);
     const [presets, setPresets] = useState([]);
     const [selectedPresets, setSelectedPresets] = useState({ text: '', image: '', video: '' });
+    const [isAdmin, setIsAdmin] = useState(false);
     
     useEffect(() => {
         loadPresets();
+        const user = ApiService.getCurrentUser();
+        setIsAdmin(!!user?.is_admin);
     }, []);
 
     const loadPresets = async () => {
@@ -196,13 +199,15 @@ const Header = ({ projects = [], currentProjectId, onChangeProject, onCreateProj
                         </button>
                     </>
                 )}
-                <button 
-                    className="hover:text-white flex items-center gap-1 text-sm"
-                    onClick={onOpenApiConfig}
-                    title="API 配置"
-                >
-                    <Settings size={16}/> 设置
-                </button>
+                {isAdmin && (
+                    <button 
+                        className="hover:text-white flex items-center gap-1 text-sm"
+                        onClick={onOpenApiConfig}
+                        title="API 配置"
+                    >
+                        <Settings size={16}/> 设置
+                    </button>
+                )}
             </div>
         </header>
     );

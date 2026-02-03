@@ -255,7 +255,8 @@
       "avatar_url": "/static/uploads/3de9bb4b-aa3f-4f8b-9fe8-d47a7b2a13c8.png",
       "tags": [],
       "prompt": "一名24岁左右的中国现代职场女性。面容普通但耐看，带着长期熬夜的黑眼圈，眼神疲惫而犀利。扎着简单的马尾，几缕碎发散乱。穿着职业装白衬衫，显得有些不修边幅，气质是典型的吐槽系社畜。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769592545327_0u0g7s62z",
@@ -263,7 +264,8 @@
       "avatar_url": "/static/uploads/25933575-cef5-4ace-a631-c5e17ade8dcf.png",
       "tags": [],
       "prompt": "顶级古典美女，气质高贵且明艳动人。拥有完美的鹅蛋脸，深邃的杏眼，朱唇皓齿。长发如瀑，头戴简约但昂贵的玉簪。身穿淡紫色和金色丝绸交织的古装长裙，神情此时充满了现代人的焦虑与违和感。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -273,7 +275,8 @@
       "image_url": "/static/uploads/e83bb884-2063-43de-b3cc-1b8bc4655656.png",
       "tags": [],
       "prompt": "现代中国地铁内部。蓝色的塑料座椅，不锈钢立柱和扶手。车厢内光线是明亮而冰冷的白色荧光灯，窗外是黑暗的隧道和模糊的灯光信号。充满拥挤、压抑和现代都市的孤独感。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "scene_1769592545359_ff8fwctuo",
@@ -281,7 +284,8 @@
       "image_url": "/static/uploads/26425eb6-2453-4db4-9ba8-69321ca14f4f.png",
       "tags": [],
       "prompt": "中国古代皇家寝宫。室内有巨大的红木雕花床，挂着淡粉色的蝉翼纱帐。一侧是精致的红木梳妆台，上面摆放着古朴的青铜镜和各种玉制妆奁。阳光透过窗户的木格栅，在地板上投下复杂的几何阴影。氛围奢华、静谧却暗藏危机。",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

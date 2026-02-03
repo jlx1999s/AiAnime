@@ -19,13 +19,15 @@
         "c1"
       ],
       "scene_id": null,
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=Shot+2",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/default_project/aa145782-91e0-4414-a416-dd3706d6f76f.png",
+      "original_image_url": "/static/uploads/default_project/aa145782-91e0-4414-a416-dd3706d6f76f.png",
+      "image_candidates": [
+        "/static/uploads/default_project/aa145782-91e0-4414-a416-dd3706d6f76f.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "场景描述：中景，奢华但光线阴郁的寝宫内景。红烛高照，帷幔低垂，龙床位于画面深处。床帐半掩，隐约可见暴君的身影背对外侧。\n主体动作：庾晚音身着红色华服，以卑微姿态跪于床前，双手交叠于膝，抬头望向床榻方向，眼神中带着讨好与小心翼翼。画面左侧两名侍卫已准备上前架走她。\n\n光线与氛围：暖色烛光无法驱散房间的寒意，光影在帷幕上摇曳。整体气氛压抑，华丽的装饰反而凸显困兽般的处境。\n构图重点：强调庾晚音华服与卑微姿态的反差。暴君的背影形成拒绝的屏障，侍卫的介入增添紧张感。",
@@ -43,7 +45,7 @@
         "char_1769188438358_36f2znvxg"
       ],
       "scene_id": "scene_1769188438366_mq6hmsr6b",
-      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125232407568FDAAE0F00BBC968F4-2159-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441048&x-signature=FnDMgiIqzYgDY6tubG2E5wnfidY%3D",
+      "image_url": "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/2026012523241831165D0850422731191E-5651-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441058&x-signature=PJmdQdeIB0dzXyVy%2BZevsZu6FrQ%3D",
       "original_image_url": null,
       "image_candidates": [
         "https://p3-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125232407568FDAAE0F00BBC968F4-2159-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769441048&x-signature=FnDMgiIqzYgDY6tubG2E5wnfidY%3D",
@@ -85,7 +87,7 @@
         "c1"
       ],
       "scene_id": "scene_1769188438366_mq6hmsr6b",
-      "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340473A143308CD6499C63E2A-2332-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442047&x-signature=%2BD4YXlUlYQe%2FQPpVhdAjCu5SYuA%3D",
+      "image_url": "https://p9-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252341067EA44E4406BDF43470BC-3534-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442067&x-signature=DCCBWdTyGo41zctmC4WbQt0xQ%2FU%3D",
       "original_image_url": null,
       "image_candidates": [
         "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/202601252340473A143308CD6499C63E2A-2332-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769442047&x-signature=%2BD4YXlUlYQe%2FQPpVhdAjCu5SYuA%3D",
@@ -122,13 +124,15 @@
         "char_1769188438358_1q8ahu8a2"
       ],
       "scene_id": "scene_1769188438366_mq6hmsr6b",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/default_project/cceef897-38f9-4b99-9c45-1dee12cd8a41.png",
+      "original_image_url": "/static/uploads/default_project/cceef897-38f9-4b99-9c45-1dee12cd8a41.png",
+      "image_candidates": [
+        "/static/uploads/default_project/cceef897-38f9-4b99-9c45-1dee12cd8a41.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "中近景平视，夏侯澹已起身，玄色常服下摆拂过金砖，缓步绕行庾晚音身侧；他停步于她斜后方，左手负于背后，右手垂落，袖口微扬，烛光在他冷硬侧脸投下刀锋般阴影；庾晚音静立未动，肩线紧绷。",
@@ -602,108 +606,211 @@
     {
       "id": "c1",
       "name": "陈远 (外门弟子)",
-      "avatar_url": "http://localhost:8001/static/uploads/06ce126c-74ba-4b8b-a5e7-39e88edb635d_21b9461e-03cb-4c2f-80da-6efb23134889.png",
+      "avatar_url": "/static/uploads/default_project/db7d2d59-290b-4e35-ab9b-6b5900aaac4c.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "陈远 (外门弟子), 陈远 (外门弟子), , high quality",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "c2",
       "name": "神秘师兄",
-      "avatar_url": "http://localhost:8001/static/uploads/7f354946-4f25-44bd-b1c8-863adf6dd239.png",
+      "avatar_url": "/static/uploads/default_project/ca289f44-452a-44e9-a70d-ca409bfa6629.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "神秘师兄, 神秘师兄, 神秘师兄, 神秘师兄, 神秘师兄, 神秘师兄, , high quality, high quality",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "c3",
       "name": "陈远 (剑主)",
-      "avatar_url": "http://localhost:8001/static/uploads/c63ff68d-6bc8-4e93-9664-92867d6bcecf.png",
+      "avatar_url": "/static/uploads/default_project/98d7ef30-fc6e-4ff2-b84c-3ea3c9fdb670.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "陈远 (剑主), 陈远 (剑主), 陈远 (剑主), , high quality, high quality",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "char_1769188438358_36f2znvxg",
       "name": "庾晚音",
-      "avatar_url": "http://localhost:8001/static/uploads/2e12891b-ee07-4166-ba71-1bea35a9b307_屏幕截图 2026-01-26 001937.png",
+      "avatar_url": "/static/uploads/default_project/6cac2e88-351c-4def-8cd0-107ede2f9eca.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "庾晚音, , high quality",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "char_1769188438358_sh5zhi4e",
       "name": "太监甲",
-      "avatar_url": "http://localhost:8001/static/uploads/81828191-9ab7-461b-a30d-4f24ac8c9946.png",
+      "avatar_url": "/static/uploads/default_project/14e58b1c-7152-420d-98fc-9c4bdddc562c.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "太监甲",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "char_1769188438358_1q8ahu8a2",
       "name": "太监乙",
-      "avatar_url": "http://localhost:8001/static/uploads/7b81d32a-754e-4d13-8d3d-e27d052f9e4e.png",
+      "avatar_url": "/static/uploads/default_project/ee503013-9f6c-4b0d-ae6c-0d04d7ca28ce.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "太监乙",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "char_1769188438358_27bwto4l0",
       "name": "夏侯澹",
-      "avatar_url": "http://localhost:8001/static/uploads/bbccc315-a25c-46f2-b430-5268bcbb8201_屏幕截图 2026-01-26 002002.png",
+      "avatar_url": "/static/uploads/default_project/a5d65871-8727-4b04-a9cb-a0368259479b_屏幕截图 2026-01-26 001937.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "123",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "char_1769588744442_ml4fd1sj9",
       "name": "小明",
-      "avatar_url": "http://localhost:8001/static/uploads/1c0be5e1-88de-4cfc-9f5b-67227369ee95.png",
+      "avatar_url": "/static/uploads/default_project/5e2093ef-ee1b-43d0-af37-f99e47f29220.png",
       "tags": [],
       "prompt": "一名大约10岁的中国小男孩，留着整齐的黑色短发，眼睛明亮清澈，透着机灵和善良。穿着一件亮黄色的棉质短袖T恤和深蓝色牛仔短裤，脚穿白色运动鞋。气质阳光、活泼、充满童真。",
-      "description": ""
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "char_1769588744442_jdvssvnq2",
       "name": "大黄",
-      "avatar_url": "http://localhost:8001/static/uploads/4274047d-c100-4340-be34-eb30fe28091f.png",
+      "avatar_url": "/static/uploads/default_project/8e0b68f5-041d-421a-bc3b-1e9ad399a5e8.png",
       "tags": [],
       "prompt": "一只成年金毛寻回犬，拥有浓密且有光泽的金黄色长毛。眼神温顺友好，戴着一个红色的尼龙项圈。它的体型匀称，尾巴蓬松，给人一种忠诚且充满活力的感觉。",
-      "description": ""
+      "description": "",
+      "status": "idle"
+    },
+    {
+      "id": "char_1770039207790",
+      "name": "24141",
+      "avatar_url": "/static/uploads/default_project/f97feb88-8cde-4f16-85fb-11d596414937.png",
+      "tags": [],
+      "prompt": "24141",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "char_1770039498897",
+      "name": "312312",
+      "avatar_url": "https://picsum.photos/seed/55f55b06-87d8-4959-b0d1-5ae2aba459d3/512/512",
+      "tags": [],
+      "prompt": "312312, character portrait, manga style, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "char_1770039500292",
+      "name": "213",
+      "avatar_url": "https://picsum.photos/seed/9ca80c0d-5777-4612-89e3-361f358f2240/512/512",
+      "tags": [],
+      "prompt": "213, character portrait, manga style, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "char_1770039501491",
+      "name": "24141",
+      "avatar_url": "https://picsum.photos/seed/c98dfbf3-5016-42c7-a2a5-9e2f53a4e411/512/512",
+      "tags": [],
+      "prompt": "24141, character portrait, manga style, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "char_1770040941894",
+      "name": "12321",
+      "avatar_url": "https://picsum.photos/seed/4e54a042-90c9-457e-97a4-d126d7bec036/512/512",
+      "tags": [],
+      "prompt": "12321, character portrait, manga style, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "char_1770040943352",
+      "name": "214124",
+      "avatar_url": "https://picsum.photos/seed/bb0e7a94-5166-466b-aa35-a41ecef83345/512/512",
+      "tags": [],
+      "prompt": "214124, character portrait, manga style, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "char_1770040944739",
+      "name": "52151",
+      "avatar_url": "https://picsum.photos/seed/6cc0c828-9332-4ef9-aa98-a5e5587db7da/512/512",
+      "tags": [],
+      "prompt": "52151, character portrait, manga style, high quality",
+      "description": "",
+      "status": "completed"
     }
   ],
   "scenes": [
     {
       "id": "scene_1769188438366_mq6hmsr6b",
       "name": "帝王寝殿",
-      "image_url": "https://p26-aiop-sign.byteimg.com/tos-cn-i-vuqhorh59i/20260125231421B451438455B37C310283-8423-0~tplv-vuqhorh59i-image-v1.image?rk3s=7f9e702d&x-expires=1769440461&x-signature=D4wGHR3m17P0sGRkAFA27USWLDs%3D",
+      "image_url": "https://picsum.photos/seed/6bdd104e-dd78-4733-bc56-e5af3d3f8c88/512/512",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "帝王寝殿",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "scene_1769188438366_cmuux66oq",
       "name": "帝王寝殿内·帷幕后",
-      "image_url": "http://localhost:8001/static/uploads/5874f22e-efa0-4a70-8d3f-3f896272315f.png",
+      "image_url": "/static/uploads/default_project/f17af50e-54c6-4eed-b165-7bc77df0b48a.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "帝王寝殿内·帷幕后, 帝王寝殿内·帷幕后, 帝王寝殿内·帷幕后, 帝王寝殿内·帷幕后, 帝王寝殿内·帷幕后, , high quality, high quality, high quality, high quality, high quality",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "scene_1769188438366_cf3fgfpt5",
       "name": "帝王寝殿·龙榻前",
-      "image_url": "http://localhost:8001/static/uploads/0766f6cd-94a3-4ea8-ad16-ee0b7ce8ea9b.png",
+      "image_url": "/static/uploads/default_project/5a500eb2-1245-4230-a7b6-9d74ff2373f2.png",
       "tags": [],
-      "prompt": "",
-      "description": ""
+      "prompt": "帝王寝殿·龙榻前, 帝王寝殿·龙榻前, , high quality, high quality",
+      "description": "",
+      "status": "completed"
     },
     {
       "id": "scene_1769588744452_x0wm24owb",
       "name": "阳光小院",
-      "image_url": "http://localhost:8001/static/uploads/f297ba21-73c2-418f-aef1-1c599518bc37.png",
+      "image_url": "/static/uploads/default_project/28b9990e-7278-4a21-a50d-4bf5e3f9e076.png",
       "tags": [],
-      "prompt": "一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。",
-      "description": ""
+      "prompt": "阳光小院, 一个充满生活气息的现代中式住宅后院。地面铺着平整的浅绿色草坪，四周是浅棕色的木质围栏。院角有一棵茂盛的小枫树，阳光透过树叶洒下斑驳的光影。空气中似乎漂浮着细小的微尘，整体氛围温馨、宁静且明亮。, high quality",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "scene_1770038304716_h1y3u1guc",
+      "name": "1",
+      "image_url": "/static/uploads/default_project/e35a1fad-22ae-4f65-9263-98bf955d9e45.png",
+      "tags": [],
+      "prompt": "1",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "scene_1770038311725_5nggkq5nl",
+      "name": "2",
+      "image_url": "/static/uploads/default_project/bbf5e5b8-6ecf-4089-84c1-4688c695570c.png",
+      "tags": [],
+      "prompt": "2",
+      "description": "",
+      "status": "completed"
+    },
+    {
+      "id": "scene_1770039134992",
+      "name": "124",
+      "image_url": "/static/uploads/default_project/b62a55d8-9b23-44b5-abdd-5fc5145da873.png",
+      "tags": [],
+      "prompt": "124",
+      "description": "",
+      "status": "completed"
     }
   ],
   "default_scene_id": null,

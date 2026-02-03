@@ -193,7 +193,8 @@
       "avatar_url": "https://dalleproduse.blob.core.windows.net/private/images/39ef6532-b315-4e7e-9197-ab91ebf0dc1e/generated_00.png?se=2026-01-28T15%3A04%3A00Z&sig=9lVUJnAiC%2BQRtrGPOKZR4uK2TPmP4v9sfcQz8tMJAq8%3D&ske=2026-01-30T00%3A51%3A21Z&skoid=09ba021e-c417-441c-b203-c81e5dcd7b7f&sks=b&skt=2026-01-23T00%3A51%3A21Z&sktid=33e01921-4d64-4f8c-a055-5bdaffd5e33d&skv=2020-10-02&sp=r&spr=https&sr=b&sv=2020-10-02",
       "tags": [],
       "prompt": "young woman in her early twenties, striking and enigmatic beauty; long black hair styled in a high phoenix bun adorned with gold filigree pins and fresh red peonies; sharp, kohl-rimmed almond eyes with intense gaze; porcelain skin with subtle contouring and vivid vermilion lipstick; wears a form-fitting crimson silk qipao with black embroidered phoenixes soaring across hem and sleeves, black lace trim at collar and cuffs; delicate gold chain necklace with a tiny jade pendant; poised yet quietly defiant aura, elegant but dangerous",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769526217224_swz9vmkiw",
@@ -201,7 +202,8 @@
       "avatar_url": "http://localhost:8001/static/uploads/366c5e2c-a6b2-4621-aed3-dd5759b86119.png",
       "tags": [],
       "prompt": "unnamed emperor, late 20s to early 30s; unseen full face, only glimpses suggested: extremely pale, slender hand with long fingers and faint blue veins; voice is cold, weary, and unnervingly precise; implied presence is oppressive and detached—no regal ornamentation visible, only austere darkness and silence; aura of exhausted authority and latent volatility",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769526217224_opkf5tfl5",
@@ -209,7 +211,8 @@
       "avatar_url": "http://localhost:8001/static/uploads/f94b7ae1-9885-4782-ad8d-4e992e33ad7a.png",
       "tags": [],
       "prompt": "two male imperial guards, mid-20s, stern-faced and physically imposing; wear black-and-gold lacquered lamellar armor with dragon-scale patterning, iron greaves, and crimson sashes; short-cropped black hair under black lacquered helmets with red plumes; expressionless, disciplined, utterly obedient; move with synchronized precision",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -219,7 +222,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Qing Dynasty imperial bedroom at night: vast, high-ceilinged chamber with dark huanghuali wood columns carved with coiling dragons; walls covered in crimson brocade panels with gold-thread cloud-and-phoenix motifs; massive carved dragon-bed dominates center, draped in heavy layered curtains of crimson silk and black velvet; golden wall-mounted lanterns emit warm, flickering light; polished black marble floor reflects dim glow; tall lattice windows with paper panes allow faint moonlight; air feels still, heavy, and silent—opulent yet suffocating, steeped in ritual and unspoken dread",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

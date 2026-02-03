@@ -152,7 +152,8 @@
       "avatar_url": "/static/uploads/9386e637-9a40-439e-a5f2-998d13d5f0e5/86ef54e3-2d32-4331-9e76-c7d39709cd48.png",
       "tags": [],
       "prompt": "A stunning young woman in her early twenties, with jet-black high chignon adorned with carved jade phoenix hairpins and dangling pearl tassels; almond-shaped eyes lined sharply with black kohl, brows arched with precision, lips stained deep crimson; wears a form-fitting crimson silk qipao embroidered with golden phoenixes and cloud motifs, black lace cuffs, delicate silver ankle bells visible beneath hem; posture poised yet charged with quiet rebellion — elegant, intelligent, dangerously curious.",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769526328860_828dmruwt",
@@ -160,7 +161,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=暴君",
       "tags": [],
       "prompt": "An unseen but powerfully implied figure — only his hand is shown: unnaturally pale, slender, long-fingered, with translucent skin and faint blue veins; nails clean but slightly elongated and cool-toned. Voice suggests youth masked by exhaustion and disdain; presence radiates lethality and profound weariness. No full visual, but aura is regal, detached, and ominously indifferent.",
-      "description": ""
+      "description": "",
+      "status": "idle"
     },
     {
       "id": "char_1769526328860_f51790a70",
@@ -168,7 +170,8 @@
       "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=侍卫",
       "tags": [],
       "prompt": "Two identical imperial guards in polished black lacquered armor with crimson shoulder guards and sashes; stern, clean-shaven faces, short-cropped black hair under iron helmets with crimson plumes; expressions impassive, disciplined, utterly obedient. Carry no visible weapons but wear ceremonial halberd belts. Embodiment of silent, absolute authority.",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "scenes": [
@@ -178,7 +181,8 @@
       "image_url": "",
       "tags": [],
       "prompt": "Grand Tang-dynasty–inspired imperial sleeping chamber: soaring vermilion pillars carved with coiling golden dragons, ceiling painted with star charts and celestial beasts; heavy crimson silk bed curtains embroidered with black-thread clouds and golden suns; jade floor inlaid with silver constellations; bronze incense burners emitting thin white smoke; wall-mounted lanterns casting warm, dancing light; air thick with sandalwood and quiet dread. Nighttime — moonlight bleeds faintly through lattice windows veiled in gauze. Atmosphere: opulent, claustrophobic, steeped in ritual and unspoken danger.",
-      "description": ""
+      "description": "",
+      "status": "idle"
     }
   ],
   "default_scene_id": null,

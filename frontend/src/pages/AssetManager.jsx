@@ -12,10 +12,13 @@ const AssetManager = () => {
     const [loading, setLoading] = useState(true);
     const [previewUrl, setPreviewUrl] = useState(null);
     const [previewVideoUrl, setPreviewVideoUrl] = useState(null);
-    const [generatingId, setGeneratingId] = useState(null);
+    const [generatingIds, setGeneratingIds] = useState(new Set());
     const importMdRef = React.useRef(null);
     const [isBulkGeneratingChars, setIsBulkGeneratingChars] = useState(false);
     const [isBulkGeneratingScenes, setIsBulkGeneratingScenes] = useState(false);
+    const hasPendingAssets = (project?.characters || []).some((item) => item?.status === 'generating')
+        || (project?.scenes || []).some((item) => item?.status === 'generating');
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     useEffect(() => {
         const user = ApiService.getCurrentUser();
@@ -25,6 +28,17 @@ const AssetManager = () => {
         }
         loadProject();
     }, [projectId]);
+
+    useEffect(() => {
+        if (!projectId || !hasPendingAssets) return;
+        const interval = setInterval(async () => {
+            try {
+                const data = await ApiService.getProject(projectId);
+                setProject(data);
+            } catch (error) {}
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [projectId, hasPendingAssets]);
 
     const loadProject = async () => {
         setLoading(true);
@@ -87,34 +101,64 @@ const AssetManager = () => {
         }
     };
 
+    const getAssetPrompt = (asset) => {
+        const prompt = asset?.prompt?.trim();
+        if (prompt) return prompt;
+        const name = asset?.name?.trim();
+        return name || '';
+    };
+
     const handleGenerateAsset = async (type, asset) => {
-        if (generatingId) return;
-        setGeneratingId(asset.id);
+        const isBusy = generatingIds.has(asset.id) || asset?.status === 'generating';
+        if (isBusy) return;
+        setGeneratingIds(prev => {
+            const next = new Set(prev);
+            next.add(asset.id);
+            return next;
+        });
 
         try {
-            const prompt = `${asset.name}, ${asset.prompt || ''}, high quality`;
-            const result = await ApiService.generateAsset(prompt, type, projectId);
-            
-            const updated = type === 'character' ? { avatar_url: result.url } : { image_url: result.url };
+            const prompt = getAssetPrompt(asset);
+            if (!prompt) {
+                alert("请先填写名称或提示词");
+                return;
+            }
+            const result = await ApiService.generateAsset(prompt, type, projectId, { asset_id: asset.id, name: asset.name });
             const listKey = type === 'character' ? 'characters' : 'scenes';
-            
-            // Optimistic update
-            const updatedList = project[listKey].map(item => 
-                item.id === asset.id ? { ...item, ...updated } : item
-            );
-            setProject(prev => ({ ...prev, [listKey]: updatedList }));
-            
-            if (type === 'character') {
-                 await ApiService.updateCharacter(projectId, asset.id, { ...asset, ...updated });
-            } else {
-                 await ApiService.updateScene(projectId, asset.id, { ...asset, ...updated });
+            if (result?.asset) {
+                setProject(prev => {
+                    const current = prev?.[listKey] || [];
+                    const exists = current.some(item => item.id === result.asset.id);
+                    const updatedList = exists
+                        ? current.map(item => item.id === result.asset.id ? result.asset : item)
+                        : [...current, result.asset];
+                    return { ...prev, [listKey]: updatedList };
+                });
+            } else if (result?.url) {
+                const updated = type === 'character' ? { avatar_url: result.url } : { image_url: result.url };
+                setProject(prev => {
+                    const current = prev?.[listKey] || [];
+                    const updatedList = current.map(item =>
+                        item.id === asset.id ? { ...item, ...updated } : item
+                    );
+                    return { ...prev, [listKey]: updatedList };
+                });
+                if (type === 'character') {
+                    await ApiService.updateCharacter(projectId, asset.id, { ...asset, ...updated });
+                } else {
+                    await ApiService.updateScene(projectId, asset.id, { ...asset, ...updated });
+                }
             }
             
         } catch (error) {
             console.error("Generation failed", error);
             alert("生成失败: " + (error.message || error));
         } finally {
-            setGeneratingId(null);
+            setGeneratingIds(prev => {
+                const next = new Set(prev);
+                next.delete(asset.id);
+                return next;
+            });
         }
     };
 
@@ -198,7 +242,7 @@ const AssetManager = () => {
                         <>
                             <button
                                 className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingChars ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
-                                disabled={isBulkGeneratingChars || !!generatingId}
+                                disabled={isBulkGeneratingChars || generatingIds.size > 0}
                                 onClick={async () => {
                                     if (!project) return;
                                     const targets = (project.characters || []).filter(c => !c.avatar_url || c.avatar_url.includes('dicebear'));
@@ -210,14 +254,22 @@ const AssetManager = () => {
                                     setIsBulkGeneratingChars(true);
                                     const style = project?.style || 'anime';
                                     try {
-                                        for (const char of targets) {
+                                        for (let i = 0; i < targets.length; i += 1) {
+                                            const char = targets[i];
                                             try {
                                                 const prompt = `${char.name}, ${char.prompt || char.description || 'character portrait'}, ${style} style, high quality`;
-                                                const result = await ApiService.generateAsset(prompt, 'character', projectId);
-                                                const updated = { avatar_url: result.url };
-                                                setProject(prev => ({ ...prev, characters: (prev.characters || []).map(c => c.id === char.id ? { ...c, ...updated } : c) }));
-                                                await ApiService.updateCharacter(projectId, char.id, { ...char, ...updated });
+                                                const result = await ApiService.generateAsset(prompt, 'character', projectId, { asset_id: char.id, name: char.name });
+                                                if (result?.asset) {
+                                                    setProject(prev => ({ ...prev, characters: (prev.characters || []).map(c => c.id === result.asset.id ? result.asset : c) }));
+                                                } else if (result?.url) {
+                                                    const updated = { avatar_url: result.url };
+                                                    setProject(prev => ({ ...prev, characters: (prev.characters || []).map(c => c.id === char.id ? { ...c, ...updated } : c) }));
+                                                    await ApiService.updateCharacter(projectId, char.id, { ...char, ...updated });
+                                                }
                                             } catch (e) {}
+                                            if (i < targets.length - 1) {
+                                                await sleep(3000);
+                                            }
                                         }
                                     } finally {
                                         setIsBulkGeneratingChars(false);
@@ -228,7 +280,7 @@ const AssetManager = () => {
                             </button>
                             <button
                                 className={`px-3 py-1.5 rounded text-sm font-medium transition-colors ${isBulkGeneratingScenes ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-accent text-white hover:brightness-110'}`}
-                                disabled={isBulkGeneratingScenes || !!generatingId}
+                                disabled={isBulkGeneratingScenes || generatingIds.size > 0}
                                 onClick={async () => {
                                     if (!project) return;
                                     const targets = (project.scenes || []).filter(s => !s.image_url);
@@ -240,14 +292,22 @@ const AssetManager = () => {
                                     setIsBulkGeneratingScenes(true);
                                     const style = project?.style || 'anime';
                                     try {
-                                        for (const scene of targets) {
+                                        for (let i = 0; i < targets.length; i += 1) {
+                                            const scene = targets[i];
                                             try {
                                                 const prompt = `${scene.name}, ${scene.prompt || scene.description || 'scenery'}, ${style} style, high quality`;
-                                                const result = await ApiService.generateAsset(prompt, 'scene', projectId);
-                                                const updated = { image_url: result.url };
-                                                setProject(prev => ({ ...prev, scenes: (prev.scenes || []).map(s => s.id === scene.id ? { ...s, ...updated } : s) }));
-                                                await ApiService.updateScene(projectId, scene.id, { ...scene, ...updated });
+                                                const result = await ApiService.generateAsset(prompt, 'scene', projectId, { asset_id: scene.id, name: scene.name });
+                                                if (result?.asset) {
+                                                    setProject(prev => ({ ...prev, scenes: (prev.scenes || []).map(s => s.id === result.asset.id ? result.asset : s) }));
+                                                } else if (result?.url) {
+                                                    const updated = { image_url: result.url };
+                                                    setProject(prev => ({ ...prev, scenes: (prev.scenes || []).map(s => s.id === scene.id ? { ...s, ...updated } : s) }));
+                                                    await ApiService.updateScene(projectId, scene.id, { ...scene, ...updated });
+                                                }
                                             } catch (e) {}
+                                            if (i < targets.length - 1) {
+                                                await sleep(3000);
+                                            }
                                         }
                                     } finally {
                                         setIsBulkGeneratingScenes(false);
@@ -321,8 +381,6 @@ const AssetManager = () => {
                                 };
                                 const listKey = activeTab === 'characters' ? 'characters' : 'scenes';
                                 const newList = [...(project[listKey] || []), newAsset];
-                                handleUpdateAsset(activeTab === 'characters' ? 'character' : 'scene', newAsset.id, {}); // Just to trigger update with new list
-                                // Actually handleUpdateAsset updates a specific item. We need to update the list.
                                 setProject(prev => ({ ...prev, [listKey]: newList }));
                                 await ApiService.updateProject(projectId, { [listKey]: newList });
                             }
@@ -341,6 +399,7 @@ const AssetManager = () => {
                         const imageUrl = activeTab === 'characters' ? asset.avatar_url || asset.avatar : asset.image_url;
                         const displayImage = isVideoTab ? (asset.image_url || 'https://placehold.co/600x400/1a1b1e/FFF?text=Video') : imageUrl;
                         
+                        const isAssetGenerating = generatingIds.has(asset.id) || asset?.status === 'generating';
                         return (
                         <div key={asset.id} className="bg-dark-800 rounded-lg overflow-hidden border border-dark-700 shadow-lg flex flex-col">
                             {/* Image Area */}
@@ -349,7 +408,6 @@ const AssetManager = () => {
                                     src={displayImage} 
                                     alt={asset.name || `Shot ${asset.order}`} 
                                     className="w-full h-full object-contain"
-                                    onError={(e) => { e.target.src = 'https://placehold.co/600x400/1a1b1e/FFF?text=No+Image'; }}
                                 />
                                 {isVideoTab && asset.video_url && (
                                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -374,12 +432,12 @@ const AssetManager = () => {
                                     </button>
                                     {!isReadOnlyTab && (
                                     <button 
-                                        className={`p-2 bg-dark-700 rounded-full hover:bg-accent text-white transition-colors ${generatingId === asset.id ? 'animate-spin' : ''}`}
+                                        className={`p-2 bg-dark-700 rounded-full hover:bg-accent text-white transition-colors ${isAssetGenerating ? 'animate-spin' : ''}`}
                                         onClick={() => handleGenerateAsset(activeTab === 'characters' ? 'character' : 'scene', asset)}
                                         title="重新生成"
-                                        disabled={generatingId === asset.id || (activeTab === 'characters' ? isBulkGeneratingChars : isBulkGeneratingScenes)}
+                                        disabled={isAssetGenerating || (activeTab === 'characters' ? isBulkGeneratingChars : isBulkGeneratingScenes)}
                                     >
-                                        {generatingId === asset.id ? <RefreshCw size={18} /> : <Wand2 size={18} />}
+                                        {isAssetGenerating ? <RefreshCw size={18} /> : <Wand2 size={18} />}
                                     </button>
                                     )}
                                     <button 

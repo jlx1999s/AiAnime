@@ -1,0 +1,34 @@
+{
+  "id": "e636c829-7b03-48bb-b604-4bd116e350f4",
+  "name": "鉴定御兽",
+  "style": "anime",
+  "owner_id": "54661ba2-56b1-4766-acaa-d5d51066a9c2",
+  "shots": [
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "b0f2a1e9-1ab9-46ca-b512-d9d0859c1adf",
+      "order": 0,
+      "characters": [],
+      "scene_id": null,
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [],
+  "scenes": [],
+  "default_scene_id": null,
+  "default_panel_layout": "1-panel",
+  "default_image_count": 1
+}
