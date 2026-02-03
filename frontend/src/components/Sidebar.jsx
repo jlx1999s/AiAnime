@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Trash2, Search, Plus, Wand2, RefreshCw, Maximize, Save, ChevronLeft, ChevronRight, User, Image as ImageIcon, Video } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
 
-const Sidebar = ({ characters, scenes, shots, onSceneClick, onCharacterClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene, onGenerateAllCharacters, onGenerateAllScenes, isGeneratingCharacters, isGeneratingScenes, defaultSceneId, onSetDefaultScene, onImportCharacters, onAutoImportCharacters, onAutoImportScenes, isCollapsed, onToggleCollapse, activeTab, onTabChange, focusShotId }) => {
+const Sidebar = ({ characters, scenes, shots, onSceneClick, onCharacterClick, onAddCharacter, onAddScene, onGenerateCharacter, onGenerateScene, onDeleteCharacter, onRegenerateCharacter, onRegenerateScene, onGenerateAllCharacters, onGenerateAllScenes, isGeneratingCharacters, isGeneratingScenes, defaultSceneId, onSetDefaultScene, onImportCharacters, onImportScenes, onAutoImportCharacters, onAutoImportScenes, isCollapsed, onToggleCollapse, activeTab, onTabChange, focusShotId }) => {
     const [localTab, setLocalTab] = useState('chars');
     const resolvedTab = activeTab || localTab;
     const setResolvedTab = onTabChange || setLocalTab;
@@ -272,6 +272,13 @@ const Sidebar = ({ characters, scenes, shots, onSceneClick, onCharacterClick, on
                                     >
                                         {isGeneratingScenes ? <RefreshCw size={10} className="animate-spin"/> : <Wand2 size={10} />} 
                                         {isGeneratingScenes ? '生成中...' : '一键生成'}
+                                    </button>
+                                    <button
+                                        onClick={onImportScenes}
+                                        className="bg-dark-700 hover:bg-accent text-gray-300 hover:text-white p-1 rounded transition-colors"
+                                        title="导入MD场景"
+                                    >
+                                        <Save size={14} />
                                     </button>
                                     <button
                                         onClick={onAutoImportScenes}

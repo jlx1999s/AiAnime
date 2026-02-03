@@ -1481,9 +1481,11 @@ def _import_voiceover_from_md_text(project: Project, text: str):
     for i, item in enumerate(blocks):
         if i >= len(shots_sorted):
             break
-        shots_sorted[i].dialogue = item
-        updated += 1
-    save_db()
+        if shots_sorted[i].dialogue != item:
+            shots_sorted[i].dialogue = item
+            updated += 1
+    if updated > 0:
+        save_db()
     return {"updated": updated}
 
 @app.post("/projects/{project_id}/voiceover/import_from_md")
@@ -1537,9 +1539,11 @@ async def import_voiceover_from_auto_md(project_id: str, data: ImportShotsAutoRe
     for i, item in enumerate(entries):
         if i >= len(shots_sorted):
             break
-        shots_sorted[i].dialogue = item
-        updated += 1
-    save_db()
+        if shots_sorted[i].dialogue != item:
+            shots_sorted[i].dialogue = item
+            updated += 1
+    if updated > 0:
+        save_db()
     return {"updated": updated}
 @app.put("/characters/{project_id}/{char_id}", response_model=Character)
 async def update_character(project_id: str, char_id: str, updates: CharacterUpdate):
@@ -1960,17 +1964,77 @@ def _save_base64_image_file(b64_data: str, sub_dir: str = None) -> str:
 
 def _save_image_from_url(url: str, sub_dir: str = None) -> str:
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            data = resp.read()
-            content_type = resp.headers.get("Content-Type", "")
-        
+        if url.startswith("data:image"):
+            try:
+                header, b64data = url.split(",", 1)
+                mime = "image/png"
+                if ";" in header and ":" in header:
+                    mime = header.split(";")[0].split(":", 1)[1]
+                ext = ".png"
+                if "jpeg" in mime or "jpg" in mime:
+                    ext = ".jpg"
+                elif "webp" in mime:
+                    ext = ".webp"
+                data = base64.b64decode(b64data)
+                filename = f"{uuid.uuid4()}{ext}"
+                if sub_dir:
+                    dir_path = os.path.join("static", "uploads", sub_dir)
+                    os.makedirs(dir_path, exist_ok=True)
+                    filepath = os.path.join(dir_path, filename)
+                    url_path = f"/static/uploads/{sub_dir}/{filename}"
+                else:
+                    os.makedirs("static/uploads", exist_ok=True)
+                    filepath = f"static/uploads/{filename}"
+                    url_path = f"/static/uploads/{filename}"
+                with open(filepath, "wb") as f:
+                    f.write(data)
+                return url_path
+            except Exception as e:
+                print(f"Failed to save data URI image: {e}")
+                return url
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+            "Connection": "close"
+        }
+        data = None
+        content_type = ""
+        backoffs = [0.5, 1.5, 3.0]
+        last_err = None
+        for i, delay in enumerate(backoffs, start=1):
+            try:
+                req = urllib.request.Request(url, headers=headers)
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    data = resp.read()
+                    content_type = resp.headers.get("Content-Type", "")
+                last_err = None
+                break
+            except Exception as e:
+                last_err = e
+                if i < len(backoffs):
+                    try:
+                        time.sleep(delay)
+                    except Exception:
+                        pass
+                else:
+                    break
+        if data is None:
+            raise last_err or Exception("Unknown download error")
         ext = ".png"
-        if "jpeg" in content_type or "jpg" in content_type:
+        ct = content_type.lower()
+        if "jpeg" in ct or "jpg" in ct:
             ext = ".jpg"
-        elif "webp" in content_type:
+        elif "webp" in ct:
             ext = ".webp"
-            
+        else:
+            if len(data) >= 12:
+                sig = data[:12]
+                if sig.startswith(b"\xff\xd8\xff"):
+                    ext = ".jpg"
+                elif sig.startswith(b"\x89PNG\r\n\x1a\n"):
+                    ext = ".png"
+                elif sig[:4] == b"RIFF" and sig[8:12] == b"WEBP":
+                    ext = ".webp"
         filename = f"{uuid.uuid4()}{ext}"
         if sub_dir:
             dir_path = os.path.join("static", "uploads", sub_dir)
@@ -1981,7 +2045,6 @@ def _save_image_from_url(url: str, sub_dir: str = None) -> str:
             os.makedirs("static/uploads", exist_ok=True)
             filepath = f"static/uploads/{filename}"
             url_path = f"/static/uploads/{filename}"
-            
         with open(filepath, "wb") as f:
             f.write(data)
         return url_path
@@ -2120,6 +2183,32 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                 # OpenAI doesn't support negative_prompt natively usually, append to prompt
                 final_prompt = f"{base_prompt}. Exclude: {negative_prompt}"
                 
+                reference_images = []
+                if isinstance(target_shot.characters, list) and target_shot.characters:
+                    char_by_id = {c.id: c for c in (project.characters or []) if getattr(c, "id", None)}
+                    # Use ALL characters, not just top 3
+                    for cid in target_shot.characters:
+                        c = char_by_id.get(cid)
+                        if not c:
+                            continue
+                        b64 = _image_url_to_base64(getattr(c, "avatar_url", "") or "")
+                        if b64:
+                            reference_images.append({"name": c.name, "b64": b64})
+
+                if target_shot.use_scene_ref and target_shot.scene_id:
+                    scene_by_id = {s.id: s for s in (project.scenes or [])}
+                    scene = scene_by_id.get(target_shot.scene_id)
+                    if scene and scene.image_url:
+                        b64 = _image_url_to_base64(scene.image_url)
+                        if b64:
+                            reference_images.append({"name": scene.name, "b64": b64})
+
+                # Add custom image reference
+                if target_shot.custom_image_url:
+                    b64 = _image_url_to_base64(target_shot.custom_image_url)
+                    if b64:
+                        reference_images.append({"name": "Custom Reference", "b64": b64})
+
                 images = []
                 candidate_count = count or CANDIDATE_IMAGE_COUNT
                 candidate_count = max(1, min(8, candidate_count))
@@ -2134,7 +2223,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                         image_client=image_client,
                         visual_service=visual_service,
                         negative_prompt=negative_prompt,
-                        reference_images=None,
+                        reference_images=reference_images,
                         reference_image_url=target_shot.custom_image_url,
                         image_url_to_base64=_image_url_to_base64,
                         save_image_from_url=_save_image_from_url,

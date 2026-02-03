@@ -10,6 +10,7 @@ async def generate_image(provider: str, prompt: str, sub_dir: str | None, config
             prompt=prompt,
             sub_dir=sub_dir,
             reference_image_url=reference_image_url,
+            reference_images=reference_images,
             image_client=image_client,
             config=config,
             image_url_to_base64=image_url_to_base64,

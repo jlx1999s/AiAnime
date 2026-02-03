@@ -355,6 +355,17 @@ export const ApiService = {
         return res.json();
     },
 
+    importScenesFromMd: async (projectId, file) => {
+        if (USE_MOCK) return { added: 1, scenes: [] };
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await fetch(`${API_BASE_URL}/projects/${projectId}/scenes/import_from_md`, {
+            method: 'POST',
+            body: formData
+        });
+        return res.json();
+    },
+
     autoImportCharactersMd: async (projectId, payload) => {
         if (USE_MOCK) return { added: 0, characters: [] };
         const res = await fetch(`${API_BASE_URL}/projects/${projectId}/characters/import_auto_md`, {

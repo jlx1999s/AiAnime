@@ -1,105 +1,31 @@
 {
-  "id": "2bdce51a-3a51-436a-8c98-b299961acf65",
-  "name": "4444",
+  "id": "12be6877-0a0c-41b2-84c9-7d50482e55f9",
+  "name": "2.3测试",
   "style": "anime",
-  "owner_id": "565e20ed-7ae8-4cfc-86de-7db4fec4a53e",
+  "owner_id": "0f7f607e-7377-4b57-b499-aba811af17f6",
   "shots": [
     {
-      "prompt": "视角：特写。美工刀锋利的刀尖划过纸箱上的透明胶带。刀片反射着电脑屏幕的冷蓝光。背景虚化，隐约可见杂乱的房间。 重点：动作的质感，开箱的仪式感。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [李道玄（手部）: giant human hand, palm and fingers, casting huge shadow, realistic skin texture, hovering over miniature village, god-like perspective, megalophobia, dramatic scale contrast] [半空中: mid-air freeze frame, motion blur, tumbling body, dust trail, suspended in air, cinematic action shot, depth of field]",
+      "prompt": "视角：特写。美工刀锋利的刀尖划过纸箱上的透明胶带。刀片反射着电脑屏幕的冷蓝光。背景虚化，隐约可见杂乱的房间。 重点：动作的质感，开箱的仪式感。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗的现代公寓: dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting]",
       "dialogue": "李道玄：二十岁生日的零点，没有蛋糕，没有祝福，只有这把美工刀划开快递箱的声音，听起来像是在给自己送终。",
-      "audio_prompt": "首帧参考图走路转变为尾帧参考图 [李道玄（手部）: giant human hand, palm and fingers, casting huge shadow, realistic skin texture, hovering over miniature village, god-like perspective, megalophobia, dramatic scale contrast] [半空中: mid-air freeze frame, motion blur, tumbling body, dust trail, suspended in air, cinematic action shot, depth of field]",
+      "audio_prompt": "Extreme close-up, sharp utility knife blade slices smoothly through clear tape, cold blue screen light reflects on the metal, shallow depth of field.",
       "use_scene_ref": true,
       "custom_image_url": null,
-      "first_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/4110df81-6804-4758-bcc1-5905182714cb.png",
-      "last_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ab1efcaa-f7fe-4580-a2b7-545d5ced35b6.png",
+      "first_frame_url": null,
+      "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "a2716c3a-61c3-47ce-ae9c-3ec6c5b8325c",
+      "id": "5bd67e4b-8001-4f64-8030-f93591f8fedb",
       "order": 0,
       "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632",
-        "f4296374-6808-475b-a92f-95a8b4a07755"
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
-      "scene_id": "1f011cba-7ff4-4b3e-8ac6-77ff90ee10e7",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/4110df81-6804-4758-bcc1-5905182714cb.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/4110df81-6804-4758-bcc1-5905182714cb.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/4110df81-6804-4758-bcc1-5905182714cb.png"
-      ],
-      "video_url": "https://storage.googleapis.com/ai-sandbox-videofx/video/9ea3ddbb-f416-4c05-a722-75482a96f204?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770039923&Signature=xEmzovdcEjE33nRrv2QmenbhND60VE1BvO7XkCnES8TeNHj2HHwkjZ58zGs4qZHSGYkKWS8RLhVRbK9IHdy3H8ABt3JRqn9%2FFOkajScy4QBKswDIspQlPlJfzwpci3YNntqv65sh2Cjzlm4K91xI3dyKAFy%2Ftmt11kvi8Z8xVhcVBf7v38qDNgykHI%2FIu0Tl8WLrYSisvfOIiU6ZVvDK00Rem9%2FQ4QQ9UjGtysnDLpCNaNp75UcyLkMpq%2BSEZNzR5ZoVoM5E7brFJEZuLywGTZQdalQRQR6BREhyfezO4kIwY32EkxsmM1tEDVQdLx5IM2zbeJkiEs5mj8Z8xBoUFQ%3D%3D",
-      "video_progress": 100,
-      "video_items": [
-        {
-          "id": "689a7c3a-83aa-4447-a25e-6f32b3713a98",
-          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/a81ce0d4-7bb7-41c8-be16-bd0ad7664290.mp4",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "3f401720-cea1-485e-9666-0cf88302030f",
-          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/afaa94a3-1c18-4144-80ef-e22cc873d33c.mp4",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "ee79b778-1df3-4d5f-a8c8-1051f5a7403c",
-          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/64843b4e-52c7-4474-95fa-9e6e3cb57881.mp4",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "d692c5c9-76d7-4e33-a296-729c5442c310",
-          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/50c09540-005c-451c-a566-f35a08e01c82.mp4",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "574bc79c-2291-4a8d-962e-eb4aa16250bb",
-          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fc0360ea-d6c6-4981-9050-dd54d982bdb9.mp4",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "f7d0d7ce-328d-4810-ad71-b0c9cce83249",
-          "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/e3a39633-b253-40db-ad2c-1589b4c59af3?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770037849&Signature=skZGSQpql3rbIYTmpBspL4HZqnzfP04%2BICV0w1VkUewFailmMnFTHMKmSDjDzzr60nBpFcm%2BK6H2p89EVio3QpkOnoT0OYqCNsMWtZ%2FlTRN51gPVQYYkLZOZI1f3CXSQGdYTPqlFfoVrVIwXswHwY2Gl15zfLFIZeoQSvz7FCdQaoSxnzLlLG%2Fm7p%2FBWUQyDpm6wa8YKkoKoOETolPji8T8pCzQrWZB%2BLC70Yx7qfNeLWvRiWT7kxdyIGO1QXllSLZYMwRn3%2BL01VF%2BqT3Ay4EWaR56suBALQ0RvhISnOzLEAkcpInzef2lnSW80%2BrOK8ymEOPwug02paVHpbQi8Ow%3D%3D",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "91ec8415-90fc-4c1e-b5f7-8dd355381164",
-          "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/e9aaacc8-075d-4eb5-a16f-f5bdb594190a?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770038303&Signature=Jl8RKelkEJ%2BWLHjc5n5PQFAOGRes5koA8C308URAySzdpl8QcZVEB1K2EwsrFVZv99boGNx%2BbKCR12O%2FG4rPzEG4frRozEKgGYYuDCmZo1hfrEwpWJ%2BD%2F7N4rXRI4S4JobS2wNwkpea9xjlMxxbqVQS4dB80sGZdKfoJhVmkRVLe0%2BrhdTX4oidyWDwA2A9fi%2Bs6M3ialAAtjw0c%2FObABStxE%2B%2FJBXkkio9Wm5bh7BAgo%2FijEueGdcRtxreoezSEjQNt490IKb50xgKkilu%2Fbvv174K7HRPaLW7oAJ7I3GPiieAZ8UdKFhdfLeUew%2BkggpvgBnM%2F2tP1Y6TV%2BM%2BmWA%3D%3D",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "5cb17d92-498a-4a62-a202-b0fb47e459a4",
-          "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/8f12d45d-270f-4532-af79-681269867382?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770038399&Signature=qmug2qceq1l68Mm2XSoEsOiMbGk%2FS5LzUthoJB8Lgw3Q4XaqZtVxPipvNOgW32Ww%2FVxcWimA98pM4JTHf1huleNT6elRgBX9wukKtDlousfuBySU%2BtCvk66oN4jtOhiO7X0IKG0oWnWI0WgFPt0rxZYpVySYKBoRE6Cngw9p82cc%2BUFZ8QAiICkxz7XC%2Fym4QwL7OH23Heuanz5rKZY0aW%2BKEIjs6BoB5ZaNn3joRGXUkcG9EqSof7v%2F%2FzTQcVQxfeGmDHfwF4RgcQQXIiNwfZtgwNfNmIo%2FYRwXJybf4gxY3gKYKZ0Xp8%2FZn9lAWxdSyDsEqK3zuHks2ywVLoQqsQ%3D%3D",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "3b91c9c7-bff2-43c2-914e-71cef3089042",
-          "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/c49db342-d37e-4abc-9493-fa8474710b64?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770038473&Signature=sfY2C0HsEmk3BZlJUXCaKS6RySpJLKCaOsHvyAjEOxWlmXQMGxLgyCF1SdKVO1d2trPGMtbIOul5ay2%2FOTGJVBLVckhWg%2Fjkn7nsFvWG4C4edSTOGL3bPHAYL9Zb9xAN%2BcV8M4%2BbQa6doVyYxq3R5ObbK4PitGGFlzBEqQnCEaxYEfIAMxt9aYq9khvgMRomwrTCXKRznZU62U5VHLcNNinNSctn7EJiPM1utFFr9ueKsTg70YRnCevT8WRtDdmAk1hsOub1IxubDLqLTdioEui3Ib9s33bVQwjEkwJ5MWUM%2BWuZ4qgnyLcVBiJW9xBQOr15laPQRt%2FnHjCocaZAHA%3D%3D",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        },
-        {
-          "id": "9a2f6977-acb5-4149-a42c-fb74368d0e94",
-          "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/9ea3ddbb-f416-4c05-a722-75482a96f204?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770039923&Signature=xEmzovdcEjE33nRrv2QmenbhND60VE1BvO7XkCnES8TeNHj2HHwkjZ58zGs4qZHSGYkKWS8RLhVRbK9IHdy3H8ABt3JRqn9%2FFOkajScy4QBKswDIspQlPlJfzwpci3YNntqv65sh2Cjzlm4K91xI3dyKAFy%2Ftmt11kvi8Z8xVhcVBf7v38qDNgykHI%2FIu0Tl8WLrYSisvfOIiU6ZVvDK00Rem9%2FQ4QQ9UjGtysnDLpCNaNp75UcyLkMpq%2BSEZNzR5ZoVoM5E7brFJEZuLywGTZQdalQRQR6BREhyfezO4kIwY32EkxsmM1tEDVQdLx5IM2zbeJkiEs5mj8Z8xBoUFQ%3D%3D",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        }
-      ],
-      "status": "completed"
+      "scene_id": "6c17afe1-d279-4412-80a2-b27efeb7cbf7",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
     },
     {
       "prompt": "视角：过肩镜头（Over the shoulder）。李道玄双手掀开巨大的纸箱盖板。箱内涌出一股温暖、干燥的土黄色光线，照亮了他的轮廓。 重点：光影对比，冷暖色调的碰撞。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗的现代公寓: dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting]",
@@ -107,56 +33,22 @@
       "audio_prompt": "Over-the-shoulder shot, hands lifting the heavy cardboard flaps, warm yellow light erupts from within, illuminating the dark room, dynamic lighting shift.",
       "use_scene_ref": true,
       "custom_image_url": null,
-      "first_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/4110df81-6804-4758-bcc1-5905182714cb.png",
-      "last_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ab1efcaa-f7fe-4580-a2b7-545d5ced35b6.png",
-      "panel_layout": "1-panel",
-      "id": "00a37091-cf83-4fe3-bcfe-dad53451a550",
-      "order": 1,
-      "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632"
-      ],
-      "scene_id": "dcb32dff-bba8-4a03-8f17-77fddd25e2b6",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ab1efcaa-f7fe-4580-a2b7-545d5ced35b6.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ab1efcaa-f7fe-4580-a2b7-545d5ced35b6.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ab1efcaa-f7fe-4580-a2b7-545d5ced35b6.png"
-      ],
-      "video_url": "https://storage.googleapis.com/ai-sandbox-videofx/video/d18a1db5-7fe9-4612-a347-4f0582be0ef7?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770039802&Signature=CsIjnBW%2BxwHikAHH37%2FwesSdFlDN3%2Bi49vcZ3UkwBF12dS2CrW%2FVQ8SOY8BfP7NKXtw0l%2B4lUM0hR8IVR9t26RHH%2BmdZhSCxjLh4foWFkzhjvEHkEwnRJA98hpvlrChOtVKv3U0xa16gWv%2BKRSDm7pmXNC%2FPL%2BuvfL3IoQtWePH2UYCbYvsyoB5VmF87DlbT9Oeg93vYRX90yeqPWKpfnPC7Lnxbp5Zx65aUOIwl1u4XnhIMdYyfi35E0p1O7whnzC2yQFbe1ya3NlMqsQieDLCJEGs2pAH%2BJvF5kxB2qlOq5%2F7oUcBsy8%2FTP5mUYZgrn7TI6%2FQ2q6xdAkcGlFz7Rw%3D%3D",
-      "video_progress": null,
-      "video_items": [
-        {
-          "id": "fc9e698f-4d62-455a-9578-9d702f75aca5",
-          "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/d18a1db5-7fe9-4612-a347-4f0582be0ef7?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770039802&Signature=CsIjnBW%2BxwHikAHH37%2FwesSdFlDN3%2Bi49vcZ3UkwBF12dS2CrW%2FVQ8SOY8BfP7NKXtw0l%2B4lUM0hR8IVR9t26RHH%2BmdZhSCxjLh4foWFkzhjvEHkEwnRJA98hpvlrChOtVKv3U0xa16gWv%2BKRSDm7pmXNC%2FPL%2BuvfL3IoQtWePH2UYCbYvsyoB5VmF87DlbT9Oeg93vYRX90yeqPWKpfnPC7Lnxbp5Zx65aUOIwl1u4XnhIMdYyfi35E0p1O7whnzC2yQFbe1ya3NlMqsQieDLCJEGs2pAH%2BJvF5kxB2qlOq5%2F7oUcBsy8%2FTP5mUYZgrn7TI6%2FQ2q6xdAkcGlFz7Rw%3D%3D",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        }
-      ],
-      "status": "failed"
-    },
-    {
-      "prompt": "",
-      "dialogue": "",
-      "audio_prompt": null,
-      "use_scene_ref": true,
-      "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "7868112e-8cd9-4af2-b9e5-2b9ef1039d7a",
-      "order": 2,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/56b676bb-4d27-4434-ab8b-0afc23268574.png",
-      "original_image_url": "https://picsum.photos/seed/fef15f46-621e-4c31-ac3d-b9ae904603f4/512/512",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/992f8a23-848b-47d8-b7bd-287d4df90721.jpg",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/56b676bb-4d27-4434-ab8b-0afc23268574.png"
+      "id": "f581d1bf-7adc-4cd3-9e49-b4380acc2dae",
+      "order": 1,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
+      "scene_id": "6c17afe1-d279-4412-80a2-b27efeb7cbf7",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "completed"
+      "status": "idle"
     },
     {
       "prompt": "视角：仰拍中景。暖光完全照亮了李道玄的脸，他疲惫的眼神中流露出惊讶与好奇。他微微张嘴，身体前倾。 重点：角色的反应，被箱内景象吸引。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗的现代公寓: dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting]",
@@ -164,40 +56,15 @@
       "audio_prompt": "Low angle medium shot, Li Daoxuan leans forward, eyes widen in amazement, mouth slightly opens, warm light washing over his face, subtle camera push in.",
       "use_scene_ref": true,
       "custom_image_url": null,
-      "first_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62974418-8a74-4c3d-b3e3-6ec3e9afcde7.png",
-      "last_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0d9c690f-7072-4ead-b4bf-5a170fe6badc.png",
-      "panel_layout": "1-panel",
-      "id": "23fca20d-8846-40e0-bac0-5a07d287a580",
-      "order": 3,
-      "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632"
-      ],
-      "scene_id": "dcb32dff-bba8-4a03-8f17-77fddd25e2b6",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/cb562efc-8e3f-4b08-b3e9-ea0d3e9cc24d.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62974418-8a74-4c3d-b3e3-6ec3e9afcde7.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62974418-8a74-4c3d-b3e3-6ec3e9afcde7.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/cb562efc-8e3f-4b08-b3e9-ea0d3e9cc24d.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/aa0e0192-6cca-4fb0-8a43-fffb118585fd.png"
-      ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "failed"
-    },
-    {
-      "prompt": "",
-      "dialogue": "",
-      "audio_prompt": null,
-      "use_scene_ref": true,
-      "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "852d8c41-ec94-4527-8e7a-a7498d5a3679",
-      "order": 4,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
+      "id": "1e138c7e-d2ee-4fec-ba97-352ea8aba5d4",
+      "order": 2,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
+      ],
+      "scene_id": "6c17afe1-d279-4412-80a2-b27efeb7cbf7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -212,32 +79,22 @@
       "audio_prompt": "POV shot, looking down into the box, dust motes floating in shafts of light, miniature dry trees and tiny thatched houses visible, slight handheld camera movement.",
       "use_scene_ref": true,
       "custom_image_url": null,
-      "first_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62974418-8a74-4c3d-b3e3-6ec3e9afcde7.png",
-      "last_frame_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0d9c690f-7072-4ead-b4bf-5a170fe6badc.png",
+      "first_frame_url": null,
+      "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "a09c5fff-6a53-4613-b010-d16e5cb06104",
-      "order": 5,
+      "id": "0c0bf8c8-a566-4270-950e-8fef01c32a0d",
+      "order": 3,
       "characters": [
-        "ca2fa311-2f65-466b-b0cb-b3947cbb8282"
+        "72a6c4a5-e9dc-473b-8270-82b517573e00"
       ],
-      "scene_id": "ca231989-c567-4dc2-9b22-bb63edcfc79d",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0d9c690f-7072-4ead-b4bf-5a170fe6badc.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0d9c690f-7072-4ead-b4bf-5a170fe6badc.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0d9c690f-7072-4ead-b4bf-5a170fe6badc.png"
-      ],
-      "video_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/6c2917e6-201e-41f4-b4a4-9b7f692fe550.mp4",
-      "video_progress": 100,
-      "video_items": [
-        {
-          "id": "2704b48b-3090-47c2-96c1-859cba28f302",
-          "url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/6c2917e6-201e-41f4-b4a4-9b7f692fe550.mp4",
-          "task_id": null,
-          "progress": 100,
-          "status": "completed"
-        }
-      ],
-      "status": "completed"
+      "scene_id": "7a3412ef-f58e-4369-9bd3-2015df08d18a",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
     },
     {
       "prompt": "视角：侧拍。李道玄拿起一个巨大的黑色手柄放大镜，凑近箱口。放大镜的玻璃表面反射着箱内的景象。 重点：工具的使用，观测者的姿态。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代公寓 / 箱口: edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field]",
@@ -248,21 +105,19 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "81578c8b-cd61-4681-9c92-73e4f3048874",
-      "order": 6,
+      "id": "b8d6dcb7-b106-4c5d-9850-f2ee151c819e",
+      "order": 4,
       "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632"
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
-      "scene_id": "79db4d28-3e96-4518-a44d-40dcfdcc280f",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3e9b6297-6ce1-4221-90f2-f42f37b7cecc.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3e9b6297-6ce1-4221-90f2-f42f37b7cecc.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3e9b6297-6ce1-4221-90f2-f42f37b7cecc.png"
-      ],
+      "scene_id": "3674b0c5-3c57-4a04-a6d8-4d19e5317de1",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "completed"
+      "status": "idle"
     },
     {
       "prompt": "视角：通过放大镜的主观视角。画面边缘有明显的球形畸变和色散。中心逐渐对焦，模糊的色块变成了清晰的人形。 重点：焦点的寻找与锁定。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内微缩荒原: barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones]",
@@ -273,12 +128,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "9fd868fd-1ea6-45bd-af47-9d1e0c1cffa6",
-      "order": 7,
+      "id": "4f9b0068-467f-47bc-8307-2e4adcab13a9",
+      "order": 5,
       "characters": [
-        "7480a98a-2b36-42ba-98e3-0fc995395646"
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
       ],
-      "scene_id": "de134baf-f0ca-48b7-ad6e-749e5e9f8d32",
+      "scene_id": "c001b259-edcb-4bb0-aab4-2c94fd8ae3fe",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -296,12 +151,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "e6e37cc1-8e7b-4c7f-9192-c46be3932d58",
-      "order": 8,
+      "id": "172ca36b-584e-4565-9939-f1e7324eadd1",
+      "order": 6,
       "characters": [
-        "7480a98a-2b36-42ba-98e3-0fc995395646"
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
       ],
-      "scene_id": "de134baf-f0ca-48b7-ad6e-749e5e9f8d32",
+      "scene_id": "c001b259-edcb-4bb0-aab4-2c94fd8ae3fe",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -319,12 +174,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "cc363f3b-73e0-457f-ada0-cf020ca7653e",
-      "order": 9,
+      "id": "5d5cd9cd-507d-4529-b0d3-afda5426fb4e",
+      "order": 7,
       "characters": [
-        "7480a98a-2b36-42ba-98e3-0fc995395646"
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
       ],
-      "scene_id": "de134baf-f0ca-48b7-ad6e-749e5e9f8d32",
+      "scene_id": "c001b259-edcb-4bb0-aab4-2c94fd8ae3fe",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -342,12 +197,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "4c094a66-0fa9-4a79-8f6a-a7fea055d35d",
-      "order": 10,
+      "id": "44944055-c078-43db-aa40-e3aeca34926e",
+      "order": 8,
       "characters": [
-        "79d27115-06c2-48fd-a469-c68bf3a7cccf"
+        "f2c2cb1a-d345-42d2-a7bd-3b974abcc2a5"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -365,12 +220,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "b2eb0644-d023-41e3-971c-efb56465144d",
-      "order": 11,
+      "id": "151ce670-bd5a-4f25-8219-6e58edec8a7d",
+      "order": 9,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "47d10cb1-beaf-426a-ba6e-cc1c029f9af3",
+      "scene_id": "c6c8c36b-bce6-4c6f-b748-e385d488d69c",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -388,13 +243,13 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "c69e3205-9f59-4a96-a366-4d9b150ac208",
-      "order": 12,
+      "id": "6525455e-6964-47a1-9344-f6125150d413",
+      "order": 10,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c",
-        "b275410e-ff72-4c6f-add1-8da32c26a686"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457",
+        "91ce3dce-bc67-4df4-be6e-dc4b03c5ff0c"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -412,12 +267,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "e267e199-c2e2-4721-9293-99ba60aa7b8b",
-      "order": 13,
+      "id": "9af7c2f0-3988-4d14-9732-4c6cf89f426f",
+      "order": 11,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -435,13 +290,13 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "22335b91-b87c-4aa5-904d-36f6727f7d21",
-      "order": 14,
+      "id": "bae20f2e-f42b-4fbb-bf9f-4b598a2e3120",
+      "order": 12,
       "characters": [
-        "7480a98a-2b36-42ba-98e3-0fc995395646",
-        "ff61b9ff-9619-42a1-a8b0-b3a033adb907"
+        "354dbed3-de24-4794-9db3-fbb901df5b7f",
+        "cac91bf8-f3ee-4842-bc56-08e1a4654140"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -459,13 +314,13 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "6c4aeb47-13f6-4c18-be2c-ce979c2351c8",
-      "order": 15,
+      "id": "7be0192d-0c9a-470c-bcba-518cc3cebf32",
+      "order": 13,
       "characters": [
-        "ff61b9ff-9619-42a1-a8b0-b3a033adb907",
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "cac91bf8-f3ee-4842-bc56-08e1a4654140",
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -483,13 +338,13 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "677f9550-bb50-402c-976e-87d5f9e6d26c",
-      "order": 16,
+      "id": "209126af-ffb5-4c00-b66e-794cc2ed75e1",
+      "order": 14,
       "characters": [
-        "ff61b9ff-9619-42a1-a8b0-b3a033adb907",
-        "7480a98a-2b36-42ba-98e3-0fc995395646"
+        "cac91bf8-f3ee-4842-bc56-08e1a4654140",
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -507,12 +362,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "bec150e6-732c-4519-9a57-33df2d607a91",
-      "order": 17,
+      "id": "b88c2eb0-7b7b-4e7e-b67f-9de75561ee61",
+      "order": 15,
       "characters": [
-        "7480a98a-2b36-42ba-98e3-0fc995395646"
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -530,12 +385,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "bc875894-7481-4f4e-979d-d74ed11098fc",
-      "order": 18,
+      "id": "aee2e220-7509-4a1a-99f8-2ba6b5dcc67e",
+      "order": 16,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -553,12 +408,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "e15dfa49-0e1e-40aa-a91b-87025459cd40",
-      "order": 19,
+      "id": "3b2af500-3b05-4fe1-866a-7b38dd2ea79d",
+      "order": 17,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -576,12 +431,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "eb33038d-3cb0-4d05-86cb-042ae00c807c",
-      "order": 20,
+      "id": "ed36a6dd-fee9-4a54-b86c-fc8db2428caf",
+      "order": 18,
       "characters": [
-        "7480a98a-2b36-42ba-98e3-0fc995395646"
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -599,12 +454,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "041af2c8-ecfd-4469-82eb-638ae26a3b61",
-      "order": 21,
+      "id": "b424d09f-4c66-4a23-86c4-4ee5d6f37b0e",
+      "order": 19,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -622,12 +477,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "f2e83c0e-7d35-447f-9fd5-f8b092163299",
-      "order": 22,
+      "id": "54c7bf0f-cb3e-49d0-95ea-4ea96c82884a",
+      "order": 20,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -645,12 +500,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "4e5a6add-d41a-4b7c-a038-3132a5e565dc",
-      "order": 23,
+      "id": "8b85065f-8a4b-4882-b1fd-c260b3726b1f",
+      "order": 21,
       "characters": [
-        "828b0135-5004-4eb0-826c-98bbafe4a09e"
+        "99d9b8df-78aa-4e5a-b6ed-a394fd9bc6ec"
       ],
-      "scene_id": "d308b83c-8822-4823-a459-2a1ae86e0b5f",
+      "scene_id": "f86232a5-4221-41d0-9720-157c564ee6a0",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -668,13 +523,13 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "628518e6-bf21-453e-ae9f-f0597a870e66",
-      "order": 24,
+      "id": "969c8bd4-21be-4ea5-9205-c2a57bc513ea",
+      "order": 22,
       "characters": [
-        "828b0135-5004-4eb0-826c-98bbafe4a09e",
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "99d9b8df-78aa-4e5a-b6ed-a394fd9bc6ec",
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -692,12 +547,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "8d60c157-267d-4b0b-8fca-980bd7e98b5b",
-      "order": 25,
+      "id": "fb553213-5648-45be-a826-4cbdfed418f0",
+      "order": 23,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -715,13 +570,13 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "bf95f21f-83ec-4f3e-b222-e322e7254232",
-      "order": 26,
+      "id": "65ad612d-c9e1-4d36-9a03-2fec56cefe06",
+      "order": 24,
       "characters": [
-        "5e959892-b802-4752-8d28-d4b050985932",
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "6aff143f-0154-4b9a-81e0-a492231d934a",
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -739,13 +594,13 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "600cb284-c874-4103-9f3c-0e0a266d3049",
-      "order": 27,
+      "id": "05054042-59f0-4069-8fbe-a24cc8f39cd9",
+      "order": 25,
       "characters": [
-        "5e959892-b802-4752-8d28-d4b050985932",
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "6aff143f-0154-4b9a-81e0-a492231d934a",
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -763,12 +618,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "454c75f6-d068-4d1b-b49d-4f6991a357d4",
-      "order": 28,
+      "id": "ef88ba47-1719-495b-a2ce-591b50ab21fe",
+      "order": 26,
       "characters": [
-        "5e959892-b802-4752-8d28-d4b050985932"
+        "6aff143f-0154-4b9a-81e0-a492231d934a"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -786,12 +641,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "feb6274b-9df0-4037-b2ea-462d3979be51",
-      "order": 29,
+      "id": "c5f4f7e0-3edf-44fc-9b84-90ac2f61cdad",
+      "order": 27,
       "characters": [
-        "5e959892-b802-4752-8d28-d4b050985932"
+        "6aff143f-0154-4b9a-81e0-a492231d934a"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -809,12 +664,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "a63a0bbb-c120-4cd7-9c58-e05b2677af45",
-      "order": 30,
+      "id": "57389d7f-c04d-4059-b7a3-1b8b8148825c",
+      "order": 28,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "scene_id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -832,12 +687,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "df9e10f1-b21b-409b-8261-21e9a56eb357",
-      "order": 31,
+      "id": "f184a12d-7901-4d46-b078-fd537009ca0d",
+      "order": 29,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "7546b95d-81b2-4824-beaa-89a569ef1904",
+      "scene_id": "747cddb6-da23-41c7-a8b8-f7f1e7c0999d",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -855,12 +710,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "33e43c54-4fe9-4078-a042-a952f8082d27",
-      "order": 32,
+      "id": "1abfaaa2-04a7-4dce-940d-d8e58d4e9c8a",
+      "order": 30,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "f07b45e9-cd57-43d0-8441-164b0749ca7b",
+      "scene_id": "fe48bf4c-1db9-4e1b-b3e8-483fe79650ab",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -878,12 +733,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "1a5713d4-e9eb-475e-a5d6-838aba9f7271",
-      "order": 33,
+      "id": "392393c2-42a0-404d-b318-e9bd71b7370e",
+      "order": 31,
       "characters": [
-        "6ac6330f-11d5-4c1e-9484-b2bd9868892c"
+        "27d63e43-528d-4ef2-b6df-a75b2b440457"
       ],
-      "scene_id": "f07b45e9-cd57-43d0-8441-164b0749ca7b",
+      "scene_id": "fe48bf4c-1db9-4e1b-b3e8-483fe79650ab",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -901,12 +756,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "b933cc2a-0c4f-41d2-b212-3897c7b5607c",
-      "order": 34,
+      "id": "5cf0fcb6-1317-433e-8cef-c1b189517cf8",
+      "order": 32,
       "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632"
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
-      "scene_id": "05af4aca-bf6a-47c7-8c10-2db7f6657a76",
+      "scene_id": "d1527f41-73a9-4595-861c-17f41ddd496c",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -924,12 +779,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "bc5eb7ac-0a02-4181-b1f0-3c466a6add10",
-      "order": 35,
+      "id": "37d19e94-54cc-4498-bd77-b1cd4bb243dd",
+      "order": 33,
       "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632"
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
-      "scene_id": "05af4aca-bf6a-47c7-8c10-2db7f6657a76",
+      "scene_id": "d1527f41-73a9-4595-861c-17f41ddd496c",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -947,12 +802,12 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "9a75f26d-c246-413c-ab72-65abb31f4396",
-      "order": 36,
+      "id": "54d22618-73c3-4817-ba56-8bb6029d2534",
+      "order": 34,
       "characters": [
-        "5e959892-b802-4752-8d28-d4b050985932"
+        "6aff143f-0154-4b9a-81e0-a492231d934a"
       ],
-      "scene_id": "05af4aca-bf6a-47c7-8c10-2db7f6657a76",
+      "scene_id": "d1527f41-73a9-4595-861c-17f41ddd496c",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -970,12 +825,58 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "6a29e23c-e7ad-4128-839f-6f23400ad3fd",
+      "id": "11ce9ff8-7a09-45ba-a1e6-5940ce9d3fc7",
+      "order": 35,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
+      ],
+      "scene_id": "d1527f41-73a9-4595-861c-17f41ddd496c",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：主观视点（POV）特写。画面中心是李道玄摊开的右手掌心，掌纹清晰，几抹暗红色的血迹在苍白的皮肤上显得格外刺眼。背景是失焦的杂乱桌面。 重点：血迹的真实物质感，与皮肤的对比。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "李道玄：这掌心上的暗红……根本不是颜料，也不是什么贴图纹理。",
+      "audio_prompt": "POV close-up, hand trembling slightly in center frame, blood texture glistening under cold light, shallow depth of field, rack focus from blood to blurred background.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "d77a5db5-68cc-488a-b870-aa70e1ed97e2",
+      "order": 36,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
+      ],
+      "scene_id": "04489ca7-3e5b-4764-a245-d8edf03915ea",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：POV特写。李道玄的左手拇指正在用力搓揉右手掌心的血迹。血迹被抹开，晕染在皮肤纹理中，没有像颜料那样干涸剥落，而是带有液体的粘稠感。 重点：通过动作确认物质的真实性，手指因用力而发白。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "李道玄：还没干透，这种黏糊糊的触感，甚至还带着一丝残存的体温……",
+      "audio_prompt": "POV extreme close-up, thumb forcefully smears wet blood on palm, liquid texture spreading into skin lines, skin turning white from pressure, realistic friction motion.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "0737abba-92c0-4f94-aa71-fd024e765e63",
       "order": 37,
       "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632"
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
-      "scene_id": "05af4aca-bf6a-47c7-8c10-2db7f6657a76",
+      "scene_id": "04489ca7-3e5b-4764-a245-d8edf03915ea",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -985,89 +886,66 @@
       "status": "idle"
     },
     {
-      "prompt": "生成参考图中人物喂狗的画面",
-      "dialogue": "",
-      "audio_prompt": "",
-      "use_scene_ref": false,
-      "custom_image_url": "/static/uploads/3c12a652-ae30-4c15-99db-229326a6214d_屏幕截图 2026-01-26 001937.png",
-      "first_frame_url": null,
-      "last_frame_url": null,
-      "panel_layout": "1-panel",
-      "id": "5ab626d4-5b3e-47d4-adc3-f48e3161cf78",
-      "order": 38,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/92ca0d3f-d6b7-4a6f-86c9-85c6be914a44.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/92ca0d3f-d6b7-4a6f-86c9-85c6be914a44.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/92ca0d3f-d6b7-4a6f-86c9-85c6be914a44.png"
-      ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "completed"
-    },
-    {
-      "prompt": "",
-      "dialogue": "",
-      "audio_prompt": null,
-      "use_scene_ref": false,
-      "custom_image_url": null,
-      "first_frame_url": null,
-      "last_frame_url": null,
-      "panel_layout": "1-panel",
-      "id": "802dd120-ea38-4296-b6b9-bf277d3875ae",
-      "order": 39,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "idle"
-    },
-    {
-      "prompt": "生成图中人物喂狗的画面",
-      "dialogue": "",
-      "audio_prompt": "",
+      "prompt": "视角：侧面近景。李道玄将颤抖的手掌猛地凑近鼻尖。他眉头紧锁，瞳孔收缩，仿佛闻到了令人作呕的铁锈味。面部肌肉因恐惧而轻微抽搐。 重点：感官的联动，生理性的排斥反应。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "李道玄：呕——好冲的铁锈味！这是真的血！",
+      "audio_prompt": "Side profile close-up, hand jerks up towards nose rapidly, facial expression shifts from confusion to disgust, nose wrinkles, eyes widen in shock, micro-muscle twitching.",
       "use_scene_ref": true,
       "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "7ec0361e-cffe-40d3-9d8d-86f9eb839a60",
+      "id": "2f804983-986e-45b0-bbe6-cf31985ca00e",
+      "order": 38,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
+      ],
+      "scene_id": "04489ca7-3e5b-4764-a245-d8edf03915ea",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：中景，正面。李道玄像触电一样猛地将手甩开，身体向后踉跄，撞到了身后的椅子。他的眼神惊恐地盯着前景虚化的造景箱，仿佛那是某种危险的生物。 重点：从局部感官体验上升到全身的应激反应。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "李道玄：刚才被我拍扁的那些东西……不是程序，不是玩具，是几十条活生生的人命？！",
+      "audio_prompt": "Medium shot, sudden whip pan as subject stumbles backward violently, knocking into chair, body recoiling in terror, eyes locked on the vivarium, heavy breathing motion.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "c05cd80b-7701-444d-abc3-9fe8906f90ee",
+      "order": 39,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
+      ],
+      "scene_id": "04489ca7-3e5b-4764-a245-d8edf03915ea",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：侧拍特写。李道玄的手持着一个巨大的放大镜，贴近造景箱的玻璃壁。玻璃壁上映出这一侧冷蓝色的房间倒影，与箱内透出的暖黄光芒形成强烈对比。 重点：两个世界的物理屏障与视觉连接。 [李道玄（的手）: male hand close-up, palm lines visible, dark red dried blood stains, trembling fingers, holding a magnifying glass, realistic skin texture, tension in tendons, rubbing thumb against palm] [造景箱玻璃壁外: glass surface close-up, reflection of blue room, warm light glowing from within, magnifying glass lens pressed against glass, contrast between cold and warm tones, transparent texture]",
+      "dialogue": "李道玄：不可能……绝对不可能！我不信！让我看清楚点！",
+      "audio_prompt": "Macro side shot, hand presses magnifying glass firmly against tank wall, slight adjustments in angle, reflection of cold blue room shifts on the glass surface, sharp contrast with warm interior light.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "89275dde-8c08-49d4-869e-0f0f35357c87",
       "order": 40,
       "characters": [
-        "184367d3-4391-4d77-9e4f-63ab3abd0632"
+        "73badc71-c53f-41b7-a4d6-734bb19bb683"
       ],
-      "scene_id": null,
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e945b39a-5b05-4f77-8acc-e6b143cdb750.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/784ce575-d06b-45ff-bc83-6fbfd9cf7932.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/784ce575-d06b-45ff-bc83-6fbfd9cf7932.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/708c4981-56cd-4c00-a67d-40864daef934.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e945b39a-5b05-4f77-8acc-e6b143cdb750.png"
-      ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "completed"
-    },
-    {
-      "prompt": "",
-      "dialogue": "",
-      "audio_prompt": null,
-      "use_scene_ref": true,
-      "custom_image_url": null,
-      "first_frame_url": null,
-      "last_frame_url": null,
-      "panel_layout": "1-panel",
-      "id": "c23e4f4c-88e4-4a83-8ce1-7d3153eb956b",
-      "order": 41,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
+      "scene_id": "e210d6c5-e661-498b-b3fe-4f90397f62cd",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -1077,49 +955,66 @@
       "status": "idle"
     },
     {
-      "prompt": "生成图中人物喂狗的画面",
-      "dialogue": "",
-      "audio_prompt": null,
+      "prompt": "视角：透过放大镜的主观视点（POV）。画面边缘有严重的透镜畸变和色散。画面中心的黄土地是模糊的，只能隐约看到一个微小的人形轮廓跪在地上。 重点：模拟对焦过程中的模糊感，制造悬念。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内黄土荒野: miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion]",
+      "dialogue": "李道玄：该死，手别抖……对焦……快对焦啊！",
+      "audio_prompt": "POV through lens, heavy optical distortion and chromatic aberration, image shifts from extreme blur to gradually finding focus on a miniature figure, searching camera movement.",
       "use_scene_ref": true,
-      "custom_image_url": "/static/uploads/45f96670-4103-4aaf-b92e-473a658c4135_屏幕截图 2026-01-26 001937.png",
+      "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "7738e773-72f0-44a3-b052-d904d1b0097c",
-      "order": 42,
-      "characters": [],
-      "scene_id": null,
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e6c802c1-5d1b-4261-aeca-f7a985d71e7a.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/03973393-3538-46f2-a4c2-a5696ba74de3.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/03973393-3538-46f2-a4c2-a5696ba74de3.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3c88c85d-9afb-4c37-8959-95fe8e07c151.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/5e449fdd-d574-4449-b70e-76a0fd1f3f01.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3fdba93c-b1c8-4841-8247-ea975d54d39e.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/c1d33bd9-c4c5-41fd-bf71-aeabe1fb99b5.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/56c6bc2f-0b1d-4f72-a7a8-995831489fbb.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e6c802c1-5d1b-4261-aeca-f7a985d71e7a.png"
+      "id": "b5422992-5c02-44d3-b85f-364b0790036a",
+      "order": 41,
+      "characters": [
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
       ],
+      "scene_id": "ff4dfe02-0028-482a-833f-622d6db6d6c8",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "completed"
+      "status": "idle"
     },
     {
-      "prompt": "",
-      "dialogue": "",
-      "audio_prompt": "",
+      "prompt": "视角：透过放大镜的POV，极度清晰的微距特写（Macro）。焦点锁定在高一叶脸上。她面黄肌瘦，满脸尘土，嘴唇干裂起皮，正在张大嘴无声痛哭。眼泪混合着泥土流下的轨迹清晰可见。 重点：极浅景深（Bokeh），强调微观细节的真实与残酷。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内黄土荒野: miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion]",
+      "dialogue": "李道玄：她在哭……眼泪划过脸颊的轨迹，指甲缝里的泥土，每一个像素都在告诉我，她是活的。",
+      "audio_prompt": "Extreme macro close-up through lens, sharp focus locks on Gao Yiye's face, tears streaming down muddy cheeks, mouth opening in a silent scream, high detail texture, bokeh background.",
       "use_scene_ref": true,
-      "custom_image_url": "/static/uploads/4454e92f-0b36-43c1-a990-0e481040974c_屏幕截图 2026-01-26 001937.png",
+      "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "8a93c652-7f28-420d-9b80-8c6d1915556e",
+      "id": "8b16ea6d-3e0d-4a08-94df-e9d6f36ea4aa",
+      "order": 42,
+      "characters": [
+        "354dbed3-de24-4794-9db3-fbb901df5b7f"
+      ],
+      "scene_id": "ff4dfe02-0028-482a-833f-622d6db6d6c8",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：反打镜头（Reverse Shot），近景。李道玄慢慢放下放大镜，露出后面苍白震惊的脸。放大镜的镜片在画面前景虚化。他呼吸急促，眼神中充满了不可置信。 重点：观测者被观测内容震撼的瞬间。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间: modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle]",
+      "dialogue": "李道玄：我这到底是造了个景……还是养了一箱子活人？",
+      "audio_prompt": "Reverse shot, magnifying glass slowly lowers revealing Li's pale shocked face, eyes widening in disbelief, rack focus from the blurred lens in foreground to the face in background.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "062e598b-f906-4eca-bd1d-d3edbb17d550",
       "order": 43,
       "characters": [
-        "0b0fef67-b8f4-49ef-8d1e-009d93b1a622"
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
-      "scene_id": null,
+      "scene_id": "6a2c4adf-2775-4ddd-b913-c20f64ee7081",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
       "original_image_url": null,
       "image_candidates": [],
@@ -1129,50 +1024,188 @@
       "status": "idle"
     },
     {
-      "prompt": "生成图中人物喂狗的画面",
-      "dialogue": "",
-      "audio_prompt": null,
+      "prompt": "视角：中全景。李道玄腿一软，重重地跌坐在人体工学椅上。椅子因受力向后滑行了一小段距离，发出吱呀声（视觉上通过动态模糊表现）。 重点：身体力量被抽空的瞬间。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间电脑椅: ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication]",
+      "dialogue": "李道玄：这到底是怎么回事……我的世界观彻底崩塌了。",
+      "audio_prompt": "Medium shot, body collapses heavily into the ergonomic chair, chair rolls backward slightly with momentum, arms flop down lifelessly, sudden loss of muscle tension.",
       "use_scene_ref": true,
-      "custom_image_url": "/static/uploads/f6cd65b4-5b22-4660-8c32-a5332d02dfb2_屏幕截图 2026-01-26 002002.png",
+      "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "246f8a97-1e26-4038-ad3a-afd9d8b5d585",
+      "id": "ebf319fc-c52e-4722-baf3-292b169e9bbf",
       "order": 44,
-      "characters": [],
-      "scene_id": null,
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d24af8de-256f-4973-9a46-7db03fcc4c76.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d24af8de-256f-4973-9a46-7db03fcc4c76.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d24af8de-256f-4973-9a46-7db03fcc4c76.png"
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
+      "scene_id": "777cc063-64cc-4607-b237-d7a07fc1945a",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "completed"
+      "status": "idle"
     },
     {
-      "prompt": "生成图中人物喂狗的画面",
-      "dialogue": "",
-      "audio_prompt": null,
+      "prompt": "视角：正面近景。李道玄瘫坐在椅子里，双臂无力地垂在扶手两侧。头微微后仰，双眼失焦地盯着天花板。电脑屏幕的冷光从侧面打在他脸上，形成高对比度的阴阳脸。 重点：极度的虚脱与茫然。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间电脑椅: ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication]",
+      "dialogue": "李道玄：如果他们是活人，那我算什么？上帝？还是杀人凶手？",
+      "audio_prompt": "Close-up, head tilts back slowly against headrest, eyes unfocused staring at ceiling, chest rising and falling rapidly, high contrast blue lighting splitting the face.",
       "use_scene_ref": true,
-      "custom_image_url": "/static/uploads/b3ccf57e-a536-43b3-b849-6484296fc344_屏幕截图 2026-01-26 001937.png",
+      "custom_image_url": null,
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "a8f0df1b-630e-4b7f-8582-87884f69015f",
+      "id": "c5ff7d12-d93d-48bc-a742-4bf008d8fa81",
       "order": 45,
-      "characters": [],
-      "scene_id": null,
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/eba371aa-4fcb-4560-852f-450d4d109b28.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/eba371aa-4fcb-4560-852f-450d4d109b28.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/eba371aa-4fcb-4560-852f-450d4d109b28.png"
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
       ],
+      "scene_id": "777cc063-64cc-4607-b237-d7a07fc1945a",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "completed"
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：特写。李道玄双手抱住头，手指插入凌乱的头发中，用力抓扯。他的脸埋在阴影里，只能看到紧咬的牙关。 重点：内心剧烈的冲突，试图否定刚才看到的一切。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间电脑椅: ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication]",
+      "dialogue": "李道玄：醒醒李道玄！这不科学！微缩模型怎么可能有生命！这一定是幻觉！",
+      "audio_prompt": "Tight close-up, hands grab messy hair violently, fingers digging into scalp, head shaking slightly in denial, teeth clenched, shadow obscuring eyes.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "1f381f61-c007-4d5d-8e5b-a60721790659",
+      "order": 46,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
+      ],
+      "scene_id": "777cc063-64cc-4607-b237-d7a07fc1945a",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：俯拍大远景（High Angle）。房间里没有开主灯，只有电脑屏幕和造景箱发出微弱的光。李道玄蜷缩在椅子里，显得极其渺小，周围浓重的黑暗仿佛正在吞噬他。 重点：孤立无援的氛围，心理防线的全面崩塌。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间: modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle]",
+      "dialogue": "旁白：巨大的恐惧与荒谬感如同潮水般涌来，瞬间淹没了这个狭小的房间，将李道玄独自困在黑暗的孤岛中。",
+      "audio_prompt": "High angle wide shot, slow crane up, subject curled up small in the chair, surrounding darkness appearing to encroach on the center, screen light flickering weakly.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "c5aff772-071a-4ed9-af67-71a6f39d9a77",
+      "order": 47,
+      "characters": [
+        "0be8d5c3-a127-46b8-aa7b-3cede3869c4b"
+      ],
+      "scene_id": "6a2c4adf-2775-4ddd-b913-c20f64ee7081",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：屏幕特写。原本黑暗的屏幕右下角突然弹出一个亮红色的通知图标，伴随着几个不断跳动的弹窗。背景是模糊的桌面壁纸。 重点：打破死寂的视觉噪音。 [无（屏幕画面）: computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "李道玄：偏偏在这个时候……又是谁在催命？",
+      "audio_prompt": "Macro screen shot, bright red notification icon pops up suddenly in the corner, pulsing animation, breaking the static wallpaper, sharp digital movement.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "70122f81-3497-4dd9-bb2f-99ac5e9cf07a",
+      "order": 48,
+      "characters": [
+        "e6e2665c-61d4-42ed-aa0a-345ee9a962b2"
+      ],
+      "scene_id": "ebf35594-03d0-4eeb-8420-7b5273c3f8ec",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：屏幕内容特写。社交媒体页面被打开，密密麻麻的评论区滚动着。“造假狗”、“滚出圈子”、“去死吧”等字眼被高亮显示。光标在屏幕上慌乱地移动，试图关闭窗口。 重点：信息的暴力感与压迫感。 [无（屏幕画面）: computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "李道玄：呵，满屏的嘲讽。精神病、造假狗、滚出圈子……这就是我在现实世界里的价值吗？",
+      "audio_prompt": "Screen capture view, mouse cursor moves erratically, comment section scrolls rapidly upwards, text blurring from speed, harsh white light, information overload.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "4890bdd3-9749-4bd9-9878-fe5a520490c9",
+      "order": 49,
+      "characters": [
+        "e6e2665c-61d4-42ed-aa0a-345ee9a962b2"
+      ],
+      "scene_id": "ebf35594-03d0-4eeb-8420-7b5273c3f8ec",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：屏幕正中特写。一封刚打开的邮件占据主画面，标题加粗显示“辞退通知书（Termination Notice）”。正文冷冰冰的公文格式清晰可见。 重点：冷酷的现实打击，视觉焦点集中在“辞退”二字。 [无（屏幕画面）: computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "李道玄：辞退通知……两千三百五十块遣散费。行啊，这下工作也没了，彻底一无所有了。",
+      "audio_prompt": "Static macro shot, \"Termination Notice\" text stays fixed and sharp, mouse cursor hovers and trembles slightly over the bold text, cold clinical atmosphere.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "a68eac5d-d57a-4cfd-9d82-50bb91f42197",
+      "order": 50,
+      "characters": [
+        "e6e2665c-61d4-42ed-aa0a-345ee9a962b2"
+      ],
+      "scene_id": "ebf35594-03d0-4eeb-8420-7b5273c3f8ec",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：过肩镜头。屏幕画面切换到黑色的锁屏界面或深色背景。李道玄模糊、扭曲的面孔倒映在黑色的屏幕玻璃上，眼神空洞，仿佛一个幽灵。 重点：现实世界中自我的破碎感，人与数字深渊的对视。 [李道玄（倒影）: reflection on black glass screen, distorted face, ghostly silhouette, hollow eyes, dark tones, low key lighting, mysterious atmosphere, digital screen texture] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "李道玄：正好，老子也不想干了。管他箱子里是真是假，管他明天有没有饭吃，先睡一觉再说。",
+      "audio_prompt": "Over-the-shoulder shot, screen turns black, reflection of Li's distorted face appears on the glass, slow dolly out, reflection looks ghostly and hollow.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "f908f979-d082-4b40-bde4-2f0c51acb802",
+      "order": 51,
+      "characters": [
+        "c4dfbd5b-a857-4f27-ab1a-b4bc73fdafe1"
+      ],
+      "scene_id": "ebf35594-03d0-4eeb-8420-7b5273c3f8ec",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
     },
     {
       "prompt": "",
@@ -1183,29 +1216,8 @@
       "first_frame_url": null,
       "last_frame_url": null,
       "panel_layout": "1-panel",
-      "id": "cb47f3b2-1547-4349-b417-7cbc35750e63",
-      "order": 46,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "idle"
-    },
-    {
-      "prompt": "生成图中人物喂狗的画面",
-      "dialogue": "",
-      "audio_prompt": null,
-      "use_scene_ref": true,
-      "custom_image_url": "/static/uploads/5a929e30-a3c6-4ca0-9d87-99f55c4a6044_屏幕截图 2026-01-26 001937.png",
-      "first_frame_url": null,
-      "last_frame_url": null,
-      "panel_layout": "1-panel",
-      "id": "5cd20bb6-fc89-4857-9cc7-8d3408126486",
-      "order": 47,
+      "id": "5429a8cd-fd69-4c36-8a5e-2633252e5fd4",
+      "order": 52,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1214,524 +1226,500 @@
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "failed"
-    },
-    {
-      "prompt": "生成图中人物喂狗的画面 [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
-      "dialogue": "",
-      "audio_prompt": "[微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
-      "use_scene_ref": false,
-      "custom_image_url": "/static/uploads/7d34b879-3675-4206-85ae-c2f23976cc51_屏幕截图 2026-01-26 001937.png",
-      "first_frame_url": null,
-      "last_frame_url": null,
-      "panel_layout": "1-panel",
-      "id": "c62161bb-58d9-4c69-8678-d8db30da2ffe",
-      "order": 48,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0ce8ffad-cd19-4c03-a874-88de7bbd8d0b.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/af3d1090-f940-4198-b1cc-4ffbc394c3f1.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/af3d1090-f940-4198-b1cc-4ffbc394c3f1.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/8f842064-7efd-4963-8aa0-ce793b889bbb.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/b8b1f7b5-793c-4b34-b5a2-aadb83e9690f.jpg",
-        "https://picsum.photos/seed/672e7954-a161-43e6-aa56-fb7ed291f31c/512/512",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/76fe9f0e-9399-4afb-8be3-f75d3b759acd.jpg",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/bcba2e5f-ad81-47dc-b3a5-f9b51df09810.jpg",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/392ecce3-3412-42f2-bf77-2ee0ca49690d.jpg",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/8cb17e53-d3b2-4699-a443-fa27c16358c8.jpg",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0ce8ffad-cd19-4c03-a874-88de7bbd8d0b.png"
-      ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "completed"
-    },
-    {
-      "prompt": "生成参考图中三个人物在微缩村庄喂狗的画面 [无（以物件为主）: large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light]",
-      "dialogue": "",
-      "audio_prompt": "[微缩村庄: miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting] [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [无（以物件为主）: large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light]",
-      "use_scene_ref": true,
-      "custom_image_url": "/static/uploads/1d3746ff-6b44-4126-a902-702a75f2bb97_屏幕截图 2026-01-26 001937.png",
-      "first_frame_url": null,
-      "last_frame_url": null,
-      "panel_layout": "1-panel",
-      "id": "d3ee4d88-e75e-4b74-9ed7-3625da163095",
-      "order": 49,
-      "characters": [
-        "7480a98a-2b36-42ba-98e3-0fc995395646",
-        "184367d3-4391-4d77-9e4f-63ab3abd0632",
-        "4794bd56-50e1-4311-8c73-be1ec1539aba"
-      ],
-      "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/5e478384-8434-4069-9a3c-94b64e964832.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/35b19185-d463-4e62-b006-b70df53e00a7.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/35b19185-d463-4e62-b006-b70df53e00a7.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/f496cb7e-7c59-47fd-ab9d-145d4b226a41.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/509d30a8-7c1f-4a3d-a52b-856eaefa625c.jpg",
-        "https://picsum.photos/seed/8313653d-a7b0-4ded-9b44-6722f65c01c0/512/512",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/302b9d28-80fd-434d-9079-22ea63d76d39.png",
-        "https://upload.apimart.ai/f/image/9998229893671909-35758f82-4e3d-42ff-8ace-3d338a4c32a8-image_task_01KGH8Y50RVA6R52PRS40NWA3M_0.png",
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/5e478384-8434-4069-9a3c-94b64e964832.png"
-      ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "completed"
-    },
-    {
-      "prompt": "生成参考图在场景参考图中喂狗的画面",
-      "dialogue": "",
-      "audio_prompt": "[微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
-      "use_scene_ref": true,
-      "custom_image_url": "/static/uploads/7d8fb3f2-4ab5-4196-816b-35bd68dc00fb_屏幕截图 2026-01-26 001937.png",
-      "first_frame_url": null,
-      "last_frame_url": null,
-      "panel_layout": "1-panel",
-      "id": "d99a93fa-0f60-4dd4-8776-5615299eeda9",
-      "order": 50,
-      "characters": [],
-      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fef8a7e6-8a51-4af5-8daf-40a378bcaa06.png",
-      "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fef8a7e6-8a51-4af5-8daf-40a378bcaa06.png",
-      "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fef8a7e6-8a51-4af5-8daf-40a378bcaa06.png"
-      ],
-      "video_url": null,
-      "video_progress": null,
-      "video_items": [],
-      "status": "completed"
+      "status": "idle"
     }
   ],
   "characters": [
     {
-      "id": "6ac6330f-11d5-4c1e-9484-b2bd9868892c",
+      "id": "27d63e43-528d-4ef2-b6df-a75b2b440457",
       "name": "山贼",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/b0e74f76-9fbd-489d-bcda-afadcce276f3.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼",
       "tags": [],
       "prompt": "ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography",
       "description": "A violent antagonist in the miniature world, dressed in dirty leather armor, riding a horse, and wielding a rusty machete. He represents imminent death and destruction.",
       "status": "idle"
     },
     {
-      "id": "4794bd56-50e1-4311-8c73-be1ec1539aba",
+      "id": "5dd03013-7ef5-49e2-b8bd-b3cc0d332aa6",
       "name": "无（以物件为主）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/8cf9ef10-53bd-4a8c-be9b-a06265472b4f.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（以物件为主）",
       "tags": [],
       "prompt": "large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light",
       "description": "Focus on inanimate objects, specifically a large, mysterious, unopened cardboard box sitting on a cluttered desk.",
       "status": "idle"
     },
     {
-      "id": "184367d3-4391-4d77-9e4f-63ab3abd0632",
+      "id": "0be8d5c3-a127-46b8-aa7b-3cede3869c4b",
       "name": "李道玄",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/16d68346-33be-4518-a81f-caa95f491a22.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄",
       "tags": [],
       "prompt": "young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k",
       "description": "A modern young man in a dimly lit bedroom. He looks tired, wearing casual home clothes. He is the observer and 'god' figure looking into the box.",
       "status": "idle"
     },
     {
-      "id": "5e959892-b802-4752-8d28-d4b050985932",
+      "id": "6aff143f-0154-4b9a-81e0-a492231d934a",
       "name": "李道玄（手指）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/90420eab-550b-4bcc-a63f-87fa8f06695d.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手指）",
       "tags": [],
       "prompt": "extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail",
       "description": "Extreme close-up of a finger acting as a weapon or tool. Focus on the skin texture, fingerprints, and the massive scale compared to the miniature world.",
       "status": "idle"
     },
     {
-      "id": "f4296374-6808-475b-a92f-95a8b4a07755",
+      "id": "4b85fd74-ae5c-4cfb-9fff-c2b1626a9a26",
       "name": "李道玄（手部）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/46944de0-9c46-4e1d-9f76-d7e00c6d550d.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手部）",
       "tags": [],
       "prompt": "giant human hand, palm and fingers, casting huge shadow, realistic skin texture, hovering over miniature village, god-like perspective, megalophobia, dramatic scale contrast",
       "description": "A giant human hand entering the miniature world, casting a massive shadow. It represents a divine intervention or a force of nature.",
       "status": "idle"
     },
     {
-      "id": "b275410e-ff72-4c6f-add1-8da32c26a686",
+      "id": "91ce3dce-bc67-4df4-be6e-dc4b03c5ff0c",
       "name": "村民",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/7cc1de01-5ea0-4025-926d-bd90f734170d.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=村民",
       "tags": [],
       "prompt": "tiny ancient Chinese peasants, running, fleeing, panic, tattered clothes, miniature figures, blurred background, swarm, helpless, macro photography",
       "description": "Tiny, insignificant figures in the miniature world, fleeing in panic. They are dressed in ancient peasant rags.",
       "status": "idle"
     },
     {
-      "id": "ff61b9ff-9619-42a1-a8b0-b3a033adb907",
+      "id": "cac91bf8-f3ee-4842-bc56-08e1a4654140",
       "name": "母亲",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d85e20aa-709d-409d-a70d-ae233221c9c4.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=母亲",
       "tags": [],
       "prompt": "ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting",
       "description": "A tragic figure in the miniature village, an ancient peasant woman who has been stabbed and is falling, reaching out to her child.",
       "status": "idle"
     },
     {
-      "id": "7480a98a-2b36-42ba-98e3-0fc995395646",
+      "id": "354dbed3-de24-4794-9db3-fbb901df5b7f",
       "name": "高一叶",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/4828a8ad-f757-4bbe-9414-a7408ca86eda.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶",
       "tags": [],
       "prompt": "young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography",
       "description": "A young peasant girl in the miniature world. She has a muddy face, messy hair, and wears rags. She transitions from numbness to extreme terror and despair.",
       "status": "idle"
     },
     {
-      "id": "656106ad-7b37-41a7-b8ff-fe6c0923b4ed",
+      "id": "78f9a7f2-bbbd-42b3-ad04-e24d3445862f",
       "name": "高一叶（模糊）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/33bb1ceb-6703-4c26-8e8b-ab681cf6ffd4.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶（模糊）",
       "tags": [],
       "prompt": "young Chinese peasant girl, blurry, out of focus, bokeh effect, seen through magnifying glass, optical distortion, heavy vignette, vague silhouette",
       "description": "The girl seen through a magnifying glass or out of focus, representing the optical process of finding a target.",
       "status": "idle"
     },
     {
-      "id": "79d27115-06c2-48fd-a469-c68bf3a7cccf",
+      "id": "f2c2cb1a-d345-42d2-a7bd-3b974abcc2a5",
       "name": "微缩村民",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/62a9cdba-d82c-4563-9028-fc94817dc664.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民",
       "tags": [],
       "prompt": "miniature people, ancient Chinese peasant clothes, running in panic, swarm of ants, macro photography, tilt-shift effect, high angle view, chaotic formation",
       "description": "Tiny inhabitants of the box world, dressed in ancient peasant clothing, reacting with panic and chaos like a disturbed ant colony.",
       "status": "idle"
     },
     {
-      "id": "79c53a95-68fa-40ca-b7c7-7b1d80151483",
+      "id": "be75d607-4d64-4aa1-9d3d-9e2a0feb6d32",
       "name": "无（主观视角）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/102d1467-b93e-4378-a42a-3e132ad53a88.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（主观视角）",
       "tags": [],
       "prompt": "POV shot, optical distortion, chromatic aberration, heavy vignette, blurred edges, macro texture of yellow earth, out of focus, magnifying glass effect",
       "description": "A point-of-view perspective looking through a magnifying lens, characterized by optical imperfections and focus transitions.",
       "status": "idle"
     },
     {
-      "id": "273fb1e7-cfb5-4ef8-8c0a-da3f23260748",
+      "id": "a45a5a3a-f924-4b12-8454-5a88b3ec8ded",
       "name": "李道玄的手",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/5a8af29d-4121-422c-bb18-90baa5d8b801.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄的手",
       "tags": [],
       "prompt": "giant human hand, extreme close-up, visible fingerprints, skin pores, dirty fingernails, oily skin texture, dramatic lighting, interacting with miniature objects, massive scale contrast",
       "description": "A massive, realistic human hand entering the miniature world, showing detailed skin texture, fingerprints, and dirt/oil, acting as a god-like force.",
       "status": "idle"
     },
     {
-      "id": "c3f23bce-0b4c-4e36-8d6f-ab43a3fb609e",
+      "id": "de207293-7907-4334-8246-8f6bb975ca9b",
       "name": "李道玄（局部）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/2a95d395-23f7-4271-9232-576fc0e33841.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（局部）",
       "tags": [],
       "prompt": "giant finger hovering in sky, massive fingerprint ridges, blurred giant face in background, atmospheric perspective, looking down from clouds, god-like scale",
       "description": "Parts of Li Daoxuan seen from the perspective of the miniature world, appearing as colossal, god-like features in the sky.",
       "status": "idle"
     },
     {
-      "id": "c910662f-dc75-4db9-8104-b1fb9ce635ee",
+      "id": "228be350-21f8-4822-8c4d-027baaaba199",
       "name": "流寇",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3bf4f9ee-9806-46a4-b803-4c9e62612b63.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=流寇",
       "tags": [],
       "prompt": "miniature bandit, savage face, beard, cruel smile, holding steel sword, tattered leather armor, riding thin horse, dynamic pose, motion blur, menacing atmosphere",
       "description": "Violent bandits riding thin horses or sprinting, wearing tattered armor, wielding steel knives, with savage and cruel expressions.",
       "status": "idle"
     },
     {
-      "id": "0b0fef67-b8f4-49ef-8d1e-009d93b1a622",
+      "id": "7bbbc502-034c-4433-80ab-66683266a1a5",
       "name": "山贼（尸体）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/be641434-a942-4126-8051-6bbd0ba275d5.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼（尸体）",
       "tags": [],
       "prompt": "Flattened body against glass surface, gore, blood splatter, crushed armor, abstract flesh texture, gruesome, high contrast, slide mark of blood, realistic texture, cinematic horror",
       "description": "The aftermath of the bandit being flicked by the giant finger. A flattened, unrecognizable mass of flesh and blood smashed against the glass wall of the box.",
       "status": "idle"
     },
     {
-      "id": "f97a980d-799c-444b-a336-cd111704b019",
+      "id": "dd4ae95a-a04f-4ee5-9525-fab80c1d42f5",
       "name": "微缩村民（群演）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/c7f1aaa2-4746-4713-97bd-85694e8faefc.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民（群演）",
       "tags": [],
       "prompt": "Crowd of tiny ancient Chinese peasants, ragged clothes, panic, running, chaotic formation, top-down view, ant-like scale, dust clouds, motion blur, depth of field, cinematic disaster scene",
       "description": "The tiny inhabitants of the box world. They look like ants from a distance, dressed in rags, running in panic and chaos.",
       "status": "idle"
     },
     {
-      "id": "828b0135-5004-4eb0-826c-98bbafe4a09e",
+      "id": "99d9b8df-78aa-4e5a-b6ed-a394fd9bc6ec",
       "name": "李道玄（手）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/16b5935d-1f7d-4afc-ad59-3de6fb476c7f.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手）",
       "tags": [],
       "prompt": "Giant human hand, massive scale, hyper-realistic skin texture, fingerprints visible as grooves, jade-like fingernail, muscular tension, descending from sky, god-like perspective, megalophobia, dramatic lighting",
       "description": "Li Daoxuan's hand appearing as a colossal, god-like structure within the miniature world. Features realistic skin texture, fingerprints like valleys, and immense power.",
       "status": "idle"
     },
     {
-      "id": "725eeebb-7e94-4e0c-bdd4-e5943561a5da",
+      "id": "26482e9c-6bc1-4032-be17-f11b97f11ee0",
       "name": "高一叶母亲",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/1dfecaf1-d3c2-449c-ad94-327eecc7f4e2.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶母亲",
       "tags": [],
       "prompt": "Ancient Chinese peasant woman, frail body, thin, ragged clothes, protective posture, back view, bloodstains, dramatic composition, tragic atmosphere, photorealistic",
       "description": "A frail miniature woman who sacrifices herself to protect Gao Yiye. She is thin, wears rags, and is depicted in a protective stance or dying.",
       "status": "idle"
     },
     {
-      "id": "ca2fa311-2f65-466b-b0cb-b3947cbb8282",
+      "id": "72a6c4a5-e9dc-473b-8270-82b517573e00",
       "name": "无（环境）",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/c717de14-85c4-4a29-8732-7c39d5913e9d.png",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（环境）",
       "tags": [],
       "prompt": "no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot",
       "description": "No specific character focus; emphasis on the environment, atmosphere, or POV shots.",
       "status": "idle"
     },
     {
-      "id": "char_1770031867917_8y7m6wpei",
-      "name": "新角色",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/da9bba02-af55-42c7-9057-c0892ec959c9.png",
+      "id": "e6e2665c-61d4-42ed-aa0a-345ee9a962b2",
+      "name": "无（屏幕画面）",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（屏幕画面）",
       "tags": [],
-      "prompt": "231",
-      "description": "",
+      "prompt": "computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels",
+      "description": "The digital content displayed on a computer monitor, showing a barrage of negative social media notifications and a formal termination email.",
       "status": "idle"
     },
     {
-      "id": "char_1770031974784_zwtonzesa",
-      "name": "小明",
-      "avatar_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/23ed48e2-ec06-4611-b406-916911f6e1e2_屏幕截图 2026-01-26 002002.png",
+      "id": "c4dfbd5b-a857-4f27-ab1a-b4bc73fdafe1",
+      "name": "李道玄（倒影）",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（倒影）",
       "tags": [],
-      "prompt": "校园风格",
-      "description": "",
+      "prompt": "reflection on black glass screen, distorted face, ghostly silhouette, hollow eyes, dark tones, low key lighting, mysterious atmosphere, digital screen texture",
+      "description": "The distorted and ghostly reflection of Li Daoxuan's face seen on a dark computer monitor screen.",
+      "status": "idle"
+    },
+    {
+      "id": "73badc71-c53f-41b7-a4d6-734bb19bb683",
+      "name": "李道玄（的手）",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（的手）",
+      "tags": [],
+      "prompt": "male hand close-up, palm lines visible, dark red dried blood stains, trembling fingers, holding a magnifying glass, realistic skin texture, tension in tendons, rubbing thumb against palm",
+      "description": "Li Daoxuan's hands, specifically showing palm prints with dark red bloodstains or holding a magnifying glass.",
       "status": "idle"
     }
   ],
   "scenes": [
     {
-      "id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
+      "id": "cb97d1ba-5e70-4a44-9731-5bf01a595c7b",
       "name": "微缩荒村",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/bb3e61df-4beb-43fc-85d0-470aee891627.png",
+      "image_url": "",
       "tags": [],
       "prompt": "miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect",
       "description": "A miniature diorama of a desolate ancient Chinese village. Features yellow earth, dry cracked ground, thatched huts, broken walls, and smoke.",
       "status": "idle"
     },
     {
-      "id": "9fd6fb92-35d4-4f65-8d53-4cf77257e032",
+      "id": "ffa3fb64-b399-4731-abba-053ce402ff4b",
       "name": "微缩荒村上空",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/98da98df-8a91-41cc-b36d-d92c91326252.png",
+      "image_url": "",
       "tags": [],
       "prompt": "aerial view of miniature village, top-down perspective, yellow earth terrain, tiny houses, dramatic shadows, bright white light beam from above, divine light, wide angle",
       "description": "The view from above the miniature village, looking up at the 'sky' (the opening of the box) or looking down from a god's eye view.",
       "status": "idle"
     },
     {
-      "id": "b9d8145f-362d-44ab-868a-d502c7d6f547",
+      "id": "b25d2444-a227-4bd2-bb1c-dcb037e21ac7",
       "name": "微缩荒村边缘",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e1b11e6d-5f56-4c18-bb5b-e0e1cde59817.png",
+      "image_url": "",
       "tags": [],
       "prompt": "edge of diorama, glass wall boundary, pile of gravel, miniature terrain meeting glass, debris, reflection on glass, cross-section of soil",
       "description": "The boundary of the miniature world where the terrain meets the glass wall of the box. Contains debris and gravel.",
       "status": "idle"
     },
     {
-      "id": "0f7efa87-a413-49d8-9abe-76b7446b5246",
+      "id": "660617e2-f7d4-4b10-9fd7-09e82605165d",
       "name": "昏暗杂乱的现代卧室",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/41e47540-4f9f-47f5-8777-e404ec717c15.png",
+      "image_url": "",
       "tags": [],
       "prompt": "modern bedroom, dim lighting, cluttered desk, computer monitor with blue light, takeaway boxes, messy, claustrophobic atmosphere, cinematic lighting, cyberpunk vibes, cold color temperature, realistic interior",
       "description": "A messy, dimly lit modern room. Filled with takeaway boxes, a computer monitor emitting cold blue light, and a general sense of depression/isolation.",
       "status": "idle"
     },
     {
-      "id": "1f011cba-7ff4-4b3e-8ac6-77ff90ee10e7",
+      "id": "2ef947ae-71b8-4da1-bd3f-6287ff248dd0",
       "name": "半空中",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/10bb82e6-2f79-4994-876b-ce9c3c633eac.png",
+      "image_url": "",
       "tags": [],
       "prompt": "mid-air freeze frame, motion blur, tumbling body, dust trail, suspended in air, cinematic action shot, depth of field",
       "description": "The airspace within the box where the bandit is flung, showing motion and height relative to the miniature ground.",
       "status": "idle"
     },
     {
-      "id": "10ce9c95-71cf-4828-9cac-ecf210957823",
+      "id": "ad815cfe-ed2c-4f5c-8e5d-422327a05973",
       "name": "昏暗杂乱的出租屋",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/b2274e3d-febe-40f1-a7f8-d109d23e2f4a.png",
+      "image_url": "",
       "tags": [],
       "prompt": "dimly lit room, messy apartment, clutter, trash, cardboard boxes, e-sports chair, computer monitor, cold blue ambient light, contrast with warm yellow light from box, cinematic atmosphere, realistic",
       "description": "A dark, messy room filled with clutter, cardboard boxes, and an e-sports chair, lit by the cold blue light of a monitor and warm light from the box.",
       "status": "idle"
     },
     {
-      "id": "0a55b0b5-c192-46cd-9a95-e30fbc5ae68f",
+      "id": "f505e00a-b020-499a-ac64-7bfc85328adc",
       "name": "玻璃箱壁",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0e543739-32b4-4a07-9f01-a9853bc18eb2.png",
+      "image_url": "",
       "tags": [],
       "prompt": "transparent glass surface, spiderweb cracks, blood mist splatter, impact point, reflection, macro detail, texture of glass",
       "description": "The transparent boundary of the miniature world, which cracks upon impact.",
       "status": "idle"
     },
     {
-      "id": "ca231989-c567-4dc2-9b22-bb63edcfc79d",
+      "id": "7a3412ef-f58e-4369-9bd3-2015df08d18a",
       "name": "箱内微缩世界",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/eea56e66-9ea1-4920-b5f4-aa3e11cf3ed8.png",
+      "image_url": "",
       "tags": [],
       "prompt": "miniature diorama, yellow loess soil, cracked earth, withered miniature tree, tiny fences, ancient village ruins, macro photography, tilt-shift, shallow depth of field, warm lighting, realistic texture",
       "description": "A miniature landscape inside a cardboard box featuring yellow loess soil, dry earth, withered trees, and tiny ancient structures, lit by external light.",
       "status": "idle"
     },
     {
-      "id": "1a287b3d-78da-4e68-ad17-aac0c98f2526",
+      "id": "cf206337-7dea-44be-beeb-d7acb972b36c",
       "name": "昏暗杂乱的现代公寓房间",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/dba1523f-ac96-49f0-a65d-6b138bcd6308.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Messy modern apartment room, dimly lit, computer screen blue light, cluttered desk, cardboard boxes, atmospheric dust, cinematic lighting, low key, realistic interior",
       "description": "Li Daoxuan's living space. Dark, cluttered, illuminated by the cold blue light of a computer screen and the warm glow from the box.",
       "status": "idle"
     },
     {
-      "id": "05af4aca-bf6a-47c7-8c10-2db7f6657a76",
+      "id": "d1527f41-73a9-4595-861c-17f41ddd496c",
       "name": "现代公寓",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ede40d4d-a75a-4104-b744-cced03c6e8dc.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field",
       "description": "The broader setting of the protagonist's reality. Cold tones contrasting with the warm light of the miniature world.",
       "status": "idle"
     },
     {
-      "id": "46dfc9de-b8e2-4ba3-a69e-f52501e0e488",
+      "id": "7237dd83-910f-413e-b5d2-83e1f6b2f866",
       "name": "现代公寓 / 微缩世界边界",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/c479f24f-8fbc-4e8c-b2ee-155c11a90f61.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Giant magnifying glass lens, optical distortion, glass reflection, split screen effect, blue light vs warm yellow light, macro detail of glass edge, boundary concept",
       "description": "The interface between reality and the box. Features optical glass, reflections, and the contrast between the giant room and the tiny world.",
       "status": "idle"
     },
     {
-      "id": "03850df9-ecb9-4fd4-ac1c-8b7ccf3b9754",
+      "id": "1cecd516-1bcc-4859-a4ae-56ed34a4cde4",
       "name": "箱内世界",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/5d8165ca-ded2-4608-b064-ae0a6eaec475.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Miniature diorama, ancient Chinese setting, warm yellow lighting, atmospheric dust, high detail, tilt-shift photography, photorealistic",
       "description": "The miniature world inside the landscaping box. It resembles the Ming Dynasty, filled with warm yellow light and dust.",
       "status": "idle"
     },
     {
-      "id": "774460df-3dbb-4641-ad5d-dad5c270511b",
+      "id": "b306d752-c97c-4bcc-acc3-61cbdf408e34",
       "name": "箱内世界边缘",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ff412a00-8df6-4572-ae65-b167f1af0f2d.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Glass wall barrier, transparent texture, reflection, blood smear on glass, limit of the world, macro perspective, high contrast",
       "description": "The glass wall of the landscaping box viewed from the inside or outside. The limit of the miniature universe.",
       "status": "idle"
     },
     {
-      "id": "b46a4a8d-a31c-4790-bf12-8250ed05155c",
+      "id": "3274c940-e0de-45e1-8f42-4f12cec71b67",
       "name": "箱内世界（天空/箱顶）",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/87c66c10-26a6-444e-9b49-6c73247a3ef1.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Artificial sky, cotton wool clouds, dramatic lighting, turbulent clouds, giant shadow casting over, surreal atmosphere, low angle view",
       "description": "The 'sky' of the miniature world, made of cotton clouds, which can be breached by the outside world (the giant hand).",
       "status": "idle"
     },
     {
-      "id": "cdd4adb0-350c-4a0b-a924-eb564392833c",
+      "id": "f82b8a56-c4c7-4e68-a50b-e5433535b444",
       "name": "箱内世界（天空）",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e134689c-8234-4591-83eb-17c30850fca3.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Miniature sky, bright yellow turning to dark shadow, atmospheric perspective, clouds, sense of impending doom, cinematic sky",
       "description": "The upper atmosphere of the box, shifting from bright to ominous as the giant hand descends.",
       "status": "idle"
     },
     {
-      "id": "13a83ffe-ce04-490a-9465-9dac477ab744",
+      "id": "d6c6c262-e3c0-4f11-afd0-afe4fd5e93be",
       "name": "箱内世界（微缩荒村）",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/0f7308f5-b375-423e-8ae7-f8539af039a8.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Miniature desolate village, cracked dry earth, yellow dust, withered plants, famine setting, macro photography, high detail, texture focus, warm arid lighting",
       "description": "A drought-stricken, desolate village setting inside the box. Cracked earth and signs of famine.",
       "status": "idle"
     },
     {
-      "id": "14e24c62-fc08-4f44-9ec8-38384466c8d6",
+      "id": "514d4441-08b6-42b4-a38e-efbb791906c0",
       "name": "箱内世界（村口）",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/1936220e-642c-44b0-9f1f-66ed3289aadb.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Village entrance, dirt road, rising dust clouds, dry grass, low angle ground view, anticipation of danger, ancient architecture ruins, macro scale",
       "description": "The entrance to the miniature village. Dusty, open, used as the staging ground for the bandit's charge.",
       "status": "idle"
     },
     {
-      "id": "a296ac5b-15af-46b9-b9b8-6ff741f02cb0",
+      "id": "a3c8c9f5-d92e-4752-84da-cd94935c65d1",
       "name": "箱内世界（村庄）",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/83b8f5ff-f7fb-414c-8991-0b8dacb24811.png",
+      "image_url": "",
       "tags": [],
       "prompt": "Ancient Chinese village huts, dilapidated structures, dusty ground, chaotic scene, aerial view or eye-level macro, warm tones, dramatic shadows",
       "description": "The center of the miniature village where the chaos takes place. Dilapidated huts and dusty ground.",
       "status": "idle"
     },
     {
-      "id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
+      "id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "name": "微缩村庄",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/74633edb-77ac-4862-b11d-1b16b10e99b8.png",
+      "image_url": "",
       "tags": [],
       "prompt": "miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting",
       "description": "A tiny, dilapidated ancient village made of yellow earth and thatch. It is chaotic, filled with dust and panic during the raid.",
       "status": "idle"
     },
     {
-      "id": "47d10cb1-beaf-426a-ba6e-cc1c029f9af3",
+      "id": "c6c8c36b-bce6-4c6f-b748-e385d488d69c",
       "name": "微缩村庄入口",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/dee26883-d941-4868-88b2-35201e2756ad.png",
+      "image_url": "",
       "tags": [],
       "prompt": "village entrance, yellow dust clouds, heavy atmosphere, blurred background, macro perspective, dynamic motion, war torn",
       "description": "The entrance to the village, filled with rolling yellow dust as the bandit charges through.",
       "status": "idle"
     },
     {
-      "id": "dcb32dff-bba8-4a03-8f17-77fddd25e2b6",
+      "id": "6c17afe1-d279-4412-80a2-b27efeb7cbf7",
       "name": "昏暗的现代公寓",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ba110427-107e-48b8-8914-093c01f1c657_三视图2.jpg",
+      "image_url": "",
       "tags": [],
       "prompt": "dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting",
       "description": "A dark, messy modern room. Cluttered background, illuminated by cold blue computer screen light and shadows.",
       "status": "idle"
     },
     {
-      "id": "79db4d28-3e96-4518-a44d-40dcfdcc280f",
+      "id": "3674b0c5-3c57-4a04-a6d8-4d19e5317de1",
       "name": "现代公寓 / 箱口",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d599dd49-edcd-4995-8861-1ce272144201.png",
+      "image_url": "",
       "tags": [],
       "prompt": "edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field",
       "description": "The boundary between the real world and the box. Shows the cardboard edge and the contrast between the dark room and the warm light inside.",
       "status": "idle"
     },
     {
-      "id": "d308b83c-8822-4823-a459-2a1ae86e0b5f",
+      "id": "f86232a5-4221-41d0-9720-157c564ee6a0",
       "name": "箱内天空",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e00b7543-927e-4fb1-a51f-4c84a860f027.png",
+      "image_url": "",
       "tags": [],
       "prompt": "simulated sky, painted clouds, giant hand breaking through, dramatic shadows, surreal, low angle shot, looking up",
       "description": "The ceiling of the box, painted to look like a sky or covered in clouds, broken by the intrusion of the giant hand.",
       "status": "idle"
     },
     {
-      "id": "de134baf-f0ca-48b7-ad6e-749e5e9f8d32",
+      "id": "c001b259-edcb-4bb0-aab4-2c94fd8ae3fe",
       "name": "箱内微缩荒原",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3f9c59f9-5149-4064-a64d-e0e62f4d6f9c.png",
+      "image_url": "",
       "tags": [],
       "prompt": "barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones",
       "description": "A barren, desolate landscape inside the box with dry yellow soil and withered vegetation.",
       "status": "idle"
     },
     {
-      "id": "7546b95d-81b2-4824-beaa-89a569ef1904",
+      "id": "747cddb6-da23-41c7-a8b8-f7f1e7c0999d",
       "name": "箱内空间",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/a550845a-a9da-4401-9ab4-1c521dcfeb4b.png",
+      "image_url": "",
       "tags": [],
       "prompt": "empty air inside box, motion blur background, depth of field, mid-air, cinematic action shot",
       "description": "The air space within the box, used for shots of characters flying through the air.",
       "status": "idle"
     },
     {
-      "id": "f07b45e9-cd57-43d0-8441-164b0749ca7b",
+      "id": "fe48bf4c-1db9-4e1b-b3e8-483fe79650ab",
       "name": "箱壁边缘",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/b8c8f2d6-9cc5-4909-807b-0fce666674d5.png",
+      "image_url": "",
       "tags": [],
       "prompt": "glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere",
       "description": "The glass or cardboard wall of the vivarium. Features sand at the bottom and a blood smear from the impact.",
       "status": "idle"
+    },
+    {
+      "id": "6a2c4adf-2775-4ddd-b913-c20f64ee7081",
+      "name": "现代房间",
+      "image_url": "",
+      "tags": [],
+      "prompt": "modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle",
+      "description": "A modern, dimly lit room with a cold color temperature. It contains a desk, computer, and landscape box, characterized by shadows and blue screen light.",
+      "status": "idle"
+    },
+    {
+      "id": "04489ca7-3e5b-4764-a245-d8edf03915ea",
+      "name": "现代房间书桌前",
+      "image_url": "",
+      "tags": [],
+      "prompt": "cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field",
+      "description": "The area immediately in front of a cluttered desk in a modern room, serving as the setting for the character's realization of the blood.",
+      "status": "idle"
+    },
+    {
+      "id": "777cc063-64cc-4607-b237-d7a07fc1945a",
+      "name": "现代房间电脑椅",
+      "image_url": "",
+      "tags": [],
+      "prompt": "ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication",
+      "description": "An ergonomic office chair in the modern room, where the character collapses in exhaustion.",
+      "status": "idle"
+    },
+    {
+      "id": "ebf35594-03d0-4eeb-8420-7b5273c3f8ec",
+      "name": "电脑屏幕",
+      "image_url": "",
+      "tags": [],
+      "prompt": "LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen",
+      "description": "A computer monitor display showing interface elements like notifications, emails, and social media, or a dark screen reflecting the user.",
+      "status": "idle"
+    },
+    {
+      "id": "ff4dfe02-0028-482a-833f-622d6db6d6c8",
+      "name": "箱内黄土荒野",
+      "image_url": "",
+      "tags": [],
+      "prompt": "miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion",
+      "description": "A miniature landscape inside a glass box depicting a desolate wilderness with yellow earth, illuminated by warm light.",
+      "status": "idle"
+    },
+    {
+      "id": "e210d6c5-e661-498b-b3fe-4f90397f62cd",
+      "name": "造景箱玻璃壁外",
+      "image_url": "",
+      "tags": [],
+      "prompt": "glass surface close-up, reflection of blue room, warm light glowing from within, magnifying glass lens pressed against glass, contrast between cold and warm tones, transparent texture",
+      "description": "The exterior glass surface of the landscape box, acting as a barrier between the cold room and the warm miniature world inside.",
+      "status": "idle"
     }
   ],
-  "default_scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
+  "default_scene_id": null,
   "default_panel_layout": "1-panel",
   "default_image_count": 1
 }

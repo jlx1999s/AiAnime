@@ -72,6 +72,7 @@ const ProjectEditor = () => {
     const importFileInputRef = React.useRef(null);
     const importShotsMdFileInputRef = React.useRef(null);
     const importCharsFileInputRef = React.useRef(null);
+    const importScenesFileInputRef = React.useRef(null);
     const importVoiceoverMdFileInputRef = React.useRef(null);
 
     const loadProjects = async () => {
@@ -367,7 +368,7 @@ const ProjectEditor = () => {
                 await handleRefreshShots();
                 alert(`自动导入成功：更新 ${res.updated} 条配音`);
             } else {
-                alert("未找到匹配的配音文件");
+                alert("未检测到新的配音内容");
             }
         } catch (e) {
             alert(e.message || "自动检索导入失败");
@@ -972,6 +973,25 @@ const ProjectEditor = () => {
         e.target.value = null;
     };
 
+    const handleImportScenesFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        try {
+            const res = await ApiService.importScenesFromMd(projectId, file);
+            if (res.scenes && res.scenes.length > 0) {
+                setScenes(prev => [...prev, ...res.scenes]);
+                alert(`成功导入 ${res.scenes.length} 个场景`);
+            } else {
+                alert("未找到可导入的场景数据");
+            }
+        } catch (e) {
+            console.error("Import scenes failed", e);
+            alert("导入失败");
+        }
+        e.target.value = null;
+    };
+
     const handleImportVoiceoverFileChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -1347,6 +1367,7 @@ const ProjectEditor = () => {
                     defaultSceneId={defaultSceneId}
                     onSetDefaultScene={handleSetDefaultScene}
                     onImportCharacters={() => importCharsFileInputRef.current?.click()}
+                    onImportScenes={() => importScenesFileInputRef.current?.click()}
                     onAutoImportCharacters={handleAutoImportCharacters}
                     onAutoImportScenes={handleAutoImportScenes}
                 />
@@ -1401,6 +1422,13 @@ const ProjectEditor = () => {
                 className="hidden"
                 accept=".md"
                 onChange={handleImportCharactersFileChange}
+            />
+            <input
+                type="file"
+                ref={importScenesFileInputRef}
+                className="hidden"
+                accept=".md"
+                onChange={handleImportScenesFileChange}
             />
             <input
                 type="file"

@@ -467,6 +467,49 @@ description: Sequence Board 四宫格提示词模板。用于展开九宫格中�
 重点：[视觉强调点]
 """
 
+def normalize_sequence_counts(grid_count: Optional[int], panels_per_grid: Optional[int]) -> tuple[int, int]:
+    grid = int(grid_count) if grid_count is not None else 9
+    panels = int(panels_per_grid) if panels_per_grid is not None else 4
+    grid = max(1, min(9, grid))
+    panels = max(2, min(6, panels))
+    return grid, panels
+
+def build_sequence_board_template(grid_count: int, panels_per_grid: int) -> str:
+    grid_count, panels_per_grid = normalize_sequence_counts(grid_count, panels_per_grid)
+    if grid_count == 9 and panels_per_grid == 4:
+        return SEQUENCE_BOARD_TEMPLATE
+    lines = []
+    lines.append("---")
+    lines.append("name: sequence-board-template")
+    lines.append(f"description: Sequence Board 提示词模板。用于展开九宫格中的每一格，每格生成{panels_per_grid}张连续动作/情绪的关键帧。使用九宫格对应格作为垫图输入，提示词只需描述动作/情绪/镜头变化。")
+    lines.append("---")
+    lines.append("")
+    lines.append("# Sequence Board 提示词")
+    for g in range(1, grid_count + 1):
+        lines.append("")
+        lines.append("---")
+        lines.append("")
+        lines.append(f"## 格{g}展开——【[九宫格格{g}标题]】")
+        lines.append("")
+        if panels_per_grid == 4:
+            lines.append("请基于参考图片，生成一张 2x2 四宫格布局的电影分镜关键帧图像。保持参考图片中的角色外观、场景风格、光影完全一致。4格展开一段连续的动作/情绪序列。")
+        else:
+            lines.append(f"请基于参考图片，生成一组连续关键帧，共{panels_per_grid}张。保持参考图片中的角色外观、场景风格、光影完全一致。")
+        lines.append("")
+        labels = ["左上", "右上", "左下", "右下"]
+        for i in range(1, panels_per_grid + 1):
+            if panels_per_grid == 4:
+                label = labels[i - 1]
+                lines.append(f"{i}（{label}）——【[标题]】")
+            else:
+                lines.append(f"{i}（第{i}格）——【[标题]】")
+            lines.append("出场人物：[人物列表]")
+            lines.append("场景：[场景名称]")
+            lines.append("视角：[景别、机位变化、角色动作、情绪状态]")
+            lines.append("重点：[视觉强调点]")
+            lines.append("")
+    return "\n".join(lines).strip() + "\n"
+
 MOTION_PROMPT_TEMPLATE = """---
 name: motion-prompt-template
 description: Motion Prompt 动态提示词模板。每组 5 个（1 关键帧 + 4 四宫格），共 9 组 45 个。
@@ -1486,6 +1529,49 @@ def parse_sequence_content(content: str) -> List[Dict]:
         
     return items
 
+def build_motion_prompt_template(sequence_content: str) -> str:
+    items = parse_sequence_content(sequence_content)
+    if not items:
+        return MOTION_PROMPT_TEMPLATE
+    grid_map = {}
+    for item in items:
+        grid = item.get("grid")
+        panel = item.get("panel")
+        try:
+            grid_i = int(grid)
+            panel_i = int(panel)
+        except Exception:
+            continue
+        grid_map.setdefault(grid_i, set()).add(panel_i)
+    if not grid_map:
+        return MOTION_PROMPT_TEMPLATE
+    lines = []
+    lines.append("---")
+    lines.append("name: motion-prompt-template")
+    lines.append("description: Motion Prompt 动态提示词模板。基于 Sequence Board 生成。")
+    lines.append("---")
+    lines.append("")
+    lines.append("# Motion Prompt 模板")
+    lines.append("")
+    lines.append("[任务指令]")
+    lines.append("    读取 sequence-board-prompt.md，为每个 Beat Anchor 生成一组动态提示词：")
+    lines.append("    - 1 个关键帧动态提示词（对应九宫格该格）")
+    lines.append("    - 展开分镜对应的动态提示词")
+    lines.append("")
+    for grid in sorted(grid_map.keys()):
+        lines.append("---")
+        lines.append("")
+        lines.append(f"## 格{grid}：[节拍名称]")
+        lines.append("")
+        lines.append("### 关键帧")
+        lines.append(f"{grid}-0: [Motion Prompt]")
+        lines.append("")
+        lines.append("### 展开")
+        for panel in sorted(grid_map[grid]):
+            lines.append(f"{grid}-{panel}: [Motion Prompt]")
+        lines.append("")
+    return "\n".join(lines).strip() + "\n"
+
 def extract_voiceover_lines(content: str) -> str:
     lines = content.strip().splitlines()
     table_lines = [line for line in lines if line.strip().startswith("|")]
@@ -2046,6 +2132,11 @@ def cmd_sequence(args):
     project_dir, script_dir, output_dir = get_dirs(args)
     script_file = getattr(args, 'script_file', None)
     files = get_file_paths(output_dir, script_file=script_file)
+    grid_count, panels_per_grid = normalize_sequence_counts(
+        getattr(args, "sequence_grids", None),
+        getattr(args, "sequence_panels", None)
+    )
+    sequence_template = build_sequence_board_template(grid_count, panels_per_grid)
     
     beat_board_content = read_output_file(files['beat_board'])
     if not beat_board_content and not script_file:
@@ -2068,10 +2159,11 @@ __IMAGE_PROMPT_GUIDE__
 __TEMPLATE__
 
 Instructions:
-1. For each of the 9 Beat Board panels, expand it into a 4-panel sequence (Sequence Board).
+1. For the first {grid_count} Beat Board panels, expand each into a {panels_per_grid}-panel sequence (Sequence Board).
 2. Maintain visual consistency with the source panel.
-3. Describe the action/motion progression within the 4 panels.
+3. Describe the action/motion progression within the {panels_per_grid} panels.
 4. Output the filled Markdown content FIRST.
+5. Only output panels for 格1-格{grid_count}.
 
 [Extra Requirement]
 AFTER the Markdown content, output a JSON block containing the characters and scenes used in the storyboard.
@@ -2087,10 +2179,12 @@ Format:
 }
 ```
 """
-        prompt = prompt_template.replace("__INPUT_CONTENT__", beat_board_content) \
+        prompt = prompt_template.replace("{grid_count}", str(grid_count)) \
+                                .replace("{panels_per_grid}", str(panels_per_grid)) \
+                                .replace("__INPUT_CONTENT__", beat_board_content) \
                                 .replace("__METHODOLOGY__", STORYBOARD_PLAYBOOK) \
                                 .replace("__IMAGE_PROMPT_GUIDE__", GEMINI_IMAGE_PROMPT_GUIDE) \
-                                .replace("__TEMPLATE__", SEQUENCE_BOARD_TEMPLATE)
+                                .replace("__TEMPLATE__", sequence_template)
     elif script_file:
         script_content = get_script_content(script_dir, script_file=script_file)
         if not script_content:
@@ -2111,10 +2205,11 @@ __IMAGE_PROMPT_GUIDE__
 __TEMPLATE__
 
 Instructions:
-1. Identify 9 anchor beats and for each, expand it into a 4-panel sequence (Sequence Board).
+1. Identify {grid_count} anchor beats and for each, expand it into a {panels_per_grid}-panel sequence (Sequence Board).
 2. Ensure visual consistency across sequences as if sourced from unified Beat Board.
-3. Describe the action/motion progression within the 4 panels.
+3. Describe the action/motion progression within the {panels_per_grid} panels.
 4. Output the filled Markdown content FIRST.
+5. Only output panels for 格1-格{grid_count}.
 
 [Extra Requirement]
 AFTER the Markdown content, output a JSON block containing the characters and scenes used in the storyboard.
@@ -2130,10 +2225,12 @@ Format:
 }
 ```
 """
-        prompt = prompt_template.replace("__INPUT_CONTENT__", script_content) \
+        prompt = prompt_template.replace("{grid_count}", str(grid_count)) \
+                                .replace("{panels_per_grid}", str(panels_per_grid)) \
+                                .replace("__INPUT_CONTENT__", script_content) \
                                 .replace("__METHODOLOGY__", STORYBOARD_PLAYBOOK) \
                                 .replace("__IMAGE_PROMPT_GUIDE__", GEMINI_IMAGE_PROMPT_GUIDE) \
-                                .replace("__TEMPLATE__", SEQUENCE_BOARD_TEMPLATE)
+                                .replace("__TEMPLATE__", sequence_template)
     else:
         return
     
@@ -2182,6 +2279,7 @@ def cmd_motion(args):
         return
 
     if sequence_content:
+        motion_template = build_motion_prompt_template(sequence_content)
         prompt_template = """
 Task: Generate Motion Prompts based on the Sequence Board.
 
@@ -2202,7 +2300,7 @@ Instructions:
 """
         prompt = prompt_template.replace("__INPUT_CONTENT__", sequence_content) \
                                 .replace("__METHODOLOGY__", MOTION_METHODOLOGY) \
-                                .replace("__TEMPLATE__", MOTION_PROMPT_TEMPLATE)
+                                .replace("__TEMPLATE__", motion_template)
     elif script_file:
         script_content = get_script_content(script_dir, script_file=script_file)
         if not script_content:
@@ -2519,7 +2617,7 @@ def cmd_auto(args):
 
     # 5. Voiceover Table
     print("\n[5/5] Generating Voiceover Table...")
-    cmd_dubbing(args)
+    cmd_voiceover(args)
     
     print("\nAll steps completed successfully!")
 
@@ -2531,6 +2629,8 @@ def main():
     parent_parser.add_argument("--model", help="Model Name (overrides env MODEL_NAME)", default=argparse.SUPPRESS)
     parent_parser.add_argument("--api-style", choices=["openai", "anthropic"], help="API Style (overrides env API_STYLE)", default=argparse.SUPPRESS)
     parent_parser.add_argument("--project-dir", help="Project Directory", default=None)
+    parent_parser.add_argument("--sequence-grids", type=int, help="Sequence grid count (1-9)", default=None)
+    parent_parser.add_argument("--sequence-panels", type=int, help="Panels per sequence grid (2-6)", default=None)
 
     parser = argparse.ArgumentParser(description="AI Storyboard Workflow Standalone", parents=[parent_parser])
     subparsers = parser.add_subparsers(dest="command", help="Available commands")

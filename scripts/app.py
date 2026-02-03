@@ -1101,25 +1101,24 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                             
                             c_dl_scr, c_del_scr = st.columns([1, 1])
                             with c_dl_scr:
-                                if st.button("⬇️ 下载选中剧本为 ZIP", key="download_scripts_zip", use_container_width=True):
-                                    buf_scripts = io.BytesIO()
-                                    with zipfile.ZipFile(buf_scripts, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-                                        for idx in selected_rows_scripts:
-                                            fname = df_scripts_preview.iloc[idx]["文件名"]
-                                            fpath = os.path.join(scripts_dir, fname)
-                                            try:
-                                                with open(fpath, "rb") as f:
-                                                    zf.writestr(fname, f.read())
-                                            except Exception:
-                                                pass
-                                    st.download_button(
-                                        "⬇️ 点击下载剧本 ZIP",
-                                        data=buf_scripts.getvalue(),
-                                        file_name="scripts_selected.zip",
-                                        mime="application/zip",
-                                        key="download_scripts_zip_btn",
-                                        use_container_width=True
-                                    )
+                                buf_scripts = io.BytesIO()
+                                with zipfile.ZipFile(buf_scripts, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                                    for idx in selected_rows_scripts:
+                                        fname = df_scripts_preview.iloc[idx]["文件名"]
+                                        fpath = os.path.join(scripts_dir, fname)
+                                        try:
+                                            with open(fpath, "rb") as f:
+                                                zf.writestr(fname, f.read())
+                                        except Exception:
+                                            pass
+                                st.download_button(
+                                    "⬇️ 下载选中剧本为 ZIP",
+                                    data=buf_scripts.getvalue(),
+                                    file_name="scripts_selected.zip",
+                                    mime="application/zip",
+                                    key="download_scripts_zip_direct",
+                                    use_container_width=True
+                                )
                             
                             with c_del_scr:
                                 with st.popover("🗑️ 删除选中剧本", use_container_width=True):
@@ -1199,6 +1198,11 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
             else:
                 st.info("scripts 目录下暂无 .md 文件，请先在剧本工作流生成或添加脚本。")
             
+            st.markdown("#### 2. 分镜数量设置")
+            sequence_grid_count = st.number_input("展开格数（1-9）", min_value=1, max_value=9, value=9, step=1, key="sequence_grid_count")
+            sequence_panel_count = st.number_input("每格面板数（2-6）", min_value=2, max_value=6, value=4, step=1, key="sequence_panel_count")
+            st.caption(f"预计分镜数量：{sequence_grid_count * sequence_panel_count}")
+
             st.divider()
 
             # 状态重置按钮（用于解决按钮卡死问题）
@@ -1237,6 +1241,7 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                         selected_path = os.path.join(scripts_dir, script)
                         cmd = ["python", storyboard_py_path, "--project-dir", project_dir]
                         cmd.extend(get_api_args())
+                        cmd.extend(["--sequence-grids", str(sequence_grid_count), "--sequence-panels", str(sequence_panel_count)])
                         cmd.append("auto")
                         cmd.extend(["--script-file", selected_path])
                         run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description=f"Running full storyboard workflow for {script}...")
@@ -1296,6 +1301,7 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                         selected_path = os.path.join(scripts_dir, script)
                         cmd = ["python", storyboard_py_path, "--project-dir", project_dir]
                         cmd.extend(get_api_args())
+                        cmd.extend(["--sequence-grids", str(sequence_grid_count), "--sequence-panels", str(sequence_panel_count)])
                         cmd.append("sequence")
                         cmd.extend(["--script-file", selected_path])
                         run_command(cmd, cwd=os.getcwd(), env_vars=env_vars, description=f"Generating sequence board prompts from {script}...")
@@ -1394,25 +1400,24 @@ def render_project_detail(project_dir, api_key, api_base, model_name, api_style)
                     
                     c_dl, c_del = st.columns([1, 1])
                     with c_dl:
-                        if st.button("⬇️ 下载选中为 ZIP", key="download_selected_zip", use_container_width=True):
-                            buf = io.BytesIO()
-                            with zipfile.ZipFile(buf, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-                                for idx in selected_rows:
-                                    fname = df_outputs.iloc[idx]["文件名"]
-                                    fpath = os.path.join(sb_output_dir, fname)
-                                    try:
-                                        with open(fpath, "rb") as f:
-                                            zf.writestr(fname, f.read())
-                                    except Exception:
-                                        pass
-                            st.download_button(
-                                "⬇️ 点击下载 ZIP",
-                                data=buf.getvalue(),
-                                file_name="storyboard_outputs.zip",
-                                mime="application/zip",
-                                key="download_selected_zip_btn",
-                                use_container_width=True
-                            )
+                        buf = io.BytesIO()
+                        with zipfile.ZipFile(buf, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                            for idx in selected_rows:
+                                fname = df_outputs.iloc[idx]["文件名"]
+                                fpath = os.path.join(sb_output_dir, fname)
+                                try:
+                                    with open(fpath, "rb") as f:
+                                        zf.writestr(fname, f.read())
+                                except Exception:
+                                    pass
+                        st.download_button(
+                            "⬇️ 下载选中为 ZIP",
+                            data=buf.getvalue(),
+                            file_name="storyboard_outputs.zip",
+                            mime="application/zip",
+                            key="download_selected_zip_direct",
+                            use_container_width=True
+                        )
                     
                     with c_del:
                         with st.popover("🗑️ 删除选中文件", use_container_width=True):

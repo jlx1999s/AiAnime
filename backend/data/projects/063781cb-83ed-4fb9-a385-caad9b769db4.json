@@ -921,7 +921,7 @@
     },
     {
       "prompt": "视角：微距特写。她艰难地吞咽，喉咙滚动，眉头因粗糙草根划过食道而痛苦地皱起。 重点：生存的挣扎，引发同情。 [高一叶: 核心主体描述\n以高一叶为面部原型：鹅蛋脸型，线条柔和流畅；大而圆的杏眼，眼尾微垂带楚楚可怜的无辜感，眼妆自然素净；细弯柳叶眉，颜色浅淡；小巧精致的鼻子，鼻梁柔和不突兀；饱满 M 唇，唇色粉嫩自然；皮肤白皙细腻，面带温婉柔和的神情，气质淳朴又带着一丝柔弱感。\n明朝贫民服饰细节\n上衣：青灰色粗麻布交领短襦，窄袖设计，布料粗糙有自然纹理，领口和袖口无刺绣纹饰，袖口边缘有细微磨损痕迹，衣襟处用简单的布襻固定。\n下装：藏青色棉麻长裙，长度及地，裙摆简洁无装饰，布料因长期穿着有轻微褶皱，膝盖处有一块浅褐色补丁。\n发型：头发梳成简单的低发髻，用一根原木簪固定，发髻旁插一朵白色野雏菊，发丝自然垂落几缕碎发，无华丽头饰。\n配饰：腰间系一条土黄色粗布围裙，围裙边缘有磨损毛边；左手挎一个编织粗糙的竹篮，篮内放半捆青菜；脚上穿粗布袜与麻质布鞋，鞋头有轻微磨损。\n场景与氛围\n背景设定为明朝江南水乡的村落村口：青石板路潮湿有青苔，远处是低矮的茅草屋，屋前有晾晒的粗布衣物；身旁是潺潺流淌的小溪，溪边摆放着洗衣的木盆与皂角；光线为柔和的清晨日光，空气中弥漫着湿润的水汽与草木清香，整体氛围质朴、生活化，充满烟火气。\n风格与细节要求\n写实古风风格，色彩以低饱和度的大地色、草木色为主，画面质感细腻，突出布料的粗糙纹理与人物神情的温婉柔和，背景层次丰富，营造出明朝底层百姓真实的生活场景。]",
-      "dialogue": "",
+      "dialogue": "李道玄：这掌心上的暗红……根本不是颜料，也不是什么贴图纹理。",
       "audio_prompt": "Macro close-up, throat swallowing with difficulty, facial muscles tense up in pain, eyes tearing up, subtle camera shake to emphasize struggle.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -944,7 +944,7 @@
     },
     {
       "prompt": "视角：低角度地面视角。地面上的石子在跳动，村民们惊恐地停下手中的动作，看向村口方向。 重点：危险来临前的征兆。",
-      "dialogue": "",
+      "dialogue": "李道玄：还没干透，这种黏糊糊的触感，甚至还带着一丝残存的体温……",
       "audio_prompt": "Low angle ground view, small pebbles vibrating and jumping on the ground, background villagers freeze and turn heads, rack focus from ground to villagers.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -965,7 +965,7 @@
     },
     {
       "prompt": "视角：中景。滚滚黄尘中，一匹战马冲破烟尘。山贼面目狰狞，挥舞着锈刀，嘴里似乎在咆哮。 重点：动势与冲击力。 [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：呕——好冲的铁锈味！这是真的血！",
       "audio_prompt": "Medium shot, warhorse bursts through thick yellow dust, bandit shouting with ferocious expression, debris flying, high shutter speed, impact frame.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -986,7 +986,7 @@
     },
     {
       "prompt": "视角：俯拍全景。山贼骑马冲入人群，村民四散奔逃。一名村民被撞倒在地。画面充满混乱的运动模糊。 重点：混乱与暴力的爆发。 [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：刚才被我拍扁的那些东西……不是程序，不是玩具，是几十条活生生的人命？！",
       "audio_prompt": "High angle overhead shot, horse crashing into crowd, villagers scattering in panic, chaotic movement, camera shakes violently, motion blur.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1007,7 +1007,7 @@
     },
     {
       "prompt": "视角：极低角度仰拍（荷兰角）。山贼高举钢刀，阳光在刀刃上反射出刺眼的光芒，刀锋下是惊恐的村民剪影。 重点：压迫感与致命威胁。 [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：不可能……绝对不可能！我不信！让我看清楚点！",
       "audio_prompt": "Dutch angle low shot, bandit raises rusty steel blade high, sunlight glints sharply on the edge, ominous shadow cast over camera, freeze frame feel.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1028,7 +1028,7 @@
     },
     {
       "prompt": "视角：中景。母亲一把将高一叶推到身后，张开双臂，用瘦弱的身体挡在前方。她的表情决绝而恐惧。 重点：母爱的本能反应。 [高一叶: 核心主体描述\n以高一叶为面部原型：鹅蛋脸型，线条柔和流畅；大而圆的杏眼，眼尾微垂带楚楚可怜的无辜感，眼妆自然素净；细弯柳叶眉，颜色浅淡；小巧精致的鼻子，鼻梁柔和不突兀；饱满 M 唇，唇色粉嫩自然；皮肤白皙细腻，面带温婉柔和的神情，气质淳朴又带着一丝柔弱感。\n明朝贫民服饰细节\n上衣：青灰色粗麻布交领短襦，窄袖设计，布料粗糙有自然纹理，领口和袖口无刺绣纹饰，袖口边缘有细微磨损痕迹，衣襟处用简单的布襻固定。\n下装：藏青色棉麻长裙，长度及地，裙摆简洁无装饰，布料因长期穿着有轻微褶皱，膝盖处有一块浅褐色补丁。\n发型：头发梳成简单的低发髻，用一根原木簪固定，发髻旁插一朵白色野雏菊，发丝自然垂落几缕碎发，无华丽头饰。\n配饰：腰间系一条土黄色粗布围裙，围裙边缘有磨损毛边；左手挎一个编织粗糙的竹篮，篮内放半捆青菜；脚上穿粗布袜与麻质布鞋，鞋头有轻微磨损。\n场景与氛围\n背景设定为明朝江南水乡的村落村口：青石板路潮湿有青苔，远处是低矮的茅草屋，屋前有晾晒的粗布衣物；身旁是潺潺流淌的小溪，溪边摆放着洗衣的木盆与皂角；光线为柔和的清晨日光，空气中弥漫着湿润的水汽与草木清香，整体氛围质朴、生活化，充满烟火气。\n风格与细节要求\n写实古风风格，色彩以低饱和度的大地色、草木色为主，画面质感细腻，突出布料的粗糙纹理与人物神情的温婉柔和，背景层次丰富，营造出明朝底层百姓真实的生活场景。] [母亲: 高母-临终，纯白背景；主体背景为纯白色图片，没有任何建筑或者人物；画面主体清楚，边缘干净；无后期过度处理，真实照片质感风格，明代晚期（万历至崇祯年间），高母-临终的全身立绘，单人角色，全身入镜，站立，自然放松姿态，表情平静自然，正对镜头；女性，约40岁；东亚汉族人种；身高约158cm，7头身，身形瘦弱；灰白发色，低髻松散发型，无发饰；素面无妆；眼睛深褐色，眼窝微陷，眼神原设定为惊恐但立绘需表情平静故呈现疲惫沉静，鼻梁平直，鼻头小巧，薄唇，唇色苍白，脸型偏长、颧骨略显；明代晚期农妇粗布长衫，褪色靛蓝色，棉麻粗织，衣襟右衽系带闭合，背部有新鲜血迹与刀伤破口，下穿同料素色褶裙，足蹬明代圆头布履，黑灰色粗布制，无袜；无配饰；双手自然垂放；光照均匀；无文字、无水印、无logo，高画质、细节清晰、手部结构正确。]",
-      "dialogue": "",
+      "dialogue": "李道玄：该死，手别抖……对焦……快对焦啊！",
       "audio_prompt": "Medium shot, mother desperately pushes girl behind her back, arms spreading wide, face filled with fear but determination, fast camera push in.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1052,7 +1052,7 @@
     },
     {
       "prompt": "视角：侧面特写。山贼的刀无情地砍下。画面定格在刀刃接触母亲背部的瞬间，衣物破裂，鲜血喷涌而出。 重点：暴力的直接展现，痛感。 [母亲: 高母-临终，纯白背景；主体背景为纯白色图片，没有任何建筑或者人物；画面主体清楚，边缘干净；无后期过度处理，真实照片质感风格，明代晚期（万历至崇祯年间），高母-临终的全身立绘，单人角色，全身入镜，站立，自然放松姿态，表情平静自然，正对镜头；女性，约40岁；东亚汉族人种；身高约158cm，7头身，身形瘦弱；灰白发色，低髻松散发型，无发饰；素面无妆；眼睛深褐色，眼窝微陷，眼神原设定为惊恐但立绘需表情平静故呈现疲惫沉静，鼻梁平直，鼻头小巧，薄唇，唇色苍白，脸型偏长、颧骨略显；明代晚期农妇粗布长衫，褪色靛蓝色，棉麻粗织，衣襟右衽系带闭合，背部有新鲜血迹与刀伤破口，下穿同料素色褶裙，足蹬明代圆头布履，黑灰色粗布制，无袜；无配饰；双手自然垂放；光照均匀；无文字、无水印、无logo，高画质、细节清晰、手部结构正确。] [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：她在哭……眼泪划过脸颊的轨迹，指甲缝里的泥土，每一个像素都在告诉我，她是活的。",
       "audio_prompt": "Side profile close-up, sword blade slashing down, impact frame, clothes tearing, sudden burst of blood mist, brutal and fast motion.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1075,7 +1075,7 @@
     },
     {
       "prompt": "视角：主观视角（高一叶视角）。母亲的身体像断线的风筝一样软倒下去，露出了前方骑在马上的巨大山贼阴影。 重点：保护屏障的消失。 [母亲: 高母-临终，纯白背景；主体背景为纯白色图片，没有任何建筑或者人物；画面主体清楚，边缘干净；无后期过度处理，真实照片质感风格，明代晚期（万历至崇祯年间），高母-临终的全身立绘，单人角色，全身入镜，站立，自然放松姿态，表情平静自然，正对镜头；女性，约40岁；东亚汉族人种；身高约158cm，7头身，身形瘦弱；灰白发色，低髻松散发型，无发饰；素面无妆；眼睛深褐色，眼窝微陷，眼神原设定为惊恐但立绘需表情平静故呈现疲惫沉静，鼻梁平直，鼻头小巧，薄唇，唇色苍白，脸型偏长、颧骨略显；明代晚期农妇粗布长衫，褪色靛蓝色，棉麻粗织，衣襟右衽系带闭合，背部有新鲜血迹与刀伤破口，下穿同料素色褶裙，足蹬明代圆头布履，黑灰色粗布制，无袜；无配饰；双手自然垂放；光照均匀；无文字、无水印、无logo，高画质、细节清晰、手部结构正确。] [高一叶: 核心主体描述\n以高一叶为面部原型：鹅蛋脸型，线条柔和流畅；大而圆的杏眼，眼尾微垂带楚楚可怜的无辜感，眼妆自然素净；细弯柳叶眉，颜色浅淡；小巧精致的鼻子，鼻梁柔和不突兀；饱满 M 唇，唇色粉嫩自然；皮肤白皙细腻，面带温婉柔和的神情，气质淳朴又带着一丝柔弱感。\n明朝贫民服饰细节\n上衣：青灰色粗麻布交领短襦，窄袖设计，布料粗糙有自然纹理，领口和袖口无刺绣纹饰，袖口边缘有细微磨损痕迹，衣襟处用简单的布襻固定。\n下装：藏青色棉麻长裙，长度及地，裙摆简洁无装饰，布料因长期穿着有轻微褶皱，膝盖处有一块浅褐色补丁。\n发型：头发梳成简单的低发髻，用一根原木簪固定，发髻旁插一朵白色野雏菊，发丝自然垂落几缕碎发，无华丽头饰。\n配饰：腰间系一条土黄色粗布围裙，围裙边缘有磨损毛边；左手挎一个编织粗糙的竹篮，篮内放半捆青菜；脚上穿粗布袜与麻质布鞋，鞋头有轻微磨损。\n场景与氛围\n背景设定为明朝江南水乡的村落村口：青石板路潮湿有青苔，远处是低矮的茅草屋，屋前有晾晒的粗布衣物；身旁是潺潺流淌的小溪，溪边摆放着洗衣的木盆与皂角；光线为柔和的清晨日光，空气中弥漫着湿润的水汽与草木清香，整体氛围质朴、生活化，充满烟火气。\n风格与细节要求\n写实古风风格，色彩以低饱和度的大地色、草木色为主，画面质感细腻，突出布料的粗糙纹理与人物神情的温婉柔和，背景层次丰富，营造出明朝底层百姓真实的生活场景。]",
-      "dialogue": "",
+      "dialogue": "李道玄：我这到底是造了个景……还是养了一箱子活人？",
       "audio_prompt": "POV shot from low angle, mother's body goes limp and collapses slowly to the side, revealing the towering bandit on horse behind her, tragic slow motion.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1099,7 +1099,7 @@
     },
     {
       "prompt": "视角：正面特写。高一叶脸上溅到了母亲的血点。她瞳孔地震，嘴巴张大到极限，发出无声的尖叫。 重点：极度的创伤与绝望。 [高一叶: 核心主体描述\n以高一叶为面部原型：鹅蛋脸型，线条柔和流畅；大而圆的杏眼，眼尾微垂带楚楚可怜的无辜感，眼妆自然素净；细弯柳叶眉，颜色浅淡；小巧精致的鼻子，鼻梁柔和不突兀；饱满 M 唇，唇色粉嫩自然；皮肤白皙细腻，面带温婉柔和的神情，气质淳朴又带着一丝柔弱感。\n明朝贫民服饰细节\n上衣：青灰色粗麻布交领短襦，窄袖设计，布料粗糙有自然纹理，领口和袖口无刺绣纹饰，袖口边缘有细微磨损痕迹，衣襟处用简单的布襻固定。\n下装：藏青色棉麻长裙，长度及地，裙摆简洁无装饰，布料因长期穿着有轻微褶皱，膝盖处有一块浅褐色补丁。\n发型：头发梳成简单的低发髻，用一根原木簪固定，发髻旁插一朵白色野雏菊，发丝自然垂落几缕碎发，无华丽头饰。\n配饰：腰间系一条土黄色粗布围裙，围裙边缘有磨损毛边；左手挎一个编织粗糙的竹篮，篮内放半捆青菜；脚上穿粗布袜与麻质布鞋，鞋头有轻微磨损。\n场景与氛围\n背景设定为明朝江南水乡的村落村口：青石板路潮湿有青苔，远处是低矮的茅草屋，屋前有晾晒的粗布衣物；身旁是潺潺流淌的小溪，溪边摆放着洗衣的木盆与皂角；光线为柔和的清晨日光，空气中弥漫着湿润的水汽与草木清香，整体氛围质朴、生活化，充满烟火气。\n风格与细节要求\n写实古风风格，色彩以低饱和度的大地色、草木色为主，画面质感细腻，突出布料的粗糙纹理与人物神情的温婉柔和，背景层次丰富，营造出明朝底层百姓真实的生活场景。]",
-      "dialogue": "",
+      "dialogue": "李道玄：这到底是怎么回事……我的世界观彻底崩塌了。",
       "audio_prompt": "Frontal close-up, Gao Yiye's face splattered with blood specks, mouth opens wide in a silent scream, pupils trembling, extreme emotional shock, camera dolly zoom (vertigo effect).",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1122,7 +1122,7 @@
     },
     {
       "prompt": "视角：极特写。山贼粗糙的舌头舔过刀刃上的血迹。他的牙齿发黄，眼神中透着变态的兴奋。 重点：反派的非人性化。 [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：如果他们是活人，那我算什么？上帝？还是杀人凶手？",
       "audio_prompt": "Extreme close-up, bandit's rough tongue licks blood off the blade, yellow teeth exposed, eyes widening in manic excitement, creepy micro-movements.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1143,7 +1143,7 @@
     },
     {
       "prompt": "视角：中景。山贼勒转马头，目光锁定了瘫坐在地上的高一叶。战马不安地喷着鼻息。 重点：捕食者锁定猎物。 [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：醒醒李道玄！这不科学！微缩模型怎么可能有生命！这一定是幻觉！",
       "audio_prompt": "Medium shot, horse turns around, hooves stomping, bandit's gaze locks onto the target below, camera tracks the turning motion.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1164,7 +1164,7 @@
     },
     {
       "prompt": "视角：俯拍。高一叶手脚并用地向后挪动，背部撞上了土墙，退无可退。她浑身颤抖，泪水冲刷着脸上的尘土。 重点：无助与死局。 [高一叶: 核心主体描述\n以高一叶为面部原型：鹅蛋脸型，线条柔和流畅；大而圆的杏眼，眼尾微垂带楚楚可怜的无辜感，眼妆自然素净；细弯柳叶眉，颜色浅淡；小巧精致的鼻子，鼻梁柔和不突兀；饱满 M 唇，唇色粉嫩自然；皮肤白皙细腻，面带温婉柔和的神情，气质淳朴又带着一丝柔弱感。\n明朝贫民服饰细节\n上衣：青灰色粗麻布交领短襦，窄袖设计，布料粗糙有自然纹理，领口和袖口无刺绣纹饰，袖口边缘有细微磨损痕迹，衣襟处用简单的布襻固定。\n下装：藏青色棉麻长裙，长度及地，裙摆简洁无装饰，布料因长期穿着有轻微褶皱，膝盖处有一块浅褐色补丁。\n发型：头发梳成简单的低发髻，用一根原木簪固定，发髻旁插一朵白色野雏菊，发丝自然垂落几缕碎发，无华丽头饰。\n配饰：腰间系一条土黄色粗布围裙，围裙边缘有磨损毛边；左手挎一个编织粗糙的竹篮，篮内放半捆青菜；脚上穿粗布袜与麻质布鞋，鞋头有轻微磨损。\n场景与氛围\n背景设定为明朝江南水乡的村落村口：青石板路潮湿有青苔，远处是低矮的茅草屋，屋前有晾晒的粗布衣物；身旁是潺潺流淌的小溪，溪边摆放着洗衣的木盆与皂角；光线为柔和的清晨日光，空气中弥漫着湿润的水汽与草木清香，整体氛围质朴、生活化，充满烟火气。\n风格与细节要求\n写实古风风格，色彩以低饱和度的大地色、草木色为主，画面质感细腻，突出布料的粗糙纹理与人物神情的温婉柔和，背景层次丰富，营造出明朝底层百姓真实的生活场景。]",
-      "dialogue": "",
+      "dialogue": "旁白：巨大的恐惧与荒谬感如同潮水般涌来，瞬间淹没了这个狭小的房间，将李道玄独自困在黑暗的孤岛中。",
       "audio_prompt": "High angle looking down, Gao Yiye crawling backward on hands and feet, back hits the wall, body shaking violently, dust rising from movement.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1187,7 +1187,7 @@
     },
     {
       "prompt": "视角：低角度仰拍。山贼再次举起屠刀，刀尖对准了下方的镜头（高一叶）。天空湛蓝而残酷。 重点：最后的审判时刻。 [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：偏偏在这个时候……又是谁在催命？",
       "audio_prompt": "Low angle POV, bandit raises the butcher knife again, tip pointing directly at lens, blue sky in background, camera creates a sense of shrinking back.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1208,7 +1208,7 @@
     },
     {
       "prompt": "视角：中景。山贼正要挥刀，突然停住。他疑惑地抬头看向天空，原本明亮的阳光迅速暗淡下来。 重点：环境光骤变，未知恐惧。 [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：呵，满屏的嘲讽。精神病、造假狗、滚出圈子……这就是我在现实世界里的价值吗？",
       "audio_prompt": "Medium shot, bandit stops mid-swing, looks up in confusion, sunlight rapidly dims to darkness, dramatic lighting change.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1229,7 +1229,7 @@
     },
     {
       "prompt": "视角：仰视大远景。箱顶的模拟云层被暴力排开。巨大的阴影笼罩了整个村庄。 重点：巨物出现的压迫感。 [李道玄: 中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格]",
-      "dialogue": "",
+      "dialogue": "李道玄：辞退通知……两千三百五十块遣散费。行啊，这下工作也没了，彻底一无所有了。",
       "audio_prompt": "Looking up, massive realistic clouds are pushed aside physically, revealing a gigantic skin-textured ceiling, heavy atmosphere.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -1252,7 +1252,7 @@
     },
     {
       "prompt": "视角：广角全景。一只巨大的手掌（肤色苍白，纹理清晰）从天而降，占据了画面上方三分之二。地上的山贼和马匹显得如蚂蚁般渺小。 重点：极致的大小对比。 [李道玄: 中国青年男性，20岁左右，黑色短发，略显凌乱，穿着宽松的居家T恤，眼圈微红，神情震惊，现代室内光线，写实风格] [山贼: 古代强盗，满脸横肉，穿着破旧的皮甲和布衣，手持沾血的锈刀，表情狰狞凶恶，动作充满攻击性]",
-      "dialogue": "",
+      "dialogue": "李道玄：正好，老子也不想干了。管他箱子里是真是假，管他明天有没有饭吃，先睡一觉再说。",
       "audio_prompt": "Wide angle, a titanic hand descends slowly from top frame, covering the sky, bandit and horse look like ants, shadow engulfs the village, slow epic movement.",
       "use_scene_ref": true,
       "custom_image_url": null,
@@ -2363,6 +2363,374 @@
       "video_progress": null,
       "video_items": [],
       "status": "idle"
+    },
+    {
+      "prompt": "视角：主观视点（POV）特写。画面中心是李道玄摊开的右手掌心，掌纹清晰，几抹暗红色的血迹在苍白的皮肤上显得格外刺眼。背景是失焦的杂乱桌面。 重点：血迹的真实物质感，与皮肤的对比。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "",
+      "audio_prompt": "POV close-up, hand trembling slightly in center frame, blood texture glistening under cold light, shallow depth of field, rack focus from blood to blurred background.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "2d0ee7e6-24b8-4f96-bf58-7ab9868b876d",
+      "order": 101,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "c70eca04-63ba-45b4-b1b6-6cdd1934f132",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：POV特写。李道玄的左手拇指正在用力搓揉右手掌心的血迹。血迹被抹开，晕染在皮肤纹理中，没有像颜料那样干涸剥落，而是带有液体的粘稠感。 重点：通过动作确认物质的真实性，手指因用力而发白。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "",
+      "audio_prompt": "POV extreme close-up, thumb forcefully smears wet blood on palm, liquid texture spreading into skin lines, skin turning white from pressure, realistic friction motion.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "6b0fea4e-eacb-43d8-ad38-e648216c9d7f",
+      "order": 102,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "c70eca04-63ba-45b4-b1b6-6cdd1934f132",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：侧面近景。李道玄将颤抖的手掌猛地凑近鼻尖。他眉头紧锁，瞳孔收缩，仿佛闻到了令人作呕的铁锈味。面部肌肉因恐惧而轻微抽搐。 重点：感官的联动，生理性的排斥反应。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "",
+      "audio_prompt": "Side profile close-up, hand jerks up towards nose rapidly, facial expression shifts from confusion to disgust, nose wrinkles, eyes widen in shock, micro-muscle twitching.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "ab0bd15d-3503-4738-82cb-3548eaa5a8a9",
+      "order": 103,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "c70eca04-63ba-45b4-b1b6-6cdd1934f132",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：中景，正面。李道玄像触电一样猛地将手甩开，身体向后踉跄，撞到了身后的椅子。他的眼神惊恐地盯着前景虚化的造景箱，仿佛那是某种危险的生物。 重点：从局部感官体验上升到全身的应激反应。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间书桌前: cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field]",
+      "dialogue": "",
+      "audio_prompt": "Medium shot, sudden whip pan as subject stumbles backward violently, knocking into chair, body recoiling in terror, eyes locked on the vivarium, heavy breathing motion.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "9844a6d0-ba73-4cf7-9486-46953deb41db",
+      "order": 104,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "c70eca04-63ba-45b4-b1b6-6cdd1934f132",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：侧拍特写。李道玄的手持着一个巨大的放大镜，贴近造景箱的玻璃壁。玻璃壁上映出这一侧冷蓝色的房间倒影，与箱内透出的暖黄光芒形成强烈对比。 重点：两个世界的物理屏障与视觉连接。 [李道玄（的手）: male hand close-up, palm lines visible, dark red dried blood stains, trembling fingers, holding a magnifying glass, realistic skin texture, tension in tendons, rubbing thumb against palm] [造景箱玻璃壁外: glass surface close-up, reflection of blue room, warm light glowing from within, magnifying glass lens pressed against glass, contrast between cold and warm tones, transparent texture]",
+      "dialogue": "",
+      "audio_prompt": "Macro side shot, hand presses magnifying glass firmly against tank wall, slight adjustments in angle, reflection of cold blue room shifts on the glass surface, sharp contrast with warm interior light.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "bce6ee78-4ecc-4ed1-aeba-7ff04b29ad7c",
+      "order": 105,
+      "characters": [
+        "49f88c27-6afc-455a-8d84-38441f0a4f58"
+      ],
+      "scene_id": "a24bd2a9-8de1-4652-ab51-8bf23a03c507",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：透过放大镜的主观视点（POV）。画面边缘有严重的透镜畸变和色散。画面中心的黄土地是模糊的，只能隐约看到一个微小的人形轮廓跪在地上。 重点：模拟对焦过程中的模糊感，制造悬念。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内黄土荒野: miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion]",
+      "dialogue": "",
+      "audio_prompt": "POV through lens, heavy optical distortion and chromatic aberration, image shifts from extreme blur to gradually finding focus on a miniature figure, searching camera movement.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "1415a3e1-5e91-481d-99fa-25b376eb0cc4",
+      "order": 106,
+      "characters": [
+        "7648f879-cf4d-4374-8b94-fa29b213f3de"
+      ],
+      "scene_id": "e562c584-5e4d-4a4f-83f4-aca71cd129d5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：透过放大镜的POV，极度清晰的微距特写（Macro）。焦点锁定在高一叶脸上。她面黄肌瘦，满脸尘土，嘴唇干裂起皮，正在张大嘴无声痛哭。眼泪混合着泥土流下的轨迹清晰可见。 重点：极浅景深（Bokeh），强调微观细节的真实与残酷。 [高一叶: young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography] [箱内黄土荒野: miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion]",
+      "dialogue": "",
+      "audio_prompt": "Extreme macro close-up through lens, sharp focus locks on Gao Yiye's face, tears streaming down muddy cheeks, mouth opening in a silent scream, high detail texture, bokeh background.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "c8091ec5-6799-497b-952a-fc65294f28d1",
+      "order": 107,
+      "characters": [
+        "7648f879-cf4d-4374-8b94-fa29b213f3de"
+      ],
+      "scene_id": "e562c584-5e4d-4a4f-83f4-aca71cd129d5",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：反打镜头（Reverse Shot），近景。李道玄慢慢放下放大镜，露出后面苍白震惊的脸。放大镜的镜片在画面前景虚化。他呼吸急促，眼神中充满了不可置信。 重点：观测者被观测内容震撼的瞬间。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间: modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle]",
+      "dialogue": "",
+      "audio_prompt": "Reverse shot, magnifying glass slowly lowers revealing Li's pale shocked face, eyes widening in disbelief, rack focus from the blurred lens in foreground to the face in background.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "0b57f805-a612-4c5e-9e64-8fa0ee6846fe",
+      "order": 108,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "9e616d05-5f3b-4205-a746-76e24c197281",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：中全景。李道玄腿一软，重重地跌坐在人体工学椅上。椅子因受力向后滑行了一小段距离，发出吱呀声（视觉上通过动态模糊表现）。 重点：身体力量被抽空的瞬间。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间电脑椅: ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication]",
+      "dialogue": "",
+      "audio_prompt": "Medium shot, body collapses heavily into the ergonomic chair, chair rolls backward slightly with momentum, arms flop down lifelessly, sudden loss of muscle tension.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "17e634ed-6100-473d-8ab4-35129a4daa2c",
+      "order": 109,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "c9303fff-5c80-4314-9e9e-6a2329db083b",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：正面近景。李道玄瘫坐在椅子里，双臂无力地垂在扶手两侧。头微微后仰，双眼失焦地盯着天花板。电脑屏幕的冷光从侧面打在他脸上，形成高对比度的阴阳脸。 重点：极度的虚脱与茫然。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间电脑椅: ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication]",
+      "dialogue": "",
+      "audio_prompt": "Close-up, head tilts back slowly against headrest, eyes unfocused staring at ceiling, chest rising and falling rapidly, high contrast blue lighting splitting the face.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "bb308e84-a98f-4e78-bf7f-60a568db7cbb",
+      "order": 110,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "c9303fff-5c80-4314-9e9e-6a2329db083b",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：特写。李道玄双手抱住头，手指插入凌乱的头发中，用力抓扯。他的脸埋在阴影里，只能看到紧咬的牙关。 重点：内心剧烈的冲突，试图否定刚才看到的一切。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间电脑椅: ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication]",
+      "dialogue": "",
+      "audio_prompt": "Tight close-up, hands grab messy hair violently, fingers digging into scalp, head shaking slightly in denial, teeth clenched, shadow obscuring eyes.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "ef9da8f1-9750-47ca-a239-80e875399cf3",
+      "order": 111,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "c9303fff-5c80-4314-9e9e-6a2329db083b",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：俯拍大远景（High Angle）。房间里没有开主灯，只有电脑屏幕和造景箱发出微弱的光。李道玄蜷缩在椅子里，显得极其渺小，周围浓重的黑暗仿佛正在吞噬他。 重点：孤立无援的氛围，心理防线的全面崩塌。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [现代房间: modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle]",
+      "dialogue": "",
+      "audio_prompt": "High angle wide shot, slow crane up, subject curled up small in the chair, surrounding darkness appearing to encroach on the center, screen light flickering weakly.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "c8c5e919-b09c-4c4e-9053-f328e93d1a86",
+      "order": 112,
+      "characters": [
+        "f4e9555a-054c-4aac-867c-a367dafae679"
+      ],
+      "scene_id": "9e616d05-5f3b-4205-a746-76e24c197281",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：屏幕特写。原本黑暗的屏幕右下角突然弹出一个亮红色的通知图标，伴随着几个不断跳动的弹窗。背景是模糊的桌面壁纸。 重点：打破死寂的视觉噪音。 [无（屏幕画面）: computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "",
+      "audio_prompt": "Macro screen shot, bright red notification icon pops up suddenly in the corner, pulsing animation, breaking the static wallpaper, sharp digital movement.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "01ff7416-ee9f-41a0-8385-d192362b2b5c",
+      "order": 113,
+      "characters": [
+        "ed038d51-4992-414b-b6a0-15d5e6c8d9a2"
+      ],
+      "scene_id": "85076c94-0428-4fb9-babf-0e8ccadc846e",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：屏幕内容特写。社交媒体页面被打开，密密麻麻的评论区滚动着。“造假狗”、“滚出圈子”、“去死吧”等字眼被高亮显示。光标在屏幕上慌乱地移动，试图关闭窗口。 重点：信息的暴力感与压迫感。 [无（屏幕画面）: computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "",
+      "audio_prompt": "Screen capture view, mouse cursor moves erratically, comment section scrolls rapidly upwards, text blurring from speed, harsh white light, information overload.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "119eb2f1-3fdf-4ead-94a0-13eb514005b5",
+      "order": 114,
+      "characters": [
+        "ed038d51-4992-414b-b6a0-15d5e6c8d9a2"
+      ],
+      "scene_id": "85076c94-0428-4fb9-babf-0e8ccadc846e",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：屏幕正中特写。一封刚打开的邮件占据主画面，标题加粗显示“辞退通知书（Termination Notice）”。正文冷冰冰的公文格式清晰可见。 重点：冷酷的现实打击，视觉焦点集中在“辞退”二字。 [无（屏幕画面）: computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "",
+      "audio_prompt": "Static macro shot, \"Termination Notice\" text stays fixed and sharp, mouse cursor hovers and trembles slightly over the bold text, cold clinical atmosphere.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "1a0c5082-3e52-4a19-ac1f-ad68d1a1dca7",
+      "order": 115,
+      "characters": [
+        "ed038d51-4992-414b-b6a0-15d5e6c8d9a2"
+      ],
+      "scene_id": "85076c94-0428-4fb9-babf-0e8ccadc846e",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    },
+    {
+      "prompt": "视角：过肩镜头。屏幕画面切换到黑色的锁屏界面或深色背景。李道玄模糊、扭曲的面孔倒映在黑色的屏幕玻璃上，眼神空洞，仿佛一个幽灵。 重点：现实世界中自我的破碎感，人与数字深渊的对视。 [李道玄（倒影）: reflection on black glass screen, distorted face, ghostly silhouette, hollow eyes, dark tones, low key lighting, mysterious atmosphere, digital screen texture] [电脑屏幕: LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen]",
+      "dialogue": "",
+      "audio_prompt": "Over-the-shoulder shot, screen turns black, reflection of Li's distorted face appears on the glass, slow dolly out, reflection looks ghostly and hollow.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "c72ea79e-dbc6-4fff-9797-0734b34d0121",
+      "order": 116,
+      "characters": [
+        "287bf103-71b9-484c-b8f5-4f96131fd8a3"
+      ],
+      "scene_id": "85076c94-0428-4fb9-babf-0e8ccadc846e",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
     }
   ],
   "characters": [
@@ -2688,6 +3056,33 @@
       "tags": [],
       "prompt": "no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot",
       "description": "No specific character focus; emphasis on the environment, atmosphere, or POV shots.",
+      "status": "idle"
+    },
+    {
+      "id": "ed038d51-4992-414b-b6a0-15d5e6c8d9a2",
+      "name": "无（屏幕画面）",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（屏幕画面）",
+      "tags": [],
+      "prompt": "computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels",
+      "description": "The digital content displayed on a computer monitor, showing a barrage of negative social media notifications and a formal termination email.",
+      "status": "idle"
+    },
+    {
+      "id": "287bf103-71b9-484c-b8f5-4f96131fd8a3",
+      "name": "李道玄（倒影）",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（倒影）",
+      "tags": [],
+      "prompt": "reflection on black glass screen, distorted face, ghostly silhouette, hollow eyes, dark tones, low key lighting, mysterious atmosphere, digital screen texture",
+      "description": "The distorted and ghostly reflection of Li Daoxuan's face seen on a dark computer monitor screen.",
+      "status": "idle"
+    },
+    {
+      "id": "49f88c27-6afc-455a-8d84-38441f0a4f58",
+      "name": "李道玄（的手）",
+      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（的手）",
+      "tags": [],
+      "prompt": "male hand close-up, palm lines visible, dark red dried blood stains, trembling fingers, holding a magnifying glass, realistic skin texture, tension in tendons, rubbing thumb against palm",
+      "description": "Li Daoxuan's hands, specifically showing palm prints with dark red bloodstains or holding a magnifying glass.",
       "status": "idle"
     }
   ],
@@ -3221,6 +3616,60 @@
       "tags": [],
       "prompt": "glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere",
       "description": "The glass or cardboard wall of the vivarium. Features sand at the bottom and a blood smear from the impact.",
+      "status": "idle"
+    },
+    {
+      "id": "9e616d05-5f3b-4205-a746-76e24c197281",
+      "name": "现代房间",
+      "image_url": "",
+      "tags": [],
+      "prompt": "modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle",
+      "description": "A modern, dimly lit room with a cold color temperature. It contains a desk, computer, and landscape box, characterized by shadows and blue screen light.",
+      "status": "idle"
+    },
+    {
+      "id": "c70eca04-63ba-45b4-b1b6-6cdd1934f132",
+      "name": "现代房间书桌前",
+      "image_url": "",
+      "tags": [],
+      "prompt": "cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field",
+      "description": "The area immediately in front of a cluttered desk in a modern room, serving as the setting for the character's realization of the blood.",
+      "status": "idle"
+    },
+    {
+      "id": "c9303fff-5c80-4314-9e9e-6a2329db083b",
+      "name": "现代房间电脑椅",
+      "image_url": "",
+      "tags": [],
+      "prompt": "ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication",
+      "description": "An ergonomic office chair in the modern room, where the character collapses in exhaustion.",
+      "status": "idle"
+    },
+    {
+      "id": "85076c94-0428-4fb9-babf-0e8ccadc846e",
+      "name": "电脑屏幕",
+      "image_url": "",
+      "tags": [],
+      "prompt": "LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen",
+      "description": "A computer monitor display showing interface elements like notifications, emails, and social media, or a dark screen reflecting the user.",
+      "status": "idle"
+    },
+    {
+      "id": "e562c584-5e4d-4a4f-83f4-aca71cd129d5",
+      "name": "箱内黄土荒野",
+      "image_url": "",
+      "tags": [],
+      "prompt": "miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion",
+      "description": "A miniature landscape inside a glass box depicting a desolate wilderness with yellow earth, illuminated by warm light.",
+      "status": "idle"
+    },
+    {
+      "id": "a24bd2a9-8de1-4652-ab51-8bf23a03c507",
+      "name": "造景箱玻璃壁外",
+      "image_url": "",
+      "tags": [],
+      "prompt": "glass surface close-up, reflection of blue room, warm light glowing from within, magnifying glass lens pressed against glass, contrast between cold and warm tones, transparent texture",
+      "description": "The exterior glass surface of the landscape box, acting as a barrier between the cold room and the warm miniature world inside.",
       "status": "idle"
     }
   ],

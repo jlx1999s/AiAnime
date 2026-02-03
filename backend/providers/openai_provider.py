@@ -210,15 +210,26 @@ async def _apimart_request(method: str, url: str, api_key: str, payload: dict | 
 async def _apimart_poll_task(task_id: str, api_key: str, base_url: str, timeout_seconds: int = 300) -> dict:
     url = _apimart_build_url(base_url, f"/tasks/{task_id}?language=zh")
     started = time.time()
+    consecutive_errors = 0
     while time.time() - started < timeout_seconds:
-        data = await _apimart_request("GET", url, api_key)
-        if isinstance(data, dict) and data.get("code") == 200:
-            payload = data.get("data") or {}
-            status = payload.get("status")
-            if status == "completed":
-                return payload
-            if status in ("failed", "error"):
-                raise Exception(f"Apimart task failed: {payload}")
+        try:
+            data = await _apimart_request("GET", url, api_key)
+            consecutive_errors = 0  # Reset on success
+            if isinstance(data, dict) and data.get("code") == 200:
+                payload = data.get("data") or {}
+                status = payload.get("status")
+                if status == "completed":
+                    return payload
+                if status in ("failed", "error"):
+                    raise Exception(f"Apimart task failed: {payload}")
+        except Exception as e:
+            consecutive_errors += 1
+            print(f"Apimart poll warning (retry {consecutive_errors}): {e}")
+            if consecutive_errors > 10:
+                raise Exception(f"Apimart poll failed after 10 consecutive errors: {e}")
+            # Wait a bit longer on error
+            await asyncio.sleep(2)
+        
         await asyncio.sleep(2)
     raise Exception("Apimart task polling timed out")
 
@@ -466,8 +477,8 @@ async def _runninghub_generate_video(prompt: str, image_path: str | None, api_ke
             print(f"[RunningHub] Unknown status: {status}")
     raise Exception("RunningHub task timed out")
 
-async def generate_image(prompt: str, sub_dir: str | None, reference_image_url: str | None, image_client, config, image_url_to_base64: Callable[[str], str | None], save_image_from_url: Callable[[str, str | None], str], save_base64_image: Callable[[str, str | None], str]) -> str:
-    print(f"openai_generate_image called with ref_url: {reference_image_url}")
+async def generate_image(prompt: str, sub_dir: str | None, reference_image_url: str | None, image_client, config, image_url_to_base64: Callable[[str], str | None], save_image_from_url: Callable[[str, str | None], str], save_base64_image: Callable[[str, str | None], str], reference_images: list[dict] | None = None) -> str:
+    print(f"openai_generate_image called with ref_url: {reference_image_url}, ref_images count: {len(reference_images) if reference_images else 0}")
     model = config.openai_image_model or "gpt-image-1"
     try:
         image_base = config.openai_image_api_base or config.openai_api_base or "https://api.openai.com/v1"
@@ -475,10 +486,26 @@ async def generate_image(prompt: str, sub_dir: str | None, reference_image_url: 
             api_key = config.openai_image_api_key or config.openai_api_key
             if not api_key:
                 raise Exception("Apimart API key not configured")
-            ref_urls = None
+            
+            ref_urls = []
             if reference_image_url and (reference_image_url.startswith("http://") or reference_image_url.startswith("https://")):
-                ref_urls = [reference_image_url]
-            image_url = await _apimart_generate_image(prompt, model, "1024x1024", 1, ref_urls, api_key, image_base)
+                ref_urls.append(reference_image_url)
+            
+            if reference_images:
+                for ref in reference_images:
+                    b64 = ref.get("b64")
+                    if b64:
+                        ref_urls.append(f"data:image/jpeg;base64,{b64}")
+            
+            # Deduplicate while preserving order
+            seen = set()
+            unique_urls = []
+            for url in ref_urls:
+                if url not in seen:
+                    unique_urls.append(url)
+                    seen.add(url)
+            
+            image_url = await _apimart_generate_image(prompt, model, "1024x1024", 1, unique_urls, api_key, image_base)
             if image_url.startswith("http"):
                 return save_image_from_url(image_url, sub_dir=sub_dir)
             return image_url
