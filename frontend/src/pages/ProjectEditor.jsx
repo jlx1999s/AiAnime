@@ -56,6 +56,8 @@ const ProjectEditor = () => {
     const [defaultSceneId, setDefaultSceneId] = useState(null);
     const [defaultPanelLayout, setDefaultPanelLayout] = useState('1-panel');
     const [defaultImageCount, setDefaultImageCount] = useState(1);
+    const [defaultVideoAspectRatio, setDefaultVideoAspectRatio] = useState('16:9');
+    const [defaultVideoResolution, setDefaultVideoResolution] = useState('720p');
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
     const [sidebarTab, setSidebarTab] = useState('chars');
     const [sidebarShotId, setSidebarShotId] = useState(null);
@@ -565,7 +567,7 @@ const ProjectEditor = () => {
         }
     };
 
-    const handleGenerate = async (shotId, type, count, silent = false) => {
+    const handleGenerate = async (shotId, type, count, options = {}, silent = false) => {
         if (type === 'video') {
             const shot = shots.find(s => s.id === shotId);
             const hasShotImage = !!shot?.image_url;
@@ -582,7 +584,7 @@ const ProjectEditor = () => {
             }
             return { ...s, status: 'generating' };
         }));
-        const result = await ApiService.generate(projectId, shotId, type, count);
+        const result = await ApiService.generate(projectId, shotId, type, count, options);
         const videoId = type === 'video' ? result?.video_id : null;
         if (type === 'video' && result?.video_id) {
             setShots(prev => prev.map(s => {
@@ -1278,6 +1280,10 @@ const ProjectEditor = () => {
                                 onSetDefaultPanelLayout={handleSetDefaultPanelLayout}
                                 defaultImageCount={defaultImageCount}
                                 onSetDefaultImageCount={handleSetDefaultImageCount}
+                                defaultVideoAspectRatio={defaultVideoAspectRatio}
+                                onSetDefaultVideoAspectRatio={setDefaultVideoAspectRatio}
+                                defaultVideoResolution={defaultVideoResolution}
+                                onSetDefaultVideoResolution={setDefaultVideoResolution}
                                 onGenerateAllStoryboards={handleGenerateAllStoryboards}
                                 isGeneratingStoryboards={isGeneratingStoryboards}
                                 onGenerateAllCharacters={handleGenerateAllCharacters}
@@ -1296,6 +1302,8 @@ const ProjectEditor = () => {
                                         allShots={shots}
                                         projectId={projectId}
                                         defaultImageCount={defaultImageCount}
+                                        defaultVideoAspectRatio={defaultVideoAspectRatio}
+                                        defaultVideoResolution={defaultVideoResolution}
                                         onDelete={handleDelete}
                                         onUpdate={handleUpdate}
                                         onGenerate={handleGenerate}

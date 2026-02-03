@@ -269,14 +269,14 @@ export const ApiService = {
         return true;
     },
 
-    generate: async (projectId, shotId, type, count) => {
+    generate: async (projectId, shotId, type, count, options = {}) => {
         if (USE_MOCK) {
             return new Promise(resolve => setTimeout(() => resolve({ status: 'queued', video_id: type === 'video' ? `video_${Date.now()}` : null }), 1000));
         }
         const res = await fetch(`${API_BASE_URL}/generate`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ project_id: projectId, shot_id: shotId, type, count })
+            body: JSON.stringify({ project_id: projectId, shot_id: shotId, type, count, ...options })
         });
         return res.json();
     },

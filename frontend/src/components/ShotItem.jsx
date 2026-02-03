@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Plus, Trash2, Image, Video, MoveUp, MoveDown, Maximize, Upload, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Plus, Trash2, Image, Video, MoveUp, MoveDown, Maximize, Upload, ChevronLeft, ChevronRight, Settings } from 'lucide-react';
 import ImagePreviewModal from './ImagePreviewModal';
 import ShotSelectorModal from './ShotSelectorModal';
 import { ApiService } from '../services/api';
@@ -45,13 +45,18 @@ const updatePromptWithAsset = (currentPrompt, action, assetType, asset, oldAsset
     return newPrompt.trim();
 };
 
-const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, onInsertBefore, onInsertAfter, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, projectId, allShots, onShowShotsSidebar, onShowVideosSidebar }) => {
+const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotImage, onDeleteVideo, onMoveUp, onMoveDown, onInsertBefore, onInsertAfter, allCharacters, onCharacterClick, allScenes, onSceneClick, onShotImageClick, onSelectCandidate, isSelected, onSelect, defaultImageCount, defaultVideoAspectRatio, defaultVideoResolution, projectId, allShots, onShowShotsSidebar, onShowVideosSidebar }) => {
     const [candidateCount, setCandidateCount] = useState(defaultImageCount || 1);
     const customImageInputRef = useRef(null);
     const firstFrameInputRef = useRef(null);
     const lastFrameInputRef = useRef(null);
     const [isSelectorOpen, setIsSelectorOpen] = useState(false);
     const [selectorField, setSelectorField] = useState(null); // 'first_frame_url', 'last_frame_url', or 'custom_image_url'
+    
+    // Video Generation Settings
+    const [videoAspectRatio, setVideoAspectRatio] = useState(defaultVideoAspectRatio || "16:9");
+    const [videoResolution, setVideoResolution] = useState(defaultVideoResolution || "720p");
+    const [showVideoSettings, setShowVideoSettings] = useState(false);
 
     const handleShotSelect = (url) => {
         if (selectorField && url) {
@@ -97,6 +102,12 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             setCandidateCount(defaultImageCount);
         }
     }, [defaultImageCount]);
+    useEffect(() => {
+        setVideoAspectRatio(defaultVideoAspectRatio || "16:9");
+    }, [defaultVideoAspectRatio]);
+    useEffect(() => {
+        setVideoResolution(defaultVideoResolution || "720p");
+    }, [defaultVideoResolution]);
     const [previewUrl, setPreviewUrl] = useState(null);
     const imageScrollRef = useRef(null);
     const videoScrollRef = useRef(null);
@@ -636,15 +647,53 @@ const ShotItem = ({ shot, index, onDelete, onUpdate, onGenerate, onDeleteShotIma
             </div>
 
             <div className="space-y-2">
-                 <div className="flex justify-between items-center">
+                 <div className="flex justify-between items-center relative">
                     <label className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">视频</label>
-                    {shot.image_url && (
-                        <span
-                            className="text-[10px] text-dark-500 cursor-pointer hover:text-accent"
-                            onClick={() => onGenerate && onGenerate(shot.id, 'video')}
-                        >
-                            生成视频
-                        </span>
+                    <div className="flex items-center gap-2">
+                        {shot.image_url && (
+                            <button
+                                className="text-[10px] text-dark-500 hover:text-accent p-1 rounded hover:bg-dark-700"
+                                onClick={() => setShowVideoSettings(!showVideoSettings)}
+                                title="视频生成设置"
+                            >
+                                <Settings size={12} />
+                            </button>
+                        )}
+                        {shot.image_url && (
+                            <span
+                                className="text-[10px] text-dark-500 cursor-pointer hover:text-accent"
+                                onClick={() => onGenerate && onGenerate(shot.id, 'video', null, { video_aspect_ratio: videoAspectRatio, video_resolution: videoResolution })}
+                            >
+                                生成视频
+                            </span>
+                        )}
+                    </div>
+
+                    {showVideoSettings && (
+                        <div className="absolute right-0 top-6 z-10 w-48 p-3 bg-dark-800 border border-dark-600 rounded shadow-xl space-y-3">
+                            <div className="space-y-1">
+                                <label className="text-[10px] text-gray-400 block">画面比例</label>
+                                <select 
+                                    className="w-full bg-dark-900 border border-dark-700 text-xs text-gray-300 rounded px-2 py-1 focus:outline-none focus:border-accent"
+                                    value={videoAspectRatio}
+                                    onChange={(e) => setVideoAspectRatio(e.target.value)}
+                                >
+                                    <option value="16:9">16:9 (横屏)</option>
+                                    <option value="9:16">9:16 (竖屏)</option>
+                                </select>
+                            </div>
+                            <div className="space-y-1">
+                                <label className="text-[10px] text-gray-400 block">分辨率</label>
+                                <select 
+                                    className="w-full bg-dark-900 border border-dark-700 text-xs text-gray-300 rounded px-2 py-1 focus:outline-none focus:border-accent"
+                                    value={videoResolution}
+                                    onChange={(e) => setVideoResolution(e.target.value)}
+                                >
+                                    <option value="1080p">1080p</option>
+                                    <option value="720p">720p</option>
+                                </select>
+                            </div>
+                        </div>
                     )}
                  </div>
 

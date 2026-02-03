@@ -2,7 +2,7 @@ import json
 import urllib.error
 import urllib.request
 
-def generate_video(prompt: str, source_url: str | None, config) -> str:
+def generate_video(prompt: str, source_url: str | None, config, video_aspect_ratio: str = "16:9", video_resolution: str = "1080p") -> str:
     token = config.rongyiyun_token
     if not token:
         raise Exception("RongYiYun token not configured")
@@ -10,7 +10,7 @@ def generate_video(prompt: str, source_url: str | None, config) -> str:
     endpoint = f"{base_url}/apiAiProject/createSora2"
     payload = {
         "prompt": prompt,
-        "ratio": config.rongyiyun_ratio or "16:9",
+        "ratio": video_aspect_ratio or config.rongyiyun_ratio or "16:9",
         "duration": config.rongyiyun_duration or 10
     }
     if source_url and (source_url.startswith("http://") or source_url.startswith("https://")):

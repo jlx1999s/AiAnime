@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wand2, RefreshCw } from 'lucide-react';
 
-const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDefaultPanelLayout, defaultImageCount, onSetDefaultImageCount, onGenerateAllStoryboards, isGeneratingStoryboards, onGenerateAllCharacters, isGeneratingCharacters, onGenerateAllScenes, isGeneratingScenes, onRefreshShots, isRefreshingShots }) => (
+const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDefaultPanelLayout, defaultImageCount, onSetDefaultImageCount, defaultVideoAspectRatio, onSetDefaultVideoAspectRatio, defaultVideoResolution, onSetDefaultVideoResolution, onGenerateAllStoryboards, isGeneratingStoryboards, onGenerateAllCharacters, isGeneratingCharacters, onGenerateAllScenes, isGeneratingScenes, onRefreshShots, isRefreshingShots }) => (
     <div className="grid grid-cols-[40px_minmax(260px,2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(180px,1.2fr)_minmax(240px,1.6fr)_minmax(240px,1.6fr)_40px] gap-4 px-4 py-2 bg-dark-800 border-b border-dark-700 text-xs font-bold text-gray-500 uppercase tracking-wider sticky top-0 z-30 shadow-sm">
         <div className="flex items-center justify-center sticky left-4 z-40 bg-dark-800">
             <input 
@@ -72,17 +72,37 @@ const ShotListHeader = ({ allSelected, onSelectAll, defaultPanelLayout, onSetDef
                 />
             </div>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
             <span>视频</span>
-            <button
-                onClick={onRefreshShots}
-                disabled={isRefreshingShots}
-                className={`text-[10px] px-2 py-0.5 rounded transition-colors flex items-center gap-1 ${isRefreshingShots ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-dark-700 hover:bg-accent text-gray-300 hover:text-white'}`}
-                title="刷新分镜数据"
-            >
-                <RefreshCw size={10} className={isRefreshingShots ? 'animate-spin' : ''} />
-                {isRefreshingShots ? '刷新中...' : '刷新'}
-            </button>
+            <div className="flex items-center gap-1 ml-auto">
+                <select 
+                    className="bg-dark-700 text-[10px] text-gray-300 rounded border border-dark-600 focus:border-accent outline-none px-1 py-0.5"
+                    value={defaultVideoAspectRatio || '16:9'}
+                    onChange={(e) => onSetDefaultVideoAspectRatio && onSetDefaultVideoAspectRatio(e.target.value)}
+                    title="默认视频画面比例"
+                >
+                    <option value="16:9">16:9</option>
+                    <option value="9:16">9:16</option>
+                </select>
+                <select 
+                    className="bg-dark-700 text-[10px] text-gray-300 rounded border border-dark-600 focus:border-accent outline-none px-1 py-0.5"
+                    value={defaultVideoResolution || '720p'}
+                    onChange={(e) => onSetDefaultVideoResolution && onSetDefaultVideoResolution(e.target.value)}
+                    title="默认视频分辨率"
+                >
+                    <option value="720p">720p</option>
+                    <option value="1080p">1080p</option>
+                </select>
+                <button
+                    onClick={onRefreshShots}
+                    disabled={isRefreshingShots}
+                    className={`text-[10px] px-2 py-0.5 rounded transition-colors flex items-center gap-1 ${isRefreshingShots ? 'bg-dark-700 text-gray-600 cursor-not-allowed' : 'bg-dark-700 hover:bg-accent text-gray-300 hover:text-white'}`}
+                    title="刷新分镜数据"
+                >
+                    <RefreshCw size={10} className={isRefreshingShots ? 'animate-spin' : ''} />
+                    {isRefreshingShots ? '刷新中...' : '刷新'}
+                </button>
+            </div>
         </div>
         <div className="text-center">操作</div>
     </div>

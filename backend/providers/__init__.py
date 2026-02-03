@@ -39,7 +39,7 @@ async def generate_image(provider: str, prompt: str, sub_dir: str | None, config
         )
     raise Exception(f"Unsupported image provider: {provider}")
 
-async def generate_video(provider: str, prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, config, video_client, visual_service, save_video_bytes=None, save_base64_video=None, progress_callback=None, first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None) -> str:
+async def generate_video(provider: str, prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, config, video_client, visual_service, save_video_bytes=None, save_base64_video=None, progress_callback=None, first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None, video_aspect_ratio: str = "16:9", video_resolution: str = "720p") -> str:
     if provider == "openai":
         return await openai_provider.generate_video(
             prompt=prompt,
@@ -53,7 +53,9 @@ async def generate_video(provider: str, prompt: str, image_path: str | None, sub
             video_client=video_client,
             config=config,
             save_video_bytes=save_video_bytes,
-            save_base64_video=save_base64_video
+            save_base64_video=save_base64_video,
+            video_aspect_ratio=video_aspect_ratio,
+            video_resolution=video_resolution
         )
     if provider == "volcengine":
         return await asyncio.to_thread(
@@ -71,6 +73,8 @@ async def generate_video(provider: str, prompt: str, image_path: str | None, sub
             rongyiyun_provider.generate_video,
             prompt,
             source_url,
-            config
+            config,
+            video_aspect_ratio,
+            video_resolution
         )
     raise Exception(f"Unsupported video provider: {provider}")

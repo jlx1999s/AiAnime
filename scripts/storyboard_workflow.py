@@ -34,7 +34,7 @@ import filelock
 #    python storyboard_workflow.py --api-style "anthropic" --api-key "sk-ant-..." --model "claude-3-5-sonnet-20240620" beatboard
 BEAT_BREAKDOWN_TEMPLATE = """---
 name: beat-breakdown-template
-description: 节拍拆解表模板。用于从剧本/梗概中识别叙事曲线的关键拐点，选取9个锚点用于九宫格生成。
+description: 节拍拆解表模板。用于从剧本/梗概中识别叙事曲线的关键拐点，选取锚点用于九宫格生成（数量按目标格数）。
 ---
 
 # 节拍拆解表
@@ -58,7 +58,7 @@ description: 节拍拆解表模板。用于从剧本/梗概中识别叙事曲线
 
 ## 锚点选取摘要
 
-选中的9个锚点（对应九宫格）：
+选中的锚点（对应九宫格，数量按目标格数）：
 
 | 格子 | Beat | 拐点类型 | 事件摘要 |
 |------|------|---------|---------|
@@ -72,6 +72,8 @@ description: 节拍拆解表模板。用于从剧本/梗概中识别叙事曲线
 | 8 | #<编号> | <拐点类型> | <摘要> |
 | 9 | #<编号> | <拐点类型> | <摘要> |
 
+如目标格数小于9，未使用的格子请写“占位”，锚点标记为“否”。
+
 ## 字段说明
 
 ### 节拍拆解表字段
@@ -79,7 +81,7 @@ description: 节拍拆解表模板。用于从剧本/梗概中识别叙事曲线
 - **事件摘要**：这个节拍发生了什么（最小叙事单元）
 - **观众获得**：观众从这个节拍获得的信息、情绪或悬念
 - **强度**：节拍的情绪/戏剧强度（低/中/高）
-- **锚点**：是否被选为九宫格锚点（是/否），全表应有且仅有9个"是"
+- **锚点**：是否被选为九宫格锚点（是/否），全表应有且仅有目标格数个"是"
 
 ### 锚点选取摘要字段
 - **格子**：九宫格的位置（1-9）
@@ -143,6 +145,7 @@ description: Beat Board 九宫格提示词模板。提示词采用叙事描述�
 ## 九宫格布局
 第1行：格1-3 / 第2行：格4-6 / 第3行：格7-9
 叙事连贯，情绪递进。
+当目标格数小于9时，仅前N格承载完整剧情，其余格子写“占位”，不新增剧情信息。
 
 ## Panel Breakdown（九格关键帧拆解）
 [采用叙事描述式提示词，参考 gemini-image-prompt-guide.md]
@@ -670,6 +673,7 @@ description: 影视分镜方法论。当需要将剧本、故事梗概或分场�
         - 一镜一意 / 关键帧原则：
             - 默认：一个镜头或一个剧情节拍（beat）用一张关键帧表达
             - 只有当镜头内调度复杂、或动作必须分解追踪时，才拆多格（A/B/C），并说明拆格原因
+            - 当目标分镜数量较少时，允许将相邻节拍合并为一个更大的叙事段落，确保起承转合与结局完整覆盖
         - 经济性：
             - 能用一个画面讲清，就不要重复画同信息点
             - 同一信息点尽量只出现一次"重点强调"，避免冗余
@@ -2026,6 +2030,10 @@ def cmd_breakdown(args):
     project_dir, script_dir, output_dir = get_dirs(args)
     script_file = getattr(args, 'script_file', None)
     files = get_file_paths(output_dir, script_file=script_file)
+    grid_count, panels_per_grid = normalize_sequence_counts(
+        getattr(args, "sequence_grids", None),
+        getattr(args, "sequence_panels", None)
+    )
     
     script_content = get_script_content(script_dir, script_file=script_file)
     if not script_content:
@@ -2046,9 +2054,12 @@ Task: Generate a Beat Breakdown for the provided script.
 
 Instructions:
 1. Analyze the script to identify key narrative beats.
-2. Select exactly 9 anchor beats for the Beat Board.
-3. Fill out the Beat Breakdown Template.
-4. Output ONLY the filled markdown content.
+2. Target storyboard count is {grid_count * panels_per_grid} shots ({grid_count} grids × {panels_per_grid} panels). If the target count is low, merge adjacent beats into larger narrative segments so the full story arc is covered.
+3. Select exactly {grid_count} anchor beats for the Beat Board, covering beginning, development, climax, and resolution.
+4. If grid_count < 9, leave unused grid slots as “占位” and mark them as non-anchors.
+5. Fill out the Beat Breakdown Template.
+6. 输出内容必须为中文。
+7. Output ONLY the filled markdown content.
 """
     
     llm = LLM(config=LLMConfig(args))
@@ -2064,6 +2075,10 @@ def cmd_beatboard(args):
     project_dir, script_dir, output_dir = get_dirs(args)
     script_file = getattr(args, 'script_file', None)
     files = get_file_paths(output_dir, script_file=script_file)
+    grid_count, panels_per_grid = normalize_sequence_counts(
+        getattr(args, "sequence_grids", None),
+        getattr(args, "sequence_panels", None)
+    )
     
     breakdown_content = read_output_file(files['breakdown'])
     if not breakdown_content and not script_file:
@@ -2086,10 +2101,12 @@ Task: Generate Beat Board Prompts based on the Beat Breakdown.
 {BEAT_BOARD_TEMPLATE}
 
 Instructions:
-1. Read the Beat Breakdown and focus on the 9 selected anchor beats.
-2. Generate a 3x3 Beat Board prompt description following the template.
-3. Ensure character and visual consistency across all panels.
-4. Output ONLY the filled markdown content.
+1. Read the Beat Breakdown and focus on the selected anchor beats.
+2. The target storyboard count is {grid_count * panels_per_grid} shots. If grid_count < 9, compress the full story into the first {grid_count} panels by merging adjacent beats; remaining panels must be placeholders with no new plot.
+3. Generate a 3x3 Beat Board prompt description following the template.
+4. Ensure character and visual consistency across all panels.
+5. 输出内容必须为中文。
+6. Output ONLY the filled markdown content.
 """
     elif script_file:
         script_content = get_script_content(script_dir, script_file=script_file)
@@ -2111,10 +2128,12 @@ Task: Generate Beat Board Prompts directly from the provided script.
 {BEAT_BOARD_TEMPLATE}
 
 Instructions:
-1. Analyze the script and select exactly 9 anchor beats for the Beat Board.
-2. Generate a 3x3 Beat Board prompt description following the template.
-3. Ensure character and visual consistency across all panels.
-4. Output ONLY the filled markdown content.
+1. Analyze the script and select exactly {grid_count} anchor beats that cover the full story arc.
+2. The target storyboard count is {grid_count * panels_per_grid} shots. If grid_count < 9, compress the full story into the first {grid_count} panels by merging adjacent beats; remaining panels must be placeholders with no new plot.
+3. Generate a 3x3 Beat Board prompt description following the template.
+4. Ensure character and visual consistency across all panels.
+5. 输出内容必须为中文。
+6. Output ONLY the filled markdown content.
 """
     else:
         return
@@ -2160,10 +2179,12 @@ __TEMPLATE__
 
 Instructions:
 1. For the first {grid_count} Beat Board panels, expand each into a {panels_per_grid}-panel sequence (Sequence Board).
-2. Maintain visual consistency with the source panel.
-3. Describe the action/motion progression within the {panels_per_grid} panels.
-4. Output the filled Markdown content FIRST.
-5. Only output panels for 格1-格{grid_count}.
+2. If grid_count < 9, merge adjacent beats from the Beat Board so that the {grid_count} grids still cover the full story arc from beginning to resolution.
+3. Maintain visual consistency with the source panel.
+4. Describe the action/motion progression within the {panels_per_grid} panels.
+5. 输出内容必须为中文。
+6. Output the filled Markdown content FIRST.
+7. Only output panels for 格1-格{grid_count}.
 
 [Extra Requirement]
 AFTER the Markdown content, output a JSON block containing the characters and scenes used in the storyboard.
@@ -2206,10 +2227,12 @@ __TEMPLATE__
 
 Instructions:
 1. Identify {grid_count} anchor beats and for each, expand it into a {panels_per_grid}-panel sequence (Sequence Board).
-2. Ensure visual consistency across sequences as if sourced from unified Beat Board.
-3. Describe the action/motion progression within the {panels_per_grid} panels.
-4. Output the filled Markdown content FIRST.
-5. Only output panels for 格1-格{grid_count}.
+2. If grid_count < 9, merge adjacent story beats so that the {grid_count} grids still cover the full story arc from beginning to resolution.
+3. Ensure visual consistency across sequences as if sourced from unified Beat Board.
+4. Describe the action/motion progression within the {panels_per_grid} panels.
+5. 输出内容必须为中文。
+6. Output the filled Markdown content FIRST.
+7. Only output panels for 格1-格{grid_count}.
 
 [Extra Requirement]
 AFTER the Markdown content, output a JSON block containing the characters and scenes used in the storyboard.
@@ -2296,7 +2319,8 @@ Instructions:
 1. Extract the key visual elements and actions from the Sequence Board.
 2. Generate motion prompts for video generation tools (Runway/Kling/Pika).
 3. Follow the Motion Prompt Methodology for camera movement and action description.
-4. Output ONLY the filled markdown content.
+4. 输出内容必须为中文。
+5. Output ONLY the filled markdown content.
 """
         prompt = prompt_template.replace("__INPUT_CONTENT__", sequence_content) \
                                 .replace("__METHODOLOGY__", MOTION_METHODOLOGY) \
@@ -2321,7 +2345,8 @@ Instructions:
 1. Identify key visual elements and actions from the script aligned to 9 anchor beats.
 2. Generate motion prompts for video generation tools (Runway/Kling/Pika).
 3. Follow the Motion Prompt Methodology for camera movement and action description.
-4. Output ONLY the filled markdown content.
+4. 输出内容必须为中文。
+5. Output ONLY the filled markdown content.
 """
         prompt = prompt_template.replace("__INPUT_CONTENT__", script_content) \
                                 .replace("__METHODOLOGY__", MOTION_METHODOLOGY) \

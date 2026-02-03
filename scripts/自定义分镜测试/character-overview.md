@@ -1,0 +1,18 @@
+# 角色概览
+
+| 角色名 | 描述 | 生图提示词 |
+| --- | --- | --- |
+| 山贼头目 | 面目狰狞的反派角色，骑马出现的强盗首领。皮肤粗糙，手持生锈的长刀，充满暴力与凶残的气息。 | bandit leader, ferocious face, rough skin texture, holding rusty sword, riding horse, aggressive expression, ancient Chinese bandit armor, dynamic angle, dust background, cinematic lighting, photorealistic, 8k |
+| 无（特写道具） | 特指桌面上的静物特写。积灰的台历，红笔圈出的“生日”日期，以及旁边吃剩的泡面。 | close-up shot, dusty desk calendar, date circled in red pen, leftover instant noodles, messy desk, dramatic shadows, cold lighting, macro details, storytelling objects |
+| 无（箱内景观） | 箱子内部呈现的微缩地理景观。逼真的黄土高原地貌，枯树、破败茅屋和干裂河床，具有卫星地图般的真实感。 | miniature landscape inside a box, Loess Plateau terrain, dry yellow earth, withered trees, ruined thatched huts, cracked riverbed, hyper-realistic, 8k resolution, satellite view texture, diorama style, no humans |
+| 李道玄 | 孤独疲惫的现代都市青年。戴眼镜，身形佝偻，黑眼圈深重，面部凹陷，皮肤苍白粗糙，处于极度疲劳和麻木的状态。 | young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style |
+| 母亲 | 高一叶的母亲，微缩世界中的古代贫苦农民。衣衫褴褛，极度虚弱消瘦，躺在地上，最终遭遇不幸。 | middle-aged woman, ancient Chinese peasant, emaciated, tattered clothes, lying on ground, weak, dying, bloodstains, dirty face, tragic atmosphere, cinematic lighting |
+| 高一叶 | 微缩世界中的少女，体型极小（指甲盖大小）。穿着破烂麻布，满身伤痕与泥垢，眼神中充满求生欲、绝望与惊恐。 | tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture |
+| 山贼头目（影子） | 投射在地面上的巨大阴影，预示着暴行的到来。轮廓张牙舞爪，笼罩着受害者，通过影子形状暗示手中的武器。 | Ominous dark shadow cast on dry ground, silhouette of a large man holding a weapon, sharp edges, high contrast, looming over victims, symbol of threat, dramatic lighting |
+| 无（主观视角） | 李道玄的第一人称视角（POV）。俯视造景箱内部，视线边缘可能包含李道玄模糊的倒影或手部边缘。 | First-person perspective, POV shot, looking down into a glass tank, blurred reflection on glass surface, hands gripping the edge of the frame, depth of field focused on the interior, cinematic composition |
+| 高一叶母亲 | 高一叶的母亲，极度虚弱，面色灰败。躺在干裂的黄土地上，生命垂危，穿着破烂的古代农妇服装。 | Elderly ancient Chinese woman, dying, lying on dry earth, ashen grey complexion, extremely weak, ragged peasant clothes, emaciated, messy grey hair, tragic atmosphere, cinematic lighting |
+| 山贼 | 古代流寇形象，衣着破烂肮脏，骑着微型马匹，动作粗鲁暴力，成群结队制造混乱。 | Ancient Chinese bandits, riding horses, rough ragged clothing, dirty faces, holding weapons, aggressive posture, miniature scale, dynamic action, cinematic lighting, dust clouds. |
+| 山贼们 | 一群骑马的暴徒，在荒原上肆虐，后因巨物降临而陷入极度惊恐和混乱。 | Group of bandits, chaotic formation, panic expression, looking up at sky, ancient Chinese armor, rugged appearance, horses rearing up, disarray, cinematic shot, wide angle. |
+| 李道玄（手） | 巨大的神之手，皮肤纹理清晰，指纹如沟壑，指甲锋利，带有压倒性的体量感和力量感。 | Giant human hand, realistic skin texture, visible pores, fingerprints like trenches, massive scale, dramatic lighting, hand gesture, flicking motion, macro photography details, cinematic composition, god-like power. |
+| 山贼（尸体） | The gruesome remains of bandits crushed into the earth by a giant hand, mixed with broken weapons and soil. | flattened human remains, gore, crushed flesh and bone, broken metal weapon fragments, embedded in soil, inside a giant palm print indentation, realistic blood texture, horror, macro shot |
+| 无（环境镜头） | An atmospheric shot focusing on the environment itself, specifically the moment the 'sky' (box lid) opens, letting in beams of light. | dark clouds cracking open, bright light beam piercing through, tyndall effect, dust motes dancing in light, oppressive atmosphere, low angle, photorealistic, cinematic environment |

@@ -1233,490 +1233,490 @@
     {
       "id": "27d63e43-528d-4ef2-b6df-a75b2b440457",
       "name": "山贼",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/4a4c7434-b88f-43fe-9836-ee6e6c52d1e7.png",
       "tags": [],
-      "prompt": "ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography",
+      "prompt": "山贼, ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography, anime style, high quality",
       "description": "A violent antagonist in the miniature world, dressed in dirty leather armor, riding a horse, and wielding a rusty machete. He represents imminent death and destruction.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "5dd03013-7ef5-49e2-b8bd-b3cc0d332aa6",
       "name": "无（以物件为主）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（以物件为主）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/64e73c57-8cb9-4c79-bced-53837ba98ccb.png",
       "tags": [],
-      "prompt": "large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light",
+      "prompt": "无（以物件为主）, large unopened cardboard box, packing tape, texture of cardboard, sitting on a messy desk, still life, mysterious atmosphere, dim lighting, cold blue ambient light, anime style, high quality",
       "description": "Focus on inanimate objects, specifically a large, mysterious, unopened cardboard box sitting on a cluttered desk.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "0be8d5c3-a127-46b8-aa7b-3cede3869c4b",
       "name": "李道玄",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/5a1ea1bf-e498-4329-adf7-2ce07fe4ae4e.png",
       "tags": [],
-      "prompt": "young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k",
+      "prompt": "李道玄, young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k, anime style, high quality",
       "description": "A modern young man in a dimly lit bedroom. He looks tired, wearing casual home clothes. He is the observer and 'god' figure looking into the box.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "6aff143f-0154-4b9a-81e0-a492231d934a",
       "name": "李道玄（手指）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手指）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/fdbd8c67-dccd-4dde-acf9-f1818927dc02.png",
       "tags": [],
-      "prompt": "extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail",
+      "prompt": "李道玄（手指）, extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail, anime style, high quality",
       "description": "Extreme close-up of a finger acting as a weapon or tool. Focus on the skin texture, fingerprints, and the massive scale compared to the miniature world.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "4b85fd74-ae5c-4cfb-9fff-c2b1626a9a26",
       "name": "李道玄（手部）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手部）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/501dd7e4-a789-439b-8d4e-53d86f64b047.png",
       "tags": [],
-      "prompt": "giant human hand, palm and fingers, casting huge shadow, realistic skin texture, hovering over miniature village, god-like perspective, megalophobia, dramatic scale contrast",
+      "prompt": "李道玄（手部）, giant human hand, palm and fingers, casting huge shadow, realistic skin texture, hovering over miniature village, god-like perspective, megalophobia, dramatic scale contrast, anime style, high quality",
       "description": "A giant human hand entering the miniature world, casting a massive shadow. It represents a divine intervention or a force of nature.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "91ce3dce-bc67-4df4-be6e-dc4b03c5ff0c",
       "name": "村民",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=村民",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/c67e164c-6906-4347-a73e-387b28513f7d.png",
       "tags": [],
-      "prompt": "tiny ancient Chinese peasants, running, fleeing, panic, tattered clothes, miniature figures, blurred background, swarm, helpless, macro photography",
+      "prompt": "村民, tiny ancient Chinese peasants, running, fleeing, panic, tattered clothes, miniature figures, blurred background, swarm, helpless, macro photography, anime style, high quality",
       "description": "Tiny, insignificant figures in the miniature world, fleeing in panic. They are dressed in ancient peasant rags.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "cac91bf8-f3ee-4842-bc56-08e1a4654140",
       "name": "母亲",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=母亲",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/6f50a646-4b01-4902-86cd-5e5ca8159667.png",
       "tags": [],
-      "prompt": "ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting",
+      "prompt": "母亲, ancient Chinese peasant woman, falling down, back injury, reaching out hand, expression of pain, sacrifice, dramatic emotional moment, miniature style, cinematic lighting, anime style, high quality",
       "description": "A tragic figure in the miniature village, an ancient peasant woman who has been stabbed and is falling, reaching out to her child.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "354dbed3-de24-4794-9db3-fbb901df5b7f",
       "name": "高一叶",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/d2331338-c53b-46a9-aa1d-768f842bafd6.png",
       "tags": [],
-      "prompt": "young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography",
+      "prompt": "高一叶, young Chinese peasant girl, ancient rags, dirty face, mud stains, messy hair, crying, screaming, wide open mouth, visible neck veins, terrified expression, kneeling, high detail, macro photography, anime style, high quality",
       "description": "A young peasant girl in the miniature world. She has a muddy face, messy hair, and wears rags. She transitions from numbness to extreme terror and despair.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "78f9a7f2-bbbd-42b3-ad04-e24d3445862f",
       "name": "高一叶（模糊）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶（模糊）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/1a6822f9-60d0-401e-b2c6-ca7f44d9f849.png",
       "tags": [],
-      "prompt": "young Chinese peasant girl, blurry, out of focus, bokeh effect, seen through magnifying glass, optical distortion, heavy vignette, vague silhouette",
+      "prompt": "高一叶（模糊）, young Chinese peasant girl, blurry, out of focus, bokeh effect, seen through magnifying glass, optical distortion, heavy vignette, vague silhouette, anime style, high quality",
       "description": "The girl seen through a magnifying glass or out of focus, representing the optical process of finding a target.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "f2c2cb1a-d345-42d2-a7bd-3b974abcc2a5",
       "name": "微缩村民",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/247f693b-20df-4db9-a8c8-4501fe945287.png",
       "tags": [],
-      "prompt": "miniature people, ancient Chinese peasant clothes, running in panic, swarm of ants, macro photography, tilt-shift effect, high angle view, chaotic formation",
+      "prompt": "微缩村民, miniature people, ancient Chinese peasant clothes, running in panic, swarm of ants, macro photography, tilt-shift effect, high angle view, chaotic formation, anime style, high quality",
       "description": "Tiny inhabitants of the box world, dressed in ancient peasant clothing, reacting with panic and chaos like a disturbed ant colony.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "be75d607-4d64-4aa1-9d3d-9e2a0feb6d32",
       "name": "无（主观视角）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（主观视角）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/54dd5f24-43b0-4c86-91c2-064cbc9572ba.png",
       "tags": [],
-      "prompt": "POV shot, optical distortion, chromatic aberration, heavy vignette, blurred edges, macro texture of yellow earth, out of focus, magnifying glass effect",
+      "prompt": "无（主观视角）, POV shot, optical distortion, chromatic aberration, heavy vignette, blurred edges, macro texture of yellow earth, out of focus, magnifying glass effect, anime style, high quality",
       "description": "A point-of-view perspective looking through a magnifying lens, characterized by optical imperfections and focus transitions.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "a45a5a3a-f924-4b12-8454-5a88b3ec8ded",
       "name": "李道玄的手",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄的手",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/a41251e8-334e-4e4e-b95b-af408e0bd69d.png",
       "tags": [],
-      "prompt": "giant human hand, extreme close-up, visible fingerprints, skin pores, dirty fingernails, oily skin texture, dramatic lighting, interacting with miniature objects, massive scale contrast",
+      "prompt": "李道玄的手, giant human hand, extreme close-up, visible fingerprints, skin pores, dirty fingernails, oily skin texture, dramatic lighting, interacting with miniature objects, massive scale contrast, anime style, high quality",
       "description": "A massive, realistic human hand entering the miniature world, showing detailed skin texture, fingerprints, and dirt/oil, acting as a god-like force.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "de207293-7907-4334-8246-8f6bb975ca9b",
       "name": "李道玄（局部）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（局部）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/dd6a6b7d-1aea-4de2-8b34-4f1bcc208007.png",
       "tags": [],
-      "prompt": "giant finger hovering in sky, massive fingerprint ridges, blurred giant face in background, atmospheric perspective, looking down from clouds, god-like scale",
+      "prompt": "李道玄（局部）, giant finger hovering in sky, massive fingerprint ridges, blurred giant face in background, atmospheric perspective, looking down from clouds, god-like scale, anime style, high quality",
       "description": "Parts of Li Daoxuan seen from the perspective of the miniature world, appearing as colossal, god-like features in the sky.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "228be350-21f8-4822-8c4d-027baaaba199",
       "name": "流寇",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=流寇",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/49cfb152-c4bf-4113-bc44-d783f4fbfd5a.png",
       "tags": [],
-      "prompt": "miniature bandit, savage face, beard, cruel smile, holding steel sword, tattered leather armor, riding thin horse, dynamic pose, motion blur, menacing atmosphere",
+      "prompt": "流寇, miniature bandit, savage face, beard, cruel smile, holding steel sword, tattered leather armor, riding thin horse, dynamic pose, motion blur, menacing atmosphere, anime style, high quality",
       "description": "Violent bandits riding thin horses or sprinting, wearing tattered armor, wielding steel knives, with savage and cruel expressions.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "7bbbc502-034c-4433-80ab-66683266a1a5",
       "name": "山贼（尸体）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=山贼（尸体）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/db16257f-8ebd-49c3-b3b8-6568da198851.png",
       "tags": [],
-      "prompt": "Flattened body against glass surface, gore, blood splatter, crushed armor, abstract flesh texture, gruesome, high contrast, slide mark of blood, realistic texture, cinematic horror",
+      "prompt": "山贼（尸体）, Flattened body against glass surface, gore, blood splatter, crushed armor, abstract flesh texture, gruesome, high contrast, slide mark of blood, realistic texture, cinematic horror, anime style, high quality",
       "description": "The aftermath of the bandit being flicked by the giant finger. A flattened, unrecognizable mass of flesh and blood smashed against the glass wall of the box.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "dd4ae95a-a04f-4ee5-9525-fab80c1d42f5",
       "name": "微缩村民（群演）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=微缩村民（群演）",
+      "avatar_url": "https://picsum.photos/seed/60d15fd1-c0fa-4139-9e23-62f9e620e66a/512/512",
       "tags": [],
-      "prompt": "Crowd of tiny ancient Chinese peasants, ragged clothes, panic, running, chaotic formation, top-down view, ant-like scale, dust clouds, motion blur, depth of field, cinematic disaster scene",
+      "prompt": "微缩村民（群演）, Crowd of tiny ancient Chinese peasants, ragged clothes, panic, running, chaotic formation, top-down view, ant-like scale, dust clouds, motion blur, depth of field, cinematic disaster scene, anime style, high quality",
       "description": "The tiny inhabitants of the box world. They look like ants from a distance, dressed in rags, running in panic and chaos.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "99d9b8df-78aa-4e5a-b6ed-a394fd9bc6ec",
       "name": "李道玄（手）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（手）",
+      "avatar_url": "https://picsum.photos/seed/978aafab-9f67-4433-ab1a-422e21b4d09c/512/512",
       "tags": [],
-      "prompt": "Giant human hand, massive scale, hyper-realistic skin texture, fingerprints visible as grooves, jade-like fingernail, muscular tension, descending from sky, god-like perspective, megalophobia, dramatic lighting",
+      "prompt": "李道玄（手）, Giant human hand, massive scale, hyper-realistic skin texture, fingerprints visible as grooves, jade-like fingernail, muscular tension, descending from sky, god-like perspective, megalophobia, dramatic lighting, anime style, high quality",
       "description": "Li Daoxuan's hand appearing as a colossal, god-like structure within the miniature world. Features realistic skin texture, fingerprints like valleys, and immense power.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "26482e9c-6bc1-4032-be17-f11b97f11ee0",
       "name": "高一叶母亲",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=高一叶母亲",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/13e76523-fb86-492e-8874-a2daf269cfbd.png",
       "tags": [],
-      "prompt": "Ancient Chinese peasant woman, frail body, thin, ragged clothes, protective posture, back view, bloodstains, dramatic composition, tragic atmosphere, photorealistic",
+      "prompt": "高一叶母亲, Ancient Chinese peasant woman, frail body, thin, ragged clothes, protective posture, back view, bloodstains, dramatic composition, tragic atmosphere, photorealistic, anime style, high quality",
       "description": "A frail miniature woman who sacrifices herself to protect Gao Yiye. She is thin, wears rags, and is depicted in a protective stance or dying.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "72a6c4a5-e9dc-473b-8270-82b517573e00",
       "name": "无（环境）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（环境）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/481c61b2-ea4a-4b74-b231-86a44a569537.png",
       "tags": [],
-      "prompt": "no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot",
+      "prompt": "无（环境）, no humans, scenery focus, atmospheric lighting, detailed environment, texture focus, cinematic shot, anime style, high quality",
       "description": "No specific character focus; emphasis on the environment, atmosphere, or POV shots.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "e6e2665c-61d4-42ed-aa0a-345ee9a962b2",
       "name": "无（屏幕画面）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=无（屏幕画面）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/356aa1d1-674c-4b64-b03f-2b6a64fb4210.png",
       "tags": [],
-      "prompt": "computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels",
+      "prompt": "无（屏幕画面）, computer screen interface, close-up, bright red notification icon, social media comment section, hateful text, 'Termination Notice' email header, formal font, digital noise, high contrast, glowing pixels, anime style, high quality",
       "description": "The digital content displayed on a computer monitor, showing a barrage of negative social media notifications and a formal termination email.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "c4dfbd5b-a857-4f27-ab1a-b4bc73fdafe1",
       "name": "李道玄（倒影）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（倒影）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/1fe78a41-8b9f-4b7d-b0d4-607dd70afc81.png",
       "tags": [],
-      "prompt": "reflection on black glass screen, distorted face, ghostly silhouette, hollow eyes, dark tones, low key lighting, mysterious atmosphere, digital screen texture",
+      "prompt": "李道玄（倒影）, reflection on black glass screen, distorted face, ghostly silhouette, hollow eyes, dark tones, low key lighting, mysterious atmosphere, digital screen texture, anime style, high quality",
       "description": "The distorted and ghostly reflection of Li Daoxuan's face seen on a dark computer monitor screen.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "73badc71-c53f-41b7-a4d6-734bb19bb683",
       "name": "李道玄（的手）",
-      "avatar_url": "https://api.dicebear.com/7.x/adventurer/svg?seed=李道玄（的手）",
+      "avatar_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/53ce658f-88d0-4fc9-99f3-b7410399c9d2.png",
       "tags": [],
-      "prompt": "male hand close-up, palm lines visible, dark red dried blood stains, trembling fingers, holding a magnifying glass, realistic skin texture, tension in tendons, rubbing thumb against palm",
+      "prompt": "李道玄（的手）, male hand close-up, palm lines visible, dark red dried blood stains, trembling fingers, holding a magnifying glass, realistic skin texture, tension in tendons, rubbing thumb against palm, anime style, high quality",
       "description": "Li Daoxuan's hands, specifically showing palm prints with dark red bloodstains or holding a magnifying glass.",
-      "status": "idle"
+      "status": "completed"
     }
   ],
   "scenes": [
     {
       "id": "cb97d1ba-5e70-4a44-9731-5bf01a595c7b",
       "name": "微缩荒村",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/be139023-a80c-4189-bf41-93f4c241d4a9.png",
       "tags": [],
-      "prompt": "miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect",
+      "prompt": "微缩荒村, miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect, anime style, high quality",
       "description": "A miniature diorama of a desolate ancient Chinese village. Features yellow earth, dry cracked ground, thatched huts, broken walls, and smoke.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "ffa3fb64-b399-4731-abba-053ce402ff4b",
       "name": "微缩荒村上空",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/5f0be12b-44e2-4018-ba69-3ef2046c065c.png",
       "tags": [],
-      "prompt": "aerial view of miniature village, top-down perspective, yellow earth terrain, tiny houses, dramatic shadows, bright white light beam from above, divine light, wide angle",
+      "prompt": "微缩荒村上空, aerial view of miniature village, top-down perspective, yellow earth terrain, tiny houses, dramatic shadows, bright white light beam from above, divine light, wide angle, anime style, high quality",
       "description": "The view from above the miniature village, looking up at the 'sky' (the opening of the box) or looking down from a god's eye view.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "b25d2444-a227-4bd2-bb1c-dcb037e21ac7",
       "name": "微缩荒村边缘",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/9e57d625-6451-4a8c-9d41-b9617c5b3482.png",
       "tags": [],
-      "prompt": "edge of diorama, glass wall boundary, pile of gravel, miniature terrain meeting glass, debris, reflection on glass, cross-section of soil",
+      "prompt": "微缩荒村边缘, edge of diorama, glass wall boundary, pile of gravel, miniature terrain meeting glass, debris, reflection on glass, cross-section of soil, anime style, high quality",
       "description": "The boundary of the miniature world where the terrain meets the glass wall of the box. Contains debris and gravel.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "660617e2-f7d4-4b10-9fd7-09e82605165d",
       "name": "昏暗杂乱的现代卧室",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/d6b6ae2c-1476-4a46-ace4-dde7f4d7a82a.png",
       "tags": [],
-      "prompt": "modern bedroom, dim lighting, cluttered desk, computer monitor with blue light, takeaway boxes, messy, claustrophobic atmosphere, cinematic lighting, cyberpunk vibes, cold color temperature, realistic interior",
+      "prompt": "昏暗杂乱的现代卧室, modern bedroom, dim lighting, cluttered desk, computer monitor with blue light, takeaway boxes, messy, claustrophobic atmosphere, cinematic lighting, cyberpunk vibes, cold color temperature, realistic interior, anime style, high quality",
       "description": "A messy, dimly lit modern room. Filled with takeaway boxes, a computer monitor emitting cold blue light, and a general sense of depression/isolation.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "2ef947ae-71b8-4da1-bd3f-6287ff248dd0",
       "name": "半空中",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/1cd372a3-9c51-49bb-a6ad-dea0dc884a63.png",
       "tags": [],
-      "prompt": "mid-air freeze frame, motion blur, tumbling body, dust trail, suspended in air, cinematic action shot, depth of field",
+      "prompt": "半空中, mid-air freeze frame, motion blur, tumbling body, dust trail, suspended in air, cinematic action shot, depth of field, anime style, high quality",
       "description": "The airspace within the box where the bandit is flung, showing motion and height relative to the miniature ground.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "ad815cfe-ed2c-4f5c-8e5d-422327a05973",
       "name": "昏暗杂乱的出租屋",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/05c4f0d7-4219-4de4-a5d7-adb7b6f7c2cb.png",
       "tags": [],
-      "prompt": "dimly lit room, messy apartment, clutter, trash, cardboard boxes, e-sports chair, computer monitor, cold blue ambient light, contrast with warm yellow light from box, cinematic atmosphere, realistic",
+      "prompt": "昏暗杂乱的出租屋, dimly lit room, messy apartment, clutter, trash, cardboard boxes, e-sports chair, computer monitor, cold blue ambient light, contrast with warm yellow light from box, cinematic atmosphere, realistic, anime style, high quality",
       "description": "A dark, messy room filled with clutter, cardboard boxes, and an e-sports chair, lit by the cold blue light of a monitor and warm light from the box.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "f505e00a-b020-499a-ac64-7bfc85328adc",
       "name": "玻璃箱壁",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/452d8edd-cd8d-4f72-a9a7-5c529d773bf0.png",
       "tags": [],
-      "prompt": "transparent glass surface, spiderweb cracks, blood mist splatter, impact point, reflection, macro detail, texture of glass",
+      "prompt": "玻璃箱壁, transparent glass surface, spiderweb cracks, blood mist splatter, impact point, reflection, macro detail, texture of glass, anime style, high quality",
       "description": "The transparent boundary of the miniature world, which cracks upon impact.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "7a3412ef-f58e-4369-9bd3-2015df08d18a",
       "name": "箱内微缩世界",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/fe999719-1ae7-4214-a0c4-189456fe558e.png",
       "tags": [],
-      "prompt": "miniature diorama, yellow loess soil, cracked earth, withered miniature tree, tiny fences, ancient village ruins, macro photography, tilt-shift, shallow depth of field, warm lighting, realistic texture",
+      "prompt": "箱内微缩世界, miniature diorama, yellow loess soil, cracked earth, withered miniature tree, tiny fences, ancient village ruins, macro photography, tilt-shift, shallow depth of field, warm lighting, realistic texture, anime style, high quality",
       "description": "A miniature landscape inside a cardboard box featuring yellow loess soil, dry earth, withered trees, and tiny ancient structures, lit by external light.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "cf206337-7dea-44be-beeb-d7acb972b36c",
       "name": "昏暗杂乱的现代公寓房间",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/5568e0c2-8bf0-4670-9729-5a6b8c7f55ee.png",
       "tags": [],
-      "prompt": "Messy modern apartment room, dimly lit, computer screen blue light, cluttered desk, cardboard boxes, atmospheric dust, cinematic lighting, low key, realistic interior",
+      "prompt": "昏暗杂乱的现代公寓房间, Messy modern apartment room, dimly lit, computer screen blue light, cluttered desk, cardboard boxes, atmospheric dust, cinematic lighting, low key, realistic interior, anime style, high quality",
       "description": "Li Daoxuan's living space. Dark, cluttered, illuminated by the cold blue light of a computer screen and the warm glow from the box.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "d1527f41-73a9-4595-861c-17f41ddd496c",
       "name": "现代公寓",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/f2f37358-7a28-49c3-8b24-8dd540cf3c71.png",
       "tags": [],
-      "prompt": "Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field",
+      "prompt": "现代公寓, Modern apartment interior, cold color temperature, shadows, realism, indoor setting, blurred background, depth of field, anime style, high quality",
       "description": "The broader setting of the protagonist's reality. Cold tones contrasting with the warm light of the miniature world.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "7237dd83-910f-413e-b5d2-83e1f6b2f866",
       "name": "现代公寓 / 微缩世界边界",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/611b7251-0d05-4593-b270-84a2d9ed07e1.png",
       "tags": [],
-      "prompt": "Giant magnifying glass lens, optical distortion, glass reflection, split screen effect, blue light vs warm yellow light, macro detail of glass edge, boundary concept",
+      "prompt": "现代公寓 / 微缩世界边界, Giant magnifying glass lens, optical distortion, glass reflection, split screen effect, blue light vs warm yellow light, macro detail of glass edge, boundary concept, anime style, high quality",
       "description": "The interface between reality and the box. Features optical glass, reflections, and the contrast between the giant room and the tiny world.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "1cecd516-1bcc-4859-a4ae-56ed34a4cde4",
       "name": "箱内世界",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/80d617cd-a3d5-4d01-a078-6f7c6c454013.png",
       "tags": [],
-      "prompt": "Miniature diorama, ancient Chinese setting, warm yellow lighting, atmospheric dust, high detail, tilt-shift photography, photorealistic",
+      "prompt": "箱内世界, Miniature diorama, ancient Chinese setting, warm yellow lighting, atmospheric dust, high detail, tilt-shift photography, photorealistic, anime style, high quality",
       "description": "The miniature world inside the landscaping box. It resembles the Ming Dynasty, filled with warm yellow light and dust.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "b306d752-c97c-4bcc-acc3-61cbdf408e34",
       "name": "箱内世界边缘",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/17b8480c-3187-4bee-9ce0-6d8b56bb7aab.png",
       "tags": [],
-      "prompt": "Glass wall barrier, transparent texture, reflection, blood smear on glass, limit of the world, macro perspective, high contrast",
+      "prompt": "箱内世界边缘, Glass wall barrier, transparent texture, reflection, blood smear on glass, limit of the world, macro perspective, high contrast, anime style, high quality",
       "description": "The glass wall of the landscaping box viewed from the inside or outside. The limit of the miniature universe.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "3274c940-e0de-45e1-8f42-4f12cec71b67",
       "name": "箱内世界（天空/箱顶）",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/c01b354b-8a95-4456-873a-6c7097397e12.png",
       "tags": [],
-      "prompt": "Artificial sky, cotton wool clouds, dramatic lighting, turbulent clouds, giant shadow casting over, surreal atmosphere, low angle view",
+      "prompt": "箱内世界（天空/箱顶）, Artificial sky, cotton wool clouds, dramatic lighting, turbulent clouds, giant shadow casting over, surreal atmosphere, low angle view, anime style, high quality",
       "description": "The 'sky' of the miniature world, made of cotton clouds, which can be breached by the outside world (the giant hand).",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "f82b8a56-c4c7-4e68-a50b-e5433535b444",
       "name": "箱内世界（天空）",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/6a60b3d1-a81f-46e5-ba45-f453af31f29b.png",
       "tags": [],
-      "prompt": "Miniature sky, bright yellow turning to dark shadow, atmospheric perspective, clouds, sense of impending doom, cinematic sky",
+      "prompt": "箱内世界（天空）, Miniature sky, bright yellow turning to dark shadow, atmospheric perspective, clouds, sense of impending doom, cinematic sky, anime style, high quality",
       "description": "The upper atmosphere of the box, shifting from bright to ominous as the giant hand descends.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "d6c6c262-e3c0-4f11-afd0-afe4fd5e93be",
       "name": "箱内世界（微缩荒村）",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/7b515c36-0510-4b14-8602-aca7fe3843d8.png",
       "tags": [],
-      "prompt": "Miniature desolate village, cracked dry earth, yellow dust, withered plants, famine setting, macro photography, high detail, texture focus, warm arid lighting",
+      "prompt": "箱内世界（微缩荒村）, Miniature desolate village, cracked dry earth, yellow dust, withered plants, famine setting, macro photography, high detail, texture focus, warm arid lighting, anime style, high quality",
       "description": "A drought-stricken, desolate village setting inside the box. Cracked earth and signs of famine.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "514d4441-08b6-42b4-a38e-efbb791906c0",
       "name": "箱内世界（村口）",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/7582bf73-5db3-425b-bf62-d65be6a6b323.png",
       "tags": [],
-      "prompt": "Village entrance, dirt road, rising dust clouds, dry grass, low angle ground view, anticipation of danger, ancient architecture ruins, macro scale",
+      "prompt": "箱内世界（村口）, Village entrance, dirt road, rising dust clouds, dry grass, low angle ground view, anticipation of danger, ancient architecture ruins, macro scale, anime style, high quality",
       "description": "The entrance to the miniature village. Dusty, open, used as the staging ground for the bandit's charge.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "a3c8c9f5-d92e-4752-84da-cd94935c65d1",
       "name": "箱内世界（村庄）",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/adc9b642-0871-407f-ad6d-053188e8e1a2.png",
       "tags": [],
-      "prompt": "Ancient Chinese village huts, dilapidated structures, dusty ground, chaotic scene, aerial view or eye-level macro, warm tones, dramatic shadows",
+      "prompt": "箱内世界（村庄）, Ancient Chinese village huts, dilapidated structures, dusty ground, chaotic scene, aerial view or eye-level macro, warm tones, dramatic shadows, anime style, high quality",
       "description": "The center of the miniature village where the chaos takes place. Dilapidated huts and dusty ground.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "13288f93-3aee-4742-8e52-bdba39c991d7",
       "name": "微缩村庄",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/69404aeb-ab96-4469-85eb-dfcfc1cace5f.png",
       "tags": [],
-      "prompt": "miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting",
+      "prompt": "微缩村庄, miniature ancient chinese village, thatched houses, yellow earth ground, chaos, dust, running figures, macro view, diorama style, realistic textures, cinematic lighting, anime style, high quality",
       "description": "A tiny, dilapidated ancient village made of yellow earth and thatch. It is chaotic, filled with dust and panic during the raid.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "c6c8c36b-bce6-4c6f-b748-e385d488d69c",
       "name": "微缩村庄入口",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/b5084466-c6af-467c-a0cb-373d8d65a3ea.png",
       "tags": [],
-      "prompt": "village entrance, yellow dust clouds, heavy atmosphere, blurred background, macro perspective, dynamic motion, war torn",
+      "prompt": "微缩村庄入口, village entrance, yellow dust clouds, heavy atmosphere, blurred background, macro perspective, dynamic motion, war torn, anime style, high quality",
       "description": "The entrance to the village, filled with rolling yellow dust as the bandit charges through.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "6c17afe1-d279-4412-80a2-b27efeb7cbf7",
       "name": "昏暗的现代公寓",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/60ffd81f-4efd-433b-8432-25e8c2c968b8.png",
       "tags": [],
-      "prompt": "dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting",
+      "prompt": "昏暗的现代公寓, dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting, anime style, high quality",
       "description": "A dark, messy modern room. Cluttered background, illuminated by cold blue computer screen light and shadows.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "3674b0c5-3c57-4a04-a6d8-4d19e5317de1",
       "name": "现代公寓 / 箱口",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/eb4c0a38-3126-438e-98cb-e632f8df5af2.png",
       "tags": [],
-      "prompt": "edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field",
+      "prompt": "现代公寓 / 箱口, edge of cardboard box, huge black magnifying glass, contrast between dark room and bright box interior, over the shoulder shot, depth of field, anime style, high quality",
       "description": "The boundary between the real world and the box. Shows the cardboard edge and the contrast between the dark room and the warm light inside.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "f86232a5-4221-41d0-9720-157c564ee6a0",
       "name": "箱内天空",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/02ea2749-60cd-4362-b9ab-d80891561fad.png",
       "tags": [],
-      "prompt": "simulated sky, painted clouds, giant hand breaking through, dramatic shadows, surreal, low angle shot, looking up",
+      "prompt": "箱内天空, simulated sky, painted clouds, giant hand breaking through, dramatic shadows, surreal, low angle shot, looking up, anime style, high quality",
       "description": "The ceiling of the box, painted to look like a sky or covered in clouds, broken by the intrusion of the giant hand.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "c001b259-edcb-4bb0-aab4-2c94fd8ae3fe",
       "name": "箱内微缩荒原",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/d3ba1dd5-c586-4a63-b3f2-4b5664c20f5a.png",
       "tags": [],
-      "prompt": "barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones",
+      "prompt": "箱内微缩荒原, barren land, dry yellow soil, withered trees, dead grass, poverty, macro scale, realistic diorama, wasteland, warm yellow tones, anime style, high quality",
       "description": "A barren, desolate landscape inside the box with dry yellow soil and withered vegetation.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "747cddb6-da23-41c7-a8b8-f7f1e7c0999d",
       "name": "箱内空间",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/dd7e928b-b7dc-4769-93ec-a42c171788d4.png",
       "tags": [],
-      "prompt": "empty air inside box, motion blur background, depth of field, mid-air, cinematic action shot",
+      "prompt": "箱内空间, empty air inside box, motion blur background, depth of field, mid-air, cinematic action shot, anime style, high quality",
       "description": "The air space within the box, used for shots of characters flying through the air.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "fe48bf4c-1db9-4e1b-b3e8-483fe79650ab",
       "name": "箱壁边缘",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/17ce7d01-3d46-4220-a604-46e69693f1ad.png",
       "tags": [],
-      "prompt": "glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere",
+      "prompt": "箱壁边缘, glass wall of vivarium, sand accumulation at bottom, blood smear on glass surface, reflection, macro detail, grim atmosphere, anime style, high quality",
       "description": "The glass or cardboard wall of the vivarium. Features sand at the bottom and a blood smear from the impact.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "6a2c4adf-2775-4ddd-b913-c20f64ee7081",
       "name": "现代房间",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/a6ac3072-1e96-49d7-b85b-cf1d6f25279b.png",
       "tags": [],
-      "prompt": "modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle",
+      "prompt": "现代房间, modern interior, bedroom study, dim lighting, cold blue tones, cinematic atmosphere, messy environment, shadows, gloom, photorealistic, wide shot, high angle, anime style, high quality",
       "description": "A modern, dimly lit room with a cold color temperature. It contains a desk, computer, and landscape box, characterized by shadows and blue screen light.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "04489ca7-3e5b-4764-a245-d8edf03915ea",
       "name": "现代房间书桌前",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/8f3be343-4be5-492a-bce3-e79573d95fd3.png",
       "tags": [],
-      "prompt": "cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field",
+      "prompt": "现代房间书桌前, cluttered desk surface, out of focus background, modern room context, low light, items scattered, realistic texture, perspective from seated position, depth of field, anime style, high quality",
       "description": "The area immediately in front of a cluttered desk in a modern room, serving as the setting for the character's realization of the blood.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "777cc063-64cc-4607-b237-d7a07fc1945a",
       "name": "现代房间电脑椅",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/55f47fae-e4f4-4d65-8fb4-51cc242eeec6.png",
       "tags": [],
-      "prompt": "ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication",
+      "prompt": "现代房间电脑椅, ergonomic mesh office chair, modern design, dark color, slightly swivelled, isolated in dim room, cold lighting from screen, fabric texture, motion blur implication, anime style, high quality",
       "description": "An ergonomic office chair in the modern room, where the character collapses in exhaustion.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "ebf35594-03d0-4eeb-8420-7b5273c3f8ec",
       "name": "电脑屏幕",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/f9adbd21-268b-4e99-bd40-9c06cd30ba79.png",
       "tags": [],
-      "prompt": "LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen",
+      "prompt": "电脑屏幕, LCD monitor close-up, digital pixels, glowing screen interface, popup windows, text heavy, blue light emission, electronic device, dark locked screen, anime style, high quality",
       "description": "A computer monitor display showing interface elements like notifications, emails, and social media, or a dark screen reflecting the user.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "ff4dfe02-0028-482a-833f-622d6db6d6c8",
       "name": "箱内黄土荒野",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/eaae16f1-e1c0-4542-a09d-eea7d0291c67.png",
       "tags": [],
-      "prompt": "miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion",
+      "prompt": "箱内黄土荒野, miniature landscape, yellow loess soil, barren wilderness, dry ground, warm yellow lighting, macro photography, diorama style, high detail texture, lens distortion, anime style, high quality",
       "description": "A miniature landscape inside a glass box depicting a desolate wilderness with yellow earth, illuminated by warm light.",
-      "status": "idle"
+      "status": "completed"
     },
     {
       "id": "e210d6c5-e661-498b-b3fe-4f90397f62cd",
       "name": "造景箱玻璃壁外",
-      "image_url": "",
+      "image_url": "/static/uploads/12be6877-0a0c-41b2-84c9-7d50482e55f9/45ef41a1-7639-406f-aa00-1b47acbee9b2.png",
       "tags": [],
-      "prompt": "glass surface close-up, reflection of blue room, warm light glowing from within, magnifying glass lens pressed against glass, contrast between cold and warm tones, transparent texture",
+      "prompt": "造景箱玻璃壁外, glass surface close-up, reflection of blue room, warm light glowing from within, magnifying glass lens pressed against glass, contrast between cold and warm tones, transparent texture, anime style, high quality",
       "description": "The exterior glass surface of the landscape box, acting as a barrier between the cold room and the warm miniature world inside.",
-      "status": "idle"
+      "status": "completed"
     }
   ],
   "default_scene_id": null,

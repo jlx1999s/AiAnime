@@ -190,5 +190,11 @@
     "name": "2.3测试",
     "style": "anime",
     "owner_id": "0f7f607e-7377-4b57-b499-aba811af17f6"
+  },
+  "cac68eb9-05c2-4446-b241-d530d91973d0": {
+    "id": "cac68eb9-05c2-4446-b241-d530d91973d0",
+    "name": "自定义分镜测试",
+    "style": "anime",
+    "owner_id": "0f7f607e-7377-4b57-b499-aba811af17f6"
   }
 }

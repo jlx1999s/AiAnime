@@ -617,15 +617,13 @@ def seed_data():
             id=str(uuid.uuid4()), order=0,
             prompt="0.1-3秒: 低角度，快速推拉镜头。陆远受到重力冲击向后滑行...",
             dialogue="陆远：滚去黑暗剑冢里自生自灭吧！",
-            characters=["c1"],
-            image_url="https://placehold.co/300x169/25262b/FFF?text=Shot+1"
+            characters=["c1"]
         ),
         Shot(
             id=str(uuid.uuid4()), order=1,
             prompt="镜头仰拍刻家入口，巨石上“刻家”二字布满剑痕...",
             dialogue="(深吸一口气)",
-            characters=["c1"],
-            image_url="https://placehold.co/300x169/25262b/FFF?text=Shot+2"
+            characters=["c1"]
         )
     ]
     DB[project_id] = Project(id=project_id, name="守墓五年", shots=shots, characters=chars)
@@ -876,9 +874,6 @@ async def create_shot(project_id: str, shot_data: ShotCreate):
         order=len(project.shots),
         **shot_dict
     )
-    # Default placeholder
-    if not new_shot.image_url:
-        new_shot.image_url = f"https://placehold.co/300x169/25262b/FFF?text=New+Shot"
     project.shots.append(new_shot)
     save_db()
     return new_shot
@@ -1416,8 +1411,6 @@ def _import_shots_from_md_text(project: Project, text: str):
             order=len(project.shots),
             **shot_dict
         )
-        if not new_shot.image_url:
-            new_shot.image_url = f"https://placehold.co/300x169/25262b/FFF?text=New+Shot"
             
         project.shots.append(new_shot)
         new_shots.append(new_shot)
@@ -2089,7 +2082,7 @@ async def _describe_image_with_vision(image_url: str) -> str:
         print(f"[Vision] Failed to describe image: {e}")
         return ""
 
-async def ai_generation_task(project_id: str, shot_id: str, type: str, count: int | None = None, video_id: str | None = None):
+async def ai_generation_task(project_id: str, shot_id: str, type: str, count: int | None = None, video_id: str | None = None, video_aspect_ratio: str = "16:9", video_resolution: str = "720p"):
     project = DB.get(project_id)
     if not project: return
 
@@ -2451,7 +2444,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     visual_service=visual_service,
                     save_video_bytes=_save_video_bytes,
                     save_base64_video=_save_base64_video,
-                    progress_callback=None
+                    progress_callback=None,
+                    video_aspect_ratio=video_aspect_ratio,
+                    video_resolution=video_resolution
                 )
                 video_url = _normalize_video_url(video_url, sub_dir=project.id)
                 target_shot.video_url = video_url
@@ -2497,7 +2492,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     visual_service=visual_service,
                     save_video_bytes=_save_video_bytes,
                     save_base64_video=_save_base64_video,
-                    progress_callback=handle_progress
+                    progress_callback=handle_progress,
+                    video_aspect_ratio=video_aspect_ratio,
+                    video_resolution=video_resolution
                 )
                 video_url = _normalize_video_url(video_url, sub_dir=project.id)
                 target_shot.video_url = video_url
@@ -2528,7 +2525,9 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     visual_service=visual_service,
                     save_video_bytes=_save_video_bytes,
                     save_base64_video=_save_base64_video,
-                    progress_callback=None
+                    progress_callback=None,
+                    video_aspect_ratio=video_aspect_ratio,
+                    video_resolution=video_resolution
                 )
                 target_shot.video_progress = 0
                 if video_id and target_shot.video_items:
@@ -2611,7 +2610,7 @@ async def generate_asset(request: GenerateRequest, background_tasks: BackgroundT
         target_shot.video_items.append(VideoItem(id=video_id, progress=0, status="generating"))
     save_db()
 
-    background_tasks.add_task(ai_generation_task, project_id, request.shot_id, request.type, request.count, video_id)
+    background_tasks.add_task(ai_generation_task, project_id, request.shot_id, request.type, request.count, video_id, request.video_aspect_ratio, request.video_resolution)
     
     return {"status": "queued", "message": f"{request.type} generation started", "video_id": video_id}
 

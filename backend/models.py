@@ -119,6 +119,8 @@ class GenerateRequest(BaseModel):
     shot_id: str
     type: str = "image" # image or video
     count: Optional[int] = None
+    video_aspect_ratio: Optional[str] = "16:9" # 16:9, 9:16
+    video_resolution: Optional[str] = "720p" # 720p, 1080p
 
 class AssetGenerateRequest(BaseModel):
     project_id: Optional[str] = None

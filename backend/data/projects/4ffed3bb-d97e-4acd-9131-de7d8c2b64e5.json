@@ -605,13 +605,15 @@
         "0d864bf3-5de9-4d25-9316-1349da5a1c92"
       ],
       "scene_id": "de3bcda8-3c85-494b-9418-2d542a47cd01",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/0dcca323-9912-4b0f-ba1e-8c14fcb2c7eb.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/0dcca323-9912-4b0f-ba1e-8c14fcb2c7eb.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/0dcca323-9912-4b0f-ba1e-8c14fcb2c7eb.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：侧视特写。巨大的食指扣在拇指上，形成蓄力姿势。指尖对准了骑在马上的山贼。 重点：力量的积蓄。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
@@ -628,13 +630,16 @@
         "7146a51f-0c08-481a-894e-a96e526892aa"
       ],
       "scene_id": "de3bcda8-3c85-494b-9418-2d542a47cd01",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/3ad1d20c-a881-4103-b5c4-a75308f1f0ad.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/3ad1d20c-a881-4103-b5c4-a75308f1f0ad.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/3ad1d20c-a881-4103-b5c4-a75308f1f0ad.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/70640f15-2f33-4649-afff-43a93fceee2c.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：微距镜头。前景是巨大的指纹纹路（像沟壑一样），后景是微小的、惊恐的山贼脸部。焦平面在两者之间切换。 重点：维度的差异。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
@@ -652,13 +657,18 @@
         "0d864bf3-5de9-4d25-9316-1349da5a1c92"
       ],
       "scene_id": "de3bcda8-3c85-494b-9418-2d542a47cd01",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/71526ab1-cdcf-446b-be3c-426aa58c5258.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/04c0b7ea-c7a3-4439-854a-bed6361d910f.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/04c0b7ea-c7a3-4439-854a-bed6361d910f.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/74dcb39a-3019-4b5b-8d7a-be5020eb3a49.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/08a79117-9db9-466d-8d34-1403e739102d.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/71526ab1-cdcf-446b-be3c-426aa58c5258.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：特写。拇指指甲因用力压迫而变白，肌肉紧绷。周围的空气似乎都在震动。 重点：即将释放的张力。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
@@ -675,13 +685,16 @@
         "7146a51f-0c08-481a-894e-a96e526892aa"
       ],
       "scene_id": "de3bcda8-3c85-494b-9418-2d542a47cd01",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/6bf0eb77-283e-4a08-9076-961a7ab58721.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/c4adb2d6-d25d-498b-a998-42c4fe1686d3.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/c4adb2d6-d25d-498b-a998-42c4fe1686d3.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/6bf0eb77-283e-4a08-9076-961a7ab58721.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：侧拍。食指弹出的瞬间，手指化作一道模糊的肉色残影。 重点：瞬间爆发的速度感。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
@@ -698,13 +711,17 @@
         "7146a51f-0c08-481a-894e-a96e526892aa"
       ],
       "scene_id": "de3bcda8-3c85-494b-9418-2d542a47cd01",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/25d5d6f4-a2a2-4eb0-a54b-969cdaed8b3e.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/0bac8348-f010-40f6-a607-ebde5774a46b.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/0bac8348-f010-40f6-a607-ebde5774a46b.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/183818a8-d5da-4904-8e72-4f5644b0f19c.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/25d5d6f4-a2a2-4eb0-a54b-969cdaed8b3e.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：定格特写。巨大的指尖接触到山贼和马匹的瞬间。铠甲凹陷，马身变形。物理法则在绝对力量面前失效。 重点：接触瞬间的毁灭性。 [李道玄（手指）: extreme close-up of human finger, macro photography, fingerprint ridges, skin pores, realistic skin texture, giant scale, thumb and middle finger snapping gesture, blood stain on fingertip, high detail] [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
@@ -722,18 +739,20 @@
         "0d864bf3-5de9-4d25-9316-1349da5a1c92"
       ],
       "scene_id": "de3bcda8-3c85-494b-9418-2d542a47cd01",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/2fff439e-8f16-45ed-bb5b-2d96c36c1605.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/2fff439e-8f16-45ed-bb5b-2d96c36c1605.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/2fff439e-8f16-45ed-bb5b-2d96c36c1605.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
-      "prompt": "视角：跟拍镜头。山贼连人带马变成一颗炮弹，在空中划出一道残影，飞越了整个微缩村庄。 重点：夸张的位移。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
+      "prompt": "视角：跟拍镜头。山贼连人带马被打飞，变成一颗炮弹，在空中划出一道残影，飞越了整个微缩村庄。 重点：夸张的位移。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
       "dialogue": "",
-      "audio_prompt": "Fast tracking shot, bandit becomes a blur, flying horizontally across the miniature landscape, camera struggles to keep up, wind effects. [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [微缩荒村: miniature diorama, ancient Chinese desolate village, yellow earth, dry cracked ground, thatched huts, ruined walls, smoke, fire, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
+      "audio_prompt": "Perspective: Tracking shot. An ancient Chinese bandit, horse and all, is sent hurtling flying, transforming into a cannonball that streaks across the air with a blurred afterimage and soars over the entire miniature village.\nKey focus: Exaggerated displacement.\n[Bandit: ancient Chinese bandit, tattered leather armor, fierce facial expression, horseback riding, wielding a rusty machete, motion blur, aggressive stance, villainous presence, realistic miniature texture, cinematic lighting, macro photography]\n[Miniature Desolate Village: miniature diorama, ancient Chinese desolate village, yellow earthen ground, parched cracked soil, thatched huts, crumbling walls, wispy smoke, flickering flames, realistic miniature texture, macro photography, depth of field, tilt-shift effect]",
       "use_scene_ref": true,
       "custom_image_url": null,
       "first_frame_url": null,
@@ -745,13 +764,18 @@
         "0d864bf3-5de9-4d25-9316-1349da5a1c92"
       ],
       "scene_id": "de3bcda8-3c85-494b-9418-2d542a47cd01",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/9c518805-a3f9-43b0-a7a2-6b8111ca4989.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/750a21f3-7e32-4645-bf31-f26e69cb22b4.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/750a21f3-7e32-4645-bf31-f26e69cb22b4.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/9c518805-a3f9-43b0-a7a2-6b8111ca4989.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/c24539ee-0484-4a8d-bc67-e22ee2836119.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/95c32469-e1a0-4be7-83c2-35d9d0f7af57.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：侧拍。山贼重重地撞在箱子的玻璃壁上。身体扭曲成不自然的形状，血雾在玻璃表面炸开。 重点：惨烈的物理反馈。 [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography] [玻璃箱壁: 玻璃箱壁, transparent glass surface, spiderweb cracks, blood mist splatter, impact point, reflection, macro detail, texture of glass, real style, high quality]",
@@ -768,13 +792,16 @@
         "0d864bf3-5de9-4d25-9316-1349da5a1c92"
       ],
       "scene_id": "41a22cc5-2c7f-499b-8d17-656c930f45c9",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/2b41e95e-8dff-4945-9bc6-4074a2aaac95.png",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/68a21e98-99c5-4e36-92c4-b05800178ad1.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/68a21e98-99c5-4e36-92c4-b05800178ad1.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/2b41e95e-8dff-4945-9bc6-4074a2aaac95.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：全景。玻璃上留下一道长长的血痕。扭曲的尸体滑落到箱子边缘的沙土中，一动不动。 重点：尘埃落定的死亡。 [玻璃箱壁: 玻璃箱壁, transparent glass surface, spiderweb cracks, blood mist splatter, impact point, reflection, macro detail, texture of glass, real style, high quality] [山贼: ancient Chinese bandit, dirty leather armor, fierce facial expression, riding a horse, holding a rusty machete, motion blur, aggressive posture, villain, realistic miniature texture, cinematic lighting, macro photography]",
@@ -791,13 +818,16 @@
         "0d864bf3-5de9-4d25-9316-1349da5a1c92"
       ],
       "scene_id": "41a22cc5-2c7f-499b-8d17-656c930f45c9",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/13f14588-e7e2-403b-b856-4aed1c764317.jpg",
+      "original_image_url": "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/b8775875-ace0-437c-a6b4-fe00c925526f.png",
+      "image_candidates": [
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/b8775875-ace0-437c-a6b4-fe00c925526f.png",
+        "/static/uploads/4ffed3bb-d97e-4acd-9131-de7d8c2b64e5/13f14588-e7e2-403b-b856-4aed1c764317.jpg"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：中景。李道玄猛地将手抽回，动作带着一丝惊慌。他坐在昏暗的房间里，呼吸急促。 重点：从干预中抽离，回到现实。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗杂乱的出租屋: 昏暗杂乱的出租屋, dimly lit room, messy apartment, clutter, trash, cardboard boxes, e-sports chair, computer monitor, cold blue ambient light, contrast with warm yellow light from box, cinematic atmosphere, realistic, real style, high quality]",

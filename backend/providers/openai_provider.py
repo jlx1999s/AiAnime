@@ -562,7 +562,7 @@ async def generate_image(prompt: str, sub_dir: str | None, reference_image_url: 
         await asyncio.sleep(1)
         return f"https://picsum.photos/seed/{uuid.uuid4()}/512/512"
 
-async def generate_video(prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, video_client, config, save_video_bytes: Callable[[bytes, str | None], str], save_base64_video: Callable[[str, str | None], str], first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None) -> str:
+async def generate_video(prompt: str, image_path: str | None, sub_dir: str | None, source_url: str | None, video_client, config, save_video_bytes: Callable[[bytes, str | None], str], save_base64_video: Callable[[str, str | None], str], first_frame_url: str | None = None, last_frame_url: str | None = None, first_frame_path: str | None = None, last_frame_path: str | None = None, video_aspect_ratio: str = "16:9", video_resolution: str = "720p") -> str:
     if not video_client:
         pass
     base_url = config.openai_video_api_base or config.openai_api_base or "https://api.openai.com/v1"
@@ -600,6 +600,17 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
                 return None
             if url_value.startswith("http://") or url_value.startswith("https://"):
                 if "localhost" in url_value or "127.0.0.1" in url_value:
+                    return None
+                # Verify URL accessibility
+                try:
+                    import requests
+                    # Use a short timeout to avoid hanging, allow redirects
+                    resp = requests.head(url_value, timeout=5, allow_redirects=True)
+                    if resp.status_code >= 400:
+                        print(f"[Apimart VEO3] URL invalid (Status {resp.status_code}): {url_value}")
+                        return None
+                except Exception as e:
+                    print(f"[Apimart VEO3] URL check failed: {e}")
                     return None
                 return url_value
             return None
@@ -653,6 +664,10 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
         public_first = resolve_public(first_frame_url, first_frame_path)
         public_last = resolve_public(last_frame_url, last_frame_path)
         public_source = to_public_url(source_url)
+        if not public_source and image_path:
+             print(f"[Apimart VEO3] Source URL invalid or missing, trying upload from path: {image_path}")
+             public_source = temp_upload(image_path)
+
         if public_first:
             image_urls.append(public_first)
         if public_last:
@@ -672,7 +687,8 @@ async def generate_video(prompt: str, image_path: str | None, sub_dir: str | Non
             "model": model,
             "prompt": prompt,
             "duration": 8,
-            "aspect_ratio": "16:9"
+            "aspect_ratio": video_aspect_ratio,
+            "resolution": video_resolution
         }
         if image_urls:
             payload["image_urls"] = image_urls

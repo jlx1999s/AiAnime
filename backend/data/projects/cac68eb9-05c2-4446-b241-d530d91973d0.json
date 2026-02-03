@@ -1,0 +1,625 @@
+{
+  "id": "cac68eb9-05c2-4446-b241-d530d91973d0",
+  "name": "自定义分镜测试",
+  "style": "anime",
+  "owner_id": "0f7f607e-7377-4b57-b499-aba811af17f6",
+  "shots": [
+    {
+      "prompt": "视角：广角全景。李道玄背对镜头坐在电脑前，背影佝偻。房间里堆满了外卖盒和杂物，只有电脑屏幕发出冷蓝色的幽光。 重点：通过环境的混乱和冷色调，建立压抑孤独的基调。 [李道玄: young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style] [阴暗杂乱的出租屋: wide angle shot, dark messy room, silhouette of person at computer, glowing screen, piles of rubbish, claustrophobic, cold color palette, 4k, cinematic atmosphere]",
+      "dialogue": "旁白：在这座城市阴暗角落的廉价出租屋里，深夜的寂静只属于那些为了生存而透支生命的人。",
+      "audio_prompt": "Wide angle static shot, back view of man hunched over desk, subtle body movement, cold blue light flickering from screen, dark messy room, lonely atmosphere.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "ca0f8626-ae91-4a5d-b673-369b3ce5b525",
+      "order": 0,
+      "characters": [
+        "930f535e-38ba-460c-bb03-e63f2aa21f45"
+      ],
+      "scene_id": "14fd36b6-70ce-47ce-8562-0888de20bc12",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e03be1b0-6a15-41d3-886c-99bf4581dde2.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e03be1b0-6a15-41d3-886c-99bf4581dde2.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e03be1b0-6a15-41d3-886c-99bf4581dde2.png"
+      ],
+      "video_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/9732c353-cbb2-4e22-9aa5-9cee62c19e5e.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "cfd9262b-590d-47bb-9470-fd1589ed5b15",
+          "url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/abb33ff7-3579-4318-ac9d-95dcdc31a1ef.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "01eded7e-2f10-4234-b34e-69198f77cb9c",
+          "url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/9732c353-cbb2-4e22-9aa5-9cee62c19e5e.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：正面特写。屏幕蓝光映在他脸上，加深了黑眼圈和面部凹陷的阴影。他摘下眼镜，用手用力揉搓干涩的双眼。 重点：极度的疲惫感，皮肤质感苍白粗糙。 [李道玄: young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style] [电脑桌前: computer desk setup, glowing monitor screen, cold blue light, dark room background, cyber-noir vibe, messy workspace]",
+      "dialogue": "李道玄：微信又在狂闪，甲方那些“这版不行”、“重做”的消息像催命符一样，逼得人喘不过气。",
+      "audio_prompt": "Frontal close up, man removes glasses, hands rub tired eyes vigorously, heavy shadows on face, exhausted expression, slow movement.李道玄：微信又在狂闪，甲方那些“这版不行”、“重做”的消息像催命符一样，逼得人喘不过气。",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "3e7429b6-9571-409f-a604-03c2e6870555",
+      "order": 1,
+      "characters": [
+        "930f535e-38ba-460c-bb03-e63f2aa21f45"
+      ],
+      "scene_id": "3ffe1169-2759-4dd4-abd6-13b8ef8f049c",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/3abbe571-b6cc-4c35-903b-e9906f998bbd.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/c26faf75-f8df-4f4e-ad2f-d67915f73da8.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/c26faf75-f8df-4f4e-ad2f-d67915f73da8.png",
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/3abbe571-b6cc-4c35-903b-e9906f998bbd.png"
+      ],
+      "video_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/f35aa15f-5aab-4fac-8b56-0d56bed2de76.mp4",
+      "video_progress": null,
+      "video_items": [
+        {
+          "id": "9e5f25d2-76c0-4952-8cd5-6c99520360d5",
+          "url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/f35aa15f-5aab-4fac-8b56-0d56bed2de76.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        },
+        {
+          "id": "3dcc1f58-0f41-43cf-adda-c9f900c7255c",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：极特写。桌面上积灰的台历，红笔圈出的日期“生日”在阴影中若隐若现，旁边压着一碗吃剩的泡面。 重点：叙事细节，强化凄凉感，冷光扫过台历表面。 [无（特写道具）: close-up shot, dusty desk calendar, date circled in red pen, leftover instant noodles, messy desk, dramatic shadows, cold lighting, macro details, storytelling objects] [电脑桌前: 电脑桌前, computer desk setup, glowing monitor screen, cold blue light, dark room background, cyber-noir vibe, messy workspace, anime style, high quality]",
+      "dialogue": "李道玄：看着桌上积灰台历上红圈圈出的日子，才想起来今天是七月十号，二十四岁的生日，就这么就着残羹冷炙过了。",
+      "audio_prompt": "Extreme close up, slow pan across dusty desk, cold light sweeps over calendar date marked with red circle, steam rising from leftover noodles. [电脑桌前: 电脑桌前, computer desk setup, glowing monitor screen, cold blue light, dark room background, cyber-noir vibe, messy workspace, anime style, high quality]",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "f5e1fb6d-77e8-486e-8ff0-e18f80aac1ad",
+      "order": 2,
+      "characters": [
+        "d65e765a-50a8-4334-a94a-3eac77cbc775"
+      ],
+      "scene_id": "3ffe1169-2759-4dd4-abd6-13b8ef8f049c",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/f51969ab-2376-4fe4-bf1c-9edd43ef9341.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/f51969ab-2376-4fe4-bf1c-9edd43ef9341.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/f51969ab-2376-4fe4-bf1c-9edd43ef9341.png"
+      ],
+      "video_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/bd6c2b8f-8ade-4bff-a1e3-66ad6e8d0c65.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "ee4ec897-b5a5-4a2b-9ba1-c71fdb4acd58",
+          "url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/bd6c2b8f-8ade-4bff-a1e3-66ad6e8d0c65.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：侧面中景。他重新戴上眼镜，瘫靠在椅背上，眼神空洞地盯着天花板发呆。窗外远处的霓虹灯光斑驳地投射在他身后的墙上。 重点：一种“行尸走肉”般的麻木状态，等待剧情的打破。 [李道玄: young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style] [电脑桌前: 电脑桌前, computer desk setup, glowing monitor screen, cold blue light, dark room background, cyber-noir vibe, messy workspace, anime style, high quality]",
+      "dialogue": "李道玄：这种给甲方当孙子、吃泡面、熬大夜的日子，真特么够了，活得像具行尸走肉一样。",
+      "audio_prompt": "Side profile mid shot, man leans back into chair heavily, puts glasses back on, stares blankly at ceiling, neon lights flickering on wall behind, numbness. [电脑桌前: 电脑桌前, computer desk setup, glowing monitor screen, cold blue light, dark room background, cyber-noir vibe, messy workspace, anime style, high quality]",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "553549a2-27d6-4149-804b-56e511223d97",
+      "order": 3,
+      "characters": [
+        "930f535e-38ba-460c-bb03-e63f2aa21f45"
+      ],
+      "scene_id": "3ffe1169-2759-4dd4-abd6-13b8ef8f049c",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2872d1d7-1a13-4801-942d-96c0344c958d.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2872d1d7-1a13-4801-942d-96c0344c958d.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2872d1d7-1a13-4801-942d-96c0344c958d.png"
+      ],
+      "video_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/a85376dc-8f12-49d2-b831-c0278e150a68.mp4",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "a59cc1be-f1ce-41cb-b44f-4aad4049e03d",
+          "url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/a85376dc-8f12-49d2-b831-c0278e150a68.mp4",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：高角度俯拍。一个没有任何标签的黑色快递箱被扔在地板中央。李道玄拿着裁纸刀的手入画，刀尖闪着寒光。 重点：悬念感，阴影浓重。 [李道玄: young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style] [出租屋地板: wooden floor, top-down view, messy floor, dark shadows, cinematic texture, realistic material]",
+      "dialogue": "李道玄：这时候送来的快递？我也没买东西啊，难道是谁良心发现送来的生日礼物？",
+      "audio_prompt": "Top down view, hand holding utility knife enters frame, sharp blade extends and catches light, prepares to cut tape, suspenseful slow motion.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "bed35b93-add1-4c32-b220-b0b119e66963",
+      "order": 4,
+      "characters": [
+        "930f535e-38ba-460c-bb03-e63f2aa21f45"
+      ],
+      "scene_id": "4973f47d-7f91-4463-a04a-87184bafef69",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e9c29e66-b95b-40b5-a47c-551ec2316325.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e9c29e66-b95b-40b5-a47c-551ec2316325.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e9c29e66-b95b-40b5-a47c-551ec2316325.png"
+      ],
+      "video_url": "https://storage.googleapis.com/ai-sandbox-videofx/video/7784a076-4169-439b-a7c7-4f832df6b942?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770137797&Signature=gq2b0FNC%2Bg0VGvlDIS9BzZDZjMlIvclco1N5MlNBoKpzadZ%2Bd17I5Jb26JXFHxidNTLh3xMN14y5Ki5EL%2FYs%2FaAkt%2Fi%2BiXIisFU9EGJv%2FnnLdd7bogaXpeEdvFHrL%2BwzZmA453MQwsJRRFzzsiJ9BGJEwplbe1w39%2BtyH2zVzXyYe%2FeXmkN9sQxHQhBSkwOrkM%2FYdmyS%2FnIohr0e5KJHOWCOK4pefmriFiJQ9fNIIe25v0R8QjycOL6jslQNqXhArYef0pHv717yan5QjjUxKcVpvYgQ%2Bt94T3i0aMGIPCu1Ds3sqMWB2mHbaGc5vwv6Xok3JKISaO9F2IsSVaucDg%3D%3D",
+      "video_progress": 100,
+      "video_items": [
+        {
+          "id": "8d969355-9b89-4013-9aa6-1dd1a71975c0",
+          "url": null,
+          "task_id": null,
+          "progress": 0,
+          "status": "failed"
+        },
+        {
+          "id": "8f63e2e0-e2fd-48bf-bc55-1fb4034bacbe",
+          "url": "https://storage.googleapis.com/ai-sandbox-videofx/video/7784a076-4169-439b-a7c7-4f832df6b942?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770137797&Signature=gq2b0FNC%2Bg0VGvlDIS9BzZDZjMlIvclco1N5MlNBoKpzadZ%2Bd17I5Jb26JXFHxidNTLh3xMN14y5Ki5EL%2FYs%2FaAkt%2Fi%2BiXIisFU9EGJv%2FnnLdd7bogaXpeEdvFHrL%2BwzZmA453MQwsJRRFzzsiJ9BGJEwplbe1w39%2BtyH2zVzXyYe%2FeXmkN9sQxHQhBSkwOrkM%2FYdmyS%2FnIohr0e5KJHOWCOK4pefmriFiJQ9fNIIe25v0R8QjycOL6jslQNqXhArYef0pHv717yan5QjjUxKcVpvYgQ%2Bt94T3i0aMGIPCu1Ds3sqMWB2mHbaGc5vwv6Xok3JKISaO9F2IsSVaucDg%3D%3D",
+          "task_id": null,
+          "progress": 100,
+          "status": "completed"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：过肩镜头。箱盖被掀开的瞬间。不同于房间的冷光，箱内似乎并没有发光，但呈现出一种干燥的土黄色质感。 重点：现实冷色环境与箱内土黄色的色彩对撞。 [李道玄: young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style] [出租屋: messy rental room, cramped apartment, piles of trash, takeout boxes, clutter, dark atmosphere, cinematic lighting, loneliness, depression, realistic interior]",
+      "dialogue": "李道玄：让我看看是什么……造景箱？这土黄色的色调，看着怎么有一股扑面而来的干燥味？",
+      "audio_prompt": "Over the shoulder shot, hands lift cardboard box flaps, revealing dry yellow earth texture inside, contrast between cold room and warm earth tones.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "f03ec4c2-7eff-48bf-bd15-b3c93dc2bd24",
+      "order": 5,
+      "characters": [
+        "930f535e-38ba-460c-bb03-e63f2aa21f45"
+      ],
+      "scene_id": "ebe290c2-0449-424a-9771-f369a001e0f3",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/72455d04-657e-48e8-9449-78e79db21a75.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/72455d04-657e-48e8-9449-78e79db21a75.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/72455d04-657e-48e8-9449-78e79db21a75.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：主观视点（POV），俯瞰箱内。极其逼真的黄土高原地貌，枯树、破败的茅草屋、干裂的河床。 重点：8K级细节，看起来不像模型，而像是卫星地图拍摄的真实地貌。 [无（箱内景观）: miniature landscape inside a box, Loess Plateau terrain, dry yellow earth, withered trees, ruined thatched huts, cracked riverbed, hyper-realistic, 8k resolution, satellite view texture, diorama style, no humans] [箱内微缩荒原: view inside a cardboard box, miniature world, dry yellow desert, ancient ruins, top-down perspective, tilt-shift effect, magical realism, highly detailed terrain]",
+      "dialogue": "李道玄：我去，这做工也太逼真了吧，这黄沙漫天的荒原，枯死的树木，简直就像是把一块真正的明末旱地给切下来装进去了。",
+      "audio_prompt": "Macro POV shot, slow aerial flyover of miniature loess plateau inside box, realistic terrain, dry riverbed, withered trees, 8k detail, satellite view style.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "ba4d7a25-f3e6-4ffe-9643-fb781039e958",
+      "order": 6,
+      "characters": [
+        "8fe980d5-a546-4afa-8bf5-565d45911c29"
+      ],
+      "scene_id": "c0bb5324-9f06-4aa8-bc58-356716a28709",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/c8147fa1-78af-4d8e-b200-c230e7457690.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/c8147fa1-78af-4d8e-b200-c230e7457690.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/c8147fa1-78af-4d8e-b200-c230e7457690.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：低角度仰拍（箱内视角看人）。李道玄巨大的脸庞凑近箱口，眉头紧锁，眼神中充满了困惑和震惊。 重点：巨物感，李道玄的脸被室内顶光照亮，边缘有轻微畸变。 [李道玄: young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style] [出租屋: messy rental room, cramped apartment, piles of trash, takeout boxes, clutter, dark atmosphere, cinematic lighting, loneliness, depression, realistic interior]",
+      "dialogue": "李道玄：现在的模型工艺都卷成这样了吗？连空气里的热浪感都做出来了，到底是哪位大神送的？",
+      "audio_prompt": "Low angle looking up from inside box, giant human face looms over opening, expression shifts to shock and confusion, slight wide-angle lens distortion.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "4d880c9c-59b1-421c-84e8-9b07221e4bea",
+      "order": 7,
+      "characters": [
+        "930f535e-38ba-460c-bb03-e63f2aa21f45"
+      ],
+      "scene_id": "ebe290c2-0449-424a-9771-f369a001e0f3",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/d3f3b5db-792a-4698-bb1b-5647aaa93fb2.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/d3f3b5db-792a-4698-bb1b-5647aaa93fb2.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/d3f3b5db-792a-4698-bb1b-5647aaa93fb2.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：移轴摄影效果（Tilt-shift）。画面大部分虚化，焦点正在寻找，模糊中能看到微小的黑点在黄土上移动。 重点：模拟人眼聚焦的过程，微缩摄影的景深感。 [高一叶: tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture] [箱内荒原: barren wasteland, Loess plateau, dry cracked earth, dusty, yellow tones, macro scale environment, harsh sunlight, desolation]",
+      "dialogue": "李道玄：等等，那是……镜头好像没对上焦，那个在黄土上移动的小黑点是什么？",
+      "audio_prompt": "Tilt-shift photography, rack focus searching, blurry background slowly becoming sharp, revealing tiny black dots moving on yellow soil, depth of field.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "d5cc0496-6eb8-40cf-8e50-2b373a2fa740",
+      "order": 8,
+      "characters": [
+        "4921925a-7280-4224-9df7-6bb3cb8f1d6a"
+      ],
+      "scene_id": "dd5fc9be-61a5-4863-a039-9ff95c440357",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2c0c8500-bc53-49ba-9c0c-2cb3f8e08d97.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2c0c8500-bc53-49ba-9c0c-2cb3f8e08d97.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2c0c8500-bc53-49ba-9c0c-2cb3f8e08d97.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：极度微距特写（Macro）。焦点清晰锁定在高一叶身上。她只有指甲盖大小，穿着破烂麻布，正跪在地上。 重点：极致的细节，连麻布的纹理和地上的尘埃都清晰可见。 [高一叶: tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture] [箱内荒原: barren wasteland, Loess plateau, dry cracked earth, dusty, yellow tones, macro scale environment, harsh sunlight, desolation]",
+      "dialogue": "李道玄：天哪，真的是个小人！这也太精细了，只有指甲盖大小，居然连麻布衣服上的破洞和跪在地上的姿势都栩栩如生。",
+      "audio_prompt": "Extreme macro close up, focus locks sharply on tiny girl in rags kneeling, high detail of fabric texture and dust, cinematic lighting.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "e58999ca-53b4-4805-a651-edd399bcc863",
+      "order": 9,
+      "characters": [
+        "4921925a-7280-4224-9df7-6bb3cb8f1d6a"
+      ],
+      "scene_id": "dd5fc9be-61a5-4863-a039-9ff95c440357",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/ffa7339d-7a7b-4213-a15f-e59f70a41fa6.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/ffa7339d-7a7b-4213-a15f-e59f70a41fa6.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/ffa7339d-7a7b-4213-a15f-e59f70a41fa6.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：侧面微距。高一叶用满是伤痕的小手，艰难地从干硬的土里刨出一截草根。 重点：动作的艰难，指缝里的黑泥，生存的残酷。 [高一叶: tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture] [箱内荒原: barren wasteland, Loess plateau, dry cracked earth, dusty, yellow tones, macro scale environment, harsh sunlight, desolation]",
+      "dialogue": "李道玄：她在挖土？用那么细的木棍费力地刨出一截草根，还当宝贝一样塞进嘴里……这模型连饥饿的动作都能做得这么细？",
+      "audio_prompt": "Side macro view, dirty hands digging into hard dry soil, struggling to pull out a grass root, debris falling, realistic physics.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "fe741602-6d54-4f6d-a3a6-b65c1a42f874",
+      "order": 10,
+      "characters": [
+        "4921925a-7280-4224-9df7-6bb3cb8f1d6a"
+      ],
+      "scene_id": "dd5fc9be-61a5-4863-a039-9ff95c440357",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/fab8a594-9983-4de9-96c0-be729e7dfc3c.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/fab8a594-9983-4de9-96c0-be729e7dfc3c.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/fab8a594-9983-4de9-96c0-be729e7dfc3c.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：正面微距。高一叶似乎感觉到了什么，抬头看天。在她漆黑的瞳孔中（或者旁边的水洼里），隐约倒映着李道玄巨大的眼睛。 重点：打破第四面墙的对视，宿命感。 [高一叶: tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture] [箱内荒原: barren wasteland, Loess plateau, dry cracked earth, dusty, yellow tones, macro scale environment, harsh sunlight, desolation]",
+      "dialogue": "李道玄：她在看天？不对，在那双只有针尖大小的瞳孔里，我怎么感觉她是在和我对视？",
+      "audio_prompt": "Front macro close up, girl raises head slowly looking up at sky, reflection of a giant human eye visible in her dark pupil, breaking the fourth wall.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "610003d6-5712-4a3c-bb0b-23a317df0142",
+      "order": 11,
+      "characters": [
+        "4921925a-7280-4224-9df7-6bb3cb8f1d6a"
+      ],
+      "scene_id": "dd5fc9be-61a5-4863-a039-9ff95c440357",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/20731b83-47ba-46ba-bb40-ea81ff1e3565.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/20731b83-47ba-46ba-bb40-ea81ff1e3565.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/20731b83-47ba-46ba-bb40-ea81ff1e3565.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：中景。高一叶正要把草根递给躺在地上的母亲。背景处，几个模糊的黑影（山贼）突然骑马冲入画面，尘土飞扬。 重点：宁静被打破的瞬间，动态模糊。 [高一叶: tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture] [母亲: middle-aged woman, ancient Chinese peasant, emaciated, tattered clothes, lying on ground, weak, dying, bloodstains, dirty face, tragic atmosphere, cinematic lighting] [荒原村庄: ruined village, ancient china setting, mud houses, yellow dust, dry landscape, chaotic, war-torn, motion blur, cinematic composition]",
+      "dialogue": "山贼头目：小的们，给我冲！既然交不出粮，今天就拿这村子的人命来抵！",
+      "audio_prompt": "Mid shot, girl handing root to mother, sudden fast motion in background, bandits on horses charge into frame, heavy dust billowing, dynamic blur.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "5a5f79de-fa76-4f0f-9c56-7c8e69858e82",
+      "order": 12,
+      "characters": [
+        "4921925a-7280-4224-9df7-6bb3cb8f1d6a",
+        "121e4152-9163-46da-befb-0427de7e7b1a"
+      ],
+      "scene_id": "b97d62cc-6291-4303-a84f-c2f607186c4d",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/dc92db5d-4c45-4e16-81d1-ceab74f9c265.jpg",
+      "original_image_url": "https://picsum.photos/seed/409e8e22-146e-4426-a5df-154e84c7e58f/512/512",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/dc92db5d-4c45-4e16-81d1-ceab74f9c265.jpg"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：低角度仰拍。山贼头目面目狰狞，手中的锈刀高高举起，阳光在刀刃上反射出刺眼的光芒。 重点：暴力的张力，粗粝的皮肤质感，反派的凶残。 [山贼头目: bandit leader, ferocious face, rough skin texture, holding rusty sword, riding horse, aggressive expression, ancient Chinese bandit armor, dynamic angle, dust background, cinematic lighting, photorealistic, 8k] [荒原村庄: ruined village, ancient china setting, mud houses, yellow dust, dry landscape, chaotic, war-torn, motion blur, cinematic composition]",
+      "dialogue": "山贼头目：我看你们这群穷鬼还能往哪儿躲！这把刀可是好久没饮血了！",
+      "audio_prompt": "Low angle shot, bandit leader raises rusty sword high, sunlight glints off blade, aggressive motion, intense facial expression, rough texture.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "1d00d9fc-ab0c-47e6-a8fc-dc5d6eb0f35f",
+      "order": 13,
+      "characters": [
+        "edccb9f7-b854-4ab5-aa34-385483537dcd"
+      ],
+      "scene_id": "b97d62cc-6291-4303-a84f-c2f607186c4d",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/191f2339-2cfb-4783-ba9a-7c4e994f3d21.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/191f2339-2cfb-4783-ba9a-7c4e994f3d21.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/191f2339-2cfb-4783-ba9a-7c4e994f3d21.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：特写。刀锋落下的瞬间（不直接展示伤口），画面被飞溅的鲜血染红了一角。母亲的手无力地垂落。 重点：视觉冲击力，暖色调画面中刺目的鲜红。 [母亲: middle-aged woman, ancient Chinese peasant, emaciated, tattered clothes, lying on ground, weak, dying, bloodstains, dirty face, tragic atmosphere, cinematic lighting] [荒原村庄: ruined village, ancient china setting, mud houses, yellow dust, dry landscape, chaotic, war-torn, motion blur, cinematic composition]",
+      "dialogue": "母亲：大王饶命啊！求求你放过我的孩子，家里真的只有草根了，求求您！",
+      "audio_prompt": "Close up, sudden splash of bright red blood across the frame, high contrast, shock value, dynamic liquid motion.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "a9e2edd8-34ba-4994-b32c-8cb788007eaa",
+      "order": 14,
+      "characters": [
+        "121e4152-9163-46da-befb-0427de7e7b1a"
+      ],
+      "scene_id": "b97d62cc-6291-4303-a84f-c2f607186c4d",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e744e30b-06fd-483a-9cdc-795452caa42a.png",
+      "original_image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e744e30b-06fd-483a-9cdc-795452caa42a.png",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e744e30b-06fd-483a-9cdc-795452caa42a.png"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "视角：正面特写。高一叶目睹惨剧，瞳孔地震，嘴巴张大发出尖叫（画面静止但情绪饱满）。脸颊上沾染了母亲的血迹。 重点：极致的绝望与惊恐，眼泪与血污混合，强烈的战争片质感。 [高一叶: tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture] [荒原村庄: ruined village, ancient china setting, mud houses, yellow dust, dry landscape, chaotic, war-torn, motion blur, cinematic composition]",
+      "dialogue": "高一叶：娘！不要啊！娘——！！",
+      "audio_prompt": "Front extreme close up, girl's face, mouth opens wide in silent scream, tears mixing with blood stains, violent camera shake, dolly zoom effect, despair.",
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "456fc3be-a317-4584-bb0a-0310b024d6fd",
+      "order": 15,
+      "characters": [
+        "4921925a-7280-4224-9df7-6bb3cb8f1d6a"
+      ],
+      "scene_id": "b97d62cc-6291-4303-a84f-c2f607186c4d",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/01c8ea7c-a571-49d4-88c8-f2a8b2dbb7a0.jpg",
+      "original_image_url": "https://picsum.photos/seed/61b3b220-05ea-48d6-b7e3-df4f160e4d5b/512/512",
+      "image_candidates": [
+        "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/01c8ea7c-a571-49d4-88c8-f2a8b2dbb7a0.jpg"
+      ],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "completed"
+    },
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "13122249-9aa0-4f12-979b-f5f19b62fe0f",
+      "order": 16,
+      "characters": [],
+      "scene_id": null,
+      "image_url": null,
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
+    }
+  ],
+  "characters": [
+    {
+      "id": "edccb9f7-b854-4ab5-aa34-385483537dcd",
+      "name": "山贼头目",
+      "avatar_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/2f7858c4-a901-4334-a38a-2d796c92638e.png",
+      "tags": [],
+      "prompt": "山贼头目, bandit leader, ferocious face, rough skin texture, holding rusty sword, riding horse, aggressive expression, ancient Chinese bandit armor, dynamic angle, dust background, cinematic lighting, photorealistic, 8k, anime style, high quality",
+      "description": "面目狰狞的反派角色，骑马出现的强盗首领。皮肤粗糙，手持生锈的长刀，充满暴力与凶残的气息。",
+      "status": "completed"
+    },
+    {
+      "id": "d65e765a-50a8-4334-a94a-3eac77cbc775",
+      "name": "无（特写道具）",
+      "avatar_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/72689531-9138-475a-936f-3102789202e9.png",
+      "tags": [],
+      "prompt": "无（特写道具）, close-up shot, dusty desk calendar, date circled in red pen, leftover instant noodles, messy desk, dramatic shadows, cold lighting, macro details, storytelling objects, anime style, high quality",
+      "description": "特指桌面上的静物特写。积灰的台历，红笔圈出的“生日”日期，以及旁边吃剩的泡面。",
+      "status": "completed"
+    },
+    {
+      "id": "8fe980d5-a546-4afa-8bf5-565d45911c29",
+      "name": "无（箱内景观）",
+      "avatar_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/8ba905f3-9966-41b4-b08b-379c57e9a12a.png",
+      "tags": [],
+      "prompt": "无（箱内景观）, miniature landscape inside a box, Loess Plateau terrain, dry yellow earth, withered trees, ruined thatched huts, cracked riverbed, hyper-realistic, 8k resolution, satellite view texture, diorama style, no humans, anime style, high quality",
+      "description": "箱子内部呈现的微缩地理景观。逼真的黄土高原地貌，枯树、破败茅屋和干裂河床，具有卫星地图般的真实感。",
+      "status": "completed"
+    },
+    {
+      "id": "930f535e-38ba-460c-bb03-e63f2aa21f45",
+      "name": "李道玄",
+      "avatar_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/547d6846-82eb-462f-81c6-7046fdb30b4f.png",
+      "tags": [],
+      "prompt": "李道玄, young man, Li Daoxuan, glasses, messy hair, deep dark circles, sunken face, pale rough skin, exhausted expression, hunchbacked, sitting in dark room, blue monitor light glow, cinematic portrait, realistic style, anime style, high quality",
+      "description": "孤独疲惫的现代都市青年。戴眼镜，身形佝偻，黑眼圈深重，面部凹陷，皮肤苍白粗糙，处于极度疲劳和麻木的状态。",
+      "status": "completed"
+    },
+    {
+      "id": "121e4152-9163-46da-befb-0427de7e7b1a",
+      "name": "母亲",
+      "avatar_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/264ae57c-26a5-4982-85b0-da7803fdda46.png",
+      "tags": [],
+      "prompt": "母亲, middle-aged woman, ancient Chinese peasant, emaciated, tattered clothes, lying on ground, weak, dying, bloodstains, dirty face, tragic atmosphere, cinematic lighting, anime style, high quality",
+      "description": "高一叶的母亲，微缩世界中的古代贫苦农民。衣衫褴褛，极度虚弱消瘦，躺在地上，最终遭遇不幸。",
+      "status": "completed"
+    },
+    {
+      "id": "4921925a-7280-4224-9df7-6bb3cb8f1d6a",
+      "name": "高一叶",
+      "avatar_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/b0fbf020-7dac-46ce-a50f-85a0ae80f881.png",
+      "tags": [],
+      "prompt": "高一叶, tiny girl, Gao Yiye, macro photography, tattered sackcloth, dirty face, scars on hands, black mud in fingernails, desperate expression, crying, screaming, ancient Chinese peasant look, hyper-detailed, realistic texture, anime style, high quality",
+      "description": "微缩世界中的少女，体型极小（指甲盖大小）。穿着破烂麻布，满身伤痕与泥垢，眼神中充满求生欲、绝望与惊恐。",
+      "status": "completed"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "ebe290c2-0449-424a-9771-f369a001e0f3",
+      "name": "出租屋",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/f195ce44-4843-49e2-ae09-a3ecd343a8a8.png",
+      "tags": [],
+      "prompt": "出租屋, messy rental room, cramped apartment, piles of trash, takeout boxes, clutter, dark atmosphere, cinematic lighting, loneliness, depression, realistic interior, anime style, high quality",
+      "description": "李道玄居住的空间。阴暗、混乱，堆满外卖盒和杂物，充满压抑和孤独的氛围。",
+      "status": "completed"
+    },
+    {
+      "id": "4973f47d-7f91-4463-a04a-87184bafef69",
+      "name": "出租屋地板",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/09994c4b-598d-4fe6-aae5-91497f1e69e7.png",
+      "tags": [],
+      "prompt": "出租屋地板, wooden floor, top-down view, messy floor, dark shadows, cinematic texture, realistic material, anime style, high quality",
+      "description": "放置快递箱的地面区域，阴影浓重。",
+      "status": "completed"
+    },
+    {
+      "id": "11a821f7-eaf0-4c1d-94e0-c724e0873f7d",
+      "name": "电脑桌一角",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/d292bbf3-af83-428e-aa15-558d306e0670.png",
+      "tags": [],
+      "prompt": "电脑桌一角, corner of computer desk, dust, messy wires, desk calendar, stationery, dramatic lighting, close-up, macro shot, anime style, high quality",
+      "description": "桌面的局部特写，积灰且杂乱，放置着台历和泡面。",
+      "status": "completed"
+    },
+    {
+      "id": "3ffe1169-2759-4dd4-abd6-13b8ef8f049c",
+      "name": "电脑桌前",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/44527fc5-cf65-4dc9-86f2-3ae9a4c827d0.png",
+      "tags": [],
+      "prompt": "电脑桌前, computer desk setup, glowing monitor screen, cold blue light, dark room background, cyber-noir vibe, messy workspace, anime style, high quality",
+      "description": "李道玄的工作区域。只有电脑屏幕发出冷蓝色的幽光，照亮人物面部。",
+      "status": "completed"
+    },
+    {
+      "id": "c0bb5324-9f06-4aa8-bc58-356716a28709",
+      "name": "箱内微缩荒原",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/ec1cc2ed-d7a4-4086-be95-d735a1568a7c.png",
+      "tags": [],
+      "prompt": "箱内微缩荒原, view inside a cardboard box, miniature world, dry yellow desert, ancient ruins, top-down perspective, tilt-shift effect, magical realism, highly detailed terrain, anime style, high quality",
+      "description": "从箱口俯瞰的内部景象，呈现出极其逼真的微缩黄土高原地貌。",
+      "status": "completed"
+    },
+    {
+      "id": "dd5fc9be-61a5-4863-a039-9ff95c440357",
+      "name": "箱内荒原",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/e38169c5-91b7-44a5-93f4-29e7a68d9dc7.png",
+      "tags": [],
+      "prompt": "箱内荒原, barren wasteland, Loess plateau, dry cracked earth, dusty, yellow tones, macro scale environment, harsh sunlight, desolation, anime style, high quality",
+      "description": "高一叶所处的环境。干硬的黄土，尘埃飞扬，充满生存的残酷感。",
+      "status": "completed"
+    },
+    {
+      "id": "b97d62cc-6291-4303-a84f-c2f607186c4d",
+      "name": "荒原村庄",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/a9e545e9-9198-4e79-9131-8275a6184217.png",
+      "tags": [],
+      "prompt": "荒原村庄, ruined village, ancient china setting, mud houses, yellow dust, dry landscape, chaotic, war-torn, motion blur, cinematic composition, anime style, high quality",
+      "description": "微缩世界中的人类聚居地。破败的茅草屋，尘土飞扬，正遭受山贼洗劫。",
+      "status": "completed"
+    },
+    {
+      "id": "14fd36b6-70ce-47ce-8562-0888de20bc12",
+      "name": "阴暗杂乱的出租屋",
+      "image_url": "/static/uploads/cac68eb9-05c2-4446-b241-d530d91973d0/faa62f3a-0262-4437-97ce-cb700e9e8540.png",
+      "tags": [],
+      "prompt": "阴暗杂乱的出租屋, wide angle shot, dark messy room, silhouette of person at computer, glowing screen, piles of rubbish, claustrophobic, cold color palette, 4k, cinematic atmosphere, anime style, high quality",
+      "description": "全景视角下的房间状态。冷色调，只有屏幕光作为主要光源，强调环境的混乱与人物的渺小。",
+      "status": "completed"
+    }
+  ],
+  "default_scene_id": null,
+  "default_panel_layout": "1-panel",
+  "default_image_count": 1
+}
