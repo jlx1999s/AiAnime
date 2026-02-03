@@ -5,6 +5,7 @@ import json
 import mimetypes
 import os
 import re
+import time
 import urllib.request
 import urllib.error
 import uuid
@@ -149,6 +150,106 @@ def _openai_extract_url_or_base64(response: dict) -> tuple[str | None, str | Non
         if isinstance(response.get("b64_json"), str) and response.get("b64_json"):
             return None, response["b64_json"]
     return None, None
+
+def _apimart_build_url(base_url: str, path: str) -> str:
+    base = base_url.rstrip("/")
+    if base.endswith("/v1"):
+        return f"{base}{path}"
+    return f"{base}/v1{path}"
+
+def _apimart_size_from_openai(size: str | None) -> str:
+    if not size:
+        return "1:1"
+    size = str(size)
+    if ":" in size:
+        return size
+    if "x" in size:
+        parts = size.lower().split("x")
+        if len(parts) == 2 and parts[0].isdigit() and parts[1].isdigit():
+            w = int(parts[0])
+            h = int(parts[1])
+            if w > 0 and h > 0:
+                if w == h:
+                    return "1:1"
+                def gcd(a: int, b: int) -> int:
+                    while b:
+                        a, b = b, a % b
+                    return a
+                g = gcd(w, h)
+                return f"{w // g}:{h // g}"
+    return "1:1"
+
+async def _apimart_request(method: str, url: str, api_key: str, payload: dict | None = None) -> dict:
+    def do_request():
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+        data = None
+        if payload is not None:
+            data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        req = urllib.request.Request(url, data=data, headers=headers, method=method)
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                raw = resp.read()
+        except urllib.error.HTTPError as e:
+            raw = e.read()
+            text = raw.decode("utf-8", errors="replace") if raw else ""
+            raise Exception(f"Apimart request failed ({e.code}): {text[:300]}")
+        except urllib.error.URLError as e:
+            raise Exception(f"Apimart request failed: {e}")
+        if not raw:
+            raise Exception("Apimart empty response")
+        try:
+            return json.loads(raw.decode("utf-8"))
+        except Exception:
+            raise Exception("Apimart non-JSON response")
+    return await asyncio.to_thread(do_request)
+
+async def _apimart_poll_task(task_id: str, api_key: str, base_url: str, timeout_seconds: int = 300) -> dict:
+    url = _apimart_build_url(base_url, f"/tasks/{task_id}?language=zh")
+    started = time.time()
+    while time.time() - started < timeout_seconds:
+        data = await _apimart_request("GET", url, api_key)
+        if isinstance(data, dict) and data.get("code") == 200:
+            payload = data.get("data") or {}
+            status = payload.get("status")
+            if status == "completed":
+                return payload
+            if status in ("failed", "error"):
+                raise Exception(f"Apimart task failed: {payload}")
+        await asyncio.sleep(2)
+    raise Exception("Apimart task polling timed out")
+
+async def _apimart_generate_image(prompt: str, model: str, size: str | None, n: int, image_urls: list[str] | None, api_key: str, base_url: str) -> str:
+    url = _apimart_build_url(base_url, "/images/generations")
+    payload = {
+        "model": model,
+        "prompt": prompt,
+        "size": _apimart_size_from_openai(size),
+        "n": n
+    }
+    if image_urls:
+        payload["image_urls"] = image_urls
+    data = await _apimart_request("POST", url, api_key, payload)
+    task_id = None
+    if isinstance(data, dict) and data.get("code") == 200:
+        items = data.get("data")
+        if isinstance(items, list) and items:
+            task_id = items[0].get("task_id")
+    if not task_id:
+        raise Exception(f"Apimart task id missing: {data}")
+    result = await _apimart_poll_task(task_id, api_key, base_url)
+    images = ((result.get("result") or {}).get("images") or [])
+    if images:
+        first = images[0]
+        urls = first.get("url") if isinstance(first, dict) else None
+        if isinstance(urls, list) and urls:
+            return urls[0]
+        if isinstance(urls, str):
+            return urls
+    raise Exception(f"Apimart image result missing: {result}")
 
 def _openai_normalize_poll_url(callback_url: str | None, base_url: str, default_url: str) -> str:
     if callback_url:
@@ -367,10 +468,22 @@ async def _runninghub_generate_video(prompt: str, image_path: str | None, api_ke
 
 async def generate_image(prompt: str, sub_dir: str | None, reference_image_url: str | None, image_client, config, image_url_to_base64: Callable[[str], str | None], save_image_from_url: Callable[[str, str | None], str], save_base64_image: Callable[[str, str | None], str]) -> str:
     print(f"openai_generate_image called with ref_url: {reference_image_url}")
-    if not image_client:
-        raise Exception("OpenAI image client not initialized")
     model = config.openai_image_model or "gpt-image-1"
     try:
+        image_base = config.openai_image_api_base or config.openai_api_base or "https://api.openai.com/v1"
+        if "apimart.ai" in image_base.lower():
+            api_key = config.openai_image_api_key or config.openai_api_key
+            if not api_key:
+                raise Exception("Apimart API key not configured")
+            ref_urls = None
+            if reference_image_url and (reference_image_url.startswith("http://") or reference_image_url.startswith("https://")):
+                ref_urls = [reference_image_url]
+            image_url = await _apimart_generate_image(prompt, model, "1024x1024", 1, ref_urls, api_key, image_base)
+            if image_url.startswith("http"):
+                return save_image_from_url(image_url, sub_dir=sub_dir)
+            return image_url
+        if not image_client:
+            raise Exception("OpenAI image client not initialized")
         if "gemini" in model.lower() and "image" in model.lower():
             print(f"Using Chat Completion for image generation with model: {model}")
             messages_content = [{"type": "text", "text": prompt}]

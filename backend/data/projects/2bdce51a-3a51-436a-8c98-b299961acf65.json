@@ -122,7 +122,7 @@
         "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/ab1efcaa-f7fe-4580-a2b7-545d5ced35b6.png"
       ],
       "video_url": "https://storage.googleapis.com/ai-sandbox-videofx/video/d18a1db5-7fe9-4612-a347-4f0582be0ef7?GoogleAccessId=labs-ai-sandbox-videoserver-prod@system.gserviceaccount.com&Expires=1770039802&Signature=CsIjnBW%2BxwHikAHH37%2FwesSdFlDN3%2Bi49vcZ3UkwBF12dS2CrW%2FVQ8SOY8BfP7NKXtw0l%2B4lUM0hR8IVR9t26RHH%2BmdZhSCxjLh4foWFkzhjvEHkEwnRJA98hpvlrChOtVKv3U0xa16gWv%2BKRSDm7pmXNC%2FPL%2BuvfL3IoQtWePH2UYCbYvsyoB5VmF87DlbT9Oeg93vYRX90yeqPWKpfnPC7Lnxbp5Zx65aUOIwl1u4XnhIMdYyfi35E0p1O7whnzC2yQFbe1ya3NlMqsQieDLCJEGs2pAH%2BJvF5kxB2qlOq5%2F7oUcBsy8%2FTP5mUYZgrn7TI6%2FQ2q6xdAkcGlFz7Rw%3D%3D",
-      "video_progress": 100,
+      "video_progress": null,
       "video_items": [
         {
           "id": "fc9e698f-4d62-455a-9578-9d702f75aca5",
@@ -147,13 +147,16 @@
       "order": 2,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
-      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
-      "original_image_url": null,
-      "image_candidates": [],
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/56b676bb-4d27-4434-ab8b-0afc23268574.png",
+      "original_image_url": "https://picsum.photos/seed/fef15f46-621e-4c31-ac3d-b9ae904603f4/512/512",
+      "image_candidates": [
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/992f8a23-848b-47d8-b7bd-287d4df90721.jpg",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/56b676bb-4d27-4434-ab8b-0afc23268574.png"
+      ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
-      "status": "idle"
+      "status": "completed"
     },
     {
       "prompt": "视角：仰拍中景。暖光完全照亮了李道玄的脸，他疲惫的眼神中流露出惊讶与好奇。他微微张嘴，身体前倾。 重点：角色的反应，被箱内景象吸引。 [李道玄: young Chinese man, tired expression, messy hair, casual home clothes, modern setting, cinematic lighting, blue screen light reflection on face, shocked expression, detailed facial features, photorealistic, 8k] [昏暗的现代公寓: dimly lit room, messy modern apartment, computer screen blue light, bokeh background, clutter, cinematic atmosphere, dark tones, low key lighting]",
@@ -1040,15 +1043,38 @@
         "184367d3-4391-4d77-9e4f-63ab3abd0632"
       ],
       "scene_id": null,
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/784ce575-d06b-45ff-bc83-6fbfd9cf7932.png",
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e945b39a-5b05-4f77-8acc-e6b143cdb750.png",
       "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/784ce575-d06b-45ff-bc83-6fbfd9cf7932.png",
       "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/784ce575-d06b-45ff-bc83-6fbfd9cf7932.png"
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/784ce575-d06b-45ff-bc83-6fbfd9cf7932.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/708c4981-56cd-4c00-a67d-40864daef934.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/e945b39a-5b05-4f77-8acc-e6b143cdb750.png"
       ],
       "video_url": null,
       "video_progress": null,
       "video_items": [],
       "status": "completed"
+    },
+    {
+      "prompt": "",
+      "dialogue": "",
+      "audio_prompt": null,
+      "use_scene_ref": true,
+      "custom_image_url": null,
+      "first_frame_url": null,
+      "last_frame_url": null,
+      "panel_layout": "1-panel",
+      "id": "c23e4f4c-88e4-4a83-8ce1-7d3153eb956b",
+      "order": 41,
+      "characters": [],
+      "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
+      "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
+      "original_image_url": null,
+      "image_candidates": [],
+      "video_url": null,
+      "video_progress": null,
+      "video_items": [],
+      "status": "idle"
     },
     {
       "prompt": "生成图中人物喂狗的画面",
@@ -1060,13 +1086,16 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "7738e773-72f0-44a3-b052-d904d1b0097c",
-      "order": 41,
+      "order": 42,
       "characters": [],
       "scene_id": null,
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/03973393-3538-46f2-a4c2-a5696ba74de3.png",
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3fdba93c-b1c8-4841-8247-ea975d54d39e.png",
       "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/03973393-3538-46f2-a4c2-a5696ba74de3.png",
       "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/03973393-3538-46f2-a4c2-a5696ba74de3.png"
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/03973393-3538-46f2-a4c2-a5696ba74de3.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3c88c85d-9afb-4c37-8959-95fe8e07c151.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/5e449fdd-d574-4449-b70e-76a0fd1f3f01.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/3fdba93c-b1c8-4841-8247-ea975d54d39e.png"
       ],
       "video_url": null,
       "video_progress": null,
@@ -1083,7 +1112,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "8a93c652-7f28-420d-9b80-8c6d1915556e",
-      "order": 42,
+      "order": 43,
       "characters": [
         "0b0fef67-b8f4-49ef-8d1e-009d93b1a622"
       ],
@@ -1106,7 +1135,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "246f8a97-1e26-4038-ad3a-afd9d8b5d585",
-      "order": 43,
+      "order": 44,
       "characters": [],
       "scene_id": null,
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/d24af8de-256f-4973-9a46-7db03fcc4c76.png",
@@ -1129,7 +1158,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "a8f0df1b-630e-4b7f-8582-87884f69015f",
-      "order": 44,
+      "order": 45,
       "characters": [],
       "scene_id": null,
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/eba371aa-4fcb-4560-852f-450d4d109b28.png",
@@ -1152,7 +1181,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "cb47f3b2-1547-4349-b417-7cbc35750e63",
-      "order": 45,
+      "order": 46,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1173,7 +1202,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "5cd20bb6-fc89-4857-9cc7-8d3408126486",
-      "order": 46,
+      "order": 47,
       "characters": [],
       "scene_id": null,
       "image_url": "https://placehold.co/300x169/25262b/FFF?text=New+Shot",
@@ -1194,7 +1223,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "c62161bb-58d9-4c69-8678-d8db30da2ffe",
-      "order": 47,
+      "order": 48,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/af3d1090-f940-4198-b1cc-4ffbc394c3f1.png",
@@ -1217,17 +1246,18 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "d3ee4d88-e75e-4b74-9ed7-3625da163095",
-      "order": 48,
+      "order": 49,
       "characters": [
         "7480a98a-2b36-42ba-98e3-0fc995395646",
         "184367d3-4391-4d77-9e4f-63ab3abd0632",
         "4794bd56-50e1-4311-8c73-be1ec1539aba"
       ],
       "scene_id": "bc1e6592-d9e2-4480-9304-6c5726d8f296",
-      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/35b19185-d463-4e62-b006-b70df53e00a7.png",
+      "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/f496cb7e-7c59-47fd-ab9d-145d4b226a41.png",
       "original_image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/35b19185-d463-4e62-b006-b70df53e00a7.png",
       "image_candidates": [
-        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/35b19185-d463-4e62-b006-b70df53e00a7.png"
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/35b19185-d463-4e62-b006-b70df53e00a7.png",
+        "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/f496cb7e-7c59-47fd-ab9d-145d4b226a41.png"
       ],
       "video_url": null,
       "video_progress": null,
@@ -1244,7 +1274,7 @@
       "last_frame_url": null,
       "panel_layout": "1-panel",
       "id": "d99a93fa-0f60-4dd4-8776-5615299eeda9",
-      "order": 49,
+      "order": 50,
       "characters": [],
       "scene_id": "f08366e6-fba7-4a4d-ac1f-9e9c81831d34",
       "image_url": "/static/uploads/2bdce51a-3a51-436a-8c98-b299961acf65/fef8a7e6-8a51-4af5-8daf-40a378bcaa06.png",

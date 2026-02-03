@@ -2163,7 +2163,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     local_urls = []
                     for url in images:
                         if url.startswith("http"):
-                            local = await _save_image_from_url(url, sub_dir=project.id)
+                            local = await asyncio.to_thread(_save_image_from_url, url, sub_dir=project.id)
                             local_urls.append(local)
                         else:
                             local_urls.append(url)
@@ -2214,7 +2214,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     local_urls = []
                     for url in images:
                         if url.startswith("http"):
-                            local = await _save_image_from_url(url, sub_dir=project.id)
+                            local = await asyncio.to_thread(_save_image_from_url, url, sub_dir=project.id)
                             local_urls.append(local)
                         else:
                             local_urls.append(url)
@@ -2310,7 +2310,7 @@ async def ai_generation_task(project_id: str, shot_id: str, type: str, count: in
                     local_urls = []
                     for url in images:
                         if url.startswith("http"):
-                            local = await _save_image_from_url(url, sub_dir=project.id)
+                            local = await asyncio.to_thread(_save_image_from_url, url, sub_dir=project.id)
                             local_urls.append(local)
                         else:
                             local_urls.append(url)
